@@ -1,0 +1,198 @@
+\documentclass[a4paper,nobib,justified]{tufte-book}
+
+\hypersetup{colorlinks}
+
+\input{preamble.tex}
+
+%%
+% Book metadata
+\title{Systems Engineering for Sub-CubeSat Spacecraft\thanks{AcubeSAT}}
+\author[Konstantinos Kanavouras]{Konstantinos Kanavouras}
+\publisher{University of Luxembourg}
+
+\acsetup{foreign/display=false, list/foreign/display=false}
+
+\def\g{\ignorespaces}
+\def\e{\ignorespaces}
+\def\acusepage#1{}
+
+\usepackage{microtype}
+
+\hypersetup{
+	pdftitle={Systems Engineering for Sub-CubeSat Spacecraft},
+	pdfsubject={PhD Thesis},
+	pdfauthor={Konstantinos Kanavouras},
+	addtopdfcreator={tufte-book class}
+}
+
+\begin{document}
+	
+\addcontentsline{toc}{chapter}{Preamble}
+
+% Front matter
+%\frontmatter
+
+% r.1 blank page
+%\blankpage
+
+% r.3 full title page
+\makeatletter
+\renewcommand{\maketitle}{%
+	\newpage
+	\global\@topnum\z@% prevent floats from being placed at the top of the page
+	\begingroup
+	\setlength{\parindent}{0pt}%
+	\setlength{\parskip}{4pt}%
+	\let\@@title\@empty
+	\let\@@author\@empty
+	\let\@@date\@empty
+	\thispagestyle{empty}
+	\begin{fullwidth}
+		\vfill
+		\begin{center}
+			University of Luxembourg Logo\par
+			\vspace{1cm}
+			\LARGE\textsc{Doctoral Thesis}\par
+			\vspace{6ex}
+			\hrule
+			\vspace{4ex}
+			\Huge\textbf{Systems Engineering}\\[1ex]
+			\LARGE\textbf{for}\\
+			\Huge\textbf{Sub-CubeSat Spacecraft}\par
+			\vspace{2.7ex}
+			\hrule
+
+			\vspace{6ex}
+
+			\Large
+			\begin{tabular}{ll}
+				\emph{Author:} & \href{https://github.com/kongr45gpen}{Konstantinos \textsc{Kanavouras} \normalsize (\fontfamily{pplx}\selectfont 8824)}
+				\\[1.5ex]
+				\emph{Supervisor:} & \href{http://ee.auth.gr/en/school/faculty-staff/electronics-computers-department/hatzopoulos-alkiviadis/}{Prof. Andreas M.~\textsc{Hein}}
+			\end{tabular}
+
+			\vspace{6ex}
+
+			\large \textit{A thesis submitted in fulfillment of the requirements\\ for something}\\[0.3cm] % University requirement text
+			\textit{in the}\\[0.4cm]
+			\href{https://www.eng.auth.gr/en/home.html}{Faculty of Engineering}
+			\\
+			\href{https://ee.auth.gr/en/}{Electrical \& Computer Engineering Department}
+			\\[1cm] % Research group name and department name
+
+			\vspace{6ex}
+
+			{\large June 28, 2021}\\[4cm] % Date
+
+		\end{center}
+		\vfill
+	\end{fullwidth}
+	\endgroup
+	\thispagestyle{plain}% suppress the running head
+	\tuftebreak% add some space before the text begins
+	\@afterindentfalse\@afterheading% suppress indentation of the next paragraph
+}
+\makeatother
+\maketitle
+
+% v.4 copyright page
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Copyrights}
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+Copyright \copyright\ \the\year\ \thanklessauthor
+
+%\par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
+
+\par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at \url{https://creativecommons.org/licenses/by/4.0/legalcode}, or a human-readable summary at \url{https://creativecommons.org/licenses/by/4.0/}.
+Unless
+required by applicable law or agreed to in writing, material distributed
+under the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.\index{license}
+
+\par This thesis was produced using \LaTeX, the \href{https://ctan.org/pkg/tufte-latex?lang=en}{\texttt{tufte-latex}} template, and the modifications from \linebreak[4] \href{https://github.com/lalider/tufte-latex-thesis}{\texttt{tufte-latex-thesis}}.
+
+\par\textit{Rendered on \today{} (\texttt{\gitcommit}: \gitcommitmessage)}
+\end{fullwidth}
+
+% r.5 contents
+\tableofcontents
+\addcontentsline{toc}{section}{Contents}
+
+\begin{fullwidth}
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+%\chapter*{List of Acronyms}
+%\acuseall%
+\bgroup
+\setlength\parskip{1ex}
+\printacronyms[pages={display=all,seq/use=false},]
+\addcontentsline{toc}{section}{Acronyms}
+\egroup
+
+\end{fullwidth}
+
+% r.9 introduction
+\cleardoublepage
+
+\chapter*{Abstract}
+
+\justify
+Space is not a welcoming environment.
+
+%%
+% Start the main matter (normal chapters)
+\mainmatter
+
+
+\chapter{Introduction}
+
+\section{Thesis research area}
+
+
+\begin{marginfigure}
+	\centering
+	(Imagine a chart here)
+	\caption[Types of satellites in operation in 2018]{Types of satellites in operation in 2018 \autocite{ECSS-E-ST-10-02C}}
+	\label{fig:satellite_types}
+\end{marginfigure}
+
+This thesis involves satellite design and operations, parts of the Aerospace Engineering disciplines. The first artificial satellite \e{``Sputnik 1''} was launched in 1957, and by 2021 about 8900 satellites have been launched, of which about 4000 are currently operational and in orbit \autocite{ECSS-E-ST-10-02C}.
+
+Artificial satellites can perform a number of different functions, which typically include telecommunications, earth observation, navigation (\acs{GNSS}), scientific research, technology demonstration, and other purposes, excluding manned missions, missions beyond Earth orbit, and space stations. The data generated using space technology have long been an integral part of modern civilisation, having influenced transportation, weather forecasting, and technology in general.
+
+\begin{figure}
+	\centering
+    (satellites here)
+	\caption[Active satellites orbiting the earth in 2021]{Active satellites orbiting the earth in 2021. \acl{LEO} satellites can be seen close to the planet, and Geostationary Orbit satellites can be seen at a fixed high altitude, while Medium Earth Orbit are between the two previous categories.}
+    \label{fig:all_satellites}
+    \setfloatalignment{t}
+\end{figure}
+			
+After launch, satellites typically remain in space until the completion of their mission after some years, at which point they can either return to Earth and burn up in the atmosphere, or remain in space as ``space junk''.
+
+\appendix
+
+\begin{fullwidth}
+\printbibliography[heading=bibnumbered]
+\end{fullwidth}
+
+
+\printindex
+
+
+
+\end{document}
+

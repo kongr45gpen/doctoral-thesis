@@ -10,6 +10,7 @@
 *.fot
 *.cb
 *.cb2
+*.tmp
 .*.lb
 
 ## Intermediate documents:
@@ -20,6 +21,7 @@
 # *.ps
 # *.eps
 # *.pdf
+/*.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
 .pdf

@@ -1,0 +1,280 @@
+%%
+% If they're installed, use Bergamo and Chantilly from www.fontsite.com.
+% They're clones of Bembo and Gill Sans, respectively.
+%\IfFileExists{bergamo.sty}{\usepackage[osf]{bergamo}}{}% Bembo
+%\IfFileExists{chantill.sty}{\usepackage{chantill}}{}% Gill Sans
+
+%\usepackage[protrusion=true,expansion,babel=true]{microtype}
+
+%%
+% Just some sample text
+\usepackage{lipsum}
+
+%%
+% For nicely typeset tabular material
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\noindent\RaggedRight\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\noindent\RaggedLeft\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\noindent\Centering\arraybackslash\hspace{0pt}}p{#1}}
+
+%%
+% For graphics / images
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{media/}}
+
+% What
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Bibliography
+\usepackage[
+style=ieee,
+citestyle=numeric-comp,
+autocite=inline,
+autopunct=true,
+backend=biber,
+maxbibnames=99,
+maxcitenames=2,
+mincitenames=1,
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+%%
+% Maths
+\usepackage{amsmath}
+
+% Prints a trailing space in a smart way.
+\usepackage{xspace}
+
+% Inserts a blank page
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+
+% Referencing
+\usepackage[unicode]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+\hypersetup{%
+	bookmarksnumbered = true, % Show section numbering in the PDF table of contents. Allows easier browsing of the document
+	colorlinks = true, % uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
+%	pdfborder = {0 0 0},
+	bookmarksdepth = subsection,
+%	citecolor = DarkGreen,
+%	linkcolor = DarkBlue,
+%	urlcolor = DarkGreen,
+}
+
+%\AtBeginDocument{%
+%	\hypersetup{
+%		pdfauthor={\plainauthor}
+%		pdftitle={\plaintitle},
+%	}%
+%}
+
+\usepackage{siunitx}
+
+% Modifications to the default tufte template to make it more applicable to a thesis
+% Credit goes to Tiffany Tseng, lalider, see https://github.com/lalider/tufte-latex-thesis
+
+\usepackage[parfill]{parskip}
+
+% remove paragraph indentation
+\makeatletter
+% Paragraph indentation and separation for normal text
+\renewcommand{\@tufte@reset@par}{%
+	\setlength{\RaggedRightParindent}{0.0pc}%
+	\setlength{\JustifyingParindent}{0.0pc}%
+	\setlength{\parindent}{0pc}%
+	\setlength{\parskip}{\baselineskip}%
+}
+\@tufte@reset@par
+
+% Paragraph indentation and separation for marginal text
+\renewcommand{\@tufte@margin@par}{%
+	\setlength{\RaggedRightParindent}{0.0pc}%
+	\setlength{\JustifyingParindent}{0.0pc}%
+	\setlength{\parindent}{0.0pc}%
+	\setlength{\parskip}{10pt}%
+}
+\makeatother
+
+\titleformat{\section}%
+[hang]% shape
+{\normalfont\Large}% format applied to label+text
+{\thesection}% label
+{1em}% horizontal separation between label and title body
+{}% before the title body
+[]% after the title body
+
+%\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus.2ex}
+\titlespacing*{\section}{0pt}{30pt}{20pt}
+\titlespacing*{\subsection}{0pt}{20pt}{5pt}
+
+
+% Disable adding empty pages without a purpose (not intended for printing in a book format...)
+\makeatletter
+\def\cleardoublepage{
+	\clearpage%
+}
+\makeatother
+
+% Acronyms
+\usepackage{acro}
+\acsetup{
+	use-id-as-short,
+	make-links=false,
+	case-sensitive=false,
+	patch/floats=false,
+	patch/caption=false,
+	patch/tabularx=false
+}
+
+\input{acronyms.tex}
+\input{commands.tex}
+
+\NewAcroTemplate[list]{glossary}{%
+	\begin{description}
+		\acronymsmapF{%
+			\item[\sffamily\textbf{\acrowrite{short}}] \acrowrite{long}%
+			\acroifanyT {foreign,extra} {~(}%
+			\acrowrite {foreign}%
+			\acroifallT {foreign,extra} {,~}%
+			\acrowrite {extra}%
+			\acroifanyT {foreign,extra} {)}%
+			\acropagefill%
+			\acropages%
+				{ \acrotranslate {page} \nobreakspace }%
+				{ \acrotranslate {pages} \nobreakspace }%
+		}%
+		{ \item \AcroRerun{list} }%
+		\end {description}
+	}
+
+% Various utilities
+\usepackage{tabularx}
+\usepackage[singlelinecheck=false]{caption}
+\usepackage{subcaption}
+\usepackage{comment}
+
+% Generates the index
+\usepackage{makeidx}
+\makeindex
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat = 1.3}
+\usetikzlibrary{pie}
+\usepackage{physics}
+\let\Re=\relax
+\let\Im=\relax
+
+% Colours
+\definecolor{off}{HTML}{e53935}
+\definecolor{on}{HTML}{43a047}
+\usepackage{xcolor-solarized}
+\usepackage{xcolor-material}
+\usepackage{colortbl}
+
+%\usepackage{todonotes}
+\usepackage{enumitem}
+\usepackage[absolute,overlay]{textpos}
+
+% Code
+%\usepackage{minted}
+%\usepackage{xpatch,letltxmacro}
+%\LetLtxMacro{\cminted}{\minted}
+%\let\endcminted\endminted
+%\xpretocmd{\cminted}{\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}}{}{}
+%\definecolor{mintedbg}{rgb}{0.95,0.95,0.93}
+%\setminted{
+%	bgcolor=mintedbg,
+%	tabsize=2
+%}
+%\setminted[text]{baselinestretch=0.8}
+
+% Git magic
+\makeatletter
+\write18{git log --pretty='format:\@percentchar Creset\@percentchar s' --no-merges -1 > \jobname.git1.tmp}
+\write18{git rev-parse --short HEAD > \jobname.git2.tmp}
+\def\gitcommit{\input{\jobname.git2.tmp}\unskip}
+\def\gitcommitmessage{\input{\jobname.git1.tmp}\unskip}
+\makeatother
+
+% Smart citations
+
+\makeatletter
+
+%\def\blx@imc@mkbibquote{\blx@enquote}
+
+\newbibmacro*{cite:title}{%
+  \printtext[bibhyperref]{%
+    \printfield[citetitle]{labeltitle}}%
+  \finentry}
+
+\newbibmacro*{cite:shorthand}{%
+	\printtext[bibhyperref]{\printfield{shorthand}}}
+
+\newbibmacro*{cite:full}{%
+	\iffieldundef{shorthand}
+	{\printnames{labelname}%
+		\setunit*{\printdelim{nametitledelim}}%
+		\usebibmacro{cite:title}}%
+	{\usebibmacro{cite:shorthand}}}
+
+\newbibmacro*{cite:marginnote}{%
+	\marginnote{%
+		% \mkbibbrackets should be used here probably
+		[%
+			\printfield{labelprefix}%
+			\printfield{labelnumber}%
+		]
+		\usebibmacro{cite:full}%
+	}%
+}
+
+\DeclareCiteCommand{\dualcite}[\mkbibbrackets]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:marginnote}%
+   \usebibmacro{cite:comp}}%
+  {}
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}
+
+\def\tuftecite{
+	\iffootnote{footnote}{text}
+}
+
+% Patching commands that enter information in margins, so that we can detect which
+% citation should be used
+\newtoggle{inmargin}
+\pretocmd{\marginpar}{\toggletrue{inmargin}}{}{}
+\apptocmd{\@xympar}{\togglefalse{inmargin}}{}{}
+\pretocmd{\@tufte@float}{\toggletrue{inmargin}}{}{}
+\pretocmd{\end@tufte@float}{\togglefalse{inmargin}}{}{}
+\pretocmd{\@tufte@margin@float}{\toggletrue{inmargin}}{}{}
+\pretocmd{\end@tufte@margin@float}{\togglefalse{inmargin}}{}{}
+
+\def\autocite{%
+	\iftoggle{inmargin}\parencite\dualcite%
+}
+
+% Tufte disables subparagraphs. This brings them back.
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+	{3.25ex \@plus1ex \@minus .2ex}%
+	{-1em}%
+	{\hspace{1em}\normalfont\normalsize\itshape}}
+
+% \acuse command that also adds the current page
+%\NewAcroTemplate{fdirthesisempty}{}
+%\NewAcroCommand\acusepage{m}{}
+\let\acusepage\acuse
+
+\makeatother
