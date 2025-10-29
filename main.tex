@@ -6,7 +6,7 @@
 
 %%
 % Book metadata
-\title{Systems Engineering for Sub-CubeSat Spacecraft\thanks{AcubeSAT}}
+\title{Systems Engineering for Sub-CubeSat Spacecraft}
 \author[Konstantinos Kanavouras]{Konstantinos Kanavouras}
 \publisher{University of Luxembourg}
 
@@ -52,7 +52,7 @@
 		\begin{center}
 			University of Luxembourg Logo\par
 			\vspace{1cm}
-			\LARGE\textsc{Doctoral Thesis}\par
+			\LARGE\textsc{Dissertation}\par
 			\vspace{6ex}
 			\hrule
 			\vspace{4ex}
@@ -66,23 +66,23 @@
 
 			\Large
 			\begin{tabular}{ll}
-				\emph{Author:} & \href{https://github.com/kongr45gpen}{Konstantinos \textsc{Kanavouras} \normalsize (\fontfamily{pplx}\selectfont 8824)}
+				\emph{Author:} & Konstantinos \textsc{Kanavouras}
 				\\[1.5ex]
-				\emph{Supervisor:} & \href{http://ee.auth.gr/en/school/faculty-staff/electronics-computers-department/hatzopoulos-alkiviadis/}{Prof. Andreas M.~\textsc{Hein}}
+				\emph{Supervisor:} & Prof.~Andreas M.~\textsc{Hein}
 			\end{tabular}
 
 			\vspace{6ex}
 
-			\large \textit{A thesis submitted in fulfillment of the requirements\\ for something}\\[0.3cm] % University requirement text
+			\large \textit{A thesis submitted in fulfilment of the requirements\\ for something}\\[0.3cm] % University requirement text
 			\textit{in the}\\[0.4cm]
-			\href{https://www.eng.auth.gr/en/home.html}{Faculty of Engineering}
+			Doctoral School of Computer Science
 			\\
-			\href{https://ee.auth.gr/en/}{Electrical \& Computer Engineering Department}
+			Faculty of Science, Technology and Medicine
 			\\[1cm] % Research group name and department name
 
 			\vspace{6ex}
 
-			{\large June 28, 2021}\\[4cm] % Date
+			{\large June 28, 2099}\\[4cm] % Date
 
 		\end{center}
 		\vfill
@@ -107,6 +107,13 @@
 Copyright \copyright\ \the\year\ \thanklessauthor
 
 %\par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
+
+\par
+I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
+submitted for the award of a doctorate, on my own (without external help), have used
+only the sources and aids indicated and have marked passages included from other
+works, whether verbatim or in content, as such. I swear upon oath that these
+statements are true and that I have not concealed anything.
 
 \par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
 use this file except in compliance with the License. You may obtain a copy
@@ -152,36 +159,373 @@ under the License.\index{license}
 \justify
 Space is not a welcoming environment.
 
+\chapter*{Objectives}
+
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+Space is not a welcoming environment. 
+
+\chapter*{Contribution}
+Konstantinos Kanavouras did this.
+Vittorio Franzese did that.
+Olivia Borgue did the other thing.
+And so on and so forth.
+
+\draft{Very important: Mention clearly the contributions and project leading of each of the 4 space projects mentioned}
+
 %%
 % Start the main matter (normal chapters)
 \mainmatter
 
 
 \chapter{Introduction}
+\label{chap:INTRODUCTION}
 
-\section{Thesis research area}
+\section{Motivation}
 
+\section{Scope}
 
-\begin{marginfigure}
-	\centering
-	(Imagine a chart here)
-	\caption[Types of satellites in operation in 2018]{Types of satellites in operation in 2018 \autocite{ECSS-E-ST-10-02C}}
-	\label{fig:satellite_types}
-\end{marginfigure}
+\begin{figure}[h]
+	\includegraphics{graphics/UoA1.pdf}
+	\caption{Unit of Analysis}
+\end{figure}
 
-This thesis involves satellite design and operations, parts of the Aerospace Engineering disciplines. The first artificial satellite \e{``Sputnik 1''} was launched in 1957, and by 2021 about 8900 satellites have been launched, of which about 4000 are currently operational and in orbit \autocite{ECSS-E-ST-10-02C}.
+\begin{figure}[h]
+	\includegraphics{graphics/UoA2.pdf}
+	\caption{Unit of Analysis}
+\end{figure}
 
-Artificial satellites can perform a number of different functions, which typically include telecommunications, earth observation, navigation (\acs{GNSS}), scientific research, technology demonstration, and other purposes, excluding manned missions, missions beyond Earth orbit, and space stations. The data generated using space technology have long been an integral part of modern civilisation, having influenced transportation, weather forecasting, and technology in general.
+\section{Defining Systems Engineering}
+\label{sec:defining_systems_engineering}
 
 \begin{figure}
-	\centering
-    (satellites here)
-	\caption[Active satellites orbiting the earth in 2021]{Active satellites orbiting the earth in 2021. \acl{LEO} satellites can be seen close to the planet, and Geostationary Orbit satellites can be seen at a fixed high altitude, while Medium Earth Orbit are between the two previous categories.}
-    \label{fig:all_satellites}
-    \setfloatalignment{t}
+	\includegraphics{graphics/decomp.pdf}
+	\caption{Unit of Analysis}
 \end{figure}
-			
-After launch, satellites typically remain in space until the completion of their mission after some years, at which point they can either return to Earth and burn up in the atmosphere, or remain in space as ``space junk''.
+
+\begin{figure}
+	\includegraphics{graphics/DecompSYE.pdf}
+	\caption{Unit of Analysis}
+\end{figure}
+
+\section{Research Gaps}
+
+\section{Research Questions and Thesis Objectives}
+
+\section{Thesis Structure}
+
+
+\chapter{Literature Survey}
+\label{chap:SURVEY}
+\section{Terminology}
+
+\subsection{Spacecraft Classes}
+
+%The idea of a \textbf{Sub-CubeSat Spacecraft} (\acs{SCS}) depends on the definition of a CubeSat
+
+The CubeSat Design Specification \autocite{CDS14} defines a CubeSat as a class of satellite composed of 1 to 12 cube units with a size of \SI{10}{\centi\meter}  (``U''). As such, we define \textbf{Sub-CubeSat Spacecraft} to include all spacecraft classes smaller than \SI{10}{\centi\meter} on all dimensions. Depending on launch requirements, this definition will usually restrict an \acs{SCS} mass to less than \SI{2}{\kg}, the maximum mass for a 1U CubeSat \cite{CDS14}.
+
+Various Sub-CubeSat spacecraft classes have been defined in the literature. Most prominently, \textbf{PocketQubes} are standardised in the PocketQube Standard \autocite{raduDelfiPQFirstPocketqube2018} as combinations of \SI{5}{\centi\meter} cube units (``p''). Smaller sizes are represented by classes such as \textbf{\acs{PCB}sats} \autocite{barnhartLowcostFemtosatelliteEnable2009}, which are typically flat in one direction, and \textbf{SpaceChips} or satellites-on-a-chip \autocite{barnhartSatelliteonaChipFeasibilityStudy2006}, which would be complete spacecraft implemented on an \acf{IC} smaller than \qtyproduct{2 x 2}{\centi\meter}. The notion of a \textbf{ChipSat} can define a flat-sized spacecraft with an envelope smaller than \qtyproduct{5 x 5}{\centi\meter} \autocite{manchesterCentimeterScaleSpacecraftDesign2015}.
+
+Note that ``fractional-unit CubeSats'' have been developed and launched (e.g.~1/2U, 1/3U, 1/4U)\draft{reference}. While these conform to many standard CubeSat requirements and are designed to be hosted in CubeSat containers, they are not part of the official CubeSat Design Specification \cite{CDS14}, and due to their size, are considered \acf{SCS} and therefore within the scope of this work.
+
+\begin{margintable}
+	\caption{ \autocite{sweetingUoSATMicrosatelliteMissions1992,heinAttoSatsChipSatsOther2019}}
+	\label{tab:satellite_sizes}
+
+	\begin{tabular}{@{}ll@{}}
+		\toprule
+		Class & Mass \\ \midrule
+		large satellite & \( > \) \qtyrange{1000}{}{\kilo\gram} \\
+		small satellite & \qtyrange{500}{1000}{\kg} \\
+		mini-satellite & \qtyrange{100}{500}{\kg} \\
+		micro-satellite & \qtyrange{10}{100}{\kg} \\
+		nano-satellite & \qtyrange{1}{10}{\kg} \\
+		pico-satellite & \qtyrange{100}{1000}{\gram} \\
+		femto-satellite & \qtyrange{10}{100}{\gram} \\
+		atto-satellite & \(<\) \qtyrange{}{10}{\gram} \\ \bottomrule
+	\end{tabular}
+\end{margintable}
+
+Apart from the size-based definitions, spacecraft can also be classified based on their mass through the use of metric-like prefixes.
+Note that the widely accepted classification, perhaps misleadingly, does not follow the \acs{SI} definition of unit prefixes. The convention used in this paper is shown in \Cref{tab:satellite_sizes}.
+\draft{Find an extra citation for small satellite sizes}
+
+Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites. To reduce verbosity, we will also introduce the notion of \textbf{pocket-sized spacecraft} to be the equivalent of \ac{SCS}.
+
+
+\subsection{Method and Methodology}
+
+As the primary objective of this work is to synthesise a \emph{methodology} for Sub-CubeSat spacecraft, it is important to define the scope of a design \emph{methodology} compared to a \emph{method}, \emph{process} or \emph{approach}.
+
+\citeauthor{gerickeWhatWeNeed2017}'s works \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022} investigate the differences between different definitions of the above terms. We adopt the following definitions:
+
+\marginnote{Definition 1.1:\ \textbf{Design Method}}
+\begin{quote}
+	A specification of how a specified result is to be achieved. This may include specifications of how information is to be shown, what information is to be used as inputs to the method, what tools are to be used, what actions are to be performed and how, and how the task should be decomposed and how actions should be sequenced. \cite{gerickeWhatWeNeed2017}
+\end{quote}
+
+A complete description of a design method must include its core idea, its representation of the information the method produces, a procedure (set of actions or activities to be followed), and its intended use \autocite{gerickeElementsDesignMethod2022}. As tools are given specific attention in our research, we further reproduce their definition here:
+\marginnote{Definition 1.1:\ \textbf{Tool}}
+\begin{quote}
+	A tool is an object or artefact that is used to perform some action [...]. For design methods, documents or software that direct and structure designers' thoughts and actions, or facilitate constructing representations, or perform computations. \autocite{gerickeElementsDesignMethod2022}
+\end{quote}
+
+The term \emph{methodology} itself lacks a universally agreed-upon definition, often being used interchangeably with ``method''. For this work, we will adopt part of the definition provided by \autocite{pahlIntroduction2007}:
+
+\marginnote{Definition 1.1:\ \textbf{Design Methodology}}
+\begin{quote}
+	A design methodology, is a concrete course of action for the design of technical systems that derives its knowledge from design science and cognitive psychology, and from practical experience in different domains. It includes plans of action that link working steps and design phases according to content and organisation. These plans must be adapted in a flexible manner to the specific task at hand. It also includes strategies, rules and principles to achieve general and specific goals as well as methods to solve individual design problems or partial tasks.
+\end{quote}
+
+In the general sense, a methodology can be then seen as a collection of methods used for the design and development of a system.
+
+\begin{figure}[h]
+	\includegraphics{graphics/Methodology.pdf}
+	\caption{Representation of a Design Methodology, based on \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022}}
+\end{figure}
+
+
+It is also important to separate our proposed \emph{Design Methodology}, presented in \Cref{chap:METHODOLOGY} ``\nameref{chap:METHODOLOGY}'', from the \emph{Research Methodology} used to synthesise and validate the former, presented in \Cref{chap:RESEARCH_APPROACH} ``\nameref{chap:RESEARCH_APPROACH}''.
+
+A new Design Methodology is often the result of Design Research. \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009} define Design as:
+\marginnote{Definition 1.1:\ \textbf{Design}}
+\begin{quote}
+	Design refers to those activities that actually generate and develop a product from a need, product idea or technology to the full documentation needed to realise the product and to fulfil the perceived needs of the user and other stakeholders. \cite{blessingDRMDesignResearch2009}
+\end{quote}
+
+\citeauthor{blessingDRMDesignResearch2009} \cite{blessingDRMDesignResearch2009} also define the relevant concept of Design Research:
+\marginnote{Definition 1.1:\ \textbf{Design Research}}
+\begin{quote}
+	Design research has two objectives:
+	\begin{enumerate}
+		\item The formulation and validation of models and theories about the phenomenon of design with all its facets [\textellipsis]; and 
+		\item The development and validation of support founded on these models and theories, in order to improve design practice, including education, and its outcomes. \cite{blessingDRMDesignResearch2009}
+	\end{enumerate}
+\end{quote}
+
+On the other hand, a \emph{Research Methodology} or \emph{Research Approach} is understood within the context of \emph{Research Design}, which can be defined as:
+\marginnote{Definition 1.1:\ \textbf{Research Design}}
+\begin{quote}
+	The logical sequence that connects the empirical data to a study's initial research questions and, ultimately, to its conclusions. \autocite[20]{yinCaseStudyResearch2014}
+\end{quote}
+
+
+\subsection{Systems Engineering}
+
+\draft{Who? Add citation here (SEBOK)} defines Systems Engineering as the:
+% https://sebokwiki.org/wiki/Systems_Engineering_(glossary)
+\marginnote{Definition 1.1: \textbf{Systems Engineering}}
+\begin{quote}
+	Interdisciplinary approach governing the total technical and managerial effort required to transform a set of customer needs, expectations, and constraints into a solution and to support that solution throughout its life.
+\end{quote}
+
+Systems Engineering is also inherently connected with Project Management, which itself is however a separate discipline defined as:
+\marginnote{Definition 1.1: \textbf{Project Management}}
+\begin{quote}
+	%https://sebokwiki.org/wiki/Project_Management_(glossary)
+	 The application of knowledge, skills, tools, and techniques to project activities to meet the project requirements.
+\end{quote}
+
+Both concepts can be decomposed into a set of more specific activities, which sometimes overlap, as explained in \Cref{sec:defining_systems_engineering}.
+
+\section{CubeSat Ecosystem}
+
+\section{Sub-CubeSat Ecosystem}
+
+\section{Topics from Systems Engineering}
+
+\section{Research Problem Formulation}
+
+
+\chapter{Research Approach}
+\label{chap:RESEARCH_APPROACH}
+
+\section{Scope}
+
+\section{Case Studies}
+
+
+\chapter{A Methodology for Sub-CubeSat Spacecraft}
+\label{chap:METHODOLOGY}
+
+\section{Technical Management Methodology}
+
+\section{Hardware Development Methodology}
+
+\section{Software Development Methodology}
+
+\section{Tailoring}
+
+
+\chapter{Case Studies}
+
+\begin{table*}[h]
+	\caption{Overview of Case Studies developed in the course of this research \draft{}Check dev time of the projects}
+	\begin{tabular}{@{}lllll@{}}
+		\toprule
+		Project Name & ChipSat-1 & AI4Space & POQUITO & ChiPySat \\ \midrule
+		Type & Mounted Satellite & Payload & Satellite & Satellite \\
+		Form Factor & ChipSat & PCBSat & PocketQube & PCBSat \\
+		Mass Classification & Femto-satellite & Femto-payload & Pico-satellite & Femto-satellite \\ \midrule
+		Institution & \multicolumn{3}{c}{University of Luxembourg} & Carnegie Mellon University \\
+		Development & 2022 & 2023 & 2024 & 2024 \\
+		Target & Qualification & Launch & Launch & Qualification \\ \bottomrule
+	\end{tabular}
+	\vspace{2ex}
+\end{table*}
+
+As explained in \Cref{chap:METHODOLOGY}, 
+
+\section{ChipSat-1}
+Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
+
+\subsection{Mission Description}
+
+
+
+\subsection{System Description}
+
+\section{AI4Space}
+Seminal papers: \autocite{thoemelLeanDemonstrationBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
+
+The AI4Space mission was developed in the University of Luxembourg in the form of a payload to be hosted by a Skykraft Ltd.~micro-satellite.
+
+\subsection{Mission Description}
+
+AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aimed at educational institutions \draft{reference archived website (?)}. More specifically, Skykraft provided slots accepting \qtyproduct{10 x 10}{\centi\meter} \acsp{PCB} (or ``Skykards''). These Skykards were electrically connected to their host with a \acs{PCI}-like edge connector, responsible for receiving energy and transferring data bidirectionally, through a proprietary serial interface. The requirements and interface details were communicated to users by the host company and updated at regular times.
+
+The selection of a mission for the AI4Space platform was largely limited by the constraints of the payload launch opportunity provided. AI4Space was therefore largely a \emph{constraint-based} mission \draft{Reference}, restricted primarily by available size, weight, energy, and data budget.
+
+The selected mission involved the detection and classification of \textbf{thermal events} using non-conventional sensors, combined with Machine Learning performed in orbit (``on the edge'').
+More specifically, AI4Space intended to demonstrate the use of infrared thermal cameras to generate temperature information about a spacecraft's subsystems and components. This information would then be fed into a \ac{ML} algorithm to classify whether a component exhibits non-nominal (or anomalous) behaviour\footnote{By exhibiting, for example, an out-of-range temperature, or another erratic pattern}. As this is a simple classification problem, it is greatly supported by established \acs{ML} methods that can reasonably adapt to it.
+
+AI4Space was therefore developed as a technology demonstrator platform for \acs{AI}-based anomaly detection, as well as an educational tool for payload and system development approaches.
+
+
+\subsection{System Description and Justification}
+
+The functional part of the AI4Space payload, responsible for the generation of representative thermal images, consisted of:
+\begin{enumerate}
+	\item 4 thermal cameras looking towards a fixed point
+	\item 4 switchable resistors to emulate ``hot points'' 
+	\item 1 dummy microcontroller to simulate a representative temperature increase during normal satellite operation
+\end{enumerate}
+
+The AI4Space payload contained no Attitude Control, Communications, or Electrical subsystems, as these aspects were covered in their entirety by the host spacecraft.
+
+All other functions were covered by a \emph{Raspberry Pi Zero 2W}, serving as the system's \acf{OBC} and Payload Data Processor. The Raspberry Pi was chosen as a ready-to-use \acs{COTS} platform that essentially acts as a complete \acs{OBC}, and reduces the complexity of hardware design for a microcontroller. An additional benefit was the higher available set of programming languages or tools, seen as positive within the context of multiple software developers for the project. 
+
+The incorporation of a Raspberry Pi implies the implementation of a complete base Linux system. This is usually a disadvantage in pocket-sized spacecraft due to the absence of real-time software and the higher energy consumption. However, \draft{given AI4Space's status as a payload and its high available energy}, these disadvantages were \draft{rejected} in favour of the additional convenience, tools, libraries and functions available in a Linux environment, especially considering the need for multiple software developers to be involved in the project. In fact, while most CubeSat projects rely on low-footprint \acp{MCU} for processing needs, Linux boards have found their place in some payload units \draft{Reference, e.g.~UpSat}.
+
+\paragraph{Software}
+AI4Space's software was divided into \textbf{microservices} \draft{ref microservice architecture}, each responsible for one part of the payload's operation or mission. These microservices were written in Python and \draft{connected} via the RabbitMQ message broker.
+
+
+\subsection{Disparate Collection of Ramblings (yes, all will be included)}
+
+The use of a Raspberry Pi provided another unexpected advantage by allowing \textbf{remote programming and monitoring} through Ethernet and Wi-Fi. This meant that multiple developers could work simultaneously on the same unit, with no physical connection or wiring requirements. This also significantly simplified the \ac{EGSE} required for testing. However, as with any \acs{RF} system, care had to be taken to disable transmissions inside resonating structures (e.g.~\acs{TVAC} chambers) and before launch.
+
+\subsection{Operations}
+
+\paragraph{In-Orbit Patching}
+
+\begin{itemize}
+	\item Problem detection
+	\item Problem identification (RCA?)
+	\item Resolution plan
+	\item Verification of resolution plan via in-ground testing
+	\item Code-format
+	\item Obfiscation/Minimisation
+\end{itemize}
+
+\section{POQUITO}
+Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal \autocite{franzeseSystemDesignPOQUITO2025}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_BASEPLATE_F.jpg}
+		\caption{Baseplate}
+	\end{subfigure}%
+	~ 
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_COMMS_F.jpg}
+		\caption{COMMS}
+	\end{subfigure}
+	~ 
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_ADCS_F.jpg}
+		\caption{\acs{ADCS}}
+	\end{subfigure}
+	\\
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_MTQ_F.jpg}
+		\caption{Magnetorquer}
+	\end{subfigure}%
+	~ 
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_BMPS_F.jpg}
+		\caption{\acs{BMPS}}
+	\end{subfigure}
+	~ 
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_POCHIPSAT_2.jpg}
+		\caption{ChipSat Payload}
+	\end{subfigure}
+	\caption{Caption place holder}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[t]{0.2\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
+		\caption{v1}
+	\end{subfigure}%
+	~%
+	\begin{subfigure}[t]{0.2\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
+		\caption{v2}
+	\end{subfigure}%
+	~%
+	\begin{subfigure}[t]{0.2\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
+		\caption{v3}
+	\end{subfigure}%
+	~%
+	\begin{subfigure}[t]{0.2\textwidth}
+		\centering
+		\includegraphics[height=3cm]{pictures/W_MTQ_F.jpg}
+		\caption{v4}
+	\end{subfigure}%
+	\caption{Example of iterative hardware development through the production of different magnetorquer board versions}
+\end{figure}
+
+\section{ChiPySat}
+
+
+\chapter{Discussion}
+
+
+
+\chapter{Conclusion}
 
 \appendix
 

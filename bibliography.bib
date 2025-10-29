@@ -354,6 +354,14 @@
   annotation = {201 citations (Crossref) [2022-02-18]}
 }
 
+@online{armStack,
+  title = {Stack},
+  author = {{ARM}},
+  url = {https://arm-software.github.io/CMSIS_5/RTOS2/html/config_rtx5.html#threadConfig_watermark},
+  urldate = {2025-10-14},
+  organization = {CMSIS-RTOS2}
+}
+
 @article{arruegoOWLSTenyearHistory2009,
   title = {{{OWLS}}: A Ten-Year History in Optical Wireless Links for Intra-Satellite Communications},
   shorttitle = {{{OWLS}}},
@@ -436,7 +444,6 @@
   urldate = {2025-09-25},
   abstract = {Among the size, weight and power constraints imposed by the CubeSat specification, the limitation associated with power can be addressed through a distributed computing architecture. This paper describes such a distributed computing architecture and its operational design in the form of command and data handling system and telemetry formulation, adapted for a CubeSat whose power requirements for proving the mission are significantly larger than the on-orbit average power generated. The 1U CubeSat with the mission objective of precision three axes attitude control is composed of a low power flight computer and a high power, high speed auxiliary processor (CMG controller), along with a high capacity battery. The precision sensors, actuators and complex computing algorithms, are interfaced and implemented on the high speed auxiliary processor, which is operated intermittently. Health monitoring sensors, transceiver and other housekeeping tasks are interfaced and implemented on the flight computer, which is in continuous operation. To facilitate effective operation and telemetry packaging, each computing unit is designed to host a storage device. The flight software, designed as operating modes, is distributed across the two computing platforms. Distributed operations are initiated through the flight computer and executed on the auxiliary processor. The paper describes in detail the distributed design of these operating modes as flowcharts and the associated telemetry budget as tables.},
   eventtitle = {2013 {{IEEE Aerospace Conference}}},
-  isbn = {978-1-4673-1813-6 978-1-4673-1812-9 978-1-4673-1811-2},
   langid = {english}
 }
 
@@ -873,6 +880,22 @@
   keywords = {COCOMO,COSYSMO,return on investment,systems architecting,systems engineering measurement,value of systems engineering}
 }
 
+@article{boehmSoftwareEngineeringEconomics1984,
+  title = {Software {{Engineering Economics}}},
+  author = {Boehm, Barry W.},
+  date = {1984-01},
+  journaltitle = {IEEE Transactions on Software Engineering},
+  volume = {SE-10},
+  number = {1},
+  pages = {4--21},
+  issn = {1939-3520},
+  doi = {10.1109/TSE.1984.5010193},
+  url = {https://ieeexplore.ieee.org/document/5010193/},
+  urldate = {2025-10-06},
+  abstract = {This paper summarizes the current state of the art and recent trends in software engineering economics. It provides an overview of economic analysis techniques and their applicability to software engineering and management. It surveys the field of software cost estimation, including the major estimation techniques available, the state of the art in algorithmic cost models, and the outstanding research issues in software cost estimation.},
+  keywords = {Analytical models,Computer programming costs,cost models,Costs,Engineering management,Life estimation,management decision aids,Microeconomics,Power generation economics,Resource management,software cost estimation,software economics,software engineering,Software engineering,software management,Software prototyping,State estimation}
+}
+
 @inproceedings{boggeroMBSEArchitecturalFramework2021,
   title = {An {{MBSE Architectural Framework}} for the {{Agile Definition}} of {{System Stakeholders}}, {{Needs}} and {{Requirements}}},
   booktitle = {{{AIAA Aviation}} 2021 {{Forum}}},
@@ -928,14 +951,6 @@
   abstract = {When introducing new technologies in space products, both the uncertainties regarding technology feasibility and the way in which the technology affects the product development process hinder the early establishment of appropriate engineering specifications. Failing to establish product specifications during conceptual stages leads to problems discovered during later phases of the product development process, when design and process changes are the most expensive.{$<$}br /{$><$}br /{$>$}This thesis proposes a digital holistic design platform and a method of constraints replacement for a cost- and time-efficient identification of specification uncertainties when designing space products with new technologies. The digital platform and methods have been developed and tested through industrial case studies featuring the introduction of new technologies for on-orbit applications. Most of these studies were performed in the context of, but are not limited to, the introduction of additive manufacturing.{$<$}br /{$><$}br /{$>$}The platform and proposed constraints replacement method are based on function modeling strategies (for modeling product architecture and requirements during conceptual design phases), coupled with activity modeling strategies (for modeling the impact of product architecture on product development schedules and costs). The platform and method enable the identification and assessment of unknown uncertainties, thereby reducing the likelihood of expensive redesign processes during later development phases.{$<$}br /{$><$}br /{$>$}Moreover, they enable the inclusion of multidisciplinary design trade-offs during conceptual stages and encourage the establishment of a culture of uncertainty seeking and effective data documentation and transfer.},
   isbn = {978-91-7905-549-3},
   langid = {english}
-}
-
-@book{borgueDevelopingDistributedFractionated2022,
-  title = {Developing a Distributed and Fractionated System of 10 Grams Satellites for Planetary Observation},
-  author = {Borgue, Olivia and Laur, Johannes and Hein, Andreas M. and Rana, Loveneesh and Thoemel, Jan and Kanavouras, Konstantinos},
-  date = {2022-09-01},
-  url = {https://www.researchgate.net/publication/363693492_Developing_a_distributed_and_fractionated_system_of_10_grams_satellites_for_planetary_observation},
-  abstract = {The miniaturization of electronic components enables major reduction of spacecraft size and mass, as is the case of CubeSats, PocketQubes, and Femtosats, which offer shorter development time and costs, in comparison with traditionally larger satellites. However, these miniaturized satellites still require a considerable effort in terms of time and investment (several years of development, and costs around 10 5-10 6 EUR for CubeSats). More recently, an even smaller class of spacecraft, the Chipsats has been introduced. Chipsats are microchip-shaped spacecraft with masses ranging from a few grams to 10s of grams. At the lower end of the mass range (1-10 grams), they belong to the class of Attosats. Due to their small size, Attosats enable unprecedented low costs, agile development and potential for swarm missions of distributed and fractioned systems for applications such as planetary observation. However, despite their benefits there have not been many initiatives to develop Attosat systems. In this article, the development of a satellite system of three 10-grams satellites is presented. The three satellites work together to achieve the common goal of studying Earth's atmospheric environment, conforming a distributed system. Moreover, as the different satellites are designed to perform different functions, they conform a fractionated system as well: one satellite acts as a communication node transmitting data to ground stations, while the two other satellites have environment sampling capabilities. Visual intersatellite communication capabilities ensure data transmission among the satellites. The presented system is meant as a technology demonstration project for future distributed and fragmented satellite swarm systems for atmospheric planetary exploration. The Attosats are scheduled for launch on October 2023 on board of a Momentus spacecraft.}
 }
 
 @inproceedings{borgueDevelopingDistributedFractionated2022a,
@@ -1018,9 +1033,11 @@
 @article{brandonCubedOSVerifiedCubeSat2017,
   title = {{{CubedOS}}: {{A Veriﬁed CubeSat Operating System}}},
   author = {Brandon, Carl and Chapin, Peter and Farnsworth, Chris and Klink, Sean},
-  date = {2017},
+  date = {2017-09},
+  journaltitle = {Ada User Journal},
   volume = {38},
   number = {3},
+  url = {https://www.pchapin.org/VTSU/papers/brandon-chapin-farnsworth-klink-AUJ-2017.pdf},
   abstract = {In this paper we present CubedOS, a lightweight application framework for CubeSat flight software. CubedOS is written in SPARKand proved free of certain classes of runtime errors. It consists of a collection of interacting, concurrent modules that communicate via message passing over a microkernel based on Ada’s Ravenscar tasking model. It provides core services such as, for example, communication protocol processing and publish/subscribe message handling. Application-specific modules can be added to provide both high level functions such as navigation and power management, as well as low level device drivers for mission-specific hardware.},
   langid = {english}
 }
@@ -1087,9 +1104,16 @@
   abstract = {A study was conducted to simulate heat transfer in wafer-integrated femtosatellites. The orbit was assumed to be circular and to cross the equator between Earth and the sun. This would correspond to worst-case maximum eclipse orbits with given orbital angular velocity. An Eulerian integration was used over the radiation heat transfer equation to obtain the temperature at each time step after the view factors were calculated. Investigations revealed that the thermal balance of the system depended on the view factors, the energy converted by the solar cells into electricity, the rate at which the battery absorbs electricity and released it to the electronics, and the absorptivity and emissivity of the surfaces. The emissivity values were based on the values for solar cells instead of the values for crystalline silicon, as most of the usable surface was covered by the solar cells.}
 }
 
-@article{bryantBoehmSoftwareEngineering,
-  title = {B. {{W}}. {{Boehm}} Software Engineering Economics},
+@article{bryantBoehmSoftwareEngineering1983,
+  title = {B. {{W}}. {{Boehm Software Engineering Economics}}: {{A Review Essay}}},
   author = {Bryant, A and Kirkham, J A},
+  date = {1983-07},
+  journaltitle = {ACM SIGSOFT Software Engineering Notes},
+  shortjournal = {SEN},
+  volume = {8},
+  number = {3},
+  pages = {44--60},
+  doi = {10.1145/1010891.1010897},
   langid = {english}
 }
 
@@ -1187,7 +1211,7 @@
   url = {http://www.nasa.gov/smallsat-institute/sst-soa},
   urldate = {2022-09-08},
   abstract = {NASA.gov brings you the latest images, videos and news from America's space agency. Get the latest updates on NASA missions, watch NASA TV live, and learn about our quest to reveal the unknown and benefit all humankind.},
-  langid = {nil},
+  langid = {und},
   organization = {NASA}
 }
 
@@ -1952,6 +1976,7 @@
   title = {{{ECSS-E-ST-10-02C Rev}}.1 – {{Verification}}},
   author = {{ECSS Secretariat}},
   date = {2018-02-01},
+  institution = {European Space Agency},
   url = {https://ecss.nl/standard/ecss-e-st-10-02c-rev-1-verification-1-february-2018/},
   urldate = {2025-09-09}
 }
@@ -1978,6 +2003,7 @@
   title = {{{ECSS-E-ST-40C Rev}}.1 – {{Software}}},
   author = {{ECSS Secretariat}},
   date = {2025-04-30},
+  institution = {European Space Agency},
   url = {https://ecss.nl/standard/ecss-e-st-40c-rev-1-software-30-april-2025/},
   urldate = {2025-09-09}
 }
@@ -2005,6 +2031,7 @@
   title = {{{ECSS-M-ST-10C Rev}}.1 – {{Project}} Planning and Implementation},
   author = {{ECSS Secretariat}},
   date = {2009-03-06},
+  institution = {European Space Agency},
   url = {https://ecss.nl/standard/ecss-m-st-10c-rev-1-project-planning-and-implementation/},
   urldate = {2022-08-29}
 }
@@ -2305,6 +2332,42 @@
   keywords = {general systems history,semantic network,systemic and cybernetic language,systemic epistemology}
 }
 
+@inproceedings{franzesePOQUITOFirstSatellite2025,
+  title = {{{POQUITO}}: The First Satellite Mission of the {{University}} of {{Luxembourg}}},
+  shorttitle = {{{POQUITO}}},
+  booktitle = {Small {{Satellites Systems}} and {{Services Symposium}} ({{4S}} 2024)},
+  author = {Franzese, Vittorio and Kanavouras, Konstantinos and Rosete, Citlali Bruce and Sajjad, Niki and Alandihallaj, Mohammadamin and Gouvalas, Spyridon and Herasimenka, Alesia and Hein, Andreas Makoto},
+  date = {2025},
+  volume = {13546},
+  pages = {1641--1651},
+  publisher = {SPIE},
+  url = {https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13546/135463W/POQUITO--the-first-satellite-mission-of-the-University-of/10.1117/12.3062670.short},
+  urldate = {2025-10-07}
+}
+
+@article{franzeseSystemDesignPOQUITO2025,
+  title = {System Design of the {{POQUITO PocketQube}} Mission},
+  author = {Franzese, Vittorio and Kanavouras, Konstantinos and Bruce Rosete, Citlali and Gouvalas, Spyridon and Sajjad, Niki and Alandihallaj, Mohammadamin and Herasimenka, Alesia and Hein, Andreas Makoto},
+  date = {2025-05-26},
+  journaltitle = {CEAS Space Journal},
+  shortjournal = {CEAS Space J},
+  issn = {1868-2502, 1868-2510},
+  doi = {10.1007/s12567-025-00624-9},
+  url = {https://link.springer.com/10.1007/s12567-025-00624-9},
+  urldate = {2025-10-07},
+  langid = {english}
+}
+
+@inproceedings{franzeseTechnologiesPOQUITOPicosatellite2024,
+  title = {Technologies of the {{POQUITO}} Pico-Satellite Mission: The First {{PocketQube}} of the {{University}} of {{Luxembourg}}},
+  shorttitle = {Technologies of the {{POQUITO}} Pico-Satellite Mission},
+  booktitle = {International {{Astronautical Congress}}},
+  author = {FRANZESE, Vittorio and KANAVOURAS, Konstantinos and BRUCE ROSETE, Citlali and GOUVALAS, Spyridon and SAJJAD, Niki and ALANDIHALLAJ, Mohammadamin and HERASIMENKA, Alesia and HEIN, Andreas},
+  date = {2024},
+  url = {https://orbilu.uni.lu/handle/10993/62447},
+  urldate = {2025-10-07}
+}
+
 @article{fritzHardwareintheloopEnvironmentVerification2015,
   title = {Hardware-in-the-Loop Environment for Verification of a Small Satellite's on-Board Software},
   author = {Fritz, Michael and Winter, Sebastian and Freund, Juergen and Pflueger, Stefan and Zeile, Oliver and Eickhoff, Jens and Roeser, Hans-Peter},
@@ -2392,6 +2455,22 @@
   eventtitle = {2021 {{IEEE International Symposium}} on {{Systems Engineering}} ({{ISSE}})},
   isbn = {978-1-6654-3168-2},
   langid = {english}
+}
+
+@article{gerickeElementsDesignMethod2022,
+  title = {Elements of a Design Method – a Basis for Describing and Evaluating Design Methods},
+  author = {Gericke, Kilian and Eckert, Claudia and Stacey, Martin},
+  date = {2022-01},
+  journaltitle = {Design Science},
+  volume = {8},
+  pages = {e29},
+  issn = {2053-4701},
+  doi = {10.1017/dsj.2022.23},
+  url = {https://www.cambridge.org/core/journals/design-science/article/elements-of-a-design-method-a-basis-for-describing-and-evaluating-design-methods/A7387B643DBFDB5DF9075261D7D61408},
+  urldate = {2025-10-06},
+  abstract = {Method development is at the heart of design research as methods are a formalised way to express knowledge about how aspects of design could or should be done. However, assuring that methods are in fact used in industry has remained a challenge. Industry will only use methods that they can understand and that they feel will give them benefit reliably. To understand the challenges involved in adopting a method, the method needs to be seen in context: it does not exist in isolation but forms a part of an ecosystem of methods for tackling related design problems. A method depends on the knowledge and skills of the practitioners using it: while a description of a method is an artefact that is a formalisation of engineering knowledge, a method in use constitutes a socio-technical system depending on the interaction of human participants with each other as well as with the description of the method, representations of design information and, often, tools for carrying out the method’s tasks. This paper argues that crucial factors in the adoption of methods include how well they are described and how convincingly they are evaluated. The description of a method should cover its core idea, the representations in which design information is described, the procedure to be followed, its intended use, and the tools it uses. The account of a method’s intended use should cover its purpose, the situations or product types within its scope, its coverage of kinds of problems within its scope, its expected benefit and conditions for its use. The different elements need to be evaluated separately as well as the method as an integrated whole. While verification and validation are important for some elements of methods, it is rarely possible to prove the validity of a method. Rather the developers of methods need to gather sufficient evidence that a method will work within a clearly articulated scope. Most design methods do not have binary success criteria, and their usefulness in practice depends as much on simplicity and usability as on the outcomes they produce. Evaluation should focus on how well they work, and how they can be customised and improved.},
+  langid = {english},
+  keywords = {design method,design theory}
 }
 
 @inproceedings{gerickeWhatWeNeed2017,
@@ -3492,7 +3571,7 @@ NTRS Research Center: Ames Research Center (ARC)}
   url = {https://hdl.handle.net/2117/370812},
   urldate = {2025-09-23},
   abstract = {Fly Your Satellite!” (FYS) is a recurring programme part of ESA Academy’s portfolio of “handson” activities. The programme was established to support University student teams in the development of their own CubeSat missions and aims at transferring knowledge and experience from ESA specialists to students. Selected teams are guided through project reviews and supervised through design consolidation and verification activities, conducted according to ESA professional practice and standards, tailored to fit the scope of university CubeSat projects.},
-  eventtitle = {Symposium on {{Space Educational Activities}} ({{SSAE}})},
+  eventtitle = {Symposium on {{Space Educational Activities}} ({{SSEA}})},
   langid = {english}
 }
 
@@ -4128,7 +4207,7 @@ NTRS Research Center: Ames Research Center (ARC)}
 
 @standard{MISRA2004,
   title = {{{MISRA-C}}:2004 {{Guidelines}} for the Use of the {{C}} Language in {{Critical Systems}}},
-  author = {{MIRA Ltd}},
+  author = {{MISRA Ltd}},
   date = {2004-10},
   publisher = {Motor Industry Software Reliability Association / MIRA},
   url = {www.misra.org.uk},
@@ -4152,12 +4231,6 @@ NTRS Research Center: Ames Research Center (ARC)}
   isbn = {978-1-118-13315-6},
   langid = {english},
   pagetotal = {1}
-}
-
-@report{N_PR_7150_002D_pdf,
-  title = {N\_{{PR}}\_7150\_{{002D}}\_.Pdf},
-  url = {https://nodis3.gsfc.nasa.gov/npg_img/N_PR_7150_002D_/N_PR_7150_002D_.pdf},
-  urldate = {2025-06-11}
 }
 
 @article{nagelNanosatellitesAppliedOptical2020,
@@ -4206,8 +4279,20 @@ NTRS Research Center: Ames Research Center (ARC)}
   organization = {NASA Lessons Learned}
 }
 
-@report{NASASTD87398RevisionBpdf,
-  title = {{{NASA-STD-87398-Revision-B}}.Pdf},
+@report{nationalaeronauticsandspaceadministrationNASASoftwareEngineering2022,
+  title = {{{NASA Software Engineering Requirements}}},
+  author = {{National Aeronautics and Space Administration}},
+  date = {2022-03-08},
+  number = {NPR 7150.2D},
+  url = {https://nodis3.gsfc.nasa.gov/npg_img/N_PR_7150_002D_/N_PR_7150_002D_.pdf},
+  urldate = {2025-06-11}
+}
+
+@report{nationalaeronauticsandspaceadministrationNASATechnicalStandard2022,
+  title = {{{NASA Technical Standard}}: {{Software Assurance}} and {{Software Safety}}},
+  author = {{National Aeronautics and Space Administration}},
+  date = {2022-09-08},
+  number = {NASA-STD-8739.8B},
   url = {https://standards.nasa.gov/sites/default/files/standards/NASA/B/0/NASA-STD-87398-Revision-B.pdf},
   urldate = {2025-06-11}
 }
@@ -4361,6 +4446,23 @@ NTRS Research Center: Ames Research Center (ARC)}
   langid = {english}
 }
 
+@incollection{pahlIntroduction2007,
+  title = {Introduction},
+  booktitle = {Engineering {{Design}}: {{A Systematic Approach}}},
+  author = {Pahl, Gerhard and Beitz, Wolfgang and Feldhusen, Jörg and Grote, Karl-Heinrich},
+  editor = {Pahl, Gerhard and Beitz, Wolfgang and Feldhusen, Jörg and Grote, Karl-Heinrich},
+  date = {2007},
+  pages = {1--25},
+  publisher = {Springer},
+  location = {London},
+  doi = {10.1007/978-1-84628-319-2_1},
+  url = {https://doi.org/10.1007/978-1-84628-319-2_1},
+  urldate = {2025-10-28},
+  isbn = {978-1-84628-319-2},
+  langid = {english},
+  keywords = {Design Knowledge,Design Methodology,Form Design,Load Path,Original Design}
+}
+
 @inproceedings{paivaFaultInjectionPlatform2021,
   title = {Fault Injection Platform for Affordable Verification and Validation of {{CubeSats}} Software},
   booktitle = {2021 10th {{Latin-American Symposium}} on {{Dependable Computing}} ({{LADC}})},
@@ -4454,6 +4556,16 @@ NTRS Research Center: Ames Research Center (ARC)}
   title = {The''{{Validation Square}}''-{{Validating Design Methods}}},
   author = {Pedersen, Kjartan and Emblemsvåg, Jan and Bailey, R. and Allen, Janet and Mistree, Farrokh},
   date = {2000-01-01}
+}
+
+@online{pendletonMeasuringStackUsage2023,
+  title = {Measuring {{Stack Usage}} the {{Hard Way}}},
+  author = {Pendleton, Noah},
+  date = {2023-06-14T00:00:00+00:00},
+  url = {https://interrupt.memfault.com/blog/measuring-stack-usage},
+  urldate = {2025-10-14},
+  abstract = {A community and blog for embedded software makers},
+  organization = {Interrupt}
 }
 
 @article{perezSurveyCurrentFemtosatellite2016,
@@ -5118,7 +5230,7 @@ NTRS Research Center: Ames Research Center (ARC)}
   url = {http://www.nasa.gov/connect/ebooks/nasa-systems-engineering-handbook},
   urldate = {2022-07-05},
   abstract = {In 1995, the NASA Systems Engineering Handbook (NASA/SP-6105) was initially published to bring the fundamental concepts and techniques of systems engineering to the National Aeronautics and Space Administration (NASA) personnel in a way that recognized the nature of NASA systems and the NASA environment.},
-  langid = {nil},
+  langid = {und},
   organization = {NASA}
 }
 
@@ -5464,6 +5576,22 @@ NTRS Research Center: Headquarters (HQ)}
   keywords = {CubeSat,Economics,Microelectronics,microsatellite,nanosatellite,NewSpace,Orbits,Satellite broadcasting,small satellites,Small satellites,Space technology,Space vehicles}
 }
 
+@article{sweetingUoSATMicrosatelliteMissions1992,
+  title = {{{UoSAT}} Microsatellite Missions},
+  author = {Sweeting, M.N.},
+  date = {1992-06},
+  journaltitle = {Electronics \& Communication Engineering Journal},
+  shortjournal = {Electron. Commun. Eng. J. (UK)},
+  volume = {4},
+  number = {3},
+  pages = {141--150},
+  issn = {0954-0695, 2051-218X},
+  doi = {10.1049/ecej:19920024},
+  url = {http://digital-library.theiet.org/doi/10.1049/ecej%3A19920024},
+  urldate = {2025-10-29},
+  langid = {english}
+}
+
 @article{tafazoliStudyOnorbitSpacecraft2009,
   title = {A Study of On-Orbit Spacecraft Failures},
   author = {Tafazoli, Mak},
@@ -5527,25 +5655,6 @@ NTRS Research Center: Headquarters (HQ)}
   doi = {10.3390/aerospace11070523},
   url = {https://www.mdpi.com/2226-4310/11/7/523},
   urldate = {2024-10-29},
-  abstract = {Moore’s law states that the performance of computers doubles about every two years. This has dramatic consequences for any modern high development and for satellites. The long development cycles cause these expensive assets to be obsolete before the start of their operations. The advancement also presents challenges to their design, particularly from a thermal perspective, as more heat is dissipated and circuits are more fragile. These challenges mandate that faster spacecraft development methods are found and thermal management technologies are developed. We elaborate on existing development methodologies and present our own lean method. We explore the development of a thermal anomaly-detection payload, extending from conception to in-orbit commissioning, to stimulate discussions on space hardware development approaches. The payload consists of four miniaturized infrared cameras, heating sources in view of the cameras simulating an anomaly, an on-board processor, and peripherals for electrical and communication interfaces. The paper outlines our methodology and its application, showcasing the success of our efforts with the first-light activation of our cameras in orbit. We show our lean method, featuring reference technical and management models, from which we derive further development tools; such details are normally not available in the scientific-engineering literature. Additionally, we address the shortcomings identified during our development, such as the failure of an on-board component and propose improvements for future developments.},
-  issue = {7},
-  langid = {english},
-  keywords = {anomaly detection,hosted payload,machine learning,thermal anomalies}
-}
-
-@article{thoemelLeanDemonstrationBoard2024a,
-  title = {Lean {{Demonstration}} of {{On-Board Thermal Anomaly Detection Using Machine Learning}}},
-  author = {Thoemel, Jan and Kanavouras, Konstantinos and Sachidanand, Maanasa and Hein, Andreas and Ortiz del Castillo, Miguel and Pauly, Leo and Rathinam, Arunkumar and Aouada, Djamila},
-  date = {2024-07},
-  journaltitle = {Aerospace},
-  volume = {11},
-  number = {7},
-  pages = {523},
-  publisher = {Multidisciplinary Digital Publishing Institute},
-  issn = {2226-4310},
-  doi = {10.3390/aerospace11070523},
-  url = {https://www.mdpi.com/2226-4310/11/7/523},
-  urldate = {2024-08-01},
   abstract = {Moore’s law states that the performance of computers doubles about every two years. This has dramatic consequences for any modern high development and for satellites. The long development cycles cause these expensive assets to be obsolete before the start of their operations. The advancement also presents challenges to their design, particularly from a thermal perspective, as more heat is dissipated and circuits are more fragile. These challenges mandate that faster spacecraft development methods are found and thermal management technologies are developed. We elaborate on existing development methodologies and present our own lean method. We explore the development of a thermal anomaly-detection payload, extending from conception to in-orbit commissioning, to stimulate discussions on space hardware development approaches. The payload consists of four miniaturized infrared cameras, heating sources in view of the cameras simulating an anomaly, an on-board processor, and peripherals for electrical and communication interfaces. The paper outlines our methodology and its application, showcasing the success of our efforts with the first-light activation of our cameras in orbit. We show our lean method, featuring reference technical and management models, from which we derive further development tools; such details are normally not available in the scientific-engineering literature. Additionally, we address the shortcomings identified during our development, such as the failure of an on-board component and propose improvements for future developments.},
   issue = {7},
   langid = {english},
@@ -5818,11 +5927,14 @@ NTRS Research Center: Headquarters (HQ)}
   urldate = {2022-11-17}
 }
 
-@article{venturiniImprovingMissionSuccess2017,
+@inproceedings{venturiniImprovingMissionSuccess2017,
   title = {Improving {{Mission Success}} of {{CubeSats}}},
   author = {Venturini, Catherine and Braun, Barbara and Hinkley, David and Berg, Greg},
   date = {2017-06-12},
+  location = {Utah, USA},
+  url = {https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/Improving%20Mission%20Success%20of%20CubeSats.pdf},
   abstract = {As a concept, the CubeSat class of satellites is over 15 years old. The first CubeSat satellites were launched in 2003 and a few more in 2006. In recent years, CubeSats have proliferated at an astonishing rate. What started as a largely academic exercise has taken on much greater significance, with commercial entities gearing up to produce vast constellations of the small but capable spacecraft. Amidst all the hype one fact tends to get overlooked: CubeSats do not have a great record of mission success. This presentation provides simple, actionable recommendations that should improve the likelihood of mission success for future CubeSat development projects. The recommendations were gleaned from a study across academic, commercial and government organizations engaged in the design and development of miniature spacecraft. These organizations generously shared their processes, circumstances, results, and lessons learned; they also shared their current processes and philosophies on design, testing, and mission assurance. The results highlighted a number of important themes and issues, all of which formed the basis for the eight recommendations. Most of the recommendations can be tailored and implemented without much cost, and many seem to be common sense—though the study team found that few CubeSat developers followed them all. This paper specifically looks at the research process, the recurring themes and the eight recommendations to improve mission success of CubeSats.},
+  eventtitle = {32nd {{Annual AIAA}}/{{USU Conference}} on {{Small Satellites}}},
   langid = {english}
 }
 
