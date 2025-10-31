@@ -115,6 +115,8 @@ only the sources and aids indicated and have marked passages included from other
 works, whether verbatim or in content, as such. I swear upon oath that these
 statements are true and that I have not concealed anything.
 
+\par \draft{AI declaration}
+
 \par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
 use this file except in compliance with the License. You may obtain a copy
 of the License at \url{https://creativecommons.org/licenses/by/4.0/legalcode}, or a human-readable summary at \url{https://creativecommons.org/licenses/by/4.0/}.
@@ -179,7 +181,54 @@ Vittorio Franzese did that.
 Olivia Borgue did the other thing.
 And so on and so forth.
 
-\draft{Very important: Mention clearly the contributions and project leading of each of the 4 space projects mentioned}
+\begin{table*}[h]
+	\caption{Contribution matrix for the various projects developed within the scope of this work}
+	
+	\colorlet{AIV}{MaterialDeepOrange700}
+	\colorlet{ADCS}{MaterialOrange800}
+	\colorlet{Comms}{MaterialGreen700}
+	\colorlet{Payload}{MaterialPurple700}
+	\colorlet{Traj}{MaterialTeal700}
+	\colorlet{ProductOwner}{MaterialGrey800}
+	\colorlet{Manager}{MaterialGrey700}
+	\colorlet{Structural}{MaterialBrown700}
+	\colorlet{Systems}{MaterialLightBlue700}
+	\colorlet{Hardware}{MaterialLime800}
+	
+	\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{@{}lllll@{}}
+	\toprule
+	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
+	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
+	A.~F.~Bühler &  &  &  &  \\
+	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
+	A.~P.~Du &  &  &  &  \\
+	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\
+	C.~M.~Moreira &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	D.~Aouada &  & \textcolor{ProductOwner}{Product Owner} &  &  \\
+	J.~Laur & \textcolor{AIV}{AIV Engineer} &  &  &  \\
+	J.~M.~Sanabria &  &  & \textcolor{Comms}{Communications Engineer} &  \\
+	J.~Thoemel & \textcolor{Comms}{Communications Engineer} & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  \\
+	L.~Pauly &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	L.~Rana & \textcolor{Payload}{Flight Dynamics Engineer} &  &  &  \\
+	M.~Alandihallaj &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	M.~Ortiz del Castillo &  & \textcolor{Systems}{Systems Engineer}, \textcolor{Hardware}{Hardware Engineer} &  &  \\
+	M.~Sachidanand &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	N.~Khera &  &  & & \textcolor{AIV}{AIV Engineer}  \\
+	N.~Sajjad &  &  & \textcolor{ADCS}{ADCS Engineer} &  \\
+	O.~Borgue & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  &  \\
+	P.~Fisch &  &  &  &  \\
+	S.~Gouvalas &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	S.~K.~Singh &  &  & \textcolor{Hardware}{Payload Hardware Engineer} &  \\
+	T.~D'costa &  &  & \textcolor{Structural}{Structural Engineer} &  \\
+	V.~Franzese &  &  & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  \\
+	Z.~Manchester &  &  & & \textcolor{Manager}{Project Manager}  \\ \bottomrule
+\end{tabular}
+	\end{adjustbox}
+	\vspace{1ex}
+\end{table*}
 
 %%
 % Start the main matter (normal chapters)
@@ -222,6 +271,20 @@ And so on and so forth.
 
 \section{Thesis Structure}
 
+The chapters of this thesis are organised as follows:
+
+\Cref{chap:INTRODUCTION} (\nameref{chap:INTRODUCTION}) provided a brief introduction into the research topic and its alignment within space and systems engineering.
+
+\Cref{chap:SURVEY} (\nameref{chap:SURVEY}) presents the terminology and definitions that will be used in the rest of this work for methodological and technical aspects. It also introduces the topics and results from the literature survey and initial data gathering that are used in \Cref{chap:METHODOLOGY,chap:CASESTUDIES}.
+
+\Cref{chap:RESEARCH_APPROACH} (\nameref{chap:RESEARCH_APPROACH}) introduces the \acs{DRM} Design Research Methodology, and how it is adapted as a research approach for the rest of this work.
+
+\Cref{chap:METHODOLOGY} (\nameref{chap:METHODOLOGY}) presents the justification, conceptualisation and elaboration of the proposed methodology that supports \acs{SCS} design and development, which is separated into three overarching areas: technical management, hardware, and software.
+
+\Cref{chap:CASESTUDIES} (\nameref{chap:CASESTUDIES}) presents the development of four space systems where I participated as a systems engineer. These products serve as case studies for the generation of data and experimental evaluation of the methodology presented in \Cref{chap:METHODOLOGY}.
+
+\Cref{chap:CONCLUSION} (\nameref{chap:CONCLUSION}) summarises the contributions of this work as well as the evaluation of the proposed methodology in combination with the case studies, and proposes potential directions for future research.
+
 
 \chapter{Literature Survey}
 \label{chap:SURVEY}
@@ -238,7 +301,7 @@ Various Sub-CubeSat spacecraft classes have been defined in the literature. Most
 Note that ``fractional-unit CubeSats'' have been developed and launched (e.g.~1/2U, 1/3U, 1/4U)\draft{reference}. While these conform to many standard CubeSat requirements and are designed to be hosted in CubeSat containers, they are not part of the official CubeSat Design Specification \cite{CDS14}, and due to their size, are considered \acf{SCS} and therefore within the scope of this work.
 
 \begin{margintable}
-	\caption{ \autocite{sweetingUoSATMicrosatelliteMissions1992,heinAttoSatsChipSatsOther2019}}
+	\caption{Spacecraft mass classes as defined in this work \autocite{sweetingUoSATMicrosatelliteMissions1992,heinAttoSatsChipSatsOther2019}}
 	\label{tab:satellite_sizes}
 
 	\begin{tabular}{@{}ll@{}}
@@ -349,9 +412,126 @@ Both concepts can be decomposed into a set of more specific activities, which so
 \chapter{Research Approach}
 \label{chap:RESEARCH_APPROACH}
 
-\section{Scope}
+Research Design calls for a selection between a qualitative and quantitative approach \autocite{creswellResearchDesignQualitative2023}. A common issue in engineering research is the difficulty of applying and investigating a study's results in the real world, preventing the generation of statistical data based on experimentation. This lack of numeric data calls for an application of a mixed or qualitative research approach.
 
-\section{Case Studies}
+Qualitative research typically follows approaches such as narrative, phenomenological, grounded theory, action or case-study research \autocite{creswellQualitativeInquiryResearch2025}. 
+For this work, we will follow
+the DRM Design Research Methodology \autocite{blessingDRMDesignResearch2009} by \citeauthor{blessingDRMDesignResearch2009}.
+
+In engineering research, DRM is a widely adopted research approach that proposes a plan to create and verify \emph{support}, i.e.~``the possible means, aids and measures that can be used to improve design''. DRM divides the research process into the following four stages:
+\begin{enumerate*}
+	\item \textbf{Research Clarification (RC)}, where researchers try to find evidence to support their assumptions and research goal, based on a literature review,
+	\item \textbf{Descriptive Study I (DS-I)}, where researchers improve their understanding of the research gap and influencing factors through more detailed data gathering,
+	\item \textbf{Prescriptive Study (PS)}, where researchers develop and evaluate the new support (such as a methodology, process, method or tool), and
+	\item \textbf{Descriptive Study II (DS-II)}, where researchers evaluate the \emph{applicability} and \emph{usefulness} of their new support by further data gathering.
+\end{enumerate*}
+
+DRM acknowledges that the comprehensive implementation of all stages can be impractical for a single research project, and proposes different partial plans to cover them. It also allows for parallel execution \emph{iterations} as part of research planning to enable feedback between different stages.
+
+The specific research plan for this work is shown in \draft{Figure Tade} and is elaborated as follows:
+\begin{enumerate}
+	\item \textbf{Research Clarification (RC)} (Review-based):
+	We have performed a literature survey to identify the shortcomings of 
+	current Systems Engineering approaches for \ac{SCS}, and an engineering gap that can be resolved through a novel methodology. Our survey has focused on available resources (such as time, cost, personnel and technology), goals (such as functionality and reliability), and previous projects.
+	
+	This is elaborated in \Cref{chap:INTRODUCTION,chap:SURVEY}.
+	\item \textbf{Descriptive Study I (DS-I)} (Comprehensive):
+	As a first step, we have identified the organisational and technical requirements of typical \acs{SCS} missions, and compared them with the ecosystem of larger space missions. We also analysed the concept of Systems Engineering and identified its components that have both a higher impact on \acs{SCS} mission success, and can be improved through a Systems Engineering methodology. Finally, we conducted informal interviews to validate our findings and the usefulness of our proposed approach.
+	This is elaborated in \Cref{chap:SURVEY}.
+	
+	As a second step, we will \textbf{design and develop \acs{SCS} space missions} with the objective of \textbf{qualification or flight} as case studies. These space missions will be in the form of payloads, subsystems or satellites that can reach a flight-ready stage. They will be used either as a direct source of information to develop the required support, or as experimental applications of the new proposed methodology, in an iterative fashion.
+	
+	For this work, four different internal space missions were investigated, as shown in \Cref{sec:ra_casestudies,chap:CASESTUDIES}.
+	
+	\item
+	\textbf{Prescriptive Study (PS)} (Comprehensive):
+	Based on the gathered data, we will describe a set of design methods applicable to different components of systems engineering, which combined define a methodology for \acs{SCS}.
+	
+	The PS phase is further separated by \acs{DRM} into Task Clarification (\Cref{sec:ra_scope}), Conceptualisation, Elaboration, Realisation, and Support Evaluation.
+	
+	\item 
+	\textbf{Descriptive Study II (DS-II)} (Initial):
+	
+	\draft{aaaaaaa}
+	
+	This is elaborated in \Cref{chap:METHODOLOGY}
+	
+	
+\end{enumerate}
+
+\begin{figure}
+	\begin{adjustbox}{width=\textwidth}
+
+	\begin{tikzpicture}[
+		node distance=0.5cm and 1cm,
+		box/.style={
+			draw,
+			%    rounded corners,
+			fill=yellow!10,
+			minimum width=4cm,
+			minimum height=1cm,
+			align=center
+		},
+		arrow/.style={
+			-{Stealth[length=3mm]},
+			thick
+		},
+		descript/.style={
+			node distance=2cm,
+			align=center,
+			minimum width=15em,
+		}
+		]
+		
+		
+		% --- Curved feedback arrow ---
+		%\draw[arrow, bend left=35] (ds2.east) to ([xshift=2cm]ds1_cs.east) to ([yshift=0.3cm]ds1_int.east);
+		
+		
+		\node (ls2) [box] {Literature Survey};
+		\node (ls3) [box, below=1.5cm of ls2] {Literature Survey};
+		\node (iview) [box, below=of ls3] {Interviews};
+		\node (cs2) [box, below=of iview] {Case Studies};
+		\node (metho) [box, below=1.5cm of cs2] {Methodology};
+		\node (cs3) [box, below=1.5cm of metho] {Case Studies};
+		
+		\node[right=of ls2] {\Cref{chap:SURVEY}};
+		\node[right=of ls3] {\Cref{chap:SURVEY}};
+		\node[right=of iview] {\Cref{chap:SURVEY}};
+		\node[right=of cs2] {\Cref{chap:CASESTUDIES}};
+		\node[right=of metho] {\Cref{chap:METHODOLOGY}};
+		\node[right=of cs3] {\Cref{chap:CASESTUDIES}};
+		
+		\node (rc) [descript, left=of ls2] {\textbf{Research Clarification (RC)}\\Review-based};
+		\node (ds1) [descript, left=of ls3] {\textbf{Descriptive Study I (DS-I)}\\Comprehensive};
+		\node (ps) [descript, left=of metho] {\textbf{Prescriptive Study (PS)}\\Comprehensive};
+		\node (ds2) [descript, left=of cs3] {\textbf{Descriptive Study II (DS-II)}\\Initial};
+		
+		
+		
+		\draw[arrow] (rc) to (ds1);
+		\draw[arrow,bend right=35] (ds1) to (ps);
+		\draw[arrow,bend right=35] (ps) to (ds1);
+		\draw[arrow] (ps) to (ds2);
+		
+		
+	\end{tikzpicture}
+	\caption{Overview of research approach steps as implemented in this work}
+	\label{fig:r_methodology}
+	\end{adjustbox}
+\end{figure}
+
+\draft{We note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:CASESTUDIES} and \Cref{chap:}}
+
+
+
+
+
+\section{Scope}
+\label{sec:ra_scope}
+
+\section{Case Study Approach}
+\label{sec:ra_casestudies}
 
 
 \chapter{A Methodology for Sub-CubeSat Spacecraft}
@@ -367,6 +547,7 @@ Both concepts can be decomposed into a set of more specific activities, which so
 
 
 \chapter{Case Studies}
+\label{chap:CASESTUDIES}
 
 \begin{table*}[h]
 	\caption{Overview of Case Studies developed in the course of this research \draft{}Check dev time of the projects}
@@ -432,7 +613,25 @@ AI4Space's software was divided into \textbf{microservices} \draft{ref microserv
 
 \subsection{Disparate Collection of Ramblings (yes, all will be included)}
 
+\draft{Format this whole section}
+
 The use of a Raspberry Pi provided another unexpected advantage by allowing \textbf{remote programming and monitoring} through Ethernet and Wi-Fi. This meant that multiple developers could work simultaneously on the same unit, with no physical connection or wiring requirements. This also significantly simplified the \ac{EGSE} required for testing. However, as with any \acs{RF} system, care had to be taken to disable transmissions inside resonating structures (e.g.~\acs{TVAC} chambers) and before launch.
+
+While RabbitMQ was a flexible databroker that allowed the effective use of Remote Process Calls and broadcast messages between microservices, it introduced a measurable performance overhead, including boot time, memory consumption, and latency.
+
+The project suffered from the peak of the electronic component shortage in 2022. One of the shortcomings of the design was the inertia in making considered changes to the design versus performing patches on \acsp{PCB} and waiting for components to be available. Two components were mostly affected by this issue: Namely, the Arduino ATMega328 processor used as the dummy thermal generator, and an I2C multiplexer \ac{IC}. Both components were replaceable with a \acs{PCB} change: The Arduino processor with a similar stocked \acs{MCU}, and the multiplexer with an equivalent chip of a different form factor. Alternatively, earlier preparation would have called for an early stock of components during the \acs{PCB} design process.
+
+The component shortage also proved difficult to navigate due to institutional procurement restrictions, combined with the fact that many stock items were only available from one or two days from standard distributors before being depleted.
+
+The Raspbian operating system, installed by default on the Raspberry Pi, requires a small amount of configuration before it can be safely used as flight software, namely:
+\begin{itemize}
+	\item \draft{I have definitely noted these down somewhere...}
+\end{itemize}
+Alternatively, a Yocto distribution can be used.
+
+Edge Impulse generates a binary version of the model for ARM32 systems. The sizes of these binaries were in the order of ~100 MB, making uploading close to impossible. Different binary diff methods were examined with no immediate success. Recommending to use a more standardised format for model weights in the future.
+
+
 
 \subsection{Operations}
 
@@ -526,6 +725,7 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 
 
 \chapter{Conclusion}
+\label{chap:CONCLUSION}
 
 \appendix
 
