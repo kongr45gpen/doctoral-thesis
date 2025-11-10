@@ -200,7 +200,7 @@ And so on and so forth.
 	\toprule
 	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
 	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
-	A.~F.~Bühler &  &  &  &  \\
+%	A.~F.~Bühler &  &  &  &  \\
 	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
 	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
 	A.~P.~Du &  &  &  &  \\
@@ -234,11 +234,157 @@ And so on and so forth.
 % Start the main matter (normal chapters)
 \mainmatter
 
+% The structure of a monographic thesis is as follows:
+% • Official pages (cover page, table of content, figures and tables, abbreviations, Acknowledgements,
+% Affidavit)
+% • Abstract (ca. 1 page)
+% • Aims/ Objectives (ca. 1 page)
+% • Contributions (detailing out other people’s contributions if any)
+% • Introduction (20-40 pages introduction of the research topics covered in the thesis)
+% • Materials and Methods
+% • Results organized in chapters
+% • Discussion (20-40 pages)
+% • Conclusions and Perspectives (2-4 pages)
+% • References
+% • Appendices if applicable
+
 
 \chapter{Introduction}
 \label{chap:INTRODUCTION}
 
 \section{Motivation}
+
+\begin{marginfigure}
+	\includegraphics[width=\textwidth]{analyses/launch_mass_plot_no_starlink.pdf}
+	\caption{Wet mass distribution of satellites flying as of 2023, excluding Starlink \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+	\label{fig:i_mass_distribution}
+\end{marginfigure}
+
+Out of more than \num{23000} satellites that have been launched into Earth orbit \autocite{esaspacedebrisofficeESAsAnnualSpace2025}, more than \num{2900} belong in the \emph{nano-satellite} class \autocite{kuluNanosatsDatabase2023}, weighing less than \SI{10}{\kilogram}.
+Nano-satellites are mostly represented by the CubeSat form factor, a concept introduced in 1999 by the \citeauthor{CDS14} \autocite{CDS14}.
+
+CubeSats are designed in a structurally modular format consisting of \qtyproduct{10 x 10 x 10}{\centi\meter} cubes (termed ``U(nits)''). While not specified in the standard, the CubeSat community is mainly using the ``PC/104'' mechanical standard for subsystems, along with a shared electrical specification \autocite{BoardSpecificationLibreCube}.
+
+The advances of miniaturisation in electronics since the 1980s have allowed nano-satellites to have increased capabilities and utility \autocite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more nano-satellites\footnote{21 constellations of 5 or more nano-satellites have been launched so far \autocite{kuluNanosatsDatabase2023}}. \draft{Most nano-satellites are CubeSats}. Most CubeSats are orbiting in \acs{LEO}, with fewer missions planned and launched for deep space \draft{cite, e.g. vittorio}
+
+The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram}) \draft{ref} have significantly reduced the entry barrier to space
+\autocite{poghosyanCubeSatEvolutionAnalyzing2017,sweetingModernSmallSatellitesChanging2018}.
+\draft{NUM\%} of launched CubeSat missions are educational in nature. \draft{NUM} countries in total have launched CubeSats, \draft{NUM} of which have CubeSats as their first satellite. This has been aided by an evolving CubeSat industry, which has created a market for subsystems and platforms that are, to some degree, interoperable with each other and with common deployers. As of 2023, roughly 20\% of spacecraft in orbit\footnote{Excluding the Starlink constellation, which represents \draft{NUM\%} \cite{unionofconcernedscientistsSatelliteDatabase2023}} belong in the nano-satellite class \cite{unionofconcernedscientistsSatelliteDatabase2023} (\Cref{fig:i_mass_distribution}).
+
+Despite the significantly fewer resources needed for CubeSat development and production, there is still a significant cost connected with CubeSat missions. Launch and development costs can range up to millions USD \draft{ref from SW/ppr}, and development times can range between \draft{X-Y years} \draft{ref from SW/ppr}. Despite their reduced complexity, CubeSats also experience a \draft{50\%} failure rate in orbit, often attributed to a lack of experience, high turnover, and insufficient \draft{standardisation} \draft{cite swartwout}.
+
+The need from industry and academia for a smaller and less complex standardised platform has given rise to concepts for so-called \textbf{\acf{SCS}}. These spacecraft take advantage of the further miniaturisation of electronic and telecommunication components to push the envelope of size. Classes of planned or launched \acs{SCS} include:
+
+\begin{itemize}
+	\item \textbf{Fractional-Unit} CubeSats \autocite{kuluNanosatsDatabase2023}: 1/2U, 1/3U or 1/4U CubeSats, which do not comply with the CubeSat standard \cite{CDS14}, but are mechanically compatible with standard deployers;
+	\item \textbf{PocketQubes} \autocite{PQ1}: Modular spacecraft based on the ``1p'' unit (a \qtyproduct{5 x 5 x 5}{\centi\meter});
+	\item \textbf{SunCubes} \autocite{martinezSunCubeFemtoSatDesign2018}: Modular spacecraft based on \qtyproduct{3 x 3 x 3}{\centi\meter} units;
+	\item \textbf{Chipsats} or \textbf{\acs{PCB}sats}: Flat spacecraft that consist entirely of a single circuit board, usually less than \qtyproduct{5 x 5}{\centi\meter} in size.
+	\item \draft{ThinSats?}
+\end{itemize}
+
+These satellites are also classified as pico-, femto- and atto-satellites (see \Cref{sec:TERMINOLOGY_classes}).
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		% Image source: Own
+		\includegraphics[height=3cm]{media/pictures/acubesat.png}
+		\caption{A 3U CubeSat (\emph{AcubeSAT})\draft{cite acubesat}}
+	\end{subfigure}~
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		% Image source: https://www.nanosats.eu/sat/beesat-10-13
+		\includegraphics[height=3cm]{media/pictures/BEESAT-13}
+		\caption{A 1/4U CubeSat (\emph{BEESAT-13})\cite{kayalBEESATPicoSatellite2007}}
+	\end{subfigure}~
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		% Image source: Own
+		\includegraphics[height=3cm]{media/pictures/qubik}
+		\caption{A 1p PocketQube (\emph{QUBIK})\draft{cite LSF}}
+	\end{subfigure}%
+	\\%
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		% Image source: https://news.asu.edu/20160406-creativity-asu-suncube-femtosat-space-exploration-for-everyone
+		\includegraphics[height=3cm]{media/pictures/suncube}
+		\caption{A SunCube \cite{seckelNextBigThing2016}}
+	\end{subfigure}~
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		% Image source: https://techcrunch.com/2019/06/04/kicksat-2-project-launches-105-cracker-sized-satellites/
+		\includegraphics[height=3cm]{media/pictures/sprite}
+		\caption{A \draft{dimensions} ChipSat \cite{manchesterCentimeterScaleSpacecraftDesign2015}}
+	\end{subfigure}~
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		% Image source: 
+		\caption{A\draft{nother} ChipSat}
+	\end{subfigure}%
+	\caption{Examples of nano-satellites and smaller spacecraft}
+\end{figure*}
+
+\acl{SCS} have enjoyed increased popularity especially since 2018, with \draft{NUM} pico-satellites and \draft{NUM} smaller satellites having been launched (\Cref{fig:i_scs_launched}). Most of these \draft{how many?} follow the \textbf{PocketQube} standard.
+The PocketQube concept was introduced in 2009 by Bob Twiggs \autocite{twiggsMakingItSmall2009} and standardised in \citeyear{PQ1} \autocite{PQ1}.
+
+On the sub-pocketQube scale, the smallest spacecraft that have been launched were Zac Manchester's ``Sprite'' ChipSats. \draft{What about them}?
+
+\draft{The reduced costs give rise to interesting characteristics}
+
+\draft{One notable project is Breakthrough Starshot}
+\begin{marginfigure}
+	\includegraphics{media/pictures/starshot.jpg}
+	\caption{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \draft{what is the source?}}
+\end{marginfigure}
+
+
+
+
+
+
+Introduction concept:
+More than X are considered to be part of the nano-satellite class, weighing less than 10kg.
+Nanosatellites were invented by whoever invented them throguh the cubesat concept in year tade.
+2730 nanosatellites are considered of the cubesat form factor.
+
+Blablabla we introduce cubesats and pocketqubes and the benefits and drawbacks of miniaturisation.
+
+As of November 2025, over 
+
+- Number of satellites launched
+- Separation of satellites into categories, number of very small satellites launched
+- Introduction to the CubeSat concept
+- Introduction to the PocketQube concept: History and current state of the art
+- Introduction to the ChipSat concept: History and current SoTA
+	- Zac Manchester
+	- Presentation from Andreas for ChipSat course
+    - Breakthrough Starshot
+- Orbits for nanosatellites
+	
+Then we move on into systems engineering and how spacecraft are developed traditionally vs how we want to develop them.
+
+A BIG table containing all the statuses of known pocketqubes and sub-cubesat spacecraft.
+
+
+\begin{figure}[p]
+	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram.pdf}
+	\caption{Histogram of satellite wet mass, for satellites flying as of 2023 \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram_no_starlink.pdf}
+	\caption{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+\end{figure}
+
+\begin{figure*}[h]
+	\includegraphics[width=\textwidth]{analyses/scs_launch_trend.pdf}
+	\caption{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
+	\draft{add chipsats?}}
+	\label{fig:i_scs_launched}
+\end{figure*}
+
 
 \section{Scope}
 
@@ -252,8 +398,62 @@ And so on and so forth.
 	\caption{Unit of Analysis}
 \end{figure}
 
-\section{Defining Systems Engineering}
+\section{The Scope and Impact of Systems Engineering}
 \label{sec:defining_systems_engineering}
+
+Systems Engineering is defined as a process of synthesis, development and operation of a real-world system that satisfies the requirements for that system \autocite{sebok}.
+Systems Engineering processes are especially useful for complex and/or critical systems, such as those used in aerospace engineering \autocite{SMAD,sheaNASASystemsEngineering2020}.
+The \acs{NASA} Systems Engineering Handbook partitions Systems Engineering into further specific sub-disciplines, showing its connection with Project Management (\Cref{fig:i_nasa_sye_decomposition}).
+
+
+%<span class="orange">Can add more criticism towards heavyweight methods here, esp. for systems **why do we need something new?**</span> 
+
+\begin{figure}
+	\includegraphics{media/graphics/NASASYE}
+	\caption{Decomposition of Systems Engineering in connection with Project Management \autocite{sheaNASASystemsEngineering2020}}
+	\label{fig:i_nasa_sye_decomposition}
+\end{figure}
+
+The space engineering community has used several prominent frameworks for the realisation of complex projects, which may cover, for example, \emph{needs definitions}, \emph{lifecycle approaches}, \emph{engineering/data management} or \emph{system architecture definition} \autocite{sebok}. Some of the most popular examples are:
+\begin{itemize}
+	\item 
+ Separation of a project into separate stages, from conception to end-of-life, following a ``waterfall'' model
+ \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}
+ \item 
+Requirements Engineering, where specific technical specifications are set for the systems and its components \autocite{ECSS-E-ST-10-06C} 
+\item The V-model, which defines a sequential, stage-gated process to implement and verify a system with its components
+\autocite{bundesrepublikdeutschlandVModellXT2006,sebok}
+\item Iterative lifecycle models, where iteration or evolution cycles are added to allow easy implementation of lessons learned
+\autocite{larmanIterativeIncrementalDevelopment2003,sebok_incremental}
+\item Concurrent Engineering, where a design is progressed synchronously by multiple engineers \autocite{bandecchiConcurrentEngineeringApplied1999}
+\item Model-based Systems Engineering, where formalised models are used to support Systems Engineering tasks \autocite{sebok,hendersonValueBenefitsModelbased2021}
+\end{itemize}
+
+\begin{marginfigure}
+	\includegraphics{media/drafts/nasa_sye_benefit.png}
+	\caption{It is harder to reverse design decisions, the more effort has been dedicated to a project. From \cite{sheaNASASystemsEngineering2020}}
+\end{marginfigure}
+The value and benefits of Systems Engineering are asserted by the ``\acs{SYE} hypothesis'': that additional effort spent in Systems Engineering, especially early in the project, will increase the overall \emph{value} of it, especially in terms of cost, schedule and objectives \autocite{honourUnderstandingValueSystems2004}. A 1992 survey of 32 \acs{NASA} programs, for example, shows a correlation between time spent in the design phases of a project, and reduced final cost overruns \cite{honourUnderstandingValueSystems2004}. 
+Various other surveys have shown similar correlations, demonstrating the value of Systems Engineering 
+\autocite{sheaNASASystemsEngineering2020,francoisSystemicsCyberneticsHistorical1999}. \draft{Here we describe the exact benefties of systems engineering. Also cite more souirces showing the value and explain how/what is demonstrated}
+
+
+However, a considerable overhead and a number of inefficiencies is added when following highly detailed or bureaucratic processes. \autocite{royceManagingDevelopmentLarge1970} famously criticised the ``waterfall'' model mainly because of its inflexibility towards design and requirements changes, and incorrect implementations of the lifecycle model. During the 1990s, these so-called ``heavyweight'' methods started receiving more criticism, and seen as an impediment for development of lower-scale products \autocite{fowlerNewMethodology2005}. 
+\citeauthor{whitneyWhyMechanicalDesign1996} \autocite{whitneyWhyMechanicalDesign1996} draws parallels between the design of a complex mechanical system, and very efficient and modular VLSI design process.
+
+\citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004}
+analysed the 161 software projects from the \acs{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
+They identified a ``\textbf{sweet spot}'' between too little and too much time spent in software architecting and risk management\footnote{Which, for the purposes of this work, loosely corresponds to effort spent for Systems Engineering}.
+For example, on a \SI{10}{\kilo\ac{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
+This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this sweet spot is found at 33\%, implying that larger projects need disproportionately higher effort for Systems Engineering.
+
+\begin{figure}[h]
+	\includegraphics{media/drafts/boehm_roi.png}
+	\caption{\draft{How much architecting is enough?} \cite{boehmROISystemsEngineering2008}}
+\end{figure}
+
+\draft{Surveys conducted by \citeauthor{akbarStatisticalAnalysisEffects2018} \autocite{akbarStatisticalAnalysisEffects2018} showed that more ``lightweight'' processes could be used for smaller-scale projects. - What does this mean? What did they show?}
+
 
 \begin{figure}
 	\includegraphics{graphics/decomp.pdf}
@@ -268,6 +468,26 @@ And so on and so forth.
 \section{Research Gaps}
 
 \section{Research Questions and Thesis Objectives}
+
+\paragraph{Research Question 1}
+What are the current \ac{SYE} approaches used by \ac{SCS} developers?
+
+\paragraph{Research Question 2}
+What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?
+
+\paragraph{Research Question 3}
+Can a new, tailored \ac{SYE} methodology address the shortcomings identified in RQ2 for \ac{SCS}
+
+\paragraph{Research Question 4}
+Is the \ac{SYE} methodology developed in \ac{SYE} effective in practical scenarios?
+
+The objectives of this thesis are therefore as follows:
+\begin{itemize}
+	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions
+	\item Identify \draft{points of improvement}
+	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}
+	\item Validate the new methodology on a space mission that will succeed in environmental qualification
+\end{itemize}
 
 \section{Thesis Structure}
 
@@ -291,6 +511,7 @@ The chapters of this thesis are organised as follows:
 \section{Terminology}
 
 \subsection{Spacecraft Classes}
+\label{sec:TERMINOLOGY_classes}
 
 %The idea of a \textbf{Sub-CubeSat Spacecraft} (\acs{SCS}) depends on the definition of a CubeSat
 
@@ -322,7 +543,7 @@ Apart from the size-based definitions, spacecraft can also be classified based o
 Note that the widely accepted classification, perhaps misleadingly, does not follow the \acs{SI} definition of unit prefixes. The convention used in this paper is shown in \Cref{tab:satellite_sizes}.
 \draft{Find an extra citation for small satellite sizes}
 
-Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites. To reduce verbosity, we will also introduce the notion of \textbf{pocket-sized spacecraft} to be the equivalent of \ac{SCS}.
+Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites. To reduce verbosity, we will also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
 
 
 \subsection{Method and Methodology}
@@ -404,9 +625,48 @@ Both concepts can be decomposed into a set of more specific activities, which so
 
 \section{Sub-CubeSat Ecosystem}
 
+As \citeauthor{kuluNanosatsDatabase2023}'s nano-satellite database does not include objects smaller than PocketQubes, we provide a list of known sub-PocketQube missions in \draft{table TADE}.
+
 \section{Topics from Systems Engineering}
 
+\subsection{Metrics}
+
+\citeauthor{honourUnderstandingValueSystems2004} \autocite{honourUnderstandingValueSystems2004} provides a list of quantifiable parameters that can gauge the effect of Systems Engineering:
+\begin{itemize}
+	\item \textbf{Project Duration}: The overall time between the initial conceptualisation until the validation of a product. In aerospace, ``validation'' can be taken to mean environmental testing and qualification, or an actual flight of a project.
+	\item \textbf{Project Cost}: In the context of aerospace systems, this can include launch costs, personnel costs, material costs, and further development costs. We should note that academic projects often include volunteer engineers, resulting in lower or zero personnel costs.
+	\item \textbf{Risk}: Risk can be understood in a technical (e.g.~a hazard or probability of system failure) or programmatic (e.g.~risk of cost/schedule overruns) sense.
+	\acs{ECSS} defines risk as an ``undesirable situation or circumstance that has both a likelihood of occurring and a potential negative consequence on a project'' \autocite{ECSS-S-ST-00-01C}.
+	\citeauthor{honourUnderstandingValueSystems2004} \cite{honourUnderstandingValueSystems2004} provides a mathematical definition for risk \(r\): \[
+	r = c_{90\%} - \bar{c}
+	\]
+	where \( \bar{c} \) is the average expected cost of the project, and \( c_{90\%} \) the maximum cost that 90\% of identical projects would experience.
+	\item \textbf{Technical Quality}: A comparison between the actual resulting system and the intended objective.
+	A simple mathematical definition of quality can be constructed as: \[
+		q = \frac{\text{\# Project objectives met by actual system}}{\text{\# Original project objectives}}
+	\]
+\end{itemize}
+
+It is also important to define the \textbf{attributes} of a project, which can determine what kind of \acs{SYE} frameworks, approaches and decisions can be followed.
+
+\citeauthor{honourUnderstandingValueSystems2004} \autocite{honourUnderstandingValueSystems2004} defines two main quantifiable attributes:
+\begin{itemize}
+	\item \textbf{Technical Size}, representing the overall size of the development effort.
+	Some measures can be the number of requirements, number of components, or number of functions.
+	\item \textbf{Technical Complexity}, representing the required degree of interaction between components, independent from size.
+\end{itemize}
+
+On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013} have identified 127 different criteria for choosing a software process, which can be extrapolated for use in aerospace \acs{SYE}. These criteria are classified into the following categories:
+\begin{itemize}
+	\item \textbf{Team}: Personal and collective characteristics of the people involved in a project, including experience, size and distribution;
+	\item \textbf{Internal Environment}: The available tools, decisions, and current situation of a project, including budget, duration, and management philosophy;
+	\item \textbf{External Environment}: The project effects of external factors, such as stakeholders, clients and users;
+	\item \textbf{Objectives}: System design imperatives and decisions that affect the project, including the domain, complexity and required innovations.
+\end{itemize}
+
+
 \section{Research Problem Formulation}
+
 
 
 \chapter{Research Approach}
