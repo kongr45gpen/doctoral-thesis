@@ -386,17 +386,7 @@ A BIG table containing all the statuses of known pocketqubes and sub-cubesat spa
 \end{figure*}
 
 
-\section{Scope}
 
-\begin{figure}[h]
-	\includegraphics{graphics/UoA1.pdf}
-	\caption{Unit of Analysis}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics{graphics/UoA2.pdf}
-	\caption{Unit of Analysis}
-\end{figure}
 
 \section{The Scope and Impact of Systems Engineering}
 \label{sec:defining_systems_engineering}
@@ -455,19 +445,30 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 \draft{Surveys conducted by \citeauthor{akbarStatisticalAnalysisEffects2018} \autocite{akbarStatisticalAnalysisEffects2018} showed that more ``lightweight'' processes could be used for smaller-scale projects. - What does this mean? What did they show?}
 
 
-\begin{figure}
-	\includegraphics{graphics/decomp.pdf}
-	\caption{Unit of Analysis}
-\end{figure}
-
-\begin{figure}
-	\includegraphics{graphics/DecompSYE.pdf}
-	\caption{Unit of Analysis}
-\end{figure}
-
 \section{Research Gaps}
 
 \section{Research Questions and Thesis Objectives}
+
+\begin{figure}[h]
+	\includegraphics{graphics/UoA1.pdf}
+	\caption{Unit of Analysis}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics{graphics/UoA2.pdf}
+	\caption{Unit of Analysis}
+\end{figure}
+
+\begin{figure*}[h]
+	\includegraphics{graphics/decomp.pdf}
+	\caption{Unit of Analysis}
+\end{figure*}
+
+\begin{figure*}[h]
+	\includegraphics{graphics/DecompSYE.pdf}
+	\caption{Unit of Analysis}
+\end{figure*}
+
 
 \paragraph{Research Question 1}
 What are the current \ac{SYE} approaches used by \ac{SCS} developers?
@@ -482,12 +483,12 @@ Can a new, tailored \ac{SYE} methodology address the shortcomings identified in 
 Is the \ac{SYE} methodology developed in \ac{SYE} effective in practical scenarios?
 
 The objectives of this thesis are therefore as follows:
-\begin{itemize}
+\begin{enumerate}
 	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions
 	\item Identify \draft{points of improvement}
 	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}
 	\item Validate the new methodology on a space mission that will succeed in environmental qualification
-\end{itemize}
+\end{enumerate}
 
 \section{Thesis Structure}
 
@@ -826,6 +827,408 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 
 As explained in \Cref{chap:METHODOLOGY}, 
 
+\begin{landscape}%
+	\vspace*{-20cm}% %???
+	%
+%
+%\begin{figure*}[H]
+	\usetikzlibrary{shapes,patterns,positioning}%
+	%
+	%
+	\colorlet{bread}{orange}%
+	\colorlet{engineer}{green!80!blue}%
+	\colorlet{qualify}{blue!80}%
+	\colorlet{environ}{red!50!orange!90!black}%
+	%
+	%------------------------------------------
+	% Styles for Models
+	%------------------------------------------
+	\tikzset{
+		basebox/.style={draw, minimum width=0.8cm, minimum height=0.8cm, align=center},
+		% Model types
+		software/.style={basebox, draw=black, append after command={
+				\pgfextra{
+					\draw[bread, very thick] ([xshift=-0.15cm,yshift=-0.25cm]\tikzlastnode.center) 
+					.. controls +(-0.1,0.2) and +(0.1,-0.2) .. 
+					([xshift=0.15cm,yshift=0.25cm]\tikzlastnode.center);
+				}
+		}},
+		breadboard/.style={basebox, append after command={\pgfextra{ 
+					\draw[bread,very thick] ([xshift=-0.15cm]\tikzlastnode.north) -- ([xshift=-0.15cm]\tikzlastnode.south); 
+					\draw[bread,very thick] ([xshift=0.15cm]\tikzlastnode.north)  -- ([xshift=0.15cm]\tikzlastnode.south); 
+		}}},
+		engineering/.style={basebox, append after command={
+				\pgfextra{\fill[engineer!50,draw=engineer,thick] (\tikzlastnode.center) circle (5pt);}
+		}},
+		qualification/.style={basebox, append after command={
+				\pgfextra{\fill[qualify!50,draw=qualify,thick,xslant=0.4] ([xshift=-0.00cm,yshift=-0.25cm]\tikzlastnode.north east) rectangle ([xshift=0.00cm,yshift=0.25cm]\tikzlastnode.south west);  }
+		}},
+		engqual/.style={basebox, append after command={
+				\pgfextra{
+					\fill[qualify!50,draw=qualify,thick,xslant=0.4] ([xshift=-0.00cm,yshift=-0.25cm]\tikzlastnode.north east) rectangle ([xshift=0.00cm,yshift=0.25cm]\tikzlastnode.south west);
+					\fill[engineer!50,draw=engineer,thick] (\tikzlastnode.center) circle (5pt);
+				}
+		}},
+		protoflight/.style={basebox, append after command={
+				\pgfextra{\fill[qualify!50] ([xshift=0.10cm]\tikzlastnode.north) rectangle ([xshift=-0.10cm]\tikzlastnode.south);}
+		}},
+		flight/.style={basebox, append after command={
+				\pgfextra{\fill[qualify!50] ([xshift=0.15cm]\tikzlastnode.north west) rectangle ([xshift=-0.15cm]\tikzlastnode.south east);}
+		}},
+		box/.style={draw, minimum width=1.8cm, minimum height=0.7cm, font=\scriptsize, rounded corners=2pt}
+	}%
+	%
+	%------------------------------------------
+	% Styles for Iterations and Activities
+	%------------------------------------------
+	\tikzset{
+		iteration/.style={diamond, draw, minimum size=0.8cm, align=center},
+		func/.style={iteration, draw=qualify, append after command={
+				\pgfextra{
+					\draw[qualify, very thick] (\tikzlastnode.west) -- (\tikzlastnode.east);
+				}
+		}},
+		env/.style={iteration, draw=red, append after command={
+				\pgfextra{
+					\draw[qualify, very thick] (\tikzlastnode.west) -- (\tikzlastnode.east);
+					\draw[environ, very thick] (\tikzlastnode.north east) -- (\tikzlastnode.south west);
+				}
+		}},
+		orbital/.style={iteration, draw=green!70!black, append after command={
+				\pgfextra{
+					\draw[green!70!black, very thick] 
+					(\tikzlastnode.west) to [out=0,in=-90,looseness=1.7] (\tikzlastnode.north);
+				}
+		}},
+		pcb/.style={circle, draw, minimum size=0.7cm, append after command={
+				\pgfextra{\fill[engineer!50,draw=engineer,thick] ([xshift=-0.05cm,yshift=-0.15cm]\tikzlastnode.north west) rectangle ([xshift=0.05cm,yshift=0.15cm]\tikzlastnode.south east);}
+		}},
+		component/.style={circle, draw, minimum size=0.7cm, append after command={
+				\pgfextra{
+					\fill[qualify!50,draw=qualify,thick] ([xshift=-0.15cm,yshift=0.05cm]\tikzlastnode.north east) rectangle ([xshift=0.15cm,yshift=-0.05cm]\tikzlastnode.south west);
+				}
+		}},
+		softiter/.style={circle, draw, minimum size=0.7cm, append after command={
+				\pgfextra{
+					\draw[bread, very thick] ([xshift=-0.15cm,yshift=-0.25cm]\tikzlastnode.center) 
+					.. controls +(-0.1,0.2) and +(0.1,-0.2) .. 
+					([xshift=0.15cm,yshift=0.25cm]\tikzlastnode.center);
+				}
+		}},
+	}%
+	%
+	%------------------------------------------
+	% Legend Layout
+	%------------------------------------------
+	\begin{tikzpicture}[node distance=0.8cm and 1.8cm]
+		\node[align=center, font=\large] (legendtitle) {Legend};
+		
+		% Left column
+		\node[software, below=of legendtitle.west, anchor=west] (soft) {};
+		\node[right=0.6cm of soft] {Software-only Model};
+		
+		\node[breadboard, below=of soft] (bread) {};
+		\node[right=0.6cm of bread] {Breadboard Model};
+		
+		\node[engineering, below=of bread] (eng) {};
+		\node[right=0.6cm of eng] {Engineering Model};
+		
+		\node[qualification, below=of eng] (qual) {};
+		\node[right=0.6cm of qual] {Qualification Model};
+		
+		\node[engqual, below=of qual] (eqm) {};
+		\node[right=0.6cm of eqm] {Engineering Qualification Model};
+		
+		\node[protoflight, below=of eqm] (proto) {};
+		\node[right=0.6cm of proto] {Protoflight Model};
+		
+		\node[flight, below=of proto] (flightm) {};
+		\node[right=0.6cm of flightm] {Flight Model};
+		
+		% Right column title
+		\node[right=5cm of legendtitle] (iterlabel) {Iteration};
+		
+		% Right column
+		\node[func, below=of iterlabel] (funciter) {};
+		\node[right=0.6cm of funciter] {Functional (Ambient) Test};
+		
+		\node[env, below=of funciter] (enviter) {};
+		\node[right=0.6cm of enviter] {Environmental Test};
+		
+		\node[orbital, below=of enviter] (orb) {};
+		\node[right=0.6cm of orb] {Orbital Flight};
+		
+		\node[pcb, below=of orb, yshift=-0.4cm] (pcbnode) {};
+		\node[right=0.6cm of pcbnode] {PCB Manufacturing};
+		
+		\node[component, below=of pcbnode] (compnode) {};
+		\node[right=0.6cm of compnode] {Component Procurement};
+		
+		\node[softiter, below=of compnode] (softnode) {};
+		\node[right=0.6cm of softnode] {Software Iteration};
+		
+		\begin{scope}[font=\scriptsize,x=3.4cm,y=1cm,yshift=-20cm]
+			
+			% Iteration numbers
+			\node[anchor=west, font=\bfseries] at (0,5.5) {Iteration \#};
+			\foreach \i in {1,...,4}{
+				\node[font=\bfseries] at (\i,5.5) {\#\i};
+			}
+			
+			% Top iteration bar
+			\draw[rounded corners=2pt, thick] (0.3,5.7) -- (4.5,5.7);
+			
+			% Row labels
+			\foreach \y/\label in {
+				4.5/Slices,
+				3.6/Item\\Classification,
+				2.4/Test Suites,
+				1.2/External\\Dependencies,
+				0.2/Software\\Iterations
+			}{
+				\node[anchor=east, font=\bfseries] at (0,\y) {\label};
+			}
+			
+			% --- Slices ---
+			\node[draw=bread, thick, fill=bread!10, rounded corners=2pt, minimum width=1.6cm, minimum height=0.5cm] (sw) at (1.75,4.5) {Software};
+			\node[draw=qualify, thick, fill=qualify!15, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (mcu) at (2.75,4.1) {MCU};
+			\node[draw=engineer, thick, fill=engineer!15, rounded corners=2pt, minimum width=2.5cm, minimum height=0.5cm] (sens) at (2.5,3.7) {Sensors};
+			\node[draw=environ, thick, fill=environ!10, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (iface) at (2.75,3.3) {Interface};
+			
+			% --- Item classification ---
+			\node[software, minimum width=1.6cm, minimum height=0.8cm, label=right:Software Only] (itm1) at (1,3.6) {};
+			\node[breadboard, minimum width=1.6cm, minimum height=0.8cm, label=right:Breadboard] (itm2) at (2,3.6) {};
+			\node[qualification, minimum width=1.6cm, minimum height=0.8cm, label=right:Qualification Model] (itm3) at (3,3.6) {};
+			\node[flight, minimum width=1.6cm, minimum height=0.8cm, label=right:Flight Model] (itm4) at (4,3.6) {};
+			
+			% --- Test Suites ---
+			\node[box, label=below:{Partial\\Functional}] at (1,2.4) {};
+			\node[box, label=below:{Payload\\Test}] at (2,2.4) {};
+			\node[box, label=below:{Full\\Functional}] at (3,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (3,2.0) {};
+			\node[box, label=below:{Full\\Functional}] at (4,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (4,2.0) {};
+			
+			% Orbital Flight diamond (rightmost)
+			\node[orbital, scale=0.8] at (4,1.45) {};
+			
+			% --- External Dependencies ---
+			\node[component, scale=0.9] at (1,1.2) {};
+			\node[component, scale=0.9] at (2,1.2) {};
+			\node[component, scale=0.9] at (3,1.2) {};
+			\node[pcb, scale=0.9] at (3.3,1.2) {};
+			\node[pcb, scale=0.9] at (4,1.2) {};
+			
+			% --- Software Iterations ---
+			\foreach \x in {1,1.3,1.6,1.9,2.2,2.5,2.8,3.1,3.4,3.7,4.0}{
+				\node[softiter, scale=0.6] at (\x,0.2) {};
+			}
+			
+			% Vertical separators between iterations
+			\foreach \i in {1,2,3,4.5}{
+				\draw[gray!60] (\i,5.8) -- (\i,0);
+			}
+			
+		\end{scope}
+		
+		\begin{scope}[font=\scriptsize,x=3.4cm,y=1cm,yshift=-41cm]
+			
+			% Iteration numbers
+			\node[anchor=west, font=\bfseries] at (0,5.5) {Iteration \#};
+			\foreach \i in {1,...,4}{
+				\node[font=\bfseries] at (\i,5.5) {\#\i};
+			}
+			
+			% Top iteration bar
+			\draw[rounded corners=2pt, thick] (0.3,5.7) -- (4.5,5.7);
+			
+			% Row labels
+			\foreach \y/\label in {
+				4.5/Slices,
+				3.6/Item\\Classification,
+				2.4/Test Suites,
+				1.2/External\\Dependencies,
+				0.2/Software\\Iterations
+			}{
+				\node[anchor=east, font=\bfseries] at (0,\y) {\label};
+			}
+			
+			% --- Slices ---
+			\node[draw=bread, thick, fill=bread!10, rounded corners=2pt, minimum width=1.6cm, minimum height=0.5cm] (sw) at (1.75,4.5) {Software};
+			\node[draw=qualify, thick, fill=qualify!15, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (mcu) at (2.75,4.1) {MCU};
+			\node[draw=engineer, thick, fill=engineer!15, rounded corners=2pt, minimum width=2.5cm, minimum height=0.5cm] (sens) at (2.5,3.7) {Sensors};
+			\node[draw=environ, thick, fill=environ!10, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (iface) at (2.75,3.3) {Interface};
+			
+			% --- Item classification ---
+			\node[software, minimum width=1.6cm, minimum height=0.8cm, label=right:Software Only] (itm1) at (1,3.6) {};
+			\node[breadboard, minimum width=1.6cm, minimum height=0.8cm, label=right:Breadboard] (itm2) at (2,3.6) {};
+			\node[qualification, minimum width=1.6cm, minimum height=0.8cm, label=right:Qualification Model] (itm3) at (3,3.6) {};
+			\node[flight, minimum width=1.6cm, minimum height=0.8cm, label=right:Flight Model] (itm4) at (4,3.6) {};
+			
+			% --- Test Suites ---
+			\node[box, label=below:{Partial\\Functional}] at (1,2.4) {};
+			\node[box, label=below:{Payload\\Test}] at (2,2.4) {};
+			\node[box, label=below:{Full\\Functional}] at (3,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (3,2.0) {};
+			\node[box, label=below:{Full\\Functional}] at (4,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (4,2.0) {};
+			
+			% Orbital Flight diamond (rightmost)
+			\node[orbital, scale=0.8] at (4,1.45) {};
+			
+			% --- External Dependencies ---
+			\node[component, scale=0.9] at (1,1.2) {};
+			\node[component, scale=0.9] at (2,1.2) {};
+			\node[component, scale=0.9] at (3,1.2) {};
+			\node[pcb, scale=0.9] at (3.3,1.2) {};
+			\node[pcb, scale=0.9] at (4,1.2) {};
+			
+			% --- Software Iterations ---
+			\foreach \x in {1,1.3,1.6,1.9,2.2,2.5,2.8,3.1,3.4,3.7,4.0}{
+				\node[softiter, scale=0.6] at (\x,0.2) {};
+			}
+			
+			% Vertical separators between iterations
+			\foreach \i in {1,2,3,4.5}{
+				\draw[gray!60] (\i,5.8) -- (\i,0);
+			}
+			
+		\end{scope}
+		
+		\begin{scope}[font=\scriptsize,x=3.4cm,y=1cm,yshift=-27cm]
+			
+			% Iteration numbers
+			\node[anchor=west, font=\bfseries] at (0,5.5) {Iteration \#};
+			\foreach \i in {1,...,4}{
+				\node[font=\bfseries] at (\i,5.5) {\#\i};
+			}
+			
+			% Top iteration bar
+			\draw[rounded corners=2pt, thick] (0.3,5.7) -- (4.5,5.7);
+			
+			% Row labels
+			\foreach \y/\label in {
+				4.5/Slices,
+				3.6/Item\\Classification,
+				2.4/Test Suites,
+				1.2/External\\Dependencies,
+				0.2/Software\\Iterations
+			}{
+				\node[anchor=east, font=\bfseries] at (0,\y) {\label};
+			}
+			
+			% --- Slices ---
+			\node[draw=bread, thick, fill=bread!10, rounded corners=2pt, minimum width=1.6cm, minimum height=0.5cm] (sw) at (1.75,4.5) {Software};
+			\node[draw=qualify, thick, fill=qualify!15, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (mcu) at (2.75,4.1) {MCU};
+			\node[draw=engineer, thick, fill=engineer!15, rounded corners=2pt, minimum width=2.5cm, minimum height=0.5cm] (sens) at (2.5,3.7) {Sensors};
+			\node[draw=environ, thick, fill=environ!10, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (iface) at (2.75,3.3) {Interface};
+			
+			% --- Item classification ---
+			\node[software, minimum width=1.6cm, minimum height=0.8cm, label=right:Software Only] (itm1) at (1,3.6) {};
+			\node[breadboard, minimum width=1.6cm, minimum height=0.8cm, label=right:Breadboard] (itm2) at (2,3.6) {};
+			\node[qualification, minimum width=1.6cm, minimum height=0.8cm, label=right:Qualification Model] (itm3) at (3,3.6) {};
+			\node[flight, minimum width=1.6cm, minimum height=0.8cm, label=right:Flight Model] (itm4) at (4,3.6) {};
+			
+			% --- Test Suites ---
+			\node[box, label=below:{Partial\\Functional}] at (1,2.4) {};
+			\node[box, label=below:{Payload\\Test}] at (2,2.4) {};
+			\node[box, label=below:{Full\\Functional}] at (3,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (3,2.0) {};
+			\node[box, label=below:{Full\\Functional}] at (4,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (4,2.0) {};
+			
+			% Orbital Flight diamond (rightmost)
+			\node[orbital, scale=0.8] at (4,1.45) {};
+			
+			% --- External Dependencies ---
+			\node[component, scale=0.9] at (1,1.2) {};
+			\node[component, scale=0.9] at (2,1.2) {};
+			\node[component, scale=0.9] at (3,1.2) {};
+			\node[pcb, scale=0.9] at (3.3,1.2) {};
+			\node[pcb, scale=0.9] at (4,1.2) {};
+			
+			% --- Software Iterations ---
+			\foreach \x in {1,1.3,1.6,1.9,2.2,2.5,2.8,3.1,3.4,3.7,4.0}{
+				\node[softiter, scale=0.6] at (\x,0.2) {};
+			}
+			
+			% Vertical separators between iterations
+			\foreach \i in {1,2,3,4.5}{
+				\draw[gray!60] (\i,5.8) -- (\i,0);
+			}
+			
+		\end{scope}
+		
+		\begin{scope}[font=\scriptsize,x=3.4cm,y=1cm,yshift=-34cm]
+			
+			% Iteration numbers
+			\node[anchor=west, font=\bfseries] at (0,5.5) {Iteration \#};
+			\foreach \i in {1,...,4}{
+				\node[font=\bfseries] at (\i,5.5) {\#\i};
+			}
+			
+			% Top iteration bar
+			\draw[rounded corners=2pt, thick] (0.3,5.7) -- (4.5,5.7);
+			
+			% Row labels
+			\foreach \y/\label in {
+				4.5/Slices,
+				3.6/Item\\Classification,
+				2.4/Test Suites,
+				1.2/External\\Dependencies,
+				0.2/Software\\Iterations
+			}{
+				\node[anchor=east, font=\bfseries] at (0,\y) {\label};
+			}
+			
+			% --- Slices ---
+			\node[draw=bread, thick, fill=bread!10, rounded corners=2pt, minimum width=1.6cm, minimum height=0.5cm] (sw) at (1.75,4.5) {Software};
+			\node[draw=qualify, thick, fill=qualify!15, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (mcu) at (2.75,4.1) {MCU};
+			\node[draw=engineer, thick, fill=engineer!15, rounded corners=2pt, minimum width=2.5cm, minimum height=0.5cm] (sens) at (2.5,3.7) {Sensors};
+			\node[draw=environ, thick, fill=environ!10, rounded corners=2pt, minimum width=3cm, minimum height=0.5cm] (iface) at (2.75,3.3) {Interface};
+			
+			% --- Item classification ---
+			\node[software, minimum width=1.6cm, minimum height=0.8cm, label=right:Software Only] (itm1) at (1,3.6) {};
+			\node[breadboard, minimum width=1.6cm, minimum height=0.8cm, label=right:Breadboard] (itm2) at (2,3.6) {};
+			\node[qualification, minimum width=1.6cm, minimum height=0.8cm, label=right:Qualification Model] (itm3) at (3,3.6) {};
+			\node[flight, minimum width=1.6cm, minimum height=0.8cm, label=right:Flight Model] (itm4) at (4,3.6) {};
+			
+			% --- Test Suites ---
+			\node[box, label=below:{Partial\\Functional}] at (1,2.4) {};
+			\node[box, label=below:{Payload\\Test}] at (2,2.4) {};
+			\node[box, label=below:{Full\\Functional}] at (3,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (3,2.0) {};
+			\node[box, label=below:{Full\\Functional}] at (4,2.4) {};
+			\node[box, label=below:{Mission\\Test}] at (4,2.0) {};
+			
+			% Orbital Flight diamond (rightmost)
+			\node[orbital, scale=0.8] at (4,1.45) {};
+			
+			% --- External Dependencies ---
+			\node[component, scale=0.9] at (1,1.2) {};
+			\node[component, scale=0.9] at (2,1.2) {};
+			\node[component, scale=0.9] at (3,1.2) {};
+			\node[pcb, scale=0.9] at (3.3,1.2) {};
+			\node[pcb, scale=0.9] at (4,1.2) {};
+			
+			% --- Software Iterations ---
+			\foreach \x in {1,1.3,1.6,1.9,2.2,2.5,2.8,3.1,3.4,3.7,4.0}{
+				\node[softiter, scale=0.6] at (\x,0.2) {};
+			}
+			
+			% Vertical separators between iterations
+			\foreach \i in {1,2,3,4.5}{
+				\draw[gray!60] (\i,5.8) -- (\i,0);
+			}
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+%	
+	%\captionof{figure}{\draft{Very big diagram}}
+%\end{figure*}
+\end{landscape}
+
 \section{ChipSat-1}
 Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
 
@@ -834,6 +1237,13 @@ Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
 
 
 \subsection{System Description}
+
+\begin{figure}[h]
+	\acuse{IC,LED}
+	\includegraphics{media/graphics/Block_ChipSat}
+	\caption{Internal block diagram of the ChipSat-1 system}
+	\label{fig:c_chipsat_block}
+\end{figure}
 
 \section{AI4Space}
 Seminal papers: \autocite{thoemelLeanDemonstrationBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
@@ -853,6 +1263,14 @@ AI4Space was therefore developed as a technology demonstrator platform for \acs{
 
 
 \subsection{System Description and Justification}
+
+\begin{figure}[h]
+	\acuse{DC}
+	\includegraphics{media/graphics/Block_AI4Space}
+	\caption{Internal block diagram of the AI4Space system}
+	\label{fig:c_ai4space_block}
+\end{figure}
+
 
 The functional part of the AI4Space payload, responsible for the generation of representative thermal images, consisted of:
 \begin{enumerate}
@@ -977,7 +1395,27 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 	\caption{Example of iterative hardware development through the production of different magnetorquer board versions}
 \end{figure}
 
+\begin{figure}[h]
+	\acuse{IMU,SD,POWERAMP,MPPT,IC,BMPS}
+	\includegraphics{media/graphics/Block_POQUITO}
+	\caption{Internal block diagram of the POQUITO system}
+	\label{fig:c_poquito_block}
+\end{figure}
+
+\begin{marginfigure}
+	\includegraphics{graphics/POQUITO_Stack_Render}
+	\caption{Exploded view of the POQUITO stack}
+	\label{fig:c_poquito_stack}
+\end{marginfigure}
+
 \section{ChiPySat}
+
+\begin{figure}[h]
+	\acuse{IMU,MPPT,UHF,USB,SD}
+	\includegraphics{media/graphics/Block_Chipysat}
+	\caption{Internal block diagram of the ChiPySat system}
+	\label{fig:c_chipysat_block}
+\end{figure}
 
 
 %\chapter{Discussion}
@@ -988,6 +1426,8 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 \label{chap:CONCLUSION}
 
 \appendix
+
+\chapter{PCB schematics}
 
 \begin{fullwidth}
 \printbibliography[heading=bibnumbered]
