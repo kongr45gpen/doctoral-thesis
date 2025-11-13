@@ -143,6 +143,10 @@ under the License.\index{license}
 \listoftables
 \addcontentsline{toc}{section}{List of Tables}
 
+\chapter*{List of Definitions}
+\addcontentsline{toc}{section}{List of Definitions}
+\draft{Here we will have an index of definitions...}
+
 %\chapter*{List of Acronyms}
 %\acuseall%
 \bgroup
@@ -176,10 +180,7 @@ Space is not a welcoming environment.
 Space is not a welcoming environment. 
 
 \chapter*{Contribution}
-Konstantinos Kanavouras did this.
-Vittorio Franzese did that.
-Olivia Borgue did the other thing.
-And so on and so forth.
+I did this. I also did that. I didn't do that.
 
 \begin{table*}[h]
 	\caption{Contribution matrix for the various projects developed within the scope of this work}
@@ -385,6 +386,15 @@ A BIG table containing all the statuses of known pocketqubes and sub-cubesat spa
 	\label{fig:i_scs_launched}
 \end{figure*}
 
+\draft{Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
+However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
+
+\draft{
+The main hypothesis of the research project is:
+Novel systems engineering approaches can drastically decrease the development duration of miniaturized, sub-CubeSat-size spacecraft. 
+}
+
+
 
 
 
@@ -434,7 +444,7 @@ However, a considerable overhead and a number of inefficiencies is added when fo
 \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004}
 analysed the 161 software projects from the \acs{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
 They identified a ``\textbf{sweet spot}'' between too little and too much time spent in software architecting and risk management\footnote{Which, for the purposes of this work, loosely corresponds to effort spent for Systems Engineering}.
-For example, on a \SI{10}{\kilo\ac{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
+For example, on a \SI{10}{\kilo\acs{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
 This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this sweet spot is found at 33\%, implying that larger projects need disproportionately higher effort for Systems Engineering.
 
 \begin{figure}[h]
@@ -494,8 +504,6 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 
 \section{Research Gaps}
 
-\section{Research Questions and Thesis Objectives}
-
 \begin{figure}[h]
 	\includegraphics{graphics/UoA1.pdf}
 	\caption{Unit of Analysis}
@@ -516,6 +524,14 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 	\caption{Unit of Analysis}
 \end{figure*}
 
+\FloatBarrier
+
+\section{Research Questions and Thesis Objectives}
+
+\begin{figure*}
+	\includegraphics{graphics/MindMap.pdf}
+	\caption{Mind-map between the methods and goals of the \acs{SCS} systems engineering methodology}
+\end{figure*}
 
 \paragraph{Research Question 1}
 What are the current \ac{SYE} approaches used by \ac{SCS} developers?
@@ -570,7 +586,7 @@ Various Sub-CubeSat spacecraft classes have been defined in the literature. Most
 Note that ``fractional-unit CubeSats'' have been developed and launched (e.g.~1/2U, 1/3U, 1/4U)\draft{reference}. While these conform to many standard CubeSat requirements and are designed to be hosted in CubeSat containers, they are not part of the official CubeSat Design Specification \cite{CDS14}, and due to their size, are considered \acf{SCS} and therefore within the scope of this work.
 
 \begin{margintable}
-	\caption{Spacecraft mass classes as defined in this work \autocite{sweetingUoSATMicrosatelliteMissions1992,heinAttoSatsChipSatsOther2019}}
+	\caption[Spacecraft mass classes as defined in this work]{Spacecraft mass classes as defined in this work \autocite{sweetingUoSATMicrosatelliteMissions1992,heinAttoSatsChipSatsOther2019}}
 	\label{tab:satellite_sizes}
 
 	\begin{tabular}{@{}ll@{}}
@@ -622,13 +638,13 @@ In the general sense, a methodology can be then seen as a collection of methods 
 
 \begin{figure}[h]
 	\includegraphics{graphics/Methodology.pdf}
-	\caption{Representation of a Design Methodology, based on \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022}}
+	\caption[Representation of a Design Methodology]{Representation of a Design Methodology, based on \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022}}
 \end{figure}
 
 
 It is also important to separate our proposed \emph{Design Methodology}, presented in \Cref{chap:METHODOLOGY} ``\nameref{chap:METHODOLOGY}'', from the \emph{Research Methodology} used to synthesise and validate the former, presented in \Cref{chap:RESEARCH_APPROACH} ``\nameref{chap:RESEARCH_APPROACH}''.
 
-A new Design Methodology is often the result of Design Research. \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009} define Design as:
+A new Design Methodology is often the result of Design Research. \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009} define Design as follows:
 \marginnote{Definition 1.1:\ \textbf{Design}}
 \begin{quote}
 	Design refers to those activities that actually generate and develop a product from a need, product idea or technology to the full documentation needed to realise the product and to fulfil the perceived needs of the user and other stakeholders. \cite{blessingDRMDesignResearch2009}
@@ -644,9 +660,8 @@ A new Design Methodology is often the result of Design Research. \citeauthor{ble
 	\end{enumerate}
 \end{quote}
 
-On the other hand, a \emph{Research Methodology} or \emph{Research Approach} is understood within the context of \emph{Research Design}, which can be defined as:
-\marginnote{Definition 1.1:\ \textbf{Research Design}}
-\begin{quote}
+On the other hand, a \emph{Research Methodology} or \emph{Research Approach} is understood within the context of \emph{Research Design}, which can be defined as:\marginnote{Definition 1.1:\ \textbf{Research Design}}%
+\begin{quote}%
 	The logical sequence that connects the empirical data to a study's initial research questions and, ultimately, to its conclusions. \autocite[20]{yinCaseStudyResearch2014}
 \end{quote}
 
@@ -671,13 +686,36 @@ Both concepts can be decomposed into a set of more specific activities, which so
 
 \section{CubeSat Ecosystem}
 
+\draft{Check CubeSat lifecycles section in Notes}
+
 \section{Sub-CubeSat Ecosystem}
+
+
 
 \subsection{Pico-satellites}
 
-\subsection{Femto-satellites and atto-satellites}
+The success of the CubeSat platform combined with increasing trends of miniaturisation encouraged the creation of the PocketQube platform.
+With the assumption that electronics can be infinitely miniaturised, the limiting factor for spacecraft size and mass become physics restrictions, and most importantly communications power/antenna size, solar panel area, and battery size.
+Combined with the success of pocketable microelectronics, the Pocketqube idea was proposed by Bob Twiggs on the 2009 Cal Poly Developers’ Workshop \autocite{twiggsMakingItSmall2009}. The \qtyproduct{5 x 5 x 5}{\centi\meter} footprint was selected to provide dimensional compatibility with standard CubeSat deployers.
 
-As \citeauthor{kuluNanosatsDatabase2023}'s nano-satellite database does not include objects smaller than PocketQubes, we provide a list of known sub-PocketQube missions in \draft{table/appendix TADE}.
+\todo{Search nanosates database for any pico-satellite project created before that}
+
+The first PocketQubes were launched in 2013 \todo{citation see Delft IAC 2018 paper}.
+After the execution of different community workshops, the first version of the PocketQube standard was published in \citeyear{PQ1} \autocite{PQ1}.
+Since then, companies and organisations such as \emph{FOSSA Systems}, \emph{Alba Orbital} and the \emph{Libre Space Foundation} have developed commercial buses, subsystems and launchers to support the PocketQube ecosystem. The PQ60 \autocite{PQ60}, PQ9 and CS14 \autocite{PQ91} standards provided shared electrical interfaces that could be used for a \draft{modular subsystem ecosystem}, similar to the CubeSat PC/104 subsystem form-factor.
+
+Lists of launched PocketQubes are maintained by \citeauthor{kuluNanosatsDatabase2023} \autocite{kuluNanosatsDatabase2023} and on Wikipedia \todo{cite wikipedia}.
+\citeauthor{franzesePocketQubePicosatellitesSurvey2025} also released a review of PocketQube missions launched until 2023 \autocite{franzesePocketQubePicosatellitesSurvey2025}.
+Until 2025, \draft{XY} PocketQubes have been launched. \draft{According to whom?}
+
+In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmeesterUtilityConstraintsPocketQubes2020} analysed the constraints and applications of PocketQubes \draft{globally} \autocite{bouwmeesterUtilityConstraintsPocketQubes2020}. They identified the main limitations of the technology \draft{to be} space debris regulations and considerations, technology limitations, and \draft{financial conditions}. They also proposed applications in the fields of education, \acs{IOD}, earth/space weather observation, communications, and space exploration.
+
+While no comprehensive survey exists regarding the systems engineering methodology used by PocketQube and pico-satellite developers,
+individual publications offer insight on the approaches followed by different teams. \todo{Here we cite individual papers...}
+
+\draft{!! Cite interview results as well}
+
+\subsection{Femto-satellites and atto-satellites}
 
 The earliest ideas about spacecraft miniaturisation to a mass below \SI{100}{\gram} started from attempts to miniaturise satellite avionics, as shown by \citeauthor{alkalaiIntegratedMicrospacecraftAvionics1996}'s \autocite{alkalaiIntegratedMicrospacecraftAvionics1996} 3D \ac{MCM} proposal.
 One of the first mentions of pocket-sized satellites was made by \citeauthor{jansonMassproducibleSiliconSpacecraft1999} in \citeyear{jansonMassproducibleSiliconSpacecraft1999} \autocite{jansonMassproducibleSiliconSpacecraft1999}, who proposed using Silicon as the structural material for a microchip-based \SI{10}{\centi\meter} earth observation satellite.
@@ -690,7 +728,7 @@ The proposed PalmSat design included solar cells generating \SI{2}{\watt} of pow
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.5\textwidth]{media/external/space-on-a-chip}
+	\includegraphics[width=.7\textwidth]{media/external/space-on-a-chip}
 	\caption{Proposed SpaceChip design \autocite{barnhartVerySmallSatelliteDesignDistributed2007}}
 	\label{fig:l_proposed_spacechip}
 \end{figure}
@@ -747,7 +785,7 @@ While ThumbSat was active between 2015--2017, it seems that regulatory obstacles
 
 
 %The Sprite, SpinorSat, Monarch and AmbaSat 
-Many of the above designs follow the open-source and open-hardware philosophies, with their source code, hardware design and documentation available online\footnote{\url{https://github.com/space-technologies-at-california/PCBSat} \draft{add other URLs...}}.
+Many of the above designs follow the open-source and open-hardware philosophies, with their source code, hardware design and documentation available online\footnote{\url{https://github.com/space-technologies-at-california/PCBSat} \draft{add other URLs...}}. As online databases do not typically include objects smaller than PocketQubes, we provide a list of known sub-PocketQube missions in \draft{table/appendix TADE}.
 
 \paragraph{}
 
@@ -762,7 +800,7 @@ Many of the above designs follow the open-source and open-hardware philosophies,
 \citeauthor{heinAttoSatsChipSatsOther2019} \autocite{heinAttoSatsChipSatsOther2019} \draft{investigated} the \qtyrange{1}{10}{\gram} atto-satellite class. The authors mapped the specific characteristics of atto-satellites (such as the small size and low mass/area ratio) into capabilities that may not be easily achievable by other spacecraft classes (\Cref{fig:l_hein_capabilities}).
 Example applications include distributed communications, Synthetic Aperture Radar, spacecraft health monitoring\footnote{As secondary spacecraft, tethered or following a parent spacecraft}, Very-Low Orbit science missions, rapid/statistical technology testing, ballistic coefficient determination, and position data beacons.
 
-Authors have also explored different specific applications of atto-satellites, either in an individual or constellation configuration. Examples include \draft{examples of applications}  \autocite{umansk}
+Authors have also explored different specific applications of atto-satellites, either in an individual or constellation configuration. Examples include \draft{examples of applications}  \autocite{umansky-castroChipSatsPlanetaryExploration2021}
 
 One of the most famous examples of an application of atto-satellites is the Breakthrough Starshot project.
 \citeauthor{marxInterstellarVehiclePropelled1966} initially proposed the idea of using terrestrial lasers to propel interstellar spacecraft in \citeyear{marxInterstellarVehiclePropelled1966} \autocite{marxInterstellarVehiclePropelled1966}, while
@@ -819,14 +857,264 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 	\item \textbf{Objectives}: System design imperatives and decisions that affect the project, including the domain, complexity and required innovations.
 \end{itemize}
 
+\subsection{Life Cycle Models}
+The selection of a life cycle model for the development phases is a key decision in systems engineering.
+The \ac{SEBOK} wiki defines a life cycle as ``a series of stages [\textellipsis] which confirm that the system is mature enough to leave one stage and enter another'' \autocite{sebok}.
+A life cycle model is individual and specific to each project, but usually follows a pre-specified life cycle \emph{process model}. 
+\acs{SEBOK} categories these models into three categories:
+\begin{enumerate}
+	\item Pre-specified and sequential processes (such as the waterfall model)
+	\item Evolutionary and concurrent processes (such as the V-model and spiral model)
+	\item Interpersonal and emergent processes (such as agile development and scrum)
+\end{enumerate}
+\acs{SEBOK} also provides a ``generic life cycle model'', which serves as a starting point for lifecycle processes, and includes the main stages of
+system definition, conceptualisation, realisation, production and utilisation. 
 
-\subsection{AGILE!}
+\begin{figure}[h]
+	\includegraphics{drafts/sebok_lifecycles}
+	\caption{Typical process lifecycle models \autocite{sebok_drivers}}
+	\label{fig:l_sebok_models}
+\end{figure}
 
-Agile.
+\acs{SEBOK} defines an additional partition within into \emph{Single-Step} and \emph{Multi-Step} processes.
+Single-Step models expect no development iterations, while Multi-Step models split the development, usually by repeating some stages of the process in an iterative or incremental fashion.
+\citeauthor{HEEAGER201822} \autocite{HEEAGER201822} explains the differences between ``incremental'' and ``iterative'' lifecycles:
+Incremental development defines an approach where complete versions (\emph{increments}) of a system are produced as part of repeated lifecycle stages,
+while iterative development refers to an approach where different \emph{pieces} of the system are reworked one at a time.
+Hybrid approaches that combine incremental and iterative development are also observed \autocite{garzanitiHybridAgileProduct2020,carpenterAgileTooFragile2014}.
+ \todo{Check [[@larmanIterativeIncrementalDevelopment2003]] for the classification iterative-incremental }
+
+
+\begin{figure}[h]
+	\includegraphics{drafts/partition_lifecycles}
+	\caption{\todo{Different partitions of lifecycle process models}}
+\end{figure}
+
+
+Traditional space systems engineering has traditionally followed a V or waterfall-type process \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}, with well-defined stage-gates between different project stages.
+Project phases are typically separated into Phase 0 (concept studies/mission analysis/needs identification), Phase A (feasibility/concept development/technology development), Phase B (preliminary definition), Phase C (detailed definition/fabrication), Phase D (assembly/qualification), Phase E (operations) and Phase F (close-out/disposal) \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}.
+This approach arises from the high costs associated with early space systems engineering, and the risk-averse attitude of developers, especially in the case of human spaceflight.
+Indeed, \draft{a significant time spent during the early definition phases combined with a rigorous review process has been shown to reduce later mission cost, risk, and delays} \todo{citation please - check sebok\_value}.
+However, this paradigm has often come under challenge, with different missions taking incremental or iterative approaches to system design \todo{citation please/carpenterAgileTooFragile2014}, the most notable example being SpaceX's ``move fast and break things'' approach \todo{CITATION!}
+\acs{SEBOK} claims that the integrated and interactive nature of modern hardware-software systems has rendered pre-specified processes obsolete, as system interfaces and behaviours can emerge better with their use, rather than extensive and bureaucratic processes.
+
+
+On the other hand, it is possible for engineering projects to be associated with no predetermined lifecycle process.
+These projects can be said to follow a ``by-default'' or ``ad-hoc'' model \autocite{cowper941SystemsEngineering2004}.
+This is often the case for small, volunteer-based or ``\ac{DIY}'' projects \autocite{bohmerOpenInnovationEcosystem}. However, even if no formal description is provided for the lifecycle used, the above models can often describe the actual work process followed. Simple projects follow a single-step process, which can evolve into a multi-step process with an undetermined number of steps \todo{citation needed}, with the benefits of systems engineering and a predetermined methodology becoming clear as the project scale grows (\Cref{sec:defining_systems_engineering}).
+
+\subsection{Agile Systems Engineering}
+
+Pre-specified life cycle processes, as described in the above section, usually prescribe a predetermined stage or product at the end of each development phase \autocite{sebok_incremental}.
+However, this requires prior knowledge about the system, and often involves the expectation of no errors or external \todo{disturbances} during design or development.
+
+In \citeyear{beckAgileManifesto2001}, the Agile Manifesto \autocite{beckAgileManifesto2001}, signed by 17 prominent software engineers, sought to challenge this model by essentially proposing ``evolutionary'' processes, where the end state of each phase of development is unknown.
+
+\begin{marginfigure}
+	\draft{The agile manifesto}
+	\caption[The Agile Manifesto]{The Agile Manifesto \autocite{beckAgileManifesto2001}}
+\end{marginfigure}
+
+The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \draft{Table ???}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; Different agile methodologies have been proposed and used, such as: \todo{Fix citations}
+\begin{itemize}[itemsep=0pt]
+	\item Adaptive Software development
+	\item Agile Unified Process (???)
+	\item Crystal (???)
+	\item Extreme programming ([[@beckExtremeProgrammingExplained2008]])
+	\item Feature-driven development (???)
+	\item Lean software development (???)
+	\item Kanban (???)
+	\item Rapid Application Development (???)
+	\item Scrum ([[@schwaverDefinitiveGuideScrum2020]])
+	\item Scaled agile framework (???)
+\end{itemize}
+
+These methodologies cover different parts of the lifecycle of a system, and are suited for different types of teams and sources of constraints.
+While their core is usually the lifecycle process model, some of them also branch into other system engineering \todo{components}. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} provides a comprehensive comparison of the above methodologies.
+We note that often synonymous terminology is used in methodology definitions and description, creating potential confusion in comparisons; especially words such as ``agile'', ``lean'', ``rapid'', and more are sometimes used interchangeably or with conflicting definitions. 
+
+\draft{Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.}
+
+The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. \todo{Meta-analyses performed \draft{(how?)} demonstrate that the correct application of Agile methodologies can reduce \draft{something} and increase developer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}}.
+Criticism against Agile is usually targetted towards incorrect implementations.
+Scrum, one of the most popular Agile frameworks, has faced criticism either at its foundation or due to its potential for mismanagement
+\autocite{tsalicoglouHowTransitionAgile2017,bjornDarkAgilePerceiving2019,grayCriticismScrum2015}
+\todo{explain better}.
+\citeauthor{kustersScreamGuide2020,jeffriesDarkScrum2016} \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} have notably produced tongue-in-cheek documentation demonstrating common incorrect applications of the Scrum approach.
+
+The success of Agile in software engineering has naturally encouraged its adoption in the engineering and development of physical products. The main obstacle that has to be overcome are what are referred to as ``\acp{COP}''  \autocite{schmidtAgileDevelopmentConstraints2017,petersonWhenWorldsCollide2021}.
+These constraints are related to the difficulties of creating shippable increments for each iteration, higher complexity, or increased external requirements. In the context of \ac{SCS}, the cause of these constraints can \draft{arise} from the reliance on physical components that may not be manufactured in-house, such as \acsp{IC}, \acsp{PCB}, or machined parts, the impracticality of automated testing, especially in the case of environmental qualification, and the expensive, non-repeatable launch process.
+
+For this reason, different approaches and methodologies have been investigated for the use of Agile in Systems Engineering \autocite{carsonCanSystemsEngineering2013,AgileComplexSystems,mcdanielGoodBadAgile2003,darrinAgileManifestoDesign2017,bottAnalysisTheoriesSupporting2019,petersonWhenWorldsCollide2021} \todo{Expand a little bit}. \todo{sebok/agile} and \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} have provide a comprehensive tailoring of Agile for Systems Engineering. \citeauthor{douglassAgileSystemsEngineering2015} notably adapted the four Agile principles as follows \autocite{douglassAgileSystemsEngineering2015}:
+\begin{enumerate}[itemsep=0pt]
+	\item \emph{Individuals and interactions over processes and tools}
+	\item \emph{Verifiably correct specifications over comprehensive documentation}
+	\item \emph{Customer collaboration over contract negotiation}
+	\item \emph{Responding to change over following a plan}
+\end{enumerate}
+
+Agile approaches have also been documented for use in critical systems and space systems. One of the earliest applications of practices similar to Agile can be observed in NASA's \emph{Faster-Better-Cheaper} approach in the 1990's, which is considered by some to be a success. \autocite{dimarioSystemicsNASAFasterBetterCheaper2005} provides a comprehensive review of the approach, its results, and successes and failures. \autocite{dillonFasterBetterCheaperProjectsToo2015} also analyses the controversy on the results of the FBC paradigm by comparing its strong and weak outcomes.
+
+There are various examples in literature for the implementation of Agile practices in entire, or at least parts of, space projects:
+- Multi Mission Bus Demonstrator \autocite{huangAgileHardwareSoftware2012}
+\todo{Find some more examples}
+
+ %have not yet found a strong footing on safety-critical and highly mission-critical systems:
+ \autocite{kasauliSafetyCriticalSystemsAgile2018} is a meta-analysis of only software development for such systems. \autocite{carpenterAgileTooFragile2014} tries to investigate how Agile could be tailored for such systems. Fully agile approaches, where increments involve versions of the entire system, are not yet documented in the literature.
+ \todo{Clean-up this section from notes}
+ 
+\paragraph{Agile Frameworks}
+\todo{This whole section needs a rework. The purpose is to compare existing Agile Software and Systems Engineering frameworks, and analyse their applicability to \ac{SCS} systems engineering. The result is that none of these frameworks can be adapted as-is, either because they target discipline-specific systems, or because they are designed for much larger teams}
+
+\subparagraph{Scrum}
+
+\subparagraph{Crystal}
+
+I originally checked for the Crystal method, which seems to be quite configurable/extensible to projects of different scales. However, it seems to be focused mostly on software projects and the collaboration between developers itself. Also, only Crystal Clear ([[@cockburnCrystalClearHumanpowered2004]]) and Crystal Orange ([[@cockburnSurvivingObjectorientedProjects]]) seem to be well defined.
+
+\subparagraph{SAFe (Scaled Agile Framework)}
+From Wikipedia:
+> The scaled agile framework (SAFe) is a set of organization and workflow patterns intended to guide enterprises in scaling lean and agile practices. Along with disciplined agile delivery (DAD), SAFe is one of a growing number of frameworks that seek to address the problems encountered when scaling beyond a single team.
+> [...]
+> While SAFe continues to be recognised as the most common approach to scaling agile practices (at 30 percent and growing), it also has received criticism for being too hierarchical and inflexible. It also receives criticism for giving organizations the illusion of adopting Agile, while keeping familiar processes intact.
+
+It seems this is quite non-applicable to projects of our scale. As [Matt Heusser](https://www.cio.com/article/244257/introducing-the-scaled-agile-framework.html) mentions:
+> [...] By large we mean more than a thousand people in IT, and more than 250 in software development, though it can be just as effective for teams of 50–100 people.
+
+SAFe is heavily criticised in a [blog post by Ken Schwaber]%(https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/).
+
+
+\subparagraph{RUP (Rational Unified Process)}
+From Wikipedia:
+> The rational unified process (RUP) is an iterative software development process framework created by the Rational Software Corporation, a division of IBM since 2003.
+
+According to different sources, RUP failed and/or wasn't agile:
+- https://www.quora.com/What-led-to-the-failure-of-the-Rational-Unified-Process-RUP-methodology-Was-it-just-hype-or-were-there-other-factors-involved
+- https://scrumscreener.wordpress.com/2007/02/21/why-rup-failed/
+It is an implementation of the Unified Process %](https://en.wikipedia.org/wiki/Unified_Process).
+
+The implementation of RUP was tied to its parent company and the tools that it sold. There are some other, less well-defined and less-known alternatives, such as the Agile Unified Process or the [OpenUP](https://www.utm.mx/~caff/doc/OpenUPWeb/). Most of them seem to be unsupported by now.
+
+It seems those ideas were abandoned two decades ago.
+
+Ken Schwaber's criticism against RUP is also evident in [his SAFe blog post](https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/):
+> When the signers of the Agile Manifesto got together in 2001, we wanted to share our ideas about software development, a discussion that resulted in the Agile Manifeto. [...] We wanted to undo the damage that waterfall had done to our profession, and we also hoped to ensure that RUP wasn’t seen as a viable successor.
+
+Some interesting comments:
+> They were used by RUP, but we developed by many of us far before RUP. The problem with RUP wasn’t the ideas in it, it was turning them into a formal, prescriptive methodology.
+
+> Scrum controls risk through empiricism. SAFe tries to control risk through predictability. We have years and years of experience learning that predictability is not possible for complex problems like software development. The rest of the world, both scientific and industrial, has accepted this and moved forward with complex control mechanisms. Only in software is the old dream of safety in predictability still alive and, apparently, salable.
+
+\subparagraph{DAD (Disciplined Agile Delivery)}
+
+This seems to be more like a set of guidelines rather than a well defined method or process, mainly defined in [[@ChooseYourWoW]] (WoW = Way of Working). The process seems very close to the typical action research iterations we see.
+
+DAD is defined primarily for software, not hardware products, even if some of its lessons learned are applicable. It tries to be a high-level methodology, so even if it covers our areas of concern (requirements - ops), it does so at a high level that might not be that useful.
+
+While we cannot apply DAD or a tailoring of it to our systems, the book is a nice source for a lot of information and suggestions on the tailoring f a custom framework.
+
+DAD is supported by a non-profit association called [PMI](https://pmi.org).
+
+> • DAD is the delivery portion of the Disciplined Agile (DA) tool kit—it is not just another methodology. • If you are using Scrum, XP, or Kanban, you are already using variations of a subset of DAD. • DAD provides six life cycles to choose from; it doesn’t prescribe a single way of workingchoice is good
+
+\subparagraph{DSDM (Dynamic Systems Development Method}
+
+- Iterative development
+- The design matches a lot what we're doing for the ChipSats
+- Tailorable to each project
+- MoSCoW requirement prioritisation
+
+The bad:
+- Roles and responsibilities
+- Too many of them; not suitable for a team of our size
+- (Ambassadors, testers, advisors, coaches, facilitators)
+- Daily standup
+- Have to get rid of in academia (for our envioronment)
+- Is the standup dying?
+- Pocketqube teams are usually small
+- And usually not in a corporate environment, or even in this case, not 100% of person is devoted to PocketQube
+
+Probably a very clear explanation of the difference between vertical/horizontal iterative/incremental development!
+https://www.agilebusiness.org/dsdm-project-framework/iterative-development.html
+
+Also: Take a look at the DSDM structured timebox. A format that complies with the different verification/planning stages that typically happen in a HW iteration:
+https://www.agilebusiness.org/dsdm-project-framework/13-timeboxing.html
 
 \section{Research Problem Formulation}
 
+\subsection{Scope}
+\label{sec:scope}
 
+\begin{table*}[]
+	\caption[Characteristics of different classes of sub-CubeSat programs]{Characteristics of different classes of sub-CubeSat programs. Criteria taken from \autocite{kalusCriteriaSoftwareProcess2013}.}
+	\label{tab:mission-characteristics}
+%	\begin{threeparttable}
+	\begin{adjustbox}{center}
+		\footnotesize
+		\begin{tabular}{@{}lL{5cm}L{4cm}L{4cm}@{}}
+			\toprule
+			& \textbf{Hobbyists} & \textbf{SmallSat Developers} & \textbf{Traditional Contractors} \\ \midrule
+			\multicolumn{4}{c}{Team} \\ \midrule
+			Size & 10 people or fewer & 20 people or fewer & Large \\
+			Distribution & Direct communication between team members & Direct communication between team members & Usually separate contractors \\
+			Turnover & Team members have a high turnover rate, limited duration in project & Low or Medium & Low \\
+			Previous cooperation & Varies & Varies & High \\
+			Good cooperation & Varies & Varies & Varies \\
+			Domain knowledge & Usually Low & High & Very High \\
+			Tool knowledge & Usually Low & High & Very High \\
+			Technology knowledge & Usually Low & High & Very High \\
+			Process knowledge & Usually Low & High & Very High \\
+			\midrule \multicolumn{4}{c}{Internal Environment} \\ \midrule
+			Prototyping & \multicolumn{3}{c}{Low manufacturing cost of satellite would encourage prototyping at all stages} \\
+			Clear project proposal & No & Often & Yes \\
+			Management availability & High & High & Low \\
+			Management support & High & High & Low \\
+			Project budget & Low & Medium & High \\
+			Project duration & Indefinite & Short\textendash Medium & Long \\
+			Project type & Varies & Varies & Varies \\
+			Project role & Varies & Varies & Varies \\
+			Sub contractors & Rare & Sometimes & Almost always \\
+			Financial controlling & High & Low & High \\
+			Measurement & Low & Medium & Medium \\
+			Technical support & Low & Medium & High \\
+			Programming language & N/A & N/A & N/A \\
+			\acs{COTS} products
+			%\tnote{*}
+			& Combination of COTS/in-house & Combination of COTS/in-house & Usually \\
+			Operating system & N/A & N/A & N/A \\
+			Database system & N/A & N/A & N/A \\
+			Tool infrastructure & Varies & Varies & Varies \\
+			\midrule \multicolumn{4}{c}{External Environment} \\ \midrule
+			Legal aspects & Yes & Yes & Yes \\
+			Stakeholders & None, one or few (sponsors, launch providers) & Few & Many \\
+			Requirements stability & Low & Low & High \\
+			Client process & None & None & Alignment with internal/government processes usually required \\
+			Client availability & N/A & High & Low \\
+			Type of contract & Flexible & Varies & Fixed \\
+			User availability & Varies & Varies & Varies \\
+			User background & Varies & Varies & Varies \\
+			Trainings & Varies & Varies & Varies \\
+			\midrule \multicolumn{4}{c}{Objectives} \\ \midrule
+			Domain & \multicolumn{3}{c}{Space Engineering} \\
+			Complexity & Medium & Medium & High \\
+			Degree of innovation & High & Medium & Medium \\
+			Legacy system & No & No & No \\
+			Conceptual solution & N/A & N/A & N/A \\
+			Technical solution & Yes & Yes & Yes \\
+			Hardware development & Yes & Yes & Yes \\
+			User Interface & N/A & N/A & N/A \\
+			System integration test & Required & Required & Required \\
+			Neighboring systems & \multicolumn{3}{c}{Deployer/host, and launch vehicle} \\
+			Safety \& Security & \multicolumn{3}{c}{Strict requirements from externals (e.g.~launch provider, regulators)} \\
+			\multicolumn{4}{c}{\todo{This needs to be updated and rewritten}} \\
+			\bottomrule
+		\end{tabular}
+	\end{adjustbox}
+%		\begin{tablenotes}\footnotesize
+%			\item[*] Currently, most sub-CubeSat spacecraft are built completely in-house, since there is no significant off-the-shelf subsystem or component availability.
+%		\end{tablenotes}
+%	\end{threeparttable}
+\end{table*}
 
 \chapter{Research Approach}
 \label{chap:RESEARCH_APPROACH}
@@ -871,9 +1159,21 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	\item 
 	\textbf{Descriptive Study II (DS-II)} (Initial):
 	
-	\draft{aaaaaaa}
+	The DS-II stage includes the validation of the application and impact of the proposed design support, based on the execution of empirical studies.
 	
-	This is elaborated in \Cref{chap:METHODOLOGY}
+	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}.
+	
+	In an ideal scenario, we could perform a statistical evaluation of our support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through lengthy A/B experiments. However, complete Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
+	
+	Nevertheless, the intended goal of short \( < \qty{1}{year}\) projects allows implementing and qualitatively validating the proposed \acs{SCS} methodology, as part of specific \textbf{case studies} that are developed in parallel with this thesis.
+	
+	More specifically, during this work I participated in four miniaturised space system design missions, most of them targetting environmental qualification\footnote{equivalent to a \acs{TRL} of 8}.
+	These case studies were used to iteratively generate data, test, and validate the proposed methodology.
+	
+	
+	The description and results of the case studies are elaborated in \Cref{chap:CASESTUDIES}.
+	
+	\todo{Probably need to add a few more details on how the case studies are performed}
 	
 	
 \end{enumerate}
@@ -946,11 +1246,11 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 
 
 
-\section{Scope}
-\label{sec:ra_scope}
+%\section{Scope}
+%\label{sec:ra_scope}
 
-\section{Case Study Approach}
-\label{sec:ra_casestudies}
+%\section{Case Study Approach}
+%\label{sec:ra_casestudies}
 
 
 \chapter{A Methodology for Sub-CubeSat Spacecraft}
@@ -958,11 +1258,291 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 
 \section{Technical Management Methodology}
 
+\subsection{Requirements for Project \& Technical Management}
+
+\subsection{Project Lifecycle Approach: The Sat-Scrum Model}
+
+\subsection{Project Lifecycle Approach: The Slice-Based Sat-Scrum Model}
+
+
+
+\subsection{Workload Management Approaches}
+
+\subsection{Requirements: Application of the MoSCoW method}
+
+\subsection{Data Management: A Model-Based Approach}
+
+\begin{table}[h]
+	\colorlet{No}{MaterialRed600}
+	\colorlet{Maybe}{MaterialOrange600}
+	\colorlet{Yes}{MaterialTeal600}
+	\def\yes{\textcolor{Yes}{Yes}}
+	\def\partially{\textcolor{Maybe}{Partially}}
+	\def\no{\textcolor{No}{No}}
+	\def\highbad{\textcolor{No}{High}}
+	\def\highgood{\textcolor{Yes}{High}}
+	\def\lowbad{\textcolor{No}{Low}}
+	\def\lowgood{\textcolor{Yes}{Low}}
+	\def\depends{\textcolor{Maybe}{Varies}}
+	\centering
+	\caption{Comparison of documentation methods}
+	\label{tab:documentation}
+	\begin{tabular}{@{}lllll@{}}
+		\toprule
+		& \multicolumn{2}{c}{Document-based} & \multicolumn{2}{c}{Model-based} \\ \cmidrule(r){2-3} \cmidrule(r){4-5}
+		& \textbf{Informal} & \textbf{Formal} & \textbf{Informal} & \textbf{Formal} \\ \midrule
+		\textbf{Completeness} & \lowbad  & \highgood  & \depends  & \highgood  \\
+		\textbf{Efficiency} & \highgood & \lowbad  & \highgood & \lowbad \\
+		\textbf{Flexibility} & \highgood & \highgood  & \lowbad  & \highgood  \\
+		\textbf{Accessibility} & \highgood & \lowbad  & \depends  & \lowbad  \\
+		\textbf{Maintainability} &  \highgood & \lowbad  & \depends & \lowbad \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\textbf{\ac{EDM}}, \textbf{Technical Data Management} or \textbf{Configuration Management}
+is the process of acquiring, accessing, managing and using technical data that describe a system's specifications \autocite{sheaNASASystemsEngineering2020,ECSS-M-ST-40C,ECSS-E-TM-10-25A}. 
+The importance of this discipline is shown in the \acs{NASA} Systems Engineering Handbook, explaining that ``[Configuration Management] enables all stakeholders in the technical effort, at any given time in the life of a product, to use identical data for development activities and decision-making'' \cite{sheaNASASystemsEngineering2020}.
+
+In the context of \ac{SCS}, ``Engineering Data'' can specifically mean:
+\begin{itemize}
+	\item Requirements specifications and acceptance thresholds
+	\item Product trees of the system and subsystem
+	\item Interface definitions and specifications between components
+	\item System performance parameters (e.g.~mission/phase duration, trajectory)
+	\item Subsystem and component physical characteristics (e.g.~mass, dimensions, quantity, location)
+	\item Subsystem and component performance characteristics (e.g.~efficiency, power consumption, capacity)
+	\item Lists of associated \draft{entities} (e.g.~operational modes, risk matrices, failure modes)
+	\item Analysis and test results
+	\item Domain-specific models (e.g.~\acs{CAD} models)\footnote{For the purpose of this work, I will not consider domain-specific models, as they are usually managed and accessed through different discipline-specific tools, in contrast to the rest, which can be \draft{essentially represented as plain text}.}
+\end{itemize}
+
+It is important to make a distinction between \ac{EDM} and the term ``documentation'', \todo{so let's make it. What we call “Engineering Data” may be combined with project documentation, or be stored in an independent format, in a structured manner or a domain-specific model.}
+
+As Engineering Data is most likely stored and handled in a digital format\footnote{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management \todo{cite kanban/scrum}, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data (\Cref{sec:scope}), making their digital representation essentially a requirement.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools.
+
+In general, the success of an \ac{EDM} method does not only depend on the short and long-term correctness of the available data, but should also be focused on minimising the additional \ac{SYE} overhead.
+A quantitative model for the evaluation of documentation effectiveness was proposed by \citeauthor{amblerStrategiesAgileSoftware2008} \autocite{amblerStrategiesAgileSoftware2008} as follows:
+\[
+	\text{Potential value} = \text{Produced value} \cdot C \cdot R \cdot U \cdot F \cdot T
+\]
+\marginnote{where:
+\begin{itemize}%[itemsep=-1ex]
+	\item Produced value is guesstimated by the producers of the artifact.
+	\item \(C\) is the percentage of the artifact that is currently “correct”.
+	\item \(R\) = The chance that the artifact will be read by the intended audience.
+	\item \(U\) = The chance that the document that is actually understood by the intended audience.
+	\item \(F\) = The chance that the advice contained in artifact will be followed.
+	\item \(T\) = The chance that the advice will be trusted.
+\end{itemize}
+}
+
+As we lack the statistical data to quantify \ac{EDM} approaches based on this equation, we instead define the following \textbf{criteria for \acl{EDM} processes}:
+\begin{enumerate}
+	\item \textbf{Correctness}: The System Description should contain factual information at any point in time.
+	\item \textbf{Completeness}: The System Description should cover all aspects of the system to the degree of detail required for normal engineering work. This includes information about lower-level components and internal/external interfaces.
+	\item \textbf{Efficiency}: The System Description should require a minimal amount of effort and time to produce and maintain.
+	\item \textbf{Flexibility}: The System Description should be adaptable to different types of system structures, interfaces, and descriptors \todo{better explanation}
+	\item \textbf{Accessibility}: The System Description should be easily readable, and require a minimal amount of time and actions to access the desired specification.
+	\item \textbf{Maintainability}: The System Description should provide a way of quickly updating and propagating specification updates, without harming correctness.
+\end{enumerate}
+
+
+Traditionally, the description and documentation of system specifications have taken place via text documents.
+The combination of human language with rich text capabilities (e.g.~images, tables, equations, references) makes it possible to represent all \draft{necessary engineering data}. In practical terms, text documents \draft{follow a specific format such as OOXML or MD}. However, the use of prose can quickly become cumbersome as the complexity of a system increases, as it is difficult to represent modular and repeated structures, and the representation of data is not consistent.
+\marginnote{In practical terms, document-based approaches lack \begin{enumerate*}
+		\item \emph{maintainability}, as a change in one parameter does not update all of its dependents;
+		\item \emph{accessibility}, as there is no well-defined structure that allows quick retrieval of information;
+		\item \emph{efficiency}, as additions and modifications require tampering with entire documents.
+\end{enumerate*}}
+
+The shortcomings of document-based specification approaches led to the adoption of model-based approaches, most notably SysML. \todo{blablabla capella MBSE status-quo etc}
+
+\begin{table*}[h]
+	\footnotesize
+	\def\arraystretch{1.05}
+	\begin{tabularx}{\textwidth}{cp{4cm}X}
+		\toprule
+		\textbf{EDM-010} & The tool shall represent a spacecraft in a hierarchical tree-like structure of multiple entities containing multiple parameters each. & This generic requirement defines the core functionality of our tool: To store spacecraft engineering data in a hierarchical format. A tree-like structure is indeed a common method of representing a product and its details, which is already common in most \ac{EDM} tools. It also allows extending functionality beyond what is offered by a grid-like data representation, as used in a spreadsheet.
+
+		Product tree structures are usually asked to represent different types of repetition or instantiation inside a product. For example, a type of fastener, electrical connector or integrated circuit may be shared across different subsystems and assemblies. While we don't specify explicitly how to handle these cases as a requirement, we note that many \ac{MBSE} tools clearly differentiate between an ``element template'' and an ``element instance'' which can be repeated. However, we do note that most elements of a small spacecraft are rarely duplicated; therefore the process of instantiating an element should not require duplicate effort to create and store a template representation for it.
+		\\
+		\textbf{EDM-020} & The complete functionality of the tool shall be accessible from the web. & In essence, any device with a web browser should be able to read, edit and manage engineering data with no restrictions. This ensures that access is not limited by technical or hardware limitations, and that engineers have quick access to data through their computer, a mobile device when in the field, or even embedded systems.
+		
+		Accessibility should ideally be extended to formats beyond personal devices as well; this includes paper printouts (for use during laboratory work), digital signage and more.
+		\\
+		\textbf{EDM-030} & Stored data shall be version controlled. & On a rapidly-changing or short-duration project, it is essential that all changes are traceable in terms of people, time and reason \todo{}. 
+		\\
+		\textbf{EDM-040} & Each action shall be easily accessible. &  This requirement follows a heuristic known as the ``three-click rule'', suggesting that no function or page on a User Interface should take more than 3 clicks to access \cite{glassey_proximity_2005}. While this is not a hard rule or requirement\todo{}, it can still provide a ballpark on how to simplify user interaction.
+		
+		Ideally, the common example of creating or updating a parameter through such a tool will be no harder than responding to an inquiry about this parameter on an online communication platform. As a performance criterion, we can specify that \emph{users should be allowed to access any engineering parameter within 20 seconds of having access to a web browser}.
+		\\
+		\textbf{EDM-050} & The tool shall provide an \acf{API}. &      Space Engineering often involves the combination of multiple pieces of software. Therefore, a solution hosting engineering data should offer a method of fetching and updating this data programmatically.
+		
+		This will also allow engineers to create integrations and automations that can update engineering values based on other values. \todo{}
+		
+		Such an \acs{API} will have to be properly documented in order to reasonably reduce the overhead added by such implementations.
+		\\
+		\textbf{EDM-060} & The tool shall be extensible by code.
+		&     Informal \acs{MBSE} platforms often have limited flexibility/modularity as a result of \todo{having} an opinionated layout or limited feature set. On the other hand, formal \acs{MBSE} platforms provide a much larger \todo{margin of creativity/blanker slate}.  This expects users to implement the structure of their model themselves, and format it as they see fit.
+		
+		As an example, an informal \acs{MBSE} platform may already have a \emph{position} parameter defined for components, which includes 3 integers (for each axis) and can be state dependent (e.g.~stowed/deployed). In a formal \acs{MBSE} platform, the use will have to create the position parameter and associate it with a product, including the appropriate representation for each axis and state. On the other hand, an informal \acs{MBSE} platform may have no way to attach an interface link or an image file to a component.
+		
+		A \todo{middle-ground} solution would be to implement an opinionated system that is built from the ground-up to allow extensibility. An efficient method to facilitate this extensibility would be an embedded scripting language, such as Lua \todo{or the other language I recently starred}. If a Turing-complete language is combined with the appropriate storage and visualisation procedures, the user would then have a \todo{theoretically infinite canvas}.
+		
+		The choice of language(s) that are officially supported for extensibility also plays an important role. A language that is inherently simple, or that many spacecraft engineers are familiar with, is more likely to get used compared to alternatives.
+		
+		In any case, extensibility should be provided, within a reasonable degree, to a large number of aspects on such a tool. For example, by including a multi-line ``Justification'' or ``Notes'' field for parameter or entity, users can describe complex concepts that would need to be modelled independently if not represented with prose. For example, users might need to specify uncertainties in data sources, descriptive parameters (such as colour), rationale for the selected value, acceptable limits and more.
+		\\
+		\textbf{EDM-070} & The tool shall notify users on changes.
+		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue \todo{find a reference that explains what tool fatigue even is or if such a thing exists}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
+		
+		As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermore_managing_2021,retselis_adaptation_2022}, it logically follows that a tool should have the capability of announcing draft or released changes in real-time on that platform. This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
+		\\
+		\textbf{EDM-080} & The tool shall be available as Free and Open Source software with a focus on Developer Experience. &
+		While the choice of making technology available as open-source depends on the team and stakeholders of this project, we believe that a \acs{FOSS} tool would \todo{present} higher value to its users.% The ability to tweak the functionality and \todo{... no ideas...}
+		
+		The discussion of Developer Experience has to inadvertently focus on software development trends in the industry. For example, while an interpreted language (such as Python) is usually regarded as less performant than a compiled language (such as C++), it is more likely that engineering graduates are familiar with the former \todo{citation}, which in turn increases the chances that they will interact with the codebase and be familiar with any errors caused.
+		
+		\\ \bottomrule
+	\end{tabularx}
+	\caption{Example requirements for a \ac{EDM} tool \todo{update, rewrite, cleanup}}
+\end{table*}
+
+
+
+
+
+
+\begin{figure}[h]
+	\caption{Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
+	\includegraphics{graphics/spardata_moqup}
+\end{figure}
+
+
+\subsection{Tooling Requirements and Review}
+\label{sec:METHODOLOGY_tooling_requirements}
+
+\draft{Experience from past missions has shown that tools will not be used unless they are actually good.}
+
+\FloatBarrier
 \section{Hardware Development Methodology}
+
+\subsection{Defining a Design Solution}
+
+\draft{\begin{itemize}
+		\item Review of heritage/reuse, decisions taken, dangers (see Hein thesis)
+\end{itemize}}
+
+\subsection{Interface Management Guidelines}
+
+\draft{???}
+
+\subsection{Verification \& Validation Guidelines}
+
+Verification and validation is an integral part of a sprint cycle, and is the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
+
+%The distinction between the ``verification'' and ``validation'' terms is provided 
+
+In traditional space systems engineering, verification is \draft{ECSS tade}.\marginnote{\textbf{Definition 1.1:} \textbf{Verification} is the process which demonstrates through the provision of objective evidence that the product is designed and produced according to its specifications and the agreed deviations and waivers, and is free of defects
+\cite{ECSS-S-ST-00-01C}
+
+\textbf{Definition 1.1:} \textbf{Validation} is the process which demonstrates that the product is able to accomplish its intended use in the intended operational environment.} In short, verification involves ensuring that the built system satisfies all agreed-on requirements and specifications, while validation ensures that the correct system was built.  \cite{ECSS-S-ST-00-01C}
+
+\acs{ECSS} defines four verification methods that are typically used in space missions: \emph{review-of-design, analysis, inspection and testing}, which provide different levels of fidelity and reliability \autocite{ECSS-E-ST-10-02C}. It also distinguishes between \emph{acceptance} and \emph{qualification} levels for design parameters, the former of which are used to verify workmanship and functionality, and the latter used to demonstrate design margins, usually at a level that may be destructive for the \ac{DUT} \autocite{ECSS-E-ST-10-03C}.
+Verification is said to be made in ``ambient'' conditions if no attempt is made to simulate the space environment,\footnote{Namely temperature, pressure, radiation, and electromagnetic environment} or are classified as ``environmental'' otherwise.
+
+Verification is traditionally done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{For example, SpaceX requires \draft{this kind of testing, cite spacex rideshare}}On the other hand, validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use.
+
+In the context of \ac{SCS}, verification and validation present an interesting target for optimisation.
+\draft{The use of an Agile lifecycle process implies that validation can be performed early, as \ac{MVP} versions of the system are produced early in the development cycle, and their usefulness can be asserted in conversation with the relevant stakeholders}
+The most critical physical aspects of a design\footnote{Such as the verification of the functionality of deployables and actuators, the verification of masses and envelopes, thermal and electromagnetic behaviour \draft{etc.}} have traditionally involved both detailed analysis and testing. Testing of large subsystems and systems requires costly dedicated facilities, especially in environmental verification; developers are therefore incentivised to create and execute domain-specific models and analyses of their systems.
+
+The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
+
+Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
+The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where \draft{payload runs} need multiple days to complete). Different test coverage models are therefore typically defined in missions.
+\marginnote{Typical test coverage models can include: \todo{citation}
+\begin{itemize}
+	\item (Very) Reduced Functional Test
+	\item Full Functional Test
+	\item ``Day-in-life`` Test
+	\item Mission Test
+	\item End-To-End Test
+	\item Failure recovery Test 
+\end{itemize}
+}
+
+
+On the other hand, environmental verification usually involves specialised equipment\footnote{Such as shakers, shock benches, \ac{TVAC} chambers, or anechoic chambers} that is used to simulate space conditions for the \ac{DUT}.
+The emulation of these conditions is necessary in order to examine their expected and unexpected effects on electronics, structures and mechanisms.\marginnote{These conditions can also affect component behaviour that is difficult or impractical to analyse, such as the behaviour of \acs{COTS} fastener materials, or temperature-dependent electronic performance degradation \todo{format}}
+
+Environmental testing has generally required access to expensive, time-limited remote facilities. \todo{cite}
+However, the small size of \acs{SCS} and the popularity increase of the nano-satellite industry have started to make the purchase, operation and maintenance of in-house testing equipment more attractive, with \ac{TVAC} chambers, shakers, environmental chambers and Helmholtz cages starting to become more popular in university campuses and  \draft{industry conglomerations}.\footnote{This matches the Agile principle of centralising development as described in \todo{Tade}} \todo{cite, e.g. lsf facilities}
+Even if a manufacturing facility cannot support a full environmental testing campaign, it may be able to perform activities that drastically increase confidence in the design.
+
+In addition to this general shift towards in-house environmental testing, \ac{SCS} are usually composed of simple and well-understood structures, such as singular circuit boards or simple subsystem stacks. Past performance of these structures, especially in terms of rigidity and thermal behaviour, is well understood from previous missions. This reduces the benefits of analysis.
+
+As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
+
+\todo{Here we have a more mathematical analysis of the test using some fancy maths like Markov chains and so on... It would be nice to have some numbers on risk and probability to let people calculate when exactly they need to test and so on}
+
+\todo{Here we add a section about balloon testing and how it ties to the whole idea.}
+
+%\paragraph{In-Orbit Testing}
+In some cases, the resources available to a development team may encourage designating an \textbf{orbital launch} as a verification (and validation) method. Indeed, this is the approach taken by the \emph{SMOG-1} PocketQube team, who launched the \emph{SMOG-P} PocketQube as an early prototype \autocite{SMOG14thHungarian2021}.
+This approach may be risky, as the lead time between the production of a \acl{FM} and its operation can be too long to fit within limited iteration cycles. However, it can be appropriate for teams that have a ready-to-use spacecraft bus, already have plans or access to multiple low-cost flight opportunities, or want to replace generally-costly test campaigns, such as radiation testing.
+In-Orbit Testing need also not be performed on the entire system, and can follow the slice-based approach, especially when simple low-cost payload flight opportunities are available.
+
+In general, the verification \& validation process of an \ac{SCS}-methodology team will differ considerably from the equivalent in a CubeSat process.
+However, it will still vary between teams, as it depends on variables set by the internal and external environment. I provide further guidelines for methodology tailoring in \Cref{sec:METHODOLOGY_tailoring}. \todo{Do I?}
+
+\todo{ [[@deckerSystemsengineeringAssessmentMultiple2016]]: Evaluation of the cost benefits of using an Engineering or Qualification Model in a student/hobbyist CubeSat project.}
+
+
+
+\subsection{Agile Maintenance \& Operations}
+Sometimes there is confusion between agile-systems engineering and agile systems-engineering \autocite{haberfellnerAgileSystemsEngineeringAgileSystems2005}.
 
 \section{Software Development Methodology}
 
-\section{Tailoring}
+\section{Methodology Tailoring}
+\label{sec:METHODOLOGY_tailoring}
+
+\subsection{Recommended Tools}
+
+In the ideal case, each proposed part of the \ac{SCS} methodology would be supported by dedicated hardware and software tools, compliant with the requirements described in \Cref{sec:METHODOLOGY_tooling_requirements}, and tailored to each specific use case.
+However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
+
+Because \ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions, I consider tool selection as one of the first decisions that have to be taken when starting a new project.
+\draft{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
+It is also important to create a distinction between domain-specific tools\footnote{such as analysis/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
+A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
+
+\begin{table*}[h]
+	\caption{Indicative systems engineering tools to support agile sub-CubeSat development}
+	\label{tab:methodology_indicative_tools}
+	\begin{tabularx}{\linewidth}{@{}llX@{}}
+		\toprule
+		\multicolumn{2}{l}{Task} & Example Tools \\ \midrule
+		Project Management and Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
+		Internal Communication & & Slack, Mattermost, Zulip, Discord, Microsoft Teams, Zoom \\
+		\multirow{4}{*}{Knowledge Management} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} \\
+		& Document-based formal & Microsoft Office, LibreOffice, LaTeX \\
+		& Model-based informal & CDP4-COMET, Valispace \\
+		& Model-based formal & SysML, Capella, Papyrus, Cameo Systems Modeler, Enterprise Architect \\
+		Asset Management & & Inventree, ERPNext \\
+		Artifact Management & Software and hardware & Github, GitLab \\
+		Requirements Management &  & Jira, Notion \\
+		Test and Defect Management &  & Jira, Notion \\
+		Verification &  & LabView, Selenium, Python Robot Framework \\
+		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators} \\
+		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting} \\
+		\multicolumn{3}{c}{\draft{This table needs to be updated to include more tools, details, and match the recommended methods}} \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
 
 
 \chapter{Case Studies}
@@ -1467,6 +2047,11 @@ Alternatively, a Yocto distribution can be used.
 
 Edge Impulse generates a binary version of the model for ARM32 systems. The sizes of these binaries were in the order of ~100 MB, making uploading close to impossible. Different binary diff methods were examined with no immediate success. Recommending to use a more standardised format for model weights in the future.
 
+The main obstacles in the critical path were interfaces with external providers and collaborators. The typical procurement times of \acp{PCB} and components were significant and had to be planned around. Any unexpected delays also significantly influenced progress towards the iteration goal. While preparation for such cases might be possible in some contexts, Agile frameworks usually suggest maintaining direct communications with external collaborators, to the extent possible.
+
+\subsection{Verification}
+
+For AI4Space, we used the Robot Framework for automation \draft{Cite OSCW2025 LSF presentation about the use of Robot framework.}
 
 
 \subsection{Operations}
