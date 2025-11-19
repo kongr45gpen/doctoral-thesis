@@ -292,19 +292,19 @@ These satellites are also classified as pico-, femto- and atto-satellites (see \
 		\centering
 		% Image source: Own
 		\includegraphics[height=3cm]{media/pictures/acubesat.png}
-		\caption{A 3U CubeSat (\emph{AcubeSAT})\draft{cite acubesat}}
+		\caption{A 3U CubeSat (\emph{AcubeSAT}) \draft{cite acubesat}}
 	\end{subfigure}~
 	\begin{subfigure}[t]{0.3\textwidth}
 		\centering
 		% Image source: https://www.nanosats.eu/sat/beesat-10-13
 		\includegraphics[height=3cm]{media/pictures/BEESAT-13}
-		\caption{A 1/4U CubeSat (\emph{BEESAT-13})\cite{kayalBEESATPicoSatellite2007}}
+		\caption{A 1/4U CubeSat (\emph{BEESAT-13}) \cite{kayalBEESATPicoSatellite2007}}
 	\end{subfigure}~
 	\begin{subfigure}[t]{0.3\textwidth}
 		\centering
 		% Image source: Own
 		\includegraphics[height=3cm]{media/pictures/qubik}
-		\caption{A 1p PocketQube (\emph{QUBIK})\draft{cite LSF}}
+		\caption{A 1p PocketQube (\emph{QUBIK}) \draft{cite LSF}}
 	\end{subfigure}%
 	\\%
 	\begin{subfigure}[t]{0.3\textwidth}
@@ -687,9 +687,58 @@ Systems Engineering is also inherently connected with Project Management, which 
 
 Both concepts can be decomposed into a set of more specific activities, which sometimes overlap, as explained in \Cref{sec:defining_systems_engineering}.
 
+\FloatBarrier
 \section{CubeSat Ecosystem}
 
 \draft{Check CubeSat lifecycles section in Notes}
+
+\subsection{Development Time Drivers}
+
+
+
+\begin{table*}[h]
+	\caption{Time spent for development activities of various small satellite projects, based on published Gantt charts used for planning. ``Days'' should be interpreted as working days. Empty cells imply that the information is missing or not categorised as such.}
+	\label{tab:l_cubesat_time_drivers}
+	\begin{adjustbox}{width=1.1\textwidth,center}
+	\begin{tabular}{lllllll}
+		\hline
+		Project & AcubeSAT \cite{papafotiouAcubeSATProjectManagement2021} & PowerSat \cite{garrettProjectManagementSystems2022} & CLOVER-Sat \cite{jeremyjacobeAnnouncementPartnershipOpportunity} & Hermes \cite{pujolgasullaHermesCubesatOnsite2021} & NeAtO \cite{andersonDesignAnalysisCubeSat2020} & SPEISAT \cite{bartolucciStudyAnalysisNanosatellite} \\
+		Type & 3U CubeSat & 3U CubeSat & 2U CubeSat & 9U CubeSat & 6U CubeSat & 3U CubeSat \\ \hline
+		Feasibility Assessment &  & & 60 days & & & \\
+		Funding Search &  & & 200 days & & & \\
+		Training & 111 days  & & & 39 days & & \\
+		Design & 827 days & 40 days \footnotemark{} & 280 days & 300 days & 122 days & 60 days\\
+		Review &  &  & & 160 days & &\\
+		Procurement & 450 days  & 43 days&  & 80 days & & 9 days\\
+		Prototyping &  & &  & & & \\
+		Software Development & 320 days & & & & & \\
+		Manufacturing & 102 days & & 100 days & 120 days & & \\
+		Assembly \& Integration & 195 days & & & 180 days & 25 days &\\
+		Structural Analysis & 234 days & 8 days & & & 132 days & 5 days \\
+		Thermal Analysis & 124 days & 22 days &  & & 149 days &\\
+		Other Analysis & 228 days &  & & & &\\
+		Functional Testing & 346 days &  & 240 days & 60 days & & 21 days\\
+		Structural Testing & 79 days &  & 30 days & 45 days & & 1 day\\
+		Thermal Testing & 100 days &  & 30 days & 45 days & &\\
+		Other Environmental Testing & 121 days & & &  & &\\ \hline
+		\end{tabular}
+	\end{adjustbox}
+
+	\footnotetext{\draft{Structural design only}}
+\end{table*}
+
+Various CubeSat projects in the design, manufacturing or operations stages have published extracts from their Project Management plans, providing information about the main drivers behind costs, phases, development effort, and their critical path.
+
+In terms of cost, results can vary significantly, depending on the environment and objectives of the project. Two extremes can be found in the EQUiSat project, which is a 1U CubeSat bus costing \SI{3800}{USD} \autocite{leikenEQUiSatSpace$3776612019}, and the Hermes proposal, which has estimated \SI{35300000}{USD} for a 9U deep-space CubeSat \autocite{pujolgasullaHermesCubesatOnsite2021}. The accounting for CubeSat projects highly depends on whether labour, facility and launch costs are considered. These services may often not be accounted in project budgets, or be provided for free as part of an external agreement\footnote{For example, space agency projects may cover test campaigns and launch opportunities, or laboratory facilities may already available. Labour costs are sometimes not considered in academic projects in the case of voluntary participation.}.  \todo{cite paper from SW} In case labour costs are considered, the project cost will be also very closely tied to development time.
+Due to this high variance between project costs, and the lack of concrete data on team environment and cost budgets, I have not performed a comparative analysis of CubeSat project costs.
+
+On the other hand, CubeSat development time can be more easily allocated into different categories. A sample of projects based on available project planning literature is shown in \Cref{tab:l_cubesat_time_drivers}. The comparison between different time allocation strategies reveals that:
+\begin{itemize}
+	\item Some projects allocate work packages to ``preparatory'' activities, such as feasibility assessment and training for the application of methodologies and tools. These activities are not strictly part of a project's engineering efforts, but can be necessary before work can continue on certain engineering tasks.
+	\item ``Procurement'' as an activity is planned and often part of the critical path. While it usually involves little to no work from the developers, this downtime is significant and long enough to be part of high-level plans.
+	\item The estimated duration of the same activity can vary significantly between projects, often crossing one order of magnitude. This is affected by different project-specific and environment-specific parameters. \todo{which I analyse at XYZ...}
+	\item Some engineering tasks are only considered as part of the project plan by a single project, such as \emph{software development}, \emph{prototyping} or \emph{reviewing}.
+\end{itemize}
 
 \section{Sub-CubeSat Ecosystem}
 
@@ -809,13 +858,13 @@ One of the most famous examples of an application of atto-satellites is the Brea
 \citeauthor{marxInterstellarVehiclePropelled1966} initially proposed the idea of using terrestrial lasers to propel interstellar spacecraft in \citeyear{marxInterstellarVehiclePropelled1966} \autocite{marxInterstellarVehiclePropelled1966}, while
 %
 \citeauthor{forwardRoundtripInterstellarTravel1984} in \citeyear{forwardRoundtripInterstellarTravel1984} proposed the use of lightsail\footnote{equivalently, laser-sail} spacecraft, calculating different mission designs that can reach Alpha Centauri after \(\sim\)40 years of travel.
-\citeauthor{manchesterStochasticSpaceExploration2011} \autocite{manchesterStochasticSpaceExploration2011}, on the other hand, proposed using the smaller ChipSat spacecraft for space exploration \autocite{manchesterStochasticSpaceExploration2011}. \draft{Investigate "Starwisp" by Forward} %https://en.wikipedia.org/wiki/Starwisp
+\citeauthor{manchesterStochasticSpaceExploration2011} \autocite{manchesterStochasticSpaceExploration2011}, on the other hand, proposed using the smaller ChipSat spacecraft for space exploration. \draft{Investigate "Starwisp" by Forward} %https://en.wikipedia.org/wiki/Starwisp
 
 The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a \draft{XYZ} array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, \draft{information about starchip}. As of 2025, while project was made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
 
 
-Femto- and atto-satellite specific technologies have also been developed, with examples in the fields of attitude control \autocite{liuDesignMagneticField2019,streetmanLimitationsScalingMomentum2017,weisChipscaleSpacecraftSwarms,stamatLaboratoryscaleTestPlatforms}, %electronics  \autocite{wangFeasibilityStudyHighly2016}
-sails \autocite{atchisonPassiveMicroscaleSolar2008,umansky-castroDesignAlphaCubeSat,atchisonPassiveSunpointingMillimeterscale2010,renNovelDesignThermal2021}, and lens-less imaging \autocite{kuoDiffuserCamDiffuserBasedLensless2017,boominathanPhlatCamDesignedPhaseMask2020,boominathanRecentAdvancesLensless2022,wuRealtimeDeeplearningAided2023,liLenslessCameraUnraveling2024}.
+Femto- and atto-satellite specific technologies have also been developed, with examples in the fields of attitude control \cite{liuDesignMagneticField2019,streetmanLimitationsScalingMomentum2017,weisChipscaleSpacecraftSwarms,stamatLaboratoryscaleTestPlatforms}, %electronics  \autocite{wangFeasibilityStudyHighly2016}
+sails \cite{atchisonPassiveMicroscaleSolar2008,umansky-castroDesignAlphaCubeSat,atchisonPassiveSunpointingMillimeterscale2010,renNovelDesignThermal2021}, and lens-less imaging \cite{kuoDiffuserCamDiffuserBasedLensless2017,boominathanPhlatCamDesignedPhaseMask2020,boominathanRecentAdvancesLensless2022,wuRealtimeDeeplearningAided2023,liLenslessCameraUnraveling2024}.
 %\autocite{bruce}
 
 Recent launches of femto-satellites and smaller objects in space have given rise to space debris and tracking concerns. Manchester's KickSat-2 mission was initially rejected by the \ac{FCC} on the grounds of increased risk due to lack of traceability \cite{FCCBigProblem2018,thenationalassociationforamateurradioKickSat2AliveBeing2019,nwekeKickSat2DismissalPrejudice2016}. KickSat-2 then sought a \acs{NASA} launch which shifted the responsible regulatory body.
@@ -1309,7 +1358,7 @@ is the process of acquiring, accessing, managing and using technical data that d
 The importance of this discipline is shown in the \acs{NASA} Systems Engineering Handbook, explaining that ``[Configuration Management] enables all stakeholders in the technical effort, at any given time in the life of a product, to use identical data for development activities and decision-making'' \cite{sheaNASASystemsEngineering2020}.
 
 In the context of \ac{SCS}, ``Engineering Data'' can specifically mean:
-\begin{itemize}
+\begin{itemize}[itemsep=-1ex]
 	\item Requirements specifications and acceptance thresholds
 	\item Product trees of the system and subsystem
 	\item Interface definitions and specifications between components
@@ -1377,7 +1426,7 @@ The shortcomings of document-based specification approaches led to the adoption 
 		\\
 		\textbf{EDM-030} & Stored data shall be version controlled. & On a rapidly-changing or short-duration project, it is essential that all changes are traceable in terms of people, time and reason \todo{}. 
 		\\
-		\textbf{EDM-040} & Each action shall be easily accessible. &  This requirement follows a heuristic known as the ``three-click rule'', suggesting that no function or page on a User Interface should take more than 3 clicks to access \cite{glassey_proximity_2005}. While this is not a hard rule or requirement\todo{}, it can still provide a ballpark on how to simplify user interaction.
+		\textbf{EDM-040} & Each action shall be easily accessible. &  This requirement follows a heuristic known as the ``three-click rule'', suggesting that no function or page on a User Interface should take more than 3 clicks to access \cite{glasseyProximityIndicatorEGovernment2005}. While this is not a hard rule or requirement\todo{}, it can still provide a ballpark on how to simplify user interaction.
 		
 		Ideally, the common example of creating or updating a parameter through such a tool will be no harder than responding to an inquiry about this parameter on an online communication platform. As a performance criterion, we can specify that \emph{users should be allowed to access any engineering parameter within 20 seconds of having access to a web browser}.
 		\\
@@ -1401,7 +1450,7 @@ The shortcomings of document-based specification approaches led to the adoption 
 		\textbf{EDM-070} & The tool shall notify users on changes.
 		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue \todo{find a reference that explains what tool fatigue even is or if such a thing exists}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
 		
-		As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermore_managing_2021,retselis_adaptation_2022}, it logically follows that a tool should have the capability of announcing draft or released changes in real-time on that platform. This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
+		As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermoreManagingProductDevelopment2021,retselisAdaptationAcubeSATNanosatellite2022}, it logically follows that a tool should have the capability of announcing draft or released changes in real-time on that platform. This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
 		\\
 		\textbf{EDM-080} & The tool shall be available as Free and Open Source software with a focus on Developer Experience. &
 		While the choice of making technology available as open-source depends on the team and stakeholders of this project, we believe that a \acs{FOSS} tool would \todo{present} higher value to its users.% The ability to tweak the functionality and \todo{... no ideas...}
@@ -1576,6 +1625,7 @@ As explained in \Cref{chap:METHODOLOGY},
 	\usetikzlibrary{shapes,patterns,positioning}%
 %
 %
+aaaa
 \colorlet{bread}{orange}%
 \colorlet{engineer}{green!80!blue}%
 \colorlet{qualify}{blue!80}%
@@ -1817,6 +1867,22 @@ To retroactively verify the impact of the \ac{SCS} methodology, I will speculati
 \draft{
 Due to the significant impact of labour costs on the final results, I provide two different calculations, with and without labour costs. The latter calculation is interesting in the case of student teams, or where labour for a project is considered fixed.
 }
+
+\begin{table}[h]
+	\caption{ChipSat-1 cost budget}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		Description & Type & Value \\ \midrule
+		Breadboard Model & COTS Components & 330 \\
+		Structural Model & COTS Components & 5 \\
+		Structural Model Testing & Test Campaign & 625 \\
+		EM Manufacturing & PCB Manufacturing & 1274 \\
+		QM/FM Manufacturing & PCB Manufacturing & 1392 \\
+		Test Fixture & Manufacturing & 1820 \\
+		QM Environmental Testing (Qualification) & Test Campaign & 1300 \\
+		FM Environmental Testing (Acceptance) & Test Campaign & 1300 \\ \bottomrule
+	\end{tabular}
+\end{table}
 
 \section{AI4Space}
 Seminal papers: \autocite{thoemelLeanDemonstrationBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
