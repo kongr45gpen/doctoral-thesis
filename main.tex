@@ -350,7 +350,7 @@ More than X are considered to be part of the nano-satellite class, weighing less
 Nanosatellites were invented by whoever invented them throguh the cubesat concept in year tade.
 2730 nanosatellites are considered of the cubesat form factor.
 
-Blablabla we introduce cubesats and pocketqubes and the benefits and drawbacks of miniaturisation.
+\todo{Blablabla we introduce cubesats and pocketqubes and the benefits and drawbacks of miniaturisation.}
 
 As of November 2025, over 
 
@@ -812,7 +812,7 @@ The first ChipSats were exposed on the ISS in May 2011 \autocite[Sec.~2.5]{manch
 The actual launch of the KickSat-1 spacecraft took place in April 2014, however, due to anomalies in the CubeSat, the Sprite deployment failed.
 The Sprite design was tested once again in space, as a secondary payload of the Venta-1 mission in 2017, with a successful demonstration \autocite{adamsTheoryApplicationsGramScale2020}.
 A second attempt to launch the Sprites took place with the KickSat-2 project, which followed a different CubeSat bus design based on pycubed \draft{cite \url{https://github.com/pycubed/documentation/blob/master/KickSat2_design-justification.pdf} and verify}, and could include 105 ChipSats.
-KickSat-2 was deployed from Cygnus NG-10 in 2018-11 (\autocite{thenationalassociationforamateurradioKickSat2AliveBeing2019}).
+KickSat-2 was deployed from Cygnus NG-10 in 2018-11 \autocite{thenationalassociationforamateurradioKickSat2AliveBeing2019}.
 The Sprites were originally not allowed to be deployed due to FCC constraints \draft{citation}. However, they were eventually deployed on 18 March 2019, and re-entered the atmosphere on 21 March 2019 \autocite{abateInexpensiveChipsizeSatellites2019}.
 Their signals were detected on Earth, demonstrating a successful deployment \autocite{estevezDetectingSpritesKickSat22019}. \draft{phrasing}
 
@@ -1835,9 +1835,84 @@ aaaa
 \end{landscape}
 
 \section{ChipSat-1}
-Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
+%Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
+
+ChipSat-1 was the first mission I participated in within the scope of this thesis, with the objective of generating data for femto-satellite missions and experimenting on an early iteration of the \ac{SCS} methodology (\Cref{chap:METHODOLOGY}).
+
+The ChipSat-1 mission was constrained by a launch opportunity provided by a third-party satellite integrator, who offered to mount a ChipSat device as a secondary payload on one of their missions. The ChipSat itself was a technology demonstrator, intending to experiment with the use of \acf{VLC} between components of a distributed system. It consisted of a single \ac{PCB} separated into 3 regions (each emulating one part of a distributed system), measuring \qtyproduct{5 x 5}{\centi\meter} and weighing \SI{18.3}{\g} in total. Power generation and communication were handled by internal solar cells and a transceiver/antenna respectively, with the host providing only a mechanical and electrical inhibition interface.
+
+This \emph{hosted payload} mission was developed in 2022, and environmentally tested and integrated in 2023. However, due to administrative issues with the host's launch provider, ChipSat-1's host satellite, and by extension, ChipSat-1, were never launched.
+
+ChipSat-1 cost \SI{8930}{EUR} in material and testing costs, required a development time of roughly 10 months, and involved seven members of the team who contributed in different degrees. It was developed iteratively, with multiple representative hardware models having been built in the University of Luxembourg's CubeSat Lab. I participated as a Systems, Hardware and Software engineer in the project.
+
+\begin{marginfigure}
+	\includegraphics{pictures/chipsat1_1.jpg}\\%
+	\includegraphics{pictures/chipsat1_2.jpg}
+	\caption{Front and back views of the ChipSat-1 \acl{FM}}
+\end{marginfigure}
+
+
 
 \subsection{Mission Description}
+The main constraint that restricted the selection of possible missions and classes was the \qtyproduct{5 x 5}{\centi\meter} size envelope required by our host for the payload slot. During the beginning of the project,
+we had brainstorming sessions to decide on a mission concept, based on the criteria of complexity, cost, development time, novelty, risk, available competences, and strategy alignment.
+
+The objective of a \ac{VLC} demonstrator aligns with the prevalence and research in optical communication for ground-space and inter-satellite links, usually with lasers acting as transmitters \autocite{kaushalOpticalCommunicationSpace2017,khalighiSurveyFreeSpace2014,griffithsHighsensitivityIntersatelliteOptical2021}. Optical communication can offer situational advantages over traditional \ac{RF} links, especially in terms of directivity, bandwidth and power consumption. This comes at a cost of complexity, as laser transmitters and photodiode receivers need to be accurately managed and steered to achieve a reliable link. The use of \acfp{LED} instead of laser emitters trades off this high level of complexity at the cost of directivity. A simple single-\acs{LED} system performing \acf{OOK} can require a less complex implementation than an \ac{RF} transmitter.
+
+\citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} have considered the use of \acp{SPAD} in combination with miniature \acp{LED} for an inter-satellite link, and performed a range and data rate simulation for different transmitter lenses. They found that a lens-less system, transmitting with \SI{1}{\milli\watt}, can achieve a \SI{2.87}{\kilo\meter} range at \SI{10}{\kilo\bit/\second}, which can be extended to \SI{141}{\kilo\meter} with a \( \sim \) \SI{2}{\deg} \acp{HPBW} lens.
+
+\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometer-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\deg} are commercially available \autocite{M3MicroBeamSteeringTechBulletin}} is required, eliminating the need for a high-gain antenna or high-power transceiver.
+
+ChipSat-1 was therefore decided to act as a technology demonstration experiment for a simple \ac{LED}-based \ac{VLC} system. Due to the limitation of a single flown spacecraft, we decided to place the transmitter (\ac{LED}) and receiver (photodiode) on a single \ac{PCB}, intending to focus on testing only the effects of ambient light, temperature and radiation on the payload and bus components.
+
+In order to create a more representative example and emulate clock drift between the transmitter and the receiver, we split ChipSat-1 into two parts:
+\begin{itemize}
+	\item The \textbf{``primary''} part, transmitting data to Earth and receiving data from the secondary using photodiodes.
+	\item The \textbf{``secondary''} part, generating data through environmental sensors and broadcasting it using an \acs{LED}, but without capability for Earth communication.
+\end{itemize}
+
+This configuration essentially emulates a \textbf{``fractionated''} system, where different parts of the intended functionality are separated into smaller independent spacecraft, instead of a larger monolithic one. This concept has been explored before for entire buses \autocite{mathieuAssessingFractionatedSpacecraft2006} or payloads \autocite{alandihallajMultiplepayloadFractionatedSpacecraft2022}.
+
+For ChipSat-1, the available space allowed us to implement two ``secondary'' parts, designed to generate data that would be downlinked through the \ac{VLC} link: One had a gyroscope to measure and report angular velocity, and the other an ambient light intensity sensor.
+
+\begin{figure}[h]
+	\includegraphics{drafts/chipsat_parts_render.png}
+	\caption{Render of ChipSat-1, showing its 3 parts}
+	\label{fig:c_chipsat_parts_render}
+\end{figure}
+
+The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \draft{what} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
+
+\begin{margintable}
+	\caption{ChipSat-1 \acl{BOM} \todo{Fill table}}
+	\begin{tabular}{@{}lr@{}}
+		\toprule
+		Light Sensor & TSL25853PM \\
+		Gyroscope & IAM-20680HP \\
+		\bottomrule
+	\end{tabular}
+\end{margintable}
+
+Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK}) to transmit bytes, each bit corresponding to one symbol, with Manchester code applied\footnote{\emph{Manchester code} describes a pattern where one bit is encoded as low, then high, or high, then low. This guarantees that every symbol will have at least one bit transition. While this code reduces bit rate to half, it \begin{enumerate*}
+		\item guarantees that no \ac{DC} component remains in the output signal, allowing easy high pass filtering to reduce the influence of ambient light (mainly sunlight);
+		\item is self-clocking, allowing easy synchronisation and clock recovery on the receiver side.
+	\end{enumerate*} While other techniques such as scrambling or \ac{RLL} could be used to achieve the above, Manchester coding was applied to reduce system complexity. }, at a rate of \SI{50}{baud/\second}.
+\marginnote{An alternative plan for the \ac{VLC} system involved using Colour Shift Keying instead of \acs{OOK}, which roughly corresponds to \ac{RF} frequency modulation and could have better noise resistance. \acs{OOK} was however chosen to keep complexity low. \todo{Cite digital modulation book}}
+
+To make the design highly configurable without physical modifications, all processing was done in software, using an \acs{ADC} for reception, with an oversampling factor of \( \times 5 \) to assist in clock recovery.
+
+\begin{figure}
+	\includegraphics{drafts/chipsat_signal_path.png}
+	\caption{ChipSat-1 signal path \todo{TODO}}
+	\label{fig:c_chipsat_signal_path}
+\end{figure}
+
+The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
+
+\todo{Information about the frame data structure (check source code)}
+
+At a system level, the secondaries transmit data at periodic \draft{???} intervals, while the primary is constantly waiting for data reception.
+Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
 
 
 
@@ -1849,6 +1924,72 @@ Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
 	\caption{Internal block diagram of the ChipSat-1 system}
 	\label{fig:c_chipsat_block}
 \end{figure}
+
+The constraint of the flat \qtyproduct{5 x 5}{\centi\meter} shape of ChipSat-1 was the main driver behind component selection and bus capabilities. Out of the environmental criteria mentioned in \draft{Table TADE}, the following were the most critical \draft{further drivers}:
+\begin{itemize}
+	\item \textbf{Developer availability and experience}: Due to the relatively small size of the development team and difficulty in involving external \draft{personnel}, we tried to limit components and technologies to those that were familiar to the team's engineers.
+	\item \textbf{Complexity}:\footnote{\todo{Discuss the definition of complexity and how it is interpreted here, or move complexity to the definitions}}: In order to reduce risk, the number of different parts and interfaces between them had to be minimal. For the context of this project, reducing complexity was equivalent to reducing \ac{BOM} size.
+\end{itemize}
+
+In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated. We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
+
+\marginnote{I selected the \draft{STM32WL} line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
+The ``brain'' of the satellite is a \acf{MCU} \ac{IC} with an integrated transceiver and power amplifier, essentially consolidating two subsystems in a single package.
+\marginnote{We avoided the use of ``radiation-tolerant'' or ``radiation-hardened'' packages due to their usually high cost, size, and supply chain restrictions. Instead, we decided to consider \ac{SEE} damage as an acceptable risk. \todo{elaborate on trade-off}}
+
+The resulting block diagram can be seen in \Cref{fig:c_chipsat_block}.
+
+\paragraph{Power Generation}
+\begin{marginfigure}
+	\todo{todo}
+	\caption{ChipSat-1's solar panels \todo{blablabla dimensions coverage}}
+\end{marginfigure}
+
+\todo{
+%1. Cite SMAD for power generation methods
+2. Explain that solar power is the only alternative
+3. Calculate a quick power budget using SMAD
+4. Explain the commercial solar panel situation vs. Sprite
+5. Explain the configuration of cells chosen
+6. Advertise analysis script
+7. Explain the use of energy harvesting and the energy harvester IC as well as MPPT
+}
+
+While an unconventional system, such as a ChipSat, can attract the application of unconventional technologies for power generation, such as primary batteries or thermoelectric sources \autocite{SMAD}, we followed an approach similar to past ChipSats, by relying on fixed miniaturised solar cells.
+
+A maximum target power generation budget can be approximated as follows \cite{SMAD}:
+\marginnote{``Design'' degradation refers to incomplete capture of sunlight over a ChipSat's area due to small cells not covering the entirety of the \ac{PCB}}
+\begin{align}
+	\text{Orbit Average Power} &=
+	\text{solar irradiance} \cdot
+	\text{cell area} \cdot
+	\text{cell efficiency} 
+	\\ &\hphantom{=} \cdot
+	\text{design degradation} \cdot
+	\text{temperature degradation} \cdot
+	\text{eclipse loss} \cdot
+	\text{pointing loss} \\ &=
+	\qty{1361}{\watt/\meter^2}
+	\cdot \qty{25}{\centi\meter^2}
+	\cdot 20\%
+	\cdot 70\%
+	\cdot 85\%
+	\cdot 66\%
+	\cdot 66\% \\ &=
+	% 1361W/m^2×(5cm×5cm)×20%×70%×85%×66%×66% to mW
+	\qty{176.4}{\milli\watt}
+\end{align}
+\todo{Fix this equation}
+
+\show\qty
+
+While a theoretical analysis 
+
+\paragraph{Energy Storage}
+
+\paragraph{Communications}
+
+\subsection{Development Process}
 
 \subsection{Cost Budget}
 
@@ -1868,22 +2009,48 @@ To retroactively verify the impact of the \ac{SCS} methodology, I will speculati
 Due to the significant impact of labour costs on the final results, I provide two different calculations, with and without labour costs. The latter calculation is interesting in the case of student teams, or where labour for a project is considered fixed.
 }
 
-\begin{table}[h]
+
+\begin{table*}[h]
 	\caption{ChipSat-1 cost budget}
-	\begin{tabular}{@{}lll@{}}
+	\label{tab:c_chipsat_costs}
+	\begin{tabularx}{\textwidth}{@{}lXlS@{}}
 		\toprule
-		Description & Type & Value \\ \midrule
-		Breadboard Model & COTS Components & 330 \\
-		Structural Model & COTS Components & 5 \\
-		Structural Model Testing & Test Campaign & 625 \\
-		EM Manufacturing & PCB Manufacturing & 1274 \\
-		QM/FM Manufacturing & PCB Manufacturing & 1392 \\
-		Test Fixture & Manufacturing & 1820 \\
-		QM Environmental Testing (Qualification) & Test Campaign & 1300 \\
-		FM Environmental Testing (Acceptance) & Test Campaign & 1300 \\ \bottomrule
+		No. & \textbf{Cost Driver}                     & Used In                                       & {Value (EUR)} \\ \midrule
+		1   & \textbf{Components}                      & Breadboard Models (\#1, \#3)                  & 450  \\
+		2   & \textbf{PCB Components + Assembly}       & Engineering Model (\#2)                       & 1270 \\
+		3   & \textbf{Structural Model}                & Vibration Test (\#3)                          & 10   \\
+		4   & \textbf{Mechanical Interface Bracket}    & Vibration Test (\#3)                          & 760  \\
+		5   & \textbf{Vibration Testing Service Costs} & Vibration Test (\#3)                          & 630  \\
+		6   & \textbf{PCB Components + Assembly}       & Qualification \& Engineering Model (\#4, \#5) & 1390 \\
+		7   & \textbf{Mechanical Interface Bracket}    & Unused due to design changes                  & 580  \\
+		8   & \textbf{Mechanical Interface Bracket}    & Vibration Tests (\#4, \#5)                    & 1240 \\
+		9   & \textbf{Testing Service Costs}           & Qualification Vibration \& Thermal Test (\#4) & 1300 \\
+		10  & \textbf{Testing Service Costs}           & Acceptance Vibration \& Thermal Test (\#5)    & 1300 \\ \midrule
+		& \textbf{Total Costs}                     &                                               & 8930 \\ \bottomrule
+	\end{tabularx}
+\end{table*}
+
+\begin{table}[h]
+	\caption{ChipSat-1 measured development time, from start of development until Flight Model delivery}
+	\label{tab:c_chipsat_times}
+	\begin{tabular}{@{}llS@{}}
+		\toprule
+		No. & \textbf{Development Time Driver} & {Time Spent (hours)} \\ \midrule
+		1   & \textbf{Prototyping}             & 75                 \\
+		2   & \textbf{Integration}             & 75                 \\
+		3   & \textbf{Software Development}    & 75                 \\
+		4   & \textbf{Project Management}      & 112                \\
+		5   & \textbf{Orbital Analysis}        & 10                 \\
+		6   & \textbf{Antenna Simulation}      & 24                 \\
+		7   & \textbf{Antenna Testing}         & 48                 \\
+		9   & \textbf{Test Campaign (Structural Model)} & 12                 \\
+		10  & \textbf{Test Campaign (QM)}      & 24                 \\
+		11  & \textbf{Test Campaign (FM)}      & 24                 \\ \midrule
+		& \textbf{Total Time}              & 478                \\ \bottomrule
 	\end{tabular}
 \end{table}
 
+\FloatBarrier
 \section{AI4Space}
 Seminal papers: \autocite{thoemelLeanDemonstrationBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
 

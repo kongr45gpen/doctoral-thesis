@@ -170,7 +170,7 @@ mincitenames=1,
 \usepackage{pgfplots}
 \pgfplotsset{compat = 1.3}
 \usetikzlibrary{arrows.meta,positioning}
-\usepackage{physics}
+%\usepackage{physics}
 \let\Re=\relax
 \let\Im=\relax
 
@@ -226,8 +226,10 @@ mincitenames=1,
 \newbibmacro*{cite:full}{%
 	\iffieldundef{shorthand}
 	{\printnames{labelname}%
+		\iffieldundef{year}{}{\setunit*{\addspace}\printtext[parens]{\printfield{year}}}%
 		\setunit*{\printdelim{nametitledelim}}%
-		\usebibmacro{cite:title}}%
+		\usebibmacro{cite:title}%
+	}%
 	{\usebibmacro{cite:shorthand}}}
 
 \newbibmacro*{cite:marginnote}{%
@@ -247,7 +249,7 @@ mincitenames=1,
   {\usebibmacro{citeindex}%
    \usebibmacro{cite:marginnote}%
    \usebibmacro{cite:comp}}%
-  {}
+  {\multicitedelim}%
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}}
 
