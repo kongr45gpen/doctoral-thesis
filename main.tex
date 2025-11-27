@@ -517,11 +517,13 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 \begin{figure*}[h]
 	\includegraphics{graphics/decomp.pdf}
 	\caption{Unit of Analysis}
+	\label{fig:i_thesis_decomposition}
 \end{figure*}
 
 \begin{figure*}[h]
 	\includegraphics{graphics/DecompSYE.pdf}
 	\caption{Unit of Analysis}
+	\label{fig:i_sye_decomposition}
 \end{figure*}
 
 \FloatBarrier
@@ -968,7 +970,7 @@ In \citeyear{beckAgileManifesto2001}, the Agile Manifesto \autocite{beckAgileMan
 \end{marginfigure}
 
 The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \draft{Table ???}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; Different agile methodologies have been proposed and used, such as: \todo{Fix citations}
-\begin{itemize}[itemsep=0pt]
+\begin{itemize}[itemsep=-2ex]
 	\item Adaptive Software development
 	\item Agile Unified Process (???)
 	\item Crystal (???)
@@ -1310,7 +1312,8 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 \label{chap:METHODOLOGY}
 
 \begin{fullwidth}
-\epigraph{\emph{Law of Douglass \#30: the best way not to have any defects in your system is not to put defects in your system.}}{Brouce Douglass}
+\epigraph{\emph{%Law of Douglass \#30:
+		The best way not to have any defects in your system is not to put defects in your system.}}{Brouce Douglass}
 \end{fullwidth}
 
 \begin{table*}[h]
@@ -1340,16 +1343,211 @@ A first version of a lifecycle process model can be inspired by the characterist
 \end{enumerate}} which involve dynamic, iterative/incremental work, with verification/validation cycles at the end of every iteration.
 While investigating between existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a \todo{proposed methodology}; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that \todo{are not within the scope of this work.}
 
-As such, it is necessary to create a \todo{new model}.
+As such, it is necessary to create a \todo{new model}. The \emph{Scrum} framework, in particular, has already gathered attention in the hardware engineering community \autocite{bottAnalysisTheoriesSupporting2019,doveFundamentalsAgileSystems2014} and has been implemented in previous CubeSat systems and subsystems \autocite{honore-livermoreDigitalEngineeringDevelopment2022,garzanitiEffectivenessScrumMethodology2019}. Its authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}.
 
+\marginnote{The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
+Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} describes Scrum as covering the management, risk handling, and customer interfacing processes of the entire lifecycle of a project, which can range from a system built by an individual to a business system.
+
+For the remainder of this section, I will tailor the Scrum process for use in \ac{SCS} systems. This tailoring will roughly follow the steps proposed by ECSS-S-ST-00-02C \autocite{ECSS-S-ST-00-02C}, which include the identification of project characteristics (see \Cref{sec:scope}), and selection/modification of applicable requirements, after going \draft{section-by-section}. Apart from the official definition of Scrum \cite{schwaverDefinitiveGuideScrum2020}, I will rely on \draft{external analyses} \cite{boehmBalancingAgilityDiscipline2004} and criticisms \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} of incorrect applications of it.
+
+\paragraph{Tailoring of The Scrum Process}
+
+\subparagraph{Scrum Team}
+Scrum calls for small teams of ``10 or fewer'' people, responsible for all product activities (from conceptualisation to verification) without any additional hierarchies. This matches the typical environment present in \acs{SCS} projects.
+
+While most participants in the team will be developers, responsible for technically advancing each iteration, Scrum specifies the role of a \emph{Product Owner}, responsible for managing and communicating work packages.
+
+The final role defined by the framework is that of the \emph{Scrum Master}, who is responsible for maintaining the Agile processes and coaches the team towards self-management. While it is seen as a critical role by the Scrum guide, it has been by far the most controversial role in \draft{real-world} applications, especially when its responsibilities are not handled correctly, and is usually limited by the team's needs and competencies \autocite{kustersScreamGuide2020,doshiDownfallScrumMaster2025}. As such, I will not include the role of Scrum Master in the tailoring of this methodology -- however, \draft{the roles performed are still necessary}, especially for younger teams that are not experienced in adherence to specific methodologies.
+
+\begin{table*}[h]
+	\caption{Sat-Scrum team responsibilities}
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+	\toprule
+	Role & \textbf{Product Owner}                                            & \textbf{Developers}                                                                          \\
+	\midrule
+	& Creating and communicating Product Goal and Product Backlog Items & Creating a plan for each Sprint                                                              \\
+	& Interacting with customers and stakeholders                       & Advancing the development of the product                                                     \\
+	& Delegating responsibilities to others, if needed                  & Participating in design, development, manufacturing, integration and verification operations \\
+	& Removing impediments to the Scrum process                         & Holding each other accountable                                                               \\
+	& Organising Scrum events                                           & Participating in Scrum events                                                                \\
+	& Setting up interactions with stakeholders                         & Participating in interactions with stakeholders                            \\
+	\bottomrule                 
+\end{tabularx}
+\end{table*}
+
+\subparagraph{The Sprint}
+Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The difference between \emph{review} and \emph{retrospective} is\draft{...}}
+
+Original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
+
+This imposition of physical and time-related constraints makes the direct application of Scrum difficult, as it \draft{prevents} the idea of constant work done in parallel. This is identified, for example, in \draft{some paper that I need to find}. However, the context of \acs{SCS} development makes it possible to keep these so-called ``\todo{downtime}'' to a minimum, by proactively reducing external lead time.\marginnote{Reduction of external lead time can be done by:\begin{itemize}
+		\item Moving manufacturing in-house, to the degree possible
+		\item Collaborating with \draft{entities also following an Agile work system}
+		\item \todo{some other things...}
+\end{itemize}} However, past attempts to mitigate this difficulty by separating an iteration into pre-determined, sequential steps have received criticism, due to propagating the drawbacks of waterfall-based methods \todo{citation}. \draft{The original Scrum itself avoids prescribing the distribution and allocation of work, as that is team-specific and dependent on the self-organisation between developers.} It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
+
+\begin{figure*}[h]
+	\includegraphics{media/drafts/satscrum_iteration}
+	\caption{Activity diagram of one Sat-Scrum iteration}
+	\label{fig:m_sat_scrum_iteration}
+\end{figure*}
+
+\Cref{fig:m_sat_scrum_iteration} presents a proposed activity diagram for a Sat-Scrum Sprint, expanded with activities that are typical in an \acs{SCS} project and that can be performed in parallel. These activities are described as follows:
+\begin{itemize}[itemsep=-1ex]
+	\item \textbf{Design} activities describe the ``architecting'' work that may be necessary before producing a hardware product or a software function. They can involve:
+	\begin{itemize}[itemsep=-2ex]
+		\item High-level architecting
+		\item Component selection
+		\item \acs{PCB} schematic and layout design
+		\item Structural component design
+	\end{itemize}
+	
+	The design phase is defined at \qtyrange{1}{2}{weeks}, but can take longer during the early stages of a project, where iterations are expected to last \todo{more}. However, this design time is significantly shorter than traditional, often year-long design phases in space projects. \todo{why?}
+	
+	\todo{This also includes reviews}
+	\item \textbf{Procurement} and \textbf{manufacturing} activities involve waiting for the preparation of physical components by external providers or internal process completion, and essentially prevent the verification of the design made in the previous step, acting as blockers in the critical path. After procurement and manufacturing is completed, \textbf{integration} involves ``putting those components together'', which can include breadboard prototyping, soldering, cabling, and assembly.
+	\item \textbf{Software Development} is defined as a separate activity, as the act of writing, and sometimes testing (see \todo{???}) software can often be performed independent of the designed hardware in the previous steps. \acs{SCS} are also software-heavy systems that require appropriate time dedicated to software completion, which has been demonstrated to be often neglected in CubeSat projects \todo{cite}.
+	
+	\todo{Talk about software testing, link to HIL}
+	\item \textbf{Auxiliary Activities} define those activities that are essential to support a hardware project, can be completed in parallel to work towards the Product Goal, and do not fit in any other category. They are usually team and environment-dependent and can include:
+	\begin{itemize}[itemsep=-2ex]
+		\item Preparing and managing testing infrastructure and equipment
+		\item Performing domain-specific analyses
+		\item Finalising design, development and verification tasks that were not completed in the previous sprint
+		\item Designing and developing support tools (e.g.~test jigs, adapters, cables)
+		\item Conducting \acf{DEVOPS}
+		\item Negotiating with external shareholders
+		\item External design reviews
+	\end{itemize}
+	
+	While there is no single definition for these activities as they are heavily project-specific, experience from case studies has shown that they are key to reducing the development and integration time and reducing risk.
+	\todo{We have good experience from AI4Space demonstrating this. Make sure that his is mentioned in that section}
+	\todo{Would be nice to find a reference for this, or categorise these references somehow}
+	\item \textbf{Verification, Validation \& Improvement} activities represent \textbf{inspection and testing} of the, now manufactured, product's hardware and software. Testing may include functional verification only, or also involve environmental verification which may be done in external facilities.
+	
+	In software-only Scrum and Agile engineering, verification \& validation is not considered as a separate phase, as it is made in tandem with development by means of \ac{CI}/\ac{CD}. In Sat-Scrum, this is represented by the ``improvement'' keyword, which requires this almost-instant feedback loop, to the degree possible.
+	
+	The improvement step prescribes the correction of faults and non-conformances. In the case of software, this can be \draft{easily} done. In the case of hardware, reworks of layout errors and component replacement can sometimes be done.
+	
+	The duration of this phase can be long, depending on the complexity of testing, the need for external facilities, and the amount of non-conformances discovered. \draft{ESA} often allocates \todo{50\%} of the project development time into \todo{testing}. Experience from past projects has shown that testing time is often underestimated. It is therefore important for developers to accurately time this phase, adding appropriate margins.\marginnote{For example, when external testing is involved, this phase should last at least 3 weeks, including: \begin{itemize}
+			\item Preparatory activities (such as test fixture design) performed before the verification phase, as part of the \emph{auxiliary} activities
+			\item 1 week for functional testing of the \ac{DUT}
+			\item 1 week for environmental testing
+			\item 1 week for correction of errors
+		\end{itemize}}
+\end{itemize}
+
+Each Sat-Scrum Sprint can therefore last between \qtyrange{4}{8}{working weeks}, with the exact time being often unpredictable.
+
+\subparagraph{Definition of Done}
+
+\todo{Here we explain what the end product should be after each Sprint...}
+
+\subparagraph{Other Scrum Events}
+
+\todo{Here we have a paragraph describing how we interpret and tailor the Daily Scrum, Retrospective and so on...}
+
+\subparagraph{Backlog}
+
+\begin{table*}[h]
+		\caption{Overview of the Sat-Scrum method}
+	\begin{tabularx}{\linewidth}{@{}lXl@{}}
+		\toprule
+		\multicolumn{3}{c}{\acs{SCS} Method: \textbf{Sat-Scrum} Overview}
+		\\ \midrule
+		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Lifecycle / Schedule                                                                                                                          &  \\
+		Basis                                                    & Emergence, Empiricism, Lean Thinking                                                                                                                                           &  \\
+		Main Principle                                           & \qtyrange{4}{8}{week} iterations delivering a complete product                                                                                                                  &  \\
+		Secondary Principles                                     & \begin{itemize}\item Sprint-centred planning and reviews \item Parallel work \item Focus on auxiliary activities \item Testing taking up 50\% of development time\end{itemize} &  \\
+		Benefits                                                 & Development Time, Risk                                                                                                                                                         &  \\ \bottomrule
+	\end{tabularx}
+\end{table*}
+
+
+\begin{figure*}[h]
+	\includegraphics{media/drafts/SatScrum.drawio.pdf}
+	\caption{Example of a Sat-Scrum based project lifecycle}
+	\label{fig:m_scrum_example}
+\end{figure*}
 
 \subsection{Project Lifecycle Approach: The Slice-Based Sat-Scrum Model}
-
+\draft{\begin{itemize}
+		\item Why do we need a different approach? (what are the drawbacks of the previous approach)
+		\item Why did we choose slice-based, what are the concepts from systems theory
+		\item Who has done it before
+		\item What has Kathleen done?
+\end{itemize}}
 
 
 \subsection{Workload Management Approaches}
 
 \subsection{Requirements: Application of the MoSCoW method}
+
+The concept of Mission and System Requirements is often the topic of discussion, specifically for CubeSat missions.
+In traditional space systems engineering, requirements are often elaborated in significant detail, covering test specifications and guiding all the required features for development. This approach is summarised as one of Akin's laws \autocite{akinAkinLawsSpacecraft}:
+\begin{quote}
+	Design is based on requirements. There's no justification for designing something one bit "better" than the requirements dictate.
+\end{quote}
+In these cases, requirements elicitation takes place in the beginning of the project, with little room for changes and modifications at the later phases. \todo{cite} \todo{explain the nature of strictly verifiable and machine-interpretable requirements} \draft{For example, \acs{ECSS} standards forbid the use of words which cannot be determined objectively, such as \emph{minimise/maximise}, \emph{optimise}, ...}
+
+On the other hand, some projects follow less strict approaches, where requirements do not cover the entire system, and are usually elaborated in a more \draft{interpretable} manner.
+
+\begin{table*}
+	\begin{tabularx}{\linewidth}{@{}lXX@{}}
+		\toprule
+		& AcubeSAT project \todo{cite} & \todo{Artemis CubeSat} \cite{zhu23Requirements} \\ \midrule
+		& The spacecraft shall use an attitude determination and control system to achieve a pointing accuracy within 20 degrees. & The CubeSat kit shall be low-cost and accessible to universities and private individuals \\
+		& The spacecraft shall store at least 5 Ah (\acs{TBC}) in batteries. & The CubeSat kit shall include software that is intuitive for undergraduate students \\
+		& The unibody's cross section on the X-Y plane shall have maximum external dimensions of 70x70 mm. & The CubeSat kit shall be tested to meet environmental requirements set forth in NASA GEVS for spaceflight. The end-user will be responsible for doing final flight environmental testing set forth by their launch provider. \\ \bottomrule
+	\end{tabularx}
+	\caption{Example requirements from different space projects}
+\end{table*}
+
+Especially for \acs{SCS} projects, I have made the following observations:
+\begin{itemize}[itemsep=-1ex]
+	\item \acs{SCS} projects \emph{need} to conform to external requirements to some degree, provided by their host or launch provider.
+	\item Due to the lack of standard launch interfaces, specifications and standards, these requirements may change by the relevant stakeholders during the project.
+	\item The planned feature-set of a project may change during its course (usually via the removal of functionality) due to incorrect planning, external requirement change or une
+	Projects with fixed deadlines will prefer to remove features, instead of adding additional iterations or reworking the product, since the latter may lead to a launch cancellation.
+	\item Each project evolves around a central strategic goal that expresses a simple objective (such as \emph{receive at least some data from orbit} or \emph{demonstrate a specific technology}). Additional objectives, when completed, increase the perceived \emph{value} of the project \todo{Ask Alex about the definition of value}.
+	\item The definition of \todo{specific} requirements itself as a process can last up to a month, and requires some prior knowledge of the system's principles, feasibility and available technology. In the case of inexperienced teams, external reviews may be necessary.
+	\item Well-specified requirements can be the guide for functional and environmental testing campaigns. However, requirements-based testing campaigns cannot offer complete coverage of the executed design, as they do not cover \todo{design-specific} activity flows and edge cases.
+\end{itemize}
+
+\draft{I therefore consider it important to define an \acs{SCS}-tailored method for requirements capture} that can still be part of the proposed \emph{project lifecycle approach}, while reducing the \ac{SYE} overhead.
+
+An inspiration from such an approach can come from the \acs{DSDM} Agile framework, which advocates the \textbf{prioritisation} of different project requirements using the \acf{MOSCOW} classification \autocite{agilebusinessconsortiumAgilePMHandbookV22014}, which categorises requirements as follows:
+\begin{itemize}
+	\item
+	\textbf{Must Have} requirements: The Minimum Usable subset of requirements that a project should comply to in order to be legal, safe, compliant with external requests, and functional.
+	
+	Not complying to these requirements will result in \todo{a cancellation or failure of the project}.
+	\item
+	\textbf{Should Have} requirements: These represent features or requests that significantly increase project value, but are not project-breaking in case they are not implemented.
+	\item \textbf{Could Have} requirements: These represent features that are desirable but less important than \emph{Should Have} ones. They may refer to requests by external entities, features that slightly increase reliability, mission duration or configurability, and generally slightly increase mission value.
+	\item \textbf{Won't Have this time} requirements: These requirements represent those that the team has agreed to not implement in a specific iteration. \todo{or version?} This classification usually refers to a reassignment of requirement status. \todo{after a few iterations}
+\end{itemize}
+
+While Must Have requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
+
+In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.
+
+\todo{Anything more to write about requirements?}
+\todo{What is the benefit of having requirements in terms of the quantifiable goals of the system?}
+
+\begin{table*}[h]
+	\caption[Overview of the MoSCoW method]{Overview of the \acs{MOSCOW} method}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{MOSCOW}} Requirements Management Overview}
+		\\ \midrule
+		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Expectations \\
+		Basis & \todo{???} \\
+		Main Principle & Classification of requirements into different priorities \\
+		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Amending requirements based on environmental factors and emergence\item Collaboration with stakeholders and interactive definition\end{itemize} \\
+		Benefits & \draft{Development Time}, Features \\ \bottomrule
+	\end{tabularx}
+\end{table*}
 
 \subsection{Data Management: A Model-Based Approach}
 
@@ -1531,6 +1729,21 @@ The shortcomings of document-based specification approaches led to the adoption 
 	\includegraphics{graphics/spardata_moqup}
 \end{figure}
 
+\begin{table*}[h]
+	\caption[Overview of the SCS data management method]{Overview of the \acs{SCS} data management method}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{Model-Based Data Management} Overview}
+		\\ \midrule
+		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Modelling \& Knowledge Management \\
+		Basis & Model-Based Systems Engineering \\
+		Main Principle & Use of a lightweight purpose-built \acs{EDM} tool \\
+		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Tool-based approach\item Ease of access to product information\item Instant collaboration on shared information \& documentation\item Reduction of time spent documenting through automation\end{itemize} \\
+		Benefits & Development Time \\ \bottomrule
+	\end{tabularx}
+\end{table*}
+
+
 
 \subsection{Tooling Requirements and Review}
 \label{sec:METHODOLOGY_tooling_requirements}
@@ -1546,9 +1759,11 @@ The shortcomings of document-based specification approaches led to the adoption 
 		\item Review of heritage/reuse, decisions taken, dangers (see Hein thesis)
 \end{itemize}}
 
+\draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
+
 \subsection{Interface Management Guidelines}
 
-\draft{???}
+\draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 
 \subsection{Verification \& Validation Guidelines}
 
@@ -2276,6 +2491,12 @@ Environmental tests were repeated in an external facility for the 5\textsuperscr
 
 \subsection{Evaluation}
 
+\todo{\begin{itemize}
+	\item Be specific about a causal link that led to a specific result that can be identified: By using element of the methodology we had XYZ effect support by XYZ data
+	\item Counterfactual analysis (which is weak) and if done in a robust manner (without shortcuts) may take a long time
+	\item At least make a reference in action research in Sec. 3 to protect against potential arguments against skewing results. - Make enough statements about action research to protect yourself and demonstrate that you considered it, and note the limitation of your approach
+\end{itemize}}
+
 During the development of ChipSat-1, we captured numerical data representing the time taken by developers (\Cref{tab:c_chipsat_times}) and associated costs (\Cref{tab:c_chipsat_costs}).
 This data can be used to speculatively and retroactively evaluate the different project management decisions made by the team.
 
@@ -2567,6 +2788,8 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 \label{chap:CONCLUSION}
 
 \appendix
+
+\chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
 \chapter{PCB schematics}
 
