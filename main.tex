@@ -236,7 +236,7 @@ I did this. I also did that. I didn't do that.
 \mainmatter
 
 % The structure of a monographic thesis is as follows:
-% • Official pages (cover page, table of content, figures and tables, abbreviations, Acknowledgements,
+% • Official pages (cover page, table of content, figures and tables, abbreviations, ,
 % Affidavit)
 % • Abstract (ca. 1 page)
 % • Aims/ Objectives (ca. 1 page)
@@ -630,7 +630,7 @@ A complete description of a design method must include its core idea, its repres
 	A tool is an object or artefact that is used to perform some action [...]. For design methods, documents or software that direct and structure designers' thoughts and actions, or facilitate constructing representations, or perform computations. \autocite{gerickeElementsDesignMethod2022}
 \end{quote}
 
-The term \emph{methodology} itself lacks a universally agreed-upon definition, often being used interchangeably with ``method''. For this work, we will adopt part of the definition provided by \autocite{pahlIntroduction2007}:
+The term \emph{methodology} itself lacks a universally agreed-upon definition, often being used interchangeably with ``method''. For this work, I will adopt part of the definition provided by \autocite{pahlIntroduction2007}:
 
 \marginnote{Definition 1.1:\ \textbf{Design Methodology}}
 \begin{quote}
@@ -645,7 +645,7 @@ In the general sense, a methodology can be then seen as a collection of methods 
 \end{figure}
 
 
-It is also important to separate our proposed \emph{Design Methodology}, presented in \Cref{chap:METHODOLOGY} ``\nameref{chap:METHODOLOGY}'', from the \emph{Research Methodology} used to synthesise and validate the former, presented in \Cref{chap:RESEARCH_APPROACH} ``\nameref{chap:RESEARCH_APPROACH}''.
+It is also important to separate my proposed \emph{Design Methodology}, presented in \Cref{chap:METHODOLOGY} ``\nameref{chap:METHODOLOGY}'', from the \emph{Research Methodology} used to synthesise and validate the former, presented in \Cref{chap:RESEARCH_APPROACH} ``\nameref{chap:RESEARCH_APPROACH}''.
 
 A new Design Methodology is often the result of Design Research. \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009} define Design as follows:
 \marginnote{Definition 1.1:\ \textbf{Design}}
@@ -845,7 +845,7 @@ Many of the above designs follow the open-source and open-hardware philosophies,
 
 \begin{figure}[h]
 	\includegraphics{media/drafts/hein_capabilities}
-	\caption[AttoSat characteristics and capabilities]{AttoSat characteristics and capabilities (taken from \cite{heinAttoSatsChipSatsOther2019})}
+	\caption[AttoSat characteristics and capabilities]{AttoSat characteristics and capabilities, as analysed by \citeauthor{heinAttoSatsChipSatsOther2019} \cite{heinAttoSatsChipSatsOther2019}}
 	\label{fig:l_hein_capabilities}
 \end{figure}
 
@@ -1016,6 +1016,7 @@ There are various examples in literature for the implementation of Agile practic
  \todo{Clean-up this section from notes}
  
 \paragraph{Agile Frameworks}
+\label{par:LITERATURE_agile_frameworks}
 \todo{This whole section needs a rework. The purpose is to compare existing Agile Software and Systems Engineering frameworks, and analyse their applicability to \ac{SCS} systems engineering. The result is that none of these frameworks can be adapted as-is, either because they target discipline-specific systems, or because they are designed for much larger teams}
 
 \subparagraph{Scrum}
@@ -1308,11 +1309,39 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 \chapter{A Methodology for Sub-CubeSat Spacecraft}
 \label{chap:METHODOLOGY}
 
+\begin{fullwidth}
+\epigraph{\emph{Law of Douglass \#30: the best way not to have any defects in your system is not to put defects in your system.}}{Brouce Douglass}
+\end{fullwidth}
+
+\begin{table*}[h]
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		\textbf{No.} & \textbf{Requirement}                                                                                                              \\ \midrule
+		1            & The SCS Methodology shall enable developing an SCS project in 1 year or less, starting from preliminary design to qualification.  \\
+		2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \todo{section tade}.                  \\
+		3            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. \\
+		4            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.      \\
+		5            & The SCS Methodology shall enable less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies. 
+	\end{tabularx}
+	\caption{\todo{A very interesting table}}
+\end{table*}
+
+\FloatBarrier
 \section{Technical Management Methodology}
 
-\subsection{Requirements for Project \& Technical Management}
-
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
+A first version of a lifecycle process model can be inspired by the characteristics and processes of Agile methodologies. More specifically, \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} lists six principles for Agile systems engineering \marginnote{\citeauthor{douglassAgileSystemsEngineering2015}'s 6 principles of Agile Systems Engineering:\begin{enumerate}
+		\item Work Incrementally
+		\item Plan Dynamically
+		\item Actively Reduce Project Risk
+		\item Verify Constantly
+		\item Integrate Continuously
+		\item Validate Frequently
+\end{enumerate}} which involve dynamic, iterative/incremental work, with verification/validation cycles at the end of every iteration.
+While investigating between existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a \todo{proposed methodology}; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that \todo{are not within the scope of this work.}
+
+As such, it is necessary to create a \todo{new model}.
+
 
 \subsection{Project Lifecycle Approach: The Slice-Based Sat-Scrum Model}
 
@@ -1358,7 +1387,7 @@ is the process of acquiring, accessing, managing and using technical data that d
 The importance of this discipline is shown in the \acs{NASA} Systems Engineering Handbook, explaining that ``[Configuration Management] enables all stakeholders in the technical effort, at any given time in the life of a product, to use identical data for development activities and decision-making'' \cite{sheaNASASystemsEngineering2020}.
 
 In the context of \ac{SCS}, ``Engineering Data'' can specifically mean:
-\begin{itemize}[itemsep=-1ex]
+\begin{itemize}[itemsep=-2ex]
 	\item Requirements specifications and acceptance thresholds
 	\item Product trees of the system and subsystem
 	\item Interface definitions and specifications between components
@@ -1416,46 +1445,76 @@ The shortcomings of document-based specification approaches led to the adoption 
 	\def\arraystretch{1.05}
 	\begin{tabularx}{\textwidth}{cp{4cm}X}
 		\toprule
-		\textbf{EDM-010} & The tool shall represent a spacecraft in a hierarchical tree-like structure of multiple entities containing multiple parameters each. & This generic requirement defines the core functionality of our tool: To store spacecraft engineering data in a hierarchical format. A tree-like structure is indeed a common method of representing a product and its details, which is already common in most \ac{EDM} tools. It also allows extending functionality beyond what is offered by a grid-like data representation, as used in a spreadsheet.
+		\textbf{EDM-010} & The tool shall represent a system in a hierarchical tree-like structure of multiple entities containing multiple parameters each. & 
+		A ``product tree'' structure is commonly used to represent different abstraction levels within a product, and is often seen in most \ac{EDM} tools. A single level of abstraction is equivalent to the model of each entity taking up one row in a spreadsheet.
+		
+		Compared to a Block Definition Diagram or an Internal Block Diagram, a tree itself cannot represent interfaces or relations between components, apart from hierarchy, which should however be enough for low-complexity projects.
+		
+		Each element in the tree can represent a physical component, a function, or an abstract concept (such as a trajectory).
 
-		Product tree structures are usually asked to represent different types of repetition or instantiation inside a product. For example, a type of fastener, electrical connector or integrated circuit may be shared across different subsystems and assemblies. While we don't specify explicitly how to handle these cases as a requirement, we note that many \ac{MBSE} tools clearly differentiate between an ``element template'' and an ``element instance'' which can be repeated. However, we do note that most elements of a small spacecraft are rarely duplicated; therefore the process of instantiating an element should not require duplicate effort to create and store a template representation for it.
+		%Product tree structures are usually asked to represent different types of repetition or instantiation inside a product. For example, a type of fastener, electrical connector or integrated circuit may be shared across different subsystems and assemblies. While we don't specify explicitly how to handle these cases as a requirement, we note that many \ac{MBSE} tools clearly differentiate between an ``element template'' and an ``element instance'' which can be repeated. However, we do note that most elements of a small spacecraft are rarely duplicated; therefore the process of instantiating an element should not require duplicate effort to create and store a template representation for it.
 		\\
-		\textbf{EDM-020} & The complete functionality of the tool shall be accessible from the web. & In essence, any device with a web browser should be able to read, edit and manage engineering data with no restrictions. This ensures that access is not limited by technical or hardware limitations, and that engineers have quick access to data through their computer, a mobile device when in the field, or even embedded systems.
+		\textbf{EDM-020} & The complete functionality of the tool shall be accessible from a web browser. &
+		While this can be seen as a design-constraining requirement, it ensures that a system model is available for reading and writing to any device with access to a network. This removes hardware or software limitations and ensures that all participants in the project have a similar experience.
 		
-		Accessibility should ideally be extended to formats beyond personal devices as well; this includes paper printouts (for use during laboratory work), digital signage and more.
+		%In essence, any device with a web browser should be able to read, edit and manage engineering data with no restrictions. This ensures that access is not limited by technical or hardware limitations, and that engineers have quick access to data through their computer, a mobile device when in the field, or even embedded systems.
+		
+		%Accessibility should ideally be extended to formats beyond personal devices as well; this includes paper printouts (for use during laboratory work), digital signage and more.
 		\\
-		\textbf{EDM-030} & Stored data shall be version controlled. & On a rapidly-changing or short-duration project, it is essential that all changes are traceable in terms of people, time and reason \todo{}. 
+		\textbf{EDM-030} & Stored data shall be version controlled. &
+		This requirement ensures traceability of changes, accountability, and, more importantly, allows restoring older changes and known working configurations.
+		
+		Tools such as \emph{Git} and \emph{Dolt} are already well-established solutions for version-controlled databases.
+		
+	%	On a rapidly-changing or short-duration project, it is essential that all changes are traceable in terms of people, time and reason \todo{}. 
 		\\
-		\textbf{EDM-040} & Each action shall be easily accessible. &  This requirement follows a heuristic known as the ``three-click rule'', suggesting that no function or page on a User Interface should take more than 3 clicks to access \cite{glasseyProximityIndicatorEGovernment2005}. While this is not a hard rule or requirement\todo{}, it can still provide a ballpark on how to simplify user interaction.
+		\textbf{EDM-040} & Users shall be able to access any engineering parameter within 20 seconds of having access to a web browser. &  This requirement ensures that all data is easily accessible under an intuitive navigation scheme, which can include a comprehensive overview of the system, or an efficient search function.
 		
-		Ideally, the common example of creating or updating a parameter through such a tool will be no harder than responding to an inquiry about this parameter on an online communication platform. As a performance criterion, we can specify that \emph{users should be allowed to access any engineering parameter within 20 seconds of having access to a web browser}.
+		
+		A more extreme version would require all actions to follow the ``three-click rule'', which suggests that no function or page on a User Interface should take more than 3 clicks to access \cite{glasseyProximityIndicatorEGovernment2005}. While this is not a strict requirement, it can still provide a \draft{motivation} on how to simplify user interactions.
+		
+		\todo{Something about progressive disclosure}
+		
+		%Ideally, the common example of creating or updating a parameter through such a tool will be no harder than responding to an inquiry about this parameter on an online communication platform. As a performance criterion, we can specify that \emph{users should be allowed to access any engineering parameter within 20 seconds of having access to a web browser}.
 		\\
-		\textbf{EDM-050} & The tool shall provide an \acf{API}. &      Space Engineering often involves the combination of multiple pieces of software. Therefore, a solution hosting engineering data should offer a method of fetching and updating this data programmatically.
+		\textbf{EDM-050} & The tool shall provide an \acf{API}. &      Space Engineering often involves combining different generic and domain-specific models. Therefore, \acs{EDM} tools should offer a method of fetching and updating this data automatically.
 		
-		This will also allow engineers to create integrations and automations that can update engineering values based on other values. \todo{}
+%		This will also allow engineers to create integrations and automations that can update engineering values based on other values. \todo{}
 		
-		Such an \acs{API} will have to be properly documented in order to reasonably reduce the overhead added by such implementations.
+%		Such an \acs{API} will have to be properly documented in order to reasonably reduce the overhead added by such implementations.
 		\\
 		\textbf{EDM-060} & The tool shall be extensible by code.
-		&     Informal \acs{MBSE} platforms often have limited flexibility/modularity as a result of \todo{having} an opinionated layout or limited feature set. On the other hand, formal \acs{MBSE} platforms provide a much larger \todo{margin of creativity/blanker slate}.  This expects users to implement the structure of their model themselves, and format it as they see fit.
+		&   
+		It is difficult to find a middle ground between too \emph{few} features and too \emph{many}. 
 		
-		As an example, an informal \acs{MBSE} platform may already have a \emph{position} parameter defined for components, which includes 3 integers (for each axis) and can be state dependent (e.g.~stowed/deployed). In a formal \acs{MBSE} platform, the use will have to create the position parameter and associate it with a product, including the appropriate representation for each axis and state. On the other hand, an informal \acs{MBSE} platform may have no way to attach an interface link or an image file to a component.
+		\todo{blablabla}
 		
-		A \todo{middle-ground} solution would be to implement an opinionated system that is built from the ground-up to allow extensibility. An efficient method to facilitate this extensibility would be an embedded scripting language, such as Lua \todo{or the other language I recently starred}. If a Turing-complete language is combined with the appropriate storage and visualisation procedures, the user would then have a \todo{theoretically infinite canvas}.
+	%	  Informal \acs{MBSE} platforms often have limited flexibility/modularity as a result of \todo{having} an opinionated layout or limited feature set. On the other hand, formal \acs{MBSE} platforms provide a much larger \todo{margin of creativity/blanker slate}.  This expects users to implement the structure of their model themselves, and format it as they see fit.
 		
-		The choice of language(s) that are officially supported for extensibility also plays an important role. A language that is inherently simple, or that many spacecraft engineers are familiar with, is more likely to get used compared to alternatives.
+	%	As an example, an informal \acs{MBSE} platform may already have a \emph{position} parameter defined for components, which includes 3 integers (for each axis) and can be state dependent (e.g.~stowed/deployed). In a formal \acs{MBSE} platform, the use will have to create the position parameter and associate it with a product, including the appropriate representation for each axis and state. On the other hand, an informal \acs{MBSE} platform may have no way to attach an interface link or an image file to a component.
 		
-		In any case, extensibility should be provided, within a reasonable degree, to a large number of aspects on such a tool. For example, by including a multi-line ``Justification'' or ``Notes'' field for parameter or entity, users can describe complex concepts that would need to be modelled independently if not represented with prose. For example, users might need to specify uncertainties in data sources, descriptive parameters (such as colour), rationale for the selected value, acceptable limits and more.
+	%	A \todo{middle-ground} solution would be to implement an opinionated system that is built from the ground-up to allow extensibility. An efficient method to facilitate this extensibility would be an embedded scripting language, such as Lua \todo{or the other language I recently starred}. If a Turing-complete language is combined with the appropriate storage and visualisation procedures, the user would then have a \todo{theoretically infinite canvas}.
+		
+	%	The choice of language(s) that are officially supported for extensibility also plays an important role. A language that is inherently simple, or that many spacecraft engineers are familiar with, is more likely to get used compared to alternatives.
+		
+	%	In any case, extensibility should be provided, within a reasonable degree, to a large number of aspects on such a tool. For example, by including a multi-line ``Justification'' or ``Notes'' field for parameter or entity, users can describe complex concepts that would need to be modelled independently if not represented with prose. For example, users might need to specify uncertainties in data sources, descriptive parameters (such as colour), rationale for the selected value, acceptable limits and more.
 		\\
 		\textbf{EDM-070} & The tool shall notify users on changes.
-		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue \todo{find a reference that explains what tool fatigue even is or if such a thing exists}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
+		&     \draft{Introducing a new tool to a development environment has the risk of exacerbating tool fatigue \todo{find a reference that explains what tool fatigue even is or if such a thing exists}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.}
 		
-		As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermoreManagingProductDevelopment2021,retselisAdaptationAcubeSATNanosatellite2022}, it logically follows that a tool should have the capability of announcing draft or released changes in real-time on that platform. This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
+		\todo{blablabla}
+		
+		%As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermoreManagingProductDevelopment2021,retselisAdaptationAcubeSATNanosatellite2022}, it logically follows that a tool should have the capability of announcing draft or released changes in real-time on that platform. This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
 		\\
-		\textbf{EDM-080} & The tool shall be available as Free and Open Source software with a focus on Developer Experience. &
-		While the choice of making technology available as open-source depends on the team and stakeholders of this project, we believe that a \acs{FOSS} tool would \todo{present} higher value to its users.% The ability to tweak the functionality and \todo{... no ideas...}
+		\textbf{EDM-080} & The tool shall be available as Free and Open Source software. &
 		
-		The discussion of Developer Experience has to inadvertently focus on software development trends in the industry. For example, while an interpreted language (such as Python) is usually regarded as less performant than a compiled language (such as C++), it is more likely that engineering graduates are familiar with the former \todo{citation}, which in turn increases the chances that they will interact with the codebase and be familiar with any errors caused.
+		On the one hand, small teams might have difficulty to fund software expenditures consistently. On the other, larger teams have to ensure that the software they use can remain usable, maintainable and supported for long periods of time
+		\todo{cite one of the many websites that say something about this... and write something better}
+		
+		
+		%While the choice of making technology available as open-source depends on the team and stakeholders of this project, we believe that a \acs{FOSS} tool would \todo{present} higher value to its users.% The ability to tweak the functionality and \todo{... no ideas...}
+		
+	%	The discussion of Developer Experience has to inadvertently focus on software development trends in the industry. For example, while an interpreted language (such as Python) is usually regarded as less performant than a compiled language (such as C++), it is more likely that engineering graduates are familiar with the former \todo{citation}, which in turn increases the chances that they will interact with the codebase and be familiar with any errors caused.
 		
 		\\ \bottomrule
 	\end{tabularx}
@@ -1837,9 +1896,11 @@ aaaa
 \section{ChipSat-1}
 %Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
 
-ChipSat-1 was the first mission I participated in within the scope of this thesis, with the objective of generating data for femto-satellite missions and experimenting on an early iteration of the \ac{SCS} methodology (\Cref{chap:METHODOLOGY}).
+\todo{Need to check and ensure consistency for tenses}
 
-The ChipSat-1 mission was constrained by a launch opportunity provided by a third-party satellite integrator, who offered to mount a ChipSat device as a secondary payload on one of their missions. The ChipSat itself was a technology demonstrator, intending to experiment with the use of \acf{VLC} between components of a distributed system. It consisted of a single \ac{PCB} separated into 3 regions (each emulating one part of a distributed system), measuring \qtyproduct{5 x 5}{\centi\meter} and weighing \SI{18.3}{\g} in total. Power generation and communication were handled by internal solar cells and a transceiver/antenna respectively, with the host providing only a mechanical and electrical inhibition interface.
+ChipSat-1 was the first mission I participated in within the scope of this thesis, with the objective of generating data for femto-satellite projects and experimenting on an early iteration of the \ac{SCS} methodology (\Cref{chap:METHODOLOGY}).
+
+The ChipSat-1 mission was motivated and constrained by a launch opportunity provided by a third-party satellite integrator, who offered to mount a ChipSat device as a secondary payload on one of their missions. The ChipSat itself was a technology demonstrator, intending to experiment with the use of \acf{VLC} between components of a distributed system. It consisted of a single \ac{PCB} separated into 3 regions (each emulating one part of a distributed system), measuring \qtyproduct{5 x 5}{\centi\meter} and weighing \SI{18.3}{\g} in total. Power generation and communication were handled by internal solar cells and a transceiver/antenna respectively, with the host providing only a mechanical and electrical inhibition interface.
 
 This \emph{hosted payload} mission was developed in 2022, and environmentally tested and integrated in 2023. However, due to administrative issues with the host's launch provider, ChipSat-1's host satellite, and by extension, ChipSat-1, were never launched.
 
@@ -1855,13 +1916,39 @@ ChipSat-1 cost \SI{8930}{EUR} in material and testing costs, required a developm
 
 \subsection{Mission Description}
 The main constraint that restricted the selection of possible missions and classes was the \qtyproduct{5 x 5}{\centi\meter} size envelope required by our host for the payload slot. During the beginning of the project,
-we had brainstorming sessions to decide on a mission concept, based on the criteria of complexity, cost, development time, novelty, risk, available competences, and strategy alignment.
+we hosted brainstorming sessions to decide on a mission concept, based on the criteria of complexity, cost, development time, novelty, risk, available competences, and strategy alignment.
+
+\begin{table*}[]
+	\caption{ChipSat-1 initial mission requirements \draft{todo}}
+	\begin{tabularx}{\linewidth}{@{}llX@{}}
+		\toprule
+		& Source  & Requirement                                                                            \\ \midrule
+		1 & Host    & ChipSat-1 should cover a maximum area of \qtyproduct{5 x 5 x 1}{\centi\meter}          \\
+		2 & Host    & ChipSat-1 should weigh at most \qty{50}{\gram}                                         \\
+		3 & Host    & ChipSat-1 shall comply to an agreed-upon electrical inhibition mechanism               \\
+		4 & Host    & ChipSat-1 shall conform to an agreed-upon mechanical interface                         \\
+		5 & Host    & ChipSat-1 should be compatible with a \qtyrange{450}{550}{\kilo\meter} \acs{SSO} orbit \\
+		6 & Host    & ChipSat-1 shall be electrically independent of its host                                \\
+		7 & Mission & ChipSat-1 shall demonstrate an inter-satellite communication technology            \\
+		8 & Mission & ChipSat-1 should demonstrate free-space Visible Light Communication in orbit				\\
+		9 & Mission & ChipSat-1 shall validate its operations by transmitting data to the ground             \\
+		10 & Mission & ChipSat-1 should be compatible with the SatNOGS network             \\
+		11 & Mission & ChipSat-1 should survive for at least 1 year in orbit             \\
+		12 & Mission & ChipSat-1 can generate and transmit environmental data from temperature, light, radiation, vibration, cameras, and/or magnetic field sensors \\
+		13 & Mission & ChipSat-1 should not rely on earth-pointing \\
+		14 & System  & ChipSat-1 shall generate on-board energy using solar radiation             \\
+		15 & System & ChipSat-1 should be operational during eclipse             \\
+		16 & System & ChipSat-1 should be separated into one primary and more, electrically independent, secondaries \\
+		
+		\bottomrule
+	\end{tabularx}
+\end{table*}
 
 The objective of a \ac{VLC} demonstrator aligns with the prevalence and research in optical communication for ground-space and inter-satellite links, usually with lasers acting as transmitters \autocite{kaushalOpticalCommunicationSpace2017,khalighiSurveyFreeSpace2014,griffithsHighsensitivityIntersatelliteOptical2021}. Optical communication can offer situational advantages over traditional \ac{RF} links, especially in terms of directivity, bandwidth and power consumption. This comes at a cost of complexity, as laser transmitters and photodiode receivers need to be accurately managed and steered to achieve a reliable link. The use of \acfp{LED} instead of laser emitters trades off this high level of complexity at the cost of directivity. A simple single-\acs{LED} system performing \acf{OOK} can require a less complex implementation than an \ac{RF} transmitter.
 
-\citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} have considered the use of \acp{SPAD} in combination with miniature \acp{LED} for an inter-satellite link, and performed a range and data rate simulation for different transmitter lenses. They found that a lens-less system, transmitting with \SI{1}{\milli\watt}, can achieve a \SI{2.87}{\kilo\meter} range at \SI{10}{\kilo\bit/\second}, which can be extended to \SI{141}{\kilo\meter} with a \( \sim \) \SI{2}{\deg} \acp{HPBW} lens.
+\citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} have considered the use of \acp{SPAD} in combination with miniature \acp{LED} for an inter-satellite link, and performed a range and data rate simulation for different transmitter lenses. They found that a lens-less system, transmitting with \SI{1}{\milli\watt}, can achieve a \SI{2.87}{\kilo\meter} range at \SI{10}{\kilo\bit/\second}, which can be extended to \SI{141}{\kilo\meter} with a \( \sim \)\SI{2}{\degree} \acf{HPBW} lens.
 
-\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometer-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\deg} are commercially available \autocite{M3MicroBeamSteeringTechBulletin}} is required, eliminating the need for a high-gain antenna or high-power transceiver.
+\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometer-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\deg} are commercially available \autocite{M3MicroBeamSteeringTechBulletin}.} is required, eliminating the need for a high-gain antenna or high-power transceiver.
 
 ChipSat-1 was therefore decided to act as a technology demonstration experiment for a simple \ac{LED}-based \ac{VLC} system. Due to the limitation of a single flown spacecraft, we decided to place the transmitter (\ac{LED}) and receiver (photodiode) on a single \ac{PCB}, intending to focus on testing only the effects of ambient light, temperature and radiation on the payload and bus components.
 
@@ -1877,9 +1964,11 @@ For ChipSat-1, the available space allowed us to implement two ``secondary'' par
 
 \begin{figure}[h]
 	\includegraphics{drafts/chipsat_parts_render.png}
-	\caption{Render of ChipSat-1, showing its 3 parts}
+	\caption{Render of ChipSat-1, showing its 3 parts. Each part is electrically isolated to the others, sharing only a common ground and the free-space optical link.}
 	\label{fig:c_chipsat_parts_render}
 \end{figure}
+
+\marginnote{In technical documentation, I refer to the primary as ``\texttt{212}`` and the secondaries as ``\texttt{211A}``, ``\texttt{211B}``, showing a three-part ratio that starts with a common denominator and the horizontal \& vertical sizes, inspired by the chroma subsampling convention \todo{ref}.}
 
 The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \draft{what} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
 
@@ -1914,7 +2003,7 @@ The signal path of the received pulses is first fed into a band-pass filter to e
 At a system level, the secondaries transmit data at periodic \draft{???} intervals, while the primary is constantly waiting for data reception.
 Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
 
-
+\todo{Some other stuff maybe}
 
 \subsection{System Description}
 
@@ -1933,9 +2022,11 @@ The constraint of the flat \qtyproduct{5 x 5}{\centi\meter} shape of ChipSat-1 w
 
 In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated. We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
 
-\marginnote{I selected the \draft{STM32WL} line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
+\marginnote{We selected the \draft{STM32WL} line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
 The ``brain'' of the satellite is a \acf{MCU} \ac{IC} with an integrated transceiver and power amplifier, essentially consolidating two subsystems in a single package.
 \marginnote{We avoided the use of ``radiation-tolerant'' or ``radiation-hardened'' packages due to their usually high cost, size, and supply chain restrictions. Instead, we decided to consider \ac{SEE} damage as an acceptable risk. \todo{elaborate on trade-off}}
+
+The \ac{MCU} is responsible for handling spacecraft status, sensor inputs and data outputs. While the primary used a transceiver-equipped \ac{MCU}, the secondaries used a smaller footprint \ac{IC} without wireless capabilities. The primary also included an \draft{\acs{FRAM}} memory for packet storage. Programming and debugging was done through an integrated ribbon connector, present on all parts.
 
 The resulting block diagram can be seen in \Cref{fig:c_chipsat_block}.
 
@@ -1945,30 +2036,32 @@ The resulting block diagram can be seen in \Cref{fig:c_chipsat_block}.
 	\caption{ChipSat-1's solar panels \todo{blablabla dimensions coverage}}
 \end{marginfigure}
 
-\todo{
-%1. Cite SMAD for power generation methods
-2. Explain that solar power is the only alternative
-3. Calculate a quick power budget using SMAD
-4. Explain the commercial solar panel situation vs. Sprite
-5. Explain the configuration of cells chosen
-6. Advertise analysis script
-7. Explain the use of energy harvesting and the energy harvester IC as well as MPPT
-}
-
 While an unconventional system, such as a ChipSat, can attract the application of unconventional technologies for power generation, such as primary batteries or thermoelectric sources \autocite{SMAD}, we followed an approach similar to past ChipSats, by relying on fixed miniaturised solar cells.
 
 A maximum target power generation budget can be approximated as follows \cite{SMAD}:
-\marginnote{``Design'' degradation refers to incomplete capture of sunlight over a ChipSat's area due to small cells not covering the entirety of the \ac{PCB}}
+%\marginnote{``Design'' degradation refers to incomplete capture of sunlight over a ChipSat's area due to small cells not covering the entirety of the \ac{PCB}}
+\marginnote{where:
+\begin{itemize}
+	\item \( P \): Orbit Average Power
+	\item \( A \): Surface Area
+	\item \( n \): Solar Cell Efficiency
+	\item \( D_{\text{design}} \): ``Design'' degradation
+	\item \( D_{\text{temp}}\): Temperature degradation
+	\item \( D_{\text{eclipse}}\): Loss due to eclipse
+	\item \( D_{\text{pointing}}\): Loss due to no pointing
+\end{itemize}
+
+``Design'' degradation refers to incomplete capture of sunlight over a ChipSat's area due to small cells not covering the entirety of the \ac{PCB}.
+}
 \begin{align}
-	\text{Orbit Average Power} &=
-	\text{solar irradiance} \cdot
-	\text{cell area} \cdot
-	\text{cell efficiency} 
-	\\ &\hphantom{=} \cdot
-	\text{design degradation} \cdot
-	\text{temperature degradation} \cdot
-	\text{eclipse loss} \cdot
-	\text{pointing loss} \\ &=
+	P &= G_{SC}
+	\cdot A
+	\cdot n
+	\cdot D_{\text{design}}
+	\cdot D_{\text{temp}}
+	\cdot D_{\text{eclipse}}
+	\cdot D_{\text{pointing}}
+	\\ &=
 	\qty{1361}{\watt/\meter^2}
 	\cdot \qty{25}{\centi\meter^2}
 	\cdot 20\%
@@ -1979,36 +2072,166 @@ A maximum target power generation budget can be approximated as follows \cite{SM
 	% 1361W/m^2×(5cm×5cm)×20%×70%×85%×66%×66% to mW
 	\qty{176.4}{\milli\watt}
 \end{align}
-\todo{Fix this equation}
 
-\show\qty
+This theoretical analysis shows the expected power input, which should however be complemented with the relevant component selection. Most commercially available solar cells for space use follow a \qtyproduct{7 x 4}{\centi\meter} footprint.
+\citeauthor{manchesterCentimeterScaleSpacecraftDesign2015}'s Sprites \autocite{manchesterCentimeterScaleSpacecraftDesign2015} had cut solar cells to fill the available area. However, due to the complexities of such a cutting process, for ChipSat-1 we instead decided to use low-footprint \acs{COTS} solar cells. Since there was no module that fit the available solar area of the \ac{PCB}, this resulted in slightly less available overall power, due to higher ``design degradation''.
 
-While a theoretical analysis 
+Due to the high number of different commercially available solar cell sizes, I developed a Python optimisation tool based on rectangle-packing to identify the combination of solar cells that could theoretically produce the highest power.
+
+\begin{marginfigure}
+	\caption{Raw result from the cell packing optimisation tool \todo{todo}}
+	\label{fig:c_panel_packing}
+	\includegraphics{drafts/panel_packing.png}
+\end{marginfigure}
+
+
+To perform \ac{MPPT} and convert the panel voltage to an appropriate one for the remaining electronics and energy storage, we used a combined low-footprint power management \ac{IC}, which essentially acts as the \acf{EPS} of each ChipSat part. The commercial availability of such ``power harvesting'' electronics was very beneficial to the available real estate of the ChipSat.\marginnote{With the power management \acs{IC} itself taking up \qtyproduct{4.5 x 5.5}{\milli\meter}, most of the space for power management was used by the 17 passive components required to configure it.}
+
+Each part of the ChipSat is equipped with its set of components for power generation and management, the primary having 4 solar cells in a 2S2P configuration, the secondaries having 2 in a 2S1P configuration.
+
 
 \paragraph{Energy Storage}
 
+While secondary\footnote{i.e.~rechargeable \autocite{SMAD}} batteries are the standard choice for energy storage in miniaturised spacecraft, the typical temperature conditions experienced by ChipSats are not suited for use of standard battery chemistries. More specifically, the thin and flat shape of ChipSats combined with their small thermal mass and lack of structure means that they lose their temperature very quickly during eclipse, being able to reach even  \SI{-100}{\degreeCelsius} \autocite{manchesterCentimeterScaleSpacecraftDesign2015}.
+
+As most commercially available batteries do not support charging or discharging on temperatures significantly below \SI{0}{\degreeCelsius}, ChipSats typically forego long-term energy storage \cite{manchesterCentimeterScaleSpacecraftDesign2015}. While alternative solutions can be investigated, such as high-range \acs{LTO} batteries, coin-cell batteries, or heaters, they are associated with further drawbacks, reducing possible power draw or increasing size. ChipSat-1 was therefore decided to operate only with sunlight available.
+
+\marginnote{At \qty{4}{\volt}, the capacitor can support a \qty{300}{\milli\watt} load for
+	\( \qty{1}{\milli\farad} \cdot (\qty{4}{\volt})^2 / \qty{300}{\milli\watt} = \qty{53}{\milli\second} \).}
+Nevertheless, each ChipSat-1 part includes a capacitor to provide short-term energy storage and eliminate energy fluctuations, especially in the case of high-power loads. We avoided the use of electrolytic capacitors due to safety concerns for their use in space \todo{ref}, using \qty{1}{\milli\farad} tantalum capacitors instead.
+
+\begin{table}[h]
+	\caption{ChipSat-1 power consumption and storage budget \todo{Update budget --- Add power storage calculations}}
+	\begin{tabularx}{\linewidth}{@{}Xcccc@{}}
+		\toprule
+		\textbf{212 (Large ChipSat)}   & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\ \midrule
+		Microcontroller                & 3.30      & 100.00\%  & 3.30      & 3.30      \\
+		Transceiver                    & 364.65    & 100.00\%  & 364.65    & 0.00      \\
+		I2C network                    & 0.00      & 100.00\%  & 0.00      & 0.00      \\
+		Memory                         & 1.32      & 100.00\%  & 1.32      & 1.32      \\
+		Photodiode                     & 0.00      & 100.00\%  & 0.00      & 0.00      \\ \midrule
+		\textbf{211   (Small ChipSat)} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\ \midrule
+		Microcontroller                & 0.73      & 100.00\%  & 0.73      & 0.73      \\
+		LED                            & 100.00    & 50.00\%   & 50.00     & 0.00      \\
+		I2C network                    & 0.00      & 100.00\%  & 0.00      & 0.00      \\
+		Sensors                        & 9.9       & 50.00\%   & 4.95      & 0.02      \\ \bottomrule
+	\end{tabularx}
+\end{table}
+
 \paragraph{Communications}
 
-\subsection{Development Process}
+Because of the small size of the ChipSat and the lack of pointing, \ac{RF} communication with a fixed non-directive antenna was envisioned.
 
-\subsection{Cost Budget}
 
-\draft{
-One of the areas were quantitative data is available is the cost budget of ChipSat-1, shown in Table Tade.
-}
-\draft{
-To retroactively verify the impact of the \ac{SCS} methodology, I will speculatively adjust the cost budget for the following scenarios:
-\begin{enumerate}
-	\item[Scenario 0:] Multiple iterations on different slices, testing performed during multiple iterations, no analyses performed (actual scenario)
-	\item[Scenario 1:] Single iteration on a single slice, testing performed, structural and thermal analyses performed
-	\item[Scenario 2:] Multiple iterations on a single slice, testing performed once, structural and thermal analyses performed
+\begin{marginfigure}
+	\includegraphics{pictures/W_CHIPSAT_F.jpg}
+	\caption{View of the external side of the ChipSat, with the antenna elements attached}
+\end{marginfigure}
+
+The selection of \ac{RF} transmission characteristics was guided primarily by the selected transceiver \ac{IC}, limiting us at \( + \qty{22}{dBm}\) of output power and the \qtyrange{435}{438}{\mega\hertz} radio-amateur band. Different antenna configurations were considered in conversation with our host provider. We settled on a short-wave dipole\draft{ powered by an impedance matching circuit}, with preliminary antenna analysis performed on HFSS software.
+
+The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \draft{XYZ} modulation with a \draft{XYZ bps} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
+
+\begin{table}
+	\caption{ChipSat-1 link budget, performed using Jan King's link tool \todo{todo}}
+	\label{c:chipsat_link_budget}
+	\todo{Link budget table}
+\end{table}
+
+\subsection{Development Flow}
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics{drafts/chipsat_timeline.png}
+	\caption{ChipSat-1 development timeline \draft{todo}}
+	\label{fig:c_chipsat_timeline}
+\end{figure}
+
+In the early planning stages of the ChipSat-1 project, it was decided to follow an iterative lifecycle process, with the first steps consisting of creating an early working prototype (or \acs{MVP}). For this reason, an initial Gantt chart was drafted and updated every month. While only 3 complete iterations were planned in the beginning, the project required 5 iterations in the end.
+
+For project management, the team followed a low-overhead, primarily ``ad-hoc'' approach. We used Microsoft's 365 suite for communication and document sharing, spreadsheets for task tracking, and GitLab for software and hardware versioning.
+
+During the \emph{1\textsuperscript{st} iteration}, we performed initial prototyping and experimentation to confirm the planned design and component selection. More specifically, I experimented on the wireless transmission as well as payload conceptualisation. This involved purchasing electronics and development boards, and setting up a \emph{breadboard model} of the required functionality. I also started iterating on the operational software, developed in C/C++. Finally, we set up purchase orders for critical \acsp{IC} that were identified, in order to maintain enough stock against the chip shortage that was still in effect during 2022 \todo{ref}. 
+
+This initial iteration provided positive results on the concept feasibility and component suitability, and yielded no significant needs for design changes. It lasted \draft{X} months.
+
+During the \emph{2\textsuperscript{nd} iteration}, enough information was gathered to proceed to full \ac{PCB} production. It was understood by the team that this iteration step was not intended to create a Flight Model, but an Engineering Model, similar in Form, Fit and Function to the \ac{FM}, but lacking the inhibit features required for flight.
+
+\begin{marginfigure}
+	\includegraphics{pictures/chipsat1_ADM}
+	\caption{Initial concept of a ChipSat-1 deployable antenna. Measuring tape is often used for small satellite antennas due to high availability and desirable material properties, mainly elasticity.}
+	\label{fig:c_burn_antenna}
+\end{marginfigure}
+
+I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \todo{cite IEC/EIA/IPC}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had to \draft{deal with} a lead period of \draft{X} days for manufacturing, during which software engineering was done.
+	
+The rest of the team also iterated on a deployable antenna design based on a burn wire release mechanism (\Cref{fig:c_burn_antenna}). However, this design was abandoned in favour of a conventional fixed dipole, as the deployable mechanism would have presented a risk of damage to our host spacecraft.
+	
+Initial testing revealed the following non-conformances:
+\begin{enumerate}[itemsep=-1ex]
+	\item The \ac{PCB} layout footprints of the solar cells had smaller dimensions than the actual cells, causing a short-circuit between adjacent cells.
+	\item An incorrect overvoltage configuration resistor was selected for the power supply of the three parts, causing intermittent voltage output.
+	\item The debugging connector was not compatible with standard flexible flat cables, making debugging tedious due to a lack of locking.
 \end{enumerate}
-}
+These issues were corrected through rework for the initial model.
 
-\draft{
-Due to the significant impact of labour costs on the final results, I provide two different calculations, with and without labour costs. The latter calculation is interesting in the case of student teams, or where labour for a project is considered fixed.
-}
+\todo{figures from payload testing}
 
+During the \emph{3\textsuperscript{rd} iteration}, we manufactured a \textbf{structural} model of the ChipSat to verify its interface to the host spacecraft, as well as the dynamic envelope of the antenna design. This required a \textbf{vibration test} at an external facility. We also performed an \textbf{\acf{OTA} \acs{RF} test} to verify the correct operation of the integrated antenna.
+
+For the \emph{4\textsuperscript{th} iteration}, we designed another \ac{PCB} intended as a Qualification or Flight Model, manufactured again by an external supplier. In addition to fixes for the previously found issues, we changed the following:
+\begin{enumerate}[itemsep=-1ex]
+	\item Replaced primary supercapacitor for two tantalum capacitors
+	\item Implemented electric inhibit circuit
+	\item Added antenna matching circuit \todo{Anything more?}
+\end{enumerate}
+
+The 4\textsuperscript{th} iteration also had to include qualification testing, which had to be performed in external facilities and took one week, including travel. \draft{Based on the host's requirements, vibration testing had to include a resonance search and random vibration testing, while thermal testing had to include 4 thermal cycles under vacuum.} \todo{Anything more? -adaptor manufacturing/test fixtures}
+
+While the environmental tests were successful without any issues, functional testing revealed a reversal in the polarity of the inhibition signal\footnote{Meaning that the ChipSat was ON when the activation signal was missing, and OFF when it was present.}. As an acceptable rework was not possible due to the layout of the \ac{PCB}, we instead decided to complete a \emph{5\textsuperscript{th} iteration} of the ChipSat following a minor \ac{PCB} redesign. As such, the ChipSat produced during the 4\textsuperscript{th} iteration was downgraded to an \emph{\acf{EQM}}, while the last iteration would produce an equivalent to a \emph{\acf{PFM}}.
+
+Environmental tests were repeated in an external facility for the 5\textsuperscript{th}, this time functioning as acceptance tests, which were also required by our host provider. Following the successful results, our host integrated ChipSat-1 into their spacecraft. \draft{The additional iteration incurred a 2 month delay}.
+
+\draft{During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in conversation with our host, we also designed and manufactured (externally) the aluminum mechanical structure that would serve as the interface between the host spacecraft's exterior and our ChipSat. The second iteration was made due to a change in requirements for this interface (??)}
+
+\begin{figure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics{pictures/chipsat1_vibration.jpg}
+		%\caption{\label{subfig:c_chipsat_vibration}}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics{pictures/chipsat1_tvac.jpg}
+		%\caption{\label{subfig:c_chipsat_tvac}}
+	\end{subfigure}%
+	\caption{ChipSat-1 during qualification testing \quad (a) on the shaker,\quad (b) in the thermal vacuum chamber}
+\end{figure}
+
+\todo{-link budget\\-power budget\\???}
+
+\subsection{Lessons Learned}
+
+\draft{From a technical point of view, the following points were made clear during development of the spacecraft:}
+\begin{enumerate}[itemsep=-1ex]
+	\item Early versions and renders of the \acs{PCB} were available early in the project. These were useful as they could represent realistic concept art, used in communication with external partners and collaborators of our group.
+	\item As the inhibit mechanism was managing a critical electrical interface, it should have been present in the early prototypes and iterations. At least a breadboard model should have been built for the inhibition circuit.
+	\item Due to the small number of engineers participating in the project and their parallel involvement in projects separate to ChipSat-1, it was difficult to perform repeated and accurate design reviews, which would have detected some of the \draft{errors} before manufacturing. Personnel allocation and work package management are therefore crucial parts of a project like this. Even though a Gantt chart was created and updated monthly, project planning updates should have been more regular and the allocation of tasks clearer, with updates to the expected and completed amount of work for each task.
+	\item While external manufacturing is convenient and results in high workmanship quality, it suffers from high lead times and difficulty of rework. In many cases, especially when design errors are expected, \ac{PCB} rework will be required in any case.
+	In the case of ChipSat-1, a lead time of approx.~1 week was required for unpopulated \acs{PCB} procurement, and approx.~1 month for manufacturing. This was often augmented by unpredictable turnaround times for university procurement approval.
+	Therefore, teams should consider investing and gaining knowledge regarding in-house manufacturing, especially in electronics and testing equipment.
+	\item \todo{More Lessons learned}
+\end{enumerate}
+
+
+
+% Extra parameters for incorrect:
+% !Iteration duration! (shorter longer)
+% !Manufacturing! (inhouse - out of house)
+
+% Iteration duration!
 
 \begin{table*}[h]
 	\caption{ChipSat-1 cost budget}
@@ -2050,6 +2273,113 @@ Due to the significant impact of labour costs on the final results, I provide tw
 	\end{tabular}
 \end{table}
 
+
+\subsection{Evaluation}
+
+During the development of ChipSat-1, we captured numerical data representing the time taken by developers (\Cref{tab:c_chipsat_times}) and associated costs (\Cref{tab:c_chipsat_costs}).
+This data can be used to speculatively and retroactively evaluate the different project management decisions made by the team.
+
+\marginnote{%
+	\textbf{Cost}: For cost I do not consider labour costs, as their accounting will vary in different organisations. Instead, labour costs should be considered in connection with the development time.
+	
+	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk. In this case, ``risk'' should be perceived as \emph{the probability that a rework (an additional iteration) is needed.}
+	
+	\textbf{Features}: Based on the \acs{MOSCOW} model, desirable (should/can) features are not requirements, but may be included in the final product.
+	}
+Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:METHODOLOGY}, I will consider \todo{six} decisions taken by the team and evaluate their impact on \textbf{cost, schedule, features} and \textbf{risk}.
+
+\paragraph{On not executing Structural/Thermal Analyses}
+
+%Most subsystems will be subject to testing, therefore analysis only reinforces the testing.
+
+The decision to not perform any environmental analysis was influenced by the lack of engineers experienced in these disciplines in our team, the \todo{necessity for testing}, and the lack of many design parameters that would be influenced by the tests. These analyses are also sometimes associated with considerable effort. While the actual time taken will depend on the size and complexity of the problem, the resolution of the analysis, and the experience of the engineers, for this calculation I will consider the lower end of work hours reported in the literature of CubeSat projects (\Cref{tab:l_cubesat_time_drivers}).
+
+Nevertheless, these analyses can increase confidence in the design and \draft{inform on the general behaviour of the system}. They also reduce the necessity of additional vibration testing.
+
+
+\begin{fullwidth}
+\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
+	\toprule
+	\multicolumn{8}{c}{Effects of bypassing structural/thermal analyses}
+	\\ \midrule
+	\textbf{Cost:} & \( -\qty{1390}{EUR} \) &
+	\textbf{Time:} &  \( -\qty{180}{hours} \) &
+	\textbf{Features:} &  No change &
+	\textbf{Risk:} &  Higher
+	\\ \bottomrule
+\end{tabularx}
+\end{fullwidth}
+
+\paragraph{On manufacturing externally}
+
+One decision that seems to vary between teams concerns whether construction, assembly and manufacturing, especially for \acs{PCB} and electronics, takes place \emph{in-house} or in external facilities.
+
+The decision will vary between teams, as different manufacturing requirements will be relevant at different stages, and in-house assembly requires an initial investment in equipment, available space and expertise, and sometimes dedicated lab personnel.
+
+For ChipSat-1, I will consider that an unpopulated \acs{PCB} is still manufactured externally, but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
+	\item External manufacturing usually adds a month of lead time, during which no changes can be made, compared to \(\sim \)\qty{1}{week} for an unpopulated \acs{PCB}. This makes iterations longer and prevents the rapid testing required by Agile methodologies.
+	\item External manufacturing \draft{has higher workmanship standards ref}
+\end{enumerate*}
+
+\begin{fullwidth}
+	\todo{Somehow integrate lead time into this calculation}
+
+	\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
+		\toprule
+		\multicolumn{8}{c}{Effects of manufacturing \acsp{PCB} externally}
+		\\ \midrule
+		\textbf{Cost:} & \( +\qty{2000}{EUR} \) &
+		\textbf{Time:} &  \( -\qty{72}{hours} \) &
+		\textbf{Features:} &  No change &
+		\textbf{Risk:} &  No change
+		\\ \bottomrule
+	\end{tabularx}
+\end{fullwidth}
+
+\paragraph{On spending less time designing}
+\draft{For ChipSat-1, we followed a ``develop first, ask questions later'' mentality, emphasising prototyping and engineering work over design iterations and reviews.} While it is difficult to estimate how many of the detected issues would have been resolved early with more time spent in the design, it was clear that, due to evolving requirements beyond the team's control, more than one production run would have been necessary. \todo{Make sure to define what ``designing'' means. There are some papers that explain}
+
+For this evaluation, I will consider one person month of additional design/review work.
+
+\begin{fullwidth}
+	\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
+		\toprule
+		\multicolumn{8}{c}{Effects of spending less time ``designing''}
+		\\ \midrule
+		\textbf{Cost:} & No change &
+		\textbf{Time:} & \( -\qty{120}{hours} \) &
+		\textbf{Features:} &  No change &
+		\textbf{Risk:} &  Higher
+		\\ \bottomrule
+	\end{tabularx}
+\end{fullwidth}
+
+\paragraph{On iterating over slices}
+While the initial ChipSat-1 iterations happened over functional products with the same function as the final intended result, these iterations did cover only ``slices'' of the product, with specific functions or subsystems being covered at \draft{different iterations}. This increased development speed at the cost of reduced certainty, leading to a required rework for the final iteration, which cost the team 2 months.
+
+For the retrospective evaluation, I will consider \todo{Update considerations based on notes}
+
+\begin{fullwidth}
+	\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
+		\toprule
+		\multicolumn{8}{c}{Effects of iterating over slices}
+		\\ \midrule
+		\textbf{Cost:} & \draft{\( +\qty{1000}{EUR} \)} &
+		\textbf{Time:} & \( +\qty{24}{hours} \) &
+		\textbf{Features:} &  No change &
+		\textbf{Risk:} & Higher
+		\\ \bottomrule
+	\end{tabularx}
+\end{fullwidth}
+
+
+
+\paragraph{Conclusion}
+
+\todo{blablabla conclusion}
+
+
+
 \FloatBarrier
 \section{AI4Space}
 Seminal papers: \autocite{thoemelLeanDemonstrationBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
@@ -2079,10 +2409,10 @@ AI4Space was therefore developed as a technology demonstrator platform for \acs{
 
 
 The functional part of the AI4Space payload, responsible for the generation of representative thermal images, consisted of:
-\begin{enumerate}
-	\item 4 thermal cameras looking towards a fixed point
-	\item 4 switchable resistors to emulate ``hot points'' 
-	\item 1 dummy microcontroller to simulate a representative temperature increase during normal satellite operation
+\begin{enumerate}[itemsep=-2ex]
+	\item Four thermal cameras looking towards a fixed point
+	\item Four switchable resistors to emulate ``hot points'' 
+	\item A dummy microcontroller\footnote{For easy integration, an ATMega Arduino processor was used.} to simulate a representative temperature increase during normal satellite operation
 \end{enumerate}
 
 The AI4Space payload contained no Attitude Control, Communications, or Electrical subsystems, as these aspects were covered in their entirety by the host spacecraft.
