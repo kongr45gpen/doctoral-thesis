@@ -451,7 +451,6 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 	\includegraphics{media/drafts/boehm_roi.png}
 	\caption{\draft{How much architecting is enough?} \cite{boehmROISystemsEngineering2008}}
 \end{figure}
-
 \draft{Surveys conducted by \citeauthor{akbarStatisticalAnalysisEffects2018} \autocite{akbarStatisticalAnalysisEffects2018} showed that more ``lightweight'' processes could be used for smaller-scale projects. - What does this mean? What did they show?}
 
 
@@ -914,6 +913,7 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 \subsection{Life Cycle Models}
 The selection of a life cycle model for the development phases is a key decision in systems engineering.
 The \ac{SEBOK} wiki defines a life cycle as ``a series of stages [\textellipsis] which confirm that the system is mature enough to leave one stage and enter another'' \autocite{sebok}.
+\marginnote{For this work, when using the term ``life cycle'', I refer to the life cycle of the \emph{project}, and not the \emph{system} or an instance of the system. The former includes all project stages, from initial ideation to operations, while the latter refers to the stages in the life of a physical system, such as commissioning, \draft{main mission operations}, and disposal.} %This is also where terms like "infant mortality" come into place, see Bathtub curve.
 A life cycle model is individual and specific to each project, but usually follows a pre-specified life cycle \emph{process model}. 
 \acs{SEBOK} categories these models into three categories:
 \begin{enumerate}
@@ -1333,6 +1333,19 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 \section{Technical Management Methodology}
 
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
+
+\draft{
+	What makes Agile interesting?
+}
+
+\draft{	
+	It is that it is a sequential yet evolutionary process. The number of iterations must not be predetermined but what happens inside an iteration is. This is the conicept of the sat-scrum model.
+}
+
+\draft{
+	This allows for a theoretically infinite number of reworks that means the launch is extended. But the launch date is fixed, so should the number of iterations be fixed? 
+}
+
 A first version of a lifecycle process model can be inspired by the characteristics and processes of Agile methodologies. More specifically, \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} lists six principles for Agile systems engineering \marginnote{\citeauthor{douglassAgileSystemsEngineering2015}'s 6 principles of Agile Systems Engineering:\begin{enumerate}
 		\item Work Incrementally
 		\item Plan Dynamically
@@ -1361,17 +1374,15 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 
 \begin{table*}[h]
 	\caption{Sat-Scrum team responsibilities}
-\begin{tabularx}{\linewidth}{@{}lXX@{}}
-	\toprule
-	Role & \textbf{Product Owner}                                            & \textbf{Developers}                                                                          \\
-	\midrule
-	& Creating and communicating Product Goal and Product Backlog Items & Creating a plan for each Sprint                                                              \\
-	& Interacting with customers and stakeholders                       & Advancing the development of the product                                                     \\
-	& Delegating responsibilities to others, if needed                  & Participating in design, development, manufacturing, integration and verification operations \\
-	& Removing impediments to the Scrum process                         & Holding each other accountable                                                               \\
-	& Organising Scrum events                                           & Participating in Scrum events                                                                \\
-	& Setting up interactions with stakeholders                         & Participating in interactions with stakeholders                            \\
-	\bottomrule                 
+\begin{tabularx}{\linewidth}{XX@{}}
+ \textbf{Product Owner}                                            & \textbf{Developers}                                                                          \\
+	 Creating and communicating Product Goal and Product Backlog Items & Creating a plan for each Sprint                                                              \\
+	 Interacting with customers and stakeholders                       & Advancing the development of the product                                                     \\
+	 Delegating responsibilities to others, if needed                  & Participating in design, development, manufacturing, integration and verification operations \\
+	 Removing impediments to the Scrum process                         & Holding each other accountable                                                               \\
+	 Organising Scrum events                                           & Participating in Scrum events                                                                \\
+	 Setting up interactions with stakeholders                         & Participating in interactions with stakeholders                            \\
+	                 
 \end{tabularx}
 \end{table*}
 
@@ -1388,7 +1399,7 @@ This imposition of physical and time-related constraints makes the direct applic
 
 \begin{figure*}[h]
 	\includegraphics{media/drafts/satscrum_iteration}
-	\caption{Activity diagram of one Sat-Scrum iteration}
+	\caption{Activity diagram of one Sat-Scrum iteration \todo{todo}}
 	\label{fig:m_sat_scrum_iteration}
 \end{figure*}
 
@@ -1449,7 +1460,34 @@ Each Sat-Scrum Sprint can therefore last between \qtyrange{4}{8}{working weeks},
 
 \subparagraph{Backlog}
 
-\begin{table*}[h]
+\paragraph{High-level planning}
+
+\acs{SEBOK} describes Agile life cycle process models as \emph{evolutionary sequential} models, in the sense that, the operational capabilities and performance of a system at each stage of the project life cycle are not predetermined, but the sequence of activities within each iteration \draft{(in this case, sprint)} is well defined
+\autocite{sebok_drivers}.
+\marginnote{\todo{CAN THIS BE REPHRASED SOMEHOW? If not then delete. For example, if a defect is discovered 15 days after a 30-day iteration starts, the prescribed Scrum process requires waiting 15 more days until a new, non-defective product is iterated on.}}
+Scrum and Sat-Scrum do not prescribe a certain number of iterations, and, therefore, do not create by default a prediction on the development time until a ``launch-ready'' version of a project is prepared. However, this can create a \textbf{conflict with projects that have a fixed deadline}, such as projects with \textbf{launch commitments}.
+
+An adverse example for this situation would be if, during the last iterations, the product is shown to not fulfil all ``must'' requirements (\Cref{sec:METHODOLOGY_requirements}), or contains critical defects.
+
+\draft{The possible work-arounds for this situation are as follows:}
+\begin{itemize}
+	\item \textbf{Do not establish} a launch agreement until a ``Minimum Launchable Product'' has been produced, or there is high confidence that one will be produced soon.
+	
+	This option adds an additional delay to the time until launch, which however can be allocated to a potential development of the next mission, or the implementation of optional features (should/can requirements). \todo{Do we have information on the smallest \(\Delta t\) between launch agreement and launch? They are usually smaller for PQs.}
+	\item \textbf{Reduce the scope} of the mission, by downgrading some requirements from \emph{must} to \emph{won't} classifications.
+	
+	The possibility of this option depends on an agreement between stakeholders and developers, and the requirement structure of the project, and might result in it changing its scope completely.
+	\item \textbf{Accept the risk} that the product may not be ready for launch, in which case the agreement can be cancelled.
+	
+	This option adds a significant ``wasted'' financial, administrative and time cost, since launch preparations can take up a large part of a team's schedule. It might 
+	\item Allocate a \textbf{flexible} launch slot, if available, which can be postponed to a future date. This will require the possibility of a flexible option from the launch provider, or the cooperation between rideshare customers to \draft{reallocate their payloads}.
+	
+	In the ideal case, an Agile developer will cooperate with partners who also follow Agile workflows; however, in the case of space system launches, dates are often agreed on \draft{multiple years before each launch}, and this may not be possible.
+	\item Prepare a \textbf{fallback} satellite. 
+	This is possible in the case of experienced teams that already have a product developed, and can quickly adapt it to an available launch slot as a back-up for the actual project.
+\end{itemize}
+
+\begin{table*}[p]
 		\caption{Overview of the Sat-Scrum method}
 	\begin{tabularx}{\linewidth}{@{}lXl@{}}
 		\toprule
@@ -1477,6 +1515,26 @@ Each Sat-Scrum Sprint can therefore last between \qtyrange{4}{8}{working weeks},
 		\item Who has done it before
 		\item What has Kathleen done?
 \end{itemize}}
+
+\begin{figure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics{renders/pocketqube_subsystem}
+		\caption{\label{subfig:m_slice_subsystem}}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics{renders/pocketqube_slice}
+		\caption{\label{subfig:m_slice_slice}}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics{renders/pocketqube_system}
+		\caption{}
+		\label{subfig:m_slice_system}
+	\end{subfigure}%
+	\caption{Example of (a) subsystem, (b) slice, (c) system. Renders based on QUBIK/POQUITO \todo{cite}
+	}
+\end{figure}
 
 
 \subsection{Workload Management Approaches}
@@ -1548,6 +1606,8 @@ In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirem
 		Benefits & \draft{Development Time}, Features \\ \bottomrule
 	\end{tabularx}
 \end{table*}
+
+\todo{HERE we put information about the slices}
 
 \subsection{Data Management: A Model-Based Approach}
 
@@ -1729,7 +1789,7 @@ The shortcomings of document-based specification approaches led to the adoption 
 	\includegraphics{graphics/spardata_moqup}
 \end{figure}
 
-\begin{table*}[h]
+\begin{table*}[p]
 	\caption[Overview of the SCS data management method]{Overview of the \acs{SCS} data management method}
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
@@ -1771,19 +1831,41 @@ Verification and validation is an integral part of a sprint cycle, and is the st
 
 %The distinction between the ``verification'' and ``validation'' terms is provided 
 
-In traditional space systems engineering, verification is \draft{ECSS tade}.\marginnote{\textbf{Definition 1.1:} \textbf{Verification} is the process which demonstrates through the provision of objective evidence that the product is designed and produced according to its specifications and the agreed deviations and waivers, and is free of defects
-\cite{ECSS-S-ST-00-01C}
+\marginnote{%
+%	\textbf{Definition 1.1:} \textbf{Verification} is the process which demonstrates through the provision of objective evidence that the product is designed and produced according to its specifications and the agreed deviations and waivers, and is free of defects
+	\cite{ECSS-S-ST-00-01C}
 
-\textbf{Definition 1.1:} \textbf{Validation} is the process which demonstrates that the product is able to accomplish its intended use in the intended operational environment.} In short, verification involves ensuring that the built system satisfies all agreed-on requirements and specifications, while validation ensures that the correct system was built.  \cite{ECSS-S-ST-00-01C}
+	\textbf{Definition 1.1:} \textbf{Validation} is the process which demonstrates that the product is able to accomplish its intended use in the intended operational environment.%
+}
+
+In traditional space systems engineering, \acs{ECSS} defines verification as the process demonstrating that the built system satisfies all requirements and is free of defects \cite{ECSS-S-ST-00-01C}. However, in the \ac{SCS} methodology, the system is not strictly defined by its requirements specification, but also by an agreement between the developers and stakeholders on its capability and performance. Therefore, based on the \acs{ECSS} definition \cite{ECSS-S-ST-00-01C}, I \draft{modify the definition of verification as follows:}
+
+\marginnote{\textbf{Definition 1.1:} Verification}
+\begin{quote}
+	\textbf{Verification} is the process which generates objective evidence to evaluate a product artifact, with the goals of:
+	\begin{enumerate}[itemsep=-2ex]
+		\item Assessing the number of requirements that the product is compliant with, based on the current requirements specification (see \Cref{sec:METHODOLOGY_requirements})
+		\item Demonstrating that the product is free of defects
+		\item Measuring the product's performance
+		\item \draft{Confirming the implementation of all features requested as part of work packages}
+	\end{enumerate}
+\end{quote}
+
+
+While verification ensures that the built system satisfies all agreed-on specifications and expectations, \textbf{validation} ensures that the correct system was built \autocite{ECSS-S-ST-00-01C}.
+
+\marginnote{\textbf{Definition 1.1:} \textbf{Performance} is the set of quantifiable characteristics of a system \emph{(adapted from \cite{ECSS-S-ST-00-01C})}.}
 
 \acs{ECSS} defines four verification methods that are typically used in space missions: \emph{review-of-design, analysis, inspection and testing}, which provide different levels of fidelity and reliability \autocite{ECSS-E-ST-10-02C}. It also distinguishes between \emph{acceptance} and \emph{qualification} levels for design parameters, the former of which are used to verify workmanship and functionality, and the latter used to demonstrate design margins, usually at a level that may be destructive for the \ac{DUT} \autocite{ECSS-E-ST-10-03C}.
-Verification is said to be made in ``ambient'' conditions if no attempt is made to simulate the space environment,\footnote{Namely temperature, pressure, radiation, and electromagnetic environment} or are classified as ``environmental'' otherwise.
+Verification is said to be made in ``ambient'' conditions if no attempt is made to simulate the space environment,\footnote{Mainly temperature, pressure, radiation, and electromagnetic environment.} or are classified as ``environmental'' otherwise.
 
-Verification is traditionally done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{For example, SpaceX requires \draft{this kind of testing, cite spacex rideshare}}On the other hand, validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use.
+Verification is traditionally done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{For example, SpaceX requires \draft{this kind of testing, cite spacex rideshare}}On the other hand, validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use. When the V-model is used, verification can be performed in a tiered fashion, starting from subsystems to the integrated system \autocite{bundesrepublikdeutschlandVModellXT2006}. On the other hand, smaller systems like CubeSats regularly perform prototyping as part of their early phases, as part of risk-reduction or development activities \autocite{sousaCubeSatDevelopmentFramework2021,karvinenUsingHobbyPrototyping}, where functional or environmental verification takes place before a system-level verification phase.
 
-In the context of \ac{SCS}, verification and validation present an interesting target for optimisation.
-\draft{The use of an Agile lifecycle process implies that validation can be performed early, as \ac{MVP} versions of the system are produced early in the development cycle, and their usefulness can be asserted in conversation with the relevant stakeholders}
-The most critical physical aspects of a design\footnote{Such as the verification of the functionality of deployables and actuators, the verification of masses and envelopes, thermal and electromagnetic behaviour \draft{etc.}} have traditionally involved both detailed analysis and testing. Testing of large subsystems and systems requires costly dedicated facilities, especially in environmental verification; developers are therefore incentivised to create and execute domain-specific models and analyses of their systems.
+In the context of \ac{SCS}, verification and validation present an worthwhile target for optimisation.
+The low development cost of \ac{SCS} means that the cost and time overhead to create a \textbf{prototype} are low and can be part of the regular cycles of an Agile lifecycle process, which routinely include verification.
+While CubeSats traditionally experiment with subsystem prototypes or reduced system mock-ups, in the case of \ac{SCS}, the \textbf{entire system} can be verified as part of these short cycles.
+
+The most critical physical aspects of a design\footnote{Such as the verification of the functionality of deployables and actuators, the verification of masses and envelopes, thermal and electromagnetic behaviour \draft{etc.}} have traditionally involved both detailed analysis and testing for verification. In particular, environmental testing of subsystems and systems requires costly dedicated facilities; developers are therefore typically incentivised to create and execute domain-specific models and analyses of their systems before committing to a testing campaign.
 
 The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
 
@@ -1812,14 +1894,49 @@ In addition to this general shift towards in-house environmental testing, \ac{SC
 
 As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
 
-\todo{Here we have a more mathematical analysis of the test using some fancy maths like Markov chains and so on... It would be nice to have some numbers on risk and probability to let people calculate when exactly they need to test and so on}
+\paragraph{Mathematical Model}
 
-\todo{Here we add a section about balloon testing and how it ties to the whole idea.}
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[shorten >=1pt,node distance=2.1cm,]
+		\node (q_0)  [state,initial] {Design};
+		\node (q_1)  [state,right=of q_0]   {Rework};
+		\node (q_2)  [state,right=of q_1]   {End};
+		
+		\path[->] (q_0) edge[bend right=10] node[above,yshift=1mm] {$p_{1}$} (q_1)
+		edge[bend left=35] node[above] {$1-p_{1}$} (q_2)
+		(q_1) edge [loop below] node        {$p_{2}$} ()
+		edge [bend right=20] node[above,yshift=2mm]       {$1-p_{2}$} (q_2)
+		(q_2)
+		edge [loop below] node        {1} ();
+	\end{tikzpicture}
+	\caption{Representation of a Markov process describing the design--rework cycle}
+	\label{fig:m_rework_markov}
+\end{figure}
 
-%\paragraph{In-Orbit Testing}
+A simplified mathematical model can be created to describe the design--verification--rework cycle, based on the possibility of defects unidentified during the design. This stochastic process for a single product iteration can be modelled as an absorbing Markov model (\Cref{fig:m_rework_markov}) \autocite{grinsteadChapter11Markov1998}, with the following assumptions:
+\begin{itemize}[itemsep=-1ex]
+	\item A first transient state, \textbf{\emph{``Design''}}, represents the completion of the initial engineering effort to produce the iteration's \draft{product}.
+	
+	A second transient state, \textbf{\emph{``Rework''}}, represents the completion of an added iteration with additional engineering effort to design and produce an extra product, in case of defects or unfulfilled needs found during the previous iteration.
+	
+	The final absorbing state, \textbf{\emph{``End''}}, represents a product which has completed its iteration's goals.
+	\item The \emph{``Design''} state implies that verification of the current iteration (through analysis or testing) has been completed. There is a probability \( p_1 \) that the iteration has not succeeded in its goals, and the model starts transitioning to the \textbf{\emph{``Rework''}} state.
+	
+	After the \emph{``Rework''} state, there is a probability that the open issues have still not been resolved, or that new ones appeared during the rework process. In this case, there is a probability \( p_2 \) that the system transitions again to the \emph{``Rework''} state. In the case where an iteration was added only to address the issues identified in the previous iteration, I expect \( p_2 < p_1 \).
+	
+\end{itemize}
+
+
+
+
+
+\paragraph{In-Orbit Testing}
 In some cases, the resources available to a development team may encourage designating an \textbf{orbital launch} as a verification (and validation) method. Indeed, this is the approach taken by the \emph{SMOG-1} PocketQube team, who launched the \emph{SMOG-P} PocketQube as an early prototype \autocite{SMOG14thHungarian2021}.
 This approach may be risky, as the lead time between the production of a \acl{FM} and its operation can be too long to fit within limited iteration cycles. However, it can be appropriate for teams that have a ready-to-use spacecraft bus, already have plans or access to multiple low-cost flight opportunities, or want to replace generally-costly test campaigns, such as radiation testing.
 In-Orbit Testing need also not be performed on the entire system, and can follow the slice-based approach, especially when simple low-cost payload flight opportunities are available.
+
+\todo{Here we add a section about balloon testing and how it ties to the whole idea.}
 
 In general, the verification \& validation process of an \ac{SCS}-methodology team will differ considerably from the equivalent in a CubeSat process.
 However, it will still vary between teams, as it depends on variables set by the internal and external environment. I provide further guidelines for methodology tailoring in \Cref{sec:METHODOLOGY_tailoring}. \todo{Do I?}
@@ -1827,6 +1944,23 @@ However, it will still vary between teams, as it depends on variables set by the
 \todo{ [[@deckerSystemsengineeringAssessmentMultiple2016]]: Evaluation of the cost benefits of using an Engineering or Qualification Model in a student/hobbyist CubeSat project.}
 
 
+
+\begin{table*}[h]
+	\caption[Overview of the SCS data management method]{Overview of the \acs{SCS} data management method}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{SCS} Verification \& Validation} Overview}
+		\\ \midrule
+		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & System Realisation \textrangle~Verification \& Validation \\
+		Basis & Model-Based Systems Engineering \\
+		Main Principle & Prefer regular system testing over analysis \\
+		\multirow{1}{*}{Secondary Principles} & \begin{itemize}
+			\item Automated full functional testing
+			\item In-orbit validation
+		\end{itemize} \\
+		Benefits & Development Time, Risk \\ \bottomrule
+	\end{tabularx}
+\end{table*}
 
 \subsection{Agile Maintenance \& Operations}
 Sometimes there is confusion between agile-systems engineering and agile systems-engineering \autocite{haberfellnerAgileSystemsEngineeringAgileSystems2005}.

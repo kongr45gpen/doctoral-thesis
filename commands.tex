@@ -1,11 +1,18 @@
+\definecolor{draft}{HTML}{bf616a}
+
 \NewDocumentCommand\draft{m}{%
-	\textcolor[HTML]{bf616a}{#1}%
+	\textcolor{draft!65!black}{#1}%
 }
+
 \NewDocumentCommand\todo{m}{%
-	\textcolor[HTML]{bf616a}{#1}%
+	\textcolor{draft}{#1}%
 }
 
 \makeatletter
+
+%\newcommand\draft{\bgroup\color{draft!50!white}\markoverwith
+%	{\textcolor{black}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+
 \newcommand\footurl@[1]{\footnote{\url@{#1}}}
 \DeclareRobustCommand{\footurl}{\hyper@normalise\footurl@}
 
