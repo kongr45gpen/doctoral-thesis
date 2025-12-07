@@ -78,7 +78,14 @@ mincitenames=1,
 
 \usepackage{siunitx}
 
+\usepackage{ifdraft}
+
 % Draft packages
+
+% Final packages
+\ifoptionfinal{
+	\usepackage{microtype}
+}{}
 
 % Modifications to the default tufte template to make it more applicable to a thesis
 % Credit goes to Tiffany Tseng, lalider, see https://github.com/lalider/tufte-latex-thesis
@@ -137,7 +144,6 @@ mincitenames=1,
 	patch/tabularx=false
 }
 
-\input{acronyms.tex}
 \input{commands.tex}
 
 \NewAcroTemplate[list]{glossary}{%
@@ -279,6 +285,68 @@ mincitenames=1,
 	{3.25ex \@plus1ex \@minus .2ex}%
 	{-1em}%
 	{\hspace{1em}\normalfont\normalsize\itshape}}
+
+% Definitions
+\usepackage{keytheorems}
+
+\newsavebox{\definition@caption@box}
+\newsavebox{\definition@content@box}
+\newsavebox{\definition@margin@box}
+
+\newkeytheoremstyle{margincaptionstyle}{
+	headpunct={\hspace{0pt}},
+	postheadspace={0pt},
+	preheadhook = {
+		\def\deferred@thm@head#1{%
+			\everypar\dth@everypar%
+			\sbox\@labels{}%
+			\global\sbox{\definition@caption@box}{%
+				\begin{minipage}[t]{\marginparwidth}%
+					\vspace{\baselineskip}%
+					\normalfont #1%
+				\end{minipage}%
+			}%
+		}%
+		\begin{lrbox}{\definition@content@box}%
+		\begin{minipage}[t]{\textwidth}%
+			\@tufte@reset@par%
+	},
+	postfoothook = {
+		\vspace{-\baselineskip}%
+		\end{minipage}%
+		\end{lrbox}%
+		%
+		\begin{fullwidth}%
+			\@tufte@float@textwidth[\@tufte@caption@vertical@offset]{\definition@content@box}{\definition@caption@box}%
+		\end{fullwidth}%
+	}
+}
+
+\newkeytheoremstyle{marginnotestyle}{
+	headpunct = {:},
+	preheadhook = {
+		\begin{lrbox}{\definition@margin@box}%
+		\begin{minipage}[t]{\marginparwidth}%
+			\@tufte@marginnote@font\@tufte@marginnote@justification\@tufte@margin@par\vspace*{-1\baselineskip}%
+	},
+	postfoothook = {
+		\end{minipage}%
+		\end{lrbox}%
+		\marginnote{\usebox\definition@margin@box}%
+	}
+}
+
+\newkeytheorem{definition}[
+	name=Definition,
+	parent=chapter,
+	style=margincaptionstyle
+]
+\newkeytheorem{margindefinition}[
+	name=Definition,
+	sibling=definition,
+	style=marginnotestyle,
+	refname=Definition
+]
 
 % \acuse command that also adds the current page
 %\NewAcroTemplate{fdirthesisempty}{}

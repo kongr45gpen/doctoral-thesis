@@ -25,6 +25,8 @@
 	addtopdfcreator={tufte-book class}
 }
 
+\input{acronyms.tex}
+
 \begin{document}
 	
 \addcontentsline{toc}{chapter}{Preamble}
@@ -143,9 +145,16 @@ under the License.\index{license}
 \listoftables
 \addcontentsline{toc}{section}{List of Tables}
 
-\chapter*{List of Definitions}
+%\chapter*{List of Definitions}
+%
+
+\listofkeytheorems[
+    title={List of Definitions},
+    onlynamed,
+    note-code={#1},
+    format-code=\numberline{#2}#3
+]
 \addcontentsline{toc}{section}{List of Definitions}
-\draft{Here we will have an index of definitions...}
 
 %\chapter*{List of Acronyms}
 %\acuseall%
@@ -618,25 +627,22 @@ Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly cor
 
 As the primary objective of this work is to synthesise a \emph{methodology} for Sub-CubeSat spacecraft, it is important to define the scope of a design \emph{methodology} compared to a \emph{method}, \emph{process} or \emph{approach}.
 
-\citeauthor{gerickeWhatWeNeed2017}'s works \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022} investigate the differences between different definitions of the above terms. We adopt the following definitions:
+\citeauthor{gerickeWhatWeNeed2017}'s works \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022} investigate the differences between different definitions of the above terms. I adopt the following definitions:
 
-\marginnote{Definition 1.1:\ \textbf{Design Method}}
-\begin{quote}
+\begin{definition}[Design Method]
 	A specification of how a specified result is to be achieved. This may include specifications of how information is to be shown, what information is to be used as inputs to the method, what tools are to be used, what actions are to be performed and how, and how the task should be decomposed and how actions should be sequenced. \cite{gerickeWhatWeNeed2017}
-\end{quote}
+\end{definition}
 
 A complete description of a design method must include its core idea, its representation of the information the method produces, a procedure (set of actions or activities to be followed), and its intended use \autocite{gerickeElementsDesignMethod2022}. As tools are given specific attention in our research, we further reproduce their definition here:
-\marginnote{Definition 1.1:\ \textbf{Tool}}
-\begin{quote}
-	A tool is an object or artefact that is used to perform some action [...]. For design methods, documents or software that direct and structure designers' thoughts and actions, or facilitate constructing representations, or perform computations. \autocite{gerickeElementsDesignMethod2022}
-\end{quote}
+\begin{definition}[Tool]
+	A tool is an object or artefact that is used to perform some action [...]. For design methods, documents or software that direct and structure designers' thoughts and actions, or facilitate constructing representations, or perform computations. \cite{gerickeElementsDesignMethod2022}
+\end{definition}
 
 The term \emph{methodology} itself lacks a universally agreed-upon definition, often being used interchangeably with ``method''. For this work, I will adopt part of the definition provided by \autocite{pahlIntroduction2007}:
 
-\marginnote{Definition 1.1:\ \textbf{Design Methodology}}
-\begin{quote}
+\begin{definition}[Design Methodology]
 	A design methodology, is a concrete course of action for the design of technical systems that derives its knowledge from design science and cognitive psychology, and from practical experience in different domains. It includes plans of action that link working steps and design phases according to content and organisation. These plans must be adapted in a flexible manner to the specific task at hand. It also includes strategies, rules and principles to achieve general and specific goals as well as methods to solve individual design problems or partial tasks.
-\end{quote}
+\end{definition}
 
 In the general sense, a methodology can be then seen as a collection of methods used for the design and development of a system.
 
@@ -649,42 +655,38 @@ In the general sense, a methodology can be then seen as a collection of methods 
 It is also important to separate my proposed \emph{Design Methodology}, presented in \Cref{chap:METHODOLOGY} ``\nameref{chap:METHODOLOGY}'', from the \emph{Research Methodology} used to synthesise and validate the former, presented in \Cref{chap:RESEARCH_APPROACH} ``\nameref{chap:RESEARCH_APPROACH}''.
 
 A new Design Methodology is often the result of Design Research. \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009} define Design as follows:
-\marginnote{Definition 1.1:\ \textbf{Design}}
-\begin{quote}
+\begin{definition}[Design]
 	Design refers to those activities that actually generate and develop a product from a need, product idea or technology to the full documentation needed to realise the product and to fulfil the perceived needs of the user and other stakeholders. \cite{blessingDRMDesignResearch2009}
-\end{quote}
+\end{definition}
 
 \citeauthor{blessingDRMDesignResearch2009} \cite{blessingDRMDesignResearch2009} also define the relevant concept of Design Research:
-\marginnote{Definition 1.1:\ \textbf{Design Research}}
-\begin{quote}
+\begin{definition}[Design Research]
 	Design research has two objectives:
 	\begin{enumerate}
 		\item The formulation and validation of models and theories about the phenomenon of design with all its facets [\textellipsis]; and 
 		\item The development and validation of support founded on these models and theories, in order to improve design practice, including education, and its outcomes. \cite{blessingDRMDesignResearch2009}
 	\end{enumerate}
-\end{quote}
+\end{definition}
 
-On the other hand, a \emph{Research Methodology} or \emph{Research Approach} is understood within the context of \emph{Research Design}, which can be defined as:\marginnote{Definition 1.1:\ \textbf{Research Design}}%
-\begin{quote}%
-	The logical sequence that connects the empirical data to a study's initial research questions and, ultimately, to its conclusions. \autocite[20]{yinCaseStudyResearch2014}
-\end{quote}
+On the other hand, a \emph{Research Methodology} or \emph{Research Approach} is understood within the context of \emph{Research Design}, which can be defined as:
+\begin{definition}[Research Design]
+	The logical sequence that connects the empirical data to a study's initial research questions and, ultimately, to its conclusions. \cite[20]{yinCaseStudyResearch2014}
+\end{definition}
 
 
 \subsection{Systems Engineering}
 
 \draft{Who? Add citation here (SEBOK)} defines Systems Engineering as the:
 % https://sebokwiki.org/wiki/Systems_Engineering_(glossary)
-\marginnote{Definition 1.1: \textbf{Systems Engineering}}
-\begin{quote}
+\begin{definition}[Systems Engineering]
 	Interdisciplinary approach governing the total technical and managerial effort required to transform a set of customer needs, expectations, and constraints into a solution and to support that solution throughout its life.
-\end{quote}
+\end{definition}
 
 Systems Engineering is also inherently connected with Project Management, which itself is however a separate discipline defined as:
-\marginnote{Definition 1.1: \textbf{Project Management}}
-\begin{quote}
+\begin{definition}[Project Management]
 	%https://sebokwiki.org/wiki/Project_Management_(glossary)
 	 The application of knowledge, skills, tools, and techniques to project activities to meet the project requirements.
-\end{quote}
+\end{definition}
 
 Both concepts can be decomposed into a set of more specific activities, which sometimes overlap, as explained in \Cref{sec:defining_systems_engineering}.
 
@@ -871,7 +873,6 @@ sails \cite{atchisonPassiveMicroscaleSolar2008,umansky-castroDesignAlphaCubeSat,
 Recent launches of femto-satellites and smaller objects in space have given rise to space debris and tracking concerns. Manchester's KickSat-2 mission was initially rejected by the \ac{FCC} on the grounds of increased risk due to lack of traceability \cite{FCCBigProblem2018,thenationalassociationforamateurradioKickSat2AliveBeing2019,nwekeKickSat2DismissalPrejudice2016}. KickSat-2 then sought a \acs{NASA} launch which shifted the responsible regulatory body.
 Another notable case was the one of \emph{Swarm Technologies}, a USA-based startup which attempted to launch four 1/4U spacecraft called \emph{SpaceBEEs}. Despite their attempts for improved tracking\footnote{Including a passive Ku-band radar reflector on each face and a planned GPS beacon}, their application was rejected again due to their small size \autocite{serafiniSWARMDismissalPrejudice2017}. Despite the rejection, Swarm did launch their spacecraft. This led to a halt in their next filing and a fine \autocite{harrisFCCAccusesStealthy2018}.
 Nevertheless, \cite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion.
-
 
 \section{Topics from Systems Engineering}
 
@@ -1831,17 +1832,13 @@ Verification and validation is an integral part of a sprint cycle, and is the st
 
 %The distinction between the ``verification'' and ``validation'' terms is provided 
 
-\marginnote{%
-%	\textbf{Definition 1.1:} \textbf{Verification} is the process which demonstrates through the provision of objective evidence that the product is designed and produced according to its specifications and the agreed deviations and waivers, and is free of defects
-	\cite{ECSS-S-ST-00-01C}
-
-	\textbf{Definition 1.1:} \textbf{Validation} is the process which demonstrates that the product is able to accomplish its intended use in the intended operational environment.%
-}
+\begin{margindefinition}[Validation]
+	\textbf{Validation} is the process which demonstrates that the product is able to accomplish its intended use in the intended operational environment \cite{ECSS-S-ST-00-01C}.
+\end{margindefinition}
 
 In traditional space systems engineering, \acs{ECSS} defines verification as the process demonstrating that the built system satisfies all requirements and is free of defects \cite{ECSS-S-ST-00-01C}. However, in the \ac{SCS} methodology, the system is not strictly defined by its requirements specification, but also by an agreement between the developers and stakeholders on its capability and performance. Therefore, based on the \acs{ECSS} definition \cite{ECSS-S-ST-00-01C}, I \draft{modify the definition of verification as follows:}
 
-\marginnote{\textbf{Definition 1.1:} Verification}
-\begin{quote}
+\begin{definition}[Verification]
 	\textbf{Verification} is the process which generates objective evidence to evaluate a product artifact, with the goals of:
 	\begin{enumerate}[itemsep=-2ex]
 		\item Assessing the number of requirements that the product is compliant with, based on the current requirements specification (see \Cref{sec:METHODOLOGY_requirements})
@@ -1849,12 +1846,14 @@ In traditional space systems engineering, \acs{ECSS} defines verification as the
 		\item Measuring the product's performance
 		\item \draft{Confirming the implementation of all features requested as part of work packages}
 	\end{enumerate}
-\end{quote}
+\end{definition}
 
 
 While verification ensures that the built system satisfies all agreed-on specifications and expectations, \textbf{validation} ensures that the correct system was built \autocite{ECSS-S-ST-00-01C}.
 
-\marginnote{\textbf{Definition 1.1:} \textbf{Performance} is the set of quantifiable characteristics of a system \emph{(adapted from \cite{ECSS-S-ST-00-01C})}.}
+\begin{margindefinition}[Performance]
+	\textbf{Performance} is the set of quantifiable characteristics of a system \emph{(adapted from \cite{ECSS-S-ST-00-01C})}.
+\end{margindefinition}
 
 \acs{ECSS} defines four verification methods that are typically used in space missions: \emph{review-of-design, analysis, inspection and testing}, which provide different levels of fidelity and reliability \autocite{ECSS-E-ST-10-02C}. It also distinguishes between \emph{acceptance} and \emph{qualification} levels for design parameters, the former of which are used to verify workmanship and functionality, and the latter used to demonstrate design margins, usually at a level that may be destructive for the \ac{DUT} \autocite{ECSS-E-ST-10-03C}.
 Verification is said to be made in ``ambient'' conditions if no attempt is made to simulate the space environment,\footnote{Mainly temperature, pressure, radiation, and electromagnetic environment.} or are classified as ``environmental'' otherwise.
