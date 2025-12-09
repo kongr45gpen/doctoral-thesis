@@ -16,8 +16,6 @@
 \def\e{\ignorespaces}
 \def\acusepage#1{}
 
-\usepackage{microtype}
-
 \hypersetup{
 	pdftitle={Systems Engineering for Sub-CubeSat Spacecraft},
 	pdfsubject={PhD Thesis},
@@ -176,17 +174,7 @@ Space is not a welcoming environment.
 
 \chapter*{Objectives}
 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
+\lipsum[1]
 
 \chapter*{Contribution}
 I did this. I also did that. I didn't do that.
@@ -273,109 +261,88 @@ I did this. I also did that. I didn't do that.
 Out of more than \num{23000} satellites that have been launched into Earth orbit \autocite{esaspacedebrisofficeESAsAnnualSpace2025}, more than \num{2900} belong in the \emph{nano-satellite} class \autocite{kuluNanosatsDatabase2023}, weighing less than \SI{10}{\kilogram}.
 Nano-satellites are mostly represented by the CubeSat form factor, a concept introduced in 1999 by the \citeauthor{CDS14} \autocite{CDS14}.
 
-CubeSats are designed in a structurally modular format consisting of \qtyproduct{10 x 10 x 10}{\centi\meter} cubes (termed ``U(nits)''). While not specified in the standard, the CubeSat community is mainly using the ``PC/104'' mechanical standard for subsystems, along with a shared electrical specification \autocite{BoardSpecificationLibreCube}.
+CubeSats are designed in a modular format consisting of \qtyproduct{10 x 10 x 10}{\centi\meter} cubes (termed ``U(nits)''). Subsystems typically follow the ``PC/104'' mechanical standard for subsystems, along with a shared electrical specification \autocite{BoardSpecificationLibreCube}.
 
-The advances of miniaturisation in electronics since the 1980s have allowed nano-satellites to have increased capabilities and utility \autocite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more nano-satellites\footnote{21 constellations of 5 or more nano-satellites have been launched so far \autocite{kuluNanosatsDatabase2023}}. \draft{Most nano-satellites are CubeSats}. Most CubeSats are orbiting in \acs{LEO}, with fewer missions planned and launched for deep space \draft{cite, e.g. vittorio}
+The advances of miniaturisation in electronics since the 1980s have gradually increased the capabilities and utility of nano-satellites \autocite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more CubeSats\footnote{21 constellations of 5 or more nano-satellites have been launched so far. Additionally, CubeSats represent over \qty{90}{\percent} of all nano-satellites launched  \autocite{kuluNanosatsDatabase2023}}. Most CubeSats are orbiting in \acs{LEO}, with fewer missions planned and launched for deep space \autocite{walkerDeepspaceCubeSatsThinking2018}.
 
-The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram}) \draft{ref} have significantly reduced the entry barrier to space
+The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram}) \draft{ref} has significantly reduced the entry barrier to space
 \autocite{poghosyanCubeSatEvolutionAnalyzing2017,sweetingModernSmallSatellitesChanging2018}.
-\draft{NUM\%} of launched CubeSat missions are educational in nature. \draft{NUM} countries in total have launched CubeSats, \draft{NUM} of which have CubeSats as their first satellite. This has been aided by an evolving CubeSat industry, which has created a market for subsystems and platforms that are, to some degree, interoperable with each other and with common deployers. As of 2023, roughly 20\% of spacecraft in orbit\footnote{Excluding the Starlink constellation, which represents \draft{NUM\%} \cite{unionofconcernedscientistsSatelliteDatabase2023}} belong in the nano-satellite class \cite{unionofconcernedscientistsSatelliteDatabase2023} (\Cref{fig:i_mass_distribution}).
+\draft{NUM\%} of launched CubeSat missions are educational in nature. \draft{NUM} countries in total have launched CubeSats, \draft{NUM} of which have CubeSats as their first satellite. This has been aided by an evolving CubeSat industry, which has created a market for subsystems and platforms that are, to some degree, interoperable with each other and with common deployers. As of 2023, roughly 20\% of spacecraft in orbit\footnote{Excluding the Starlink constellation, which represents \qty{53}{\percent} \cite{unionofconcernedscientistsSatelliteDatabase2023}} belong in the nano-satellite class \cite{unionofconcernedscientistsSatelliteDatabase2023} (\Cref{fig:i_mass_distribution}), with 25 CubeSats being launched per year on average since 2020 \cite{kuluNanosatsDatabase2023}, and a more than \num{500} million USD market in 2025 \cite{CubeSatMarketSize}.
 
-Despite the significantly fewer resources needed for CubeSat development and production, there is still a significant cost connected with CubeSat missions. Launch and development costs can range up to millions USD \draft{ref from SW/ppr}, and development times can range between \draft{X-Y years} \draft{ref from SW/ppr}. Despite their reduced complexity, CubeSats also experience a \draft{50\%} failure rate in orbit, often attributed to a lack of experience, high turnover, and insufficient \draft{standardisation} \draft{cite swartwout}.
+Despite the significantly fewer resources needed for CubeSat development and production, there is still a significant cost connected with CubeSat missions. Launch and development costs can range up to millions USD \draft{[ref from SW/ppr]}, and development times can range between \draft{X-Y years} \draft{[ref from SW/ppr]}. Despite their reduced complexity, CubeSats also experience a \qty{39}{\percent} failure rate in orbit, often attributed to ad-hoc procedures, insufficient testing to uncover mistakes, and workmanship flaws \autocite{swartwoutCubeSatMissionSuccess2019}.
 
 The need from industry and academia for a smaller and less complex standardised platform has given rise to concepts for so-called \textbf{\acf{SCS}}. These spacecraft take advantage of the further miniaturisation of electronic and telecommunication components to push the envelope of size. Classes of planned or launched \acs{SCS} include:
 
-\begin{itemize}
-	\item \textbf{Fractional-Unit} CubeSats \autocite{kuluNanosatsDatabase2023}: 1/2U, 1/3U or 1/4U CubeSats, which do not comply with the CubeSat standard \cite{CDS14}, but are mechanically compatible with standard deployers;
-	\item \textbf{PocketQubes} \autocite{PQ1}: Modular spacecraft based on the ``1p'' unit (a \qtyproduct{5 x 5 x 5}{\centi\meter});
-	\item \textbf{SunCubes} \autocite{martinezSunCubeFemtoSatDesign2018}: Modular spacecraft based on \qtyproduct{3 x 3 x 3}{\centi\meter} units;
+\begin{itemize}[itemsep=-1ex]
+	\item \textbf{Fractional-Unit} CubeSats: 1/2U, 1/3U or 1/4U CubeSats, which do not comply with the CubeSat standard \cite{CDS14}, but are mechanically compatible with standard deployers \autocite{kuluNanosatsDatabase2023,krebsThinSat1A1L2021};
+	\item \textbf{PocketQubes}: Modular spacecraft based on the ``1p'' unit (a \qtyproduct{5 x 5 x 5}{\centi\meter}) \autocite{PQ1};
+	\item \textbf{SunCubes}: Modular spacecraft based on \qtyproduct{3 x 3 x 3}{\centi\meter} units \autocite{martinezSunCubeFemtoSatDesign2018};
 	\item \textbf{Chipsats} or \textbf{\acs{PCB}sats}: Flat spacecraft that consist entirely of a single circuit board, usually less than \qtyproduct{5 x 5}{\centi\meter} in size.
-	\item \draft{ThinSats?}
 \end{itemize}
 
 These satellites are also classified as pico-, femto- and atto-satellites (see \Cref{sec:TERMINOLOGY_classes}).
 
 \begin{figure*}
 	\centering
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.27\textwidth}
 		\centering
 		% Image source: Own
 		\includegraphics[height=3cm]{media/pictures/acubesat.png}
-		\caption{A 3U CubeSat (\emph{AcubeSAT}) \draft{cite acubesat}}
-	\end{subfigure}~
-	\begin{subfigure}[t]{0.3\textwidth}
+		\caption{A 3U CubeSat (\emph{AcubeSAT}) \cite{DDJF_SYS}}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
 		\centering
 		% Image source: https://www.nanosats.eu/sat/beesat-10-13
 		\includegraphics[height=3cm]{media/pictures/BEESAT-13}
 		\caption{A 1/4U CubeSat (\emph{BEESAT-13}) \cite{kayalBEESATPicoSatellite2007}}
-	\end{subfigure}~
-	\begin{subfigure}[t]{0.3\textwidth}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
 		\centering
 		% Image source: Own
 		\includegraphics[height=3cm]{media/pictures/qubik}
-		\caption{A 1p PocketQube (\emph{QUBIK}) \draft{cite LSF}}
+		\caption{A 1p PocketQube (\emph{QUBIK}) \cite{daradimosQUBIK1pPocketQube2024}}
 	\end{subfigure}%
 	\\%
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.27\textwidth}
 		\centering
 		% Image source: https://news.asu.edu/20160406-creativity-asu-suncube-femtosat-space-exploration-for-everyone
 		\includegraphics[height=3cm]{media/pictures/suncube}
 		\caption{A SunCube \cite{seckelNextBigThing2016}}
-	\end{subfigure}~
-	\begin{subfigure}[t]{0.3\textwidth}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		\includegraphics[height=3cm]{media/external/stardust}
+		\caption{A \qtyproduct{6.5 x 5.5}{\centi\metre} PCBSat (\emph{StarDust}) \cite{yangDesignExperimentStardust2020}}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
 		\centering
 		% Image source: https://techcrunch.com/2019/06/04/kicksat-2-project-launches-105-cracker-sized-satellites/
 		\includegraphics[height=3cm]{media/pictures/sprite}
-		\caption{A \draft{dimensions} ChipSat \cite{manchesterCentimeterScaleSpacecraftDesign2015}}
-	\end{subfigure}~
-	\begin{subfigure}[t]{0.3\textwidth}
-		\centering
-		% Image source: 
-		\caption{A\draft{nother} ChipSat}
+		\caption{A \qtyproduct{3.5 x 3.5}{\centi\metre} ChipSat  (\emph{Sprite}) \cite{manchesterCentimeterScaleSpacecraftDesign2015}}
+		\label{subfig:i_manchester_chipsat}
 	\end{subfigure}%
 	\caption{Examples of nano-satellites and smaller spacecraft}
 \end{figure*}
 
 \acl{SCS} have enjoyed increased popularity especially since 2018, with \draft{NUM} pico-satellites and \draft{NUM} smaller satellites having been launched (\Cref{fig:i_scs_launched}). Most of these \draft{how many?} follow the \textbf{PocketQube} standard.
-The PocketQube concept was introduced in 2009 by Bob Twiggs \autocite{twiggsMakingItSmall2009} and standardised in \citeyear{PQ1} \autocite{PQ1}.
+The PocketQube concept was introduced in 2009 by Bob Twiggs \autocite{twiggsMakingItSmall2009} and standardised in \citeyear{PQ1} \autocite{PQ1}. Thanks to the availability of deployers targetting different sizes of PocketQubes, this form factor has enjoyed an average rate of \num{18} satellites launched per year since 2021 \autocite{wikipediacontributorsListLaunchedPocketQubes2025}.
 
-On the sub-pocketQube scale, the smallest spacecraft that have been launched were Zac Manchester's ``Sprite'' ChipSats. \draft{What about them}?
+On the sub-PocketQube scale, one of the most notable cases were Zac Manchester's ``Sprite'' ChipSats. Measuring \qtyproduct{3.5 x 3.5}{\centi\metre} (\Cref{subfig:i_manchester_chipsat}), more than 100 ChipSats were deployed by Manchester in 2019, with the goal of allowing members of the public to have ``their personal spacecraft in space'', and marking the first known occasion where atto-satellites were launched into orbit \autocite{manchesterCentimeterScaleSpacecraftDesign2015,thenationalassociationforamateurradioKickSat2AliveBeing2019}.
 
-\draft{The reduced costs give rise to interesting characteristics}
+The distinct characteristics of PocketQubes, ChipSats and similar spacecraft, \draft{revolving mainly around size and cost}, have been explored in the literature as they motivate capabilities which cannot normally be attained by larger spacecraft \autocite{perezSurveyCurrentFemtosatellite2016,heinAttoSatsChipSatsOther2019}. One notable example is the concept of Breakthrough Starshot, which exploits the small mass of sail-equipped ChipSats to propel them beyond the Solar System using terrestrial lasers \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. Other proposed concepts for \acs{SCS} include distributed data collection, mother-ship based missions, and rapid testing \cite{heinAttoSatsChipSatsOther2019}.
 
-\draft{One notable project is Breakthrough Starshot}
 \begin{marginfigure}
 	\includegraphics{media/pictures/starshot.jpg}
-	\caption{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \draft{what is the source?}}
+	\caption{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \draft{[ref]}}
 \end{marginfigure}
 
 
 
-
-
-
-Introduction concept:
-More than X are considered to be part of the nano-satellite class, weighing less than 10kg.
-Nanosatellites were invented by whoever invented them throguh the cubesat concept in year tade.
-2730 nanosatellites are considered of the cubesat form factor.
-
-\todo{Blablabla we introduce cubesats and pocketqubes and the benefits and drawbacks of miniaturisation.}
-
-As of November 2025, over 
-
-- Number of satellites launched
-- Separation of satellites into categories, number of very small satellites launched
-- Introduction to the CubeSat concept
-- Introduction to the PocketQube concept: History and current state of the art
-- Introduction to the ChipSat concept: History and current SoTA
-	- Zac Manchester
-	- Presentation from Andreas for ChipSat course
-    - Breakthrough Starshot
-- Orbits for nanosatellites
+\todo{Check if need to mention LEO orbits, if orbits are covered in general etc.}
 	
 Then we move on into systems engineering and how spacecraft are developed traditionally vs how we want to develop them.
 
-A BIG table containing all the statuses of known pocketqubes and sub-cubesat spacecraft.
+A BIG table containing all the statuses of known sub-cubesat spacecraft.
 
 
 \begin{figure}[p]
@@ -970,23 +937,23 @@ In \citeyear{beckAgileManifesto2001}, the Agile Manifesto \autocite{beckAgileMan
 	\caption[The Agile Manifesto]{The Agile Manifesto \autocite{beckAgileManifesto2001}}
 \end{marginfigure}
 
-The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \draft{Table ???}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; Different agile methodologies have been proposed and used, such as: \todo{Fix citations}
+The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \draft{Table ???}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
 \begin{itemize}[itemsep=-2ex]
 	\item Adaptive Software development
-	\item Agile Unified Process (???)
-	\item Crystal (???)
-	\item Extreme programming ([[@beckExtremeProgrammingExplained2008]])
-	\item Feature-driven development (???)
-	\item Lean software development (???)
-	\item Kanban (???)
-	\item Rapid Application Development (???)
-	\item Scrum ([[@schwaverDefinitiveGuideScrum2020]])
-	\item Scaled agile framework (???)
+	\item Agile Unified Process
+	\item Crystal
+	\item Extreme programming \cite{beckExtremeProgrammingExplained2008}
+	\item Feature-Driven Development
+	%\item Lean software development (???)
+	\item Kanban
+	\item Rapid Application Development
+	\item Scrum \cite{schwaverDefinitiveGuideScrum2020}
+	\item Scaled Agile Framework
 \end{itemize}
 
-These methodologies cover different parts of the lifecycle of a system, and are suited for different types of teams and sources of constraints.
-While their core is usually the lifecycle process model, some of them also branch into other system engineering \todo{components}. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} provides a comprehensive comparison of the above methodologies.
-We note that often synonymous terminology is used in methodology definitions and description, creating potential confusion in comparisons; especially words such as ``agile'', ``lean'', ``rapid'', and more are sometimes used interchangeably or with conflicting definitions. 
+These methodologies cover different parts of the lifecycle of a system, and are suited for different types of teams and sources of constraints \autocite{boehmBalancingAgilityDiscipline2004,abrahamssonAgileSoftwareDevelopment2017}.
+While their core is usually the lifecycle process model, some of them also branch into other system engineering \todo{components}. \citeauthor{boehmBalancingAgilityDiscipline2004} \cite{boehmBalancingAgilityDiscipline2004} provides a comprehensive comparison of the above methodologies.
+I note that often synonymous terminology is used in methodology definitions and description, creating potential confusion in comparisons; especially words such as ``agile'', ``lean'', ``rapid'', and more are sometimes used interchangeably or with conflicting definitions. 
 
 \draft{Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.}
 
@@ -1001,7 +968,7 @@ The success of Agile in software engineering has naturally encouraged its adopti
 These constraints are related to the difficulties of creating shippable increments for each iteration, higher complexity, or increased external requirements. In the context of \ac{SCS}, the cause of these constraints can \draft{arise} from the reliance on physical components that may not be manufactured in-house, such as \acsp{IC}, \acsp{PCB}, or machined parts, the impracticality of automated testing, especially in the case of environmental qualification, and the expensive, non-repeatable launch process.
 
 For this reason, different approaches and methodologies have been investigated for the use of Agile in Systems Engineering \autocite{carsonCanSystemsEngineering2013,AgileComplexSystems,mcdanielGoodBadAgile2003,darrinAgileManifestoDesign2017,bottAnalysisTheoriesSupporting2019,petersonWhenWorldsCollide2021} \todo{Expand a little bit}. \todo{sebok/agile} and \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} have provide a comprehensive tailoring of Agile for Systems Engineering. \citeauthor{douglassAgileSystemsEngineering2015} notably adapted the four Agile principles as follows \autocite{douglassAgileSystemsEngineering2015}:
-\begin{enumerate}[itemsep=0pt]
+\begin{enumerate}[itemsep=-1ex]
 	\item \emph{Individuals and interactions over processes and tools}
 	\item \emph{Verifiably correct specifications over comprehensive documentation}
 	\item \emph{Customer collaboration over contract negotiation}
@@ -1021,6 +988,9 @@ There are various examples in literature for the implementation of Agile practic
 \paragraph{Agile Frameworks}
 \label{par:LITERATURE_agile_frameworks}
 \todo{This whole section needs a rework. The purpose is to compare existing Agile Software and Systems Engineering frameworks, and analyse their applicability to \ac{SCS} systems engineering. The result is that none of these frameworks can be adapted as-is, either because they target discipline-specific systems, or because they are designed for much larger teams}
+
+While a number of different Agile frameworks have been proposed, only a small number of them are in effective use, as of 2025, especially in the software engineering industry.
+
 
 \subparagraph{Scrum}
 
@@ -1347,7 +1317,8 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	This allows for a theoretically infinite number of reworks that means the launch is extended. But the launch date is fixed, so should the number of iterations be fixed? 
 }
 
-A first version of a lifecycle process model can be inspired by the characteristics and processes of Agile methodologies. More specifically, \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} lists six principles for Agile systems engineering \marginnote{\citeauthor{douglassAgileSystemsEngineering2015}'s 6 principles of Agile Systems Engineering:\begin{enumerate}
+A first version of a lifecycle process model can be inspired by the characteristics and processes of Agile methodologies. More specifically, \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} lists six principles for Agile systems engineering% 
+\marginnote{\citeauthor{douglassAgileSystemsEngineering2015}'s 6 principles of Agile Systems Engineering:\begin{enumerate}
 		\item Work Incrementally
 		\item Plan Dynamically
 		\item Actively Reduce Project Risk
@@ -1375,15 +1346,16 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 
 \begin{table*}[h]
 	\caption{Sat-Scrum team responsibilities}
-\begin{tabularx}{\linewidth}{XX@{}}
- \textbf{Product Owner}                                            & \textbf{Developers}                                                                          \\
+\begin{tabularx}{\linewidth}{@{}XX@{}}
+	\toprule
+ \textbf{Product Owner}                                            & \textbf{Developers}                                                                          \\ \midrule
 	 Creating and communicating Product Goal and Product Backlog Items & Creating a plan for each Sprint                                                              \\
 	 Interacting with customers and stakeholders                       & Advancing the development of the product                                                     \\
 	 Delegating responsibilities to others, if needed                  & Participating in design, development, manufacturing, integration and verification operations \\
 	 Removing impediments to the Scrum process                         & Holding each other accountable                                                               \\
 	 Organising Scrum events                                           & Participating in Scrum events                                                                \\
 	 Setting up interactions with stakeholders                         & Participating in interactions with stakeholders                            \\
-	                 
+	\bottomrule
 \end{tabularx}
 \end{table*}
 
@@ -1507,6 +1479,82 @@ An adverse example for this situation would be if, during the last iterations, t
 	\includegraphics{media/drafts/SatScrum.drawio.pdf}
 	\caption{Example of a Sat-Scrum based project lifecycle}
 	\label{fig:m_scrum_example}
+\end{figure*}
+
+\paragraph{Representation}
+
+The selection of a lifecycle process model is one of the most critical decisions that have to be taken early in a project, as it is also the driver for the rest of the management decisions and stakeholder communication.
+A question that can then come up is how the proposed lifecycle process should be visualised and communicated internally, and to external stakeholders. Teams can chose an ad-hoc representation (as in \Cref{fig:m_scrum_example}), a representation created by their used tools, or a standardised one.
+
+Gantt charts are a common tool used in project scheduling, showing the durations and dependencies between different parallel activities \autocite{honore-livermoreIntegratingAgileSystems2022}. They also provide utility by allowing developers to predict the durations of tasks and the critical path of a project. \citeauthor{douglassAgileSystemsEngineering2015} \autocite[62]{douglassAgileSystemsEngineering2015} provides a statistical estimation method for task predictions. Gantt charts can be augmented with resource allocation or simplified by showing monthly planning only, as required. In any case, they need to be updated at the end of each iteration, to account for the updated project status and knowledge.
+
+\marginnote{%
+	The statistical estimation method by \citeauthor{douglassAgileSystemsEngineering2015} \cite{douglassAgileSystemsEngineering2015} calculates the estimate of a task duration as:
+	\[
+	E = \frac{E_{20\%} + 4 E_{50\%} + E_{80\%}}{6} E_c
+	\]
+	where \(E_{x\%}\) is an estimate of a specific confidence (i.e.~that the task will be completed within that duration at least \(x\%\) of the time), and \(E_c\) a subjective confidence factor.
+
+	He proposes a different ``customer schedule'' and an internal ``goal schedule'', based on the pessimistic \(E_{80\%}\) and optimistic \(E_{20\%}\) estimates respectively. \todo{Move this to work planning section?}
+}
+
+Another idea, based on \citeauthor{ruedePatternLanguageComplexmode2023}'s approach \autocite{ruedePatternLanguageComplexmode2023}, is to use a visual pattern-based vocabulary to represent goals, processes and outputs of each iteration.
+An example vocabulary is shown in \Cref{fig:m_visual_vocabulary}, where the intended use of an assembled product is represented with squares, tests are represented by diamonds, and processes by circles.
+These symbols can then be arranged vertically, when happening in parallel, or horizontally, to show a sequence of activities. This representation then allows exploring how a spacecraft project differs from a typical software Scrum iterations due to the number of various activities that need to be performed on the system, but can usually not be combined in a single iteration.
+
+\begin{figure*}[h]
+	\centering
+\begin{tikzpicture}
+	\begin{scope}[node distance=0.2cm and 0.3cm]	
+		% Left column
+		\node[software, anchor=west] (soft) at (0,0) {};
+		\node[right=of soft] {Software-only Model};
+		
+		\node[breadboard, below=of soft] (bread) {};
+		\node[right=of bread] {Breadboard Model};
+		
+		\node[engineering, below=of bread] (eng) {};
+		\node[right=of eng] {Engineering Model};
+		
+		\node[qualification, below=of eng] (qual) {};
+		\node[right=of qual] {Qualification Model};
+		
+		\node[engqual, below=of qual] (eqm) {};
+		\node[right=of eqm] {Engineering Qualification Model};
+		
+		\node[protoflight, below=of eqm] (proto) {};
+		\node[right=of proto] {Protoflight Model};
+		
+		\node[flight, below=of proto] (flightm) {};
+		\node[right=of flightm] {Flight Model};
+		
+		% Right column
+		\node[func,right=7cm of soft] (funciter) {};
+		\node[right=of funciter] {Functional (Ambient) Test};
+		
+		\node[env, below=of funciter] (enviter) {};
+		\node[right=of enviter] {Environmental Test};
+		
+		\node[orbital, below=of enviter] (orb) {};
+		\node[right=of orb] {Orbital Flight};
+		
+		\node[pcb, below=of orb, yshift=-0.6cm] (pcbnode) {};
+		\node[right=of pcbnode] {PCB Manufacturing};
+		
+		\node[component, below=of pcbnode] (compnode) {};
+		\node[right=of compnode] {Component Procurement};
+		
+		\node[softiter, below=of compnode] (softnode) {};
+		\node[right=of softnode] {Software Iteration};
+		
+		\node[harditer, below=of softnode] (hardnode) {};
+		\node[right=of hardnode] {Hardware Iteration};
+		
+		\draw ([xshift=-2mm,yshift=-2mm]current bounding box.south west) rectangle ([xshift=2mm,yshift=2mm]current bounding box.north east);
+	\end{scope}			
+\end{tikzpicture}
+\caption{Example visual vocabulary for activities in a typical small \acs{SCS} iteration}
+\label{fig:m_visual_vocabulary}
 \end{figure*}
 
 \subsection{Project Lifecycle Approach: The Slice-Based Sat-Scrum Model}
@@ -2024,106 +2072,9 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 
 As explained in \Cref{chap:METHODOLOGY}, 
 
+\FloatBarrier
 \begin{landscape}%
-%	\vspace*{-20cm}% %???
-	%
-%
-%\begin{figure*}[H]
-	\usetikzlibrary{shapes,patterns,positioning}%
-%
-%
-aaaa
-\colorlet{bread}{orange}%
-\colorlet{engineer}{green!80!blue}%
-\colorlet{qualify}{blue!80}%
-\colorlet{environ}{red!50!orange!90!black}%
-%
-%------------------------------------------
-% Styles for Models
-%------------------------------------------
-\tikzset{
-	basebox/.style={draw, minimum width=0.7cm, minimum height=0.7cm, align=center},
-	% Model types
-	software/.style={basebox, draw=black, append after command={
-			\pgfextra{
-				\draw[bread, very thick] ([xshift=-0.15cm,yshift=-0.25cm]\tikzlastnode.center) 
-				.. controls +(-0.1,0.2) and +(0.1,-0.2) .. 
-				([xshift=0.15cm,yshift=0.25cm]\tikzlastnode.center);
-			}
-	}},
-	breadboard/.style={basebox, append after command={\pgfextra{ 
-				\draw[bread,very thick] ([xshift=-0.15cm]\tikzlastnode.north) -- ([xshift=-0.15cm]\tikzlastnode.south); 
-				\draw[bread,very thick] ([xshift=0.15cm]\tikzlastnode.north)  -- ([xshift=0.15cm]\tikzlastnode.south); 
-	}}},
-	engineering/.style={basebox, append after command={
-			\pgfextra{\fill[engineer!50,draw=engineer,thick] (\tikzlastnode.center) circle (5pt);}
-	}},
-	qualification/.style={basebox, append after command={
-			\pgfextra{\fill[qualify!50,draw=qualify,thick,xslant=0.4] ([xshift=-0.00cm,yshift=-0.25cm]\tikzlastnode.north east) rectangle ([xshift=0.00cm,yshift=0.25cm]\tikzlastnode.south west);  }
-	}},
-	engqual/.style={basebox, append after command={
-			\pgfextra{
-				\fill[qualify!50,draw=qualify,thick,xslant=0.4] ([xshift=-0.00cm,yshift=-0.25cm]\tikzlastnode.north east) rectangle ([xshift=0.00cm,yshift=0.25cm]\tikzlastnode.south west);
-				\fill[engineer!50,draw=engineer,thick] (\tikzlastnode.center) circle (5pt);
-			}
-	}},
-	protoflight/.style={basebox, append after command={
-			\pgfextra{\fill[qualify!50] ([xshift=0.10cm]\tikzlastnode.north) rectangle ([xshift=-0.10cm]\tikzlastnode.south);}
-	}},
-	flight/.style={basebox, append after command={
-			\pgfextra{\fill[qualify!50] ([xshift=0.15cm]\tikzlastnode.north west) rectangle ([xshift=-0.15cm]\tikzlastnode.south east);}
-	}},
-	box/.style={draw, minimum width=1.8cm, minimum height=0.7cm, font=\scriptsize, rounded corners=2pt}
-}%
-%
-%------------------------------------------
-% Styles for Iterations and Activities
-%------------------------------------------
-\tikzset{
-	iteration/.style={diamond, draw, minimum size=0.7cm, align=center},
-	func/.style={iteration, draw=qualify, append after command={
-			\pgfextra{
-				\draw[qualify, very thick] (\tikzlastnode.west) -- (\tikzlastnode.east);
-			}
-	}},
-	env/.style={iteration, draw=red, append after command={
-			\pgfextra{
-				\draw[qualify, very thick] (\tikzlastnode.west) -- (\tikzlastnode.east);
-				\draw[environ, very thick] (\tikzlastnode.north east) -- (\tikzlastnode.south west);
-			}
-	}},
-	orbital/.style={iteration, draw=green!70!black, append after command={
-			\pgfextra{
-				\draw[green!70!black, very thick] 
-				(\tikzlastnode.west) to [out=0,in=-90,looseness=1.7] (\tikzlastnode.north);
-			}
-	}},
-	pcb/.style={circle, draw, minimum size=0.7cm, append after command={
-			\pgfextra{\fill[engineer!50,draw=engineer,thick] ([xshift=-0.05cm,yshift=-0.15cm]\tikzlastnode.north west) rectangle ([xshift=0.05cm,yshift=0.15cm]\tikzlastnode.south east);}
-	}},
-	component/.style={circle, draw, minimum size=0.7cm, append after command={
-			\pgfextra{
-				\fill[qualify!50,draw=qualify,thick] ([xshift=-0.15cm,yshift=0.05cm]\tikzlastnode.north east) rectangle ([xshift=0.15cm,yshift=-0.05cm]\tikzlastnode.south west);
-			}
-	}},
-	softiter/.style={circle, draw, minimum size=0.7cm, append after command={
-			\pgfextra{
-				\draw[bread, very thick] ([xshift=-0.15cm,yshift=-0.25cm]\tikzlastnode.center) 
-				.. controls +(-0.1,0.2) and +(0.1,-0.2) .. 
-				([xshift=0.15cm,yshift=0.25cm]\tikzlastnode.center);
-			}
-	}},
-	harditer/.style={circle, draw, minimum size=0.7cm, append after command={
-			\pgfextra{
-				\draw[bread, very thick] ([xshift=0.05cm,yshift=-0.15cm]\tikzlastnode.north west) 
-				to[looseness=3,in=180,out=0,relative=false]
-				([xshift=0.00cm,yshift=0.15cm]\tikzlastnode.south)
-				to[bend right=0,looseness=3,out=0,relative=false]
-				([xshift=-0.05cm,yshift=-0.15cm]\tikzlastnode.north east)
-				;
-			}
-	}},
-}%
+\vspace*{-5cm}% %???
 %
 %------------------------------------------
 % Legend Layout
@@ -2235,7 +2186,7 @@ aaaa
 	\end{scope}
 	
 	
-\end{tikzpicture}
+\end{tikzpicture}%
 %	
 	%\captionof{figure}{\draft{Very big diagram}}
 %\end{figure*}

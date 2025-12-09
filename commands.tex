@@ -37,6 +37,98 @@
 
 \def\ar{ \( \rightarrow \) }
 
-\makeatletter
+% TikZ styles
 
-\makeatother
+\usetikzlibrary{shapes,patterns,positioning}
+
+\colorlet{bread}{orange}
+\colorlet{engineer}{green!80!blue}
+\colorlet{qualify}{blue!80}
+\colorlet{environ}{red!50!orange!90!black}
+
+%------------------------------------------
+% Styles for Models
+%------------------------------------------
+\tikzset{
+	basebox/.style={draw, minimum width=0.7cm, minimum height=0.7cm, align=center},
+	% Model types
+	software/.style={basebox, draw=black, append after command={
+			\pgfextra{
+				\draw[bread, very thick] ([xshift=-0.15cm,yshift=-0.25cm]\tikzlastnode.center) 
+				.. controls +(-0.1,0.2) and +(0.1,-0.2) .. 
+				([xshift=0.15cm,yshift=0.25cm]\tikzlastnode.center);
+			}
+	}},
+	breadboard/.style={basebox, append after command={\pgfextra{ 
+				\draw[bread,very thick] ([xshift=-0.15cm]\tikzlastnode.north) -- ([xshift=-0.15cm]\tikzlastnode.south); 
+				\draw[bread,very thick] ([xshift=0.15cm]\tikzlastnode.north)  -- ([xshift=0.15cm]\tikzlastnode.south); 
+	}}},
+	engineering/.style={basebox, append after command={
+			\pgfextra{\fill[engineer!50,draw=engineer,thick] (\tikzlastnode.center) circle (5pt);}
+	}},
+	qualification/.style={basebox, append after command={
+			\pgfextra{\fill[qualify!50,draw=qualify,thick,xslant=0.4] ([xshift=-0.00cm,yshift=-0.25cm]\tikzlastnode.north east) rectangle ([xshift=0.00cm,yshift=0.25cm]\tikzlastnode.south west);  }
+	}},
+	engqual/.style={basebox, append after command={
+			\pgfextra{
+				\fill[qualify!50,draw=qualify,thick,xslant=0.4] ([xshift=-0.00cm,yshift=-0.25cm]\tikzlastnode.north east) rectangle ([xshift=0.00cm,yshift=0.25cm]\tikzlastnode.south west);
+				\fill[engineer!50,draw=engineer,thick] (\tikzlastnode.center) circle (5pt);
+			}
+	}},
+	protoflight/.style={basebox, append after command={
+			\pgfextra{\fill[qualify!50] ([xshift=0.10cm]\tikzlastnode.north) rectangle ([xshift=-0.10cm]\tikzlastnode.south);}
+	}},
+	flight/.style={basebox, append after command={
+			\pgfextra{\fill[qualify!50] ([xshift=0.15cm]\tikzlastnode.north west) rectangle ([xshift=-0.15cm]\tikzlastnode.south east);}
+	}},
+	box/.style={draw, minimum width=1.8cm, minimum height=0.7cm, font=\scriptsize, rounded corners=2pt}
+}%
+%
+%------------------------------------------
+% Styles for Iterations and Activities
+%------------------------------------------
+\tikzset{
+	iteration/.style={diamond, draw, minimum size=0.7cm, align=center},
+	func/.style={iteration, draw=qualify, append after command={
+			\pgfextra{
+				\draw[qualify, very thick] (\tikzlastnode.west) -- (\tikzlastnode.east);
+			}
+	}},
+	env/.style={iteration, draw=red, append after command={
+			\pgfextra{
+				\draw[qualify, very thick] (\tikzlastnode.west) -- (\tikzlastnode.east);
+				\draw[environ, very thick] (\tikzlastnode.north east) -- (\tikzlastnode.south west);
+			}
+	}},
+	orbital/.style={iteration, draw=green!70!black, append after command={
+			\pgfextra{
+				\draw[green!70!black, very thick] 
+				(\tikzlastnode.west) to [out=0,in=-90,looseness=1.7] (\tikzlastnode.north);
+			}
+	}},
+	pcb/.style={circle, draw, minimum size=0.7cm, append after command={
+			\pgfextra{\fill[engineer!50,draw=engineer,thick] ([xshift=-0.05cm,yshift=-0.15cm]\tikzlastnode.north west) rectangle ([xshift=0.05cm,yshift=0.15cm]\tikzlastnode.south east);}
+	}},
+	component/.style={circle, draw, minimum size=0.7cm, append after command={
+			\pgfextra{
+				\fill[qualify!50,draw=qualify,thick] ([xshift=-0.15cm,yshift=0.05cm]\tikzlastnode.north east) rectangle ([xshift=0.15cm,yshift=-0.05cm]\tikzlastnode.south west);
+			}
+	}},
+	softiter/.style={circle, draw, minimum size=0.7cm, append after command={
+			\pgfextra{
+				\draw[bread, very thick] ([xshift=-0.15cm,yshift=-0.25cm]\tikzlastnode.center) 
+				.. controls +(-0.1,0.2) and +(0.1,-0.2) .. 
+				([xshift=0.15cm,yshift=0.25cm]\tikzlastnode.center);
+			}
+	}},
+	harditer/.style={circle, draw, minimum size=0.7cm, append after command={
+			\pgfextra{
+				\draw[bread, very thick] ([xshift=0.05cm,yshift=-0.15cm]\tikzlastnode.north west) 
+				to[looseness=3,in=180,out=0,relative=false]
+				([xshift=0.00cm,yshift=0.15cm]\tikzlastnode.south)
+				to[bend right=0,looseness=3,out=0,relative=false]
+				([xshift=-0.05cm,yshift=-0.15cm]\tikzlastnode.north east)
+				;
+			}
+	}},
+}
