@@ -633,6 +633,7 @@ A new Design Methodology is often the result of Design Research. \citeauthor{ble
 		\item The formulation and validation of models and theories about the phenomenon of design with all its facets [\textellipsis]; and 
 		\item The development and validation of support founded on these models and theories, in order to improve design practice, including education, and its outcomes. \cite{blessingDRMDesignResearch2009}
 	\end{enumerate}
+	\label{def:design_research}
 \end{definition}
 
 On the other hand, a \emph{Research Methodology} or \emph{Research Approach} is understood within the context of \emph{Research Design}, which can be defined as:
@@ -987,84 +988,48 @@ There are various examples in literature for the implementation of Agile practic
  
 \paragraph{Agile Frameworks}
 \label{par:LITERATURE_agile_frameworks}
-\todo{This whole section needs a rework. The purpose is to compare existing Agile Software and Systems Engineering frameworks, and analyse their applicability to \ac{SCS} systems engineering. The result is that none of these frameworks can be adapted as-is, either because they target discipline-specific systems, or because they are designed for much larger teams}
 
-While a number of different Agile frameworks have been proposed, only a small number of them are in effective use, as of 2025, especially in the software engineering industry.
+While a number of different Agile frameworks have been proposed, only a small number of them are in effective use in the industry as of 2025.
+Scrum and \acf{SAFE} are the two most popular formal frameworks in use, with developers also creating ad-hoc methods based on agile principles \autocite{digital.aiStateAgileReport2025}.
+A \citeyear{2020} survey by \citeauthor{atzbergerAgileDevelopmentPhysical2020} \autocite{atzbergerAgileDevelopmentPhysical2020} of hardware developers found that \qty{90}{\percent} of the respondents used a form of Scrum as a lifecycle process model, while other methods, such as \emph{Kanban} and \emph{Design Thinking}, also enjoy some popularity.
 
+In this section, I will analyse the most popular Agile frameworks and evaluate their applicability to hardware applications, and more specifically the \ac{SCS} methodology.
 
 \subparagraph{Scrum}
+\label{sec:LITERATURE_scrum}
+\marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
+Scrum, one of the most popular agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire life cycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}. Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework.
 
-\subparagraph{Crystal}
+The framework is built around fixed-time iterations called \emph{Sprints}, which follow a repeated pattern of \emph{planning-standup-review-retrospective} with the aim of presenting a complete product at the end of each iteration. It also defines the different terminology and roles within small development team.
 
-I originally checked for the Crystal method, which seems to be quite configurable/extensible to projects of different scales. However, it seems to be focused mostly on software projects and the collaboration between developers itself. Also, only Crystal Clear ([[@cockburnCrystalClearHumanpowered2004]]) and Crystal Orange ([[@cockburnSurvivingObjectorientedProjects]]) seem to be well defined.
+With its main description being no more than 14 pages long, Scrum is considered a light-weight framework, and can therefore be easily applied or tailored for different organisations. Popular generic tailorings include \acf{LESS} and \emph{Scrum@Scale}, variants designed for organisations with multiple Scrum-based teams that may be building one or more products \autocite{larmanLargescaleScrumMore2017}.
 
-\subparagraph{SAFe (Scaled Agile Framework)}
-From Wikipedia:
-> The scaled agile framework (SAFe) is a set of organization and workflow patterns intended to guide enterprises in scaling lean and agile practices. Along with disciplined agile delivery (DAD), SAFe is one of a growing number of frameworks that seek to address the problems encountered when scaling beyond a single team.
-> [...]
-> While SAFe continues to be recognised as the most common approach to scaling agile practices (at 30 percent and growing), it also has received criticism for being too hierarchical and inflexible. It also receives criticism for giving organizations the illusion of adopting Agile, while keeping familiar processes intact.
+\subparagraph{Extreme Programming (XP)}
+Extreme Programming is a software development methodology, similar to Scrum, which combines different methods and guidelines that particularly apply to software development.
+Typical aspects of XP include having a customer representative continuously present on-site, iterations lasting three weeks or less, pair programming, code reviews, frequent refactoring, test-driven development, and continuous integration. Despite its initial popularity, it received criticism due to its environment-specific assumption, and difficulties in scaling \autocite{boehmBalancingAgilityDiscipline2004}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey shows that it was used by \qty{7}{\percent} of industrial developers \autocite{atzbergerAgileDevelopmentPhysical2020}.
 
-It seems this is quite non-applicable to projects of our scale. As [Matt Heusser](https://www.cio.com/article/244257/introducing-the-scaled-agile-framework.html) mentions:
-> [...] By large we mean more than a thousand people in IT, and more than 250 in software development, though it can be just as effective for teams of 50–100 people.
+\subparagraph[SAFe (Scaled Agile Framework)]{\acf{SAFE}}
 
-SAFe is heavily criticised in a [blog post by Ken Schwaber]%(https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/).
+The \acl{SAFE} is another popular set of organisational practices, designed to scale Agile across organisations consisting of multiple teams. It includes concepts such as \emph{Lean Portfolio Management} to guide an organisation's strategy, it guides the product integration and delivery flow based on Scrum-like iterations, and it provides guidance for leadership and organisational structure. Its primary concept is the \emph{``Release Train''}, a team-of-teams with more than 50 individuals that share a common goal. As a scaled framework, it mainly targets organisations with more than 250--1000 developers \autocite{heusserIntroducingScaledAgile2015}. Common criticisms against \acl{SAFE} address its rigidity and strict hierarchical structure, as well as its dependence on predictability, which are said to only create an illusion of implementing Agile \autocite{schwaberUnsafeAnySpeed2013}.
 
+\subparagraph{Miscellaneous Frameworks}
+Most other documented Agile frameworks are not reported to be as popular, but can still provide an interesting source of \draft{inputs}.
 
-\subparagraph{RUP (Rational Unified Process)}
-From Wikipedia:
-> The rational unified process (RUP) is an iterative software development process framework created by the Rational Software Corporation, a division of IBM since 2003.
+Feature-Driven Development (FDD) 
+The Rational Unified Process (RUP), introduced in 1998, was an iterative framework created by a division of IBM, designed to be adaptable and tailorable by different software organisations. While it is not officially supported as of 2025, and has received considerable criticism, it is reported to be a precursor of \acs{SAFE} \autocite{schwaberUnSAFeAnySpeed2013}. DAD (Disciplined Agile Delivery), introduced in 2013, is a set of guidelines for Agile software organisations that aims to encapsulate other, more fundamental Agile frameworks \autocite{ChooseYourWoW}. The \acf{DSDM}, introduced in 1994, is a project-specific framework that covers planning, requirements, development and project management \autocite{agilebusinessconsortiumAgilePMHandbookV22014}.
+Crystal, introduced in the 1990s, is a family of frameworks that aim to cover different sizes and criticalities\emph{Defined as \emph{comfort, discretionary money, essential money, and life.}} of projects, although only some of them have been formally described \autocite{boehmBalancingAgilityDiscipline2004}.
+% For sources on the dates, check the relevant references on Wikipedia articles
 
-According to different sources, RUP failed and/or wasn't agile:
-- https://www.quora.com/What-led-to-the-failure-of-the-Rational-Unified-Process-RUP-methodology-Was-it-just-hype-or-were-there-other-factors-involved
-- https://scrumscreener.wordpress.com/2007/02/21/why-rup-failed/
-It is an implementation of the Unified Process %](https://en.wikipedia.org/wiki/Unified_Process).
+\subparagraph{Miscellaneous Methods}
+Apart from frameworks that cover the entire structure of a team, project, or organisation, there also exist specific methods and tools which can be categorised as Agile but cover only specific parts of project management or software development. 
 
-The implementation of RUP was tied to its parent company and the tools that it sold. There are some other, less well-defined and less-known alternatives, such as the Agile Unified Process or the [OpenUP](https://www.utm.mx/~caff/doc/OpenUPWeb/). Most of them seem to be unsupported by now.
+\begin{marginfigure}
+	\includegraphics{external/Kanban Board.pdf}
+	\caption[Kanban board example]{Example of a Kanban board \autocite{falcoKanbanBoardRepresentation2023}}
+\end{marginfigure}
+Kanban is a visual approach to manage work in human systems, which aims to create a single view of tasks at various stages by modelling them as cards that are moved across different columns on a board \todo{[ref]}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey measures a \qty{75}{\percent} usage of Kanban in the physical product industry \cite{atzbergerAgileDevelopmentPhysical2020}.
 
-It seems those ideas were abandoned two decades ago.
-
-Ken Schwaber's criticism against RUP is also evident in [his SAFe blog post](https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/):
-> When the signers of the Agile Manifesto got together in 2001, we wanted to share our ideas about software development, a discussion that resulted in the Agile Manifeto. [...] We wanted to undo the damage that waterfall had done to our profession, and we also hoped to ensure that RUP wasn’t seen as a viable successor.
-
-Some interesting comments:
-> They were used by RUP, but we developed by many of us far before RUP. The problem with RUP wasn’t the ideas in it, it was turning them into a formal, prescriptive methodology.
-
-> Scrum controls risk through empiricism. SAFe tries to control risk through predictability. We have years and years of experience learning that predictability is not possible for complex problems like software development. The rest of the world, both scientific and industrial, has accepted this and moved forward with complex control mechanisms. Only in software is the old dream of safety in predictability still alive and, apparently, salable.
-
-\subparagraph{DAD (Disciplined Agile Delivery)}
-
-This seems to be more like a set of guidelines rather than a well defined method or process, mainly defined in [[@ChooseYourWoW]] (WoW = Way of Working). The process seems very close to the typical action research iterations we see.
-
-DAD is defined primarily for software, not hardware products, even if some of its lessons learned are applicable. It tries to be a high-level methodology, so even if it covers our areas of concern (requirements - ops), it does so at a high level that might not be that useful.
-
-While we cannot apply DAD or a tailoring of it to our systems, the book is a nice source for a lot of information and suggestions on the tailoring f a custom framework.
-
-DAD is supported by a non-profit association called [PMI](https://pmi.org).
-
-> • DAD is the delivery portion of the Disciplined Agile (DA) tool kit—it is not just another methodology. • If you are using Scrum, XP, or Kanban, you are already using variations of a subset of DAD. • DAD provides six life cycles to choose from; it doesn’t prescribe a single way of workingchoice is good
-
-\subparagraph{DSDM (Dynamic Systems Development Method}
-
-- Iterative development
-- The design matches a lot what we're doing for the ChipSats
-- Tailorable to each project
-- MoSCoW requirement prioritisation
-
-The bad:
-- Roles and responsibilities
-- Too many of them; not suitable for a team of our size
-- (Ambassadors, testers, advisors, coaches, facilitators)
-- Daily standup
-- Have to get rid of in academia (for our envioronment)
-- Is the standup dying?
-- Pocketqube teams are usually small
-- And usually not in a corporate environment, or even in this case, not 100% of person is devoted to PocketQube
-
-Probably a very clear explanation of the difference between vertical/horizontal iterative/incremental development!
-https://www.agilebusiness.org/dsdm-project-framework/iterative-development.html
-
-Also: Take a look at the DSDM structured timebox. A format that complies with the different verification/planning stages that typically happen in a HW iteration:
-https://www.agilebusiness.org/dsdm-project-framework/13-timeboxing.html
+Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks \todo{[ref]} \todo{more}.
 
 \section{Research Problem Formulation}
 
@@ -1328,10 +1293,7 @@ A first version of a lifecycle process model can be inspired by the characterist
 \end{enumerate}} which involve dynamic, iterative/incremental work, with verification/validation cycles at the end of every iteration.
 While investigating between existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a \todo{proposed methodology}; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that \todo{are not within the scope of this work.}
 
-As such, it is necessary to create a \todo{new model}. The \emph{Scrum} framework, in particular, has already gathered attention in the hardware engineering community \autocite{bottAnalysisTheoriesSupporting2019,doveFundamentalsAgileSystems2014} and has been implemented in previous CubeSat systems and subsystems \autocite{honore-livermoreDigitalEngineeringDevelopment2022,garzanitiEffectivenessScrumMethodology2019}. Its authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}.
-
-\marginnote{The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
-Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} describes Scrum as covering the management, risk handling, and customer interfacing processes of the entire lifecycle of a project, which can range from a system built by an individual to a business system.
+As such, it is necessary to create a \todo{new model}. The \emph{Scrum} framework, in particular, has already gathered attention in the hardware engineering community \autocite{bottAnalysisTheoriesSupporting2019,doveFundamentalsAgileSystems2014} and has been implemented in previous CubeSat systems and subsystems \autocite{honore-livermoreDigitalEngineeringDevelopment2022,garzanitiEffectivenessScrumMethodology2019}. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} describes Scrum as covering the management, risk handling, and customer interfacing processes of the entire lifecycle of a project, which can range from a system built by an individual to a business system.\marginnote{Note that the, while scaled tailorings of Scrum described in \Cref{sec:LITERATURE_scrum} might seem suitable for systems more complex than software, such as \acs{SCS}, they instead cover the more administrative aspects of larger organisations, and are therefore out of scope for this work.}
 
 For the remainder of this section, I will tailor the Scrum process for use in \ac{SCS} systems. This tailoring will roughly follow the steps proposed by ECSS-S-ST-00-02C \autocite{ECSS-S-ST-00-02C}, which include the identification of project characteristics (see \Cref{sec:scope}), and selection/modification of applicable requirements, after going \draft{section-by-section}. Apart from the official definition of Scrum \cite{schwaverDefinitiveGuideScrum2020}, I will rely on \draft{external analyses} \cite{boehmBalancingAgilityDiscipline2004} and criticisms \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} of incorrect applications of it.
 
@@ -1865,8 +1827,14 @@ The shortcomings of document-based specification approaches led to the adoption 
 \subsection{Defining a Design Solution}
 
 \draft{\begin{itemize}
-		\item Review of heritage/reuse, decisions taken, dangers (see Hein thesis)
+		\item Reuse of existing tech. List of existing tech. Open source satellites
+		\item Concurrent design
+		\item HW/SW co-design
 \end{itemize}}
+
+The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
+defines a ``design solution definition process [that translates] high-level requirements [...] and the outputs of the Logical Decompisition Process into a design solution''. In Design Research (\Cref{def:design_research}), a ``design solution'' can be defined as a ``description or set of instructions to make something'' \autocite{loveDefinitionDesign2015}.
+From a formal point of view, a Design Space can be defined as the set of all possible design solutions that satisfy a set of requirements; then, the process of Design Space Exploration 
 
 \draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
 
