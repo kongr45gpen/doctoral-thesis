@@ -624,6 +624,7 @@ It is also important to separate my proposed \emph{Design Methodology}, presente
 A new Design Methodology is often the result of Design Research. \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009} define Design as follows:
 \begin{definition}[Design]
 	Design refers to those activities that actually generate and develop a product from a need, product idea or technology to the full documentation needed to realise the product and to fulfil the perceived needs of the user and other stakeholders. \cite{blessingDRMDesignResearch2009}
+	\label{def:design}
 \end{definition}
 
 \citeauthor{blessingDRMDesignResearch2009} \cite{blessingDRMDesignResearch2009} also define the relevant concept of Design Research:
@@ -1830,11 +1831,48 @@ The shortcomings of document-based specification approaches led to the adoption 
 		\item Reuse of existing tech. List of existing tech. Open source satellites
 		\item Concurrent design
 		\item HW/SW co-design
+		\item When does this need to happen? Big design up front?
+		\item Do we need to define a logical decomposition beforehand?
 \end{itemize}}
 
 The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
-defines a ``design solution definition process [that translates] high-level requirements [...] and the outputs of the Logical Decompisition Process into a design solution''. In Design Research (\Cref{def:design_research}), a ``design solution'' can be defined as a ``description or set of instructions to make something'' \autocite{loveDefinitionDesign2015}.
-From a formal point of view, a Design Space can be defined as the set of all possible design solutions that satisfy a set of requirements; then, the process of Design Space Exploration 
+defines a ``design solution definition process [that translates] high-level requirements [...] and the outputs of the Logical Decompisition Process into a design solution''. In Design Research (\Cref{def:design_research}), a ``design solution'' can be defined as a ``description or set of instructions to make something''\footnote{Also see \Cref{def:design}.} \autocite{loveDefinitionDesign2015}.
+From a formal point of view, a Design Space can be defined as the set of all possible design solutions that satisfy a set of requirements; then, the process of Design Space Exploration selects a specific design solution that seems the most ``optimal'' based on project-specific criteria (such as cost, performance, or value). Different methods have been proposed since the mid-20\textsuperscript{th} century both to evaluate different design solutions, and to achieve the highest possible coverage of the design space during the exploration process  \autocite{griesMethodsEvaluatingCovering2004}.
+
+CubeSat projects have traditionally followed less formal approaches to design \todo{[cite]}. The \acs{NASA} \acs{SYE} handbook defines the following steps to defining a design solution \autocite[66]{sheaNASASystemsEngineering2020}:\footnote{Presented here simplified}
+\begin{enumerate}[itemsep=-2ex]
+	\item Define alternative design solutions
+	\item Analyse each design solution
+	\item Select the best alternative
+	\item Verify the solution
+	\item If needed, repeat this process for lowel-level products
+\end{enumerate}
+
+Based on the above, the two main questions that need to be answered when defining a design solution are:
+\begin{itemize}
+	\item How can one discover possible design solutions?
+	\item How and under what criteria are design solutions evaluated?\footnote{Evaluating a design solution is a different process compared to the verification of a built system (\Cref{sec:METHODOLOGY_verification}). \todo{blablabla} Evaluation needs to predict the performance, feasibility and correctness of a design solution \emph{before} the solution is built.}
+\end{itemize}
+
+\newthought{Within the context of \acs{SCS}}, the design solution definition is one of the most critical aspects of a project's life cycle, as it is the process that converts the product's requirements to the actual product. It depends on the available technology\todo{ and some other things too}.
+Usually, it involves the selection and arrangement of hardware components at a system or subsystem level.
+\marginnote{Examples of design decisions that can be taken include:
+\begin{itemize}[itemsep=-2ex]
+	\item Should the satellite be built around a modular subsystem stack or a monolithic structure?
+	\item Should we use active or passive \ac{ADCS}?
+	\item From which manufacturer should we procure solar cells?
+	\item What type of surface treatment should we use for each part, if any?
+\end{itemize}}
+Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative or qualitative in nature\marginnote{Examples of design solution evaluation criteria can include:\begin{itemize}
+	\item Number of features (``should have/could have'' requirements satisfied, see \Cref{sec:METHODOLOGY_requirements})
+	\item Added cost
+	\item Technical risk (due to technology maturity, redundancy, heritage etc.)
+	\item Organisational risk (due to technology complexity, familiarity, \acs{COTS} availability etc.)
+	\item Compatibility
+	\item Any combination of the above
+\end{itemize}}
+
+While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design. However, in contrast to CubeSats, 
 
 \draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
 
@@ -1843,6 +1881,7 @@ From a formal point of view, a Design Space can be defined as the set of all pos
 \draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 
 \subsection{Verification \& Validation Guidelines}
+\label{sec:METHODOLOGY_verification}
 
 Verification and validation is an integral part of a sprint cycle, and is the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
 
