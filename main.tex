@@ -1829,10 +1829,13 @@ The shortcomings of document-based specification approaches led to the adoption 
 
 \draft{\begin{itemize}
 		\item Reuse of existing tech. List of existing tech. Open source satellites
-		\item Concurrent design
+		%\item Concurrent design
 		\item HW/SW co-design
-		\item When does this need to happen? Big design up front?
+		%\item When does this need to happen? Big design up front?
 		\item Do we need to define a logical decomposition beforehand?
+		%\item On Modularity
+		\item Design guidelines
+		\item FDIR
 \end{itemize}}
 
 The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
@@ -1857,22 +1860,187 @@ Based on the above, the two main questions that need to be answered when definin
 \newthought{Within the context of \acs{SCS}}, the design solution definition is one of the most critical aspects of a project's life cycle, as it is the process that converts the product's requirements to the actual product. It depends on the available technology\todo{ and some other things too}.
 Usually, it involves the selection and arrangement of hardware components at a system or subsystem level.
 \marginnote{Examples of design decisions that can be taken include:
-\begin{itemize}[itemsep=-2ex]
+\begin{itemize}[itemsep=0ex]
 	\item Should the satellite be built around a modular subsystem stack or a monolithic structure?
 	\item Should we use active or passive \ac{ADCS}?
 	\item From which manufacturer should we procure solar cells?
 	\item What type of surface treatment should we use for each part, if any?
-\end{itemize}}
-Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative or qualitative in nature\marginnote{Examples of design solution evaluation criteria can include:\begin{itemize}
+\end{itemize}
+Examples of design solution evaluation criteria can include:\begin{itemize}
 	\item Number of features (``should have/could have'' requirements satisfied, see \Cref{sec:METHODOLOGY_requirements})
 	\item Added cost
 	\item Technical risk (due to technology maturity, redundancy, heritage etc.)
 	\item Organisational risk (due to technology complexity, familiarity, \acs{COTS} availability etc.)
 	\item Compatibility
 	\item Any combination of the above
-\end{itemize}}
+	\end{itemize}
+}
+Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative or qualitative in nature \todo{...}
 
-While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design. However, in contrast to CubeSats, 
+While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software. \todo{So what?}
+
+\paragraph[Concurrent Design]{\acf{CDE}}
+Traditionally, the initial design phases of a space system are performed using a Concurrent Engineering or \emph{\acf{CDE}} method, where all subsystem experts are gathered in a single location to iterate over the design elements of the system. These iterations are aided by automated simplified analyses, usually performed with simple spreadsheet software and mission analysis tools \autocite{bandecchiConcurrentEngineeringApplied1999}.
+The \acs{CDE} method is supported by specialised tools that allow almost instant exchange of parameters and data between experts,\footnote{This software typically has features that assist with the design solution defininition. For example, different \emph{options} of parameter sets can be created, and then \emph{evaluated} based on algorithmically calculated metrics, answering the two main questions of design definition.} along with technical support in a physical location that facilitates screen sharing and online collaboration \autocite{ranaVisionNextGenConcurrent2021}. This exchange can also take place through online meetings \autocite{retselisAdaptationAcubeSATNanosatellite2022}, although \citeauthor{bandecchiConcurrentEngineeringApplied1999} have noted the importance of organic interactions to influence the design rather than cooperation during strictly scheduled meetings only \cite{bandecchiConcurrentEngineeringApplied1999}. \todo{I don't know if this citation is the one where bandecchi mentions this, or if it has been written somewhere.} The \acs{CDE} method is often viewed as an alternative to a centralised \acs{SYE} authority, which decides on the high-level design and subsystem requirements, which then flow down to individual vendors.
+
+Within the context of the \acs{SCS} methodology, the design solution definition process has to be repeated in the beginning of every iteration (\Cref{fig:m_sat_scrum_iteration}). On the other hand, the small teams dedicated to \acs{SCS} are usually co-located or are able to communicate on a frequent bases. These characteristics make it possible to \textbf{implement \acs{CDE} during every iteration of the project}. This idea makes it possible to evaluate the different dependencies between disciplines and provide instant feedback on design changes.
+
+\begin{margindefinition}[Timebox]
+	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
+\end{margindefinition}
+Depending on the project, the \acs{CDE} sessions can follow a formal, tool-based structure, or an informal approach, where information is stored in documents or directly insterted into domain-specific models, where available. An important aspect is to keep these sessions timeboxed, as the primary \draft{way} of generating information in Agile methodologies is through experimentation, and not up-front design. The resolution of the \acs{CDE} result can be better than a high-level subsystem specification, but needs not answer low-level questions that can be handled by engineers as part of their daily work.
+
+\paragraph[On Big Design Up-Front]{On \acf{BDUF}}
+Since common practices and the \acs{SCS} methodology separate design into more than one iteration, a question that often comes up is \emph{``how much time to spend on initial design''}.
+The \acs{NASA} \acs{SYE} handbook notes how changing the design at a later point becomes harder or more costly, making the case for specifying an initial detailed design early in the project \cite{sheaNASASystemsEngineering2020}.
+On the other hand, \citeauthor{watermanHowMuchUpFront2015} \cite{watermanHowMuchUpFront2015} claim that a trade-off between time spent in \acs{BDUF} needs to be made:
+\begin{quote}
+If an agile software team spends too little time designing architecture up-front then the team faces increased risk and higher chance of failure; if the team spends too much time the delivery of value to the customer is delayed, and responding to change can become extremely difficult \autocite{watermanHowMuchUpFront2015}.
+\end{quote}
+The authors note the following factors as reducing the need or effectiveness of a \acl{BDUF}:
+\begin{itemize}[itemsep=-2ex]
+	\item Requirements instability
+	\item Early value
+	\item Team culture
+	\item Customer agility
+	\item Team experience
+\end{itemize}
+Conversely, they note that the existence of high technical risk and a need to reduce that risk reduce the effectiveness of iterative design. \todo{Maybe we can cite the software convex curve paper here?}
+
+Therefore, the ideal decision on time spent for early design will vary based on the members of each time. However, typical \acs{SCS} environments, coupled with the emergent features of such systems, can generally afford a reduced early design time.
+
+\subparagraph{Mathematical Model for design effort}
+
+The drawbacks of incorrect allocation of design time early or late in the project are usually represent in terms of time and cost \begin{enumerate*}
+	\item due to unnecessary design effort, or
+	\item due to reworks because of errors uncovered late.
+\end{enumerate*}
+As the results of this trade-off are not selected beforehand, but are probabilistic in nature, a stochastic model can be created to model the design--verification--rework cycle.
+This stochastic process for a single product iteration can be modelled as an absorbing Markov model (\Cref{fig:m_rework_markov}) \autocite{grinsteadChapter11Markov1998}.
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[shorten >=1pt,node distance=2.1cm,]
+		\node (q_0)  [state,initial] {Design};
+		\node (q_1)  [state,right=of q_0]   {Rework};
+		\node (q_2)  [state,right=of q_1]   {End};
+		
+		\path[->] (q_0) edge[bend right=10] node[above,yshift=1mm] {$p_{1}$} (q_1)
+		edge[bend left=35] node[above] {$1-p_{1}$} (q_2)
+		(q_1) edge [loop below] node        {$p_{2}$} ()
+		edge [bend right=20] node[above,yshift=2mm]       {$1-p_{2}$} (q_2)
+		(q_2)
+		edge [loop below] node        {1} ();
+	\end{tikzpicture}
+	\caption{Representation of a Markov process describing the design--rework cycle}
+	\label{fig:m_rework_markov}
+\end{figure}
+
+% simplified mathematical model can be created to describe the design--verification--rework cycle, based on the possibility of defects unidentified during the design.
+For this model, I am making the folowing assumptions:
+\begin{itemize}[itemsep=-1ex]
+	\item A first transient state, \textbf{\emph{``Design''}}, represents the completion of the initial engineering effort to produce the iteration's \draft{product}.
+	
+	A second transient state, \textbf{\emph{``Rework''}}, represents the completion of an added iteration with additional engineering effort to design and produce an extra product, in case of defects or unfulfilled needs found during the previous iteration.
+	
+	The final absorbing state, \textbf{\emph{``End''}}, represents a product which has completed its iteration's goals.
+	\item The \emph{``Design''} state implies that verification of the current iteration (through analysis or testing) has been completed. There is a probability \( p_1 \) that the iteration has not succeeded in its goals, and the model starts transitioning to the \textbf{\emph{``Rework''}} state.
+	
+	After the \emph{``Rework''} state, there is a probability that the open issues have still not been resolved, or that new ones appeared during the rework process. In this case, there is a probability \( p_2 \) that the system transitions again to the \emph{``Rework''} state. In the case where an iteration was added only to address the issues identified in the previous iteration, I expect \( p_2 < p_1 \).
+	\item States and transitions are associated with a mathematical \emph{cost}. This cost can represent time spent, monetary cost, or an objective function that combines different resources as needed. Transitioning to a state incurs the following costs:
+	\begin{itemize}[itemsep=-2ex]
+		\item For the \textbf{\emph{``Design''}} state, the cost of the \emph{initial} design process \( C_{d0} \), the recurring manufacturing costs \( C_m \), and the cost of verification \( C_v \).
+		\item For the \textbf{\emph{``Rework''}} state, the cost of the additional design \( C_d \), manufacturing \( C_m \) and \( C_v \).
+	\end{itemize}
+\end{itemize}
+
+Given the above, the problem of measuring the expected cost of the Markov process is reduced to calculating \emph{the expected number of visits to the \textbf{\emph{``Rework''}}} state.
+
+\todo{Model chain as matrix, Perform trade-off, make guidelines}
+
+\subsection[SCS Design Guidelines]{\acs{SCS} Design Guidelines}
+
+\paragraph{Modularity}
+
+\todo{For sources of this section, check bibliography of mathieuAssessingFractionatedSpacecraft2006}
+
+A defining characteristic of CubeSats and, to a lesser extent, PocketQubes, is their \textbf{modular structure}.
+
+\begin{definition}[Modularity]
+	Modularity can be understood as the use of interfaces to connect different subsystems/components of a system, in a way that allows them to be separated and recombined in different ways.
+	\todo{[ref?]}
+\end{definition}
+Modularity can be described in terms of:
+\begin{itemize}[itemsep=-2ex]
+	\item \textbf{Structural Modularity}, where the interfaces are physical, and
+	\item \textbf{Electrical Modularity}, where the interfaces are electrical, and used to transfer power and/or data.
+\end{itemize}
+
+In CubeSats, modularity is achieved through the use of PC/104-sized boards, along with a roughly-defined electrical interconnect specification \autocite{BoardSpecificationLibreCube}. Commercial CubeSat subsystems can then be placed inside a shared subsystem ``stack'', and often rearranged as needed. A list of protocols, such as \acs{I2C} or \acs{CAN}, allow the communication between subsystems of different manufacturers.
+However, in practice, different subsystems may show incompatibilities with each other. There is also no shared specification for low-level interfaces, meaning that additional work may be needed to allow different subsystems to communicate.
+
+For \acs{SCS}, modularity presents more challenges, as it introduces constraints to a system's design. For example:
+\begin{itemize}
+	\item In a PC/104 board, the 104-pin connector covers \qtyproduct{6 x 0.8}{cm} of the \qtyproduct{9.6 x 9.0}{cm} board, taking up \qty{5.6}{\percent} of the available area, even though all 104 pins are rarely used. \todo{[ref?]}
+	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt} \footnote{Assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
+	\item Most standard CubeSat packages separate the \emph{\acf{COMMS}} and \emph{\ac{OBDH}} functions into different boards, in order to accomodate the required flexibility of supporting different communication schemes and different subsystem vendors respectively. However, recent single-purpose missions have combined \ac{COMMS} and \ac{OBDH} into a single board, as \ac{OBDH} functionality is not usually resource-intensive.
+\end{itemize}
+While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve \draft{different decisions across different parts of the system}.
+
+\begin{figure*}
+	\includegraphics{graphics/Monolithic.pdf}
+	\caption{Concept map comparing the advantages of monolithic and modular \acs{SCS} architectures}
+	\label{fig:m_monolithic}
+\end{figure*}
+
+In practical terms, if the developers decide to implement a modular architecture, this might involve:
+\begin{itemize}[itemsep=-2ex]
+	\item Separate the spacecraft into different subsystems following a common interface.
+	\item \todo{Ran out of ideas...}
+\end{itemize}
+
+\paragraph{On Component Reuse}
+Another decision that developers are faced with involves whether they reuse existing \textbf{parts} and \textbf{subsystems}\footnote{Also known as \acf{COTS}. This might also involve customised build-to-order components that rely on a \acs{COTS} design.}, or design components and subsystems in-house.
+
+\begin{landscape}
+	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
+	\begin{tabularx}{\linewidth}{@{}lllllX@{}}
+		\toprule
+		\textbf{\#} & \textbf{Type} & \textbf{Name} & \textbf{Developer} & \textbf{Year} & \textbf{Description} \\ \midrule
+		\multicolumn{6}{c}{Pico-satellites} \\ \midrule
+
+		1 & System & \href{https://gitlab.com/librespacefoundation/qubik/}{QUBIK} & Libre Space Foundation & 2019 & 1p radio-amateur PocketQube for \acs{LEO} satellite identification and tracking \\
+
+		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \draft{????} & \draft{?}p PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
+
+		% $50SAT (1.5P), Morehead State university 
+		% https://www.albaorbital.com/open-source-pocketqube#:~:text=%2450SAT%20%281%2E5P%29%2C%20Morehead%20State%20university
+		% Based on the material available, not considered open-source and not possible to reuse.
+		
+		3 & System & \href{https://github.com/kcglab/satllazero}{SATLLA-0} & Ariel University & \draft{????} & 2p system designed as a starting point for academic institutions, based on Arduino software. \\
+
+		4 & System & Tartan Artibeus & Carnegie Mellon University & \draft{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
+
+		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Politècnica de Catalunya & \draft{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
+
+		x & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
+
+		x & Subsystem & \href{https://gitlab.com/librespacefoundation/pq9ish}{PQ9ISH COMMS} & Libre Space Foundation & 2017 & Communications subsystem based on PQ9 \cite{PQ91} \\
+
+		\multicolumn{6}{c}{\todo{Add more stuff to the list...}} \\
+
+		\midrule
+		\multicolumn{6}{c}{Femto- and atto-satellites} \\ \midrule
+
+		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \draft{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
+
+		x & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \draft{???} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
+
+		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \draft{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
+	
+		\bottomrule
+	\end{tabularx}
+\end{landscape}
 
 \draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
 
@@ -1949,37 +2117,6 @@ In addition to this general shift towards in-house environmental testing, \ac{SC
 As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
 
 \paragraph{Mathematical Model}
-
-\begin{figure}[h]
-	\centering
-	\begin{tikzpicture}[shorten >=1pt,node distance=2.1cm,]
-		\node (q_0)  [state,initial] {Design};
-		\node (q_1)  [state,right=of q_0]   {Rework};
-		\node (q_2)  [state,right=of q_1]   {End};
-		
-		\path[->] (q_0) edge[bend right=10] node[above,yshift=1mm] {$p_{1}$} (q_1)
-		edge[bend left=35] node[above] {$1-p_{1}$} (q_2)
-		(q_1) edge [loop below] node        {$p_{2}$} ()
-		edge [bend right=20] node[above,yshift=2mm]       {$1-p_{2}$} (q_2)
-		(q_2)
-		edge [loop below] node        {1} ();
-	\end{tikzpicture}
-	\caption{Representation of a Markov process describing the design--rework cycle}
-	\label{fig:m_rework_markov}
-\end{figure}
-
-A simplified mathematical model can be created to describe the design--verification--rework cycle, based on the possibility of defects unidentified during the design. This stochastic process for a single product iteration can be modelled as an absorbing Markov model (\Cref{fig:m_rework_markov}) \autocite{grinsteadChapter11Markov1998}, with the following assumptions:
-\begin{itemize}[itemsep=-1ex]
-	\item A first transient state, \textbf{\emph{``Design''}}, represents the completion of the initial engineering effort to produce the iteration's \draft{product}.
-	
-	A second transient state, \textbf{\emph{``Rework''}}, represents the completion of an added iteration with additional engineering effort to design and produce an extra product, in case of defects or unfulfilled needs found during the previous iteration.
-	
-	The final absorbing state, \textbf{\emph{``End''}}, represents a product which has completed its iteration's goals.
-	\item The \emph{``Design''} state implies that verification of the current iteration (through analysis or testing) has been completed. There is a probability \( p_1 \) that the iteration has not succeeded in its goals, and the model starts transitioning to the \textbf{\emph{``Rework''}} state.
-	
-	After the \emph{``Rework''} state, there is a probability that the open issues have still not been resolved, or that new ones appeared during the rework process. In this case, there is a probability \( p_2 \) that the system transitions again to the \emph{``Rework''} state. In the case where an iteration was added only to address the issues identified in the previous iteration, I expect \( p_2 < p_1 \).
-	
-\end{itemize}
 
 
 
@@ -2081,7 +2218,7 @@ As explained in \Cref{chap:METHODOLOGY},
 
 \FloatBarrier
 \begin{landscape}%
-\vspace*{-5cm}% %???
+\vspace*{-2cm}%
 %
 %------------------------------------------
 % Legend Layout
