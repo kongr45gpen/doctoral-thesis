@@ -1274,6 +1274,89 @@ This section will cover the \emph{Technical Management} aspect of \acf{SCS} Syst
 \Cref{sec:METHODOLOGY_requirements} will present how project goals and requirements should be managed. Then, \Cref{sec:METHODOLOGY_satscrum,sec:METHODOLOGY_slicebased} will present two lifecycle process models that guide the biggest \draft{chunk} of \acs{SCS} development. In \Cref{sec:METHODOLOGY_workpackage}, I will present recommendations for work package and task tracking, while \Cref{sec:METHODOLOGY_datamanagement} will compare different approaches to documentation, modelling, and \acf{EDM}. Finally, \Cref{sec:METHODOLOGY_tooling_requirements} is orthogonal to the previous are, presenting the requirements and needs for software tools that support the recommended methods.
 
 
+\FloatBarrier
+\subsection{Requirements: Slices and the MoSCoW method}
+\label{sec:METHODOLOGY_requirements}
+
+The concept of Mission and System Requirements is often the topic of discussion, specifically for CubeSat missions.
+In traditional space systems engineering, requirements are often elaborated in significant detail, covering test specifications and guiding all the required features for development. This approach is summarised as one of Akin's laws \autocite{akinAkinLawsSpacecraft}:
+\begin{quote}
+	Design is based on requirements. There's no justification for designing something one bit "better" than the requirements dictate.
+\end{quote}
+In these cases, requirements elicitation takes place in the beginning of the project, with little room for changes and modifications at the later phases. \todo{cite} \todo{explain the nature of strictly verifiable and machine-interpretable requirements} \draft{For example, \acs{ECSS} standards forbid the use of words which cannot be determined objectively, such as \emph{minimise/maximise}, \emph{optimise}, ...}
+
+On the other hand, some projects follow less strict approaches, where requirements do not cover the entire system, and are usually elaborated in a more \draft{interpretable} manner.
+
+\begin{table*}
+	\begin{tabularx}{\linewidth}{@{}lXX@{}}
+		\toprule
+		& AcubeSAT project \todo{cite} & \todo{Artemis CubeSat} \cite{zhu23Requirements} \\ \midrule
+		& The spacecraft shall use an attitude determination and control system to achieve a pointing accuracy within 20 degrees. & The CubeSat kit shall be low-cost and accessible to universities and private individuals \\
+		& The spacecraft shall store at least 5 Ah (\acs{TBC}) in batteries. & The CubeSat kit shall include software that is intuitive for undergraduate students \\
+		& The unibody's cross section on the X-Y plane shall have maximum external dimensions of 70x70 mm. & The CubeSat kit shall be tested to meet environmental requirements set forth in NASA GEVS for spaceflight. The end-user will be responsible for doing final flight environmental testing set forth by their launch provider. \\ \bottomrule
+	\end{tabularx}
+	\caption{Example requirements from different space projects}
+\end{table*}
+
+Especially for \acs{SCS} projects, I have made the following observations:
+\begin{itemize}[itemsep=-1ex]
+	\item \acs{SCS} projects \emph{need} to conform to external requirements to some degree, provided by their host or launch provider.
+	\item Due to the lack of standard launch interfaces, specifications and standards, these requirements may change by the relevant stakeholders during the project.
+	\item The planned feature-set of a project may change during its course (usually via the removal of functionality) due to incorrect planning, external requirement change or une
+	Projects with fixed deadlines will prefer to remove features, instead of adding additional iterations or reworking the product, since the latter may lead to a launch cancellation.
+	\item Each project evolves around a central strategic goal that expresses a simple objective (such as \emph{receive at least some data from orbit} or \emph{demonstrate a specific technology}). Additional objectives, when completed, increase the perceived \emph{value} of the project \todo{Ask Alex about the definition of value}.
+	\item The definition of \todo{specific} requirements itself as a process can last up to a month, and requires some prior knowledge of the system's principles, feasibility and available technology. In the case of inexperienced teams, external reviews may be necessary.
+	\item Well-specified requirements can be the guide for functional and environmental testing campaigns. However, requirements-based testing campaigns cannot offer complete coverage of the executed design, as they do not cover \todo{design-specific} activity flows and edge cases.
+\end{itemize}
+
+\draft{I therefore consider it important to define an \acs{SCS}-tailored method for requirements capture} that can still be part of the proposed \emph{project lifecycle approach}, while reducing the \ac{SYE} overhead.
+
+An inspiration from such an approach can come from the \acs{DSDM} Agile framework, which advocates the \textbf{prioritisation} of different project requirements using the \acf{MOSCOW} classification \autocite{agilebusinessconsortiumAgilePMHandbookV22014}, which categorises requirements as follows:
+\begin{itemize}
+	\item
+	\textbf{Must Have} requirements: The Minimum Usable subset of requirements that a project should comply to in order to be legal, safe, compliant with external requests, and functional.
+	
+	Not complying to these requirements will result in \todo{a cancellation or failure of the project}.
+	\item
+	\textbf{Should Have} requirements: These represent features or requests that significantly increase project value, but are not project-breaking in case they are not implemented.
+	\item \textbf{Could Have} requirements: These represent features that are desirable but less important than \emph{Should Have} ones. They may refer to requests by external entities, features that slightly increase reliability, mission duration or configurability, and generally slightly increase mission value.
+	\item \textbf{Won't Have this time} requirements: These requirements represent those that the team has agreed to not implement in a specific iteration. \todo{or version?} This classification usually refers to a reassignment of requirement status. \todo{after a few iterations}
+\end{itemize}
+
+While Must Have requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
+
+In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.
+
+\paragraph{Requirement Scope}
+
+\citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} observed a mismatch between the ``large batches'' that are \draft{often being iterated on} by hardware models, compared to the smaller batches of work that take place before automated software verification, creating a disconnect between the delivery of hardware and software. To resolve this, they introduced the concept of a \textbf{``slice''}, which is defined as follows:
+\begin{definition}[Slice]
+	A \textbf{slice} is a set of hardware and software changes, as well as test suites, that describe a single set of testable behaviour \cite{radekaWhenAgileGets2022}.
+\end{definition}
+The authors provide the example of a printer feature that allows the device to print from a mobile app as an example of a slice.\marginnote{Based on \citeauthor{radekaWhenAgileGets2022}'s examples, in \acs{SCS}, example slices could be: \begin{itemize}
+	\item The satellite can point its solar panels towards the sun.
+	\item The satellite can operate during eclipse.
+	\item The satellite can send data to the ground station.
+\end{itemize}} In that sense, a slice can be seen as a less well-specified requirement that describes the goal of a system.
+
+\todo{Anything more to write about requirements?}
+\todo{What is the benefit of having requirements in terms of the quantifiable goals of the system?}
+
+\begin{table*}[h]
+	\caption[Overview of the MoSCoW method]{Overview of the \acs{MOSCOW} method}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{MOSCOW}} Requirements Management Overview}
+		\\ \midrule
+		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Expectations \\
+		Basis & \todo{???} \\
+		Main Principle & Classification of requirements into different priorities \\
+		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Amending requirements based on environmental factors and emergence\item Collaboration with stakeholders and interactive definition\end{itemize} \\
+		Benefits & \draft{Development Time}, Features \\ \bottomrule
+	\end{tabularx}
+\end{table*}
+
+\todo{HERE we put information about the slices}
 
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
 \label{sec:METHODOLOGY_satscrum}
@@ -1524,7 +1607,7 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \end{figure*}
 
 \FloatBarrier
-\subsection{Project Lifecycle Approach: The Slice-Based Sat-Scrum Model}
+\subsection{Project Lifecycle Approach: The Partition-Based Sat-Scrum Model}
 \label{sec:METHODOLOGY_slicebased}
 \draft{\begin{itemize}
 		\item Why do we need a different approach? (what are the drawbacks of the previous approach)
@@ -1557,78 +1640,6 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \FloatBarrier
 \subsection{Workload Management Approaches}
 \label{sec:METHODOLOGY_workpackage}
-
-\FloatBarrier
-\subsection{Requirements: Application of the MoSCoW method}
-\label{sec:METHODOLOGY_requirements}
-
-The concept of Mission and System Requirements is often the topic of discussion, specifically for CubeSat missions.
-In traditional space systems engineering, requirements are often elaborated in significant detail, covering test specifications and guiding all the required features for development. This approach is summarised as one of Akin's laws \autocite{akinAkinLawsSpacecraft}:
-\begin{quote}
-	Design is based on requirements. There's no justification for designing something one bit "better" than the requirements dictate.
-\end{quote}
-In these cases, requirements elicitation takes place in the beginning of the project, with little room for changes and modifications at the later phases. \todo{cite} \todo{explain the nature of strictly verifiable and machine-interpretable requirements} \draft{For example, \acs{ECSS} standards forbid the use of words which cannot be determined objectively, such as \emph{minimise/maximise}, \emph{optimise}, ...}
-
-On the other hand, some projects follow less strict approaches, where requirements do not cover the entire system, and are usually elaborated in a more \draft{interpretable} manner.
-
-\begin{table*}
-	\begin{tabularx}{\linewidth}{@{}lXX@{}}
-		\toprule
-		& AcubeSAT project \todo{cite} & \todo{Artemis CubeSat} \cite{zhu23Requirements} \\ \midrule
-		& The spacecraft shall use an attitude determination and control system to achieve a pointing accuracy within 20 degrees. & The CubeSat kit shall be low-cost and accessible to universities and private individuals \\
-		& The spacecraft shall store at least 5 Ah (\acs{TBC}) in batteries. & The CubeSat kit shall include software that is intuitive for undergraduate students \\
-		& The unibody's cross section on the X-Y plane shall have maximum external dimensions of 70x70 mm. & The CubeSat kit shall be tested to meet environmental requirements set forth in NASA GEVS for spaceflight. The end-user will be responsible for doing final flight environmental testing set forth by their launch provider. \\ \bottomrule
-	\end{tabularx}
-	\caption{Example requirements from different space projects}
-\end{table*}
-
-Especially for \acs{SCS} projects, I have made the following observations:
-\begin{itemize}[itemsep=-1ex]
-	\item \acs{SCS} projects \emph{need} to conform to external requirements to some degree, provided by their host or launch provider.
-	\item Due to the lack of standard launch interfaces, specifications and standards, these requirements may change by the relevant stakeholders during the project.
-	\item The planned feature-set of a project may change during its course (usually via the removal of functionality) due to incorrect planning, external requirement change or une
-	Projects with fixed deadlines will prefer to remove features, instead of adding additional iterations or reworking the product, since the latter may lead to a launch cancellation.
-	\item Each project evolves around a central strategic goal that expresses a simple objective (such as \emph{receive at least some data from orbit} or \emph{demonstrate a specific technology}). Additional objectives, when completed, increase the perceived \emph{value} of the project \todo{Ask Alex about the definition of value}.
-	\item The definition of \todo{specific} requirements itself as a process can last up to a month, and requires some prior knowledge of the system's principles, feasibility and available technology. In the case of inexperienced teams, external reviews may be necessary.
-	\item Well-specified requirements can be the guide for functional and environmental testing campaigns. However, requirements-based testing campaigns cannot offer complete coverage of the executed design, as they do not cover \todo{design-specific} activity flows and edge cases.
-\end{itemize}
-
-\draft{I therefore consider it important to define an \acs{SCS}-tailored method for requirements capture} that can still be part of the proposed \emph{project lifecycle approach}, while reducing the \ac{SYE} overhead.
-
-An inspiration from such an approach can come from the \acs{DSDM} Agile framework, which advocates the \textbf{prioritisation} of different project requirements using the \acf{MOSCOW} classification \autocite{agilebusinessconsortiumAgilePMHandbookV22014}, which categorises requirements as follows:
-\begin{itemize}
-	\item
-	\textbf{Must Have} requirements: The Minimum Usable subset of requirements that a project should comply to in order to be legal, safe, compliant with external requests, and functional.
-	
-	Not complying to these requirements will result in \todo{a cancellation or failure of the project}.
-	\item
-	\textbf{Should Have} requirements: These represent features or requests that significantly increase project value, but are not project-breaking in case they are not implemented.
-	\item \textbf{Could Have} requirements: These represent features that are desirable but less important than \emph{Should Have} ones. They may refer to requests by external entities, features that slightly increase reliability, mission duration or configurability, and generally slightly increase mission value.
-	\item \textbf{Won't Have this time} requirements: These requirements represent those that the team has agreed to not implement in a specific iteration. \todo{or version?} This classification usually refers to a reassignment of requirement status. \todo{after a few iterations}
-\end{itemize}
-
-While Must Have requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
-
-In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.
-
-\todo{Anything more to write about requirements?}
-\todo{What is the benefit of having requirements in terms of the quantifiable goals of the system?}
-
-\begin{table*}[h]
-	\caption[Overview of the MoSCoW method]{Overview of the \acs{MOSCOW} method}
-	\begin{tabularx}{\linewidth}{@{}lX@{}}
-		\toprule
-		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{MOSCOW}} Requirements Management Overview}
-		\\ \midrule
-		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Expectations \\
-		Basis & \todo{???} \\
-		Main Principle & Classification of requirements into different priorities \\
-		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Amending requirements based on environmental factors and emergence\item Collaboration with stakeholders and interactive definition\end{itemize} \\
-		Benefits & \draft{Development Time}, Features \\ \bottomrule
-	\end{tabularx}
-\end{table*}
-
-\todo{HERE we put information about the slices}
 
 \FloatBarrier
 \subsection{Data Management: A Model-Based Approach}
