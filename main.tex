@@ -336,13 +336,21 @@ The distinct characteristics of PocketQubes, ChipSats and similar spacecraft, \d
 	\caption{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \draft{[ref]}}
 \end{marginfigure}
 
+Due to the smaller size and component count of \acs{SCS}, these systems are generally simpler and easier to develop than their larger counterparts. While the capabilities of a single system are reduced due to these constraints, these form factors make spacecraft development accessible to engineers and communities that would otherwise not be able to follow the complete \ac{MAIV} process for a CubeSat, with an extreme example being Manchester's \qty{300}{USD} ChipSat Kickstarter cost \todo{[ref]}. PocketQubes have been described as suitable for education and training in academic environments, especially due to the decreased manufacturing and launch costs \autocite{bouwmeesterSurveyWorldwidePico2010}. \citeauthor{heinAttoSatsChipSatsOther2019} \autocite{heinAttoSatsChipSatsOther2019} also notes that the development of flight hardware for ChipSats can be finished within 6 months, costing on the order of dozens to hundreds of dollars for manufacturing, and allowing fast build-and-launch cycles.
 
+However, an investigation of available data for \acs{SCS} missions reveals a different story: even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
+
+This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}. As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies. 
+
+The combination of small scale with mission criticality is one that is not commonly found in other engineering fields. \acs{SCS} systems can therefore benefit from a tailored methodology that can take advantage of their unique characteristics. Using a methodology tailored for larger spacecraft or systems can introduce significant overhead in terms of cost and time, which may be unnecessary for these systems \todo{[cite?]}. On the other hand, the use of an ad-hoc approach increases programmatic and technical risk, since it provides no guarantees on the timely results of a project and no observability on factors such as progress, quality, or the critical path \autocite{honourTechnicalReportValue2004}. Nevertheless, due to the mission-critical nature of \acs{SCS} and their integration with larger systems,\footnote{Such as launchers, deployers} develpers need to achieve a correct balance between the effort and time spent across design, realisation and verification \autocite{sebok_value,boehmROISystemsEngineering2008,dillonFasterBetterCheaperProjectsToo2015}.
+
+\newthought{Thus,} a tailored \acl{SYE} methodology specifically targetting \acs{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining a reasonable level of reliability and \draft{features}. This methodology can also serve as a guideline for new missions, allowing first-time developers to \draft{have} a starting point for new projects, drawing on lessons learned from previous missions. This methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
+
+In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further analyse the concept of \acl{SYE}, showing how it can be partitioned into different fields, and making \draft{introductory} remarks on its \draft{usefulness} and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
 
 \todo{Check if need to mention LEO orbits, if orbits are covered in general etc.}
 	
-Then we move on into systems engineering and how spacecraft are developed traditionally vs how we want to develop them.
-
-A BIG table containing all the statuses of known sub-cubesat spacecraft.
+\todo{Then we move on into systems engineering and how spacecraft are developed traditionally vs how we want to develop them.}
 
 
 \begin{figure}[p]
@@ -362,8 +370,8 @@ A BIG table containing all the statuses of known sub-cubesat spacecraft.
 	\label{fig:i_scs_launched}
 \end{figure*}
 
-\draft{Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
-However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
+%\draft{Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
+%However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
 
 \draft{
 The main hypothesis of the research project is:
@@ -375,7 +383,7 @@ Novel systems engineering approaches can drastically decrease the development du
 
 
 \section{The Scope and Impact of Systems Engineering}
-\label{sec:defining_systems_engineering}
+\label{sec:INTRODUCTION_defining_systems_engineering}
 
 Systems Engineering is defined as a process of synthesis, development and operation of a real-world system that satisfies the requirements for that system \autocite{sebok}.
 Systems Engineering processes are especially useful for complex and/or critical systems, such as those used in aerospace engineering \autocite{SMAD,sheaNASASystemsEngineering2020}.
@@ -432,7 +440,7 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 
 \begin{landscape}
 		\captionof{table}{Development time of sub-CubeSat missions (from start of development until Flight Model integration)}
-		\label{tab:otherdevtime}
+		\label{tab:i_otherdevtime}
 		\centering
 		\begin{tabular}{llll@{\hskip 0.5em}ll}
 			\hline
@@ -478,6 +486,7 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 \end{landscape}
 
 \section{Research Gaps}
+\label{sec:INTRODUCTION_research_gaps}
 
 \begin{figure}[h]
 	\includegraphics{graphics/UoA1.pdf}
@@ -504,13 +513,19 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 \FloatBarrier
 
 \section{Research Questions and Thesis Objectives}
+\label{sec:INTRODUCTION_research_questions}
+\todo{TODO: Write this section, update diagrams, increase font size}
 
-\begin{figure*}
+\begin{figure*}[h]
 	\includegraphics{graphics/MindMap.pdf}
 	\caption{Mind-map between the methods and goals of the \acs{SCS} systems engineering methodology}
 \end{figure*}
 
-\todo{Create a diagram where the RQs are mapped to objectives, ideally as simple-as-possible with a 1-1 mapping}
+\begin{figure*}[h]
+	\includegraphics{graphics/Research.Questions.pdf}
+	\caption{Mapping of Research Questions to Research Objectives}
+	\label{fig:i_research_questions}
+\end{figure*}
 
 \paragraph{Research Question 1}
 What are the current \ac{SYE} approaches used by \ac{SCS} developers?
@@ -519,21 +534,22 @@ What are the current \ac{SYE} approaches used by \ac{SCS} developers?
 What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?
 
 \paragraph{Research Question 3}
-Can a new, tailored \ac{SYE} methodology address \todo{a selection of} the shortcomings identified in RQ2 for \ac{SCS}
+Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?
 % This implies that all shortcomings are managed. You need to specify an attribute to specify a specific type of shortcoming
 
 \paragraph{Research Question 4}
-Is the \ac{SYE} methodology developed in \ac{SYE} effective in practical scenarios? % LGTM
+Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios? % LGTM
 
 The objectives of this thesis are therefore as follows:
 \begin{enumerate}
 	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions
 	\item Identify \draft{points of improvement}
 	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}
-	\item Validate the new methodology on a space mission that will succeed in environmental qualification
+	\item Validate the new methodology on at least one space mission that will succeed in environmental qualification
 \end{enumerate}
 
 \section{Thesis Structure}
+\label{sec:INTRODUCTION_structure}
 
 The chapters of this thesis are organised as follows:
 
@@ -548,6 +564,12 @@ The chapters of this thesis are organised as follows:
 \Cref{chap:CASESTUDIES} (\nameref{chap:CASESTUDIES}) presents the development of four space systems where I participated as a systems engineer. These products serve as case studies for the generation of data and experimental evaluation of the methodology presented in \Cref{chap:METHODOLOGY}.
 
 \Cref{chap:CONCLUSION} (\nameref{chap:CONCLUSION}) summarises the contributions of this work as well as the evaluation of the proposed methodology in combination with the case studies, and proposes potential directions for future research.
+
+\begin{figure*}[h]
+	\includegraphics{graphics/Research.Structure.pdf}
+	\caption{Thesis Chapter Structure}
+	\label{fig:i_thesis_structure}
+\end{figure*}
 
 
 \chapter{Literature Survey}
@@ -1031,6 +1053,22 @@ Apart from frameworks that cover the entire structure of a team, project, or org
 Kanban is a visual approach to manage work in human systems, which aims to create a single view of tasks at various stages by modelling them as cards that are moved across different columns on a board \todo{[ref]}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey measures a \qty{75}{\percent} usage of Kanban in the physical product industry \cite{atzbergerAgileDevelopmentPhysical2020}.
 
 Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks \todo{[ref]} \todo{more}.
+
+\paragraph{Hardware-specific Frameworks}
+Because of the \draft{ingress} of Agile methods into hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}. Many developers instead tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
+
+\subparagraph{Agile-Stage-Gate}
+\citeauthor{cooperAgileDevelopmentManufacturing2023} \autocite{cooperAgileDevelopmentManufacturing2023} observed an emergent hybrid model that has emerged in physical product developers, which replaces traditional project management methods with Scrum, but maintains traditional stages and gates \emph{``for strategic and directional reasons''}. In contrast to Scrum, iterations can last between two weeks and three months, stand up meetings are only held two--three times per week, and each iteration has the goal of presenting a ``demo'' to management or customer.
+
+\subparagraph{Slice-Based Integration}
+\citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} also propose a Scrum-based framework, based on the concept of a \textbf{slice}, which is an independently verifiable feature or set of features of a product\footnote{Also see \Cref{def:slice}.}. Then, instead of working on the entire product, teams have a clear set of functionality that needs to be achieved at the end of every timebox. This purportedly helps coordinating hardware and software development. Likewise for verification, different test sets are defined and distributed across iterations.
+
+\begin{figure*}[h]
+	\includegraphics{drafts/iberle_slices.png}
+	\caption[Example of an Agile slice-based integration plan for a physical product]{Example of an Agile slice-based integration plan for a physical product. Image taken from \cite{iberleAgileGetsPhysical2022}}
+\end{figure*}
+
+\subparagraph{Miscellaneous} \todo{Any other frameworks worth considering? Skunkworks? Guidelines?}
 
 \section{Research Problem Formulation}
 
@@ -1923,7 +1961,7 @@ On the other hand, \citeauthor{watermanHowMuchUpFront2015} \cite{watermanHowMuch
 If an agile software team spends too little time designing architecture up-front then the team faces increased risk and higher chance of failure; if the team spends too much time the delivery of value to the customer is delayed, and responding to change can become extremely difficult \autocite{watermanHowMuchUpFront2015}.
 \end{quote}
 The authors note the following factors as reducing the need or effectiveness of a \acl{BDUF}:
-\begin{itemize}[itemsep=-2ex]
+\begin{itemize}[itemsep=-3ex]
 	\item Requirements instability
 	\item Early value
 	\item Team culture
@@ -2078,7 +2116,7 @@ For \acs{SCS}, modularity presents more challenges, as it introduces constraints
 \end{itemize}
 While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve \draft{different decisions across different parts of the system}.
 
-\begin{figure*}
+\begin{figure*}[h]
 	\includegraphics{graphics/Monolithic.pdf}
 	\caption{Concept map comparing the advantages of monolithic and modular \acs{SCS} architectures}
 	\label{fig:m_monolithic}
@@ -2092,6 +2130,12 @@ In practical terms, if the developers decide to implement a modular architecture
 
 \paragraph{On Component Reuse}
 Another decision that developers are faced with involves whether they reuse existing \textbf{parts} and \textbf{subsystems}\footnote{Also known as \acf{COTS}. This might also involve customised build-to-order components that rely on a \acs{COTS} design.}, or design components and subsystems in-house.
+
+\begin{figure*}[h]
+	\includegraphics{graphics/Reuse.pdf}
+	\caption{Concept map comparing component reuse (as a built-system or pure design reuse) against in-house development \todo{Todo: fix font}}
+	\label{fig:m_reuse}
+\end{figure*}
 
 \begin{landscape}
 	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
@@ -2256,13 +2300,136 @@ Sometimes there is confusion between agile-systems engineering and agile systems
 
 \section{Software Development Methodology}
 
+While the small size of \acs{SCS} systems limits the number of physical subsystems, components and interfaces, these constraints are less \draft{potent} for the software itself. As most \acs{SCS} need to be independent and autonomous spacecraft, a minimum set of functionality, such as energy gathering, communication with the earth and failure recovery, should be present.
+
+\Cref{sec:METHODOLOGY_software_features} will therefore describe, based on available standards and recommendations, the operability requirements or features that should be present in most \acs{SCS} software, along with standard interfaces and ecosystems that are used. \Cref{sec:METHODOLOGY_software_reliability} will present a methodology to design and develop this software that is compatible with the Sat-Scrum methods presented above. Finally, \Cref{sec:METHODOLOGY_debugging_interfaces} will \draft{go into the interface between software and hardware, by presenting what methods developers can use to upload and monitor their software without wasting real estate.}
+
 \subsection[SCS Software Features]{\acs{SCS} Software Features}
+\label{sec:METHODOLOGY_software_features}
 \todo{Tailoring of ECSS operability}
 
+\acs{ESA}'s requirements for standard on-board software functionality are provided by the \emph{ECSS-E-ST-70-11C} standard \autocite{ECSS-E-ST-70-11C}, which explain the required functionality for \ac{TMTC}, mission control, configuration management, and autonomy. These functions are further augmented by the \emph{ECSS-E-ST-70-41C} \acf{PUS} standard \autocite{ECSS-E-ST-70-41C}, which defines 20 services (along with their interfaces) for system bus control. While the combination of the two standards guarantees a high degree of observability, flexibility and safety, combined they represent \num{3533} and considerable effort to implement. Therefore, a tailoring is recommended to select a proper balance of requirements for a small SCS system.
+% ECSS-E-ST-70-41C: 3185
+% ECSS-E-ST-70-11C: 348
+\begin{figure*}[h]
+	\includegraphics{graphics/software/block.pdf}
+	\caption{Block diagram of typical satellite firmware\draft{TODO}}
+\end{figure*}
+
+\begin{table*}[h]
+	\caption{\todo{Fix this table}}
+	\label{tab:m_software_requirements}
+	\begin{tabularx}{\linewidth}{@{}lXp{3cm}@{}}
+		\toprule
+		ID & Text & Verification \\ \midrule
+		\multicolumn{3}{c}{Functional Requirements} \\ \midrule
+		100 & The OBSW shall generate TM of internal values, such as OBSW resources, power parameters, and sensor measurements. & Unit Test \\
+		110 & The OBSW shall provide at least an ``are-you-alive'' \acs{TC} with the corresponding response. & Unit Test \\
+		120 & The OBSW shall provide acknowledgement and/or execution status responses for any correct \acs{TC} received. & Unit Test \\
+		130 & The OBSW shall report an internal timestamp accurate to within 100 ppm (points per million). & Unit Test \\
+		140 & The OBSW shall have the capability to switch between a ``nominal'' and a ``safe'' mode ensuring spacecraft survival. & Unit Test \\
+		150 & The OBSW shall be capable of running autonomously for at least 24 hours, without restarts. & Functional Test \\
+		160 & The OBSW shall provide the capability to enable or disable the emission of TM to the ground segment. & Unit Test \\ \midrule
+		\multicolumn{3}{c}{Reliability Requirements} \\ \midrule
+		200 & The OBSW shall include adequate FDIR to detect, report, and recover from failures. & Review of Design \\
+		210 & No single TC executed at the wrong time or wrong configuration shall lead to loss of mission. & Fuzz Test \\
+		220 & The OBSW shall verify the integrity of each data stream received. & Unit Test \\
+		230 & Repetition of the same TC shall not result in any permanent degradation or loss of on-board functionality. & Unit Test \\
+		240 & The maximum execution duration of a TC shall be bounded. & Unit Test, Fuzz Test \\
+		250 & Failure of TC parsing or execution at any stage shall be reported or observable in TM. & Unit Test \\
+		260 & Invalid datastreams received from the OBSW shall not preclude its functional requirements. & Fuzz Test \\
+		270 & Nominal operation of the OBSW (i.e.~without any radiation effects, but with any potential input) shall not lead to an exception or lock-up & Fuzz Test \\ \bottomrule
+	\end{tabularx}
+\end{table*}
+
+\FloatBarrier
 \subsection{Improving Software Reliability}
+\label{sec:METHODOLOGY_software_reliability}
+\draft{
+	Due to the ubiquitous nature of software, a lot of data is avaialble on it. Different research has been done to investigate the sources of software failures and development time.
+}
 
+\draft{\citeauthor{langerReliabilityAssessmentReliability} \autocite{langerReliabilityAssessmentReliability} divides spacecraft failures into five categories:
+environmental failures, design errors, manufacturing errors, part failures and operational errors.
+Software failures are classified as design errors, and can have effects ranging from erroneous output and unexpected behaviour to unrecoverable fatal errors, also known as ``crashes'' \autocite{prokopSoftwareErrorIncident2024}.}
+
+\draft{The design errors that lead to software failures are commonly referred to as ``bugs''. Bugs can be further categorised into ``Bohrbugs'' (faults that appear under well-defined conditions and are easy to isolate), and ``Mandelbugs'' (faults that seem non-deterministic and depend on specific states caused by complex interactions). }
+
+\draft{\citeauthor{prokopSoftwareErrorIncident2024} \autocite{prokopSoftwareErrorIncident2024} has performed a more detailed analysis of 55 aerospace software errors. The causes of these errors can be generally categorised into:
+\begin{enumerate}
+	\item An unexpected combination of states, which may be individually tested, but their combination is not
+	\item Issues that rely on receiving an unexpected combination of environmental inputs (e.g.~unprotected numeric type conversion in the Ariane 5 Maiden Flight)
+	\item Issues arising due to incorrect synchronisation between \acl{OS} tasks, which in many systems is inherently non-deterministic (e.g.~deadlocks, priority inversion)
+	\item Aging-related issues (e.g.~clock overflows or float error propagation) \autocite{alonsoNatureTimesFlight2012}
+\end{enumerate}
+The consequences of the above errors range between minor mission degradation to complete mission or system loss, depending on the recoverability of the fault.}
+
+
+
+\paragraph{Experimental Setup}
+
+\begin{table*}[h]
+	\caption{Frameworks under test}
+	\label{tab:frameworks}
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabularx}{\textwidth}{@{}p{3cm}XXXXXX@{}}
+		\toprule
+		Framework  & UpSat & AcubeSAT & KubOS & AI4Space & CubedOS & Prust  \\ \midrule
+		Developer  & Libre Space Foundation & Aristotle University of Thessaloniki & Xplore Inc. &  University of Luxembourg & Vermont State University & Vision Space Tech \\
+		%Version & \todo{version} & \todo{version} & 1.21.0 & v05 & \todo{version} & \todo{version} \\
+		Language & \textbf{C} &\textbf{C++} & \textbf{Rust / C} & \textbf{Python} & \textbf{Ada} & \textbf{Rust} \\
+		Comms Protocol & ECSS-E-ST-70-41C & ECSS-E-ST-70-41C & GraphQL & Proprietary & Proprietary  & ECSS-E-ST-40-71C \\
+		Operating System & FreeRTOS & FreeRTOS & Linux & Linux & Ada Tasking (Ravenscar) & FreeRTOS \\
+		\acs{HAL} & STM32-HAL & STM32-HAL & Linux & Linux & GNAT BSP & STM32-HAL \\[2ex]
+		%Comms Library &  & \textit{In-house} & \textit{In-house} &  & \textit{In-house} \\[2ex]
+		Testing & Unit Tests & Unit Tests & Unit Tests, Integration Tests & Integration Tests & \emph{None} & Unit Tests \\ 
+		Flight Proven? & Yes & No & \emph{Unknown} & Yes & \emph{Unknown} & No \\
+		Repository & \href{https://gitlab.com/librespacefoundation/upsat/upsat-obc-software}{GitLab}
+		& \href{https://gitlab.com/acubesat/obc/obc-software}{GitLab}
+		& Github (defunct) % https://github.com/kongr45gpen/kubos
+		& GitLab
+		& \href{https://github.com/cubesatlab/cubedos}{GitHub}
+		& \href{https://github.com/visionspacetec/Prust}{Prust}
+		\\ \midrule
+		Num.~Contributors & 3 & 23 & 24 & 3 & 6 & 2 \\
+		Num.~Commits & 369 & 206 & 3763 & 269 & 333 & 57 \\
+		Development Duration &
+		% "2016−08−11T00:00:00"−"2016−01−28T00:00:00" to month
+		6 months &
+		% "2025−05−26T00:00:00"−"2019−09−16T00:00:00" to year
+		6 years &
+		% "2023−02−21T00:00:00"−"2011−10−19T00:00:00" to year
+		11 years &
+		%"2023−04−17T00:00:00"−"2022−03−08T00:00:00" to month
+		13 months &
+		%"2025−09−23T00:00:00"−"2018−05−14T00:00:00" to year
+		%"2020-07-13T00:00:00" − "2021-04-23T00:00:00" to month
+		%Note that this is taken from the "Prust" repository that has a deprecated branch
+		7 years &
+		9 months
+		%Repository & https://github.com/antaris-inc/SatOS-HAL & https://gitlab.com/acubesat/obc/obc-software & https://github.com/kubos/kubos & https://github.com/pycubed/software & https://github.com/cubesatlab/cubedos & https://github.com/visionspacetec/Prust-FreeRTOS \\ \bottomrule
+		\\ \bottomrule
+	\end{tabularx}
+	% See rayLargescaleStudyProgramming2017
+\end{table*}
+
+\begin{figure*}[h]
+	\includegraphics{graphics/software/activity.pdf}
+	\caption{\draft{TODO}}
+\end{figure*}
+
+\begin{figure*}[h]
+	\includegraphics{graphics/software/splitdown.pdf}
+	\caption{\draft{TODO}}
+\end{figure*}
+
+\paragraph{Results}
+
+\FloatBarrier
 \subsection[SCS Debugging Interfaces]{\acs{SCS} Debugging Interfaces}
+\label{sec:METHODOLOGY_debugging_interfaces}
 
+\FloatBarrier
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
 
@@ -2322,7 +2489,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 
 As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, shown in \Cref{tab:c_case_studies}, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and evaluate \draft{their applicability in these projects}. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
 
-The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and \draft{difficulty points}, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}.
+The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and \draft{difficulty points}, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}. The projects also represented a diverse range of system types, including a payload, two ChipSat-style spacecraft, and a PocketQube.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{drafts/action_research.png}
@@ -3141,6 +3308,13 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 
 \chapter{Conclusion}
 \label{chap:CONCLUSION}
+
+
+\section{Summary}
+
+\section{Key Findings and Contributions}
+
+\section{Future Work}
 
 \appendix
 
