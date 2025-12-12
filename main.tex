@@ -1153,9 +1153,9 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	
 	The DS-II stage includes the validation of the application and impact of the proposed design support, based on the execution of empirical studies.
 	
-	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}.
+	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}. \todo{Check Yin page 87 for definitions}
 	
-	In an ideal scenario, we could perform a statistical evaluation of our support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through lengthy A/B experiments. However, complete Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
+	In an ideal scenario, I could perform a statistical evaluation of the support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through lengthy A/B experiments. However, complete Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
 	
 	Nevertheless, the intended goal of short \( < \qty{1}{year}\) projects allows implementing and qualitatively validating the proposed \acs{SCS} methodology, as part of specific \textbf{case studies} that are developed in parallel with this thesis.
 	
@@ -1250,7 +1250,7 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 
 \begin{fullwidth}
 \epigraph{\emph{%Law of Douglass \#30:
-		The best way not to have any defects in your system is not to put defects in your system.}}{Brouce Douglass}
+		The best way not to have any defects in your system is not to put defects in your system.}}{Bruce Douglass}
 \end{fullwidth}
 
 \begin{table*}[h]
@@ -1269,7 +1269,14 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 \FloatBarrier
 \section{Technical Management Methodology}
 
+This section will cover the \emph{Technical Management} aspect of \acf{SCS} Systems Engineering (as shown in \Cref{fig:i_sye_decomposition}), which relates to how both the high-level plan and day-to-day work of a project and a development team are organised.
+
+\Cref{sec:METHODOLOGY_requirements} will present how project goals and requirements should be managed. Then, \Cref{sec:METHODOLOGY_satscrum,sec:METHODOLOGY_slicebased} will present two lifecycle process models that guide the biggest \draft{chunk} of \acs{SCS} development. In \Cref{sec:METHODOLOGY_workpackage}, I will present recommendations for work package and task tracking, while \Cref{sec:METHODOLOGY_datamanagement} will compare different approaches to documentation, modelling, and \acf{EDM}. Finally, \Cref{sec:METHODOLOGY_tooling_requirements} is orthogonal to the previous are, presenting the requirements and needs for software tools that support the recommended methods.
+
+
+
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
+\label{sec:METHODOLOGY_satscrum}
 
 \draft{
 	What makes Agile interesting?
@@ -1277,10 +1284,6 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 
 \draft{	
 	It is that it is a sequential yet evolutionary process. The number of iterations must not be predetermined but what happens inside an iteration is. This is the conicept of the sat-scrum model.
-}
-
-\draft{
-	This allows for a theoretically infinite number of reworks that means the launch is extended. But the launch date is fixed, so should the number of iterations be fixed? 
 }
 
 A first version of a lifecycle process model can be inspired by the characteristics and processes of Agile methodologies. More specifically, \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} lists six principles for Agile systems engineering% 
@@ -1520,7 +1523,9 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \label{fig:m_visual_vocabulary}
 \end{figure*}
 
+\FloatBarrier
 \subsection{Project Lifecycle Approach: The Slice-Based Sat-Scrum Model}
+\label{sec:METHODOLOGY_slicebased}
 \draft{\begin{itemize}
 		\item Why do we need a different approach? (what are the drawbacks of the previous approach)
 		\item Why did we choose slice-based, what are the concepts from systems theory
@@ -1549,9 +1554,13 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \end{figure}
 
 
+\FloatBarrier
 \subsection{Workload Management Approaches}
+\label{sec:METHODOLOGY_workpackage}
 
+\FloatBarrier
 \subsection{Requirements: Application of the MoSCoW method}
+\label{sec:METHODOLOGY_requirements}
 
 The concept of Mission and System Requirements is often the topic of discussion, specifically for CubeSat missions.
 In traditional space systems engineering, requirements are often elaborated in significant detail, covering test specifications and guiding all the required features for development. This approach is summarised as one of Akin's laws \autocite{akinAkinLawsSpacecraft}:
@@ -1621,7 +1630,9 @@ In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirem
 
 \todo{HERE we put information about the slices}
 
+\FloatBarrier
 \subsection{Data Management: A Model-Based Approach}
+\label{sec:METHODOLOGY_datamanagement}
 
 \begin{table}[h]
 	\colorlet{No}{MaterialRed600}
@@ -1816,7 +1827,7 @@ The shortcomings of document-based specification approaches led to the adoption 
 \end{table*}
 
 
-
+\FloatBarrier
 \subsection{Tooling Requirements and Review}
 \label{sec:METHODOLOGY_tooling_requirements}
 
@@ -1824,18 +1835,21 @@ The shortcomings of document-based specification approaches led to the adoption 
 
 \FloatBarrier
 \section{Hardware Development Methodology}
+In this section, I will go into more detail on the decisions behind selecting and designing an \acs{SCS} system and its components. \Cref{sec:METHODOLOGY_defining_design_solution} will explain the process to define a design solution, while \Cref{sec:METHODOLOGY_design_guidelines} will present concrete guidelines to aid decision-making during the design process. In \Cref{sec:METHODOLOGY_verification}, I will explain how to tailor the verification process that takes place at the end of every \acs{SCS} iteration, including recommendations about analysis and test frequency and fidelity. Finally, \Cref{sec:METHODOLOGY_operations} will provide an overview of the work done after a system has been designed, built, and launched.
 
 \subsection{Defining a Design Solution}
+\label{sec:METHODOLOGY_defining_design_solution}
 
-\draft{\begin{itemize}
-		\item Reuse of existing tech. List of existing tech. Open source satellites
+\draft{\begin{itemize}[itemsep=-3ex]
+		%\item Reuse of existing tech. List of existing tech. Open source satellites
 		%\item Concurrent design
 		\item HW/SW co-design
 		%\item When does this need to happen? Big design up front?
 		\item Do we need to define a logical decomposition beforehand?
 		%\item On Modularity
-		\item Design guidelines
+		\item Miscellaneous Design guidelines
 		\item FDIR
+		\item Hardware considerations: Thermal, structural, power storage (battery etc.), sails, navigation/guidance/propulsion, storage
 \end{itemize}}
 
 The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
@@ -1956,9 +1970,75 @@ For this model, I am making the folowing assumptions:
 
 Given the above, the problem of measuring the expected cost of the Markov process is reduced to calculating \emph{the expected number of visits to the \textbf{\emph{``Rework''}}} state.
 
-\todo{Model chain as matrix, Perform trade-off, make guidelines}
+\marginnote{The canonical representation of a transition matrix of an absorbing Markov chain is given by \cite{grinsteadChapter11Markov1998} as:
+\[
+\mathbf P = \left[
+	\begin{matrix}
+		\mathbf{Q} & \mathbf{R} \\
+		\mathbf{0} & \mathbf{I}_r
+	\end{matrix}
+\right]
+\]
+where each row represents a source state, each column a destination state, \( \mathbf{Q} \) a \( t \times t \) transition matrix and \( \mathbf{R} \) a \( t \times r \) transition matrix.
+
+For an absorbing Markov chain, the \(i,j\) entry of the \emph{fundamental matrix} \( \mathbf{N} \) is the expected number of times the chain is in state \( s_j \) if it starts in state \( s_i \) \cite{grinsteadChapter11Markov1998}, where:
+\[
+\mathbf{N} = \left( \mathbf{I}_t - \mathbf{Q} \right)^{-1}
+\]
+
+For a \( 2 \times 2 \) matrix, the inverse can be simply calculated as:
+\[
+\mathbf{N}^{-1} = \frac{1}{N_{11}N_{22} - N_{12}N_{21}} \left[
+	\begin{matrix}
+		N_{22} & -N_{12} \\
+		-N_{21} & N_{11}
+	\end{matrix}
+\right]
+\]
+}
+The Markov chain of \Cref{fig:m_rework_markov} has \( t=2 \) transient states and \( r=1 \) absorbing state.
+Then the transition matrix is:
+\begin{equation}
+\mathbf{P} = \left[
+	\begin{matrix}
+		0 & p_1 & 1 - p_1 \\
+		0 & p_2 & 1 - p_2 \\
+		0 & 0   & 1
+	\end{matrix}
+	\right]
+\end{equation}
+The fundamental matrix is calculated as:
+\begin{equation}
+	%\nonumber
+	\mathbf{N} = \left( \mathbf{I}_t - \mathbf{Q} \right)^{-1}
+	%\nonumber
+	= \left[
+		\begin{matrix}
+			1 & - p_1 \\
+			0 & 1 - p_2
+		\end{matrix}
+	\right]^{-1}
+	= \frac{1}{1 - p_2} \left[
+		\begin{matrix}
+			1 - p_2 & p_1 \\
+			0       & 1
+		\end{matrix}
+		\right]
+\end{equation}
+Therefore, the expected number of visits to the \emph{``Rework''} state, starting from the \emph{``Design''} state, is:
+\begin{equation}
+	E_{\mathrm{rework}} = N_{12} = \frac{p_1}{1 - p_2}
+\end{equation}
+
+Considering the above assumptions, the total cost of the design--verification--rework cycle is:
+\begin{equation}
+	C = C_{d_0} + E_{\mathrm{rework}} C_d + \left( E_{\mathrm{rework}} + 1 \right) \left( C_m + C_v \right)
+\end{equation}
+
+\todo{Perform trade-off, make guidelines}
 
 \subsection[SCS Design Guidelines]{\acs{SCS} Design Guidelines}
+\label{sec:METHODOLOGY_design_guidelines}
 
 \paragraph{Modularity}
 
@@ -2004,6 +2084,9 @@ Another decision that developers are faced with involves whether they reuse exis
 
 \begin{landscape}
 	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
+
+	\todo{Why this table does not stay in the proper page is beyond me}
+
 	\begin{tabularx}{\linewidth}{@{}lllllX@{}}
 		\toprule
 		\textbf{\#} & \textbf{Type} & \textbf{Name} & \textbf{Developer} & \textbf{Year} & \textbf{Description} \\ \midrule
@@ -2039,12 +2122,13 @@ Another decision that developers are faced with involves whether they reuse exis
 		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \draft{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
 	
 		\bottomrule
-	\end{tabularx}
+	\end{tabularx}%
 \end{landscape}
 
 \draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
 
 \subsection{Interface Management Guidelines}
+\label{sec:METHODOLOGY_interface_management}
 
 \draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 
@@ -2154,9 +2238,19 @@ However, it will still vary between teams, as it depends on variables set by the
 \end{table*}
 
 \subsection{Agile Maintenance \& Operations}
+\label{sec:METHODOLOGY_operations}
 Sometimes there is confusion between agile-systems engineering and agile systems-engineering \autocite{haberfellnerAgileSystemsEngineeringAgileSystems2005}.
 
+\todo{See what to do about this section. Probably not include too much content because it is not completely within scope - however we have to design for operations so it is important to have at least a few paragraphs in.}
+
 \section{Software Development Methodology}
+
+\subsection[SCS Software Features]{\acs{SCS} Software Features}
+\todo{Tailoring of ECSS operability}
+
+\subsection{Improving Software Reliability}
+
+\subsection[SCS Debugging Interfaces]{\acs{SCS} Debugging Interfaces}
 
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
@@ -2201,6 +2295,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 
 \begin{table*}[h]
 	\caption{Overview of Case Studies developed in the course of this research \draft{}Check dev time of the projects}
+	\label{tab:c_case_studies}
 	\begin{tabular}{@{}lllll@{}}
 		\toprule
 		Project Name & ChipSat-1 & AI4Space & POQUITO & ChiPySat \\ \midrule
@@ -2214,7 +2309,28 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 	\vspace{2ex}
 \end{table*}
 
-As explained in \Cref{chap:METHODOLOGY}, 
+As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, shown in \Cref{tab:c_case_studies}, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and evaluate \draft{their applicability in these projects}. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
+
+The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and \draft{difficulty points}, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}.
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{drafts/action_research.png}
+	\caption{Example of action research action-reflection cycles \cite{mcniffActionResearchPrinciples2003} \todo{TODO}}
+	\label{fig:c_action_research}
+\end{figure}
+
+The data from the case studies was collected in the form of personal notes and records on software tools, including spreadsheets, task tracking tools, and Git commits. This process was aided by critical conversations with the project responsibles and team members. These observations include information about team interactions, project \ac{SYE} status, as well as technical details relevant to each project, applicable to the system or subsystems. These observations can be classified as direct participant-observations through my role in the project, combined with the available documentation in the form of the aforementioned records \autocite{yinCaseStudyResearch2014}.
+
+In the following sections, each project is presented in the following order \cite[106]{mcniffYouYourAction2010}:
+\begin{enumerate}
+	\item \textbf{Project Environment and Requirements}: A description of the fixed external parameters that define the project.
+	\item \textbf{Observation and Descriptions}: Enumeration of the directly observed facts and events during the project. This includes documentation or explanation of a system,\footnote{and often justification for specific technical design decisions} or the elaboration of events during a project's timeline.
+	\item \textbf{Explanations}: Interpretation of what is happening in the project, how it can be logically connected to the application (or not) of parts of the \acs{SCS} methodology, and \draft{other lessons learned}. 
+\end{enumerate}
+
+The explanations are generated through a combination of personal reflection, based on my own claims, and social reflection, based on conversations and retrospectives with other project members \cite[194]{mcniffYouYourAction2010}.
+They follow the techniques of \emph{Pattern Matching}, \emph{Explanation Building}, and, when possible, \emph{Counterfactual Analysis} \cite[250]{yinCaseStudyResearch2014}. \draft{Finally, a cross-case analysis is performed in ???.}
+\todo{Write about counterfactual analysis}
 
 \FloatBarrier
 \begin{landscape}%
