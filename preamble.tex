@@ -4,7 +4,7 @@
 %\IfFileExists{bergamo.sty}{\usepackage[osf]{bergamo}}{}% Bembo
 %\IfFileExists{chantill.sty}{\usepackage{chantill}}{}% Gill Sans
 
-%\usepackage[protrusion=true,expansion,babel=true]{microtype}
+\makeatletter
 
 %%
 % Just some sample text
@@ -27,7 +27,7 @@
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 \graphicspath{{media/}}
 
-% What
+% Add numbering to sections and show them in the TOC
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
@@ -84,6 +84,7 @@ mincitenames=1,
 
 % Final packages
 \ifoptionfinal{
+	%\usepackage[protrusion=true,expansion,babel=true]{microtype}
 	\usepackage{microtype}
 }{}
 
@@ -93,7 +94,7 @@ mincitenames=1,
 \usepackage[parfill]{parskip}
 
 % remove paragraph indentation
-\makeatletter
+
 % Paragraph indentation and separation for normal text
 \renewcommand{\@tufte@reset@par}{%
 	\setlength{\RaggedRightParindent}{0.0pc}%
@@ -110,7 +111,6 @@ mincitenames=1,
 	\setlength{\parindent}{0.0pc}%
 	\setlength{\parskip}{10pt}%
 }
-\makeatother
 
 \titleformat{\section}%
 [hang]% shape
@@ -127,11 +127,9 @@ mincitenames=1,
 
 
 % Disable adding empty pages without a purpose (not intended for printing in a book format...)
-\makeatletter
 \def\cleardoublepage{
 	\clearpage%
 }
-\makeatother
 
 % Acronyms
 \usepackage{acro}
@@ -169,9 +167,6 @@ mincitenames=1,
 \usepackage{comment}
 \usepackage{epigraph}
 
-% Generates the index
-\usepackage{makeidx}
-\makeindex
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -209,16 +204,13 @@ mincitenames=1,
 %\setminted[text]{baselinestretch=0.8}
 
 % Git magic
-\makeatletter
 \write18{git log --pretty='format:\@percentchar Creset\@percentchar s' --no-merges -1 > \jobname.git1.tmp}
 \write18{git rev-parse --short HEAD > \jobname.git2.tmp}
 \def\gitcommit{\input{\jobname.git2.tmp}\unskip}
 \def\gitcommitmessage{\input{\jobname.git1.tmp}\unskip}
-\makeatother
 
 % Smart citations
 
-\makeatletter
 
 %\def\blx@imc@mkbibquote{\blx@enquote}
 

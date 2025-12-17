@@ -336,9 +336,9 @@ The distinct characteristics of PocketQubes, ChipSats and similar spacecraft, \d
 	\caption{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \draft{[ref]}}
 \end{marginfigure}
 
-Due to the smaller size and component count of \acs{SCS}, these systems are generally simpler and easier to develop than their larger counterparts. While the capabilities of a single system are reduced due to these constraints, these form factors make spacecraft development accessible to engineers and communities that would otherwise not be able to follow the complete \ac{MAIV} process for a CubeSat, with an extreme example being Manchester's \qty{300}{USD} ChipSat Kickstarter cost \todo{[ref]}. PocketQubes have been described as suitable for education and training in academic environments, especially due to the decreased manufacturing and launch costs \autocite{bouwmeesterSurveyWorldwidePico2010}. \citeauthor{heinAttoSatsChipSatsOther2019} \autocite{heinAttoSatsChipSatsOther2019} also notes that the development of flight hardware for ChipSats can be finished within 6 months, costing on the order of dozens to hundreds of dollars for manufacturing, and allowing fast build-and-launch cycles.
+Due to the smaller size and component count of \acs{SCS}, these systems are generally simpler and easier to develop than their larger counterparts. While the capabilities of a single system are reduced due to these constraints, these form factors make spacecraft development accessible to engineers and communities that would otherwise not be able to follow the complete \ac{MAIV} process for a CubeSat, with an extreme example being Manchester's \qty{300}{USD} ChipSat Kickstarter cost \todo{[ref]}. PocketQubes have been described as suitable for education and training in academic environments, especially due to the decreased manufacturing and launch costs \autocite{bouwmeesterSurveyWorldwidePico2010}. \citeauthor{heinAttoSatsChipSatsOther2019} \autocite{heinAttoSatsChipSatsOther2019} also note that the development of flight hardware for ChipSats can be finished within 6 months, costing on the order of dozens to hundreds of dollars for manufacturing, and allowing fast build-and-launch cycles.
 
-However, an investigation of available data for \acs{SCS} missions reveals a different story: even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
+However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
 This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}. As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies. 
 
@@ -348,25 +348,20 @@ The combination of small scale with mission criticality is one that is not commo
 
 In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further analyse the concept of \acl{SYE}, showing how it can be partitioned into different fields, and making \draft{introductory} remarks on its \draft{usefulness} and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
 
-\todo{Check if need to mention LEO orbits, if orbits are covered in general etc.}
-	
-\todo{Then we move on into systems engineering and how spacecraft are developed traditionally vs how we want to develop them.}
-
-
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram.pdf}
-	\caption{Histogram of satellite wet mass, for satellites flying as of 2023 \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+	\caption[Histogram of satellite wet mass, for satellites flying as of 2023]{Histogram of satellite wet mass, for satellites flying as of 2023 \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
 \end{figure}
 
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram_no_starlink.pdf}
-	\caption{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+	\caption[Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink)]{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
 \end{figure}
 
 \begin{figure*}[h]
 	\includegraphics[width=\textwidth]{analyses/scs_launch_trend.pdf}
-	\caption{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
-	\draft{add chipsats?}}
+	\caption[SCS launches per year]{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
+	\todo{add chipsats?}}
 	\label{fig:i_scs_launched}
 \end{figure*}
 
@@ -381,7 +376,7 @@ Novel systems engineering approaches can drastically decrease the development du
 
 
 
-
+\FloatBarrier
 \section{The Scope and Impact of Systems Engineering}
 \label{sec:INTRODUCTION_defining_systems_engineering}
 
@@ -392,11 +387,11 @@ The \acs{NASA} Systems Engineering Handbook partitions Systems Engineering into 
 
 %<span class="orange">Can add more criticism towards heavyweight methods here, esp. for systems **why do we need something new?**</span> 
 
-\begin{figure}
+\begin{figure*}[h]
 	\includegraphics{media/graphics/NASASYE}
-	\caption{Decomposition of Systems Engineering in connection with Project Management \autocite{sheaNASASystemsEngineering2020}}
+	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management \autocite{sheaNASASystemsEngineering2020}}
 	\label{fig:i_nasa_sye_decomposition}
-\end{figure}
+\end{figure*}
 
 The space engineering community has used several prominent frameworks for the realisation of complex projects, which may cover, for example, \emph{needs definitions}, \emph{lifecycle approaches}, \emph{engineering/data management} or \emph{system architecture definition} \autocite{sebok}. Some of the most popular examples are:
 \begin{itemize}
@@ -422,10 +417,10 @@ Various other surveys have shown similar correlations, demonstrating the value o
 \autocite{sheaNASASystemsEngineering2020,francoisSystemicsCyberneticsHistorical1999}. \draft{Here we describe the exact benefties of systems engineering. Also cite more souirces showing the value and explain how/what is demonstrated}
 
 
-However, a considerable overhead and a number of inefficiencies is added when following highly detailed or bureaucratic processes. \autocite{royceManagingDevelopmentLarge1970} famously criticised the ``waterfall'' model mainly because of its inflexibility towards design and requirements changes, and incorrect implementations of the lifecycle model. During the 1990s, these so-called ``heavyweight'' methods started receiving more criticism, and seen as an impediment for development of lower-scale products \autocite{fowlerNewMethodology2005}. 
-\citeauthor{whitneyWhyMechanicalDesign1996} \autocite{whitneyWhyMechanicalDesign1996} draws parallels between the design of a complex mechanical system, and very efficient and modular VLSI design process.
+However, a considerable overhead and a number of inefficiencies are added when following highly detailed or bureaucratic processes. \citeauthor{royceManagingDevelopmentLarge1970} \autocite{royceManagingDevelopmentLarge1970} famously criticised the ``waterfall'' model mainly because of its inflexibility towards design and requirements changes, and incorrect implementations of the lifecycle model. During the 1990s, these so-called ``heavyweight'' methods started receiving more criticism, and being seen as an impediment for development of lower-scale products \autocite{fowlerNewMethodology2005}. 
+%\citeauthor{whitneyWhyMechanicalDesign1996} \autocite{whitneyWhyMechanicalDesign1996} draws parallels between the design of a complex mechanical system, and very efficient and modular VLSI design process.
 
-\citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004}
+\citeauthor{boehmROISystemsEngineering2008} \autocite{boehmROISystemsEngineering2008}
 analysed the 161 software projects from the \acs{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
 They identified a ``\textbf{sweet spot}'' between too little and too much time spent in software architecting and risk management\footnote{Which, for the purposes of this work, loosely corresponds to effort spent for Systems Engineering}.
 For example, on a \SI{10}{\kilo\acs{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
@@ -488,28 +483,6 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 \section{Research Gaps}
 \label{sec:INTRODUCTION_research_gaps}
 
-\begin{figure}[h]
-	\includegraphics{graphics/UoA1.pdf}
-	\caption{Unit of Analysis}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics{graphics/UoA2.pdf}
-	\caption{Unit of Analysis}
-\end{figure}
-
-\begin{figure*}[h]
-	\includegraphics{graphics/decomp.pdf}
-	\caption{Unit of Analysis}
-	\label{fig:i_thesis_decomposition}
-\end{figure*}
-
-\begin{figure*}[h]
-	\includegraphics{graphics/DecompSYE.pdf}
-	\caption{Unit of Analysis}
-	\label{fig:i_sye_decomposition}
-\end{figure*}
-
 \FloatBarrier
 
 \section{Research Questions and Thesis Objectives}
@@ -517,9 +490,37 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 \todo{TODO: Write this section, update diagrams, increase font size}
 
 \begin{figure*}[h]
+	\includegraphics{graphics/decomp.pdf}
+	\caption{\acf{ARC} diagram for ``Systems Engineering for sub-CubeSat Spacecraft''}
+	\label{fig:i_thesis_decomposition}
+\end{figure*}
+
+\begin{figure*}[h]
+	\includegraphics{graphics/DecompSYE.pdf}
+	\caption{Focus on ``Systems Engineering'' from \Cref{fig:i_thesis_decomposition}}
+	\label{fig:i_sye_decomposition}
+\end{figure*}
+
+In order to establish the area of interest for this thesis, I will use the \acf{ARC} diagram concept of \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009}. \Cref{fig:i_thesis_decomposition} shows the decomposition of this work into the areas that are related to Systems Engineering for \acs{SCS}, and the areas where my contribution will be. Due to the wide range of ``Systems Engineering'' as a topic, I present a further partition of it into 13 areas (\Cref{fig:i_sye_decomposition}). This partition is based on the original decomposition by \acs{NASA} \autocite{sheaNASASystemsEngineering2020}, shown in \Cref{fig:i_nasa_sye_decomposition}, and tailored for \acl{SCS}. \todo{Check if the original figure is 1-1}
+
+\begin{figure}[h]
+	\includegraphics{graphics/UoA1.pdf}
+	\caption{Systems Engineering for \acs{SCS}: Unit of Analysis}
+	\label{fig:i_uoa}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics{graphics/UoA2.pdf}
+	\caption{Systems Engineering for \acs{SCS}: Unit of Analysis (including neighbouring areas)}
+	\label{fig:i_uoa_all}
+\end{figure}
+
+\begin{figure*}[h]
 	\includegraphics{graphics/MindMap.pdf}
 	\caption{Mind-map between the methods and goals of the \acs{SCS} systems engineering methodology}
 \end{figure*}
+
+From the perspective of \acs{SCS} projects and \acs{SCS} developers, the scope of this thesis is shown in \Cref{fig:i_uoa,fig:i_uoa_all}.
 
 \begin{figure*}[h]
 	\includegraphics{graphics/Research.Questions.pdf}
@@ -527,27 +528,29 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 	\label{fig:i_research_questions}
 \end{figure*}
 
-\paragraph{Research Question 1}
-What are the current \ac{SYE} approaches used by \ac{SCS} developers?
+The main objective of this thesis is to develop a new Systems Engineering methodology, tailored for \acl{SCS}, that covers the technical management, system description and system realisation aspects of these projects. The goal of this methodology is to offer an improvement over current approaches, with a focus on pico-satellite, femto-satellite and atto-satellite developers in academia and industry. In order to develop a sound and valid methodology, I will address the following research questions:
 
-\paragraph{Research Question 2}
-What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?
+\paragraph{Research Question 1 (RQ1)}
+\textbf{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}
 
-\paragraph{Research Question 3}
-Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?
-% This implies that all shortcomings are managed. You need to specify an attribute to specify a specific type of shortcoming
+\paragraph{Research Question 2 (RQ2)}
+\textbf{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
 
-\paragraph{Research Question 4}
-Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios? % LGTM
+\paragraph{Research Question 3 (RQ3)}
+\textbf{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
+
+\paragraph{Research Question 4 (RQ4)}
+\textbf{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
 
 The objectives of this thesis are therefore as follows:
 \begin{enumerate}
 	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions
-	\item Identify \draft{points of improvement}
+	\item Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches
 	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}
 	\item Validate the new methodology on at least one space mission that will succeed in environmental qualification
 \end{enumerate}
 
+\FloatBarrier
 \section{Thesis Structure}
 \label{sec:INTRODUCTION_structure}
 
@@ -570,6 +573,8 @@ The chapters of this thesis are organised as follows:
 	\caption{Thesis Chapter Structure}
 	\label{fig:i_thesis_structure}
 \end{figure*}
+
+A mapping between each section and the objectives of the thesis is shown in \Cref{fig:i_thesis_structure}. The data gathering, synthesis and validation process is explained in higher detail in \Cref{chap:RESEARCH_APPROACH}, and is based on the \acs{DRM} Design Research Methodology by \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009}.
 
 
 \chapter{Literature Survey}
@@ -619,7 +624,7 @@ As the primary objective of this work is to synthesise a \emph{methodology} for 
 \citeauthor{gerickeWhatWeNeed2017}'s works \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022} investigate the differences between different definitions of the above terms. I adopt the following definitions:
 
 \begin{definition}[Design Method]
-	A specification of how a specified result is to be achieved. This may include specifications of how information is to be shown, what information is to be used as inputs to the method, what tools are to be used, what actions are to be performed and how, and how the task should be decomposed and how actions should be sequenced. \cite{gerickeWhatWeNeed2017}
+	A method is specification of how a specified result is to be achieved. This may include specifications of how information is to be shown, what information is to be used as inputs to the method, what tools are to be used, what actions are to be performed and how, and how the task should be decomposed and how actions should be sequenced. \cite{gerickeWhatWeNeed2017}
 \end{definition}
 
 A complete description of a design method must include its core idea, its representation of the information the method produces, a procedure (set of actions or activities to be followed), and its intended use \autocite{gerickeElementsDesignMethod2022}. As tools are given specific attention in our research, we further reproduce their definition here:
@@ -630,7 +635,7 @@ A complete description of a design method must include its core idea, its repres
 The term \emph{methodology} itself lacks a universally agreed-upon definition, often being used interchangeably with ``method''. For this work, I will adopt part of the definition provided by \autocite{pahlIntroduction2007}:
 
 \begin{definition}[Design Methodology]
-	A design methodology, is a concrete course of action for the design of technical systems that derives its knowledge from design science and cognitive psychology, and from practical experience in different domains. It includes plans of action that link working steps and design phases according to content and organisation. These plans must be adapted in a flexible manner to the specific task at hand. It also includes strategies, rules and principles to achieve general and specific goals as well as methods to solve individual design problems or partial tasks.
+	A design methodology is a concrete course of action for the design of technical systems that derives its knowledge from design science and cognitive psychology, and from practical experience in different domains. It includes plans of action that link working steps and design phases according to content and organisation. These plans must be adapted in a flexible manner to the specific task at hand. It also includes strategies, rules and principles to achieve general and specific goals as well as methods to solve individual design problems or partial tasks.
 \end{definition}
 
 In the general sense, a methodology can be then seen as a collection of methods used for the design and development of a system.
@@ -775,7 +780,7 @@ The proposed PalmSat design included solar cells generating \SI{2}{\watt} of pow
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.7\textwidth]{media/external/space-on-a-chip}
-	\caption{Proposed SpaceChip design \autocite{barnhartVerySmallSatelliteDesignDistributed2007}}
+	\caption[Proposed SpaceChip design]{Proposed SpaceChip design. Taken from \autocite{barnhartVerySmallSatelliteDesignDistributed2007}}
 	\label{fig:l_proposed_spacechip}
 \end{figure}
 
@@ -839,7 +844,7 @@ Many of the above designs follow the open-source and open-hardware philosophies,
 
 \begin{figure}[h]
 	\includegraphics{media/drafts/hein_capabilities}
-	\caption[AttoSat characteristics and capabilities]{AttoSat characteristics and capabilities, as analysed by \citeauthor{heinAttoSatsChipSatsOther2019} \cite{heinAttoSatsChipSatsOther2019}}
+	\caption[AttoSat characteristics and capabilities]{AttoSat characteristics and capabilities. Taken from \citeauthor{heinAttoSatsChipSatsOther2019} \cite{heinAttoSatsChipSatsOther2019}}
 	\label{fig:l_hein_capabilities}
 \end{figure}
 
@@ -917,8 +922,8 @@ A life cycle model is individual and specific to each project, but usually follo
 system definition, conceptualisation, realisation, production and utilisation. 
 
 \begin{figure}[h]
-	\includegraphics{drafts/sebok_lifecycles}
-	\caption{Typical process lifecycle models \autocite{sebok_drivers}}
+	\includegraphics{graphics/ProcessModelExamples.pdf}
+	\caption[Typical lifecycle process models]{Typical lifecycle process models \autocite{sebok_drivers}}
 	\label{fig:l_sebok_models}
 \end{figure}
 
@@ -932,8 +937,8 @@ Hybrid approaches that combine incremental and iterative development are also ob
 
 
 \begin{figure}[h]
-	\includegraphics{drafts/partition_lifecycles}
-	\caption{\todo{Different partitions of lifecycle process models}}
+	\includegraphics{graphics/ProcessModelGroups.pdf}
+	\caption[Different categorisations of lifecycle process models]{Different categorisations of lifecycle process models \cite{sebok_book_211,sebok_book_212,HEEAGER201822}}
 \end{figure}
 
 
@@ -1038,7 +1043,7 @@ The \acl{SAFE} is another popular set of organisational practices, designed to s
 \subparagraph{Miscellaneous Frameworks}
 Most other documented Agile frameworks are not reported to be as popular, but can still provide an interesting source of \draft{inputs}.
 
-Feature-Driven Development (FDD) 
+\todo{Feature-Driven Development (FDD) }
 The Rational Unified Process (RUP), introduced in 1998, was an iterative framework created by a division of IBM, designed to be adaptable and tailorable by different software organisations. While it is not officially supported as of 2025, and has received considerable criticism, it is reported to be a precursor of \acs{SAFE} \autocite{schwaberUnSAFeAnySpeed2013}. DAD (Disciplined Agile Delivery), introduced in 2013, is a set of guidelines for Agile software organisations that aims to encapsulate other, more fundamental Agile frameworks \autocite{ChooseYourWoW}. The \acf{DSDM}, introduced in 1994, is a project-specific framework that covers planning, requirements, development and project management \autocite{agilebusinessconsortiumAgilePMHandbookV22014}.
 Crystal, introduced in the 1990s, is a family of frameworks that aim to cover different sizes and criticalities\emph{Defined as \emph{comfort, discretionary money, essential money, and life.}} of projects, although only some of them have been formally described \autocite{boehmBalancingAgilityDiscipline2004}.
 % For sources on the dates, check the relevant references on Wikipedia articles
@@ -1055,10 +1060,10 @@ Kanban is a visual approach to manage work in human systems, which aims to creat
 Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks \todo{[ref]} \todo{more}.
 
 \paragraph{Hardware-specific Frameworks}
-Because of the \draft{ingress} of Agile methods into hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}. Many developers instead tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
+Because of the introduction of Agile methods int hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}, with the field being supported instead by various proprietary approaches. \draft{Nevertheless}, most developers tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
 
 \subparagraph{Agile-Stage-Gate}
-\citeauthor{cooperAgileDevelopmentManufacturing2023} \autocite{cooperAgileDevelopmentManufacturing2023} observed an emergent hybrid model that has emerged in physical product developers, which replaces traditional project management methods with Scrum, but maintains traditional stages and gates \emph{``for strategic and directional reasons''}. In contrast to Scrum, iterations can last between two weeks and three months, stand up meetings are only held two--three times per week, and each iteration has the goal of presenting a ``demo'' to management or customer.
+\citeauthor{cooperAgileDevelopmentManufacturing2023} \autocite{cooperAgileDevelopmentManufacturing2023} observed an emergent hybrid model that is used by physical product developers, which replaces traditional project management methods with Scrum, but maintains traditional stages and gates \emph{``for strategic and directional reasons''}. In contrast to Scrum, iterations can last between two weeks and three months, stand up meetings are only held two--three times per week, and each iteration has the goal of presenting a ``demo'' to management or customer.
 
 \subparagraph{Slice-Based Integration}
 \citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} also propose a Scrum-based framework, based on the concept of a \textbf{slice}, which is an independently verifiable feature or set of features of a product\footnote{Also see \Cref{def:slice}.}. Then, instead of working on the entire product, teams have a clear set of functionality that needs to be achieved at the end of every timebox. This purportedly helps coordinating hardware and software development. Likewise for verification, different test sets are defined and distributed across iterations.
@@ -3326,8 +3331,6 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 \printbibliography[heading=bibnumbered]
 \end{fullwidth}
 
-
-\printindex
 
 
 
