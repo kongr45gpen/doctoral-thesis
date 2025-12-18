@@ -1,30 +1,24 @@
 \documentclass[a4paper,nobib,justified]{tufte-book}
+%\documentclass[a4paper]{book}
 
-\hypersetup{colorlinks}
 
-\input{preamble.tex}
+%\usepackage{graphicx,biblatex,cleveref}
+%\input{preamble.tex}
 
 %%
 % Book metadata
-\title{Systems Engineering for Sub-CubeSat Spacecraft}
-\author[Konstantinos Kanavouras]{Konstantinos Kanavouras}
-\publisher{University of Luxembourg}
+%\title{Systems Engineering for Sub-CubeSat Spacecraft}
+%\author[Konstantinos Kanavouras]{Konstantinos Kanavouras}
+%\publisher{University of Luxembourg}
 
-\acsetup{foreign/display=false, list/foreign/display=false}
 
-\def\g{\ignorespaces}
-\def\e{\ignorespaces}
-\def\acusepage#1{}
 
-\hypersetup{
-	pdftitle={Systems Engineering for Sub-CubeSat Spacecraft},
-	pdfsubject={PhD Thesis},
-	pdfauthor={Konstantinos Kanavouras},
-	addtopdfcreator={tufte-book class}
-}
+\usepackage{amsmath}
+%\usepackage{hyperref}
+\usepackage{graphicx}
 
-\usepackage{amsthm} 
-\usepackage{keytheorems}
+
+\hypersetup{colorlinks}
 
 
 %     \__keythms_thmstyle_new:nVVVVVVVe { #1 }
@@ -39,201 +33,6 @@
 
 \ExplSyntaxOn
 \makeatletter
-\newsavebox{\definition@caption@box}
-\newsavebox{\definition@content@box}
-%\patchcmd{\@begintheorem}{\thmheadnl}{support schemes}{}{}
-%\def\thmhead@margin\thmhead@plain
-\newkeytheoremstyle{marginstyle}{
-    %headformat={AAAA},
-    %headfont={AAAAg\marginnote{hello who dis}}
-    %headstyle={%
-        %I am very happy
-        %\makebox[0pt][r]{I AM ZE BOX \marginnote{You suck}}
-        %\hbox{\begin{minipage}{5cm}\marginnote{You are awesome bubbles}\end{minipage}}
-        %\bgroup\marginnote{You are so awesome bubbles}\egroup%
-        %\par\marginnote{AAh how awesome are the bubbles}
-        %\marginpar{right}{left}
-        %\begin{quote}
-            %I am ze quote
-        %\end{quote}
-        %\begin{marginnote}
-            %\textbf{Definition ##2}
-        %\end{marginnote}
-        %\cs_set:Nn \keythms_thmstyle_headcmd:nnn {}
-          %{
-            %\makebox[0pt][r]{
-              %AAAAAA
-              %}
-%            \NAME\NOTE
-          %}
-    %},
-%	headstyle={
-	%	\begin{lrbox}{\@tufte@figure@box}%
-%		\begin{minipage}[t]{\@tufte@float@contents@width}%
-%			\NAME\space\NUMBER :\space\NOTE
-%		\end{minipage}%
-	%	\end{lrbox}%
-%	},
-	headpunct={\hspace{0pt}},
-	postheadspace={0pt},
-	preheadhook = {
-%		\begin{color}{blue}
-		%\def\thm@headsep{EMPTYER}
-		%\tl_replace_all:Nnn \@begintheorem
-        %{ \thmheadnld } % Target token sequence to find
-        %{ support scheme } % Replacement string (support scheme)
-		%\xpatchcmd{keythms_orig_definition}{\thmheadnl}{support scheme!}{}{}
-		% Temporarily remove head style from style
-		%\cs_set:Nn \keythms_thmstyle_headcmd:nnn {aaa}
-		%\RenewDocumentEnvironment{ keythms_orig_definition }{ o }{ \beginmarginnote }{ \endmarginnote }
-		%\begin{lrbox}{\@tufte@figure@box}%
-		%\begin{minipage}[t]{\@tufte@float@contents@width}%
-		%\begin{quote}
-		%\BeforeBeginEnvironment{keythms_orig_definition}{
-			%\begin{color}{green}
-		%}
-		%\AtBeginEnvironment{keythms_orig_definition}{
-			%\end{color}{green}
-		%}
-
-		\def\deferred@thm@head#1{%
-			%\if@inlabel \indent \par \fi
-			%\global\@inlabeltrue
-			\everypar\dth@everypar
-			\sbox\@labels{}
-			\global\sbox{\definition@caption@box}{
-			\begin{minipage}[t]{\marginparwidth}%
-				\vspace{\baselineskip}
-				\normalfont #1
-				%\par\vspace{-\prevdepth}
-			\end{minipage}%
-			}
-			%\sbox\@labels{
-			%	\begin{color}{green}
-			%	\normalfont #1
-			%	\end{color}
-			%}%
-			%\ignorespaces
-		}
-
-		\begin{lrbox}{\definition@content@box}%
-		\begin{minipage}[t]{\textwidth}%
-			%\hbox{}
-			\@tufte@reset@par
-
-	%	\AddToHook{cmd/thmhead/before}{%
-	%		THMHEAD BEFORE\space
-	%	}
-
-	%	\AddToHookNext{cmd/@thm/before}{%
-	%		\begin{color}{green}
-	%	}
-
-	%	\AddToHookNext{cmd/@thm/after}{%
-	%		\end{color}
-	%	}
-
-	%	\AddToHookNext{cmd/thm@swap/before}{%
-	%		THMSWAP\space
-	%	}
-
-	%	\AddToHookNext{cmd/deferred@thm@head/before}{%
-%			DEFTHMHEAD BEFORE
-	%	}
-
-	%\AddToHookNext{cmd/thm@headpunct/before}{%
-	%		thmheadnl BEFORE\space
-	%	}
-%
-%		\AddToHookNext{cmd/@begintheorem/before}{%
-%			\space @begintheorem\space
-			%THMHEAD BEFORE%
-	%		\begin{color}{green}
-%		}%5
-
-%		\AddToHookNext{cmd/@begintheorem/after}{%
-%			\space @begintheorem-asfter\space
-			%THMHEAD BEFORE%
-	%		\end{color}
-%		}%
-
-		%\begin{color}{red}
-	},
-	postheadhook = {
-%		\end{color}
-%		\marginnote[5ex]{
-%			\l__keythms_thmstyle_headfont_tl
-			% Instead of \keythms_thmstyle_headcmd:nnn
-%			\text_expand:n { \thmhead@plain
-%				{ \prop_item:NV \g__keythms_thmnames_prop { \l_keythms_thmuse_envname_tl } }
-%				{ \use:c { the \l_keythms_thmuse_envname_tl} }
-%				{ \l__keythms_thmuse_note_tl  }
-
-%			}
-		%\end{minipage}%
-		%\end{lrbox}
-%		}
-		%\end{quote}
-		%\begin{color}{blue}
-
-		
-		%\hbox{}%
-	},
-	prefoothook = {
-		
-		%\end{color}
-	},
-	postfoothook = {
-		\vspace{-\baselineskip}
-		\end{minipage}%
-		\end{lrbox}
-
-		\begin{fullwidth}
-		\@tufte@float@textwidth[\@tufte@caption@vertical@offset]{\definition@content@box}{\definition@caption@box}
-
-		\end{fullwidth}
-		%\end{color}
-	}
-}
-
-\NewDocumentEnvironment{margintext}{ O{0pt} +b }
-  {
-    %\marginnote{#2}
-	%\begin{color}{red}
-	%INIT
-	%	#2
-	%FIN
-	%\end{color}
-	\begin{lrbox}{\@tufte@figure@box}%
-	%	#2
-	\begin{minipage}[t]{\marginparwidth}%
-		\@tufte@marginnote@font\@tufte@marginnote@justification\@tufte@margin@par\vspace*{-1\baselineskip}
-		#2
-  }
-  {
-	\end{minipage}
-	\end{lrbox}%
-	\marginnote{%
-		\usebox\@tufte@figure@box
-	}
-	%##2
-  }
-
-\newkeytheoremstyle{marginnote}{
-	headpunct={:},
-	preheadhook = {
-		\begin{lrbox}{\@tufte@figure@box}%
-		\begin{minipage}[t]{\marginparwidth}%
-			\@tufte@marginnote@font\@tufte@marginnote@justification\@tufte@margin@par\vspace*{-1\baselineskip}%
-	},
-	postfoothook = {
-		\end{minipage}
-		\end{lrbox}%
-		\marginnote{%
-			\usebox\@tufte@figure@box%
-		}%
-	}
-}
 
 
 
@@ -262,269 +61,51 @@
 %\addtotheoremhook[definition]{prehead}{\begin{marginnote}}
 %\addtotheoremhook[definition]{posthead}{\end{marginnote}}
 %\addtotheoremhook[definition]{posthead}{\marginnote[2.5ex]{\textbf{Definition ##2}}}
-\newkeytheorem{definition}[name=Definition,parent=chapter,style=marginstyle]
-\newkeytheorem{margindefinition}[name=Definition,sibling=definition,style=marginnote,refname=Definition]
+
 
 %\BeforeBeginEnvironment{margindefinition}{\begin{margintext}}
 %\AfterEndEnvironment{margindefinition}{\end{margintext}}
 
 \begin{document}
-	
-\addcontentsline{toc}{chapter}{Preamble}
 
-% Front matter
-%\frontmatter
-
-% r.1 blank page
-%\blankpage
-
-% r.3 full title page
-\makeatletter
-\renewcommand{\maketitle}{%
-	\newpage
-	\global\@topnum\z@% prevent floats from being placed at the top of the page
-	\begingroup
-	\setlength{\parindent}{0pt}%
-	\setlength{\parskip}{4pt}%
-	\let\@@title\@empty
-	\let\@@author\@empty
-	\let\@@date\@empty
-	\thispagestyle{empty}
-	\begin{fullwidth}
-		\vfill
-		\begin{center}
-			University of Luxembourg Logo\par
-			\vspace{1cm}
-			\LARGE\textsc{Dissertation}\par
-			\vspace{6ex}
-			\hrule
-			\vspace{4ex}
-			\Huge\textbf{Systems Engineering}\\[1ex]
-			\LARGE\textbf{for}\\
-			\Huge\textbf{Sub-CubeSat Spacecraft}\par
-			\vspace{2.7ex}
-			\hrule
-
-			\vspace{6ex}
-
-			\Large
-			\begin{tabular}{ll}
-				\emph{Author:} & Konstantinos \textsc{Kanavouras}
-				\\[1.5ex]
-				\emph{Supervisor:} & Prof.~Andreas M.~\textsc{Hein}
-			\end{tabular}
-
-			\vspace{6ex}
-
-			\large \textit{A thesis submitted in fulfilment of the requirements\\ for something}\\[0.3cm] % University requirement text
-			\textit{in the}\\[0.4cm]
-			Doctoral School of Computer Science
-			\\
-			Faculty of Science, Technology and Medicine
-			\\[1cm] % Research group name and department name
-
-			\vspace{6ex}
-
-			{\large June 28, 2099}\\[4cm] % Date
-
-		\end{center}
-		\vfill
-	\end{fullwidth}
-	\endgroup
-	\thispagestyle{plain}% suppress the running head
-	\tuftebreak% add some space before the text begins
-	\@afterindentfalse\@afterheading% suppress indentation of the next paragraph
-}
-\makeatother
-\maketitle
-
-% v.4 copyright page
-\newpage
-\phantomsection
-\addcontentsline{toc}{section}{Copyrights}
-\begin{fullwidth}
-~\vfill
-\thispagestyle{empty}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{\baselineskip}
-Copyright \copyright\ \the\year\ \thanklessauthor
-
-\par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
-use this file except in compliance with the License. You may obtain a copy
-of the License at \url{https://creativecommons.org/licenses/by/4.0/legalcode}, or a human-readable summary at \url{https://creativecommons.org/licenses/by/4.0/}.
-Unless
-required by applicable law or agreed to in writing, material distributed
-under the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the
-License for the specific language governing permissions and limitations
-under the License.\index{license}
-
-\end{fullwidth}
-
-% r.5 contents
 \tableofcontents
-\addcontentsline{toc}{section}{Contents}
 
-\begin{fullwidth}
-\listoffigures
-\addcontentsline{toc}{section}{List of Figures}
+%\chapter{Boing boing}
+%\section{Kalimera}
+%\subsection{Kalin Imera}
+%\subsubsection{Na exete mia kalh mera}
+\paragraph{Omorfh mera}
+	
+I like to discombobulate my enemies every day.
 
-\listoftables
-\addcontentsline{toc}{section}{List of Tables}
+\begin{figure}
+	\includegraphics{media/graphics/NASASYE}
+	\caption{Decomposition of Systems Engineering in connection with Project Management}
+	\label{fig:i_nasa_sye_decomposition}
+\end{figure}
 
-%\chapter*{List of Definitions}
-%\addcontentsline{toc}{section}{List of Definitions}
-%\draft{Here we will have an index of definitions...}
+Here is a reference to that figure: Figure~\ref{fig:i_nasa_sye_decomposition}.
 
-\listofkeytheorems[
-    title={List of Definitions},
-    onlynamed,
-    note-code={#1},
-    format-code=\numberline{#2}#3
-    ]
+I like to eat apples every day.
 
-%\chapter*{List of Acronyms}
-%\acuseall%
-\bgroup
-\setlength\parskip{1ex}
-\printacronyms[pages={display=all,seq/use=false},]
-\addcontentsline{toc}{section}{Acronyms}
-\egroup
+\begin{figure*}
+	\includegraphics{media/graphics/NASASYE}
+	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management}
+	\label{fig:i_nasa_sye_decomposition_wide}
+\end{figure*}
 
-\end{fullwidth}
+Here is a reference to that wide figure: Figure~\ref{fig:i_nasa_sye_decomposition_wide}.
 
-% r.9 introduction
-\cleardoublepage
+\ref{fig:i_nasa_sye_decomposition_wide}
 
-\chapter*{Abstract}
+In fact, my favourite verbosity is discombobulate.f
 
-\justify
-Space is not a welcoming environment.
+\begin{figure}
+	\caption{A figure without content}
+	\label{fig:empty_figure}
+\end{figure}
 
-\chapter*{Objectives}
-
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-Space is not a welcoming environment. 
-
-\chapter*{Contribution}
-I did this. I also did that. I didn't do that.
-
-
-%%
-% Start the main matter (normal chapters)
-\mainmatter
-
-
-
-\chapter{Introduction}
-
-Hello, this is the introduction.\\
-There is no reason to deny a significant piece of theory.
-
-\marginnote{Actually my favourite piece of food is the fruit salad. But why is it the? Because it is delicious.
-Specifically because of my country of origin, where fruit salads are made with a variety of exotic fruits.}
-\lipsum[1-10]
-
-\section{Citation Test}
-This is a citation test, single citation \autocite{heusserTailoringSAFeIt}.
-
-This is a citation test, two citations \autocite{15thAnnualState}.
-
-This is a citation test, three citations \autocite{jeffriesDarkScrum2016,adamsTheoryApplicationsGramScale2020,carsonCanSystemsEngineering2013}.
-
-This is a citation test, disjunct citations \autocite{15thAnnualState,honore-livermoreIntegratingAgileSystems2022,jiDataDrivenSimulationModel2018,levequeUnlockingNextGeneration2019}.
-
-\section{Definition Test}
-
-\begin{definition}[Agile]
-Let \(f\) be a function whose derivative exists in every point, then \(f\) 
-is a continuous function.
-\end{definition}
-
-There really should be no empty space here!
-
-\begin{definition}[Methodology]
-A methodology is defined as a set of functions that:
-\begin{enumerate}
-    \item Generate a significant faultline in the world of Jazz
-    \item Delaminate trajectorial boundaries across trajectories.
-    \item Within the space of equi-distant normalities, they do not concern a \( \hat{f} \) dispotition of the robust rigged clothing defined in Antwerp's 2019 theorem in traditional methodology.
-
-    In fact, it has been shown that the French Bauhaus movement, superseded by Husserl et.~al (2020) avails itself to critical re-definition in the world of Hodge theatres, not only because it decentralises the gfurious bambouin, but it also disparages what leverage is corrugated by latent projectiles (in the meta-lit sense).
-\end{enumerate}
-
-But please, do not understestimate rigging costs for clothing.
-
-It's important to stay alive.
-\end{definition}
-
-%\tracingall
-\begin{margindefinition}[note=Foond]
-	\label{def:you_suffer_but_why}
-	The foond is the most important labour of love.
-\end{margindefinition}
-
-As we can see in \Cref{def:you_suffer_but_why}, the definition of methodology is quite complex.\\
-As we can see in \cref{def:you_suffer_but_why}, the definition of methodology is quite complex.\\
-As we can see in Definition \ref{def:you_suffer_but_why}, the definition of methodology is quite complex.\\
-As we can see in definition \nameCref{def:you_suffer_but_why}, the definition of methodology is quite complex.\\
-
-\lipsum[11-15]
-
-\newthought{This is actually crazy!}
-I went to the supermarket and found that everything is empty.
-
-\makeatletter
-\setlength{\@tufte@float@contents@width}{\textwidth}
-\begin{fullwidth}
-
-\begin{lrbox}{\@tufte@figure@box}%
-\begin{minipage}[t]{\@tufte@float@contents@width}%
-	\hbox{}%
-	%\vspace{\baselineskip}
-	\lipsum[1]
-\end{minipage}%
-\end{lrbox}
-
-%Caption box
-\begin{lrbox}{\@tufte@caption@box}%
-\begin{minipage}[t]{\marginparwidth}%
-	\hbox{}%
-	Caption
-	%\par\vspace{-\prevdepth}
-\end{minipage}%
-\end{lrbox}
-
-\@tufte@float@textwidth[\@tufte@caption@vertical@offset]{\@tufte@figure@box}{\@tufte@caption@box}
-
-\end{fullwidth}
-
-
-\makeatother
-
-\appendix
-
-\chapter[SCS Methodology Cheat Sheet]{SCS Methodology Cheat Sheet}
-
-\chapter{PCB schematics}
-
-\begin{fullwidth}
-\printbibliography[heading=bibnumbered]
-\end{fullwidth}
-
-
-\printindex
-
-
+Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs!?
 
 \end{document}
 

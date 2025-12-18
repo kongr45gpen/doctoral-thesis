@@ -377,61 +377,6 @@ Novel systems engineering approaches can drastically decrease the development du
 
 
 \FloatBarrier
-\section{The Scope and Impact of Systems Engineering}
-\label{sec:INTRODUCTION_defining_systems_engineering}
-
-Systems Engineering is defined as a process of synthesis, development and operation of a real-world system that satisfies the requirements for that system \autocite{sebok}.
-Systems Engineering processes are especially useful for complex and/or critical systems, such as those used in aerospace engineering \autocite{SMAD,sheaNASASystemsEngineering2020}.
-The \acs{NASA} Systems Engineering Handbook partitions Systems Engineering into further specific sub-disciplines, showing its connection with Project Management (\Cref{fig:i_nasa_sye_decomposition}).
-
-
-%<span class="orange">Can add more criticism towards heavyweight methods here, esp. for systems **why do we need something new?**</span> 
-
-\begin{figure*}[h]
-	\includegraphics{media/graphics/NASASYE}
-	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management \autocite{sheaNASASystemsEngineering2020}}
-	\label{fig:i_nasa_sye_decomposition}
-\end{figure*}
-
-The space engineering community has used several prominent frameworks for the realisation of complex projects, which may cover, for example, \emph{needs definitions}, \emph{lifecycle approaches}, \emph{engineering/data management} or \emph{system architecture definition} \autocite{sebok}. Some of the most popular examples are:
-\begin{itemize}
-	\item 
- Separation of a project into separate stages, from conception to end-of-life, following a ``waterfall'' model
- \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}
- \item 
-Requirements Engineering, where specific technical specifications are set for the systems and its components \autocite{ECSS-E-ST-10-06C} 
-\item The V-model, which defines a sequential, stage-gated process to implement and verify a system with its components
-\autocite{bundesrepublikdeutschlandVModellXT2006,sebok}
-\item Iterative lifecycle models, where iteration or evolution cycles are added to allow easy implementation of lessons learned
-\autocite{larmanIterativeIncrementalDevelopment2003,sebok_incremental}
-\item Concurrent Engineering, where a design is progressed synchronously by multiple engineers \autocite{bandecchiConcurrentEngineeringApplied1999}
-\item Model-based Systems Engineering, where formalised models are used to support Systems Engineering tasks \autocite{sebok,hendersonValueBenefitsModelbased2021}
-\end{itemize}
-
-\begin{marginfigure}
-	\includegraphics{media/drafts/nasa_sye_benefit.png}
-	\caption{It is harder to reverse design decisions, the more effort has been dedicated to a project. From \cite{sheaNASASystemsEngineering2020}}
-\end{marginfigure}
-The value and benefits of Systems Engineering are asserted by the ``\acs{SYE} hypothesis'': that additional effort spent in Systems Engineering, especially early in the project, will increase the overall \emph{value} of it, especially in terms of cost, schedule and objectives \autocite{honourUnderstandingValueSystems2004}. A 1992 survey of 32 \acs{NASA} programs, for example, shows a correlation between time spent in the design phases of a project, and reduced final cost overruns \cite{honourUnderstandingValueSystems2004}. 
-Various other surveys have shown similar correlations, demonstrating the value of Systems Engineering 
-\autocite{sheaNASASystemsEngineering2020,francoisSystemicsCyberneticsHistorical1999}. \draft{Here we describe the exact benefties of systems engineering. Also cite more souirces showing the value and explain how/what is demonstrated}
-
-
-However, a considerable overhead and a number of inefficiencies are added when following highly detailed or bureaucratic processes. \citeauthor{royceManagingDevelopmentLarge1970} \autocite{royceManagingDevelopmentLarge1970} famously criticised the ``waterfall'' model mainly because of its inflexibility towards design and requirements changes, and incorrect implementations of the lifecycle model. During the 1990s, these so-called ``heavyweight'' methods started receiving more criticism, and being seen as an impediment for development of lower-scale products \autocite{fowlerNewMethodology2005}. 
-%\citeauthor{whitneyWhyMechanicalDesign1996} \autocite{whitneyWhyMechanicalDesign1996} draws parallels between the design of a complex mechanical system, and very efficient and modular VLSI design process.
-
-\citeauthor{boehmROISystemsEngineering2008} \autocite{boehmROISystemsEngineering2008}
-analysed the 161 software projects from the \acs{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
-They identified a ``\textbf{sweet spot}'' between too little and too much time spent in software architecting and risk management\footnote{Which, for the purposes of this work, loosely corresponds to effort spent for Systems Engineering}.
-For example, on a \SI{10}{\kilo\acs{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
-This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this sweet spot is found at 33\%, implying that larger projects need disproportionately higher effort for Systems Engineering.
-
-\begin{figure}[h]
-	\includegraphics{media/drafts/boehm_roi.png}
-	\caption{\draft{How much architecting is enough?} \cite{boehmROISystemsEngineering2008}}
-\end{figure}
-\draft{Surveys conducted by \citeauthor{akbarStatisticalAnalysisEffects2018} \autocite{akbarStatisticalAnalysisEffects2018} showed that more ``lightweight'' processes could be used for smaller-scale projects. - What does this mean? What did they show?}
-
 
 \begin{landscape}
 		\captionof{table}{Development time of sub-CubeSat missions (from start of development until Flight Model integration)}
@@ -480,22 +425,137 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 		\end{tabular}
 \end{landscape}
 
+\section{The Scope and Impact of Systems Engineering}
+\label{sec:INTRODUCTION_defining_systems_engineering}
+
+Systems Engineering is defined as a process of synthesis, development and operation of a real-world system that satisfies the requirements for that system \autocite{sebok}.
+Systems Engineering processes are especially useful for complex and/or critical systems, such as those used in aerospace engineering \autocite{SMAD,sheaNASASystemsEngineering2020}.
+The \acs{NASA} Systems Engineering Handbook partitions Systems Engineering into further specific sub-disciplines, showing its connection with Project Management (\Cref{fig:i_nasa_sye_decomposition}).
+
+
+%<span class="orange">Can add more criticism towards heavyweight methods here, esp. for systems **why do we need something new?**</span> 
+
+\begin{figure}[h]
+	\includegraphics{media/graphics/NASASYE}
+	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management \autocite{sheaNASASystemsEngineering2020}}
+	\label{fig:i_nasa_sye_decomposition}
+\end{figure}
+
+The space engineering community has used several prominent frameworks for the realisation of complex projects, which may cover, for example, \emph{needs definitions}, \emph{lifecycle approaches}, \emph{engineering/data management} or \emph{system architecture definition} \autocite{sebok}. Some of the most popular examples are:
+\begin{itemize}
+	\item 
+ Separation of a project into separate stages, from conception to end-of-life, following a ``waterfall'' model
+ \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}
+ \item 
+Requirements Engineering, where specific technical specifications are set for the systems and its components \autocite{ECSS-E-ST-10-06C} 
+\item The V-model, which defines a sequential, stage-gated process to implement and verify a system with its components
+\autocite{bundesrepublikdeutschlandVModellXT2006,sebok}
+\item Iterative lifecycle models, where iteration or evolution cycles are added to allow easy implementation of lessons learned
+\autocite{larmanIterativeIncrementalDevelopment2003,sebok_incremental}
+\item Concurrent Engineering, where a design is progressed synchronously by multiple engineers \autocite{bandecchiConcurrentEngineeringApplied1999}
+\item Model-based Systems Engineering, where formalised models are used to support Systems Engineering tasks \autocite{sebok,hendersonValueBenefitsModelbased2021}
+\end{itemize}
+
+\begin{marginfigure}
+	\includegraphics{media/drafts/nasa_sye_benefit.png}
+	\caption[It is harder to reverse design decisions, the more effort has been dedicated to a project]{It is harder to reverse design decisions, the more effort has been dedicated to a project. Taken from \cite{sheaNASASystemsEngineering2020}}
+\end{marginfigure}
+The value and benefits of Systems Engineering are asserted by the ``\acs{SYE} hypothesis'': that additional effort spent in Systems Engineering, especially early in the project, will increase the overall \emph{value} of it, especially in terms of cost, schedule and objectives \autocite{honourUnderstandingValueSystems2004}. A 1992 survey of 32 \acs{NASA} programs, for example, shows a correlation between time spent in the design phases of a project, and reduced final cost overruns \cite{honourUnderstandingValueSystems2004,stutzkeEstimatingSoftwareintensiveSystems2005}. 
+Various other surveys have shown similar correlations, demonstrating the value of Systems Engineering 
+\autocite{sheaNASASystemsEngineering2020,francoisSystemicsCyberneticsHistorical1999}.
+
+The specific constraints of a project which measure its success and resource utilisation are elaborated by \citeauthor{akbarStatisticalAnalysisEffects2018} \autocite{akbarStatisticalAnalysisEffects2018}, who follow the \emph{six-pointed star model}\footnote{Originally inspired by the cost-time-scope project management triangle} enumerating the following constraints that need to be balanced in a project: \textbf{schedule, scope, budget, risk, resources and quality}. An elaboration of these factors is shown in \Cref{tab:i_success_factors}.
+
+\begin{table}[h]
+	\caption[Success factors for systems engineering projects]{Success factors for systems engineering projects. Adapted from \cite{akbarStatisticalAnalysisEffects2018}}
+	\label{tab:i_success_factors}
+	\setfloatalignment{b}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		\textbf{Constraint} & \textbf{Aspect} \\ \midrule
+		\multirow{2}{*}{\textbf{Scheduling}}
+		& Delivered on time \\
+		& Agreed workflow followed \\ \midrule
+		\multirow{2}{*}{\textbf{Scope}}
+		& Scope is well-defined \\
+		& Requirements completed \\  \midrule
+		\multirow{2}{*}{\textbf{Cost Budget}} & Project completed within budget \\
+		& Good Return On Investment \\ \midrule
+		\multirow{1}{*}{\textbf{Risk}} & Project risk is managed \\ \midrule
+		\multirow{2}{*}{\textbf{Resources}} & Human and material resources are available \\
+		& Maximum utilisation of available resources \\ \midrule
+		\multirow{3}{*}{\textbf{Quality}} & Quality requirements met \\
+		& Client satisfaction \\
+		& Project is successful \\ \bottomrule
+	\end{tabularx}
+\end{table}
+
+Specifically for university spacecraft, \citeauthor{swartwoutUniversityClassSpacecraft2023202023} notes that projects with fixed delivery times often fail to plan and prepare for the design and complexity of their systems and devote enough resources to systems-level testing, and cites this as a main reason for a high mission failure rate \autocite{swartwoutUniversityClassSpacecraft20232023}. Interviews conducted by \citeauthor{campoModelbasedSystemsEngineering2023,honore-livermoreAcademicsPerceptionSystems2022} also note the benefits of \acs{SYE} and \acs{SYE} approaches in improving communication, project understanding and verification capabilities \autocite{campoModelbasedSystemsEngineering2023,honore-livermoreDigitalEngineeringDevelopment2022}.
+
+%\citeauthor{stutzkeEstimatingSoftwareintensiveSystems2005} found a correlation between more time spent on Systems Engineering for \acs{NASA} projects before 1995 and reduced cost overruns \autocite{stutzkeEstimatingSoftwareintensiveSystems2005}.
+
+However, a considerable overhead and a number of inefficiencies are added when following highly detailed or bureaucratic processes. \citeauthor{royceManagingDevelopmentLarge1970} \autocite{royceManagingDevelopmentLarge1970} famously criticised the ``waterfall'' model mainly because of its inflexibility towards design and requirements changes, and incorrect implementations of the lifecycle model. During the 1990s, these so-called ``heavyweight'' methods started receiving more criticism, and being seen as an impediment for development of lower-scale products \autocite{fowlerNewMethodology2005}. 
+%\citeauthor{whitneyWhyMechanicalDesign1996} \autocite{whitneyWhyMechanicalDesign1996} draws parallels between the design of a complex mechanical system, and very efficient and modular VLSI design process.
+
+\citeauthor{boehmROISystemsEngineering2008} \autocite{boehmROISystemsEngineering2008}
+analysed the 161 software projects from the \acs{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
+They identified a ``\textbf{sweet spot}'' between too little and too much time spent in software architecting and risk management\footnote{Which, for the purposes of this work, loosely corresponds to effort spent for Systems Engineering}.
+For example, on a \SI{10}{\kilo\acs{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
+This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this sweet spot is found at 33\%, implying that larger projects need disproportionately higher effort for Systems Engineering (\Cref{fig:i_software_roi}).
+Similarly, \autocite{honourTechnicalReportValue2004} concluded, after a survey of 44 projects, that an optimum level of \acs{SYE} effort is between \qtyrange{15}{20}{\percent}, above which there seem to be no \acs{SYE}-related cost/schedule improvements.
+
+\begin{marginfigure}
+	\includegraphics{media/drafts/boehm_roi.png}
+	\caption[Comparison between time spent in architecting versus time spent for reworks in software projects]{Comparison between time spent in architecting versus time spent for reworks in software projects \cite{boehmROISystemsEngineering2008}}
+	\label{fig:i_software_roi}
+\end{marginfigure}
+
+The above results show that an adequate balance needs to be found when adopting a \acl{SYE} methodology for a \draft{project}. \citeauthor{akbarStatisticalAnalysisEffects2018} classified \acs{SYE} methodologies into \emph{heavy-weight} ones, which are typically process and tool-oriented, comprehensive and predictive, and \emph{light-weight} ones, which are more empirical, collaborative, and decentralised \autocite{akbarStatisticalAnalysisEffects2018}. Their survey of 20 \draft{software} organisations matches the expectation that the ``scale'' of a methodology should be adapted to the size of a project to reach the best possible benefits.
+
+\FloatBarrier
 \section{Research Gaps}
 \label{sec:INTRODUCTION_research_gaps}
+
+\draft{
+	\begin{enumerate}[itemsep=-2ex]
+		\item What are developers doing now?
+		\item Why is this not enough?
+		\item What can be done about it?
+		\item What are the special characteristics of SCS?
+		\item How will a methodology take advantage of these characteristics?
+		\item Which characteristics can the methodology address?
+		\item Is systems engienering the biggest factor that will affect all of these things or is it something else? Does systems engineering play a role or should we look somewhere else?
+	\end{enumerate}
+}
+
+\draft{In order to identify the research gaps in the understanding of \acl{SYE} as applied to \acf{SCS}, it is first important to investigate the state-of-the-art for \acs{SCS} design.}
+
+The impact and benefit of Systems Engineering is widely understood in the fields of space systems, and more specifically, CubeSat engineering. Apart from individual missions that explore tailor-made \acl{SYE} approaches \autocite{cappaertBuildingDeployingOperating2018,chaiebOpenOrbiterCubeSatSystemofsystems2015,dallmannAgileSpaceParadigm2015,lillAgileMissionOperations2018,lubian-arenillasNanosatelliteDevelopmentMethodology2019,segretPavingStonesInitial2014}, research has been made on more generic methodologies that can be universally applied to nano-satellite projects \autocite{alanaziEngineeringMethodologyStudentDriven2019,andersonEnterpriseModelingCubeSats2014,deckerSystemsengineeringAssessmentMultiple2016}. These methodologies generally use a foundation based on traditional phase-based lifecycle processes \cite{sheaNASASystemsEngineering2020}, augmented with iterative or incremental elements. Many CubeSat methodologies also implement Agile practices, which represent a philosophy focused on emergent and interpersonal methods \autocite{beckAgileManifesto2001}. Another set of CubeSat projects does not use a well-defined methodology, instead implementing original ad-hoc approaches applicable to specific missions \todo{[cite]}.
+
+The development approaches for current \acs{SCS}, mainly PocketQubes and ChipSats, largely follow the aforementioned approaches for CubeSats, with examples following hybrid \todo{[cite]}, Agile-based \autocite{sperettaCubeSatsPocketQubesOpportunities2016} and ad-hoc \autocite{manchesterCentimeterScaleSpacecraftDesign2015,daradimosQUBIK1pPocketQube2024} methodologies.
+
+Indeed, both nano-satellites and smaller classes can be classified as \emph{(very) small spacecraft}, and usually have similar high-level requirements. These requirements revolve both around the function of the devices (to reliably and autonomously operate one or \draft{a few} payloads in \acl{LEO}) and the programmatic constraints (such launch deadline, limited budget, small team size). Based on these similarities and the number of successes of launched \acs{SCS} missions so far, we can claim that these methodologies maintain their validity in terms of project quality. Do they, however, maintain their validity in terms of the rest of \Cref{tab:i_success_factors}'s factors, such as schedule and budget? Or, \draft{worded differently}, are these methodologies still \emph{effective} and \emph{optimal} for \acs{SCS} projects?
+
+\citeauthor{heinAttoSatsChipSatsOther2019} posited, for example, that atto-satellites offer characteristics that make them possible to develop (from conceptualisation to flight hardware) within 6 months, enabling mass accessibility \todo{and more good stuff} \autocite{heinAttoSatsChipSatsOther2019}. \todo{Blablabla}
+
+What are the specific characteristics of \acs{SCS} that differentiate them from CubeSats and justify the usage of a different methodology?
+\begin{itemize}
+	\item \textbf{Size and mass}: The mass of a single pocket-sized spacecraft can be \( 1 /2 \)\textsuperscript{nd} to \( 1/200 \)\textsuperscript{th} of a CubeSat, with the volume following similar 
+\end{itemize}
+
 
 \FloatBarrier
 
 \section{Research Questions and Thesis Objectives}
 \label{sec:INTRODUCTION_research_questions}
-\todo{TODO: Write this section, update diagrams, increase font size}
 
-\begin{figure*}[h]
+\begin{figure*}[p]
 	\includegraphics{graphics/decomp.pdf}
 	\caption{\acf{ARC} diagram for ``Systems Engineering for sub-CubeSat Spacecraft''}
 	\label{fig:i_thesis_decomposition}
 \end{figure*}
 
-\begin{figure*}[h]
+\begin{figure*}[p]
 	\includegraphics{graphics/DecompSYE.pdf}
 	\caption{Focus on ``Systems Engineering'' from \Cref{fig:i_thesis_decomposition}}
 	\label{fig:i_sye_decomposition}
@@ -1053,7 +1113,7 @@ Apart from frameworks that cover the entire structure of a team, project, or org
 
 \begin{marginfigure}
 	\includegraphics{external/Kanban Board.pdf}
-	\caption[Kanban board example]{Example of a Kanban board \autocite{falcoKanbanBoardRepresentation2023}}
+	\caption[Mockup of a Kanban board]{Mockup of a Kanban board. Taken from \autocite{falcoKanbanBoardRepresentation2023}}
 \end{marginfigure}
 Kanban is a visual approach to manage work in human systems, which aims to create a single view of tasks at various stages by modelling them as cards that are moved across different columns on a board \todo{[ref]}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey measures a \qty{75}{\percent} usage of Kanban in the physical product industry \cite{atzbergerAgileDevelopmentPhysical2020}.
 
@@ -1068,10 +1128,10 @@ Because of the introduction of Agile methods int hardware development, a number 
 \subparagraph{Slice-Based Integration}
 \citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} also propose a Scrum-based framework, based on the concept of a \textbf{slice}, which is an independently verifiable feature or set of features of a product\footnote{Also see \Cref{def:slice}.}. Then, instead of working on the entire product, teams have a clear set of functionality that needs to be achieved at the end of every timebox. This purportedly helps coordinating hardware and software development. Likewise for verification, different test sets are defined and distributed across iterations.
 
-\begin{figure*}[h]
+\begin{figure}[h]
 	\includegraphics{drafts/iberle_slices.png}
 	\caption[Example of an Agile slice-based integration plan for a physical product]{Example of an Agile slice-based integration plan for a physical product. Image taken from \cite{iberleAgileGetsPhysical2022}}
-\end{figure*}
+\end{figure}
 
 \subparagraph{Miscellaneous} \todo{Any other frameworks worth considering? Skunkworks? Guidelines?}
 
@@ -1853,7 +1913,7 @@ The shortcomings of document-based specification approaches led to the adoption 
 		
 		\\ \bottomrule
 	\end{tabularx}
-	\caption{Example requirements for a \ac{EDM} tool \todo{update, rewrite, cleanup}}
+	\caption[Example requirements for an EDM tool]{Example requirements for an \ac{EDM} tool \todo{update, rewrite, cleanup}}
 \end{table*}
 
 
