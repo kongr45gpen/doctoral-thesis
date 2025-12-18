@@ -125,7 +125,7 @@ required by applicable law or agreed to in writing, material distributed
 under the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the
 License for the specific language governing permissions and limitations
-under the License.\index{license}
+under the License.
 
 \par This thesis was produced using \LaTeX, the \href{https://ctan.org/pkg/tufte-latex?lang=en}{\texttt{tufte-latex}} template, and the modifications from \linebreak[4] \href{https://github.com/lalider/tufte-latex-thesis}{\texttt{tufte-latex-thesis}}.
 
@@ -518,10 +518,10 @@ The above results show that an adequate balance needs to be found when adopting 
 
 \draft{
 	\begin{enumerate}[itemsep=-2ex]
-		\item What are developers doing now?
+		%\item What are developers doing now?
 		\item Why is this not enough?
 		\item What can be done about it?
-		\item What are the special characteristics of SCS?
+		%\item What are the special characteristics of SCS?
 		\item How will a methodology take advantage of these characteristics?
 		\item Which characteristics can the methodology address?
 		\item Is systems engienering the biggest factor that will affect all of these things or is it something else? Does systems engineering play a role or should we look somewhere else?
@@ -534,15 +534,45 @@ The impact and benefit of Systems Engineering is widely understood in the fields
 
 The development approaches for current \acs{SCS}, mainly PocketQubes and ChipSats, largely follow the aforementioned approaches for CubeSats, with examples following hybrid \todo{[cite]}, Agile-based \autocite{sperettaCubeSatsPocketQubesOpportunities2016} and ad-hoc \autocite{manchesterCentimeterScaleSpacecraftDesign2015,daradimosQUBIK1pPocketQube2024} methodologies.
 
-Indeed, both nano-satellites and smaller classes can be classified as \emph{(very) small spacecraft}, and usually have similar high-level requirements. These requirements revolve both around the function of the devices (to reliably and autonomously operate one or \draft{a few} payloads in \acl{LEO}) and the programmatic constraints (such launch deadline, limited budget, small team size). Based on these similarities and the number of successes of launched \acs{SCS} missions so far, we can claim that these methodologies maintain their validity in terms of project quality. Do they, however, maintain their validity in terms of the rest of \Cref{tab:i_success_factors}'s factors, such as schedule and budget? Or, \draft{worded differently}, are these methodologies still \emph{effective} and \emph{optimal} for \acs{SCS} projects?
+Indeed, both nano-satellites and smaller classes can be classified as \emph{(very) small spacecraft}, and usually have similar high-level requirements. These requirements revolve both around the function of the devices (to reliably and autonomously operate one or \draft{a few} payloads in \acl{LEO}) and the programmatic constraints (such launch deadline, limited budget, small team size).\footnote{Non-examples that may not fit some of these criteria include: human spaceflight or massive constellations.} These similarities can also extend over non-spacecraft projects, such as hosted payloads or scientific balloon/sounding rocket missions.\footnote{An example of a sub-orbital initiatiative is \acs{ESA}'s REXUS/BEXUS programme, where teams are given 8--16 months to develop a scientific payload \cite{REXUSBEXUSSchedule}.}
+
+Based on these similarities and the number of successes of launched \acs{SCS} missions so far, we can claim that these methodologies maintain their validity in terms of project quality. Do they, however, maintain their validity in terms of the rest of \Cref{tab:i_success_factors}'s factors, such as schedule and budget? Or, \draft{worded differently}, are these methodologies still \emph{effective} and \emph{optimal} for \acs{SCS} projects?
 
 \citeauthor{heinAttoSatsChipSatsOther2019} posited, for example, that atto-satellites offer characteristics that make them possible to develop (from conceptualisation to flight hardware) within 6 months, enabling mass accessibility \todo{and more good stuff} \autocite{heinAttoSatsChipSatsOther2019}. \todo{Blablabla}
 
 What are the specific characteristics of \acs{SCS} that differentiate them from CubeSats and justify the usage of a different methodology?
 \begin{itemize}
-	\item \textbf{Size and mass}: The mass of a single pocket-sized spacecraft can be \( 1 /2 \)\textsuperscript{nd} to \( 1/200 \)\textsuperscript{th} of a CubeSat, with the volume following similar 
-\end{itemize}
+	\item \textbf{Size and mass}: The mass of a single pocket-sized spacecraft can be \( 1 /2 \)\textsuperscript{nd} to \( 1/200 \)\textsuperscript{th} of a CubeSat, with the volume following a similar trend. The first implication of this constraint is a significantly reduced launch cost, which can affect \begin{enumerate*}
+		\item whether an organisation can launch any spacecraft at all;
+		\item how often an organisation can launch spacecraft;
+		\item how many spacecraft can be launched in a single time period.
+	\end{enumerate*}
 
+	Another implication of a smaller footprint is less available real-estate for subsystems and components. In turn, this means that \begin{enumerate*}
+		\item some components have to be further miniaturised, increasing difficulty or complexity;
+		\item space for fewer components and therefore reduced functionality compared to larger systems;
+		\item more difficulty applying concepts that require space, such as modularity or redundancy.
+	\end{enumerate*}
+
+	Finally, the physical constraints related to reduced space can limit the performance of the system and its subsystems. Most notably, a system's energy generation, energy storage and communication capabilities are directly tied to the solar panel area, battery volume and effective antenna areas respectively. Other effects can \draft{include} thermal management, attitude control or propulsion.
+
+	While the above are the direct implications of size and mass, as the main differentiating factors, they also indirectly affect other aspects of a project, which are mentioned \draft{below}.
+	\item \textbf{Facility requirements}: Some of the most expensive, hard-to-maintain and critical equipment for integration and verification of CubeSat projects needs to support the sizes of 6U or larger spacecraft. This can include clean rooms, \ac{TVAC} chambers, or \draft{vibration shakers}. A smaller physical size of a device under manufacturing or test corresponds to reduced requirements for this equipment as well.
+	\item \textbf{Low mass / area ration}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more assynemtric shape increases the average drag coefficient of the system, as well as the \draft{thermally radiative dissipation area}.
+	
+	The latter characteristic hastens thermal equilibrium in the hot and cold cases. Combined with the potential increased difficulty of thermal control due to size, this characteristic discourages the use of thermally-sensitive payloads. From a \acl{SYE} point of view, it makes the use of conventional batteries difficult, as they cannot be charged or discharged below a specific temperature. \draft{Manchester} \todo{[cite]} performed a thermal analysis of of the Sprite ChipSats, \draft{finding that they can reach temperatures down to \qty{-100}{\degreeCelsius} in eclipse.} These low numbers also prevent the operation of most commercial electronics.
+
+	A higher drag coefficient will also lead to a faster decay of the spacecraft, reducing its mission life. \draft{Manchester} \todo{[cite]} calculated that a \draft{XXX km} Sprite launch has an expected lifetime of \draft{XX days}, significantly shorter than the few years calculated for CubeSats.
+	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system, as well fewer interfaces that need to be managed\footnote{See \Cref{sec:INTRODUCTION_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``light-weight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
+	
+	At the same time, however, the required miniaturisation of components can increase complexity for specific applications, such as deployment mechanisms and thrusters, because of technical manufacturing and fabrication challenges related to the need for increased precision \todo{[cite?]}. \draft{The construction of miniaturised hardware can prevent the use of a manual approach, requiring special machinery, and components that are not available commercially.}
+	\item \textbf{\acs{COTS} availability}: Due to both the small size and the lower popularity of \acs{SCS} compared to CubeSat and larger spacecraft, the number of suitable \acf{COTS} components tailored for use in space is limited, especially when considering high-\acs{TRL} \draft{components}. Teams will therefore be more likely to design or develop subsystems and parts in-house. This characteristic can also extend to support equipment, such as FlatSat supports, test jigs, or analysis software.
+\end{itemize}
+The above characteristics explain differences between CubeSats and \acs{SCS} which inform some of the key decisions taken in the \acl{SYE} \draft{process}. Taking this argument one step further, they can directly motivate different shifts in established CubeSat development methodologies and approaches as follows:
+\begin{itemize}
+	\item Once a design has been elaborated, the development, manufacturing, assembly and integration of either a subsystem, or the complete spacecraft, can be performed in a much shorter time. In the extreme case of ChipSats, this production chain involves the procurement of a \acs{PCB} and component assembly, which can last 2 weeks or less. Likewise, the material cost for an entire satellite model can drop down to a few hundred euros \todo{[cite]}. This observation encourages mass iteration cycles on a subsystem or even system level.
+	\item There is a natural tendency to shift both manufacturing and verification in-house, due to the reduction in the requirements for expertise and tooling. \draft{Instead of a} cleanroom requirement, teams can comfortably work on a flow bench. If thermal chambers, \draft{electrodynamic shakers}, Helmholtz cages or other testing equipment is needed, its scale can be reduced. This makes it possible for developers to own and operate manufacturing and testing equipment very close to the \draft{daily working location}, limiting costs, time spent, adminsitrative burden, and making \draft{very short manufacturing runs and test campaigns} possible.
+\end{itemize}
 
 \FloatBarrier
 
@@ -588,7 +618,13 @@ From the perspective of \acs{SCS} projects and \acs{SCS} developers, the scope o
 	\label{fig:i_research_questions}
 \end{figure*}
 
-The main objective of this thesis is to develop a new Systems Engineering methodology, tailored for \acl{SCS}, that covers the technical management, system description and system realisation aspects of these projects. The goal of this methodology is to offer an improvement over current approaches, with a focus on pico-satellite, femto-satellite and atto-satellite developers in academia and industry. In order to develop a sound and valid methodology, I will address the following research questions:
+The main objective of this thesis is to develop a new Systems Engineering methodology, tailored for \acl{SCS}, that covers the technical management, system description and system realisation aspects of these projects. The goal of this methodology is to offer an improvement over current approaches, with a focus on pico-satellite, femto-satellite and atto-satellite developers in academia and industry. The \textbf{main hypothesis} is therefore:
+\begin{quote}
+	Novel systems engineering approaches can \draft{drastically decrease the development duration} of miniaturized, sub-CubeSat-size spacecraft.
+\end{quote}
+
+
+In order to develop a sound and valid methodology, I will address the following research questions:
 
 \paragraph{Research Question 1 (RQ1)}
 \textbf{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}
@@ -639,6 +675,12 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 
 \chapter{Literature Survey}
 \label{chap:SURVEY}
+
+\begin{fullwidth}
+\epigraph{\emph{
+		"Agile" doesn't mean "last-minute".}}{Alexander F.\space B\"uhler}
+\end{fullwidth}
+
 \section{Terminology}
 
 \subsection{Spacecraft Classes}
@@ -933,6 +975,7 @@ Nevertheless, \cite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim 
 \section{Topics from Systems Engineering}
 
 \subsection{Metrics}
+\label{sec:LITERATURE_metrics}
 
 \citeauthor{honourUnderstandingValueSystems2004} \autocite{honourUnderstandingValueSystems2004} provides a list of quantifiable parameters that can gauge the effect of Systems Engineering:
 \begin{itemize}
@@ -2224,7 +2267,7 @@ Another decision that developers are faced with involves whether they reuse exis
 
 		4 & System & Tartan Artibeus & Carnegie Mellon University & \draft{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
 
-		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Politècnica de Catalunya & \draft{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
+		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & \draft{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
 
 		x & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
 
@@ -2320,8 +2363,8 @@ In addition to this general shift towards in-house environmental testing, \ac{SC
 
 As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
 
-\paragraph{Mathematical Model}
-
+\paragraph{Reduced Testing}
+\todo{Create a paragraph about REDUCED testing, i.e. using equipment that does not reach low levels as required (e.g. vacuum+environmental chamber instead of TVAC). Inspired from AcubeSAT's freezer tests.}
 
 
 
