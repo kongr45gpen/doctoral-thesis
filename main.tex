@@ -522,8 +522,8 @@ The above results show that an adequate balance needs to be found when adopting 
 		\item Why is this not enough?
 		\item What can be done about it?
 		%\item What are the special characteristics of SCS?
-		\item How will a methodology take advantage of these characteristics?
-		\item Which characteristics can the methodology address?
+		%\item How will a methodology take advantage of these characteristics?
+		%\item Which characteristics can the methodology address?
 		\item Is systems engienering the biggest factor that will affect all of these things or is it something else? Does systems engineering play a role or should we look somewhere else?
 	\end{enumerate}
 }
@@ -558,38 +558,66 @@ What are the specific characteristics of \acs{SCS} that differentiate them from 
 
 	While the above are the direct implications of size and mass, as the main differentiating factors, they also indirectly affect other aspects of a project, which are mentioned \draft{below}.
 	\item \textbf{Facility requirements}: Some of the most expensive, hard-to-maintain and critical equipment for integration and verification of CubeSat projects needs to support the sizes of 6U or larger spacecraft. This can include clean rooms, \ac{TVAC} chambers, or \draft{vibration shakers}. A smaller physical size of a device under manufacturing or test corresponds to reduced requirements for this equipment as well.
-	\item \textbf{Low mass / area ration}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more assynemtric shape increases the average drag coefficient of the system, as well as the \draft{thermally radiative dissipation area}.
+	\item \textbf{Low mass / area ratio}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more assynemtric shape increases the average drag coefficient of the system, as well as the \draft{thermally radiative dissipation area}.
 	
 	The latter characteristic hastens thermal equilibrium in the hot and cold cases. Combined with the potential increased difficulty of thermal control due to size, this characteristic discourages the use of thermally-sensitive payloads. From a \acl{SYE} point of view, it makes the use of conventional batteries difficult, as they cannot be charged or discharged below a specific temperature. \draft{Manchester} \todo{[cite]} performed a thermal analysis of of the Sprite ChipSats, \draft{finding that they can reach temperatures down to \qty{-100}{\degreeCelsius} in eclipse.} These low numbers also prevent the operation of most commercial electronics.
 
-	A higher drag coefficient will also lead to a faster decay of the spacecraft, reducing its mission life. \draft{Manchester} \todo{[cite]} calculated that a \draft{XXX km} Sprite launch has an expected lifetime of \draft{XX days}, significantly shorter than the few years calculated for CubeSats.
+	A higher drag coefficient will also lead to a faster decay of the spacecraft, reducing its mission life. \draft{Manchester} \todo{[cite]} calculated that a \draft{XXX km} Sprite launch has an expected lifetime of \draft{XX days}, significantly shorter than the few years calculated for CubeSats\footnote{Even though the re-entry time is also a factor of launch altitude, this parameter cannot be usually controlled by customers, and lies in the range between \qtyrange{500}{550}{\kilo\meter} for \acsp{SSO}}.
 	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system, as well fewer interfaces that need to be managed\footnote{See \Cref{sec:INTRODUCTION_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``light-weight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
 	
 	At the same time, however, the required miniaturisation of components can increase complexity for specific applications, such as deployment mechanisms and thrusters, because of technical manufacturing and fabrication challenges related to the need for increased precision \todo{[cite?]}. \draft{The construction of miniaturised hardware can prevent the use of a manual approach, requiring special machinery, and components that are not available commercially.}
 	\item \textbf{\acs{COTS} availability}: Due to both the small size and the lower popularity of \acs{SCS} compared to CubeSat and larger spacecraft, the number of suitable \acf{COTS} components tailored for use in space is limited, especially when considering high-\acs{TRL} \draft{components}. Teams will therefore be more likely to design or develop subsystems and parts in-house. This characteristic can also extend to support equipment, such as FlatSat supports, test jigs, or analysis software.
+	
+	Similarly, the novelty of PocketQubes, and more-so smaller femtosatellites and attosatellites, also \draft{limits} the amount of standardisation and established conventions in this field. In practical terms, fewer deployer and interface designs may be available as specifications or physical implementations. Especially for ChipSat-scale spacecraft, the different proposed applications \draft{require diversity in form factors, making future standardisation potentially harder than on their larger counterparts.} However, the overall physical structure of many \acs{SCS} projects can be described in simple terms: either as a stack of \acsp{PCB} supported by a small frame (PocketQubes), or as one or two flat \acsp{PCB} with minimal support (ChipSats).
 \end{itemize}
+
+\begin{figure}
+	\includegraphics{graphics/Methodoconcept.pdf}
+	\caption{Mapping between novel \acs{SCS} characteristics (compared to CubeSats) and \draft{opportunities} for a \acs{SYE} methodology}
+	\label{fig:i_important_mapping}
+\end{figure}
 The above characteristics explain differences between CubeSats and \acs{SCS} which inform some of the key decisions taken in the \acl{SYE} \draft{process}. Taking this argument one step further, they can directly motivate different shifts in established CubeSat development methodologies and approaches as follows:
 \begin{itemize}
 	\item Once a design has been elaborated, the development, manufacturing, assembly and integration of either a subsystem, or the complete spacecraft, can be performed in a much shorter time. In the extreme case of ChipSats, this production chain involves the procurement of a \acs{PCB} and component assembly, which can last 2 weeks or less. Likewise, the material cost for an entire satellite model can drop down to a few hundred euros \todo{[cite]}. This observation encourages mass iteration cycles on a subsystem or even system level.
+	
+	\item A very constrainted architecture might prevent the implementation of concepts and design approaches that would further constrain it, such as Separation of Concerns, modularity, or reusability.
+
 	\item There is a natural tendency to shift both manufacturing and verification in-house, due to the reduction in the requirements for expertise and tooling. \draft{Instead of a} cleanroom requirement, teams can comfortably work on a flow bench. If thermal chambers, \draft{electrodynamic shakers}, Helmholtz cages or other testing equipment is needed, its scale can be reduced. This makes it possible for developers to own and operate manufacturing and testing equipment very close to the \draft{daily working location}, limiting costs, time spent, adminsitrative burden, and making \draft{very short manufacturing runs and test campaigns} possible.
+	
+	\item While \acs{SCS} projects still retain mission-criticality, since irreperable failures can propagate and lead to a loss of mission, the consequences of failure are usually less severe. \todo{in terms of what?} Additionally, shorter mission durations \draft{mean} that  that accumulating effects (such as those related to radiation or aging) are less \draft{severe}\footnote{Note, however, that most CubeSat mission failures happen at the beginning of a mission, as a result of ``infant mortality'' \todo{[cite swartwout]}}. As a result, developers need to take fewer derating and techincal risk mitigration measures, such as the use of radiation-tolerant components or redundancy. Administrative measures for technical risk reduction (such as \acs{FMEA} \todo{or fuzz testing}) can also be \draft{potentially reduced in fidelity}.
+	
+	\item While CubeSat projects have a fixed set of launch requirements, originating from the launcher, the deployer and the CubeSat specification, non-standardised projects may require the implementation of proprietary interfaces, potentially specific to each company that can offer a flight slot for \acs{SCS} spacecraft. In extreme cases, these interface specifications may not have been devised at all. Then, \acs{SCS} developers will have to collaborate with their provider to agree on shared interfaces, or design their own\footnote{This was, for example, the approach taken by Manchester, who designed a 3U CubeSat capable of hosting and deploying multiple ChipSats \cite{manchesterCentimeterScaleSpacecraftDesign2015}.}. These uncertainties increase the possibility of external requirements changing during a mission.
+	
+	\item The reduced launch costs, sizes, and number of components, combined with the \draft{popularity} of swarm-based or distributed \acs{SCS} concepts, greatly favour the development and launch of multiple similar spacecraft together, sometimes in the form of constellations. This approach adds a form of ``operational reliability'', since a launch of multiple spacecraft can be considered as a \draft{redundancy strategy}.
+	
+	\item The constrained power generation and storage capabilities of \acs{SCS}, combined with more limiting earth communication capabilities\footnote{Influenced not only by the available energy, but also by antenna size}, enforce different approaches for \acf{CONOPS}. While data transmission is expensive, Moore's law has successfully predicted significant processing capabilities with reduced power consumption and real estate \todo{[cite]}, encouraging the processing of data ``on-the-edge''\footnote{that is, on the spacecraft instead of the ground station} \autocite{moreiraEdgeComputingSpace2025}. 
 \end{itemize}
+
+The above opportunities and possible decisions demostrate that a distinct, tailored methodology for \acs{SCS} can be followed. What would be, however, the potential effects of such a methodology? In \Cref{tab:i_success_factors} I listed the ``success factors'' of Systems Engineering for a project, which include schedule, cost, risk, scope, resources and quality. For a proposed methodology to be considered useful, it must therefore:
+\begin{enumerate}[itemsep=-1ex]
+	\item Demonstrate \textbf{internal and external validity}, showing that it can indeed be used to bring an \acs{SCS} project from conceptualisation to qualification/launch.
+	\item Demonstrate that its effects on one or more of the aforementioned success criteria are \textbf{significant} compared to other environmental, programmatic or technical factors.
+	\item Demonstrate that it has \textbf{improved performance}\todo{?} compared to current State-of-the-Art approaches for pocket-sized spacecraft, in terms of one or more of these factors.
+\end{enumerate}
+
+
 
 \FloatBarrier
 
 \section{Research Questions and Thesis Objectives}
 \label{sec:INTRODUCTION_research_questions}
 
-\begin{figure*}[p]
+\begin{figure}[p]
 	\includegraphics{graphics/decomp.pdf}
 	\caption{\acf{ARC} diagram for ``Systems Engineering for sub-CubeSat Spacecraft''}
 	\label{fig:i_thesis_decomposition}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[p]
+\begin{figure}[p]
 	\includegraphics{graphics/DecompSYE.pdf}
 	\caption{Focus on ``Systems Engineering'' from \Cref{fig:i_thesis_decomposition}}
 	\label{fig:i_sye_decomposition}
-\end{figure*}
+\end{figure}
 
 In order to establish the area of interest for this thesis, I will use the \acf{ARC} diagram concept of \citeauthor{blessingDRMDesignResearch2009} \autocite{blessingDRMDesignResearch2009}. \Cref{fig:i_thesis_decomposition} shows the decomposition of this work into the areas that are related to Systems Engineering for \acs{SCS}, and the areas where my contribution will be. Due to the wide range of ``Systems Engineering'' as a topic, I present a further partition of it into 13 areas (\Cref{fig:i_sye_decomposition}). This partition is based on the original decomposition by \acs{NASA} \autocite{sheaNASASystemsEngineering2020}, shown in \Cref{fig:i_nasa_sye_decomposition}, and tailored for \acl{SCS}. \todo{Check if the original figure is 1-1}
 
@@ -2007,6 +2035,9 @@ In this section, I will go into more detail on the decisions behind selecting an
 		\item Miscellaneous Design guidelines
 		\item FDIR
 		\item Hardware considerations: Thermal, structural, power storage (battery etc.), sails, navigation/guidance/propulsion, storage
+		\item The question is, starting from a cubesat, which components scale linearly (e.g. reaction wheels, magnetorquers), and which do not (antennas)
+		\item List of new technologies based on the literature, such as lens-less camera, MEMS etc.
+		\item Transferring of the design effort towards earth: High-gain ground station design for low-gain antennas, scheduling experiments and commands instead of autonomous operations, reprogrammability instead of perfection
 \end{itemize}}
 
 The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
