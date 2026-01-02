@@ -25,6 +25,8 @@
 
 \input{acronyms.tex}
 
+\usepackage{mwe}
+
 \begin{document}
 	
 \addcontentsline{toc}{chapter}{Preamble}
@@ -2452,7 +2454,7 @@ While the small size of \acs{SCS} systems limits the number of physical subsyste
 
 \marginnote{%
 Required software features for a \acs{SCS} based on \Cref{tab:m_software_requirements} can be summarised as:
-\begin{itemize}
+\begin{itemize}[itemsep=-0.5ex]
 	\item Periodic \acs{TM} reporting of critical values
 	\item Storage of parameter statistics or historical values
 	\item Ping (``are-you-alive'') tests
@@ -2466,7 +2468,7 @@ Required software features for a \acs{SCS} based on \Cref{tab:m_software_require
 \end{itemize}
 
 Examples of features that would be typically present in larger spacecraft but \emph{NOT} recommended for \acs{SCS} are:
-\begin{itemize}
+\begin{itemize}[itemsep=-0.5ex]
 	\item Position-based scheduling
 	\item Memory/file management
 	\item Scripting
@@ -2518,34 +2520,6 @@ In this architecture, program memory is split into two halves, one holding the w
 	\includegraphics{graphics/software/block.pdf}
 	\caption{Block diagram of typical satellite firmware\draft{TODO}}
 \end{figure*}
-
-\paragraph{Communication Stack}
-Many of \Cref{tab:m_software_requirements}'s requirements embody the communication of data between space and ground. Wireless transmission of data is complex by nature. Typically, this complexity is managed by separating the communication process into different layers, starting from the physical waves to the virtual application. \acs{ECSS} summarises the protocols used in space for each layer in the \emph{ECSS-E-ST-50C} standard \autocite{ECSS-E-ST-50C}. This includes a large variety of purpose-built protocols by the \acf{CCSDS}. As these protocols are optimised for use in space, they are typically not implemented in generally available or commercial software and hardware. CubeSat developers have therefore traditionally relied on custom (in-house) or generic solutions for communication, especially for the physical layer.
-\marginnote{%
-	For example, Manchester used an AX.25 packet format with a simple modulation for the \emph{KickSat} CubeSat, and a custom packet under \ac{DSSS} encoded with Gold Codes.%
-}
-
-The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, \draft{making devices look more like \ac{IOT} devices than spacecraft}.
-The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem\todo{ [cite]}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
-
-I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be furter derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
-
-\begin{table*}[h]
-\caption{Communication protocols typically used in CubeSats and pocket-sized spacecraft \todo{[cite]}}
-\label{tab:m_comms_protocols}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\linewidth}{@{}lp{5cm}X@{}}
-	\toprule
-	Name & Layers & Description \\ \midrule
-	AX.25 & Data Link & Framing for radio-amateur stations \\
-	CubeSat Space Protocol & Data Link, Network, Transport, Application & A protocol stack designed for CubeSats with support for modular services and inter-subsystem communication \\
-	LoRa & Physical & Spread spectrum modulation built for low-power, long-range communication. The protocol is proprietary and its implementation details are not public. \\
-	DASH7 & Physical & Open-source LoRa alternative \\
-	OSDLP & Data Link, Application & A stack of \acs{CCSDS} protocols for \acs{TMTC} data links that is lightweight enough for CubeSats and PocketQubes
-	% https://gitlab.com/librespacefoundation/osdlp
-	\bottomrule
-\end{tabularx}
-\end{table*}
 
 \FloatBarrier
 \subsection{Improving Software Reliability}
@@ -2631,14 +2605,140 @@ The consequences of the above errors range between minor mission degradation to 
 \paragraph{Results}
 
 \FloatBarrier
-\subsection[SCS Debugging Interfaces]{\acs{SCS} Debugging Interfaces}
+\subsection[Miscalleneous Software Topics]{Miscellaneous Software Topics}
+\label{sec:METHODOLOGY_misc_software}
+
+\paragraph{Communication Stack}
+Many of \Cref{tab:m_software_requirements}'s requirements embody the communication of data between space and ground. Wireless transmission of data is complex by nature. Typically, this complexity is managed by separating the communication process into different layers, starting from the physical waves to the virtual application. \acs{ECSS} summarises the protocols used in space for each layer in the \emph{ECSS-E-ST-50C} standard \autocite{ECSS-E-ST-50C}. This includes a large variety of purpose-built protocols by the \acf{CCSDS}. As these protocols are optimised for use in space, they are typically not implemented in generally available or commercial software and hardware.
+\marginnote{%
+	For example, Manchester used an AX.25 packet format with a simple modulation for the \emph{KickSat} CubeSat, and a custom packet under \ac{DSSS} encoded with Gold Codes.%
+}
+CubeSat developers have therefore traditionally relied on custom (in-house) or generic solutions for communication, especially for the physical layer.
+
+The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, \draft{making devices look more like \ac{IOT} devices than spacecraft}.
+The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem\todo{ [cite]}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
+
+I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be furter derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
+
+\begin{table*}[h]
+\caption{Communication protocols typically used in CubeSats and pocket-sized spacecraft \todo{[cite]}}
+\label{tab:m_comms_protocols}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\linewidth}{@{}lp{5cm}X@{}}
+	\toprule
+	Name & Layers & Description \\ \midrule
+	\textbf{AX.25} & Data Link & Framing for radio-amateur stations \\
+	\textbf{CubeSat Space Protocol} & Data Link, Network, Transport, Application & A protocol stack designed for CubeSats with support for modular services and inter-subsystem communication \\
+	\textbf{LoRa} & Physical & Spread spectrum modulation built for low-power, long-range communication. The protocol is proprietary and its implementation details are not public. \\
+	\textbf{DASH7} & Physical & Open-source LoRa alternative \\
+	\textbf{OSDLP} & Data Link, Application & A stack of \acs{CCSDS} protocols for \acs{TMTC} data links that is lightweight enough for CubeSats and PocketQubes \\
+	% https://gitlab.com/librespacefoundation/osdlp
+	\bottomrule
+\end{tabularx}
+\end{table*}
+
+%\subsection[SCS Debugging Interfaces]{\acs{SCS} Debugging Interfaces}
+\paragraph{Debugging Interfaces}
 \label{sec:METHODOLOGY_debugging_interfaces}
+
+One part of the hardware-software interface that is used often during development is the \textbf{programming} or \textbf{debugging interface}, which allows developers to:
+\begin{itemize}[itemsep=-2ex]
+	\item Upload new software versions to a microcontroller
+	\item Use a debugger to examine and alter the current state of the software
+	\item Receive logs and \acs{TM} in various formats
+	\item Inject \acl{TC}
+\end{itemize}
+
+This function is usually performed by a native debugging interface provided by the microcontroller\footnote{such as \acs{SWD} or \acs{JTAG}}, which is exposed through a dedicated \acs{PCB} connector. This interface then connects to a dedicated ``programmer'' device that interfaces between this \acs{MCU} signal and the programming computer. Spacecraft with multiple subsystems provide this functionality through a so-called \textbf{``umbilical connection''}, which provides diagnostic access to the satellite's power supply, batteries, and debugging interfaces.
+
+\begin{marginfigure}
+	\includegraphics{pictures/P1000717_resized.jpg}
+	\caption{POQUITO's 16-pin umbilical connector, shown here above the antenna}
+\end{marginfigure}
+
+In CubeSats and PocketQubes, this interface is typically provided by a friction-locked connector, exposing each connection as a separate pin or plug. However, the limited space of femto-scale satellites motivates connection solutions that take up less space, by trading off compatibility with common connectors. Some notable examples are:
+\marginnote{Typical considerations that have to be taken into account when selecting a physical umbilical interface are:
+\begin{itemize}[itemsep=-0.5ex]
+	\item Physical size
+	\item Number of distinct connections
+	\item Maximum data rate
+	\item Maximum current capacity
+	\item Lock type
+	\item Maximum number of mating cycles
+\end{itemize}
+}%
+\begin{itemize}
+	\item \textbf{\acf{FFC} connectors and cables} that increase the density of connections, but usually require dedicated breakout boards to interface with \acs{COTS} \acs{EGSE}.
+	\item \textbf{\acs{USB} connectors}, usually compliant to the USB-C specification, take advantage of the miniaturisation and power delivery capabilities of this common standard and allow directly interfacing a computer with the spacecraft. However, they require compatibility with the \acs{MCU}, additional power management hardware and a firmware bootloader. This approach is used by PyCubed-Mini \todo{[cite]}.
+	\item \textbf{Other miniaturised connectors} that provide a high density, including industrial and commercial components. For example, the Monarch ChipSat used a 19-pin Micro-HDMI connector with a non-compliant pinout (\Cref{subfig:m_connectors_microhdmi}) \autocite{adamsRSelectedSpacecraft2019}.
+	\item \textbf{Unpopulated vias, holes (``test points'') or pads} that can be accessed by probes, by soldering temporary connectors, or by using spring-loaded test pins. This approach is used by the Sprite (\Cref{subfig:m_connectors_pth}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015} and SpinorSat \autocite{brashearsSpinorSatStep502018} ChipSats. To further reduce space, these nodes can be placed on \acs{PCB} edges. This kind of breakout pins were also envisioned by \citeauthor{adamsRSelectedSpacecraft2019}' StarChip concept \autocite{adamsRSelectedSpacecraft2019}. \todo{[check]}
+	\item A \textbf{snap-off development board that encloses the ChipSat} and provides development-only interfaces. This is also a concept used by the Sprite ChipSats (\Cref{subfig:m_connectors_detachable}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. The disadvantage is that, after the development board is separated, it is harder to reprogram the spacecraft (e.g.\space after integration).
+	\item \textbf{\acf{OTA} programming through a wireless network}. This network can be the nominal \acs{RF} link used by the satellite, or a purpose-specific link, if supported by the microcontroller, such as Wi-Fi or Bluetooth. % NFC?
+	\item \textbf{Programming through another wireless technology}, such as infrared/visible light or sound. This requires dedicated hardware.
+\end{itemize}
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		% Image source: Own
+		\includegraphics[height=3cm]{media/pictures/IMG_1497.jpg}
+		\caption{\acs{FFC} connector (\emph{ChipSat-1})}
+		\label{subfig:m_connectors_ffc}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		% Image source: https://vanhunteradams.com/Monarch/components.png
+		\includegraphics[height=3cm]{media/external/monarch_debug}
+		\caption{Micro-HDMI connector (\emph{Monarch}) \cite{adamsRSelectedSpacecraft2019}}
+		\label{subfig:m_connectors_microhdmi}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		% Image source: Own (from KiCad), see https://github.com/kicksat/sprite
+		\includegraphics[height=3cm]{media/external/sprite_debug}
+		\caption{Plated Through-Holes (\emph{Sprite}) \cite{manchesterCentimeterScaleSpacecraftDesign2015}}
+		\label{subfig:m_connectors_pth}
+	\end{subfigure}%
+	\\%
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		% Image source: https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg
+		\includegraphics[height=3cm]{media/external/esp32}
+		\caption[Plated Through-Holes on board edge]{Plated Through-Holes on board edge\footnotemark}
+		\label{subfig:m_connectors_pthedge}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		\includegraphics[height=3cm]{example-image-a}
+		\caption{Die-level test points (\emph{StarChip}) \todo{[todo]}}
+		\label{subfig:m_connectors_die}
+	\end{subfigure}\hfill
+%	\begin{subfigure}[t]{0.27\textwidth}
+%		\centering
+%		% Image source: https://commons.wikimedia.org/wiki/File:PIFA_antennae.png
+%		\includegraphics[height=3cm]{media/external/meandered_pifa}
+%		\caption{Surface-mount \acs{PCB} antenna that can be used for \acs{OTA} programming\footnote{Credit: \href{https://commons.wikimedia.org/wiki/File:PIFA_antennae.png}{SpinningSpark, Wikipedia, CC BY-SA 3.0.}}}
+%		\label{subfig:m_connectors_ota}
+%	\end{subfigure}%
+	\begin{subfigure}[t]{0.27\textwidth}
+		\centering
+		% Image source: Own (from KiCad), see https://github.com/kicksat/sprite
+		\includegraphics[height=3cm]{media/external/sprite_detach}
+		\caption{Detachable development board (\emph{Sprite}) \cite{manchesterCentimeterScaleSpacecraftDesign2015} \todo{[check source]}}
+		\label{subfig:m_connectors_detachable}
+	\end{subfigure}%
+	\caption{Examples of debugging/umbilical connections}
+\end{figure*}
+
 
 \FloatBarrier
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
 
 \subsection{Recommended Tools}
+
+\footnotetext{Credit: \href{https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg}{Espressif}}
 
 In the ideal case, each proposed part of the \ac{SCS} methodology would be supported by dedicated hardware and software tools, compliant with the requirements described in \Cref{sec:METHODOLOGY_tooling_requirements}, and tailored to each specific use case.
 However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
