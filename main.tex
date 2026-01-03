@@ -718,7 +718,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 
 %The idea of a \textbf{Sub-CubeSat Spacecraft} (\acs{SCS}) depends on the definition of a CubeSat
 
-The CubeSat Design Specification \autocite{CDS14} defines a CubeSat as a class of satellite composed of 1 to 12 cube units with a size of \SI{10}{\centi\meter}  (``U''). As such, we define \textbf{Sub-CubeSat Spacecraft} to include all spacecraft classes smaller than \SI{10}{\centi\meter} on all dimensions. Depending on launch requirements, this definition will usually restrict an \acs{SCS} mass to less than \SI{2}{\kg}, the maximum mass for a 1U CubeSat \cite{CDS14}.
+The CubeSat Design Specification \autocite{CDS14} defines a CubeSat as a class of satellite composed of 1 to 12 cube units with a size of \SI{10}{\centi\meter}  (``U''). As such, I define \textbf{Sub-CubeSat Spacecraft} to include all spacecraft classes smaller than \SI{10}{\centi\meter} on all dimensions. Depending on launch requirements, this definition will usually restrict an \acs{SCS} mass to less than \SI{2}{\kg}, the maximum mass for a 1U CubeSat \cite{CDS14}.
 
 Various Sub-CubeSat spacecraft classes have been defined in the literature. Most prominently, \textbf{PocketQubes} are standardised in the PocketQube Standard \autocite{raduDelfiPQFirstPocketqube2018} as combinations of \SI{5}{\centi\meter} cube units (``p''). Smaller sizes are represented by classes such as \textbf{\acs{PCB}sats} \autocite{barnhartLowcostFemtosatelliteEnable2009}, which are typically flat in one direction, and \textbf{SpaceChips} or satellites-on-a-chip \autocite{barnhartSatelliteonaChipFeasibilityStudy2006}, which would be complete spacecraft implemented on an \acf{IC} smaller than \qtyproduct{2 x 2}{\centi\meter}. The notion of a \textbf{ChipSat} can define a flat-sized spacecraft with an envelope smaller than \qtyproduct{5 x 5}{\centi\meter} \autocite{manchesterCentimeterScaleSpacecraftDesign2015}.
 
@@ -746,7 +746,7 @@ Apart from the size-based definitions, spacecraft can also be classified based o
 Note that the widely accepted classification, perhaps misleadingly, does not follow the \acs{SI} definition of unit prefixes. The convention used in this paper is shown in \Cref{tab:satellite_sizes}.
 \draft{Find an extra citation for small satellite sizes}
 
-Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites. To reduce verbosity, we will also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
+Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites. To reduce verbosity, I also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
 
 
 \subsection{Method and Methodology}
@@ -759,9 +759,9 @@ As the primary objective of this work is to synthesise a \emph{methodology} for 
 	A method is specification of how a specified result is to be achieved. This may include specifications of how information is to be shown, what information is to be used as inputs to the method, what tools are to be used, what actions are to be performed and how, and how the task should be decomposed and how actions should be sequenced. \cite{gerickeWhatWeNeed2017}
 \end{definition}
 
-A complete description of a design method must include its core idea, its representation of the information the method produces, a procedure (set of actions or activities to be followed), and its intended use \autocite{gerickeElementsDesignMethod2022}. As tools are given specific attention in our research, we further reproduce their definition here:
+A complete description of a design method must include its core idea, its representation of the information the method produces, a procedure (set of actions or activities to be followed), and its intended use \autocite{gerickeElementsDesignMethod2022}. As tools are given specific attention in my research, I further reproduce their definition here:
 \begin{definition}[Tool]
-	A tool is an object or artefact that is used to perform some action [...]. For design methods, documents or software that direct and structure designers' thoughts and actions, or facilitate constructing representations, or perform computations. \cite{gerickeElementsDesignMethod2022}
+	A tool is an object or artefact that is used to perform some action [...]. For design methods, documents or software that direct and structure designers' thoughts and actions, or facilitate constructing representations, or perform computations. \cite{gerickeElementsDesignMethod2022} \todo{something is wrong here}
 \end{definition}
 
 The term \emph{methodology} itself lacks a universally agreed-upon definition, often being used interchangeably with ``method''. For this work, I will adopt part of the definition provided by \autocite{pahlIntroduction2007}:
@@ -2731,8 +2731,23 @@ In CubeSats and PocketQubes, this interface is typically provided by a friction-
 	\caption{Examples of debugging/umbilical connections}
 \end{figure*}
 
+\paragraph{Use of generative \acs{AI}}
+Since the mid-2020s, \acs{AI}-assisted software development has become prevalent, through the use of \acfp{LLM} trained on publically available source code repositories.
+\acs{AI} tools\footnote{Running on the cloud or locally} can offer assistance ranging from code completion to generation of code structures and architectures. The training set of coding models usually contains embedded firmware for popular platforms, \draft{making them compatible with typical \acs{SCS} software development.}
+
+Initially, the use of generative \acs{AI} seems attractive for \acs{SCS} software, as it can easily generate large amounts of base code with less effort from developers. However, the quality and safety of generated code for use in mission-critical systems is still under investigation in research. A \citeyear{liuEmpiricalStudyCode2024} empirical study on three software problems found that ``the current language understanding and generation capabilities of the LLMs are not sufficient to generate complete functional code from highly specialized domain requirements'' \autocite{liuEmpiricalStudyCode2024}. The researchers found that, by default, the generated code from the specification may be incomplete and non-compliant to safety standards\footnote{In this case, the MISRA C standard.}. However, they noted that augmented prompts following a defined procedure can improve code quality.\marginnote{In \cite{liuEmpiricalStudyCode2024}, \citeauthor{liuEmpiricalStudyCode2024} compare \acs{LLM} code generation with model-based code generation, concluding that the latter requires a large investment of developer time and requires a correct model a priori. It therefore does not \draft{seem initially suitable for the \acs{SCS} methodology context.}}
+
+In \citeyear{tihanyiHowSecureAIgenerated2025}, \citeauthor{tihanyiHowSecureAIgenerated2025} compared state-of-the-art \acsp{LLM} and found that 62\% of the generated C programs included at least one security vulnerability, such as buffer overflows and dereference failures \autocite{tihanyiHowSecureAIgenerated2025}.
+
+On the other hand, a \citeyear{kirchnerGeneratingAutomotiveCode2025} comparison of locally-deployable \acsp{LLM} used an iterative generation (or ``code refinement'') process, where static and dynamic analysis is performed on the generated code, and the (potentially negative) results are fed back to the \acs{LLM}, until the acceptable code is produced \autocite{kirchnerGeneratingAutomotiveCode2025}. The researchers found that this method can produce code that performs the intended functionality and is compliant with the \draft{relevant} specifications.
+
+\acsp{LLM} are constantly evolving as of 2026, and it is difficult to provide \draft{lasting} recommendations for their use in \acs{SCS} software development. \draft{Nevertheless, it seems that \acs{AI}-assisted coding can provide significant utility, as long as developers maintain an understanding of the principles and functions of the generated software, are aware of the potential safety and reliability risks, and perform adequate verification.}
+
+In any case, teams should consider adherence to coding standards and best practices when developing. This can be aided by freely available static analysis tools, such as \emph{Cppcheck}, \emph{clang-analyzer} or \emph{NASA IKOS}. Various coding standards\footnote{such as MISRA or the JSF AV C++ standards} are used in the safety-critical software industry, but are often criticised due to their false positive rates, difficulty of static verification, and added ``noise'' \autocite{boogerdAssessingValueCoding2008}. A \citeyear{boogerdAssessingValueCoding2008} empirical study assessed the number of rule violations and actual faults of an industrial project overtime, finding a negative correlation \autocite{boogerdAssessingValueCoding2008}. Instead, they identified a set of 12 rules\footnote{Due to licensing restrictions of the MISRA standard, I cannot reproduce these rules here.} that performed well in predicting faults, commenting however that it is ``possible that adherence to the MISRA standard as a whole would have made the software less reliable''.
 
 \FloatBarrier
+
+
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
 
