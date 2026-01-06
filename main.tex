@@ -573,11 +573,11 @@ What are the specific characteristics of \acs{SCS} that differentiate them from 
 	Similarly, the novelty of PocketQubes, and more-so smaller femtosatellites and attosatellites, also \draft{limits} the amount of standardisation and established conventions in this field. In practical terms, fewer deployer and interface designs may be available as specifications or physical implementations. Especially for ChipSat-scale spacecraft, the different proposed applications \draft{require diversity in form factors, making future standardisation potentially harder than on their larger counterparts.} However, the overall physical structure of many \acs{SCS} projects can be described in simple terms: either as a stack of \acsp{PCB} supported by a small frame (PocketQubes), or as one or two flat \acsp{PCB} with minimal support (ChipSats).
 \end{itemize}
 
-\begin{figure}
+\begin{figure*}
 	\includegraphics{graphics/Methodoconcept.pdf}
 	\caption{Mapping between novel \acs{SCS} characteristics (compared to CubeSats) and \draft{opportunities} for a \acs{SYE} methodology}
 	\label{fig:i_important_mapping}
-\end{figure}
+\end{figure*}
 The above characteristics explain differences between CubeSats and \acs{SCS} which inform some of the key decisions taken in the \acl{SYE} \draft{process}. Taking this argument one step further, they can directly motivate different shifts in established CubeSat development methodologies and approaches as follows:
 \begin{itemize}
 	\item Once a design has been elaborated, the development, manufacturing, assembly and integration of either a subsystem, or the complete spacecraft, can be performed in a much shorter time. In the extreme case of ChipSats, this production chain involves the procurement of a \acs{PCB} and component assembly, which can last 2 weeks or less. Likewise, the material cost for an entire satellite model can drop down to a few hundred euros \todo{[cite]}. This observation encourages mass iteration cycles on a subsystem or even system level.
@@ -2439,11 +2439,12 @@ Sometimes there is confusion between agile-systems engineering and agile systems
 
 \todo{See what to do about this section. Probably not include too much content because it is not completely within scope - however we have to design for operations so it is important to have at least a few paragraphs in.}
 
+\pagebreak[4]
 \section{Software Development Methodology}
 
 While the small size of \acs{SCS} systems limits the number of physical subsystems, components and interfaces, these constraints are less influential for the software itself. In terms of software requirements, as most \acs{SCS} need to be independent and autonomous spacecraft, a minimum set of functionality should be present, such as energy gathering, communication with the earth and failure recovery.
 
-\Cref{sec:METHODOLOGY_software_features} will therefore describe, based on available standards and recommendations, the operability requirements or features that should be present in most \acs{SCS} software, along with standard interfaces and ecosystems that are used. \Cref{sec:METHODOLOGY_software_reliability} will present a methodology to design and develop this software that is compatible with the Sat-Scrum methods presented above. Finally, \Cref{sec:METHODOLOGY_debugging_interfaces} will \draft{delve into the interface between software and hardware, by presenting what methods developers can use to upload and monitor their software without wasting real estate.}
+\Cref{sec:METHODOLOGY_software_features} will therefore describe, based on available standards and recommendations, the operability requirements or features that should be present in most \acs{SCS} software, along with standard interfaces and ecosystems that are used. \draft{\Cref{sec:METHODOLOGY_software_reliability} will present a methodology to design and develop this software that is compatible with the Sat-Scrum methods presented above. Finally, \Cref{sec:METHODOLOGY_debugging_interfaces} will delve into the interface between software and hardware, by presenting what methods developers can use to upload and monitor their software without wasting real estate.}
 
 \subsection[SCS Software Features]{\acs{SCS} Software Features}
 \label{sec:METHODOLOGY_software_features}
@@ -2522,87 +2523,307 @@ In this architecture, program memory is split into two halves, one holding the w
 \end{figure*}
 
 \FloatBarrier
-\subsection{Improving Software Reliability}
+\subsection[Improving SCS Software Reliability]{Improving \acs{SCS} Software Reliability}
 \label{sec:METHODOLOGY_software_reliability}
-\draft{
-	Due to the ubiquitous nature of software, a lot of data is avaialble on it. Different research has been done to investigate the sources of software failures and development time.
-}
 
-\draft{\citeauthor{langerReliabilityAssessmentReliability} \autocite{langerReliabilityAssessmentReliability} divides spacecraft failures into five categories:
-environmental failures, design errors, manufacturing errors, part failures and operational errors.
-Software failures are classified as design errors, and can have effects ranging from erroneous output and unexpected behaviour to unrecoverable fatal errors, also known as ``crashes'' \autocite{prokopSoftwareErrorIncident2024}.}
-
-\draft{The design errors that lead to software failures are commonly referred to as ``bugs''. Bugs can be further categorised into ``Bohrbugs'' (faults that appear under well-defined conditions and are easy to isolate), and ``Mandelbugs'' (faults that seem non-deterministic and depend on specific states caused by complex interactions). }
-
-\draft{\citeauthor{prokopSoftwareErrorIncident2024} \autocite{prokopSoftwareErrorIncident2024} has performed a more detailed analysis of 55 aerospace software errors. The causes of these errors can be generally categorised into:
-\begin{enumerate}
+\draft{Thanks to the prominence of the software engineering field, significant research has been performed on the factors affecting software reliability.} A \citeyear{zhuComparisonAnalysisEnvironmental2015} survey of software practicioners identified 32 environmental factors affecting software reliability, which span specification, testing, programmer skill, standards, and technologies used \autocite{zhuComparisonAnalysisEnvironmental2015}. Specifically for flight software, a \citeyear{prokopSoftwareErrorIncident2024} analysis of 55 aerospace software errors categorised their causes into:
+\begin{enumerate}[itemsep=-1ex]
 	\item An unexpected combination of states, which may be individually tested, but their combination is not
 	\item Issues that rely on receiving an unexpected combination of environmental inputs (e.g.~unprotected numeric type conversion in the Ariane 5 Maiden Flight)
 	\item Issues arising due to incorrect synchronisation between \acl{OS} tasks, which in many systems is inherently non-deterministic (e.g.~deadlocks, priority inversion)
 	\item Aging-related issues (e.g.~clock overflows or float error propagation) \autocite{alonsoNatureTimesFlight2012}
 \end{enumerate}
-The consequences of the above errors range between minor mission degradation to complete mission or system loss, depending on the recoverability of the fault.}
 
+\marginnote{%
+	The list of design considerations identified by \citeauthor{curboResearchAgendaSpace2023} \autocite{curboResearchAgendaSpace2023} are:
+	\begin{itemize}[itemsep=0ex]
+		\item Requirements and Quality Assurance
+		\item Security Analysis and Testing
+		\item Security Aspects of Architectural Design
+		\item Security of the \acs{RTOS}
+		\item Security of Mission Applications and Hosted Payloads/Instruments
+		\item Programming Language Selection
+	\end{itemize}
+}
+Additionally, \citeauthor{curboResearchAgendaSpace2023} identified six design considerations for flight software security, which include analysis, testing and programming language selection \autocite{curboResearchAgendaSpace2023}.
 
+Unfortunately, \acs{SCS} projects do not have control over some of the parameters that are said to increase software reliability, such as the rate of specification changes and developer experience. As such, for this section, I will focus on two technical factors that are related to software engineering only: testing practices and programming language selection.
 
-\paragraph{Experimental Setup}
+\paragraph{Software Testing}
+\citeauthor{zhuComparisonAnalysisEnvironmental2015}'s survey lists the following testing-related factors as affecting software reliability: \autocite{zhuComparisonAnalysisEnvironmental2015}
+\begin{margindefinition}[Test coverage]
+	Testing coverage is a measure of how much of the software's source code has been executed during the testing process. It can be expressed in terms of functions, lines, statements or branches.
+\end{margindefinition}
+\begin{itemize}[itemsep=-2ex]
+	\item Testing coverage
+	\item Testing environment
+	\item Testing effort
+	\item Testing methodologies
+	\item Testing tools
+\end{itemize}
+
+A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This \draft{behaviour} has been modeled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
+
+\begin{marginfigure}
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=4cm,
+    grid=both,
+    major grid style={line width=.2pt,draw=gray!50},
+    minor grid style={line width=.1pt,draw=gray!20},
+    xlabel={Testing time (days)},
+    ylabel={Faults detected},
+    xmin=0, xmax=120,
+    ymin=0, ymax=481,
+    xtick={0,20,40,60,80,100,120},
+    ytick={0,100,200,300,400,500},
+    tick style={color=black},
+    axis line style={black}
+]
+
+\addplot[
+    blue!80!black,
+    mark=x,
+    mark size=3pt,
+    smooth,
+    line width=0.8pt
+] coordinates {
+    (1,5) (2,10) (3,15) (4,20) (5,26) (6,34) (7,36) (8,43) (9,47) (10,49) 
+    (11,80) (12,84) (13,108) (14,157) (15,171) (16,183) (17,191) (18,200) (19,204) (20,211) 
+    (21,217) (22,226) (23,230) (24,234) (25,236) (26,240) (27,243) (28,252) (29,254) (30,259) 
+    (31,263) (32,264) (33,268) (34,271) (35,277) (36,290) (37,309) (38,324) (39,331) (40,346) 
+    (41,367) (42,375) (43,381) (44,401) (45,411) (46,414) (47,417) (48,425) (49,430) (50,431) 
+    (51,433) (52,435) (53,437) (54,444) (55,446) (56,446) (57,448) (58,451) (59,453) (60,460) 
+    (61,463) (62,463) (63,464) (64,464) (65,465) (66,465) (67,465) (68,466) (69,467) (70,467) 
+    (71,467) (72,468) (73,469) (74,469) (75,469) (76,469) (77,470) (78,472) (79,472) (80,473) 
+    (81,473) (82,473) (83,473) (84,473) (85,473) (86,473) (87,475) (88,475) (89,475) (90,475) 
+    (91,475) (92,475) (93,475) (94,475) (95,475) (96,476) (97,476) (98,476) (99,476) (100,477) 
+    (101,477) (102,477) (103,478) (104,478) (105,478) (106,479) (107,479) (108,479) (109,480) 
+    (110,480) (111,481)
+};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Cumulative faults identified after testing on \citeyear{tohmaEstimationParametersHypergeometric1991}}
+\label{fig:m_software_testing_ds1}
+\end{marginfigure}
+
+In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \todo{[cite]}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration\todo{ [ref section]}. In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
+\begin{enumerate}
+	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality \autocite{chengWhatImprovesDeveloper2022, kemererImpactDesignCode2009}. Code inspection can also involve automated static analysis through automated tools.
+	
+	\item \textbf{Test-case execution}: The most common form of software testing involves the creation of programmatic test-cases that verify individual software modules or their integration. The goal of executing test-cases is usually two-fold:
+	\begin{enumerate}[itemsep=-2ex]
+		\item To verify compliance with a functional specification, and
+		\item To ensure that as many as possible states of the software are covered.
+	\end{enumerate}
+
+	Since traditional Agile software engineering does not involve the detailed specification of functional requirements, \textbf{the test suite itself serves as the specification}. This is part of the philosophy of, e.g., \acf{TDD}, where the tests are created \emph{before} the actual software is implemented \autocite{beckTestDrivenDevelopment2002}. This approach is not dissimilar to formal model checking, where a model of a system is analysed to ensure that it meets a certain pre-defined specification \autocite{berardSystemsSoftwareVerification2001}. However, model checking requires creating an additional model of the system, which needs to be further kept correct and requires symbolic manipulation to avoid the state explosion \cite{berardSystemsSoftwareVerification2001}. 
+
+	As such, in practice, developers create a limited number of test-cases that aim to evaluate the most likely and representative states of the software, with the goal of increasing statement and branch coverage of the source code. Additional techniques used to cover potentially invalid states include edge-case testing and regression testing. For complex software, test-cases evaluate code modules at low (unit) or high (integration) levels \autocite{myersArtSoftwareTesting2012}.
+
+	Nevertheless, various approaches are often used in academia and industry to increase software reliability through different methods of formal verification, with examples being Ada's SPARK \todo{[cite]}, Frama-C for C \autocite{kirchnerFramaCSoftwareAnalysis2015} and \draft{Prusti} for Rust \autocite{astrauskasLeveragingRustTypes2019}. However, the complexity and effort required with applying these methods prevents their direct application to entire space systems \autocite{jacklinSurveyVerificationValidation2015}.
+
+	\item \textbf{User Testing}: Usually referred to as ``usability testing'', this involves the actual use and interaction with software by its intended users. Even though \acs{SCS} software systems lack a user interface\footnote{Although one could still evaluate user-facing properties of the software, such as error message fidelity, response time, degree of available functionality etc.}, user testing expresses a need to perform a manual evaluation of the software running on actual hardware after every iteration, to make sure that the \draft{integration with untested systems is valid.}
+\end{enumerate}
+
+Additional testing methods that increase confidence in the design include:
+\begin{enumerate}
+	\item \textbf{Fuzz Testing} (or fuzzing) involves the generation of a vast dataset of random test cases as inputs, which are then fed to the software to evaluate any missed edge-cases\todo{ [cite]}.
+	\item \textbf{Stress Testing} evaluates the performance of the software when it is put under a heavier load\footnote{``Load'' in this case can refer to data volume, data rate, concurrent connections, number of operations etc.} than expected\todo{ [cite]}.
+	\item \textbf{Model Checking}: \draft{[todo]} \todo{[todo]}
+\end{enumerate}
+
+While the benefits of testing are well understood, software quality assurance has historically \draft{experienced} a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situtation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
+
+\newthought{Therefore}, the recommendations for software testing within the context of \acs{SCS} entail finding an optimal point between effort spent testing and reliability improvements. Indicatively, they can involve:
+\begin{enumerate}
+	\item \textbf{Implementing an embedded testing suite} that lets developers execute and evaluate microcontroller code. This can involve, for example:
+	\begin{itemize}[itemsep=-1ex]
+		\item A \textbf{\acf{HIL}} system, where all the relevant hardware components\footnote{Development Boards, Engineering Models, or Qualification/Flight Models} are physically tested in tandem. Specifically for implementors of the \acs{SCS} methodology, the existence of a complete system model for every iteration \draft{makes this approach easier}.\marginnote{A practical \acs{HIL} setup can involve, for example, an ``instrumentation'' computer that sends \acs{TC} to the \acl{OBC} of the satellite, and evaluates the \acs{TM} received, as part of high-level test cases. Low-level test cases can be implemented by uploading custom testing software to the microcontroller, or by including a test-suite in development versions of the software.}
+		\item A simulated version of the satellite, running completely on a desktop computer, and based on microcontroller and peripheral emulation.
+	\end{itemize}
+	\item \textbf{Implementing static analysis tools}, which can assist the code review process by identifying non-compliances to accepted best practices. Many static analysis tools can be used as ``drop-in'' \draft{plugins to standard compliation pipelines.}
+	\item \textbf{Attempting to reach maximum test coverage}, as coverage is one of the metrics typically correlated with defect rate.\marginnote{While coverage can be simply evaluated in plain \acs{SW} testing, embedded systems are not instrumented to share this information by default. To that end, \citeauthor{tsiodrasCoverMe2016} provides a hardware-agnostic coverage generation method based on the gdb debugger \autocite{tsiodrasCoverMe2016}.}
+	\item \textbf{Automating the testing process}: The functional requirements of \acs{SCS} usually involve simple \draft{instructions}, and most can be evaluated by plain protocols and processes, such as nominal \acs{TMTC}. This makes \acs{SCS} functional testing suitable for \acf{RPA} methods, where data transfer, analysis and event 
+	trigerring are performed by an automated process \autocite{hofmannRoboticProcessAutomation2020}. The availability of ready-to-use automation tools reduces the developer effort needed to automate this process \draft{as well}.
+	\item \textbf{Focus on integration testing before unit testing}, as most errors are usually observed on the boundaries of components and the interactions between them \todo{[cite]}. This includes a special focus on \textbf{external interfaces} that are attached to a spacecraft.
+\end{enumerate}
+
+\paragraph{Programming Languages}
+
+An increasing number of programming languages are starting to be used for small space system firmware, which have started moving away from the compiled, statically-type paradigm. Languages such as Python \autocite{hollidayPyCubedOpenSourceRadiationTested2019}, Java \todo{[cite]} and shell scripts\todo{ [cite]} have been used for CubeSats, along with the compiled options of C, C++, Ada and Rust.
+While the aforementioned research notes a weak correlation between programming language and software reliability in typical \acs{SW} engineering contexts, typical \acs{SCS} projects differ in terms of team size, developer experience, and fault tolerance\todo{  [cite]}. This difference can potentially increase the effect of programming language selection on fault prevention.\marginnote{\todo{What is a fault?}}
+
+\citeauthor{ashmoreProgrammingLanguageEvaluation2022} have hypothesised that specific programming language features can support the detection or prevent the introduction of errors, providing the example of the \emph{Rust} language which avoids memory allocation errors by design. \draft{\citeauthor{rayLargescaleStudyProgramming2017} \autocite{rayLargescaleStudyProgramming2017} analysed 728 GitHub projects, identifying commits that fixed bugs, and concluded that ``there is a small but significant relationship between language class and defects''.
+\citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programs of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.}
+
+Both CubeSat and \acs{SCS} software development team are usually faced with a choice of programming language when starting development. Based on the above \draft{findings, it would be an interesting research question to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability}. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be used as case-studies to investigate the effect of language on software defect rate.
+
+\subparagraph{Libraries Under Test}
+\marginnote{%
+The selected frameworks are: \todo{[cite]}
+
+\textbf{AcubeSAT}'s C++ on-board software. AcubeSAT is a 3U CubeSat developed in the Aristotle University of Thessaloniki, Greece, implementing the ECSS-E-ST-70-41C services \autocite{ECSS-E-ST-70-41C}.
+
+\textbf{Prust}, an open-source implementation of the ECSS-E-ST-70-41C standard in Rust.
+
+\textbf{CubedOS}, an implementation of a CubeSat \acs{OBC} in native Ada.
+
+\textbf{AI4Space}, a microservice-based Python platform for a Linux payload, developed for the scope of this thesis.
+}
+For this research, I selected 4 frameworks written in different languages (C++, Rust, Ada and Python) that implement a similar set of functionality representing the needs of typical \acs{OBC} software (\Cref{tab:m_software_requirements}). In order to extract information about the actual number and cause of defects in each framework, I will compile and execute the \acs{OBC} software, and then perform automated testing using \textbf{fuzzing}. For each identified major defect, I will evaluate the influence of programming language choice, and \draft{evaluate} whether a different programming language would prevent the introduction of the fault, or if another quality assurance measure would have prevented it.
 
 \begin{table*}[h]
 	\caption{Frameworks under test}
-	\label{tab:frameworks}
+	\label{tab:m_software_fuzz_frameworks}
 	\renewcommand{\arraystretch}{1.1}
-	\begin{tabularx}{\textwidth}{@{}p{3cm}XXXXXX@{}}
+	\begin{tabularx}{\textwidth}{@{}p{3cm}XXXX@{}}
 		\toprule
-		Framework  & UpSat & AcubeSAT & KubOS & AI4Space & CubedOS & Prust  \\ \midrule
-		Developer  & Libre Space Foundation & Aristotle University of Thessaloniki & Xplore Inc. &  University of Luxembourg & Vermont State University & Vision Space Tech \\
-		%Version & \todo{version} & \todo{version} & 1.21.0 & v05 & \todo{version} & \todo{version} \\
-		Language & \textbf{C} &\textbf{C++} & \textbf{Rust / C} & \textbf{Python} & \textbf{Ada} & \textbf{Rust} \\
-		Comms Protocol & ECSS-E-ST-70-41C & ECSS-E-ST-70-41C & GraphQL & Proprietary & Proprietary  & ECSS-E-ST-40-71C \\
-		Operating System & FreeRTOS & FreeRTOS & Linux & Linux & Ada Tasking (Ravenscar) & FreeRTOS \\
-		\acs{HAL} & STM32-HAL & STM32-HAL & Linux & Linux & GNAT BSP & STM32-HAL \\[2ex]
-		%Comms Library &  & \textit{In-house} & \textit{In-house} &  & \textit{In-house} \\[2ex]
-		Testing & Unit Tests & Unit Tests & Unit Tests, Integration Tests & Integration Tests & \emph{None} & Unit Tests \\ 
-		Flight Proven? & Yes & No & \emph{Unknown} & Yes & \emph{Unknown} & No \\
-		Repository & \href{https://gitlab.com/librespacefoundation/upsat/upsat-obc-software}{GitLab}
-		& \href{https://gitlab.com/acubesat/obc/obc-software}{GitLab}
-		& Github (defunct) % https://github.com/kongr45gpen/kubos
+		Framework  & AcubeSAT & AI4Space & CubedOS & Prust  \\ \midrule
+		Developer  & Aristotle University of Thessaloniki &  University of Luxembourg & Vermont State University & Vision Space Tech \\
+		%Version & \todo{version} & 1.21.0 & v05 & \todo{version} \\
+		Language & \textbf{C++} & \textbf{Python} & \textbf{Ada} & \textbf{Rust} \\
+		Comms Protocol & ECSS-E-ST-70-41C & Proprietary & Proprietary  & ECSS-E-ST-40-71C \\
+		Operating System & FreeRTOS & Linux & Ada Tasking (Ravenscar) & FreeRTOS \\
+		\acs{HAL} & STM32-HAL & Linux & GNAT BSP & STM32-HAL \\[2ex]
+		%Comms Library &  & \textit{In-house} &  & \textit{In-house} \\[2ex]
+		Testing & Unit Tests & Integration Tests & \emph{None} & Unit Tests \\ 
+		Flight Proven? & No & Yes & \emph{Unknown} & No \\
+		Repository & \href{https://gitlab.com/acubesat/obc/obc-software}{GitLab}
 		& GitLab
 		& \href{https://github.com/cubesatlab/cubedos}{GitHub}
 		& \href{https://github.com/visionspacetec/Prust}{Prust}
 		\\ \midrule
-		Num.~Contributors & 3 & 23 & 24 & 3 & 6 & 2 \\
-		Num.~Commits & 369 & 206 & 3763 & 269 & 333 & 57 \\
+		Num.~Contributors & 23 & 3 & 6 & 2 \\
+		Num.~Commits & 206 & 269 & 333 & 57 \\
 		Development Duration &
-		% "2016−08−11T00:00:00"−"2016−01−28T00:00:00" to month
-		6 months &
 		% "2025−05−26T00:00:00"−"2019−09−16T00:00:00" to year
 		6 years &
-		% "2023−02−21T00:00:00"−"2011−10−19T00:00:00" to year
-		11 years &
 		%"2023−04−17T00:00:00"−"2022−03−08T00:00:00" to month
 		13 months &
 		%"2025−09−23T00:00:00"−"2018−05−14T00:00:00" to year
-		%"2020-07-13T00:00:00" − "2021-04-23T00:00:00" to month
-		%Note that this is taken from the "Prust" repository that has a deprecated branch
 		7 years &
 		9 months
-		%Repository & https://github.com/antaris-inc/SatOS-HAL & https://gitlab.com/acubesat/obc/obc-software & https://github.com/kubos/kubos & https://github.com/pycubed/software & https://github.com/cubesatlab/cubedos & https://github.com/visionspacetec/Prust-FreeRTOS \\ \bottomrule
+		%Repository & https://gitlab.com/acubesat/obc/obc-software & https://github.com/pycubed/software & https://github.com/cubesatlab/cubedos & https://github.com/visionspacetec/Prust-FreeRTOS \\ \bottomrule
 		\\ \bottomrule
 	\end{tabularx}
 	% See rayLargescaleStudyProgramming2017
 \end{table*}
 
+More specifically, the execution and testing plan is elaborated into the following steps (\Cref{fig:m_software_fuzz_activity}):
+\begin{itemize}
+	\item \textbf{Static Analysis}: Involves extracting common metrics to identify code size (\acs{SLOC}) and complexity (cyclomatic complexity) for each tested framework, in order to acquire a general idea about the size \draft{?} of the codebase. I generated this information using the Lizard static analysis tool Lizard analyser \autocite{yinLizardExtensibleCyclomatic2019}\footnote{More specifically, I used a modified version of Lizard, available at \url{https://github.com/kongr45gpen/lizard}, to provide additional and normalised metrics.}
+	\item \textbf{Emulation and Execution}: Each framework is designed for execution on different sets of hardware, microcontrollers and architectures. However, to ensure similar testing conditions, it would be ideal to employ a similar hardware platform for all tested frameworks, as it is only software that is being evaluated. At the same time, testing on software only, without any hardware involvement, provides much better observability and controllability for the framework under test.
+	
+	Therefore, I decided to use the \textbf{Qemu Emulator}. Qemu provided a common machine to emulate all frameworks\footnote{More specifically, \texttt{mps2-an500} with a Cortex-M7 core for real-time frameworks, and \texttt{virt} with a Cortex-A9 core for Linux guests. I used Yocto Linux to create appropriate distributions for emulation.}. Each framework had to also be adapted for the relevant Qemu machine, by removing machine-specific code from the repository, and inserting generic Qemu-compatible code.\footnote{To ensure repeatability, all patches applied to the software are treated as ``treatments'', are tracked and versioned.}
+
+	To provide \ac{IO} to the machines, I connected a custom-built device to the emulator, mocking the communication protocols\footnote{Responsible for \ac{TMTC}, for example via \acs{UART} or a custom datagram-based protocol}, sensors (e.g.~temperature) and an error handling observer.
+	\item \textbf{Unit Testing}: To verify the correctness of the framework, the emulator and the communication protocol implementation, I used a common set of unit tests to verify the basic functional requirements, mainly involving \acs{TC} execution and \acs{TM} reception. The results of these functional tests are shown in \Cref{tab:m_software_fuzz_functional}.
+	\item \textbf{Fuzz Testing}:
+	The main part of this evaluation involved performing a dynamic evaluation of the frameworks under test. Fuzzing was selected as the method most likely to identify missed faults and edge cases that still exist on the actual source code.
+
+	I used the AFL++ (American Fuzzy Loop) fuzzer for this evaluation \autocite{fioraldiAFLCombiningIncremental2020}, as it is a grey-box fuzzer with configurable mutators and native support for execution under the Qemu emulator, and more specifically used the LibAFL framework\footnote{LibAFL is itself written in Rust and provides a fork of Qemu with an augmented \acs{API} to support fuzzing execution} \autocite{fioraldiLibAFLFrameworkBuild2022}.
+
+	The fuzzing process involved:
+	\begin{enumerate}[itemsep=-2ex]
+		\item Generating a corpus, based on the valid \acs{TC} packets created for unit testing,
+		\item Running the \draft{\emph{havoc} and \emph{Grimoire} mutators} in AFL to generate new permutations of the inputs,
+		\item Feeding these inputs to the framework under test via the emulated communication interface in Qemu,
+		\item Evaluating whether the software is in a good state, by checking for processor exceptions, Qemu exceptions, language panics, and by running a unit test (\acs{RFT}) suite, and
+		\item Letting the fuzzer run for \draft{24 hours} to generate a \draft{sizeable} dataset.
+	\end{enumerate}
+\end{itemize}
+
 \begin{figure*}[h]
 	\includegraphics{graphics/software/activity.pdf}
-	\caption{\draft{TODO}}
+	\caption{Activity diagram of the CubeSat framework evaluation process}
+	\label{fig:m_software_fuzz_activity}
 \end{figure*}
 
-\begin{figure*}[h]
-	\includegraphics{graphics/software/splitdown.pdf}
-	\caption{\draft{TODO}}
-\end{figure*}
 
-\paragraph{Results}
+The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
+Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
+
+\begin{table}[h]
+	\caption{Static Analysis results}
+	\label{tab:m_software_fuzz_static}
+	\begin{tabular}{@{}lllllll@{}}
+		\toprule
+		& AcubeSAT (C++) & Antaris (C) & PyCubed (Python) & KubOS &  &  \\ \midrule
+		Source Lines of Code & 10601 & 10007 & 2298 & 31212  &  &  \\
+		Token Count & 51024 & 48182 & 10844 & 136180  &  &  \\
+		Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\caption{Functional test results}
+	\label{tab:m_software_fuzz_functional}
+	\begin{tabular}{@{}llllllll@{}}
+	\toprule
+	Test Type & Measurement & UpSat (C) & AcubeSAT (C++) & KubOS & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
+	Execution details & Minimum boot time &  & 2s &  & 3 minutes & 2s & 1s \\
+	& Image size &  &  &  &  &  &  \\
+	& RAM requirements &  &  &  &  &  &  \\
+	& Minimum packet latency &  &  &  &  &  &  \\ \midrule
+	Requirements & Requirements passed & 5/5 & 5/5 &  & 5/5 & 5/5 & 5/5 \\
+	& Static tests successful &  &  &  &  &  & 
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[h]
+	\caption{Fuzzing test results}
+	\label{tab:m_software_fuzz_fuzzing}
+	\begin{tabular}{@{}llllllll@{}}
+		\toprule
+		Test Type & Measurement & UpSat (C) & AcubeSAT (C++) & KubOS & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
+		\multirow{3}{*}{Unstructured} & Emulated executions &  &  &  &  &  &  \\
+		& Solutions &  &  &  &  &  &  \\
+		& Distinct solutions &  &  &  &  &  &  \\ \midrule
+		\multirow{3}{*}{Structured} & Emulated executions &  &  &  &  &  &  \\
+		& Solutions &  & 10 &  & 0 & 2 & 2 \\
+		& Distinct solutions &  &  &  &  &  &  \\ \midrule
+	\end{tabular}
+\end{table}
+
+
+
+%\begin{figure*}[h]
+%	\includegraphics{graphics/software/splitdown.pdf}
+%	\caption{\draft{TODO}}
+%\end{figure*}
+
+\subparagraph{Conclusions}
+
+Based on the above, \todo{blablabla}:
+\begin{itemize}
+	\item The selection of programming language alone \textbf{cannot guarantee program correctness}. \draft{Simple issues were identified in projects of all 4 evaluated languages.}
+	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to program termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a program where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks.
+	\item In C/C++, unsafe calls (such as null dereferencing or out-of-bounds array access) commonly lead to \textbf{undefined behaviour}, which can propagate as a crash (segmentation/bus fault), incorrect data, incorrect functionality, or an infinite loop. On the contrary, the default data access functions of Rust, Ada and Python perform run-time checks and guarantee either a handled panic on invalid calls, or the propagation of the error to a user-defined mechanism. 
+	\item The Rust compiler enforces an \textbf{exhaustiveness check} on enumerations and function results by default. Although this can be bypassed, it serves as an additiona layer of safety against unhandled edge cases and logical paths.
+	\item The reliability benefit of a programming language selection has to be considered in relation to the \textbf{effort} associated with writing code in that language, and the various other environmental factors affected by this choice.
+	
+	The frameworks tested did not present noteworthy differences in terms of size and complexity that are causally linked to the language. However, \acs{SCS} teams have to consider the knowledge/experience of developers for each language, along with its potential learning curve, as well as the size of the available ecosystem. An indication of this ``popularity'' is given in \Cref{tab:m_software_popularity}, which shows that Python and C/C++ have a larger ecosystem for embedded space applications compared to Rust, while Ada \draft{enjoys more than an order of magnitude more limited ecosystem.} In turn, this metric provides an idea on the availability of open-source libraries for reuse, as well as the common \draft{experience} of students and young graduates, who are more likely to participate in academic \acs{SCS} projects.
+\end{itemize}
+
+\begin{table}[h]
+	\centering
+	\caption{Popularity of GitHub search keywords when filtered by language, providing an indication of the size of a programming language's ecosystem. Data gathered in \draft{2025}.}
+	\label{tab:m_software_popularity}
+	\begin{tabular}{@{}llllll@{}}
+		\toprule
+		\textbf{Keyword} & \textbf{Python} & \textbf{C} & \textbf{C++} & \textbf{Rust} & \textbf{Ada} \\ \midrule
+		\texttt{embedded} & 26\,k & 31.1\,k & 15.1\,k & 4.3\,k & 79 \\
+		\texttt{cubesat} & 392 & 209 & 247 & 22 & 2 \\
+		\texttt{sensor driver} & 558 & 1.4\,k & 1.2\,k & 206 & 8 \\
+		\texttt{CCSDS} & 65 & 49 & 36 & 20 & 1 \\
+		%&  &  &  &  &  \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 \FloatBarrier
 \subsection[Miscalleneous Software Topics]{Miscellaneous Software Topics}
@@ -2732,6 +2953,7 @@ In CubeSats and PocketQubes, this interface is typically provided by a friction-
 \end{figure*}
 
 \paragraph{Use of generative \acs{AI}}
+\footnotetext{Credit: \href{https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg}{Espressif}}
 Since the mid-2020s, \acs{AI}-assisted software development has become prevalent, through the use of \acfp{LLM} trained on publically available source code repositories.
 \acs{AI} tools\footnote{Running on the cloud or locally} can offer assistance ranging from code completion to generation of code structures and architectures. The training set of coding models usually contains embedded firmware for popular platforms, \draft{making them compatible with typical \acs{SCS} software development.}
 
@@ -2743,7 +2965,7 @@ On the other hand, a \citeyear{kirchnerGeneratingAutomotiveCode2025} comparison 
 
 \acsp{LLM} are constantly evolving as of 2026, and it is difficult to provide \draft{lasting} recommendations for their use in \acs{SCS} software development. \draft{Nevertheless, it seems that \acs{AI}-assisted coding can provide significant utility, as long as developers maintain an understanding of the principles and functions of the generated software, are aware of the potential safety and reliability risks, and perform adequate verification.}
 
-In any case, teams should consider adherence to coding standards and best practices when developing. This can be aided by freely available static analysis tools, such as \emph{Cppcheck}, \emph{clang-analyzer} or \emph{NASA IKOS}. Various coding standards\footnote{such as MISRA or the JSF AV C++ standards} are used in the safety-critical software industry, but are often criticised due to their false positive rates, difficulty of static verification, and added ``noise'' \autocite{boogerdAssessingValueCoding2008}. A \citeyear{boogerdAssessingValueCoding2008} empirical study assessed the number of rule violations and actual faults of an industrial project overtime, finding a negative correlation \autocite{boogerdAssessingValueCoding2008}. Instead, they identified a set of 12 rules\footnote{Due to licensing restrictions of the MISRA standard, I cannot reproduce these rules here.} that performed well in predicting faults, commenting however that it is ``possible that adherence to the MISRA standard as a whole would have made the software less reliable''.
+In any case, teams should consider adherence to coding standards and best practices when developing. This can be aided by freely available static analysis tools, such as \emph{Cppcheck}, \emph{clang-analyzer} or \emph{NASA IKOS}. Various coding standards\footnote{such as MISRA or the JSF AV C++ standards} are used in the safety-critical software industry, but are often criticised due to their false positive rates, difficulty of static verification, and added ``noise'' \autocite{boogerdAssessingValueCoding2008}. A \citeyear{boogerdAssessingValueCoding2008} empirical study assessed the number of rule violations and actual faults of an industrial project overtime, finding a negative correlation \autocite{boogerdAssessingValueCoding2008}. Instead, they identified a set of 12 rules\footnote{Due to licensing restrictions of the MISRA standard, I cannot reproduce these rules here.} that performed well in predicting faults, commenting however that it is ``possible that adherence to the MISRA standard as a whole would have made the software less reliable''. In practical terms, static analysis tools provide recommendations of rule subsets that can be provide the required \draft{usability to developers}.
 
 \FloatBarrier
 
@@ -2752,8 +2974,6 @@ In any case, teams should consider adherence to coding standards and best practi
 \label{sec:METHODOLOGY_tailoring}
 
 \subsection{Recommended Tools}
-
-\footnotetext{Credit: \href{https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg}{Espressif}}
 
 In the ideal case, each proposed part of the \ac{SCS} methodology would be supported by dedicated hardware and software tools, compliant with the requirements described in \Cref{sec:METHODOLOGY_tooling_requirements}, and tailored to each specific use case.
 However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
@@ -2786,6 +3006,8 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 		\bottomrule
 	\end{tabularx}
 \end{table*}
+
+\draft{robot framework}
 
 
 \chapter{Case Studies}
@@ -3639,6 +3861,9 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 \appendix
 
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
+
+\chapter{Software Errors Detected during Fuzz Testing}
+\label{app:sw_errors_detected}
 
 \chapter{PCB schematics}
 
