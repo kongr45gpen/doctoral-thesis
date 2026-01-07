@@ -84,7 +84,7 @@
 
 			\vspace{6ex}
 
-			{\large June 28, 2099}\\[4cm] % Date
+			{\large February 14, 2026}\\[4cm] % Date
 
 		\end{center}
 		\vfill
@@ -154,6 +154,7 @@ under the License.
     note-code={#1},
     format-code=\numberline{#2}#3
 ]
+\label{sec:definitions}
 \addcontentsline{toc}{section}{List of Definitions}
 
 %\chapter*{List of Acronyms}
@@ -161,6 +162,7 @@ under the License.
 \bgroup
 \setlength\parskip{1ex}
 \printacronyms[pages={display=all,seq/use=false},]
+\label{sec:acronyms}
 \addcontentsline{toc}{section}{Acronyms}
 \egroup
 
@@ -282,7 +284,7 @@ The need from industry and academia for a smaller and less complex standardised 
 	\item \textbf{Chipsats} or \textbf{\acs{PCB}sats}: Flat spacecraft that consist entirely of a single circuit board, usually less than \qtyproduct{5 x 5}{\centi\meter} in size.
 \end{itemize}
 
-These satellites are also classified as pico-, femto- and atto-satellites (see \Cref{sec:TERMINOLOGY_classes}).
+These satellites are also classified as pico-, femto- and atto-satellites (see \Cref{sec:LITERATURE_classes}).
 
 \begin{figure*}
 	\centering
@@ -711,10 +713,14 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 		"Agile" doesn't mean "last-minute".}}{Alexander F.\space B\"uhler}
 \end{fullwidth}
 
+This section will introduce the relevant background necessary before developing the \ac{SCS} methodology.
+Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \draft{\Cpageref{sec:acronyms}}.}. \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
+
 \section{Terminology}
+\label{sec:LITERATURE_terminology}
 
 \subsection{Spacecraft Classes}
-\label{sec:TERMINOLOGY_classes}
+\label{sec:LITERATURE_classes}
 
 %The idea of a \textbf{Sub-CubeSat Spacecraft} (\acs{SCS}) depends on the definition of a CubeSat
 
@@ -820,6 +826,18 @@ Both concepts can be decomposed into a set of more specific activities, which so
 
 \FloatBarrier
 \section{CubeSat Ecosystem}
+\label{sec:LITERATURE_cubesat}
+
+As CubeSats present similarities with \acl{SCS}\footnote{This is true for nano-satellites in general. However, since the overwhelming majority of nano-satellites follows the CubeSat form factor \cite{kuluNanosatsDatabase2023}, and most nano-satellite research is performed on CubeSats, I will use the concepts here interchangeably.}, and because their development style has been typically adopted by \acs{SCS} (\Cref{sec:INTRODUCTION_research_gaps}), they serve as a valuable \draft{source of information} before analysing their smaller counterparts.
+
+\subsection{CubeSat Development Environment}
+A \citeyear{bouwmeesterSurveyWorldwidePico2010} survey of nanosatellite technology
+
+...augmented by \citeyear{villelaThousandthCubeSatStatistical2019}
+
+\subsection{CubeSat Development Approaches}
+
+
 
 \draft{Check CubeSat lifecycles section in Notes}
 
@@ -872,6 +890,7 @@ On the other hand, CubeSat development time can be more easily allocated into di
 \end{itemize}
 
 \section{Sub-CubeSat Ecosystem}
+\label{sec:LITERATURE_subcubesat}
 
 
 
@@ -1001,6 +1020,7 @@ Another notable case was the one of \emph{Swarm Technologies}, a USA-based start
 Nevertheless, \cite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion.
 
 \section{Topics from Systems Engineering}
+\label{sec:LITERATURE_systems_engineering}
 
 \subsection{Metrics}
 \label{sec:LITERATURE_metrics}
@@ -1206,7 +1226,8 @@ Because of the introduction of Agile methods int hardware development, a number 
 
 \subparagraph{Miscellaneous} \todo{Any other frameworks worth considering? Skunkworks? Guidelines?}
 
-\section{Research Problem Formulation}
+%\section{Research Problem Formulation}
+%\label{sec:LITERATURE_problem_formulation}
 
 \subsection{Scope}
 \label{sec:scope}
@@ -1304,21 +1325,21 @@ DRM acknowledges that the comprehensive implementation of all stages can be impr
 The specific research plan for this work is shown in \draft{Figure Tade} and is elaborated as follows:
 \begin{enumerate}
 	\item \textbf{Research Clarification (RC)} (Review-based):
-	We have performed a literature survey to identify the shortcomings of 
-	current Systems Engineering approaches for \ac{SCS}, and an engineering gap that can be resolved through a novel methodology. Our survey has focused on available resources (such as time, cost, personnel and technology), goals (such as functionality and reliability), and previous projects.
+	I have performed a literature survey to identify the shortcomings of 
+	current Systems Engineering approaches for \ac{SCS}, and an engineering gap that can be resolved through a novel methodology. My survey has focused on available resources (such as time, cost, personnel and technology), goals (such as functionality and reliability), and previous projects.
 	
 	This is elaborated in \Cref{chap:INTRODUCTION,chap:SURVEY}.
 	\item \textbf{Descriptive Study I (DS-I)} (Comprehensive):
-	As a first step, we have identified the organisational and technical requirements of typical \acs{SCS} missions, and compared them with the ecosystem of larger space missions. We also analysed the concept of Systems Engineering and identified its components that have both a higher impact on \acs{SCS} mission success, and can be improved through a Systems Engineering methodology. Finally, we conducted informal interviews to validate our findings and the usefulness of our proposed approach.
+	As a first step, I have identified the organisational and technical requirements of typical \acs{SCS} missions, and compared them with the ecosystem of larger space missions. We also analysed the concept of Systems Engineering and identified its components that have both a higher impact on \acs{SCS} mission success, and can be improved through a Systems Engineering methodology. Finally, I conducted informal interviews to validate our findings and the usefulness of our proposed approach.
 	This is elaborated in \Cref{chap:SURVEY}.
 	
-	As a second step, we will \textbf{design and develop \acs{SCS} space missions} with the objective of \textbf{qualification or flight} as case studies. These space missions will be in the form of payloads, subsystems or satellites that can reach a flight-ready stage. They will be used either as a direct source of information to develop the required support, or as experimental applications of the new proposed methodology, in an iterative fashion.
+	As a second step, I will participate in the \textbf{design and development of \acs{SCS} space missions} with the objective of \textbf{qualification or flight} as case studies. These space missions will be in the form of payloads, subsystems or satellites that can reach a flight-ready stage. They will be used either as a direct source of information to develop the required support, or as experimental applications of the new proposed methodology, in an iterative fashion.
 	
 	For this work, four different internal space missions were investigated, as shown in \Cref{sec:ra_casestudies,chap:CASESTUDIES}.
 	
 	\item
 	\textbf{Prescriptive Study (PS)} (Comprehensive):
-	Based on the gathered data, we will describe a set of design methods applicable to different components of systems engineering, which combined define a methodology for \acs{SCS}.
+	Based on the gathered data, I will describe a set of design methods applicable to different components of systems engineering, which combined define a methodology for \acs{SCS}.
 	
 	The PS phase is further separated by \acs{DRM} into Task Clarification (\Cref{sec:ra_scope}), Conceptualisation, Elaboration, Realisation, and Support Evaluation.
 	
@@ -1398,12 +1419,12 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 		
 		
 	\end{tikzpicture}
-	\caption{Overview of research approach steps as implemented in this work}
+	\caption{Overview of research approach steps as implemented in this work \todo{Move RC to Chapter 1}}
 	\label{fig:r_methodology}
 	\end{adjustbox}
 \end{figure}
 
-\draft{We note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:CASESTUDIES} and \Cref{chap:}}
+\draft{Note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:CASESTUDIES} and \Cref{chap:METHODOLOGY}}
 
 
 
