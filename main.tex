@@ -200,6 +200,7 @@ I did this. I also did that. I didn't do that.
 	\colorlet{Hardware}{MaterialLime800}
 	
 	\begin{adjustbox}{width=\textwidth}
+% LTeX: enabled=false
 \begin{tabular}{@{}lllll@{}}
 	\toprule
 	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
@@ -230,6 +231,7 @@ I did this. I also did that. I didn't do that.
 	V.~Franzese &  &  & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  \\
 	Z.~Manchester &  &  & & \textcolor{Manager}{Project Manager}  \\ \bottomrule
 \end{tabular}
+% LTeX: enabled=true
 	\end{adjustbox}
 	\vspace{1ex}
 \end{table*}
@@ -832,20 +834,231 @@ Both concepts can be decomposed into a set of more specific activities, which so
 
 As CubeSats present similarities with \acl{SCS}\footnote{This is true for nano-satellites in general. However, since the overwhelming majority of nano-satellites follows the CubeSat form factor \cite{kuluNanosatsDatabase2023}, and most nano-satellite research is performed on CubeSats, I will use the concepts here interchangeably.}, and because their development style has been typically adopted by \acs{SCS} (\Cref{sec:INTRODUCTION_research_gaps}), they serve as a valuable \draft{source of information} before analysing their smaller counterparts.
 
+%A \citeyear{bouwmeesterSurveyWorldwidePico2010} survey of nanosatellite technology
+%...augmented by \citeyear{villelaThousandthCubeSatStatistical2019}
+%Actual information about cubesat enviornment: \autocite{berthoudHowSetCubeSat2016}
+
+
+
+\subsection{CubeSat Bus}
+
+\begin{figure}
+	\includegraphics{external/cubesat_iss.jpg}
+	\caption[A 6U CubeSat being deployed from the ISS]{A 6U CubeSat being deployed from the \acs{ISS}. Image credit: NASA \cite{johnsonCubeSatEjectedEarth2024}}
+\end{figure}
+
+From a technical point of view, the shared requirements of CubeSats are defined by the CubeSat Design Specification \autocite{CDS14}. The main constraint for CubeSat design is the dimensional envelope defined by the specification, which dictates the mechanical interfaces of the spacecraft. With regards to the internals, CubeSats are typically separated mechanically, electrically and functionally into subsystems, with an example partition shown in \Cref{tab:l_subsystem_partition}.
+
+While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs{COTS} subsystems\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoprability is not guaranteed.}. The LibreCube specification defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
+
+\begin{marginfigure}
+	\includegraphics{external/board_stacking.png}
+	\caption[CubeSat board stacking]{CubeSat board stacking. Taken from \cite{BoardSpecificationLibreCube}}
+\end{marginfigure}
+
+Nevertheless, this theoretically modular design often experiences compatibility or compliance issues, as subsystem interfaces and dimensions can be incompatible. Developers tend to face administrative difficulties and delays, because \acs{COTS} subsystem specifications are not publically available and are subject to change when new revisions are \draft{made}. This is further exacerbated by an overall shift of the CubeSat industry focus towards entire CubeSat platforms, instead of individual subsystems. \todo{[Is there a citation for this?]}
+
+\begin{table}[h]
+\begin{threeparttable}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+SMAD \cite{SMAD} & CubeSat \cite{berthoudHowSetCubeSat2016} & PocketQube \cite{uludagDelfiPQInOrbitPerformance2025}   \\ \midrule
+ & Mission Analysis &    \\
+Cross-cutting Disciplines & Systems Design &    \\
+Payload & Payload & Payload   \\
+Propulsion & Propulsion & -\tnote{1} \\
+\acs{ADCS} & \acs{ADCS} & \acs{ADCS}   \\
+\acs{OBDH} or \acs{CDH} & \acs{OBDH} & \acs{OBC}   \\
+TT\&C or \acs{COMMS} & \acs{COMMS} & \acs{COMMS}   \\
+Power & Power & \acs{EPS}   \\
+Structures and Mechanisms & Structure &  -  \\
+- & - & Deployables   \\
+Thermal Control & Thermal & -\tnote{2}   \\
+- & Software & -   \\ \bottomrule
+\end{tabular}
+\begin{tablenotes}
+	\item[1] As of 2025, no propulsion systems for PocketQubes have been demonstrated in orbit \cite{franzesePocketQubePicosatellitesSurvey2025}.
+	\item[2] No documented use of an active \acs{TCS} system for PocketQubes exists \cite{franzesePocketQubePicosatellitesSurvey2025}.
+\end{tablenotes}
+\end{threeparttable}
+\caption{Example partitions of large spacecraft, CubeSats, and PocketQubes into subsystems}
+\label{tab:l_subsystem_partition}
+\end{table}
+\acuse{TTC}
+
+CubeSat payloads, which normally define platform requirements, can involve technology demonstration, imaging, science, communications, or military \draft{purposes} \autocite{berthoudHowSetCubeSat2016}. Most CubeSats are launched in \ac{LEO}, therefore showing significant similarities regarding the basic principles of operation for every subsystem.
+
+
+Apart from the structure\footnote{According to \cite{CDS14}, a CubeSat structure should be based on aluminium. Alternative materials such as 3D-printed plastics \cite{grimMakerSatCubeSatDesigned2016} or wood \cite{guentherWoodWoodBasedMaterials2024} are being explored.}, a simple CubeSat architecture can involve mainly electrical components \autocite{equisat}. Power generation is made through solar-panels\footnote{CubeSat dimensions limit power generation to an average of \qtyrange{0.5}{4}{\watt/unit}, depending on design, whether the panels are deployable, and attitude control \cite{SMAD}.}, while power storage is predominantly based on secondary (rechargeable) batteries. Developers usually set up their own ground station, communicating with CubeSat on \acs{UHF}, S-Band, or higher frequencies. A large number of nano-satellites also make use of the radio-amateur satellite service for communications \autocite{nasacubesatlaunchinitiativeCubeSat101Basic2017}. In terms of data handling, most architectures are based on \acs{COTS} microcontrollers and basic communication protocols.
+
+When needed, CubeSats include an \acl{ADCS}, which can position the satellite passively or actively, typically through magnetorquers and reaction wheels \autocite{bouwmeesterSurveyWorldwidePico2010}. When orbit changes are required\footnote{For example, to increase mission duration, or to enforce collision/disposal regulations}, CubeSats can also integrate propulsion systems \autocite{CDS14}. Finally, buses can be supported by active thermal control for components sensitive to temperature, and include mechanisms or deployable structures, which can be solar cells, antennas, sensors, or solar sails \todo{[cite]}.
+
+\todo{>>>>> CUBESAT PROJECT SUCCESS (WHERE TO PUT IT?)}
+
+\todo{>>>>> DEVELOPMENT TIME IS A PROCESS DRIVER}
+
+\paragraph{CubeSat Reliability}
+
+%\newthought{Extensive research has been performed} on CubeSat reliability.
+Extensive research has been performed on CubeSat reliability and mission success rates, with a focus on high infant mortality experienced by these missions, especially when compared to larger spacecraft.
+
+A 2018 database of 855 launched CubeSat reveals a 61\% success rate, with a 21\% rate of CubeSat failure, and a 14\% launch failure rate \autocite{villelaThousandthCubeSatStatistical2019}. %The authors also noted a general decrease in CubeSat infant mortality over time, from 2002 until 2018.
+\citeauthor{langerReliabilityAssessmentReliability2018} has composed a CubeSat Failure Database of 70 CubeSat failures based on publically available data and privately provided information, finding that 77\% of CubeSat failures occur in the first month after deployment \autocite{langerReliabilityAssessmentReliability2018}. \citeauthor{swartwoutCubeSatMissionSuccess2019} has also performed a CubeSat reliability analysis, showing a \draft{XX\%} failure rate across 292 missions until 2018 \autocite{swartwoutCubeSatMissionSuccess2019}.
+\citeauthor{swartwoutCubeSatMissionSuccess2019} further classifies the failures by their criticality\footnote{i.e.\@ partial} and by the developer type\footnote{``hobbyists'' vs.\@ ``smallsat developers'', see \Cref{sec:LITERATURE_cubesat_environment}}, shown in \Cref{fig:l_cubesat_swartwout_2019_failures}.
+
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{example-image-a}
+	\caption[CubeSat failure rates by developer type and criticality]{CubeSat failure rates by developer type and criticality \cite{swartwoutCubeSatMissionSuccess2019} \todo{TODO}}
+\end{figure}
+
+The cause of CubeSat failures and their high infant mortality is not always known. CubeSats that are ``\acl{DOA}'' provide no information on their status\footnote{Although a \acs{DOA} status usually indicates an issue in power or communications}, while the usual lack of redundant and critical-\acs{TM} transmitters means that even later failure causes are not always observable. Nevertheless, some research has also been done to investigate failure causes and mitigation measures.
+
+\citeauthor{langerReliabilityAssessmentReliability2018} has classified space mission failure causes into \textbf{design errors\footnote{By definition, design errors also include software bugs.}, manufacturing errors, part failures} and \textbf{operational errors} \cite{langerReliabilityAssessmentReliability2018}. Most CubeSat failures are caused by design errors. \todo{So what?}
+
+Based on developer knowledge, \citeauthor{langerReliabilityAssessmentReliability2018} has identified the \acs{EPS}, \acs{OBC} and \acs{COMMS} subsystems as the most common contributors to CubeSat failures \cite{langerReliabilityAssessmentReliability2018}. The author provides deeper detail in a \citeyear{langerReliabilityCubeSatsStatistical2016} survey of 114 participants, where the expected fault cause is further analysed: \textbf{Design or manufacturing faults in electronics and software design errors are more frequently believed to be failure causes}, compared to degradation, thermal balance, radiation or loss of structural integrity \autocite{langerReliabilityCubeSatsStatistical2016}.
+\marginnote{Interestingly, Langer also noted that developers overestimate the chances of success of their own mission compared to the average success rate, indicating a possible lack of self-perception that leads to less effort dedicated to risk reduction \cite{langerReliabilityAssessmentReliability2018}.}
+Finally, \citeauthor{swartwoutCubeSatMissionSuccess2019}'s data also indicate design errors as causes, with the main sources being software bugs, mechanism \draft{binding}, inadequate power budgets, and non-robust startup sequences \cite{swartwoutCubeSatMissionSuccess2019}. \citeauthor{venturiniImprovingMissionSuccess2017}'s similar survey of 27 ``anomalies'' similarly noted communications, power, deployables and software as common failure \draft{attractors}, with developers noting that many failures could have been avoided with more end-to-end functional testing \autocite{venturiniImprovingMissionSuccess2017}.
+\marginnote{\citeauthor{venturiniImprovingMissionSuccess2017} also note mismatches between commercial part datasheets and actual behaviour as another common cause of errors, and recommend risk assessment to be made at the beginning of a mission \cite{venturiniImprovingMissionSuccess2017}.}
+
+
+\citeauthor{swartwoutCubeSatMissionSuccess2019} also speculates on the causes of these failures, noting that they are higher for ``hobbyist'' developers. He more specifically cites ``add hoc procedures for design, integration and test'' and a ``lack of time spent on integration \& test'' as the main motivators behind design errors \cite{swartwoutCubeSatMissionSuccess2019}. 
+
+Despite the high general failure rates, CubeSat mission success seems to be following an upwards trend \cite{villelaThousandthCubeSatStatistical2019,swartwoutCubeSatMissionSuccess2019}\footnote{\citeauthor{swartwoutUniversityClassSpacecraft20232023}, however, in a \citeyear{swartwoutUniversityClassSpacecraft20232023} article, still notes a downwards trend for university-class missions \cite{swartwoutUniversityClassSpacecraft20232023}.}. This is probably influenced by the increased understanding of the reasons for failure, an increased availability of past mission documentation, lessons learned and recommendations for developers, as well as the various CubeSat-focused educational opportunities provided by universities and space agencies \autocite{swartwoutUniversityClassSpacecraft20232023}.
+\citeauthor{villelaThousandthCubeSatStatistical2019} justify the increase of CubeSat reliability through the use of products with flight heritage, and the availability of CubeSat international standards\footnote{As an aside, I note that the application of standards can work as a double-edge sword; even though a standard can describe a universally-acceptable a priori correct solution, it can add considerable overhead to teams that need to implement it. See, for example, \Cref{sec:METHODOLOGY_software_features} for a discussion of software features that CubeSats need to implement based on \acs{ECSS} standards. Even narrowing down to the CubeSat ecosystem only, the differences in requirements between projects might be too large to define a one-size-fits-all solution. This implementation overhead is further exacerbated when the documents are not freely available, e.g.\@ with \acs{ISO} standards. Nevertheless, simple standards, or ready-to-use software/hardware implementation can still present enormous value to the CubeSat community.} \cite{villelaThousandthCubeSatStatistical2019}.
+
+Some of the most common \emph{lessons learned} or recommendations for CubeSat developers to increase reliability include\footnote{Note that due to the academic nature of the published data, these tips are mostly skewed towards usefulness for academic missions, rather than industrial ones.}:
+\begin{itemize}[itemsep=-1ex]
+	\item Adequate time dedicated to \textbf{system-level testing}, with a beseline of 30--50\% of the overall project schedule to be dedicated to integration and verification
+	\cite{swartwoutUniversityClassSpacecraft20232023,venturiniImprovingMissionSuccess2017,langerReliabilityAssessmentReliability2018}\footnote{\citeauthor{venturiniImprovingMissionSuccess2017} further provides a list of system-level tests that are recommended to be performed for CubeSats: a command execution test, a day-in-the-life test, an end-to-end communications test, and a complete power system charge cycle \cite{venturiniImprovingMissionSuccess2017}.}.
+	\item Early evaluation of \textbf{project risk} and \textbf{potentially problematic components} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021}\footnote{This might involve, for example, performing a system-level \acs{FMEA} analysis in the very early design phases of a project}.
+	\item Dedicating appropriate attention to \textbf{firmware and software development} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021}.
+	\item Especially for university projects, management of \textbf{developer turnover and knowledge transfer} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021,swartwoutUniversityClassSpacecraft20232023}.
+\end{itemize}
+
+
 \subsection{CubeSat Development Environment}
-A \citeyear{bouwmeesterSurveyWorldwidePico2010} survey of nanosatellite technology
+\label{sec:LITERATURE_cubesat_environment}
 
-...augmented by \citeyear{villelaThousandthCubeSatStatistical2019}
+% IS TIME IMPORTANT?
+% People say yes!
+% See swartwoutUniversityClassSpacecraft20232023
+%
+% What about funding?
 
-\subsection{CubeSat Development Approaches}
+\citeauthor{swartwoutYouSayPicosat2018} has classified CubeSat builders by their \textbf{organisation type} into University, Government, Commercial, and Military developers.
+He noted that certain similar patterns within these organisations can further classify them into four further categories\footnote{\citeauthor{swartwoutYouSayPicosat2018} performed a manual evaluation of CubeSat launch databases and private data to measure the number of each developer category, shown in \Cref{tab:l_cubesat_mission_types}}: \autocite{swartwoutYouSayPicosat2018}
+\begin{itemize}[itemsep=-2ex]
+	\item \textbf{Hobbyists}, who approach missions as a side activity and lack standard practices;
+	\item \textbf{Traditional Contractors}, who have an established history and set of practices;
+	\item \textbf{SmallSat Developers}, who fall between the two previious categories; and
+	\item \textbf{Constellation Developers}.
+\end{itemize}
+\begin{margintable}
+\caption[Developer types of CubeSats flown, 2000--2015]{Developer types of CubeSats flown, 2000--2015 \todo{newer data available?} \cite{swartwoutYouSayPicosat2018}}
+\label{tab:l_cubesat_mission_types}
+\begin{tabularx}{\linewidth}{@{}Xc@{}}
+\toprule
+Hobbyists & 131 \\
+Traditional & 32 \\
+SmallSat & 125 \\
+Constellation & 147
+\\ \bottomrule
+\end{tabularx}
+\end{margintable}
+This classification has an impact on the environmental parameters of CubeSat missions, such as the available resources, developer experience, and degree of risk acceptance, and can inform the desired scope of this work. \Cref{tab:l_cubesat_mission_types} shows that all developer types cover a roughly equal amount of the development spectrum, with the exception of traditional contractors, who represent only \draft{7\%} of CubeSat missions flown.
+
+\citeauthor{berthoudHowSetCubeSat2016} performed a survey of 40 CubeSat groups (37 from universities) to generate numerical data about CubeSat environments \autocite{berthoudHowSetCubeSat2016}, which are summarised in \Cref{tab:l_cubesat_team_characteristics}. Various CubeSat projects in the design, manufacturing or operations stages have also published extracts from their Project Management plans, providing information about the main drivers behind costs, phases, development effort, and their critical path.
+
+\begin{table*}
+	\caption[CubeSat team characteristics]{CubeSat team characteristics (\(N = 40\)) \cite{berthoudHowSetCubeSat2016}}
+	\label{tab:l_cubesat_team_characteristics}
+	\def\arraystretch{1.1}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		Prior experience &
+		50\% without prior launches, 7.5\% launched balloon or equivalent, 22.5\% have launched 1 CubeSat already, 20\% have launched more than 1 \\
+		Programme duration &
+		12.5\% one year or less, 37.5\% between 2--4 years,
+		50\% more than 4 years\\
+		Estimated project cost & 39\% less than \qty{50000}{EUR}, 48\% between \qty{50000}{EUR} and \qty{500000}{EUR}, 13\% more than \qty{500000}{EUR} \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
+
+%Two interesting observations can be made from \citeauthor{berthoudHowSetCubeSat2016}'s data: First, the estimated project costs displayed a wide range, from below \qty{5000}{EUR} to above \qty{500000}{EUR}. Apart from potential differences in project scale, this also reflects accounting differences on which costs are considered to be part of financial budgets\footnote{\todo{Write about launch costs here etc}}.
 
 
 
-\draft{Check CubeSat lifecycles section in Notes}
+In terms of cost, results can vary significantly, depending on the environment and objectives of the project.
+\citeauthor{berthoudHowSetCubeSat2016}'s data display a wide range of estimated project costs, from below \qty{5000}{EUR} to above \qty{500000}{EUR}. As an example, two extremes can be found in the EQUiSat project, which is a 1U CubeSat bus costing \SI{3800}{USD} \autocite{equisat}, and the Hermes proposal, which has estimated \SI{35300000}{USD} for a 9U deep-space CubeSat \autocite{pujolgasullaHermesCubesatOnsite2021}. The accounting for CubeSat projects highly depends on whether labour, facility and launch costs are considered. These services may often not be accounted in project budgets, or be provided for free as part of an external agreement\footnote{For example, space agency projects may cover test campaigns and launch opportunities, or laboratory facilities may already available. Labour costs are sometimes not considered in academic projects in the case of voluntary participation.}.  \todo{cite paper from SW} In case labour costs are considered, the project cost will be also very closely tied to development time.
 
-\subsection{Development Time Drivers}
+Due to this high variance between project costs, and the lack of concrete data on team environment and cost budgets, I have not performed a comparative analysis of CubeSat project costs.
+
+\begin{figure}
+	\center
+	\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={CubeSat Size},
+        ylabel={Programme Duration (Years)},
+        xmin=0.5, xmax=4.5,
+        ymin=-0.5, ymax=5.5,
+        xtick={1, 2, 3, 4},
+        xticklabels={1U, 2U, 3U, 6U},
+        ytick={0, 1, 2, 3, 4, 5},
+        yticklabels={0, 1, 2, 3, 4, 5+},
+        grid=major,
+		scatter,
+		%point meta=explicit,
+        enlarge x limits={abs=0.5cm},
+        enlarge y limits={abs=0.5cm},
+        view={0}{90}
+    ]
+
+    \addplot[
+        only marks,
+        scatter,
+        mark=*,
+        blue!60!black,
+        opacity=0.6,
+        visualization depends on={sqrt(\thisrow{val})*4 \as \perpointradius},
+        scatter/@pre marker code/.append style={
+            /tikz/mark size=\perpointradius
+        }
+    ] 
+    table [x=x, y=y, meta=val] {
+        x y val
+        1 3 1
+        1 4 2
+        1 5 13
+        2 0 1
+        2 1 2
+        2 2 2
+        2 3 2
+        2 5 1
+        3 0 1
+        3 2 4
+        3 3 2
+        3 4 2
+        3 5 6
+        4 0 1
+    };
+    \end{axis}
+\end{tikzpicture}
+	\caption[CubeSat programme duration vs.\space size]{CubeSat programme duration vs.~size (\( N = 40 \)) \cite{berthoudHowSetCubeSat2016} \todo{check}}
+	\label{fig:l_cubesat_size_duration}
+\end{figure}
 
 
+\newthought{With regards to} development time, a comparison between CubeSat unit sizes and programme duration does not reveal an obvious correlation (\Cref{fig:l_cubesat_size_duration}). Initially, one would expect that programme duration would scale with the technical size of the mission, which itself should be linked with the physical CubeSat size. However, the data shows that smaller CubeSat projects last disproportionately longer. This can be explained by a weaker link between physical and technical size, as well as by a preference of smaller, amateur teams with less funding, \draft{correlating with increased delays}, for smaller satellites.
+
+\draft{Nevertheless, some CubeSat project planning literature is publically available}. A sample of projects based on available project planning literature is shown in \Cref{tab:l_cubesat_time_drivers}. The comparison between different time allocation strategies reveals that:
+\begin{itemize}
+	\item Some projects allocate work packages to ``preparatory'' activities, such as feasibility assessment and training for the application of methodologies and tools. These activities are not strictly part of a project's engineering efforts, but can be necessary before work can continue on certain engineering tasks.
+	\item ``Procurement'' as an activity is planned and often part of the critical path. While it usually involves little to no work from the developers, this downtime is significant and long enough to be part of high-level plans.
+	\item The estimated duration of the same activity can vary significantly between projects, often crossing one order of magnitude. This is affected by different project-specific and environment-specific parameters. \todo{which I analyse at XYZ...}
+	\item Some engineering tasks have only been considered as part of the project plan only by a single project, such as \emph{software development}, \emph{prototyping} or \emph{reviewing}.
+\end{itemize}
 
 \begin{table*}[h]
 	\caption{Time spent for development activities of various small satellite projects, based on published Gantt charts used for planning. ``Days'' should be interpreted as working days. Empty cells imply that the information is missing or not categorised as such.}
@@ -858,7 +1071,7 @@ A \citeyear{bouwmeesterSurveyWorldwidePico2010} survey of nanosatellite technolo
 		Feasibility Assessment &  & & 60 days & & & \\
 		Funding Search &  & & 200 days & & & \\
 		Training & 111 days  & & & 39 days & & \\
-		Design & 827 days & 40 days \footnotemark{} & 280 days & 300 days & 122 days & 60 days\\
+		Design & 827 days & 40 days \tnote{1} & 280 days & 300 days & 122 days & 60 days\\
 		Review &  &  & & 160 days & &\\
 		Procurement & 450 days  & 43 days&  & 80 days & & 9 days\\
 		Prototyping &  & &  & & & \\
@@ -874,22 +1087,25 @@ A \citeyear{bouwmeesterSurveyWorldwidePico2010} survey of nanosatellite technolo
 		Other Environmental Testing & 121 days & & &  & &\\ \hline
 		\end{tabular}
 	\end{adjustbox}
+	\begin{tablenotes}
+	\item[1] Structural design only
+	\end{tablenotes}
 
-	\footnotetext{\draft{Structural design only}}
 \end{table*}
 
-Various CubeSat projects in the design, manufacturing or operations stages have published extracts from their Project Management plans, providing information about the main drivers behind costs, phases, development effort, and their critical path.
+\newthought{Finally,} to the author's knowledge, there is no comprehensive survey on the number of members in CubeSat teams. However, typical team sizes can range between 5 to over 100 members, \draft{depending on environmental characteristics} \todo{[cite]}.
 
-In terms of cost, results can vary significantly, depending on the environment and objectives of the project. Two extremes can be found in the EQUiSat project, which is a 1U CubeSat bus costing \SI{3800}{USD} \autocite{leikenEQUiSatSpace$3776612019}, and the Hermes proposal, which has estimated \SI{35300000}{USD} for a 9U deep-space CubeSat \autocite{pujolgasullaHermesCubesatOnsite2021}. The accounting for CubeSat projects highly depends on whether labour, facility and launch costs are considered. These services may often not be accounted in project budgets, or be provided for free as part of an external agreement\footnote{For example, space agency projects may cover test campaigns and launch opportunities, or laboratory facilities may already available. Labour costs are sometimes not considered in academic projects in the case of voluntary participation.}.  \todo{cite paper from SW} In case labour costs are considered, the project cost will be also very closely tied to development time.
-Due to this high variance between project costs, and the lack of concrete data on team environment and cost budgets, I have not performed a comparative analysis of CubeSat project costs.
+\subsection{CubeSat Development Approaches}
 
-On the other hand, CubeSat development time can be more easily allocated into different categories. A sample of projects based on available project planning literature is shown in \Cref{tab:l_cubesat_time_drivers}. The comparison between different time allocation strategies reveals that:
-\begin{itemize}
-	\item Some projects allocate work packages to ``preparatory'' activities, such as feasibility assessment and training for the application of methodologies and tools. These activities are not strictly part of a project's engineering efforts, but can be necessary before work can continue on certain engineering tasks.
-	\item ``Procurement'' as an activity is planned and often part of the critical path. While it usually involves little to no work from the developers, this downtime is significant and long enough to be part of high-level plans.
-	\item The estimated duration of the same activity can vary significantly between projects, often crossing one order of magnitude. This is affected by different project-specific and environment-specific parameters. \todo{which I analyse at XYZ...}
-	\item Some engineering tasks have only been considered as part of the project plan only by a single project, such as \emph{software development}, \emph{prototyping} or \emph{reviewing}.
-\end{itemize}
+There is \textbf{no single and universally followed development approach}, methodology or process for CubeSats.
+Even though they present technical similarities, the development environments of different teams can vary significantly. 
+
+
+\draft{Check CubeSat lifecycles section in Notes}
+
+\draft{What are the perceptions of these developer approaches? Check Honore-Livermore work}
+
+
 
 \section{Sub-CubeSat Ecosystem}
 \label{sec:LITERATURE_subcubesat}
@@ -897,6 +1113,8 @@ On the other hand, CubeSat development time can be more easily allocated into di
 
 
 \subsection{Pico-satellites}
+
+\todo{uludagDelfiPQInOrbitPerformance2025 have very detailed information on costs and prices and should be included here.}
 
 The success of the CubeSat platform combined with increasing trends of miniaturisation encouraged the creation of the PocketQube platform.
 With the assumption that electronics can be infinitely miniaturised, the limiting factor for spacecraft size and mass become physics restrictions, and most importantly communications power/antenna size, solar panel area, and battery size.
@@ -1019,7 +1237,7 @@ sails \cite{atchisonPassiveMicroscaleSolar2008,umansky-castroDesignAlphaCubeSat,
 
 Recent launches of femto-satellites and smaller objects in space have given rise to space debris and tracking concerns. Manchester's KickSat-2 mission was initially rejected by the \ac{FCC} on the grounds of increased risk due to lack of traceability \cite{FCCBigProblem2018,thenationalassociationforamateurradioKickSat2AliveBeing2019,nwekeKickSat2DismissalPrejudice2016}. KickSat-2 then sought a \acs{NASA} launch which shifted the responsible regulatory body.
 Another notable case was the one of \emph{Swarm Technologies}, a USA-based startup which attempted to launch four 1/4U spacecraft called \emph{SpaceBEEs}. Despite their attempts for improved tracking\footnote{Including a passive Ku-band radar reflector on each face and a planned GPS beacon}, their application was rejected again due to their small size \autocite{serafiniSWARMDismissalPrejudice2017}. Despite the rejection, Swarm did launch their spacecraft. This led to a halt in their next filing and a fine \autocite{harrisFCCAccusesStealthy2018}.
-Nevertheless, \cite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion.
+Nevertheless, \cite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion. \todo{Check sperettaCubeSatsPocketQubesOpportunities2016}
 
 \section{Topics from Systems Engineering}
 \label{sec:LITERATURE_systems_engineering}
@@ -2627,7 +2845,7 @@ A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}
 \label{fig:m_software_testing_ds1}
 \end{marginfigure}
 
-In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \todo{[cite]}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration\todo{ [ref section]}. In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
+In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \todo{[cite] - note: venturini notes this}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration\todo{ [ref section]}. In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
 \begin{enumerate}
 	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality \autocite{chengWhatImprovesDeveloper2022, kemererImpactDesignCode2009}. Code inspection can also involve automated static analysis through automated tools.
 	
@@ -3879,6 +4097,8 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 \appendix
 
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
+
+\draft{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
 
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
