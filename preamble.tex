@@ -8,7 +8,7 @@
 
 %%
 % Just some sample text
-\usepackage{lipsum}
+%\usepackage{lipsum}
 
 %%
 % For nicely typeset tabular material
@@ -49,6 +49,9 @@ mincitenames=1,
 %%
 % Maths
 \usepackage{amsmath}
+
+% Multiple columns
+\usepackage{multicol}
 
 % Prints a trailing space in a smart way.
 \usepackage{xspace}
@@ -163,7 +166,7 @@ mincitenames=1,
 
 % Various utilities
 \usepackage{tabularx}
-\usepackage[singlelinecheck=false]{caption}
+\usepackage[singlelinecheck=false,font={footnotesize}]{caption}
 \usepackage{subcaption}
 \usepackage{comment}
 \usepackage{epigraph}
@@ -171,7 +174,7 @@ mincitenames=1,
 
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{compat = 1.3}
+\pgfplotsset{compat = 1.18}
 \usetikzlibrary{arrows.meta,positioning,automata}
 %\usepackage{physics}
 \let\Re=\relax
