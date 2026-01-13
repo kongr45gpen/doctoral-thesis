@@ -1045,7 +1045,7 @@ Due to this high variance between project costs, and the lack of concrete data o
 \end{figure}
 
 
-\newthought{With regards to} development time, a comparison between CubeSat unit sizes and programme duration does not reveal an obvious correlation (\Cref{fig:l_cubesat_size_duration}). Initially, one would expect that programme duration would scale with the technical size of the mission, which itself should be linked with the physical CubeSat size. However, the data shows that smaller CubeSat projects last disproportionately longer. This can be explained by a weaker link between physical and technical size, as well as by a preference of smaller, amateur teams with less funding, \draft{correlating with increased delays}, for smaller satellites.
+\newthought{With regard to} development time, a comparison between CubeSat unit sizes and programme duration does not reveal an obvious correlation (\Cref{fig:l_cubesat_size_duration}). Initially, one would expect that programme duration would scale with the technical size of the mission, which itself should be linked with the physical CubeSat size. However, the data shows that smaller CubeSat projects last disproportionately longer. This can be explained by a weaker link between physical and technical size, as well as by a preference of smaller, amateur teams with less funding, \draft{correlating with increased delays}, for smaller satellites.
 
 \draft{Nevertheless, some CubeSat project planning literature is publically available}. A sample of projects based on available project planning literature is shown in \Cref{tab:l_cubesat_time_drivers}. The comparison between different time allocation strategies reveals that:
 \begin{itemize}
@@ -2022,11 +2022,11 @@ A first version of a lifecycle process model can be inspired by the characterist
 		\item Integrate Continuously
 		\item Validate Frequently
 \end{enumerate}} which involve dynamic, iterative/incremental work, with verification/validation cycles at the end of every iteration.
-While investigating between existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a \todo{proposed methodology}; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that \todo{are not within the scope of this work.}
+When comparing existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a \todo{proposed methodology}; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that \todo{are not within the scope of this work.}
 
-As such, it is necessary to create a \todo{new model}. The \textbf{\emph{Scrum}} framework, in particular, has already gathered attention in the hardware engineering community \autocite{bottAnalysisTheoriesSupporting2019,doveFundamentalsAgileSystems2014} and has been implemented in previous CubeSat systems and subsystems \autocite{honore-livermoreDigitalEngineeringDevelopment2022,garzanitiEffectivenessScrumMethodology2019}. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} describes Scrum as covering the management, risk handling, and customer interfacing processes of the entire lifecycle of a project, which can range from a system built by an individual to a business system.\marginnote{Note that the, while scaled tailorings of Scrum described in \Cref{sec:LITERATURE_scrum} might seem suitable for systems more complex than software, such as \acs{SCS}, they instead cover the more administrative aspects of larger organisations, and are therefore out of scope for this work.} Finally, the suitability of Scrum for the \acs{SCS} context, particularly \textbf{``hobbyists''} and \textbf{``smallsat developers''}, is supported by evaluating the typical environmental characteristics of these projects, which are generally compatible with Scrum's principles (\Cref{tab:mission-characteristics}).
+As such, it is beneficial to synthesise a lifecycle process model for \acs{SCS}. The \textbf{\emph{Scrum}} framework, in particular, has already gathered attention in the hardware engineering community \autocite{bottAnalysisTheoriesSupporting2019,doveFundamentalsAgileSystems2014} and has been implemented in previous CubeSat systems and subsystems \autocite{honore-livermoreDigitalEngineeringDevelopment2022,garzanitiEffectivenessScrumMethodology2019}. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} describes Scrum as covering the management, risk handling, and customer interfacing processes of the entire lifecycle of a project, which can range from a system built by an individual to a business system.\marginnote{Note that the, while scaled tailorings of Scrum described in \Cref{sec:LITERATURE_scrum} might seem suitable for systems more complex than software, such as \acs{SCS}, they instead cover the more administrative aspects of larger organisations, and are therefore out of scope for this work.} Finally, the suitability of Scrum for the \acs{SCS} context, particularly \textbf{``hobbyists''} and \textbf{``smallsat developers''}, is supported by evaluating the typical environmental characteristics of these projects, which are generally compatible with Scrum's principles (\Cref{tab:mission-characteristics}).
 
-For the remainder of this section, I will tailor the Scrum process for use in \ac{SCS} systems. This tailoring will roughly follow the steps proposed by ECSS-S-ST-00-02C \autocite{ECSS-S-ST-00-02C}, which include the identification of project characteristics (see \Cref{sec:scope}), and selection/modification of applicable requirements, after going \draft{section-by-section}. Apart from the official definition of Scrum \cite{schwaverDefinitiveGuideScrum2020}, I will rely on \draft{external analyses} \cite{boehmBalancingAgilityDiscipline2004} and criticisms \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} of incorrect applications of it.
+For the remainder of this section, I will tailor the Scrum process for use in \ac{SCS} systems. This tailoring will roughly follow the steps proposed by ECSS-S-ST-00-02C \autocite{ECSS-S-ST-00-02C}, which include the identification of project characteristics, and selection/modification of applicable requirements, after going \draft{section-by-section}. Apart from the official definition of Scrum \cite{schwaverDefinitiveGuideScrum2020}, I will rely on \draft{external analyses} \cite{boehmBalancingAgilityDiscipline2004} and criticisms \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} of incorrect applications of it.
 
 \paragraph{Tailoring of The Scrum Process}
 
@@ -2035,7 +2035,7 @@ Scrum calls for small teams of ``10 or fewer'' people, responsible for all produ
 
 While most participants in the team will be developers, responsible for technically advancing each iteration, Scrum specifies the role of a \emph{Product Owner}, responsible for managing and communicating work packages.
 
-The final role defined by the framework is that of the \emph{Scrum Master}, who is responsible for maintaining the Agile processes and coaches the team towards self-management. While it is seen as a critical role by the Scrum guide, it has been by far the most controversial role in \draft{real-world} applications, especially when its responsibilities are not handled correctly, and is usually limited by the team's needs and competencies \autocite{kustersScreamGuide2020,doshiDownfallScrumMaster2025}. As such, I will not include the role of Scrum Master in the tailoring of this methodology -- however, the tasks performed are still essential, especially for younger teams that are not experienced in adherence to specific methodologies.
+The final role defined by the framework is that of the \emph{Scrum Master}, who is responsible for maintaining the Agile processes and coaches the team towards self-management. While it is seen as a critical role by the Scrum guide, it has been by far the most controversial role in practical settings, especially when its responsibilities are not handled correctly, and is usually limited by the team's needs and competencies \autocite{kustersScreamGuide2020,doshiDownfallScrumMaster2025}. As such, I will not include the role of Scrum Master in the tailoring of this methodology -- however, the tasks performed are still essential, especially for younger teams that are not experienced in adherence to specific methodologies.
 
 \begin{table*}[h]
 	\caption{Sat-Scrum team responsibilities}
@@ -2056,8 +2056,9 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The difference between \emph{review} and \emph{retrospective} is\draft{...}}
 
 The original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
+In industrial environments, iterations can last between 2 to 8 weeks, or even longer \autocite{cooperAgileDevelopmentManufacturing2023}. However, within the context of Scrum combined with \acs{SCS}, 8 weeks will represent a reasonable upper bound for iteration length.
 
-This imposition of physical and time-related constraints makes the direct application of Scrum difficult, as it \draft{prevents} the idea of constant work done in parallel. This is identified, for example, in \draft{some paper that I need to find}. However, the context of \acs{SCS} development makes it possible to keep these so-called ``\todo{downtime}'' to a minimum, by proactively reducing external lead time.\marginnote{Reduction of external lead time can be done by:\begin{itemize}
+These \ac{COP}-related constraints add time uncertainty to each iteration, and make the direct application of Scrum difficult, as they have the potential of adding ``waiting time'', when developers cannot verify a product before a certain external process is completed \cite{cooperAgileDevelopmentManufacturing2023}. The context of \acs{SCS} development makes it possible to control these so-called ``deadtime periods'', by proactively reducing external lead time.\marginnote{Reduction of external lead time can be done by:\begin{itemize}
 		\item Moving manufacturing in-house, to the degree possible
 		\item Collaborating with \draft{entities also following an Agile work system}
 		\item \todo{some other things...}
@@ -2079,9 +2080,7 @@ This imposition of physical and time-related constraints makes the direct applic
 		\item Structural component design
 	\end{itemize}
 	
-	The design phase is defined at \qtyrange{1}{2}{weeks}, but can take longer during the early stages of a project, where iterations are expected to last \todo{more}. However, this design time is significantly shorter than traditional, often year-long design phases in space projects. \todo{why?}
-	
-	\todo{This also includes reviews}
+	The design phase is defined at \qtyrange{1}{2}{weeks}, but can take longer during the early stages of a project, where iterations are expected to last \todo{more}. However, this design time is significantly shorter than traditional, often year-long design phases in space projects. In Scrum, instead of a ``\textbf{\acf{BDUF}}'', the design definition process is split into smaller chunks \autocite{watermanHowMuchUpFront2015}.
 	\item \textbf{Procurement} and \textbf{manufacturing} activities involve waiting for the preparation of physical components by external providers or internal process completion, and essentially prevent the verification of the design made in the previous step, acting as blockers in the critical path. After procurement and manufacturing is completed, \textbf{integration} involves ``putting those components together'', which can include breadboard prototyping, soldering, cabling, and assembly.
 	\item \textbf{Software Development} is defined as a separate activity, as the act of writing, and sometimes testing (see \todo{???}) software can often be performed independent of the designed hardware in the previous steps. \acs{SCS} are also software-heavy systems that require appropriate time dedicated to software completion, which has been demonstrated to be often neglected in CubeSat projects \todo{cite}.
 	
@@ -2112,19 +2111,27 @@ This imposition of physical and time-related constraints makes the direct applic
 			\item 1 week for environmental testing
 			\item 1 week for correction of errors
 		\end{itemize}}
+
+	\item \textbf{Sprint Planning, Review \& Retrospective} activities represent the administrative tasks that need to take place at the beginning and the end of each Sprint, in order to clarify the goals of the iteration, the work that can and needs to be done, the results of the previous processes, and the status of the project.
+	
+	The Scrum guide separates reviews and retrospectives, with the review addressing the technical aspects and \textbf{changes in the environment and external requirements}, often with external stakeholders present, and the retrospective focusing on interactions within the team. The guide also recommends timeboxing these events, to prevent \draft{unnecessary time spent.}
+
+	Finally, the Scrum guide also defines a 15-minute ``Daily Scrum'' meeting, in order to allow developers to create an actionable plan for a single day of work. In practice, it might be difficult to guarantee a daily meeting time for student teams, teams working asynchronously, or teams with members who have a limited duty cycle of contribution to the project. Daily meetings also have a generally negative reputation and perception in the software engineering community \autocite{singhExploringLivedExperiences2023}. As daily meetings are therefore more closely related to Project Management, I consider their evaluation as out-of-scope for this work.
 \end{itemize}
 
-Each Sat-Scrum Sprint can therefore last between \qtyrange{4}{8}{working weeks}, with the exact time being often unpredictable.
+Each Sat-Scrum Sprint can therefore last between \qtyrange{4}{8}{} working weeks, with the exact time being often unpredictable.
 
 \subparagraph{Definition of Done}
 
-\todo{Here we explain what the end product should be after each Sprint...}
+After the activities of the Sprint have been defined, the next question is \emph{what should a Sprint achieve} and \emph{what should the goal of a Sprint be}?
 
-\subparagraph{Other Scrum Events}
+The Scrum Guide \cite{schwaverDefinitiveGuideScrum2020} defines a \emph{Definition of Done} as a shared understanding of the \emph{quality measures that a product should meet at the end of a Sprint}. In practical terms, the Definition of Done may be a list of requirements or features different for each Sprint\footnote{Original Scrum links the Definition of Done to a single increment, nothing that a Sprint may contain one or more increments. However, for simplicity, I will consider here that a Sprint produces a single increment.}, or a common checklist of actions that need to have been completed.
 
-\todo{Here we have a paragraph describing how we interpret and tailor the Daily Scrum, Retrospective and so on...}
+The Definition of Done is linked to the \emph{Sprint Goal}, which is a \textbf{single objective} that the team needs to achive during the Sprint. The singularity of the goal implies that it can be described in one single sentence. 
 
-\subparagraph{Backlog}
+The Definition of Done and Sprint Goal are agreed upon at the \emph{sprint planning} phase of each iteration, and usually refer to characteristics of the entire product. The more specific work packages that need to be completed during the Sprint are defined as items of \textbf{backlogs}, which are ordered lists of ``what is needed to improve the product''. The set of all work packages related to a product are listed in the Product Backlog, and then copied to the Sprint Backlog during the planning phase. It is then the responsibility of the developers to advance the development of the product by implementing specific Sprint Backlog items.
+
+It is not always possible to complete Sprint Backlog items within a single iteration. In this case, these items can be postponed and pushed to a future Sprint. \todo{reviews when}
 
 \paragraph{High-level planning}
 
@@ -2808,6 +2815,9 @@ Another decision that developers are faced with involves whether they reuse exis
 	- tere should be a minimum big-design-up-front level/ what is the absolute minimum of BDUF that has to be done before moving on to development? zero?
 	- There is no need to have a separate OBC (perhaps even ADCS), unless you need it. Interfaces add complexity and complexity is bad. It is better to have a single big microcontroller for everything (redundancy is overrated anyways)
 	}
+\draft{
+	- Delta-CDR is performed in the sprint review
+}
 
 \subsection{Interface Management Guidelines}
 \label{sec:METHODOLOGY_interface_management}
