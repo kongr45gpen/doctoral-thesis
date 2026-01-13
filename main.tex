@@ -716,7 +716,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 		"Agile" doesn't mean "last-minute".}}{Alexander F.\space B\"uhler}
 \end{fullwidth}
 
-This section will introduce the relevant background necessary before developing the \ac{SCS} methodology.
+This chapter will introduce the relevant background necessary before developing the \ac{SCS} methodology.
 Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \draft{\Cpageref{sec:acronyms}}.}. \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
 
 \section{Terminology}
@@ -1714,7 +1714,7 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	\textbf{Prescriptive Study (PS)} (Comprehensive):
 	Based on the gathered data, I will describe a set of design methods applicable to different components of systems engineering, which combined define a methodology for \acs{SCS}.
 	
-	The PS phase is further separated by \acs{DRM} into Task Clarification (\Cref{sec:ra_scope}), Conceptualisation, Elaboration, Realisation, and Support Evaluation.
+	The PS phase is further separated by \acs{DRM} into Task Clarification, Conceptualisation, Elaboration, Realisation, and Support Evaluation.
 	
 	\item 
 	\textbf{Descriptive Study II (DS-II)} (Initial):
@@ -1818,21 +1818,39 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 		The best way not to have any defects in your system is not to put defects in your system.}}{Bruce Douglass}
 \end{fullwidth}
 
+This chapter will present the proposed ``\acs{SCS} Methodology''. Following the \acs{DRM} methodology described in \Cref{chap:RESEARCH_APPROACH}, this chapter will cover the \emph{Prescriptive Study} phase.
+\Cref{sec:METHODOLOGY_technicalmanagement,sec:METHODOLOGY_hardwaredevelopment,sec:METHODOLOGY_softwaredevelopment} will present the conceptualisation, elaboration and realisation of the methodology, separated into methods for different aspects of Systems Engineering, as decomposed in \Cref{fig:i_sye_decomposition}. \Cref{sec:METHODOLOGY_tailoring} will finally present a tailoring questionnaire to help developers with tailoring the proposed methods to their specific project, as well as recommend the overarching tools that can support the methodology.
+
+Before identifying and realising the functions of the intended methodology, the \emph{Task Clarification} step has to be performed, by identifying the goals and success criteria of the methodology. The requirements I identified are listed in \Cref{tab:m_methodology_general_rqeuirements} and will be justified below.
+
 \begin{table*}[h]
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
 		\textbf{No.} & \textbf{Requirement}                                                                                                              \\ \midrule
-		1            & The SCS Methodology shall enable developing an SCS project in 1 year or less, starting from preliminary design to qualification.  \\
-		2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \todo{section tade}.                  \\
-		3            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. \\
-		4            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.      \\
-		5            & The SCS Methodology shall enable less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies. 
+		RM1            & The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.  \\
+		RM2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \Cref{sec:INTRODUCTION_defining_systems_engineering}.                  \\
+		RM3            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.      \\
+		RM4            & The SCS Methodology shall enable less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies. \\
+		RM5            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. \\
+		\bottomrule
 	\end{tabularx}
-	\caption{\todo{A very interesting table}}
+	\caption[SCS Methodology Requirements]{\acs{SCS} Methodology Requirements}
+	\label{tab:m_methodology_general_rqeuirements}
 \end{table*}
+
+The temporal coverage of the methodology starts from preliminary design, and not conceptualisation or concept evaluation, which is not considered within the scope of this thesis. The measurement of development time and main success criterion is defined at the end of environmental testing. I consider a successful acceptance campaign to signify the end of a spacecraft's development, as launch regulations usually prevent modifications after this point, and the spacecraft should be considered completed. Conversely, the high variability of integration and launch dates could add a significant overhead in the measured time.
+
+Out of the metrics identified in \Cref{sec:LITERATURE_metrics}, I have chosen two as the relevant success criteria: \textbf{development time} and \textbf{risk}, as the available literature and data on the development on CubeSats, PocketQubes, and smaller \acs{SCS} has demonstrated that they are \begin{enumerate*}
+	\item common key targets for optimisation in academic and industrial environments, and
+	\item causally linked to the selection and application of a \acl{SYE} methodology or process. \todo{[cite]}
+\end{enumerate*}
+I have not selected cost as a measurable criterion, as its accounting will vary by different orders of magnitude between different projects, and as it is also often positively correlated with development time \footnote{Nevertheless, I will evaluate any potential cost savings or cost increases of different methods/approaches, but I will not consider cost as a success criterion or requirement}.
+
+Finally, the ``target audience'' of the methodology includes the groups of ``hobbyists'' and ``smallsat developers'', as classified by the \citeauthor{swartwoutYouSayPicosat2018} taxonomy \autocite{swartwoutYouSayPicosat2018}\footnote{Also see \Cref{sec:LITERATURE_cubesat_environment} for an explanation of the Swartwout taxonomy.}. This scope excludes ``traditional contractors'' and large constellation developers. This selection is inspired by the common characteristics of the two former groups (\Cref{tab:mission-characteristics}), which also indicate that they are more receptive of a new, Agile-centred approach. The lack of larger scale ``traditional contractors'' within the \acs{SCS} ecosystem as of this moment also prevents data gathering and experimentation for these types of organisations.
 
 \FloatBarrier
 \section{Technical Management Methodology}
+\label{sec:METHODOLOGY_technicalmanagement}
 
 This section will cover the \emph{Technical Management} aspect of \acf{SCS} Systems Engineering (as shown in \Cref{fig:i_sye_decomposition}), which relates to how both the high-level plan and day-to-day work of a project and a development team are organised.
 
@@ -1848,11 +1866,17 @@ In traditional space systems engineering, requirements are often elaborated in s
 \begin{quote}
 	Design is based on requirements. There's no justification for designing something one bit "better" than the requirements dictate.
 \end{quote}
-In these cases, requirements elicitation takes place in the beginning of the project, with little room for changes and modifications at the later phases. \todo{cite} \todo{explain the nature of strictly verifiable and machine-interpretable requirements} \draft{For example, \acs{ECSS} standards forbid the use of words which cannot be determined objectively, such as \emph{minimise/maximise}, \emph{optimise}, ...}
+In these cases, requirements elicitation takes place in the beginning of the project, with little room for changes and modifications at the later phases. Requirements have to use specific wording and a ``cadence'', so that they can be used during design, early verification and testing as guides on whether a product is successful or not \autocite{ECSS-E-ST-10-06C}. In order to enforce this objectivity, \acs{ECSS} standards for example forbid the use of words such as \emph{optimise}, \emph{minimise/maximise}, \emph{typical}, \emph{rapid} etc. The standards also specify key concepts that must be followed by all technical requirements, including \emph{traceability}, \emph{no ambiguity}, \emph{uniqueness}, \emph{identifiability}, \emph{singularity}, \emph{completeness}, \emph{verifiability} and \emph{tolerance} \cite{ECSS-E-ST-10-06C}. In this ideal case, requirements can be made machine-readable and compatible with formal modelling for automated verification \autocite{katisCaptureAnalyzeDiagnose2022}.
 
-On the other hand, some projects follow less strict approaches, where requirements do not cover the entire system, and are usually elaborated in a more \draft{interpretable} manner.
+However, in the CubeSat world, some projects follow less strict approaches, where requirements do not cover the entire system, and are usually elaborated in a more subjective manner. An example of differences between two CubeSat projects is shown in \Cref{tab:m_example_requirement_different}. The decision to follow a less well-defined specification approach can be a result of the following factors:
+\begin{itemize}[itemsep=-1ex]
+	\item For complex and emergent systems, some parameters may not be known in the design phase, but may require prototyping or manufacturing. This can be true especially for novel technologies, or when a team lacks experience to predict technical values.
+	\item Some critical parameters may be unknowable or unmeasurable, with teams relying on their intuition or a ``best-effort'' approach to manage\footnote{The main examples supporting this factor are reliability and risk-related parameters. As the probabilities of part failure and design errors are not known/modelled, or would require prohibitively expensive tests, reliability-related parameters can rarely be quantified, even for CubeSats.}.
+	\item The time and effort required to estimate a parameter in early development phases may not justify the added benefits of an early precise specification, especially when there is an intuitive understanding of the requirement both by developers and stakeholders, and in short-duration projects, where knowledge transfer is less formal.
+\end{itemize}
 
 \begin{table*}
+	\def\arraystretch{1.4}
 	\begin{tabularx}{\linewidth}{@{}lXX@{}}
 		\toprule
 		& AcubeSAT project \todo{cite} & \todo{Artemis CubeSat} \cite{zhu23Requirements} \\ \midrule
@@ -1861,22 +1885,23 @@ On the other hand, some projects follow less strict approaches, where requiremen
 		& The unibody's cross section on the X-Y plane shall have maximum external dimensions of 70x70 mm. & The CubeSat kit shall be tested to meet environmental requirements set forth in NASA GEVS for spaceflight. The end-user will be responsible for doing final flight environmental testing set forth by their launch provider. \\ \bottomrule
 	\end{tabularx}
 	\caption{Example requirements from different space projects}
+	\label{tab:m_example_requirement_different}
 \end{table*}
 
-Especially for \acs{SCS} projects, I have made the following observations:
+Especially for \acs{SCS} projects, I have also made the following observations:
 \begin{itemize}[itemsep=-1ex]
 	\item \acs{SCS} projects \emph{need} to conform to external requirements to some degree, provided by their host or launch provider.
 	\item Due to the lack of standard launch interfaces, specifications and standards, these requirements may change by the relevant stakeholders during the project.
 	\item The planned feature-set of a project may change during its course (usually via the removal of functionality) due to incorrect planning, external requirement change or une
 	Projects with fixed deadlines will prefer to remove features, instead of adding additional iterations or reworking the product, since the latter may lead to a launch cancellation.
 	\item Each project evolves around a central strategic goal that expresses a simple objective (such as \emph{receive at least some data from orbit} or \emph{demonstrate a specific technology}). Additional objectives, when completed, increase the perceived \emph{value} of the project \todo{Ask Alex about the definition of value}.
-	\item The definition of \todo{specific} requirements itself as a process can last up to a month, and requires some prior knowledge of the system's principles, feasibility and available technology. In the case of inexperienced teams, external reviews may be necessary.
-	\item Well-specified requirements can be the guide for functional and environmental testing campaigns. However, requirements-based testing campaigns cannot offer complete coverage of the executed design, as they do not cover \todo{design-specific} activity flows and edge cases.
+	\item The definition of strictly specified requirements itself as a process can last up to a month, and requires some prior knowledge of the system's principles, feasibility and available technology. In the case of inexperienced teams, external reviews may be necessary.
+	\item Well-specified requirements can be the guide for functional and environmental testing campaigns. However, requirements-based testing campaigns cannot offer complete coverage of the executed design, as they do not cover design-specific activity flows and edge cases.
 \end{itemize}
 
-\draft{I therefore consider it important to define an \acs{SCS}-tailored method for requirements capture} that can still be part of the proposed \emph{project lifecycle approach}, while reducing the \ac{SYE} overhead.
+It is therefore beneficial to define an \acs{SCS}-tailored method for requirements capture that can still be part of the proposed \emph{project lifecycle approach}, while reducing the \ac{SYE} overhead.
 
-An inspiration from such an approach can come from the \acs{DSDM} Agile framework, which advocates the \textbf{prioritisation} of different project requirements using the \acf{MOSCOW} classification \autocite{agilebusinessconsortiumAgilePMHandbookV22014}, which categorises requirements as follows:
+An inspiration for such an approach can come from the \acs{DSDM} Agile framework, which advocates the \textbf{prioritisation} of different project requirements using the \acf{MOSCOW} classification \autocite{agilebusinessconsortiumAgilePMHandbookV22014}, which itself categorises requirements as follows:
 \begin{itemize}
 	\item
 	\textbf{Must Have} requirements: The Minimum Usable subset of requirements that a project should comply to in order to be legal, safe, compliant with external requests, and functional.
@@ -1888,9 +1913,9 @@ An inspiration from such an approach can come from the \acs{DSDM} Agile framewor
 	\item \textbf{Won't Have this time} requirements: These requirements represent those that the team has agreed to not implement in a specific iteration. \todo{or version?} This classification usually refers to a reassignment of requirement status. \todo{after a few iterations}
 \end{itemize}
 
-While Must Have requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
+While \emph{Must Have} requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
 
-In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.
+\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.\footnote{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
 
 \paragraph{Requirement Scope}
 
@@ -1898,14 +1923,67 @@ In contrast to the traditional approach, \todo{which one?} \acs{MOSCOW} requirem
 \begin{definition}[Slice]
 	A \textbf{slice} is a set of hardware and software changes, as well as test suites, that describe a single set of testable behaviour \cite{radekaWhenAgileGets2022}.
 \end{definition}
-The authors provide the example of a printer feature that allows the device to print from a mobile app as an example of a slice.\marginnote{Based on \citeauthor{radekaWhenAgileGets2022}'s examples, in \acs{SCS}, example slices could be: \begin{itemize}
-	\item The satellite can point its solar panels towards the sun.
-	\item The satellite can operate during eclipse.
-	\item The satellite can send data to the ground station.
+The authors provide the example of a printer feature that allows the device to print from a mobile app as an example of a slice.\marginnote{Based on \citeauthor{radekaWhenAgileGets2022}'s examples, in \acs{SCS}, example slices could be: \begin{itemize}[itemsep=-0.5ex]
+	\item \emph{The satellite can point its solar panels towards the sun}.
+	\item \emph{The satellite can operate during eclipse}.
+	\item \emph{The satellite can send data to the ground station}.
 \end{itemize}} In that sense, a slice can be seen as a less well-specified requirement that describes the goal of a system.
 
-\todo{Anything more to write about requirements?}
-\todo{What is the benefit of having requirements in terms of the quantifiable goals of the system?}
+The concept of slices can provide a useful starting point for early system designs of a system, which are then elaborated in more detail and with additions of more specific features and constraints. They represent the concept of \textbf{inheritance} or \textbf{traceability} defined in ECSS-E-ST-10-06C, which states that each requirement should be traceable back to a source requirements from which it derives \autocite{ECSS-E-ST-10-06C}. While slices ``pull the disparate development efforts together'' \cite{radekaWhenAgileGets2022}, they can still be broken down into more specific requirements that are applicable to specific parts of the component under development.
+
+The above conversation already defines a two-tiered requirement hierarchy. However, most \acs{SCS} systems are considered \textbf{``systems-of-systems''}, consisting of multiple \textbf{parts} that interact with each other, and which can and may be developed independently. In the case of PocketQubes, these parts are subsystems that are designed to fit in the same structure together. In the case of ChipSats, the different parts of the satellite cannot be separated physically, but can still be \textbf{separated functionally}. It would be beneficial, therefore, to define a unit of analysis that represents the result of a functional and potentially physical decomposition of a system.
+
+I will define this unit to be a \textbf{``module''}, defined as follows, based on the dictionary definition of the noun \autocite{merriam-websterDefinitionMODULE2026}:
+\begin{definition}[Module]
+	A \textbf{module} is an independently functional part of the total function or structure of a spacecraft. \\%
+	(Note that this definition is not directly related to the concept of modularity.)
+\end{definition}
+
+With this definition, one can finally define a three-tiered system requirement specification system, which starts from high-level modules, linked to slices, linked to requirements. This requirement specification method does not follow a ``one-to-many'' relationship, meaning that complex structures can be created as needed, but still in a restricted structure that can be supported by e.g.\@ spreadsheet tools. Even though traditionally the decomposition of a system into modules or subsystems would happen after the requirements have been specified, in the context of \acs{SCS} \begin{enumerate*}
+	\item the decomposition into a few overarching modules is usually obvious from the offset, and 
+	\item an emergent, iterative process can lead to future modifications.
+\end{enumerate*}
+
+Finally, when a project uses an automated functional testing process or framework, the specific testing objectives and goals have to be coded as part of a formally specified testing suite. This means that the \textbf{test suite definition becomes the technical specification itself} (\Cref{sec:METHODOLOGY_automated_testing}). This capability even further reduces the need for a formal requirements specification, and reduces time by combining the requirements specification process with the test preparation \draft{process}.
+
+\begin{figure*}[h]
+	\begin{adjustbox}{width=\textwidth}
+\begin{tikzpicture}[
+    node distance=1.5cm and 1cm,
+    header/.style={font=\bfseries\large, text centered},
+    block/.style={rectangle, draw, fill=blue!5, text width=3.5cm, minimum height=2.4cm, text centered, line width=0.8pt},
+    slice/.style={rectangle, draw, fill=white, text width=4.5cm, minimum height=1cm, text centered, line width=0.6pt},
+    req/.style={rectangle, draw, fill=gray!5, text width=7cm, minimum height=1cm, font=\small, line width=0.6pt, inner sep=4pt},
+    arrow/.style={-{Stealth[scale=1.2]}, line width=0.8pt}
+]
+    \node[header] (h1) {Modules};
+    \node[header, right=of h1, xshift=3.3cm, anchor=center] (h2) {Slices};
+    \node[header, right=of h2, xshift=5.4cm, anchor=center] (h3) {Low-level Requirements};
+
+    \node[block, below=0.5cm of h1] (comm) {Communications};
+    
+    \node[slice, right=of comm, yshift=0.6cm] (rf_tx) {RF Transmission capability};
+    \node[slice, right=of comm, yshift=-0.6cm] (rf_rx) {RF Reception capability};
+    
+    \node[req, right=of rf_tx, xshift=0cm] (req1) {The spacecraft should transmit at least 10 kB of data 
+	during its lifetime.};
+	\node[req, right=of rf_rx, xshift=0cm] (req2) {The spacecraft should emit a periodic beacon every 5 minutes.};
+
+    \node[block, below=0.5cm of comm] (adcs) {Attitude Control};
+    
+    \node[slice, right=of adcs, yshift=0.6cm] (mag) {3-axis magnetorquers};
+    \node[slice, right=of adcs, yshift=-0.6cm] (bdot) {B-dot controller for detumbling};
+
+	%\node[slice, below=1cm of bdot] (traj) {Compatibility with 550 km SSO orbit};
+
+	\node[req, below=0.5cm of bdot, xshift=7cm] (req3) {The spacecraft must be compatible with a 500 km SSO orbit.};
+
+    %\draw[dashed, gray!50] ([xshift=1.2cm]h1.east |- comm.north) -- ([xshift=1.2cm]h1.east |- bdot.south);
+    %\draw[dashed, gray!50] ([xshift=1.5cm]h2.east |- comm.north) -- ([xshift=1.5cm]h2.east |- bdot.south);
+\end{tikzpicture}
+\end{adjustbox}
+\caption{Visualisation of an example \acs{SCS} requirements specification.}
+\end{figure*}
 
 \begin{table*}[h]
 	\caption[Overview of the MoSCoW method]{Overview of the \acs{MOSCOW} method}
@@ -1913,26 +1991,27 @@ The authors provide the example of a printer feature that allows the device to p
 		\toprule
 		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{MOSCOW}} Requirements Management Overview}
 		\\ \midrule
-		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Expectations \\
+		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \(>\) Expectations \\
 		Basis & \todo{???} \\
 		Main Principle & Classification of requirements into different priorities \\
 		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Amending requirements based on environmental factors and emergence\item Collaboration with stakeholders and interactive definition\end{itemize} \\
-		Benefits & \draft{Development Time}, Features \\ \bottomrule
+		Benefits & Features, Development Time \\ \bottomrule
 	\end{tabularx}
 \end{table*}
 
-\todo{HERE we put information about the slices}
-
+\FloatBarrier
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
 \label{sec:METHODOLOGY_satscrum}
 
-\draft{
-	What makes Agile interesting?
-}
+%\draft{
+	%What makes Agile interesting?
+%}
 
-\draft{	
-	It is that it is a sequential yet evolutionary process. The number of iterations must not be predetermined but what happens inside an iteration is. This is the conicept of the sat-scrum model.
-}
+%\draft{	
+	%It is that it is a sequential yet evolutionary process. The number of iterations must not be predetermined but what happens inside an iteration is. This is the conicept of the sat-scrum model.
+%}
+
+The previous section explained how the main goals and objectives of a space engineering project can be defined, typically in the first days of development. Before the rest of the development can continue, it is important to define the \textbf{lifecycle process model} that an \acs{SCS} project will use. The specific model will guide the high-level and daily actions of the team, specifying the trajectory from specification to qualification, and will inform the rest of the methods attached to the \acs{SCS} methodology.
 
 A first version of a lifecycle process model can be inspired by the characteristics and processes of Agile methodologies. More specifically, \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} lists six principles for Agile systems engineering% 
 \marginnote{\citeauthor{douglassAgileSystemsEngineering2015}'s 6 principles of Agile Systems Engineering:\begin{enumerate}
@@ -1956,7 +2035,7 @@ Scrum calls for small teams of ``10 or fewer'' people, responsible for all produ
 
 While most participants in the team will be developers, responsible for technically advancing each iteration, Scrum specifies the role of a \emph{Product Owner}, responsible for managing and communicating work packages.
 
-The final role defined by the framework is that of the \emph{Scrum Master}, who is responsible for maintaining the Agile processes and coaches the team towards self-management. While it is seen as a critical role by the Scrum guide, it has been by far the most controversial role in \draft{real-world} applications, especially when its responsibilities are not handled correctly, and is usually limited by the team's needs and competencies \autocite{kustersScreamGuide2020,doshiDownfallScrumMaster2025}. As such, I will not include the role of Scrum Master in the tailoring of this methodology -- however, \draft{the roles performed are still necessary}, especially for younger teams that are not experienced in adherence to specific methodologies.
+The final role defined by the framework is that of the \emph{Scrum Master}, who is responsible for maintaining the Agile processes and coaches the team towards self-management. While it is seen as a critical role by the Scrum guide, it has been by far the most controversial role in \draft{real-world} applications, especially when its responsibilities are not handled correctly, and is usually limited by the team's needs and competencies \autocite{kustersScreamGuide2020,doshiDownfallScrumMaster2025}. As such, I will not include the role of Scrum Master in the tailoring of this methodology -- however, the tasks performed are still essential, especially for younger teams that are not experienced in adherence to specific methodologies.
 
 \begin{table*}[h]
 	\caption{Sat-Scrum team responsibilities}
@@ -1976,7 +2055,7 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 \subparagraph{The Sprint}
 Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The difference between \emph{review} and \emph{retrospective} is\draft{...}}
 
-Original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
+The original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
 
 This imposition of physical and time-related constraints makes the direct application of Scrum difficult, as it \draft{prevents} the idea of constant work done in parallel. This is identified, for example, in \draft{some paper that I need to find}. However, the context of \acs{SCS} development makes it possible to keep these so-called ``\todo{downtime}'' to a minimum, by proactively reducing external lead time.\marginnote{Reduction of external lead time can be done by:\begin{itemize}
 		\item Moving manufacturing in-house, to the degree possible
@@ -2383,10 +2462,10 @@ The shortcomings of document-based specification approaches led to the adoption 
 
 
 
-\begin{figure}[h]
+\begin{figure*}[h]
 	\caption{Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
 	\includegraphics{graphics/spardata_moqup}
-\end{figure}
+\end{figure*}
 
 \begin{table*}[p]
 	\caption[Overview of the SCS data management method]{Overview of the \acs{SCS} data management method}
@@ -2411,6 +2490,7 @@ The shortcomings of document-based specification approaches led to the adoption 
 
 \FloatBarrier
 \section{Hardware Development Methodology}
+\label{sec:METHODOLOGY_hardwaredevelopment}
 In this section, I will go into more detail on the decisions behind selecting and designing an \acs{SCS} system and its components. \Cref{sec:METHODOLOGY_defining_design_solution} will explain the process to define a design solution, while \Cref{sec:METHODOLOGY_design_guidelines} will present concrete guidelines to aid decision-making during the design process. In \Cref{sec:METHODOLOGY_verification}, I will explain how to tailor the verification process that takes place at the end of every \acs{SCS} iteration, including recommendations about analysis and test frequency and fidelity. Finally, \Cref{sec:METHODOLOGY_operations} will provide an overview of the work done after a system has been designed, built, and launched.
 
 \subsection{Defining a Design Solution}
@@ -2720,6 +2800,13 @@ Another decision that developers are faced with involves whether they reuse exis
 	- your battery will get cold, warm it up, or don't charge it (check uludag for more details)
 	- you don't need a cleanroom
 	- launch finding process: the chipsat does not need to fly independent, instead it can be mounted on another spacecraft. examples of concepts from lightsails, payload sharing missions etc. usually you can talk to cubesats looking for a secondary payload.
+	- processing on the edge, but offer capabilities for more
+	- read the software section and implement reprogramming
+	- use combined ICs instead of individual ICs, e.g. DC-DC packages, energy harvesters/MPPTs, transceiver-microcontroller combinations
+	- smart/cognitive radio
+	- power generation: R. Amirtharajah et al., “A Micropower Programmable DSP  Powered Using a MEMS-Based Vibration-to-Electric Energy Converter,” 2000 IEEE Int’l Solid-State Circuits Conf., IEEE Press, Piscataway, N.J., 2000, pp. 362-363, 469. / power harvesting. solar power is not always required 
+	- tere should be a minimum big-design-up-front level/ what is the absolute minimum of BDUF that has to be done before moving on to development? zero?
+	- There is no need to have a separate OBC (perhaps even ADCS), unless you need it. Interfaces add complexity and complexity is bad. It is better to have a single big microcontroller for everything (redundancy is overrated anyways)
 	}
 
 \subsection{Interface Management Guidelines}
@@ -2811,6 +2898,18 @@ In-Orbit Testing need also not be performed on the entire system, and can follow
 In general, the verification \& validation process of an \ac{SCS}-methodology team will differ considerably from the equivalent in a CubeSat process.
 However, it will still vary between teams, as it depends on variables set by the internal and external environment. I provide further guidelines for methodology tailoring in \Cref{sec:METHODOLOGY_tailoring}. \todo{Do I?}
 
+\paragraph{Automated Testing}
+\label{sec:METHODOLOGY_automated_testing}
+
+\begin{figure}
+	\includegraphics{drafts/robot_ai4space.png}
+	\caption{Example test suite for an end-to-end test, written in the Robot framework}
+\end{figure}
+
+There is significant benefit to automating the functional testing processes. The use of \acf{RPA} is finding increased popularity for testing integrated systems in space engineering \autocite{malyshkinaMissionControlSoftware2025}. 
+
+Self-contained and automated test runs can be performed both during and at the end of a \todo{blablab....}
+
 \todo{ [[@deckerSystemsengineeringAssessmentMultiple2016]]: Evaluation of the cost benefits of using an Engineering or Qualification Model in a student/hobbyist CubeSat project.}
 
 
@@ -2840,6 +2939,7 @@ Sometimes there is confusion between agile-systems engineering and agile systems
 
 \pagebreak[4]
 \section{Software Development Methodology}
+\label{sec:METHODOLOGY_softwaredevelopment}
 
 While the small size of \acs{SCS} systems limits the number of physical subsystems, components and interfaces, these constraints are less influential for the software itself. In terms of software requirements, as most \acs{SCS} need to be independent and autonomous spacecraft, a minimum set of functionality should be present, such as energy gathering, communication with the earth and failure recovery.
 
@@ -2953,6 +3053,7 @@ Unfortunately, \acs{SCS} projects do not have control over some of the parameter
 \begin{margindefinition}[Test coverage]
 	Testing coverage is a measure of how much of the software's source code has been executed during the testing process. It can be expressed in terms of functions, lines, statements or branches.
 \end{margindefinition}
+\begin{multicols}{2}
 \begin{itemize}[itemsep=-2ex]
 	\item Testing coverage
 	\item Testing environment
@@ -2960,6 +3061,7 @@ Unfortunately, \acs{SCS} projects do not have control over some of the parameter
 	\item Testing methodologies
 	\item Testing tools
 \end{itemize}
+\end{multicols}
 
 A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This \draft{behaviour} has been modeled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
 
@@ -3261,8 +3363,6 @@ I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Pro
 \paragraph{Debugging Interfaces}
 \label{sec:METHODOLOGY_debugging_interfaces}
 
-\todo{warnekeSmartDustCommunicating2001}
-
 One part of the hardware-software interface that is used often during development is the \textbf{programming} or \textbf{debugging interface}, which allows developers to:
 \begin{itemize}[itemsep=-2ex]
 	\item Upload new software versions to a microcontroller
@@ -3296,8 +3396,10 @@ In CubeSats and PocketQubes, this interface is typically provided by a friction-
 	\item \textbf{Unpopulated vias, holes (``test points'') or pads} that can be accessed by probes, by soldering temporary connectors, or by using spring-loaded test pins. This approach is used by the Sprite (\Cref{subfig:m_connectors_pth}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015} and SpinorSat \autocite{brashearsSpinorSatStep502018} ChipSats. To further reduce space, these nodes can be placed on \acs{PCB} edges. This kind of breakout pins were also envisioned by \citeauthor{adamsRSelectedSpacecraft2019}' StarChip concept \autocite{adamsRSelectedSpacecraft2019}. \todo{[check]}
 	\item A \textbf{snap-off development board that encloses the ChipSat} and provides development-only interfaces. This is also a concept used by the Sprite ChipSats (\Cref{subfig:m_connectors_detachable}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. The disadvantage is that, after the development board is separated, it is harder to reprogram the spacecraft (e.g.\space after integration).
 	\item \textbf{\acf{OTA} programming through a wireless network}. This network can be the nominal \acs{RF} link used by the satellite, or a purpose-specific link, if supported by the microcontroller, such as Wi-Fi or Bluetooth. % NFC?
-	\item \textbf{Programming through another wireless technology}, such as infrared/visible light or sound. This requires dedicated hardware.
+	\item \textbf{Programming through another wireless technology}, such as infrared/visible light or sound. This requires dedicated hardware. This concept has been explored for use in Smart Dust devices through active or passive optical transmitters \autocite{warnekeSmartDustCommunicating2001}.
 \end{itemize}
+
+It is interesting to note the concept presented by \citeauthor{warnekeSmartDustCommunicating2001} for low-power communication. In the original paper, the authors use the concept of a retroreflector-based passive transmitter, in order to reduce power consumption when transmitting information. The idea of the paper is to use a \acs{MEMS} device to shift a spring-loaded mirror, thus switching between a non-reflective and a reflective state which can be assigned to the two binary states \cite{warnekeSmartDustCommunicating2001}. To reduce reliance on mechanical parts, this concept can be further extended by using an electric instead of mechanical modulator \autocite{rosenkrantzInnovativeModulatingRetroreflector2013}.
 
 \begin{figure*}
 	\centering
@@ -3352,6 +3454,8 @@ In CubeSats and PocketQubes, this interface is typically provided by a friction-
 	\end{subfigure}%
 	\caption{Examples of debugging/umbilical connections}
 \end{figure*}
+
+Finally, developers should consider solutions to reduce the data volume that needs to be transmitted for in-orbit programming, such as compression or binary diffing. \cite{rosenkrantzInnovativeModulatingRetroreflector2013} note that in centimetre-scale miniaturisation levels it is much easier to \emph{compute} than to communicate, the authors conclude that software-based signal-enhancing measures are beneficial. In the context of the \acs{SCS} methodology, however, the additional complexity and effort required for this additional features has to be compared against the mission's goals.
 
 \paragraph{Use of generative \acs{AI}}
 \footnotetext{Credit: \href{https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg}{Espressif}}
@@ -3430,12 +3534,34 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 	\vspace{2ex}
 \end{table*}
 
-As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, shown in \Cref{tab:c_case_studies}, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and evaluate \draft{their applicability in these projects}. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
+As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and evaluate \draft{their applicability in these projects}. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
 
 The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and \draft{difficulty points}, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}. The projects also represented a diverse range of system types, including a payload, two ChipSat-style spacecraft, and a PocketQube.
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{drafts/action_research.png}
+	\begin{tikzpicture}[
+		>={Stealth[length=6pt]},
+		node distance=2cm,
+		font=\sffamily\small
+	]
+		\newcommand{\drawcycle}[1]{
+			\begin{scope}[shift={(#1,0)}]
+				\node (plan)    at (90:1.5)  {plan};
+				\node (act)     at (0:1.5)   {act};
+				\node (observe) at (270:1.5) {observe};
+				\node (reflect) at (180:1.5) {reflect};
+				
+				\draw[->] (plan)          to [bend left=35] (act.north);
+				\draw[->] (act.south)     to [bend left=35] (observe.east);
+				\draw[->] (observe.west)  to [bend left=35] (reflect.south);
+				\draw[->] (reflect.north) to [bend left=35] (plan.west);
+				
+				\draw[->] (plan.east) -- ++(2.5,0);
+			\end{scope}
+		}
+		\drawcycle{0}
+		\drawcycle{6}
+	\end{tikzpicture}
 	\caption{Example of action research action-reflection cycles \cite{mcniffActionResearchPrinciples2003} \todo{TODO}}
 	\label{fig:c_action_research}
 \end{figure}
