@@ -2267,6 +2267,14 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 		\item What has Kathleen done?
 \end{itemize}}
 
+\todo{4 PARAGRAPHS here that I wrote on the other computer but forgot to push to the internet}
+
+\todo{Blablabla....}
+
+\todo{Blablabla....}
+
+\todo{End of 4 paragraphs.}
+
 \begin{figure}
 	\begin{subfigure}{.3\textwidth}
 		\centering
@@ -2287,14 +2295,204 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 	}
 \end{figure}
 
+\marginnote{
+	ECSS-E-HB-10-02A defines 19 different model types:
+	\begin{itemize}[itemsep=-1ex]
+		\item Mock-Up
+		\item Development Model
+		\item Structural and/or Thermal Model
+		\item Suitcase Model
+		\item Electrical and Functional Model
+		\item Engineering Model
+		\item Engineering Qualification Model
+		\item Qualification Model
+		\item Life Test Model
+		\item Proto-Flight Model
+		\item Flight Model
+		\item Flight Spare
+		\item Function oriented models (for a specific function)
+		\item Training Model
+		\item Virtual and hybrid models
+		\item Human related modelsG
+		\item Ground specific models
+	\end{itemize}
+}
+In contrast to the ``all-or-nothing'' approach of Sat-Scrum, some hardware engineers might prefer working on \textbf{lower fidelity} implementations of the intended hardware, instead of partitions which are identical in \textbf{form, fit and function} to the final result. For example, analog electronics might be evaluated in a breadboard format before being manufactured on a \acs{PCB}. The approach of creating lower-fidelity products for verification purposes is described in \acs{ECSS} standards as a \textbf{Model Philosophy}\footnote{Note that the term ``model'' here is not strictly connected to the Design Research definition (as in \acs{MBSE}, for example), and is meant to refer to the physical manifestation of a product.} \autocite{ECSS-E-HB-10-02A}. ECSS-E-HB-10-02A defines ``models'' of different fidelities, ranging from Development (or Breadboard) Models and Engineering Models (representative in form, fit and function to the final product) to Flight Models. While in a traditional Scrum-based environment there is no motive to iterate on something other than the final product, a partition-based method incorporates some aspects of traditional space engineering to mitigate some of the disadvantages of long sprints.
+
+In summary, the terms introduced above are as follows:
+\begin{itemize}
+	\item A \textbf{slice} represents a specific \emph{feature} of the spacecraft.
+	\item A \textbf{module} represents a functional or structural\emph{``Structural'' meant here as a synonym to ``physical''} part of the spacecraft that implements a set of slices.
+	\item A \textbf{partition} is a set of one or more modules that can be physically constructed and independently interfaced and verified.
+	\item The \textbf{fidelity} of a partition describes how representative it is compared to the final launch-ready product, in terms of form, fit, function and quality.
+	\item An \textbf{iteration} is performed on a \emph{partition} with a specific \emph{fidelity}, and covers specific \emph{slices}.
+\end{itemize}
+
+The linking of iterations with partitions and slices iterates over \autocite{iberleAgileGetsPhysical2022}'s \emph{slice-based integration} concept to define a \textbf{partition-based Sat-Scrum model}.
+
+\begin{figure}
+	\includegraphics{graphics/SliceConcept.pdf}
+	\caption{Concept map linking the different definitions involved in partition-based iterations.}
+\end{figure}
+
+A practical example for a single-\acs{PCB} ChipSat project could resemble the following:
+\begin{enumerate}
+	\item For the first iteration, the developers want to evaluate different \acs{COTS} components and configurations for a sensor-based payload. They also have limited experience in power system design, so they want to prototype a power generation and storage system. Therefore, they decide to create \textbf{Breadboard Models} of the payload and power system, without being involved with the rest of the spacecraft.
+	
+	In this case, the above definitions of partition-based Sat-Scrum are as follows:
+	\begin{quote}
+		\textbf{Slices:} Receive raw sensor data. Convert solar power to electricity.
+		\\ \textbf{Partition:} Payload module, \acf{EPS} module.
+		\\ \textbf{Fidelity:} Breadboard Model.
+	\end{quote}
+	\item For the second iteration, the developers decide to follow the guideline of creating a minimal representative product as soon as possible, and agree to design a representative \acf{PCB} with an early iteration of all components needed to create a functional satellite. As they have prior experience designing communication and data handling systems, they have confidence in the design of these subsystems and do not iterate on a breadboard beforehand. While waiting for the procurement to be completed, they continue experimenting and fine-tuning the previously available breadboard models.
+	
+	\begin{quote}
+		\textbf{Slices:} Receive sensor data with specific quality. Generate \qty{0.2}{\watt} of electrical power in sunlight. Spacecraft can respond to ``ping'' \acf{TM}.
+		\\ \textbf{Partition \& Fidelity:} Payload module (Breadboard Model), \acf{EPS} module (Breadboard Model). Circuit board (Engineering Model).
+	\end{quote}
+	\item For the third iteration, the developers implement critical modifications to the \acs{PCB}, with the intention of further fine-tuning the payload, power and communications modules. Software development focuses on implementing crucial commanding and autonomy functions.
+	
+	\begin{quote}
+		\textbf{Slices:} Store \qty{0.1}{\watt\hour} of electrical energy. Spacecraft can transmit payload data. Spacecraft can configure payload performance by \acf{TC}.
+		\\ \textbf{Partition \& Fidelity:} Circuit board (Engineering Model).
+	\end{quote}
+
+	\item For the fourth iteration, the developers create a new \acs{PCB} iteration with minor fixes, and implement more autonomy functions in the software. They also decide to implement an Antenna Deployment Mechanism, first by experimenting with a few different \acs{PCB} designs, which are also procured.
+	
+	\begin{quote}
+		\textbf{Slices:} Spacecraft can operate autonomously. The antenna must deploy automatically.
+		\\ \textbf{Partition \& Fidelity:} Circuit board (Engineering Model). Antenna Deployment Mechanism (Development Model).
+	\end{quote}
+
+	\item For the fifth iteration, the developers keep working on the antenna deployment mechanism, as none of the designs evaluated previously were satisfactory. However, they do not iterate on the rest of the spacecraft's \acs{PCB}. In the software, time-tagging and packet storage functions are implemented.
+	
+	\begin{quote}
+		\textbf{Slices:} \acs{PUS} service 11 is implemented. \acs{PUS} service 15 is implemented \autocite{ECSS-E-ST-70-41C}. The antenna must deploy automatically.
+		\\ \textbf{Partition \& Fidelity:} Circuit board (Engineering Model). Antenna Deployment Mechanism (Development Model).
+	\end{quote}
+
+	\item For the sixth iteration, the design of the antenna deployment mechanism is finalised and integrated with the rest of the spacecraft \acs{PCB}. The developers perform a \acf{TVAC} test to ensure that the mechanism performs well under different environmental conditions. At this point, the spacecraft is in the minimum launchable state which can produce data in orbit.
+	
+	For the remaining six iterations, developers focus on software and verification, implement more functionality (through \acs{PUS} services), implement a simple off-the-shelf \acs{ADCS} module, and implement software to perform on-board processing to \draft{gather} data, in order to comply to more \acs{MOSCOW} requirements. For the second-to-last iteration, they schedule environmental testing campaigns, leaving the last iteration as a buffer in case of non-conformances.
+\end{enumerate}
+
+\paragraph{Differences to plain Sat-Scrum}
+
+The \emph{partition-based Sat-Scrum} method represents a lifecycle process model that adopts some aspects of the \acs{NASA} and \acs{ECSS} based approaches to Systems Engineering. Compared to plain Sat-Scrum, it equips developers with the capability of \textbf{not working on the entire system at once} if it is impractical to do so, and provides a framework to separate and describe which aspects of a system are iterated on. This happens at the cost of delaying the acquisition of data from the behaviour of the entire system, and the implementation of interfaces which define the most \draft{error-prone points of a system} \todo{[why?.]}
+
+This method also resembles some iterative approaches followed by current CubeSat and \acs{SCS} teams. In contrast to V-model based approaches, it does not prespecify an order of activities, allowing developers to schedule switch between different subsystems and levels of representativeness according to the results of previous iterations.
+
+Teams may elect to use partition-based Sat-Scrum when dealing with projects that can be easily broken down into independent activities, or when they need to increase confidence in an experimental or novel design. On the other hand, a system based on re-used or well-understood parts, or a software-heavy system, will likely beneft more from plain Sat-Scrum.
+
+\todo{What is the relation of partition-based satscrum to scrum activities? How do we take each component of the previous sectino and reproduce ithere?}
 
 \FloatBarrier
-\subsection{Workload Management Approaches}
+\subsection{Technical Planning Approaches}
 \label{sec:METHODOLOGY_workpackage}
+
+Almost all spacecraft development teams, even those following ad-hoc methodologies, have to \draft{deal with} \textbf{how to divide, organise and assign} the technical (but also administrative) activities that need to be performed in the project. These ``\textbf{work packages}''\footnote{The ``work package'' term may have different meanings in different contexts, for example referring to a large, months-long group of activities, but here I will use the term interchangeably with ``activity''.} are often the subject of questions such as:\begin{itemize}[itemsep=-2ex]
+	\item How should a large activity be separated into a smaller activity?
+	\item How can we estimate the duration and resources needed to complete an activity?
+	\item Which team member(s) should be assigned to an activity?
+	\item How can we verify successful completion of an activity?
+	\item What data model should we use to link an activity to a requirement, slice or module?
+	\item Which tasks are blocking other tasks, and what is the critical path of the project?
+	\item How do we record and store the answers to the above questions?
+\end{itemize}
+
+In traditional Scrum, these activities are part of a highly visible backlog that is continuously updated by developers themselves in real-time \autocite{schwaverDefinitiveGuideScrum2020}. This is usually supported by the popularised \textbf{Kanban} methods, whose original concept involved posting features on a physical board where developers could interact with post-it notes, but is now supported by specialised software tools \autocite{kanbanGuide}. To assign estimated effort and priorities to these tasks, \textbf{story point} calculation methods or heuristic scoring models such as RICE (Reach, Impact, Confidence, Effort) are used \todo{[cite]}.
+
+In theory, technical planning supported by software tools can easily answer all of the above posited questions. However, in practice, developers have expressed frustration both in task management processes \autocite{singhExploringLivedExperiences2023} and tools \autocite{hadiCriticalSuccessFactors2021a,johanssonHowCanAtlassian2017,correiadasilvaOptimizingUserExperience2025}. Given that technical planning is an activity that developers need to be informed about and participate daily, it makes sense intuitively that the overhead of any task management process and tool needs to be minimal and the benefit significant, in order to both improve the productivity and comfort of team members.
+
+Most technical planning tools that are presently documented belong in either of two categories \todo{[cite]}:\begin{enumerate}[itemsep=-2ex]
+	\item \textbf{Project management-centric} approaches, involving high-level planning approaches (such as Gantt charts) and supported by tools such as Microsoft Project; and
+	\item \textbf{Software development-centric} approaches, which are tailored to the software engineering discipline, involve low-level task planning, and are linked with software-specific features, such as code reviews and Continuous Integration.
+\end{enumerate}
+When a team chooses to use an approach not covered by available (and \draft{approachable}) tools, they may decide to use a \textbf{spreadsheet} or \textbf{\acf{ERP}} solution, after customising it to the specific data model that has been \draft{decided}.
+
+\newthought{Within the context of \acs{SCS}}, the following questions then need to be answered:\begin{enumerate}[itemsep=-2ex]
+	\item Who should be responsible for answering the questions in the beginning of this section, and how should they be answered?
+	\item What is a reference data model that can represent work packages in the \acs{SCS} methodology?
+	\item What are the characteristics of a software tool that can effecively support the \acs{SCS} technical planning process?
+\end{enumerate}
+
+\todo{Some blabla here that answers the previous  questions}
+
+\begin{figure*}[p]
+	\includegraphics{drafts/WPDataModel.pdf}
+	\caption{\draft{UML} data model for a representation of technical planning in the \acs{SCS} methodology.}
+\end{figure*}
+
+\begin{table*}[h]
+	\footnotesize
+	\def\arraystretch{1.05}
+	\begin{tabularx}{\textwidth}{cp{4cm}X}
+		\toprule
+		\textbf{EDM-010} & The tool shall represent a system in a hierarchical tree-like structure of multiple entities containing multiple parameters each. & 
+		A ``product tree'' structure is commonly used to represent different abstraction levels within a product, and is often seen in most \ac{EDM} tools. A single level of abstraction is equivalent to the model of each entity taking up one row in a spreadsheet.
+		
+		Compared to a Block Definition Diagram or an Internal Block Diagram, a tree itself cannot represent interfaces or relations between components, apart from hierarchy, which should however be enough for low-complexity projects.
+		
+		Each element in the tree can represent a physical component, a function, or an abstract concept (such as a trajectory).
+
+
+		\\
+		\textbf{EDM-020} & The complete functionality of the tool shall be accessible from a web browser. &
+		While this can be seen as a design-constraining requirement, it ensures that a system model is available for reading and writing to any device with access to a network. This removes hardware or software limitations and ensures that all participants in the project have a similar experience.
+		
+
+		\\
+		\textbf{EDM-030} & Stored data shall be version controlled. &
+		This requirement ensures traceability of changes, accountability, and, more importantly, allows restoring older changes and known working configurations.
+		
+		Tools such as \emph{Git} and \emph{Dolt} are already well-established solutions for version-controlled databases.
+
+		\\
+		\textbf{EDM-040} & Users shall be able to access any engineering parameter within 20 seconds of having access to a web browser. &  This requirement ensures that all data is easily accessible under an intuitive navigation scheme, which can include a comprehensive overview of the system, or an efficient search function.
+		
+		
+		A more extreme version would require all actions to follow the ``three-click rule'', which suggests that no function or page on a User Interface should take more than 3 clicks to access \cite{glasseyProximityIndicatorEGovernment2005}. While this is not a strict requirement, it can still provide a \draft{motivation} on how to simplify user interactions.
+		
+		\todo{Something about progressive disclosure}
+
+		\\
+		\textbf{EDM-050} & The tool shall provide an \acf{API}. &      Space Engineering often involves combining different generic and domain-specific models. Therefore, \acs{EDM} tools should offer a method of fetching and updating this data automatically.
+		
+
+		\\
+		\textbf{EDM-060} & The tool shall be extensible by code.
+		&   
+		It is difficult to find a middle ground between too \emph{few} features and too \emph{many}. 
+		
+		\todo{blablabla}
+		
+
+		\\
+		\textbf{EDM-070} & The tool shall notify users on changes.
+		&     \draft{Introducing a new tool to a development environment has the risk of exacerbating tool fatigue \todo{find a reference that explains what tool fatigue even is or if such a thing exists}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.}
+		
+		\todo{blablabla}
+		\\
+		\textbf{EDM-080} & The tool shall be available as Free and Open Source software. &
+		
+		On the one hand, small teams might have difficulty to fund software expenditures consistently. On the other, larger teams have to ensure that the software they use can remain usable, maintainable and supported for long periods of time
+		\todo{cite one of the many websites that say something about this... and write something better}
+		
+		
+		\\ \bottomrule
+	\end{tabularx}
+	\caption{\todo{This whole table needs to be rewritten!!!}}
+	\label{tab:m_work_package_tool_requirements}
+\end{table*}
+
+To the author's knowledge, despite the plethora of software tools currently available, none is able to completely support the requirements defined in \Cref{tab:m_work_package_tool_requirements}.
 
 \FloatBarrier
 \subsection{Data Management: A Model-Based Approach}
 \label{sec:METHODOLOGY_datamanagement}
+
+\todo{check lindbladSYSTEMSENGINEERINGWEB}
 
 \begin{table}[h]
 	\colorlet{No}{MaterialRed600}
@@ -2350,7 +2548,7 @@ In general, the success of an \ac{EDM} method does not only depend on the short 
 A quantitative model for the evaluation of documentation effectiveness was proposed by \citeauthor{amblerStrategiesAgileSoftware2008} \autocite{amblerStrategiesAgileSoftware2008} as follows:
 \[
 	\text{Potential value} = \text{Produced value} \cdot C \cdot R \cdot U \cdot F \cdot T
-\]
+\]%
 \marginnote{where:
 \begin{itemize}%[itemsep=-1ex]
 	\item Produced value is guesstimated by the producers of the artifact.
@@ -2360,9 +2558,9 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 	\item \(F\) = The chance that the advice contained in artifact will be followed.
 	\item \(T\) = The chance that the advice will be trusted.
 \end{itemize}
-}
-
-As we lack the statistical data to quantify \ac{EDM} approaches based on this equation, we instead define the following \textbf{criteria for \acl{EDM} processes}:
+}%
+%
+As I lack the statistical data to quantify \ac{EDM} approaches based on this equation, we instead define the following \textbf{criteria for \acl{EDM} processes}:
 \begin{enumerate}
 	\item \textbf{Correctness}: The System Description should contain factual information at any point in time.
 	\item \textbf{Completeness}: The System Description should cover all aspects of the system to the degree of detail required for normal engineering work. This includes information about lower-level components and internal/external interfaces.
@@ -2814,6 +3012,9 @@ Another decision that developers are faced with involves whether they reuse exis
 	- power generation: R. Amirtharajah et al., “A Micropower Programmable DSP  Powered Using a MEMS-Based Vibration-to-Electric Energy Converter,” 2000 IEEE Int’l Solid-State Circuits Conf., IEEE Press, Piscataway, N.J., 2000, pp. 362-363, 469. / power harvesting. solar power is not always required 
 	- tere should be a minimum big-design-up-front level/ what is the absolute minimum of BDUF that has to be done before moving on to development? zero?
 	- There is no need to have a separate OBC (perhaps even ADCS), unless you need it. Interfaces add complexity and complexity is bad. It is better to have a single big microcontroller for everything (redundancy is overrated anyways)
+	- retroreflectors are nice
+	- Check the POQUITO lessons learned table and implement the lessons learned
+	- Lean and small ADCS is all you need
 	}
 \draft{
 	- Delta-CDR is performed in the sprint review
@@ -2846,6 +3047,11 @@ In traditional space systems engineering, \acs{ECSS} defines verification as the
 		\item \draft{Confirming the implementation of all features requested as part of work packages}
 	\end{enumerate}
 \end{definition}
+
+\begin{figure}
+	\includegraphics{pictures/POQUITO_at_work.jpg}
+	\caption{A Hardware-In-the-Loop testing platform can consist of the system under test, and an external programmer.}
+\end{figure}
 
 
 While verification ensures that the built system satisfies all agreed-on specifications and expectations, \textbf{validation} ensures that the correct system was built \autocite{ECSS-S-ST-00-01C}.
@@ -2893,7 +3099,7 @@ In addition to this general shift towards in-house environmental testing, \ac{SC
 As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
 
 \paragraph{Reduced Testing}
-\todo{Create a paragraph about REDUCED testing, i.e. using equipment that does not reach low levels as required (e.g. vacuum+environmental chamber instead of TVAC). Inspired from AcubeSAT's freezer tests.}
+\todo{Create a paragraph about REDUCED testing, i.e. using equipment that does not reach low levels as required (e.g. vacuum+environmental chamber instead of TVAC). Inspired from AcubeSAT's freezer tests. Reduced radiation testing with laser technology (scholar search: Radiation testing of electronic components using laser from a CD). }
 
 
 
@@ -2946,6 +3152,20 @@ Self-contained and automated test runs can be performed both during and at the e
 Sometimes there is confusion between agile-systems engineering and agile systems-engineering \autocite{haberfellnerAgileSystemsEngineeringAgileSystems2005}.
 
 \todo{See what to do about this section. Probably not include too much content because it is not completely within scope - however we have to design for operations so it is important to have at least a few paragraphs in.}
+
+While in-orbit operation and ground station design is out of the scope of this thesis, spacecraft still have to be developed with operations and operations planning in mind. 
+
+\todo{
+	- Yamcs usage or other operational software\\
+	- Ability to reupload and reprogram software. Need to keep original engineers in the team\\
+	- Participation in large networks, either proprietary or SatNOGS/TinyGS\\
+	- lillAgileMissionOperations2018\\
+	- The use of operational procedures or not\\
+	- Critical commands and arming them or not\\
+	- Ground station planning and design (it is a separate project so it does not concern us)\\
+	- The trade-off between transmission of responsibility to the user or the spacecraft\\
+	- Initial tracking and acquisition based on help from other people
+}
 
 \pagebreak[4]
 \section{Software Development Methodology}
@@ -3253,6 +3473,15 @@ More specifically, the execution and testing plan is elaborated into the followi
 	\label{fig:m_software_fuzz_activity}
 \end{figure*}
 
+\begin{figure}[p]
+	\includegraphics{drafts/fuzzing1}
+	\caption{Screenshot of libAFL execution}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{drafts/fuzzing2}
+	\caption{Screenshot of software-under-test result}
+\end{figure}
 
 The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
 Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
