@@ -1124,7 +1124,7 @@ These examples from the CubeSat sector seem to cover many lifecycle models defin
 	\marginnote{%
 		The 7 phases of typical space projects, according to ECSS-M-ST-10C \cite{ECSS-M-ST-10C}:
 		\begin{itemize}[itemsep=-2ex]
-			\item Phase 0: Mission analysis/needs identification
+			\item Phase 0: Mission analyses/needs identification
 			\item Phase A: Feasibility
 			\item Phase B: Preliminary Definition
 			\item Phase C: Detailed Definition 
@@ -1536,7 +1536,7 @@ Hybrid approaches that combine incremental and iterative development are also ob
 
 
 Traditional space systems engineering has traditionally followed a V or waterfall-type process \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}, with well-defined stage-gates between different project stages.
-Project phases are typically separated into Phase 0 (concept studies/mission analysis/needs identification), Phase A (feasibility/concept development/technology development), Phase B (preliminary definition), Phase C (detailed definition/fabrication), Phase D (assembly/qualification), Phase E (operations) and Phase F (close-out/disposal) \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}.
+Project phases are typically separated into Phase 0 (concept studies/mission analyses/needs identification), Phase A (feasibility/concept development/technology development), Phase B (preliminary definition), Phase C (detailed definition/fabrication), Phase D (assembly/qualification), Phase E (operations) and Phase F (close-out/disposal) \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}.
 This approach arises from the high costs associated with early space systems engineering, and the risk-averse attitude of developers, especially in the case of human spaceflight.
 Indeed, \draft{a significant time spent during the early definition phases combined with a rigorous review process has been shown to reduce later mission cost, risk, and delays} \todo{[cite sebok\_value]}.
 However, this paradigm has often come under challenge, with different missions taking incremental or iterative approaches to system design \autocite{carpenterAgileTooFragile2014}, the most notable example being SpaceX's ``move fast and break things'' approach \todo{CITATION!}
@@ -3635,7 +3635,7 @@ However, as this undertaking is impractical and would require large amounts of r
 
 Because \ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions, I consider tool selection as one of the first decisions that have to be taken when starting a new project.
 \draft{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
-It is also important to create a distinction between domain-specific tools\footnote{such as analysis/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
+It is also important to create a distinction between domain-specific tools\footnote{such as analyses/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
 A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
 
 \begin{table*}[h]
@@ -4166,6 +4166,11 @@ Environmental tests were repeated in an external facility for the 5\textsuperscr
 	\caption{ChipSat-1 during qualification testing \quad (a) on the shaker,\quad (b) in the thermal vacuum chamber}
 \end{figure}
 
+\begin{figure*}
+	\includegraphics{analyses/cf_chipsat1_burndown}
+	\caption{ChipSat-1 burndown chart}
+\end{figure*}
+
 \todo{-link budget\\-power budget\\???}
 
 \subsection{Lessons Learned}
@@ -4335,10 +4340,19 @@ For the retrospective evaluation, I will consider \todo{Update considerations ba
 \end{fullwidth}
 
 
+\begin{figure*}
+	\includegraphics{analyses/cf_chipsat1_nonconformance}
+	\caption{ChipSat-1 cumulative nonconformances}
+\end{figure*}
 
-\paragraph{Conclusion}
+\begin{figure}
+	\includegraphics{analyses/cf_chipsat1_trade}
+	\caption{ChipSat-1 \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+\end{figure}
 
-\todo{blablabla conclusion}
+%\paragraph{Conclusion}
+
+%\todo{blablabla conclusion}
 
 
 
@@ -4514,15 +4528,117 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 \section{ChiPySat}
 
 \begin{figure}[h]
-	\acuse{IMU,MPPT,UHF,USB,SD}
+	\acuse{IMU,MPPT,UHF,USB,SD}%
 	\includegraphics{media/graphics/Block_Chipysat}
 	\caption{Internal block diagram of the ChiPySat system}
 	\label{fig:c_chipysat_block}
 \end{figure}
 
+\FloatBarrier
+\section{Results}
 
-%\chapter{Discussion}
+- Bootstrap for sensitivity Analysis
+\\- Regression analysis
+\\- Average treatment effect
+\\- Jackknife resampling
 
+\begin{table*}[]
+\begin{tabularx}{\linewidth}{@{}lXl@{\hskip 1em}S[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
+\toprule
+Project & Analysis Type & No.\@ of Treatments & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
+\multirow{3}{*}{ChipSat-1} & Actual & 4 & 478 & 8930 & 2 \\
+ & Counterfactual (SCS methodology used) & 5 & 550 & 7830 & 2 \\
+ & Counterfactual (SCS methodology not used) & 0 & 826 & 7860 & 3 \\
+\multirow{2}{*}{AI4Space} & Actual & 5 & 450 & 10000 & 2 \\
+ & Counterfactual (SCS methodology not used) & 0 & 550 & 8000 & 3 \\
+\multirow{2}{*}{POQUITO} & Actual & 5 & 450 & 12000 & 2 \\
+ & Counterfactual (SCS methodology not used) & 0 & 550 & 15000 & 2 \\
+\multirow{2}{*}{ChiPySat} & Actual & 2 & 100 & 2000 & 2 \\
+ & Counterfactual (SCS methodology not used) & 0 & 120 & 500 & 3 \\ \bottomrule
+\end{tabularx}
+\end{table*}
+
+\draft{The PAWN method [1] is a moment-independent approach to Global Sensitivity Analysis (GSA). It is described as producing robust results at relatively low sample sizes (see [2]) for the purpose of factor ranking and screening.}
+
+\FloatBarrier
+\subsection{Development Time}
+
+\begin{figure}
+	\includegraphics{analyses/sensitivity_scatter_development.pdf}
+	\caption{Development Time Scatter Plot}
+\end{figure}
+\begin{figure}
+	\includegraphics{analyses/sensitivity_hexbin_development.pdf}
+	\caption{Development Time Visual Sensitivity Analysis}
+\end{figure}
+
+\begin{table*}
+
+
+\caption{Summary statistics of the normalised performance metrics for all projects analysed through the PAWN method}
+\begin{tabular}{lrrrrrr}
+\toprule
+				& minimum   & mean      & median    & maximum   & CV        & stdev     \\ \midrule
+no. treatments	& 0.305556  & 0.546296  & 0.444444  & 0.888889  & 0.455425  & 0.248797  \\
+project			& 0.222222  & 0.296296  & 0.222222  & 0.444444  & 0.353553  & 0.104757  \\ \bottomrule
+\end{tabular}
+\end{table*}
+
+\FloatBarrier
+\subsection{Cost}
+
+\begin{figure}
+	\includegraphics{analyses/sensitivity_scatter_cost.pdf}
+	\caption{Cost Scatter Plot}
+\end{figure}
+\begin{figure}
+	\includegraphics{analyses/sensitivity_hexbin_cost.pdf}
+	\caption{Cost Visual Sensitivity Analysis}
+\end{figure}
+
+
+\begin{table*}
+
+
+\caption{Cost effect}
+\begin{tabular}{lrrrrrr}
+\toprule
+%
+%
+%no. treatments  0.194444  0.509259  0.555556  0.777778  0.472027  0.240384
+%project         0.333333  0.518519  0.444444  0.777778  0.364216  0.188853
+				& minimum   & mean      & median    & maximum   & CV        & stdev     \\ \midrule
+no. treatments	& 0.194444  & 0.509259  & 0.555556  & 0.777778  & 0.472027  & 0.240384  \\
+project			& 0.333333  & 0.518519  & 0.444444  & 0.777778  & 0.364216  & 0.188853  \\ \bottomrule
+\end{tabular}
+\end{table*}
+
+\FloatBarrier
+\subsection{Risk}
+
+
+\begin{figure}
+	\includegraphics{analyses/sensitivity_scatter_risk.pdf}
+	\caption{Risk Scatter Plot}
+\end{figure}
+\begin{figure}
+	\includegraphics{analyses/sensitivity_hexbin_risk.pdf}
+	\caption{Risk Visual Sensitivity Analysis}
+\end{figure}
+
+\begin{table*}
+\caption{Risk effect}
+\begin{tabular}{lrrrrrr}
+\toprule
+%
+%
+%no. treatments  0.333333  0.361111  0.333333  0.416667  0.108786  0.039284
+%project         0.000000  0.166667  0.166667  0.333333  0.816497  0.136083
+				& minimum   & mean      & median    & maximum   & CV        & stdev     \\ \midrule
+no. treatments	& 0.333333  & 0.361111  & 0.333333  & 0.416667  & 0.108786  & 0.039284  \\
+project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083  \\ \bottomrule
+\end{tabular}
+\end{table*}
 
 
 \chapter{Conclusion}

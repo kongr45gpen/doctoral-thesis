@@ -108,13 +108,12 @@ def burndown(df, output):
     ax.legend(loc='upper right', ncol=2)
     fig.autofmt_xdate()
 
-    output_path = output
     plt.tight_layout()
+    plt.savefig(output, dpi=300)
     plt.show()
-    #plt.savefig(output_path, dpi=150)
-    logger.info(f'Saved burndown chart to {output_path}')
+    logger.info(f'Saved burndown chart to {output}')
 
-def nonconformance(df):
+def nonconformance(df, output):
     logger = logging.getLogger(__name__)
     n_old = df.shape[0]
     df = df.dropna(subset=['Type', 'Introduction Revision', 'Resolution Revision'])
@@ -160,11 +159,88 @@ def nonconformance(df):
     ax.grid(True, linestyle='--', alpha=0.5, which='both', axis='both')
     ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
     plt.tight_layout()
+    plt.savefig(output, dpi=300)
     plt.show()
+
+def tradeoff(df, output):
+    logger = logging.getLogger(__name__)
+    n_old = df.shape[0]
+    df = df.dropna(subset=['Time', 'Risk'])
+    n_new = df.shape[0]
+    logger.info(f'Removed {n_old - n_new} rows with N/A in Time or Risk')
+    print(df)
+    risks = ['Lower', 'Base', 'Higher']
+    logger.info(f'Risks set: {risks}')
+
+    # Time management (implement Delta-time)
+    df = df.copy()
+    df['Time'] = pd.to_numeric(df['Time'], errors='coerce')
+    base_time = df.loc[df['CF #'] == 0, 'Time'].iloc[0] if not df.loc[df['CF #'] == 0, 'Time'].empty else 0.0
+    logger.info(f'Base time: {base_time}')
+    mask_base = (df['CF #'] == 0)
+    df.loc[~mask_base, 'Time'] = df.loc[~mask_base, 'Time'] + base_time
+
+    # If a row risk is not in the predefined risks, report a warning
+    for idx, value in df['Risk'].items():
+        if value not in risks:
+            logger.error(f'Unexpected risk value in row {idx + 2}: {value}')
+    # Map risks to x positions
+    risk_to_x = {risk: i for i, risk in enumerate(risks)}
+    df['x'] = df['Risk'].map(risk_to_x)
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    # Scatter plot
+    # Identify CF #==0 rows to highlight
+    base_mask = df['CF #'] == 0
+    base_indices = set(df.loc[base_mask].index)
+
+    # Plot points and labels, keeping labels inside plot using box
+    for idx, row in df.iterrows():
+        x = row['x']
+        y = row['Time']
+        label = str(row.get('Name', row.get('CF #', '')))
+
+        # Label offsets
+        if x >= len(risks) - 1:
+            ha = 'right'
+            dx = -0.07
+        else:
+            ha = 'left'
+            dx = 0.07
+        if y >= df['Time'].max():
+            va = 'top'
+            dy = -0.5
+        else:
+            va = 'bottom'
+            dy = 0.5
+
+        # Highlight base point(s) (CF # == 0)
+        if idx in base_indices:
+            ax.scatter(x, y, s=100, marker='D', facecolor='yellow', edgecolor='black', linewidth=1.5, zorder=6)
+            ax.text(x + dx, y + dy, label, va=va, ha=ha, fontsize=10, fontweight='bold', zorder=7,
+                    bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.95))
+        else:
+            ax.scatter(x, y, s=60, zorder=3)
+            ax.text(x + dx, y + dy, label, va=va, ha=ha, fontsize=9, zorder=4,
+                    bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.8))
+    ax.set_xticks(list(risk_to_x.values()))
+    ax.set_xticklabels(risks)
+    # Ensure all risks are shown even if no data
+    ax.set_xlim(-0.5, len(risks) - 0.5)
+    ax.set_xlabel('Risk')
+    ax.set_ylabel('Time (hours)')
+    ax.grid(True, linestyle='--', alpha=0.5, zorder=0)
+
+    ax.plot([0, len(risks) - 1], [df['Time'].max(), df['Time'].min()], color='black', alpha=0.3, linewidth=2, zorder=2)
+
+    plt.tight_layout()
+    plt.savefig(output, dpi=300)
+    plt.show()
+    logger.info(f'Saved tradeoff chart to {output}')
 
 def main():
     parser = argparse.ArgumentParser(description='Process an Excel file.')
-    parser.add_argument('action', type=str, choices=['burndown', 'nonconformance'], help='Action to perform (required). Supported: burndown, nonconformance')
+    parser.add_argument('action', type=str, choices=['burndown', 'nonconformance', 'tradeoff'], help='Action to perform (required). Supported: burndown, nonconformance, tradeoff')
     parser.add_argument('excel_file', type=str, help='The path to the Excel file')
     parser.add_argument('--sheet', type=str, help='The name of the sheet to process')
     parser.add_argument('--output', type=str, default='burndown.png', help='Path to save the burndown chart')
@@ -191,7 +267,9 @@ def main():
     if args.action == 'burndown':
         burndown(df, args.output)
     elif args.action == 'nonconformance':
-        nonconformance(df)
+        nonconformance(df, args.output)
+    elif args.action == 'tradeoff':
+        tradeoff(df, args.output)
     
     
 
