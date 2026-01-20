@@ -348,11 +348,11 @@ Due to the smaller size and component count of \acs{SCS}, these systems are gene
 
 However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
-This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}. As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies. 
+This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}, as evidenced by available literature \autocite{heinAttoSatsChipSatsOther2019,bouwmeesterUtilityConstraintsPocketQubes2020} and semi-formal interviews that have been conducted within the scope of this project (\Cref{sec:LITERATURE_interviews}). As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies. 
 
 The combination of small scale with mission criticality is one that is not commonly found in other engineering fields. \acs{SCS} systems can therefore benefit from a tailored methodology that can take advantage of their unique characteristics. Using a \textbf{methodology tailored} for larger spacecraft or systems can introduce significant overhead in terms of cost and time, which may be unnecessary for these systems \todo{[cite?]}. On the other hand, the use of an \textbf{ad-hoc approach} increases programmatic and technical risk, since it provides no guarantees on the timely results of a project and no observability on factors such as progress, quality, or the critical path \autocite{honourTechnicalReportValue2004}. Nevertheless, due to the mission-critical nature of \acs{SCS} and their integration with larger systems,\footnote{Such as launchers, deployers} develpers need to achieve a correct balance between the effort and time spent across design, realisation and verification \autocite{sebok_value,boehmROISystemsEngineering2008,dillonFasterBetterCheaperProjectsToo2015}.
 
-\newthought{Thus,} a \textbf{tailored \acl{SYE} methodology} specifically targetting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining a reasonable level of reliability and \draft{features}. This methodology can also serve as a guideline for new missions, allowing first-time developers to \draft{have} a starting point for new projects, drawing on lessons learned from previous missions. This methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
+\newthought{Thus,} the \textbf{main hypothesis} of this research project is that a \textbf{tailored \acl{SYE} methodology} specifically targetting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining a reasonable level of reliability and \draft{features}. This methodology can also serve as a guideline for new missions, allowing first-time developers to \draft{have} a starting point for new projects, drawing on lessons learned from previous missions. The methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
 
 In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further analyse the concept of \acl{SYE}, showing how it can be partitioned into different fields, and making \draft{introductory} remarks on its \draft{usefulness} and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
 
@@ -375,12 +375,6 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further analyse 
 
 %\draft{Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
 %However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
-
-\draft{
-The main hypothesis of the research project is:
-Novel systems engineering approaches can drastically decrease the development duration of miniaturized, sub-CubeSat-size spacecraft. 
-}
-
 
 
 
@@ -498,7 +492,7 @@ The specific constraints of a project which measure its success and resource uti
 	\end{tabularx}
 \end{table}
 
-Specifically for university spacecraft, \citeauthor{swartwoutUniversityClassSpacecraft2023202023} notes that projects with fixed delivery times often fail to plan and prepare for the design and complexity of their systems and to devote enough resources to systems-level testing, and cites this as a main reason for a high mission failure rate \autocite{swartwoutUniversityClassSpacecraft20232023}. Interviews conducted by \citeauthor{campoModelbasedSystemsEngineering2023,honore-livermoreAcademicsPerceptionSystems2022} also note the benefits of \acs{SYE} and \acs{SYE} approaches in improving communication, project understanding and verification capabilities \autocite{campoModelbasedSystemsEngineering2023,honore-livermoreDigitalEngineeringDevelopment2022}.
+Specifically for university spacecraft, \citeauthor{swartwoutUniversityClassSpacecraft2023} notes that projects with fixed delivery times often fail to plan and prepare for the design and complexity of their systems and to devote enough resources to systems-level testing, and cites this as a main reason for a high mission failure rate \autocite{swartwoutUniversityClassSpacecraft2023}. Interviews conducted by \citeauthor{campoModelbasedSystemsEngineering2023,honore-livermoreAcademicsPerceptionSystems2022} also note the benefits of \acs{SYE} and \acs{SYE} approaches in improving communication, project understanding and verification capabilities \autocite{campoModelbasedSystemsEngineering2023,honore-livermoreDigitalEngineeringDevelopment2022}.
 
 %\citeauthor{stutzkeEstimatingSoftwareintensiveSystems2005} found a correlation between more time spent on Systems Engineering for \acs{NASA} projects before 1995 and reduced cost overruns \autocite{stutzkeEstimatingSoftwareintensiveSystems2005}.
 
@@ -1124,7 +1118,7 @@ These examples from the CubeSat sector seem to cover many lifecycle models defin
 	\marginnote{%
 		The 7 phases of typical space projects, according to ECSS-M-ST-10C \cite{ECSS-M-ST-10C}:
 		\begin{itemize}[itemsep=-2ex]
-			\item Phase 0: Mission analyses/needs identification
+			\item Phase 0: Mission analysis/needs identification
 			\item Phase A: Feasibility
 			\item Phase B: Preliminary Definition
 			\item Phase C: Detailed Definition 
@@ -1146,7 +1140,7 @@ These examples from the CubeSat sector seem to cover many lifecycle models defin
 	\item \textbf{Ad-hoc} approaches, where no specific lifecycle process is followed, and developers do not rely on a formal methodology to develop a system.
 \end{enumerate}
 
-In \citeauthor{sousaCubeSatDevelopmentFramework2021}'s comparison (\Cref{fig:l_cubesat_lifecycles_sousa}), it is interesting to note some more key differences between lifecycle processes, which bear similarities to the differences shown in \Cref{tab:l_cubesat_time_drivers}\footnote{Not including the difference in expected project duration, which was already discussed in \Cref{sec:LITERATURE_cubesat_environment}.}. Most notably, the phase of the initial \textbf{Conceptual Analysis} is considered only by a few institutions. This can reflect both that the initial needs, feasibility and mission analyses do not need to be performed for CubeSats, or that these activities are performed in parallel to other activities. Secondly, the \emph{development / implementation / fabrication} phase, where a design is converted into a physical product, is given different names and gravity depending on the project format, and especially on the degree of \acs{COTS} reuse.
+In \citeauthor{sousaCubeSatDevelopmentFramework2021}'s comparison (\Cref{fig:l_cubesat_lifecycles_sousa}), it is interesting to note some more key differences between lifecycle processes, which bear similarities to the differences shown in \Cref{tab:l_cubesat_time_drivers}\footnote{Not including the difference in expected project duration, which was already discussed in \Cref{sec:LITERATURE_cubesat_environment}.}. Most notably, the phase of the initial \textbf{Conceptual Analysis} is considered only by a few institutions. This can reflect both that the initial needs, feasibility and mission analysis do not need to be performed for CubeSats, or that these activities are performed in parallel to other activities. Secondly, the \emph{development / implementation / fabrication} phase, where a design is converted into a physical product, is given different names and gravity depending on the project format, and especially on the degree of \acs{COTS} reuse.
 
 The above describe the system-level approach; when subsystems or components need to be developed in addition to the system, these follow similar approaches to the above. However, the lifecycle process of subsystems can differ from the lifecycle process selected for the spacecraft itself. Nevertheless, many projects follow the \text{V-Model} to link between high-level (system-level) and low-level (component-level) design. The V-Model specifies an order of specification, manufacturing and verification, where the design requirements flow from the system to the subsystems and components, while the opposite order is followed for verification \autocite{bundesrepublikdeutschlandVModellXT2006}.
 
@@ -1226,6 +1220,9 @@ replicated here in \Cref{tab:l_delfi_pq_price}. Given that the developers perfor
     \end{tabularx}
 \end{margintable}
 
+\phantomsection
+\label{sec:LITERATURE_interviews}
+
 Within the scope of this thesis, I have also conducted informal interviews and facility visits with PocketQube developers, with the aim of generating data about the State-Of-The-Art in terms of needs and approaches followed by PocketQube projects (\Cref{tab:l_pq_interview_list}).
 
 \begin{table}[h]
@@ -1248,7 +1245,9 @@ Within the scope of this thesis, I have also conducted informal interviews and f
 Through these interviews, I noted the following information:\todo{Check notes for question marks}
 \begin{itemize}[itemsep=-1ex]
 	\item 3 respondents noted \emph{development time} as their main constaint, one respondent noted \emph{cost}, one responded noted \emph{reliability}, and one \emph{production capability}.
-	\item All respondents use some form of \textbf{iterative development} for their satellite, although the duration and scope of each iteration varies between a small amount of hardware models, and system-level rapid prototyping.
+	\item All respondents use some form of \textbf{iterative development} for their satellite, although the duration and scope of each iteration varies between a small amount of hardware models, and system-level rapid prototyping. No respondent follows a \emph{named} or strictly documented methodology\footnote{Such as Agile, Lean, Waterfall, \acs{ECSS} based etc.}. 3 respondents use an \emph{undocumented} form of methodology, where satellite revisions and processes are not formally kept track of. The 3 remaining respondents use some form of formal process or tool to document the system's development lifecycle and status, such as GitLab, Odoo (an \acs{ERP} tool), or Figma (a visual design tool) for revision representation.
+	\item 4 respondents have used elements from \acs{SYE} approaches similar to \textbf{CubeSat} approaches used in the literature or based on their previous experience. % this includes the high production capacity industry which is applicable to cubesats in general but I haven't found any literature specifically pointing to this
+	2 respondents are using highly iterative system-based approaches, which are generally considered impractical for CubeSat projects\footnote{Based on the understanding that it is impractical to perform more than 3 iterations on an entire CubeSat system}.
 	\item All external respondents have developed the payloads and PocketQube bus in-house, without the use of \acs{COTS} subsystems.
 	\item All respondents had already acquired or were in the process of acquiring \textbf{in-house testing facilities}, ranging from a plain vacuum chamber to a \acs{TVAC} and a shaker table.
 	\item 2 respondents have deployed 2 or more identical PocketQubes in a single launch, noting the increased redundancy and/or capability at a relatively low cost.
@@ -1536,7 +1535,7 @@ Hybrid approaches that combine incremental and iterative development are also ob
 
 
 Traditional space systems engineering has traditionally followed a V or waterfall-type process \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}, with well-defined stage-gates between different project stages.
-Project phases are typically separated into Phase 0 (concept studies/mission analyses/needs identification), Phase A (feasibility/concept development/technology development), Phase B (preliminary definition), Phase C (detailed definition/fabrication), Phase D (assembly/qualification), Phase E (operations) and Phase F (close-out/disposal) \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}.
+Project phases are typically separated into Phase 0 (concept studies/mission analysis/needs identification), Phase A (feasibility/concept development/technology development), Phase B (preliminary definition), Phase C (detailed definition/fabrication), Phase D (assembly/qualification), Phase E (operations) and Phase F (close-out/disposal) \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}.
 This approach arises from the high costs associated with early space systems engineering, and the risk-averse attitude of developers, especially in the case of human spaceflight.
 Indeed, \draft{a significant time spent during the early definition phases combined with a rigorous review process has been shown to reduce later mission cost, risk, and delays} \todo{[cite sebok\_value]}.
 However, this paradigm has often come under challenge, with different missions taking incremental or iterative approaches to system design \autocite{carpenterAgileTooFragile2014}, the most notable example being SpaceX's ``move fast and break things'' approach \todo{CITATION!}
@@ -1703,7 +1702,7 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	
 	This is elaborated in \Cref{chap:INTRODUCTION,chap:SURVEY}.
 	\item \textbf{Descriptive Study I (DS-I)} (Comprehensive):
-	As a first step, I have identified the organisational and technical requirements of typical \acs{SCS} missions, and compared them with the ecosystem of larger space missions. We also analysed the concept of Systems Engineering and identified its components that have both a higher impact on \acs{SCS} mission success, and can be improved through a Systems Engineering methodology. Finally, I conducted informal interviews to validate our findings and the usefulness of our proposed approach.
+	As a first step, I have identified the organisational and technical requirements of typical \acs{SCS} missions, and compared them with the ecosystem of larger space missions. I also analysed the concept of Systems Engineering and identified its components that have both a higher impact on \acs{SCS} mission success, and can be improved through a Systems Engineering methodology. Finally, I conducted informal interviews to validate my findings and the usefulness of my proposed approach.
 	This is elaborated in \Cref{chap:SURVEY}.
 	
 	As a second step, I will participate in the \textbf{design and development of \acs{SCS} space missions} with the objective of \textbf{qualification or flight} as case studies. These space missions will be in the form of payloads, subsystems or satellites that can reach a flight-ready stage. They will be used either as a direct source of information to develop the required support, or as experimental applications of the new proposed methodology, in an iterative fashion.
@@ -1799,7 +1798,10 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 
 \draft{Note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:CASESTUDIES} and \Cref{chap:METHODOLOGY}}
 
-
+\begin{figure*}[p]
+	\includegraphics{graphics/Research.Activity.pdf}
+	\caption{Activity diagram of thesis research approach}
+\end{figure*}
 
 
 
@@ -3635,7 +3637,7 @@ However, as this undertaking is impractical and would require large amounts of r
 
 Because \ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions, I consider tool selection as one of the first decisions that have to be taken when starting a new project.
 \draft{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
-It is also important to create a distinction between domain-specific tools\footnote{such as analyses/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
+It is also important to create a distinction between domain-specific tools\footnote{such as analysis/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
 A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
 
 \begin{table*}[h]
