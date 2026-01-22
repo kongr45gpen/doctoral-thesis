@@ -669,10 +669,10 @@ In order to develop a sound and valid methodology, I will address the following 
 
 The objectives of this thesis are therefore as follows:
 \begin{enumerate}
-	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions
-	\item Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches
-	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}
-	\item Validate the new methodology on at least one space mission that will succeed in environmental qualification
+	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions.
+	\item Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches.
+	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}.
+	\item Validate the new methodology on at least one space mission that will succeed in environmental qualification.
 \end{enumerate}
 
 \FloatBarrier
@@ -887,6 +887,7 @@ Apart from the structure\footnote{According to \cite{CDS14}, a CubeSat structure
 When needed, CubeSats include an \acl{ADCS}, which can position the satellite passively or actively, typically through magnetorquers and reaction wheels \autocite{bouwmeesterSurveyWorldwidePico2010}. When orbit changes are required\footnote{For example, to increase mission duration, or to enforce collision/disposal regulations}, CubeSats can also integrate propulsion systems \autocite{CDS14}. Finally, buses can be supported by active thermal control for components sensitive to temperature, and include mechanisms or deployable structures, which can be solar cells, antennas, sensors, or solar sails \todo{[cite]}.
 
 \paragraph{CubeSat Reliability}
+\label{sec:LITERATURE_cubesat_reliability}
 
 %\newthought{Extensive research has been performed} on CubeSat reliability.
 Extensive research has been performed on CubeSat reliability and mission success rates, with a focus on high infant mortality experienced by these missions, especially when compared to larger spacecraft.
@@ -926,7 +927,7 @@ Some of the most common \emph{lessons learned} or recommendations for CubeSat de
 	\cite{swartwoutUniversityClassSpacecraft20232023,venturiniImprovingMissionSuccess2017,langerReliabilityAssessmentReliability2018}\footnote{\citeauthor{venturiniImprovingMissionSuccess2017} further provides a list of system-level tests that are recommended to be performed for CubeSats: a command execution test, a day-in-the-life test, an end-to-end communications test, and a complete power system charge cycle \cite{venturiniImprovingMissionSuccess2017}.}.
 	\item Early evaluation of \textbf{project risk} and \textbf{potentially problematic components} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021}\footnote{This might involve, for example, performing a system-level \acs{FMEA} analysis in the very early design phases of a project}.
 	\item Dedicating appropriate attention to \textbf{firmware and software development} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021}.
-	\item Especially for university projects, management of \textbf{developer turnover and knowledge transfer} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021,swartwoutUniversityClassSpacecraft20232023}.
+	\item Especially for university projects, management of \textbf{developer turnover and knowledge transfer} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021,swartwoutUniversityClassSpacecraft2023}.
 \end{itemize}
 
 
@@ -1226,7 +1227,7 @@ replicated here in \Cref{tab:l_delfi_pq_price}. Given that the developers perfor
 Within the scope of this thesis, I have also conducted informal interviews and facility visits with PocketQube developers, with the aim of generating data about the State-Of-The-Art in terms of needs and approaches followed by PocketQube projects (\Cref{tab:l_pq_interview_list}).
 
 \begin{table}[h]
-	\caption{Data-gathering sources}
+	\caption{Data-gathering sources. 2 interviewees were from the University of Luxembourg, but are \emph{not} considered as inputs here, since they were associated with the case studies presented and analysed in \Cref{chap:CASESTUDIES}.}
 	\label{tab:l_pq_interview_list}
 	\begin{tabularx}{\linewidth}{clX}
 		& Type & Organisation \\
@@ -1244,11 +1245,13 @@ Within the scope of this thesis, I have also conducted informal interviews and f
 
 Through these interviews, I noted the following information:\todo{Check notes for question marks}
 \begin{itemize}[itemsep=-1ex]
+	\item All respondents have had at least one \acs{SCS} satellite launched and successfully operated in \acs{LEO}.
 	\item 3 respondents noted \emph{development time} as their main constaint, one respondent noted \emph{cost}, one responded noted \emph{reliability}, and one \emph{production capability}.
 	\item All respondents use some form of \textbf{iterative development} for their satellite, although the duration and scope of each iteration varies between a small amount of hardware models, and system-level rapid prototyping. No respondent follows a \emph{named} or strictly documented methodology\footnote{Such as Agile, Lean, Waterfall, \acs{ECSS} based etc.}. 3 respondents use an \emph{undocumented} form of methodology, where satellite revisions and processes are not formally kept track of. The 3 remaining respondents use some form of formal process or tool to document the system's development lifecycle and status, such as GitLab, Odoo (an \acs{ERP} tool), or Figma (a visual design tool) for revision representation.
 	\item 4 respondents have used elements from \acs{SYE} approaches similar to \textbf{CubeSat} approaches used in the literature or based on their previous experience. % this includes the high production capacity industry which is applicable to cubesats in general but I haven't found any literature specifically pointing to this
 	2 respondents are using highly iterative system-based approaches, which are generally considered impractical for CubeSat projects\footnote{Based on the understanding that it is impractical to perform more than 3 iterations on an entire CubeSat system}.
-	\item All external respondents have developed the payloads and PocketQube bus in-house, without the use of \acs{COTS} subsystems.
+	\item All respondents have developed the payloads and PocketQube bus in-house, without the use of \acs{COTS} subsystems.
+	\item 4 respondents generally perform soldering in-house.
 	\item All respondents had already acquired or were in the process of acquiring \textbf{in-house testing facilities}, ranging from a plain vacuum chamber to a \acs{TVAC} and a shaker table.
 	\item 2 respondents have deployed 2 or more identical PocketQubes in a single launch, noting the increased redundancy and/or capability at a relatively low cost.
 	\item Team sizes range between 2--15 members.
@@ -1681,7 +1684,7 @@ Because of the introduction of Agile methods int hardware development, a number 
 Research Design calls for a selection between a qualitative and quantitative approach \autocite{creswellResearchDesignQualitative2023}. A common issue in engineering research is the difficulty of applying and investigating a study's results in the real world, preventing the generation of statistical data based on experimentation. This lack of numeric data calls for an application of a mixed or qualitative research approach.
 
 Qualitative research typically follows approaches such as narrative, phenomenological, grounded theory, action or case-study research \autocite{creswellQualitativeInquiryResearch2025}. 
-For this work, we will follow
+For this work, I will follow
 the DRM Design Research Methodology \autocite{blessingDRMDesignResearch2009} by \citeauthor{blessingDRMDesignResearch2009}.
 
 In engineering research, DRM is a widely adopted research approach that proposes a plan to create and verify \emph{support}, i.e.~``the possible means, aids and measures that can be used to improve design''. DRM divides the research process into the following four stages:
@@ -1694,7 +1697,7 @@ In engineering research, DRM is a widely adopted research approach that proposes
 
 DRM acknowledges that the comprehensive implementation of all stages can be impractical for a single research project, and proposes different partial plans to cover them. It also allows for parallel execution \emph{iterations} as part of research planning to enable feedback between different stages.
 
-The specific research plan for this work is shown in \draft{Figure Tade} and is elaborated as follows:
+The specific research plan for this work is shown in \Cref{fig:r_sections,fig:r_methodology} and is elaborated as follows:
 \begin{enumerate}
 	\item \textbf{Research Clarification (RC)} (Review-based):
 	I have performed a literature survey to identify the shortcomings of 
@@ -1703,11 +1706,19 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	This is elaborated in \Cref{chap:INTRODUCTION,chap:SURVEY}.
 	\item \textbf{Descriptive Study I (DS-I)} (Comprehensive):
 	As a first step, I have identified the organisational and technical requirements of typical \acs{SCS} missions, and compared them with the ecosystem of larger space missions. I also analysed the concept of Systems Engineering and identified its components that have both a higher impact on \acs{SCS} mission success, and can be improved through a Systems Engineering methodology. Finally, I conducted informal interviews to validate my findings and the usefulness of my proposed approach.
-	This is elaborated in \Cref{chap:SURVEY}.
+
+	The findings for \acs{SCS} missions are complemented with corresponding findings for \textbf{CubeSat} missions and mission environments, since:
+	\begin{enumerate}[itemsep=-2ex]
+		\item The architecture of CubeSats is similar enough to \acs{SCS} to allow re-using and applying methods, processes and data from the former to the latter;
+		\item Many \acs{SCS} developers directly follow CubeSat-based approaches;
+		\item \acs{SCS} literature is significantly limited compared to the more established CubeSat field.
+	\end{enumerate}
+
+	This literature survey is performed in \Cref{chap:SURVEY}.
 	
 	As a second step, I will participate in the \textbf{design and development of \acs{SCS} space missions} with the objective of \textbf{qualification or flight} as case studies. These space missions will be in the form of payloads, subsystems or satellites that can reach a flight-ready stage. They will be used either as a direct source of information to develop the required support, or as experimental applications of the new proposed methodology, in an iterative fashion.
 	
-	For this work, four different internal space missions were investigated, as shown in \Cref{sec:ra_casestudies,chap:CASESTUDIES}.
+	For this work, four different internal space missions were investigated, as shown in \Cref{chap:CASESTUDIES}. More details about the result acquisition and evaluation process are detailed in the lead section of \Cref{chap:CASESTUDIES}.
 	
 	\item
 	\textbf{Prescriptive Study (PS)} (Comprehensive):
@@ -1720,9 +1731,9 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 	
 	The DS-II stage includes the validation of the application and impact of the proposed design support, based on the execution of empirical studies.
 	
-	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}. \todo{Check Yin page 87 for definitions}
+	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}.
 	
-	In an ideal scenario, I could perform a statistical evaluation of the support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through lengthy A/B experiments. However, complete Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
+	In an ideal scenario, I could perform a statistical evaluation of the support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through complete A/B experiments. However,  Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
 	
 	Nevertheless, the intended goal of short \( < \qty{1}{year}\) projects allows implementing and qualitatively validating the proposed \acs{SCS} methodology, as part of specific \textbf{case studies} that are developed in parallel with this thesis.
 	
@@ -1791,12 +1802,12 @@ The specific research plan for this work is shown in \draft{Figure Tade} and is 
 		
 		
 	\end{tikzpicture}
-	\caption{Overview of research approach steps as implemented in this work \todo{Move RC to Chapter 1}}
+	\caption{Overview of research approach steps as implemented in this work. Note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:METHODOLOGY} and \Cref{chap:CASESTUDIES}. \todo{Move RC to Chapter 1}}
 	\label{fig:r_methodology}
 	\end{adjustbox}
 \end{figure}
 
-\draft{Note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:CASESTUDIES} and \Cref{chap:METHODOLOGY}}
+\draft{}
 
 \begin{figure*}[p]
 	\includegraphics{graphics/Research.Activity.pdf}
@@ -2818,6 +2829,7 @@ Considering the above assumptions, the total cost of the design--verification--r
 \label{sec:METHODOLOGY_design_guidelines}
 
 \paragraph{Modularity}
+\label{sec:METHODOLOGY_modularity}
 
 \todo{For sources of this section, check bibliography of mathieuAssessingFractionatedSpacecraft2006}
 
@@ -3659,12 +3671,12 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 		Verification &  & LabView, Selenium, Python Robot Framework \\
 		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators} \\
 		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting} \\
-		\multicolumn{3}{c}{\draft{This table needs to be updated to include more tools, details, and match the recommended methods}} \\
+		\multicolumn{3}{c}{\todo{This table needs to be updated to include more tools, details, and match the recommended methods}} \\
 		\bottomrule
 	\end{tabularx}
 \end{table*}
 
-\draft{robot framework}
+\todo{robot framework}
 
 
 \chapter{Case Studies}
@@ -3680,15 +3692,15 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 		Form Factor & ChipSat & PCBSat & PocketQube & PCBSat \\
 		Mass Classification & Femto-satellite & Femto-payload & Pico-satellite & Femto-satellite \\ \midrule
 		Institution & \multicolumn{3}{c}{University of Luxembourg} & Carnegie Mellon University \\
-		Development & 2022 & 2023 & 2024 & 2024 \\
-		Target & Qualification & Launch & Launch & Qualification \\ \bottomrule
+		Development Start & 2022 & 2023 & 2024 & 2024 \\
+		Target & Qualification & Launch & Launch & Functional Tests \\ \bottomrule
 	\end{tabular}
 	\vspace{2ex}
 \end{table*}
 
-As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and evaluate \draft{their applicability in these projects}. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
+As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and use the generated data to evaluate the validity of this methodology. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
 
-The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and \draft{difficulty points}, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}. The projects also represented a diverse range of system types, including a payload, two ChipSat-style spacecraft, and a PocketQube.
+The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and friction points, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}. The projects also represented a diverse range of system types, including a payload, two ChipSat-style spacecraft, and a PocketQube.
 
 \begin{figure}
 	\begin{tikzpicture}[
@@ -3724,12 +3736,29 @@ In the following sections, each project is presented in the following order \cit
 \begin{enumerate}
 	\item \textbf{Project Environment and Requirements}: A description of the fixed external parameters that define the project.
 	\item \textbf{Observation and Descriptions}: Enumeration of the directly observed facts and events during the project. This includes documentation or explanation of a system,\footnote{and often justification for specific technical design decisions} or the elaboration of events during a project's timeline.
-	\item \textbf{Explanations}: Interpretation of what is happening in the project, how it can be logically connected to the application (or not) of parts of the \acs{SCS} methodology, and \draft{other lessons learned}. 
+	\item \textbf{Explanations}: Interpretation of what is happening in the project, how it can be logically connected to the application (or not) of parts of the \acs{SCS} methodology, and technical/organisational lessons learned.\footnote{The explanations are generated through a combination of personal reflection, based on my own claims, and social reflection, based on conversations and retrospectives with other project members \cite[194]{mcniffYouYourAction2010}.
+They follow the techniques of \emph{Pattern Matching} and \emph{Explanation Building} \cite[250]{yinCaseStudyResearch2014}.}
+	\item \textbf{Counter-factual Analysis}: In order to compare application with non-application of the \acs{SCS} methodology, I perform a counter-factual analysis after each case study \autocite{bennettEventCausationCounterfactual1987}. More specifically, I evaluate the question ``What if the \acs{SCS} methodology were not applied in this project?''.
+	
+	In order to aid the analysis, I will separate this question into the different \emph{methods} or \emph{practices} proposed by the \acs{SCS} methodology, i.e.\@ the evaluated question will be ``What if the \emph{XYZ} \acs{SCS} method were not applied in this project?''\footnote{Note that when an \acs{SCS} method is said to \emph{not} be used, one still have to specify \emph{which} method was actually used. In most cases this will be obvious by considering the inverse/complementary of a method (e.g.\@ a fully modular vs.\@ a non-modular design), but I will describe the counter-factual case considered when it is not.}. The evaluated results will be quantitative and expressed in terms of changes in \emph{development time}, \emph{development cost}, and \emph{risk}. When the quantity of this change cannot be inferred directly from a causal relationship, I will use data from the literature, previous missions (CubeSat/\acs{SCS}), or from the current mission.
+
+	In terms of terminology, I will use the term ``\textbf{treatment}'' to refer to \textbf{the application of an \acs{SCS} method}, inspired from observational study literature \autocite{zhaoCausalInterpretationsBlackBox2021}.
+	\begin{margindefinition}[Treatment]
+		A treatment is the application of an \acs{SCS} method of \Cref{chap:METHODOLOGY} in a case study.
+	\end{margindefinition}
+	For simplicity, I will not consider interactions between the counter-factual (non)-application of treatments, as that would involve exponentially increaing combinations to explore.
 \end{enumerate}
 
-The explanations are generated through a combination of personal reflection, based on my own claims, and social reflection, based on conversations and retrospectives with other project members \cite[194]{mcniffYouYourAction2010}.
-They follow the techniques of \emph{Pattern Matching}, \emph{Explanation Building}, and, when possible, \emph{Counterfactual Analysis} \cite[250]{yinCaseStudyResearch2014}. \draft{Finally, a cross-case analysis is performed in ???.}
-\todo{Write about counterfactual analysis}
+\marginnote{%
+	Regarding the metrics evaluated for the counter-factual analysis:
+	\textbf{Cost}: For cost I do not consider labour costs, as their accounting will vary in different organisations. Instead, labour costs should be considered in connection with the development time.
+	
+	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk. In this case, ``risk'' should be perceived as \emph{the probability that a rework (an additional iteration) is needed.}
+	
+	%\textbf{Features}: Based on the \acs{MOSCOW} model, desirable (should/can) features are not requirements, but may be included in the final product.
+}
+Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in order to assess the external validity of the results \autocite{yinCaseStudyResearch2014}. Apart from a combination of the results of the case studies, this analysis will include \textbf{statistical tests} over the results of the \textbf{counter-factual analyses}, in order to evaluate whether the space missions with no treatments applied (i.e.\@ not following \acs{SCS} methodology) and space missions with all treatments applied (i.e.\@ following \acs{SCS} methodology) have statistically significant differences in development time, cost, and risk.
+
 
 \FloatBarrier
 \begin{landscape}%
@@ -3862,7 +3891,7 @@ The ChipSat-1 mission was motivated and constrained by a launch opportunity prov
 
 This \emph{hosted payload} mission was developed in 2022, and environmentally tested and integrated in 2023. However, due to administrative issues with the host's launch provider, ChipSat-1's host satellite, and by extension, ChipSat-1, were never launched.
 
-ChipSat-1 cost \SI{8930}{EUR} in material and testing costs, required a development time of roughly 10 months, and involved seven members of the team who contributed in different degrees. It was developed iteratively, with multiple representative hardware models having been built in the University of Luxembourg's CubeSat Lab. I participated as a Systems, Hardware and Software engineer in the project.
+ChipSat-1 cost \SI{8930}{EUR} in material and testing costs, required a development time of roughly \draft{10} months, and involved seven members of the team who contributed in different degrees. It was developed iteratively, with multiple representative hardware models having been built in the University of Luxembourg's CubeSat Lab. I participated as a Systems, Hardware and Software engineer in the project.
 
 \begin{marginfigure}
 	\includegraphics{pictures/chipsat1_1.jpg}\\%
@@ -3877,7 +3906,7 @@ The main constraint that restricted the selection of possible missions and class
 we hosted brainstorming sessions to decide on a mission concept, based on the criteria of complexity, cost, development time, novelty, risk, available competences, and strategy alignment.
 
 \begin{table*}[]
-	\caption{ChipSat-1 initial mission requirements \draft{todo}}
+	\caption{ChipSat-1 initial mission requirements \todo{todo}}
 	\begin{tabularx}{\linewidth}{@{}llX@{}}
 		\toprule
 		& Source  & Requirement                                                                            \\ \midrule
@@ -3906,7 +3935,7 @@ The objective of a \ac{VLC} demonstrator aligns with the prevalence and research
 
 \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} have considered the use of \acp{SPAD} in combination with miniature \acp{LED} for an inter-satellite link, and performed a range and data rate simulation for different transmitter lenses. They found that a lens-less system, transmitting with \SI{1}{\milli\watt}, can achieve a \SI{2.87}{\kilo\meter} range at \SI{10}{\kilo\bit/\second}, which can be extended to \SI{141}{\kilo\meter} with a \( \sim \)\SI{2}{\degree} \acf{HPBW} lens.
 
-\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometer-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\deg} are commercially available \autocite{M3MicroBeamSteeringTechBulletin}.} is required, eliminating the need for a high-gain antenna or high-power transceiver.
+\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometer-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\degree} accuracy are commercially available \autocite{M3MicroBeamSteeringTechBulletin}.} is required, eliminating the need for a high-gain antenna or high-power transceiver.
 
 ChipSat-1 was therefore decided to act as a technology demonstration experiment for a simple \ac{LED}-based \ac{VLC} system. Due to the limitation of a single flown spacecraft, we decided to place the transmitter (\ac{LED}) and receiver (photodiode) on a single \ac{PCB}, intending to focus on testing only the effects of ambient light, temperature and radiation on the payload and bus components.
 
@@ -3926,7 +3955,7 @@ For ChipSat-1, the available space allowed us to implement two ``secondary'' par
 	\label{fig:c_chipsat_parts_render}
 \end{figure}
 
-\marginnote{In technical documentation, I refer to the primary as ``\texttt{212}`` and the secondaries as ``\texttt{211A}``, ``\texttt{211B}``, showing a three-part ratio that starts with a common denominator and the horizontal \& vertical sizes, inspired by the chroma subsampling convention \todo{ref}.}
+\marginnote{In technical documentation, I refer to the primary as ``\texttt{212}`` and the secondaries as ``\texttt{211A}``, ``\texttt{211B}``, showing a three-part ratio that starts with a common denominator and the horizontal \& vertical sizes.}
 
 The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \draft{what} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
 
@@ -3948,11 +3977,26 @@ Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK})
 
 To make the design highly configurable without physical modifications, all processing was done in software, using an \acs{ADC} for reception, with an oversampling factor of \( \times 5 \) to assist in clock recovery.
 
-\begin{figure}
-	\includegraphics{drafts/chipsat_signal_path.png}
-	\caption{ChipSat-1 signal path \todo{TODO}}
+\begin{figure*}
+	\centering
+	\begin{tikzpicture}[node distance=1cm,every node/.style={scale=0.85}]
+		\tikzstyle{block} = [rectangle, rounded corners, minimum width=3cm, minimum height=1.2cm, 
+		text centered, draw=black!40, fill=blue!20,text width=2.8cm
+		]
+		\tikzstyle{arrow} = [thick,->,>=stealth, blue!20]
+		\node (input) {digital input};
+		\node (bpf) [block, right=of input] {Band Pass Filter};
+		\node (threshold) [block, right=of bpf] {Threshold Detection};
+		\node (sync) [block, right=of threshold] {Synchronisation};
+		\node (demanch) [block, right=of sync] {De-manchestering};
+		\draw [arrow] (input) -- (bpf);
+		\draw [arrow] (bpf) -- (threshold);
+		\draw [arrow] (threshold) -- (sync);
+		\draw [arrow] (sync) -- (demanch);
+	\end{tikzpicture}
+	\caption{ChipSat-1 signal path}
 	\label{fig:c_chipsat_signal_path}
-\end{figure}
+\end{figure*}
 
 The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
 
@@ -3972,13 +4016,13 @@ Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}
 	\label{fig:c_chipsat_block}
 \end{figure}
 
-The constraint of the flat \qtyproduct{5 x 5}{\centi\meter} shape of ChipSat-1 was the main driver behind component selection and bus capabilities. Out of the environmental criteria mentioned in \draft{Table TADE}, the following were the most critical \draft{further drivers}:
+The constraint of the flat \qtyproduct{5 x 5}{\centi\meter} shape of ChipSat-1 was the main driver behind component selection and bus capabilities. Out of the environmental criteria mentioned in \Cref{tab:mission-characteristics}, the following were considered as additionally critical drivers:
 \begin{itemize}
-	\item \textbf{Developer availability and experience}: Due to the relatively small size of the development team and difficulty in involving external \draft{personnel}, we tried to limit components and technologies to those that were familiar to the team's engineers.
-	\item \textbf{Complexity}:\footnote{\todo{Discuss the definition of complexity and how it is interpreted here, or move complexity to the definitions}}: In order to reduce risk, the number of different parts and interfaces between them had to be minimal. For the context of this project, reducing complexity was equivalent to reducing \ac{BOM} size.
+	\item \textbf{Developer availability and experience}: Due to the relatively small size of the development team and difficulty in involving external personnel, we tried to limit components and technologies to those that were familiar to the team's engineers.
+	\item \textbf{Complexity}:\footnote{\todo{Discuss the definition of complexity and how it is interpreted here, or move complexity to the definitions}} In order to reduce risk, the number of different parts and interfaces between them had to be minimal. For the context of this project, reducing complexity was equivalent to reducing \ac{BOM} size.
 \end{itemize}
 
-In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated. We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
+In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated.\footnote{See \Cref{sec:METHODOLOGY_modularity}} We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
 
 \marginnote{We selected the \draft{STM32WL} line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
 The ``brain'' of the satellite is a \acf{MCU} \ac{IC} with an integrated transceiver and power amplifier, essentially consolidating two subsystems in a single package.
@@ -4086,9 +4130,9 @@ Because of the small size of the ChipSat and the lack of pointing, \ac{RF} commu
 	\caption{View of the external side of the ChipSat, with the antenna elements attached}
 \end{marginfigure}
 
-The selection of \ac{RF} transmission characteristics was guided primarily by the selected transceiver \ac{IC}, limiting us at \( + \qty{22}{dBm}\) of output power and the \qtyrange{435}{438}{\mega\hertz} radio-amateur band. Different antenna configurations were considered in conversation with our host provider. We settled on a short-wave dipole\draft{ powered by an impedance matching circuit}, with preliminary antenna analysis performed on HFSS software.
+The selection of \ac{RF} transmission characteristics was guided primarily by the selected transceiver \ac{IC}, limiting us at \( + \qty{22}{dBm}\) of output power and the \qtyrange{435}{438}{\mega\hertz} radio-amateur band. Different antenna configurations were considered in conversation with our host provider. We settled on a short-wave dipole\draft{\@ powered by an impedance matching circuit}, with preliminary antenna analysis performed on HFSS software.
 
-The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \draft{XYZ} modulation with a \draft{XYZ bps} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
+The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \acs{FSK} modulation with a \qty{200}{bit/\second} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
 
 \begin{table}
 	\caption{ChipSat-1 link budget, performed using Jan King's link tool \todo{todo}}
@@ -4103,7 +4147,7 @@ The low transmission power and directivity restricted the available data rate of
 \begin{figure}
 	\centering
 	\includegraphics{drafts/chipsat_timeline.png}
-	\caption{ChipSat-1 development timeline \draft{todo}}
+	\caption{ChipSat-1 development timeline \todo{todo}}
 	\label{fig:c_chipsat_timeline}
 \end{figure}
 
@@ -4113,7 +4157,7 @@ For project management, the team followed a low-overhead, primarily ``ad-hoc'' a
 
 During the \emph{1\textsuperscript{st} iteration}, we performed initial prototyping and experimentation to confirm the planned design and component selection. More specifically, I experimented on the wireless transmission as well as payload conceptualisation. This involved purchasing electronics and development boards, and setting up a \emph{breadboard model} of the required functionality. I also started iterating on the operational software, developed in C/C++. Finally, we set up purchase orders for critical \acsp{IC} that were identified, in order to maintain enough stock against the chip shortage that was still in effect during 2022 \todo{ref}. 
 
-This initial iteration provided positive results on the concept feasibility and component suitability, and yielded no significant needs for design changes. It lasted \draft{X} months.
+This initial iteration provided positive results on the concept feasibility and component suitability, and yielded no significant needs for design changes. It lasted \draft{2} months.
 
 During the \emph{2\textsuperscript{nd} iteration}, enough information was gathered to proceed to full \ac{PCB} production. It was understood by the team that this iteration step was not intended to create a Flight Model, but an Engineering Model, similar in Form, Fit and Function to the \ac{FM}, but lacking the inhibit features required for flight.
 
@@ -4123,7 +4167,7 @@ During the \emph{2\textsuperscript{nd} iteration}, enough information was gather
 	\label{fig:c_burn_antenna}
 \end{marginfigure}
 
-I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \todo{cite IEC/EIA/IPC}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had to \draft{deal with} a lead period of \draft{X} days for manufacturing, during which software engineering was done.
+I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \todo{cite IEC/EIA/IPC}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had a manufacturing period of \draft{30} days for manufacturing, during which software engineering was done.
 	
 The rest of the team also iterated on a deployable antenna design based on a burn wire release mechanism (\Cref{fig:c_burn_antenna}). However, this design was abandoned in favour of a conventional fixed dipole, as the deployable mechanism would have presented a risk of damage to our host spacecraft.
 	
@@ -4140,19 +4184,20 @@ These issues were corrected through rework for the initial model.
 During the \emph{3\textsuperscript{rd} iteration}, we manufactured a \textbf{structural} model of the ChipSat to verify its interface to the host spacecraft, as well as the dynamic envelope of the antenna design. This required a \textbf{vibration test} at an external facility. We also performed an \textbf{\acf{OTA} \acs{RF} test} to verify the correct operation of the integrated antenna.
 
 For the \emph{4\textsuperscript{th} iteration}, we designed another \ac{PCB} intended as a Qualification or Flight Model, manufactured again by an external supplier. In addition to fixes for the previously found issues, we changed the following:
-\begin{enumerate}[itemsep=-1ex]
+\begin{enumerate}[itemsep=-2ex]
 	\item Replaced primary supercapacitor for two tantalum capacitors
 	\item Implemented electric inhibit circuit
 	\item Added antenna matching circuit \todo{Anything more?}
 \end{enumerate}
 
-The 4\textsuperscript{th} iteration also had to include qualification testing, which had to be performed in external facilities and took one week, including travel. \draft{Based on the host's requirements, vibration testing had to include a resonance search and random vibration testing, while thermal testing had to include 4 thermal cycles under vacuum.} \todo{Anything more? -adaptor manufacturing/test fixtures}
+The 4\textsuperscript{th} iteration also had to include qualification testing, which had to be performed in external facilities and took one week, including travel. Based on the host's requirements, vibration testing had to include a resonance search and random vibration testing, while thermal testing had to include 4 thermal cycles under vacuum. \todo{Anything more? -adaptor manufacturing/test fixtures}
 
 While the environmental tests were successful without any issues, functional testing revealed a reversal in the polarity of the inhibition signal\footnote{Meaning that the ChipSat was ON when the activation signal was missing, and OFF when it was present.}. As an acceptable rework was not possible due to the layout of the \ac{PCB}, we instead decided to complete a \emph{5\textsuperscript{th} iteration} of the ChipSat following a minor \ac{PCB} redesign. As such, the ChipSat produced during the 4\textsuperscript{th} iteration was downgraded to an \emph{\acf{EQM}}, while the last iteration would produce an equivalent to a \emph{\acf{PFM}}.
 
-Environmental tests were repeated in an external facility for the 5\textsuperscript{th}, this time functioning as acceptance tests, which were also required by our host provider. Following the successful results, our host integrated ChipSat-1 into their spacecraft. \draft{The additional iteration incurred a 2 month delay}.
+Environmental tests were repeated in an external facility for the 5\textsuperscript{th} iteration, this time functioning as acceptance tests, which were also required by our host provider. Following the successful results, our host integrated ChipSat-1 into their spacecraft. The additional iteration incurred a 1 month delay.
 
-\draft{During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in conversation with our host, we also designed and manufactured (externally) the aluminum mechanical structure that would serve as the interface between the host spacecraft's exterior and our ChipSat. The second iteration was made due to a change in requirements for this interface (??)}
+During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in conversation with our host, we also designed and manufactured (externally) the aluminum mechanical structure that would serve as the interface between the host spacecraft's exterior and our ChipSat.
+% The second iteration was made due to a change in requirements for this interface (??)
 
 \begin{figure}
 	\begin{subfigure}{.45\textwidth}
@@ -4173,22 +4218,19 @@ Environmental tests were repeated in an external facility for the 5\textsuperscr
 	\caption{ChipSat-1 burndown chart}
 \end{figure*}
 
-\todo{-link budget\\-power budget\\???}
-
 \subsection{Lessons Learned}
 
-\draft{From a technical point of view, the following points were made clear during development of the spacecraft:}
+From a technical point of view, we gathered the following points during development of the spacecraft:
 \begin{enumerate}[itemsep=-1ex]
 	\item Early versions and renders of the \acs{PCB} were available early in the project. These were useful as they could represent realistic concept art, used in communication with external partners and collaborators of our group.
 	\item As the inhibit mechanism was managing a critical electrical interface, it should have been present in the early prototypes and iterations. At least a breadboard model should have been built for the inhibition circuit.
-	\item Due to the small number of engineers participating in the project and their parallel involvement in projects separate to ChipSat-1, it was difficult to perform repeated and accurate design reviews, which would have detected some of the \draft{errors} before manufacturing. Personnel allocation and work package management are therefore crucial parts of a project like this. Even though a Gantt chart was created and updated monthly, project planning updates should have been more regular and the allocation of tasks clearer, with updates to the expected and completed amount of work for each task.
+	\item Due to the small number of engineers participating in the project and their parallel involvement in projects separate to ChipSat-1, it was difficult to perform repeated and accurate design reviews, which would have detected some of the non-conformances before manufacturing. Personnel allocation and work package management are therefore crucial parts of a project like this. Even though a Gantt chart was created and updated monthly, project planning updates should have been more regular and the allocation of tasks clearer, with updates to the expected and completed amount of work for each task.
 	\item While external manufacturing is convenient and results in high workmanship quality, it suffers from high lead times and difficulty of rework. In many cases, especially when design errors are expected, \ac{PCB} rework will be required in any case.
 	In the case of ChipSat-1, a lead time of approx.~1 week was required for unpopulated \acs{PCB} procurement, and approx.~1 month for manufacturing. This was often augmented by unpredictable turnaround times for university procurement approval.
 	Therefore, teams should consider investing and gaining knowledge regarding in-house manufacturing, especially in electronics and testing equipment.
-	\item \todo{More Lessons learned}
 \end{enumerate}
 
-
+\todo{More Lessons learned}
 
 % Extra parameters for incorrect:
 % !Iteration duration! (shorter longer)
@@ -4237,109 +4279,67 @@ Environmental tests were repeated in an external facility for the 5\textsuperscr
 \end{table}
 
 
+
 \subsection{Evaluation}
 
-\todo{\begin{itemize}
-	\item Be specific about a causal link that led to a specific result that can be identified: By using element of the methodology we had XYZ effect support by XYZ data
-	\item Counterfactual analysis (which is weak) and if done in a robust manner (without shortcuts) may take a long time
-	\item At least make a reference in action research in Sec. 3 to protect against potential arguments against skewing results. - Make enough statements about action research to protect yourself and demonstrate that you considered it, and note the limitation of your approach
-\end{itemize}}
+
+% Be specific about a causal link that led to a specific result that can be identified: By using element of the methodology we had XYZ effect support by XYZ data
 
 During the development of ChipSat-1, we captured numerical data representing the time taken by developers (\Cref{tab:c_chipsat_times}) and associated costs (\Cref{tab:c_chipsat_costs}).
-This data can be used to speculatively and retroactively evaluate the different project management decisions made by the team.
+This data can be used to speculatively and retroactively evaluate the different project management decisions made by the team. 
+Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:METHODOLOGY}, I will consider the \emph{\acs{SCS} methodology} methods used by the team and evaluate their impact on \textbf{cost, schedule, features} and \textbf{risk}. 
 
-\marginnote{%
-	\textbf{Cost}: For cost I do not consider labour costs, as their accounting will vary in different organisations. Instead, labour costs should be considered in connection with the development time.
-	
-	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk. In this case, ``risk'' should be perceived as \emph{the probability that a rework (an additional iteration) is needed.}
-	
-	\textbf{Features}: Based on the \acs{MOSCOW} model, desirable (should/can) features are not requirements, but may be included in the final product.
-	}
-Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:METHODOLOGY}, I will consider \todo{six} decisions taken by the team and evaluate their impact on \textbf{cost, schedule, features} and \textbf{risk}.
-
-\paragraph{On not executing Structural/Thermal Analyses}
-
-%Most subsystems will be subject to testing, therefore analysis only reinforces the testing.
-
-The decision to not perform any environmental analysis was influenced by the lack of engineers experienced in these disciplines in our team, the \todo{necessity for testing}, and the lack of many design parameters that would be influenced by the tests. These analyses are also sometimes associated with considerable effort. While the actual time taken will depend on the size and complexity of the problem, the resolution of the analysis, and the experience of the engineers, for this calculation I will consider the lower end of work hours reported in the literature of CubeSat projects (\Cref{tab:l_cubesat_time_drivers}).
-
-Nevertheless, these analyses can increase confidence in the design and \draft{inform on the general behaviour of the system}. They also reduce the necessity of additional vibration testing.
-
-
-\begin{fullwidth}
-\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
+\begin{table*}[h]
+	\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
 	\toprule
-	\multicolumn{8}{c}{Effects of bypassing structural/thermal analyses}
-	\\ \midrule
-	\textbf{Cost:} & \( -\qty{1390}{EUR} \) &
-	\textbf{Time:} &  \( -\qty{180}{hours} \) &
-	\textbf{Features:} &  No change &
-	\textbf{Risk:} &  Higher
-	\\ \bottomrule
+\# & Treatment & \multicolumn{1}{l}{Applied?} & \multicolumn{3}{c}{Effect on} \\ \cmidrule(lr){4-6}
+ &  & Y/N & \multicolumn{1}{c}{Cost (EUR)} &  \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & +1390 & \qty{-180}{hours} & Higher \\
+2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -2000 & \qty{+72}{hours} & Lower \\
+3 & Multi-step development & \textcolor{nice}{Y} & +1720 & \qty{-120}{hours} & Lower  \\
+4 & Short iterations & \textcolor{nice}{Y} & +695 & \qty{-120}{hours} & Higher  \\
+5 & Iterating over partitions & \textcolor{nice}{Y} & -1840 & \qty{-50}{hours} & Higher \\
+6 & Robust software framework & \textcolor{bad}{Y} & 0 & \qty{+40}{hours} & Lower \\ \bottomrule
 \end{tabularx}
-\end{fullwidth}
+\caption{Counter-factual evaluation for ChipSat-1}
+\label{tab:c_chipsat_counterfactuals}
+\end{table*}
 
-\paragraph{On manufacturing externally}
+The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfactuals} are explained as follows:
+\begin{enumerate}
+	\item \textbf{Bypassing structural/thermal analysis}:
+	The decision to not perform any environmental analysis was influenced by the lack of engineers experienced in these disciplines in our team, the pre-existing requirements for testing, and the lack of many tunable design parameters that would be influenced by the tests. These analyses are also sometimes associated with considerable effort. While the actual time taken will depend on the size and complexity of the problem, the resolution of the analysis, and the experience of the engineers, for this calculation I considered the lower end of work hours reported in the literature of CubeSat projects (\Cref{tab:l_cubesat_time_drivers}).
 
-One decision that seems to vary between teams concerns whether construction, assembly and manufacturing, especially for \acs{PCB} and electronics, takes place \emph{in-house} or in external facilities.
+	Nevertheless, these analyses can increase confidence in the design and \draft{inform on the general behaviour of the system}. They also reduce the necessity of additional vibration testing. Therefore, in general, I consider that they reduce risk. At the same time, additional environmental testing increases costs due to facility rental costs, which are calculated based on ChipSat-1's actual cost budget (\Cref{tab:c_chipsat_costs}).
+	\item \textbf{External manufacturing}:
+	One decision that seems to vary between teams concerns whether construction, assembly and manufacturing, especially for \acs{PCB} and electronics, takes place \emph{in-house} or in external facilities. The decision will vary between teams, as different manufacturing requirements will be relevant at different stages, and in-house assembly requires an initial investment in equipment, available space and expertise, and sometimes dedicated lab personnel.
 
-The decision will vary between teams, as different manufacturing requirements will be relevant at different stages, and in-house assembly requires an initial investment in equipment, available space and expertise, and sometimes dedicated lab personnel.
+	ChipSat-1 performed all soldering externally, meaning that the recommendation of the \acs{SCS} methodology was \emph{not} used. As such, the counter-factual statement for this point is ``\emph{How would the metrics change if \acs{PCB} soldering was done in-house?}''
 
-For ChipSat-1, I will consider that an unpopulated \acs{PCB} is still manufactured externally, but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
-	\item External manufacturing usually adds a month of lead time, during which no changes can be made, compared to \(\sim \)\qty{1}{week} for an unpopulated \acs{PCB}. This makes iterations longer and prevents the rapid testing required by Agile methodologies.
-	\item External manufacturing \draft{has higher workmanship standards ref}
-\end{enumerate*}
+	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
+		\item External manufacturing usually adds a month of lead time, during which no changes can be made, compared to \(\sim \)\qty{1}{week} for an unpopulated \acs{PCB}. This makes iterations longer and prevents the rapid testing required by Agile methodologies.
+		\item Experience during the project showed that communicating with an external manufacturer adds an additional layer of error-prone interfacing.
+	\end{enumerate*}
 
-\begin{fullwidth}
-	\todo{Somehow integrate lead time into this calculation}
+	In larger space projects, external manufacturing is also associated with higher workmanship quality. However, the low number of components, low overall stresses, and short mission durations of \acs{SCS} generally reduce workmanship requirements, and there are no documented failures because of poor electronics manufacturing (\Cref{sec:LITERATURE_cubesat_reliability}). As such, and considering the above risk factors, I will not consider a risk increase for in-house electronics manufacturing.	
+	\item \textbf{Iterative multi-step development}, as opposed to a single iteration with a ``\acl{BDUF}'':
+	For ChipSat-1, we followed an Agile mentality, emphasising prototyping and engineering work over iterating on the design and performing reviews.
 
-	\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
-		\toprule
-		\multicolumn{8}{c}{Effects of manufacturing \acsp{PCB} externally}
-		\\ \midrule
-		\textbf{Cost:} & \( +\qty{2000}{EUR} \) &
-		\textbf{Time:} &  \( -\qty{72}{hours} \) &
-		\textbf{Features:} &  No change &
-		\textbf{Risk:} &  No change
-		\\ \bottomrule
-	\end{tabularx}
-\end{fullwidth}
+	While it is difficult to estimate how many of the detected issues would have been resolved early with more time spent in the design, it was clear that, due to evolving external requirements beyond the team's control, \textbf{more than one production run would have been necessary, even in the case of a single-step plan}.
+	As such, most of the redesign work that was performed would have still been necessary, even in the case of a \acs{BDUF} approach. For this evaluation, I will consider that a single-step iteration plan adds one person month of design/review work, but that it generally reduces risk due to more detailed evaluations of the design. The cost would be reduced by the manufacturing cost of all incomplete iterations.
+	\item \textbf{Short, agile iterations}:
+	The \acs{SCS} methodology recommends short (and when possible time-boxed), system-wide iterations. This is in contrast to typical longer iterative/multi-step methods used in CubeSat projects, (\Cref{sec:LITERATURE_cubesat_environment}).
 
-\paragraph{On spending less time designing}
-\draft{For ChipSat-1, we followed a ``develop first, ask questions later'' mentality, emphasising prototyping and engineering work over design iterations and reviews.} While it is difficult to estimate how many of the detected issues would have been resolved early with more time spent in the design, it was clear that, due to evolving requirements beyond the team's control, more than one production run would have been necessary. \todo{Make sure to define what ``designing'' means. There are some papers that explain}
+	In the case of ChipSat-1, short iterations allowed us to address externally changing requirements on time, but increased non-conformances due to less time spent in design reviews. Out of the 5 performed iterations, only the 5\textsuperscript{th} iteration was unplanned. Assuming that each iteration would last \(1.5\times\) longer in the longer case, and that each iteration is connected with a \( \frac{75+75}{5} = 30 \) hour prototyping \& integration time, the effect of longer iterations would increase project effort by \qty{120}{hours}. The cost would be reduced by the manufacturing cost of the last iteration.
+	\item \textbf{Iterating over partitions} instead of the entire system:
+	2 out of 5 iterations for ChipSat-1 were performed on partitions of the system, instead of the entire system. This had the benefit of reducing cost and integration time at the expense of increased risk.
+	The cost reduction can be calculated by the \acs{PCB} system cost. The development time reduction can be estimated by considering an additional \emph{integration} duration of \( 2\cdot\frac{75}{3} = \qty{50}{hours} \) 
+	\item \textbf{Robust software framework}:
+	ChipSat-1 used a standard programming language (\emph{C++}) instead of a safety-oriented one, as well as standard software libraries.\footnote{With the exception of \texttt{ok-serialiser}.}
 
-For this evaluation, I will consider one person month of additional design/review work.
-
-\begin{fullwidth}
-	\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
-		\toprule
-		\multicolumn{8}{c}{Effects of spending less time ``designing''}
-		\\ \midrule
-		\textbf{Cost:} & No change &
-		\textbf{Time:} & \( -\qty{120}{hours} \) &
-		\textbf{Features:} &  No change &
-		\textbf{Risk:} &  Higher
-		\\ \bottomrule
-	\end{tabularx}
-\end{fullwidth}
-
-\paragraph{On iterating over slices}
-While the initial ChipSat-1 iterations happened over functional products with the same function as the final intended result, these iterations did cover only ``slices'' of the product, with specific functions or subsystems being covered at \draft{different iterations}. This increased development speed at the cost of reduced certainty, leading to a required rework for the final iteration, which cost the team 2 months.
-
-For the retrospective evaluation, I will consider \todo{Update considerations based on notes}
-
-\begin{fullwidth}
-	\begin{tabularx}{\linewidth}{@{}lXlXlXlX@{}}
-		\toprule
-		\multicolumn{8}{c}{Effects of iterating over slices}
-		\\ \midrule
-		\textbf{Cost:} & \draft{\( +\qty{1000}{EUR} \)} &
-		\textbf{Time:} & \( +\qty{24}{hours} \) &
-		\textbf{Features:} &  No change &
-		\textbf{Risk:} & Higher
-		\\ \bottomrule
-	\end{tabularx}
-\end{fullwidth}
+	The selected microcontroller did not natively support a recommended language, such as \emph{Rust}. Personal experience shows that creating an appropriate \acs{HAL} for a Rust-based platform would last close to one working week. Based on the analysis of \Cref{sec:METHODOLOGY_software_reliability}, I consider that the use of Rusk would reduce software risk.
+\end{enumerate}
 
 
 \begin{figure*}
@@ -4538,11 +4538,13 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 
 \FloatBarrier
 \section{Results}
+\label{sec:CASESTUDIES_results}
 
-- Bootstrap for sensitivity Analysis
-\\- Regression analysis
-\\- Average treatment effect
-\\- Jackknife resampling
+\begin{figure*}
+	\includegraphics{graphics/ResultsCausal.pdf}
+\end{figure*}
+
+
 
 \begin{table*}[]
 \begin{tabularx}{\linewidth}{@{}lXl@{\hskip 1em}S[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
@@ -4650,6 +4652,8 @@ project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083
 \section{Summary}
 
 \section{Key Findings and Contributions}
+
+\section{Limitations and Threats to Validity}
 
 \section{Future Work}
 

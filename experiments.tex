@@ -16,20 +16,12 @@
 \usepackage{amsmath}
 %\usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{xcolor-material}
 
 
 \hypersetup{colorlinks}
 
-
-%     \__keythms_thmstyle_new:nVVVVVVVe { #1 }
-%    	\l__keythms_thmstyle_spaceabove_tl
-%      \l__keythms_thmstyle_spacebelow_tl
-%      \l__keythms_thmstyle_bodyfont_tl
-%      \l__keythms_thmstyle_headindent_tl
-%      \l__keythms_thmstyle_headfont_tl
-%      \l__keythms_thmstyle_headpunct_tl
-%      \l__keythms_thmstyle_postheadspace_tl
-%      { \text_expand:n { \keythms_thmstyle_headcmd:nnn{##1}{##2}{##3} } }
 
 \ExplSyntaxOn
 \makeatletter
@@ -40,31 +32,16 @@
 \ExplSyntaxOff%
 
 
-% \begin{lrbox}{\@tufte@figure@box}%
-% \begin{minipage}[t]{\@tufte@float@contents@width}%
-% 	\hbox{}%
-% 	%\vspace{\baselineskip}
-% 	\lipsum[1]
-% \end{minipage}%
-% \end{lrbox}
 
-% %Caption box
-% \begin{lrbox}{\@tufte@caption@box}%
-% \begin{minipage}[t]{\marginparwidth}%
-% 	\hbox{}%
-% 	Caption
-% 	%\par\vspace{-\prevdepth}
-% \end{minipage}%
-% \end{lrbox}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes.geometric, arrows, positioning}
 
+\def\acs#1{\textsf{#1}} 
+\def\acsp#1{\textsf{#1s}}
+\def\acl#1{\textsf{Big Design Up Front}} 
 
-%\addtotheoremhook[definition]{prehead}{\begin{marginnote}}
-%\addtotheoremhook[definition]{posthead}{\end{marginnote}}
-%\addtotheoremhook[definition]{posthead}{\marginnote[2.5ex]{\textbf{Definition ##2}}}
-
-
-%\BeforeBeginEnvironment{margindefinition}{\begin{margintext}}
-%\AfterEndEnvironment{margindefinition}{\end{margintext}}
+\usepackage{tabularx}
+\usepackage{booktabs}
 
 \begin{document}
 
@@ -107,12 +84,24 @@ In fact, my favourite verbosity is discombobulate.f
 
 Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs!?
 
-\begin{figure*}
-	\includegraphics[height=6cm]{media/pictures/poquito_coin.jpg}%
-	\hfill%
-	\includegraphics[height=6cm]{media/pictures/qubik_bmps.jpg}%
-	\caption[Left: Comparison of a 1p PocketQube with a coin. Right: QUBIK EPS board.]{Left: Comparison of a 1p PocketQube with a coin. Right: QUBIK EPS board. The 9-pin PQ9 connector is visible on the right.}
-\end{figure*}
+\colorlet{nice}{MaterialGreen800}
+\colorlet{bad}{MaterialRed800}
+
+\begin{table*}[h]
+	\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
+	\toprule
+\# & Treatment & \multicolumn{1}{l}{Applied?} & \multicolumn{3}{c}{Effect on} \\ \cmidrule(lr){4-6}
+ &  & Y/N & \multicolumn{1}{c}{Cost (EUR)} &  \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & +1390 & \qty{+180}{hours} & Higher \\
+2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -2000 & \qty{+72}{hours} & No change \\
+3 & No "\acl{BDUF}" & \textcolor{nice}{Y} &  &  &  \\
+4 & Iterative-style development & \textcolor{nice}{Y} &  &  &  \\
+5 & Iterating over partitions & \textcolor{nice}{Y} & 1000 & \qty{+24}{hours} & Higher \\
+6 & Robust software framework & \textcolor{bad}{N} & 0 & \qty{+40}{hours} & Lower \\ \bottomrule
+\end{tabularx}
+\end{table*}
+
 
 \end{document}
 
