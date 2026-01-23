@@ -1837,14 +1837,14 @@ This chapter will present the proposed ``\acs{SCS} Methodology''. Following the 
 Before identifying and realising the functions of the intended methodology, the \emph{Task Clarification} step has to be performed, by identifying the goals and success criteria of the methodology. The requirements I identified are listed in \Cref{tab:m_methodology_general_rqeuirements} and will be justified below.
 
 \begin{table*}[h]
-	\begin{tabularx}{\linewidth}{@{}lX@{}}
+	\begin{tabularx}{\linewidth}{@{}lXl@{}}
 		\toprule
-		\textbf{No.} & \textbf{Requirement}                                                                                                              \\ \midrule
-		RM1            & The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.  \\
-		RM2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \Cref{sec:INTRODUCTION_defining_systems_engineering}.                  \\
-		RM3            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.      \\
-		RM4            & The SCS Methodology shall enable less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies. \\
-		RM5            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. \\
+		\textbf{No.} & \textbf{Requirement}                  & \textbf{Type}                                                                                            \\ \midrule
+		RM1            & The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance. & Mission-specific \\
+		RM2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \Cref{sec:INTRODUCTION_defining_systems_engineering}. & Foundational                 \\
+		RM3            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.  & Generalised    \\
+		RM4            & The SCS Methodology shall enable equally or less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies. & Mission-specific \\
+		RM5            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. & Generalised\\
 		\bottomrule
 	\end{tabularx}
 	\caption[SCS Methodology Requirements]{\acs{SCS} Methodology Requirements}
@@ -3883,8 +3883,6 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 \section{ChipSat-1}
 %Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
 
-\todo{Need to check and ensure consistency for tenses}
-
 ChipSat-1 was the first mission I participated in within the scope of this thesis, with the objective of generating data for femto-satellite projects and experimenting on an early iteration of the \ac{SCS} methodology (\Cref{chap:METHODOLOGY}).
 
 The ChipSat-1 mission was motivated and constrained by a launch opportunity provided by a third-party satellite integrator, who offered to mount a ChipSat device as a secondary payload on one of their missions. The ChipSat itself was a technology demonstrator, intending to experiment with the use of \acf{VLC} between components of a distributed system. It consisted of a single \ac{PCB} separated into 3 regions (each emulating one part of a distributed system), measuring \qtyproduct{5 x 5}{\centi\meter} and weighing \SI{18.3}{\g} in total. Power generation and communication were handled by internal solar cells and a transceiver/antenna respectively, with the host providing only a mechanical and electrical inhibition interface.
@@ -3999,8 +3997,6 @@ To make the design highly configurable without physical modifications, all proce
 \end{figure*}
 
 The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
-
-\todo{Information about the frame data structure (check source code)}
 
 At a system level, the secondaries transmit data at periodic \draft{???} intervals, while the primary is constantly waiting for data reception.
 Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
@@ -4679,13 +4675,78 @@ The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfac
 \section{Results}
 \label{sec:CASESTUDIES_results}
 
+This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
+
 \begin{figure*}
 	\includegraphics{graphics/ResultsCausal.pdf}
+	\caption{Observed \acs{SCS} treatment---effect mapping based on case studies}
 \end{figure*}
 
+\subsection{Internal Validity}
 
+\marginnote{%
+	The action research-based approach did not allow us to implement a control/treatment group approach, and as such not all elements of the \acs{SCS} methodology were applied at once. However, based on the counter-factual evaluation performed above, there is no significant difference between the actual and the complete implementation of the \acs{SCS}. In most cases, 5 out of 6 treatments were applied. The exact differences are presented in \draft{a table}.
+}
+To evaluate the \textbf{internal validity} of the \acs{SCS} methodology, I consider whether the conditions introduced by the \acs{SCS} methodology, as applied to these case study, led to successfully achieving the methodology requirements for each mission.
 
-\begin{table*}[]
+\paragraph{RM1: The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.}
+
+The development person-hours recorded for each project are \draft{presented} in the corresponding tables of \Cref{chap:CASESTUDIES}:
+\begin{fullwidth}
+\begin{equation}
+\text{Development Days} = \left[\begin{matrix}
+	478 \\ 468 \\ 450 \\ 100
+\end{matrix}\right] \text{ person-hours} \div \qty{3}{hours/day} = \left[\begin{matrix}
+	159.3 \\ 156.0 \\ 150.0 \\ 33.3
+\end{matrix}
+\right] \text{ person-days}
+\label{eq:totalpersondays}
+\end{equation}
+\end{fullwidth}
+\marginnote{Assuming an actual work time of \qty{3}{hours/day}, based on actual observations of daily activities.}
+
+Even in the worst case of 1 person assigned to each project, the development durations in \Cref{eq:totalpersondays} are below 1 year with adequate margin. This is supported by the causal and counter-factual analysis \todo{(ref boxplot below)}, which suggests that a non-application of the methodology would increase development time \draft{by an average of \(1.5\times\)}.
+
+Furthermore, non-conformance evaluation showed that \draft{all projects managed to reach a state with no major non-conformances before delivery}, confirming that there are no blocking points towards launch.
+
+Therefore, RM1 is considered satisfied for this case.
+
+\paragraph{RM4: The SCS Methodology shall enable equally less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.}
+
+While risk is difficult to quantify, counterfactual analyses showed a balanced risk delta between the treated and non-treated cases. In all of the above missions, assigning a numerical value to the categorical risk value showed either a reduction or no overall change in risk. The performed trade-off evaluations for each mission can inform developers on selecting the appropriate treatments. The overall comparison between risk distribution can be seen in \draft{the box plots below}.
+
+\FloatBarrier
+\subsection{External Validity}
+
+To evaluate the \textbf{external validity} of the proposed methodology, I will consider whether the results can be generalised to other projects. Since numerical time \& cost data are available, complemented by categorical cost data, a \textbf{statistical analysis} can be performed, based on the following parameters:
+\begin{itemize}[itemsep=-3pt] %??? what's wrong
+	\item Independent variables: \( \text{Project Number } X_p  \), \( \text{Number of Treatments } X_t \)
+	\item Dependent variables: \( \text{Development Time } Y_t \), \( \text{Cost } Y_c \), \( \text{Risk } Y_r \)
+	\item Set:
+	\begin{enumerate}[itemsep=-2pt]
+		\item Actual observations from case studies (\(x_t = x_{t_{\text{actual}}} \))
+		\item Counter-factual analysis where \acs{SCS} methodology is not applied (\(x_t = 0\))
+		\item Counter-factual analysis where \acs{SCS} methodology is applied (\(x_t = \max X_t\))
+	\end{enumerate}
+	\item Sample size: \( 3\text{ analyses}\cdot 4\text{ projects} = 12 \) data points (each point associated with \(2 \times 3 \) variables)
+	\item Goal: Quantify whether the \emph{dependent variables} have a statistically significant response to the \emph{number of treatments}.
+\end{itemize}
+
+In practice, I am seeking to identify whether the application of more \acs{SCS} treatments leads to a reduction in development time, cost, and risk which can be attributed to the methodology (\(X_t\)), and not to differences between projects (\(X_p \)).
+
+\marginnote{\todo{Considerations for different methods, .e.g linear regression/ANOVA}}
+The above problem statement can be answered by the following statistical tests:
+\begin{itemize}[itemsep=-2pt]
+	\item The \textbf{Student's \emph{t}-test}, which evaluates whether the difference between the response of two groups is statistically significant. The \(t\)-test assumes that the test statistic follows a normal distribution. \draft{[cite]}
+	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parameteric} and makes no assumption about the distribution of the underlying data.
+\end{itemize}
+\marginnote{The Mann---Whitney test can be more or less robust compared to the \(t\)-test, depending on the distribution of the data \cite{zimmermanInvalidationParametricNonparametric1998}. As such, I present both analyses here for completeness.}
+
+Both of the above tests assume a comparison between \textbf{two groups}; in this case, considered to be the \emph{group without treatment}, and the \emph{group with all treatments}, i.e.\@ with the complete application of the \acs{SCS} methodology.
+
+The numerical data for these tests is shown in \Cref{tab:c_aggregate_data}. Before applying the above statistical tests, the data is converted to a \textbf{relative form, in relation to the actual observed development time/cost, for each project}. This transformation is performed in order to reduce the impact of the \textbf{inherent scaling} associated with the different technical sizes of each project. \todo{How is risk quantified?}
+
+\begin{table*}[h]
 \begin{tabularx}{\linewidth}{@{}lXl@{\hskip 1em}S[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
 \toprule
 Project & Analysis Type & No.\@ of Treatments & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
@@ -4699,10 +4760,71 @@ Project & Analysis Type & No.\@ of Treatments & \multicolumn{1}{c}{Time (hours)}
 \multirow{2}{*}{ChiPySat} & Actual & 2 & 100 & 2000 & 2 \\
  & Counterfactual (SCS methodology not used) & 0 & 120 & 500 & 3 \\ \bottomrule
 \end{tabularx}
+\caption{Case-study counter-factual analysis aggregate data}
+\label{tab:c_aggregate_data}
 \end{table*}
 
-\draft{The PAWN method [1] is a moment-independent approach to Global Sensitivity Analysis (GSA). It is described as producing robust results at relatively low sample sizes (see [2]) for the purpose of factor ranking and screening.}
+\FloatBarrier
 
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_scatter_development.pdf}
+	\caption{Scatter plot of project development time vs.\@ treatments applied}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_scatter_cost.pdf}
+	\caption{Scatter plot of project cost vs.\@ treatments applied}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_scatter_risk.pdf}
+	\caption{Scatter plot of project risk vs.\@ treatments applied}
+\end{figure}
+
+\FloatBarrier
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_boxplot_development_relative.pdf}
+	\caption{Box plot of project development time vs.\@ treatments applied}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_boxplot_cost_relative.pdf}
+	\caption{Box plot of project cost vs.\@ treatments applied}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_boxplot_risk_relative.pdf}
+	\caption{Box plot of project risk vs.\@ treatments applied}
+\end{figure}
+
+The results of the analysis are shown in \Cref{tab:stat_results}.
+
+\begin{table*}[ht]
+\centering
+\caption{Statistical Analysis of Development Parameters}
+\label{tab:stat_results}
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
+\midrule
+Development Time (r.) & Mann-Whitney \(U\) & 14.000 & 0.1143 & --- \\
+                 & \(t\)-test         & 2.309  & 0.0934 & 3.416 \\
+\addlinespace
+Cost (relative)  & Mann-Whitney \(U\) & 6.500  & 0.8857 & --- \\
+                 & \(t\)-test         & -0.573 & 0.5994 & 3.716 \\
+\addlinespace
+Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & --- \\
+                 & \(t\)-test         & 0.408  & 0.6981 & 5.647 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+
+%\draft{The PAWN method [1] is a moment-independent approach to Global Sensitivity Analysis (GSA). It is described as producing robust results at relatively low sample sizes (see [2]) for the purpose of factor ranking and screening.}
+
+\begin{comment}
 \FloatBarrier
 \subsection{Development Time}
 
@@ -4782,6 +4904,7 @@ no. treatments	& 0.333333  & 0.361111  & 0.333333  & 0.416667  & 0.108786  & 0.0
 project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083  \\ \bottomrule
 \end{tabular}
 \end{table*}
+\end{comment}
 
 
 \chapter{Conclusion}
