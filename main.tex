@@ -4365,6 +4365,12 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 The AI4Space mission was developed in the University of Luxembourg in the form of a payload to be hosted by a Skykraft Ltd.\@micro-satellite.
 
+\begin{figure}[h]
+	\includegraphics{pictures/ai4space1.jpg}
+	\caption{AI4Space \acl{QM}}
+	\label{fig:c_ai4space_qm}
+\end{figure}
+
 \subsection{Mission Description}
 
 \begin{table*}[]
@@ -4387,6 +4393,10 @@ AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aime
 
 The selection of a mission for the AI4Space platform was largely limited by the constraints of the payload launch opportunity provided. AI4Space was therefore largely a \emph{constraint-based} mission, restricted primarily by available size, weight, energy, and data budget \autocite{thoemelLeanDemonstrationOnBoard2024}.
 
+\begin{marginfigure}
+	\includegraphics{pictures/ai4space2.jpg}
+	\caption{AI4Space \acl{QM} (detail)}
+\end{marginfigure}
 The selected mission involved the detection and classification of \textbf{thermal events} using non-conventional sensors, combined with Machine Learning performed in orbit (``on the edge'').
 More specifically, AI4Space intended to demonstrate the use of infrared thermal cameras to generate temperature information about a spacecraft's subsystems and components. This information would then be fed into a \ac{ML} algorithm to classify whether a component exhibits non-nominal (or anomalous) behaviour\footnote{By exhibiting, for example, an out-of-range temperature, or another erratic pattern.}. As this is a simple classification problem, it is greatly supported by established \acs{ML} methods that can reasonably adapt to it.
 
@@ -4412,6 +4422,11 @@ The functional part of the AI4Space payload, responsible for the generation of r
 
 The AI4Space payload contained no Attitude Control, Communications, or Electrical subsystems, as these aspects were covered in their entirety by the host spacecraft.
 
+\begin{figure}
+	\centering
+	\includegraphics{pictures/ai4space3.jpg}
+	\caption{AI4Space ``breadboard'' model}
+\end{figure}
 All other functions were covered by a \emph{Raspberry Pi Zero 2W}, serving as the system's \acf{OBC} and Payload Data Processor. The Raspberry Pi was chosen as a ready-to-use \acs{COTS} platform that essentially acts as a complete \acs{OBC}, and reduces the complexity of hardware design for a microcontroller. An additional benefit was the higher available set of programming languages or tools, seen as positive within the context of multiple software developers for the project. 
 
 The incorporation of a Raspberry Pi implies the implementation of a complete base Linux system. This is usually a disadvantage in pocket-sized spacecraft due to the absence of real-time software and the higher energy consumption. However, \draft{given AI4Space's status as a payload and its high available energy}, these disadvantages were \draft{rejected} in favour of the additional convenience, tools, libraries and functions available in a Linux environment, especially considering the need for multiple software developers to be involved in the project. In fact, while most CubeSat projects rely on low-footprint \acp{MCU} for processing needs, Linux boards have found their place in some payload units \autocite{chronasUpsat_msc_thesis2017}.
