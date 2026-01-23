@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 import matplotlib.ticker as mticker
+from adjustText import adjust_text
 
 def choose_sheet(sheet_names):
     options = [(name, name) for name in sheet_names]
@@ -42,7 +43,7 @@ def burndown(df, output):
     logger.debug(f'Earliest Specification Date: {earliest_spec_date}')
 
     # Fill empty spec dates with the earliest one
-    df['Specification Date'] = df['Specification Date'].fillna(earliest_spec_date)
+    df['Specification Date'] = df['Specification Date'].fillna(earliest_spec_date)    
 
     # PRINT
     print(df)
@@ -168,9 +169,64 @@ def tradeoff(df, output):
     df = df.dropna(subset=['Time', 'Risk'])
     n_new = df.shape[0]
     logger.info(f'Removed {n_old - n_new} rows with N/A in Time or Risk')
-    print(df)
     risks = ['Lower', 'Base', 'Higher']
     logger.info(f'Risks set: {risks}')
+
+    # If a row risk is not in the predefined risks, report a warning
+    for idx, value in df['Risk'].items():
+        if value not in risks:
+            logger.error(f'Unexpected risk value in row {idx + 2}: {value}')
+    # Map risks to x positions
+    risk_to_x = {risk: i for i, risk in enumerate(risks)}
+    df['Risk_n'] = df['Risk'].map(risk_to_x) - 1
+    df['x'] = df['Risk_n'] + 1
+
+    print(df)
+
+    # Reset baseline to zero-treatment option
+    
+
+    applied_time = df.loc[df['Applied'] == 'Y', 'Time'].sum()
+    applied_cost = df.loc[df['Applied'] == 'Y', 'Cost'].sum()
+    logger.info(f'Applied treatments total time: {applied_time}, total cost: {applied_cost}')
+
+    treatments_actual_count = df.loc[df['Applied'] == 'Y', :].shape[0]
+    treatments_total_count  = df.loc[df['Applied'].isin(['Y', 'N']), :].shape[0]
+    logger.info(f'Number of applied treatments: {treatments_actual_count}. Number of total treatments: {treatments_total_count}.')
+
+    # Print nice and useful information
+    print("Nice and useful information:")
+    print("  when creating a table, write the following")
+    print("  -------------------------------")
+    # Base time with actual treatments
+    
+    pd_treatments_actual = df.loc[df['CF #'] == 0, :]
+    # Base time with 0 treatments
+    # Define an EMPTY dataframe with columns Time, Cost, Risk_n
+    # d_treatments_0 = pd.DataFrame(columns=['Time', 'Cost', 'Risk_n'])
+    # For each column in d_treatments_0, it is the sum of the corresponding column in df where Applied == 'Y'
+    pd_treatments_0    = pd_treatments_actual - df.loc[df['Applied'] == 'Y', ['Time', 'Cost', 'Risk_n']].sum().to_frame().T 
+    pd_treatments_full = pd_treatments_actual + df.loc[df['Applied'] == 'N', ['Time', 'Cost', 'Risk_n']].sum().to_frame().T 
+
+
+    pd_treatments = pd.DataFrame({
+        'Description': ['Actual', 'No Treatments', 'All Treatments'],
+        'Treatments': [treatments_actual_count, 0, treatments_total_count],
+        'Cost': [pd_treatments_actual['Cost'].values[0], pd_treatments_0['Cost'].values[0], pd_treatments_full['Cost'].values[0]],
+        'Time': [pd_treatments_actual['Time'].values[0], pd_treatments_0['Time'].values[0], pd_treatments_full['Time'].values[0]],
+        'Risk_n': [pd_treatments_actual['Risk_n'].values[0], pd_treatments_0['Risk_n'].values[0], pd_treatments_full['Risk_n'].values[0]],
+    })
+
+    pd_treatments['Cost_Normalised'] = pd_treatments['Cost'] / pd_treatments.loc[pd_treatments['Description'] == 'Actual', 'Cost'].values[0]
+    pd_treatments['Time_Normalised'] = pd_treatments['Time'] / pd_treatments.loc[pd_treatments['Description'] == 'Actual', 'Time'].values[0]
+
+    print(pd_treatments)
+    print("  -------------------------------")
+
+
+    df.loc[df['CF #'] == 0, 'Time'] = df.loc[df['CF #'] == 0, 'Time'] - applied_time
+    df.loc[df['CF #'] == 0, 'Cost'] = df.loc[df['CF #'] == 0, 'Cost'] - applied_cost
+    logger.info("New adjusted baseline for 0 treatments: {}".format(df.loc[df['CF #'] == 0, :]))
 
     # Time management (implement Delta-time)
     df = df.copy()
@@ -180,13 +236,7 @@ def tradeoff(df, output):
     mask_base = (df['CF #'] == 0)
     df.loc[~mask_base, 'Time'] = df.loc[~mask_base, 'Time'] + base_time
 
-    # If a row risk is not in the predefined risks, report a warning
-    for idx, value in df['Risk'].items():
-        if value not in risks:
-            logger.error(f'Unexpected risk value in row {idx + 2}: {value}')
-    # Map risks to x positions
-    risk_to_x = {risk: i for i, risk in enumerate(risks)}
-    df['x'] = df['Risk'].map(risk_to_x)
+    
 
     fig, ax = plt.subplots(figsize=(8, 5))
     # Scatter plot
@@ -195,6 +245,7 @@ def tradeoff(df, output):
     base_indices = set(df.loc[base_mask].index)
 
     # Plot points and labels, keeping labels inside plot using box
+    texts = []
     for idx, row in df.iterrows():
         x = row['x']
         y = row['Time']
@@ -214,15 +265,20 @@ def tradeoff(df, output):
             va = 'bottom'
             dy = 0.5
 
+        # Add jitter
+        jitter_strength = 0.025
+        dx += np.random.uniform(-jitter_strength, jitter_strength)
+        dy += np.random.uniform(-jitter_strength * base_time, jitter_strength * base_time)
+
         # Highlight base point(s) (CF # == 0)
         if idx in base_indices:
             ax.scatter(x, y, s=100, marker='D', facecolor='yellow', edgecolor='black', linewidth=1.5, zorder=6)
-            ax.text(x + dx, y + dy, label, va=va, ha=ha, fontsize=10, fontweight='bold', zorder=7,
-                    bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.95))
+            texts.append(ax.text(x, y - 30, "No treatments", va='top', ha='center', fontsize=10, fontweight='bold', zorder=7,
+                    bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.95)))
         else:
             ax.scatter(x, y, s=60, zorder=3)
-            ax.text(x + dx, y + dy, label, va=va, ha=ha, fontsize=9, zorder=4,
-                    bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.8))
+            texts.append(ax.text(x + dx, y + dy, label, va=va, ha=ha, fontsize=9, zorder=4,
+                    bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.8)))
     ax.set_xticks(list(risk_to_x.values()))
     ax.set_xticklabels(risks)
     # Ensure all risks are shown even if no data
@@ -231,7 +287,12 @@ def tradeoff(df, output):
     ax.set_ylabel('Time (hours)')
     ax.grid(True, linestyle='--', alpha=0.5, zorder=0)
 
-    ax.plot([0, len(risks) - 1], [df['Time'].max(), df['Time'].min()], color='black', alpha=0.3, linewidth=2, zorder=2)
+    # Middle line
+    max_time_deviation = np.abs(df['Time'] - base_time).max()
+    ax.set_ylim(base_time - max_time_deviation * 1.1, base_time + max_time_deviation * 1.1)
+    ax.plot([0, len(risks) - 1], [base_time + max_time_deviation, base_time - max_time_deviation], color='black', alpha=0.2, linewidth=2, zorder=2)
+
+    #adjust_text(texts, expand=(1.1, 1.1))
 
     plt.tight_layout()
     plt.savefig(output, dpi=300)

@@ -3753,7 +3753,7 @@ They follow the techniques of \emph{Pattern Matching} and \emph{Explanation Buil
 	Regarding the metrics evaluated for the counter-factual analysis:
 	\textbf{Cost}: For cost I do not consider labour costs, as their accounting will vary in different organisations. Instead, labour costs should be considered in connection with the development time.
 	
-	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk. In this case, ``risk'' should be perceived as \emph{the probability that a rework (an additional iteration) is needed.}
+	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk. In this case, ``risk'' should be perceived as \emph{the probability that a rework (an additional iteration) is needed.} This includes technical in-orbit risk, since \emph{an in-orbit failure implies that ground rework is needed.} Finally, risk is considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from the mission. For example, in the general case, more iterations lead to reduced risk. However, given the information that \emph{the system has been validated}, performing an additional iteration will not decrease risk, since the mission data already demonstrates that sufficient technical performance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
 	
 	%\textbf{Features}: Based on the \acs{MOSCOW} model, desirable (should/can) features are not requirements, but may be included in the final product.
 }
@@ -4281,6 +4281,7 @@ From a technical point of view, we gathered the following points during developm
 
 
 \subsection{Evaluation}
+\label{sec:CASESTUDIES_chipsat_evaluation}
 
 
 % Be specific about a causal link that led to a specific result that can be identified: By using element of the methodology we had XYZ effect support by XYZ data
@@ -4311,7 +4312,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 	\item \textbf{Bypassing structural/thermal analysis}:
 	The decision to not perform any environmental analysis was influenced by the lack of engineers experienced in these disciplines in our team, the pre-existing requirements for testing, and the lack of many tunable design parameters that would be influenced by the tests. These analyses are also sometimes associated with considerable effort. While the actual time taken will depend on the size and complexity of the problem, the resolution of the analysis, and the experience of the engineers, for this calculation I considered the lower end of work hours reported in the literature of CubeSat projects (\Cref{tab:l_cubesat_time_drivers}).
 
-	Nevertheless, these analyses can increase confidence in the design and \draft{inform on the general behaviour of the system}. They also reduce the necessity of additional vibration testing. Therefore, in general, I consider that they reduce risk. At the same time, additional environmental testing increases costs due to facility rental costs, which are calculated based on ChipSat-1's actual cost budget (\Cref{tab:c_chipsat_costs}).
+	Nevertheless, these analyses can increase confidence in the design and inform on the non-specific thermal/structural response of the system. They also reduce the necessity of additional vibration/thermal testing. Therefore, in general, I consider that they reduce risk. At the same time, additional environmental testing increases costs due to facility rental costs, which are calculated based on ChipSat-1's actual cost budget (\Cref{tab:c_chipsat_costs}).
 	\item \textbf{External manufacturing}:
 	One decision that seems to vary between teams concerns whether construction, assembly and manufacturing, especially for \acs{PCB} and electronics, takes place \emph{in-house} or in external facilities. The decision will vary between teams, as different manufacturing requirements will be relevant at different stages, and in-house assembly requires an initial investment in equipment, available space and expertise, and sometimes dedicated lab personnel.
 
@@ -4360,23 +4361,39 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 \FloatBarrier
 \section{AI4Space}
-Seminal papers: \autocite{thoemelLeanDemonstrationBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
+%Seminal papers: \autocite{thoemelLeanDemonstrationOnBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
 
-The AI4Space mission was developed in the University of Luxembourg in the form of a payload to be hosted by a Skykraft Ltd.~micro-satellite.
+The AI4Space mission was developed in the University of Luxembourg in the form of a payload to be hosted by a Skykraft Ltd.\@micro-satellite.
 
 \subsection{Mission Description}
 
-AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aimed at educational institutions \draft{reference archived website (?)}. More specifically, Skykraft provided slots accepting \qtyproduct{10 x 10}{\centi\meter} \acsp{PCB} (or ``Skykards''). These Skykards were electrically connected to their host with a \acs{PCI}-like edge connector, responsible for receiving energy and transferring data bidirectionally, through a proprietary serial interface. The requirements and interface details were communicated to users by the host company and updated at regular times.
+\begin{table*}[]
+	% Source: AI4SpaceLeanProjectPlanAndControl - Copy
+	\caption{AI4Space mission requirements}
+	\begin{tabularx}{\linewidth}{@{}llX@{}}
+		\toprule
+		& Source  & Requirement                                                                            \\ \midrule
+		1 & Host    & The AI4Space payload shall be of dimension \qtyproduct{15 x 100 x 100}{\milli\meter} or smaller          \\
+		2 & Host    & The AI4Space payload shall be of a slot card design as required by Skykraft                                         \\
+		3 & Host    & The AI4Space payload shall require less than \qty{5}{\watt} of electrical power               \\
+		4 & Host    & The AI4Space payload shall be enabled with a serial connection for operations and pre-launch checkout                         \\
+		5 & Host    & The AI4Space payload shall conform to the requirements of the Skykraft Interface Control Documentation \\
+		6 & Mission & The AI4Space payload shall demonstrate an in-orbit \acs{ML}-based thermal anomaly detection algorithm \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
 
-The selection of a mission for the AI4Space platform was largely limited by the constraints of the payload launch opportunity provided. AI4Space was therefore largely a \emph{constraint-based} mission \draft{Reference}, restricted primarily by available size, weight, energy, and data budget.
+AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aimed at educational institutions \autocite{skykraftSkyride2022}. More specifically, Skykraft provided slots accepting \qtyproduct{10 x 10}{\centi\meter} \acsp{PCB} (or ``Skykards''). These Skykards were electrically connected to their host with a \acs{PCI}-like edge connector, responsible for receiving energy and transferring data bidirectionally, through a proprietary serial interface. The requirements and interface details were communicated to users by the host company and updated at regular times.
+
+The selection of a mission for the AI4Space platform was largely limited by the constraints of the payload launch opportunity provided. AI4Space was therefore largely a \emph{constraint-based} mission, restricted primarily by available size, weight, energy, and data budget \autocite{thoemelLeanDemonstrationOnBoard2024}.
 
 The selected mission involved the detection and classification of \textbf{thermal events} using non-conventional sensors, combined with Machine Learning performed in orbit (``on the edge'').
-More specifically, AI4Space intended to demonstrate the use of infrared thermal cameras to generate temperature information about a spacecraft's subsystems and components. This information would then be fed into a \ac{ML} algorithm to classify whether a component exhibits non-nominal (or anomalous) behaviour\footnote{By exhibiting, for example, an out-of-range temperature, or another erratic pattern}. As this is a simple classification problem, it is greatly supported by established \acs{ML} methods that can reasonably adapt to it.
+More specifically, AI4Space intended to demonstrate the use of infrared thermal cameras to generate temperature information about a spacecraft's subsystems and components. This information would then be fed into a \ac{ML} algorithm to classify whether a component exhibits non-nominal (or anomalous) behaviour\footnote{By exhibiting, for example, an out-of-range temperature, or another erratic pattern.}. As this is a simple classification problem, it is greatly supported by established \acs{ML} methods that can reasonably adapt to it.
 
 AI4Space was therefore developed as a technology demonstrator platform for \acs{AI}-based anomaly detection, as well as an educational tool for payload and system development approaches.
 
 
-\subsection{System Description and Justification}
+\subsection{System Description}
 
 \begin{figure}[h]
 	\acuse{DC}
@@ -4397,15 +4414,14 @@ The AI4Space payload contained no Attitude Control, Communications, or Electrica
 
 All other functions were covered by a \emph{Raspberry Pi Zero 2W}, serving as the system's \acf{OBC} and Payload Data Processor. The Raspberry Pi was chosen as a ready-to-use \acs{COTS} platform that essentially acts as a complete \acs{OBC}, and reduces the complexity of hardware design for a microcontroller. An additional benefit was the higher available set of programming languages or tools, seen as positive within the context of multiple software developers for the project. 
 
-The incorporation of a Raspberry Pi implies the implementation of a complete base Linux system. This is usually a disadvantage in pocket-sized spacecraft due to the absence of real-time software and the higher energy consumption. However, \draft{given AI4Space's status as a payload and its high available energy}, these disadvantages were \draft{rejected} in favour of the additional convenience, tools, libraries and functions available in a Linux environment, especially considering the need for multiple software developers to be involved in the project. In fact, while most CubeSat projects rely on low-footprint \acp{MCU} for processing needs, Linux boards have found their place in some payload units \draft{Reference, e.g.~UpSat}.
+The incorporation of a Raspberry Pi implies the implementation of a complete base Linux system. This is usually a disadvantage in pocket-sized spacecraft due to the absence of real-time software and the higher energy consumption. However, \draft{given AI4Space's status as a payload and its high available energy}, these disadvantages were \draft{rejected} in favour of the additional convenience, tools, libraries and functions available in a Linux environment, especially considering the need for multiple software developers to be involved in the project. In fact, while most CubeSat projects rely on low-footprint \acp{MCU} for processing needs, Linux boards have found their place in some payload units \autocite{chronasUpsat_msc_thesis2017}.
 
-\paragraph{Software}
-AI4Space's software was divided into \textbf{microservices} \draft{ref microservice architecture}, each responsible for one part of the payload's operation or mission. These microservices were written in Python and \draft{connected} via the RabbitMQ message broker.
+AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicroservices2015}, each responsible for one part of the payload's operation or mission. These microservices were written in Python and interfaced through the RabbitMQ message broker.
 
 
-\subsection{Disparate Collection of Ramblings (yes, all will be included)}
+\subsection{Lessons Learned}
 
-\draft{Format this whole section}
+\todo{Format this whole section}
 
 The use of a Raspberry Pi provided another unexpected advantage by allowing \textbf{remote programming and monitoring} through Ethernet and Wi-Fi. This meant that multiple developers could work simultaneously on the same unit, with no physical connection or wiring requirements. This also significantly simplified the \ac{EGSE} required for testing. However, as with any \acs{RF} system, care had to be taken to disable transmissions inside resonating structures (e.g.~\acs{TVAC} chambers) and before launch.
 
@@ -4415,36 +4431,149 @@ The project suffered from the peak of the electronic component shortage in 2022.
 
 The component shortage also proved difficult to navigate due to institutional procurement restrictions, combined with the fact that many stock items were only available from one or two days from standard distributors before being depleted.
 
+\todo{
 The Raspbian operating system, installed by default on the Raspberry Pi, requires a small amount of configuration before it can be safely used as flight software, namely:
 \begin{itemize}
 	\item \draft{I have definitely noted these down somewhere...}
 \end{itemize}
 Alternatively, a Yocto distribution can be used.
+}
 
 Edge Impulse generates a binary version of the model for ARM32 systems. The sizes of these binaries were in the order of ~100 MB, making uploading close to impossible. Different binary diff methods were examined with no immediate success. Recommending to use a more standardised format for model weights in the future.
 
 The main obstacles in the critical path were interfaces with external providers and collaborators. The typical procurement times of \acp{PCB} and components were significant and had to be planned around. Any unexpected delays also significantly influenced progress towards the iteration goal. While preparation for such cases might be possible in some contexts, Agile frameworks usually suggest maintaining direct communications with external collaborators, to the extent possible.
 
-\subsection{Verification}
+\todo{
+%\subsection{Verification}
+For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 LSF presentation about the use of Robot framework.}
+}
 
-For AI4Space, we used the Robot Framework for automation \draft{Cite OSCW2025 LSF presentation about the use of Robot framework.}
+\todo{in-orbit patchin}
+%\subsection{Operations}
+
+%\paragraph{In-Orbit Patching}
+
+%\begin{itemize}
+	%\item Problem detection
+	%\item Problem identification (RCA?)
+	%\item Resolution plan
+	%\item Verification of resolution plan via in-ground testing
+	%\item Code-format
+	%\item Obfiscation/Minimisation
+%\end{itemize}
 
 
-\subsection{Operations}
+\begin{table*}[h]
+	\caption{AI4Space cost budget (approximate)}
+	\label{tab:c_ai4space_costs}
+	\begin{tabularx}{\textwidth}{@{}llXS@{}}
+		\toprule
+		No. & \textbf{Cost Driver}                     & Used In                                       & {Value (EUR)} \\ \midrule
+		1   & \textbf{\acsp{PCB} + Components}         & Software, Breadboard \& Qualification Model (\#1, \#2, \#3) & 1300  \\
+		2   & \textbf{PCB Components + Assembly}       & Flight Model (\#4)                            & 2600 \\
+		3   & \textbf{Flight Model Shipping}           & Flight Model (\#4)                            & 1000  \\
+		 \midrule
+		& \textbf{Total Costs}                     &                                               & 4900 \\ \bottomrule
+	\end{tabularx}
+\end{table*}
 
-\paragraph{In-Orbit Patching}
 
-\begin{itemize}
-	\item Problem detection
-	\item Problem identification (RCA?)
-	\item Resolution plan
-	\item Verification of resolution plan via in-ground testing
-	\item Code-format
-	\item Obfiscation/Minimisation
-\end{itemize}
+\begin{table*}[h]
+	\caption[AI4Space development time]{AI4Space development time, based on Git activity, from start of development until Flight Model delivery}
+	\label{tab:c_ai4space_times}
+	\begin{tabular}{@{}llS@{}}
+		\toprule
+		No. & \textbf{Development Time Driver} & {Time Spent (hours)} \\ \midrule
+		% For Git: Git shows daily activity betweeen March to July + January (5 months)
+		% (This includes all contributors, incl. PCB/ML)
+		% Assume 10 hours/week devoted (50% project-based duty cycle * 50% administrative loss)
+		% Then total time = 5 months × 10hour/week to hour = 217 hours
+		% Assume 50% prototyping / 50% software development
+		1   & \textbf{Prototyping \& Testing}  & 109                \\
+		2   & \textbf{Software Development}    & 109                \\
+		3   & \textbf{Soldering}               & 24                 \\
+		4   & \textbf{Integration}             & 8                 \\
+		5   & \textbf{Project Management}      & 218                 \\
+		& \textbf{Total Time}                  & 468                \\ \bottomrule
+	\end{tabular}
+\end{table*}
+
+\subsection{Evaluation}
+
+This counter-factual evaluation of AI4Space follows the same structure as the one of ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}). As we did not record all activity data for the development time, I will use the relevant values from ChipSat-1 as a reference, when similar values for AI4Space do not exist.
+
+\begin{table*}[h]
+	\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
+	\toprule
+\# & Treatment & \multicolumn{1}{l}{Applied?} & \multicolumn{3}{c}{Effect on} \\ \cmidrule(lr){4-6}
+ &  & Y/N & \multicolumn{1}{c}{Cost (EUR)} &  \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & 0  & \qty{-180}{hours} & Higher \\
+2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -1300 & \qty{+24}{hours} & No change  \\
+3 & Multi-step development & \textcolor{nice}{Y} & +1300 & \qty{-265}{hours} & No change  \\
+%4 & Short iterations & \textcolor{bad}{N} &  & \qty{}{hours} &   \\
+5 & Iterating over partitions & \textcolor{nice}{Y} & 0 & \qty{+27}{hours} & No change \\
+6 & Robust software framework & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
+7 & \acl{RPA} & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
+\bottomrule
+\end{tabularx}
+\caption{Counter-factual evaluation for AI4Space}
+\label{tab:c_ai4space_counterfactuals}
+\end{table*}
+
+\begin{figure}
+	\includegraphics{analyses/cf_ai4space_trade}
+	\caption{AI4Space \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+\end{figure}
+
+The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfactuals} are explained as follows:
+\begin{enumerate}
+	\item \textbf{Bypassing structural/thermal analysis}:
+	Similar to ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}). Even though AI4Space was a simple \acs{PCB}, the integration of additional mounted components (cameras, Raspberry Pi) still implies that a potential analysis could have reduced risk. No vibration or \acs{TVAC} tests were performed for AI4Space, as these were covered by the host.
+	\item \textbf{External manufacturing}:
+	For AI4Space, we performed the soldering for the \acl{QM} in-house, while the soldering for the \acl{FM} was performed externally.\footnote{No other parts had to be manufactured.} The in-house soldering process lasted for \emph{3 days}, which I will consider as the added duration for the hypothetical \acs{FM} soldering. Due to the simplicity of the design, I will not consider added risk due to interfacing/delays.
+	\item \textbf{Iterative multi-step development}:
+	Similar to ChipSat-1, AI4Space also followed a lean, iterative approach for its lifecycle development process, with 4 iterations that considered most of the system. However, no significant design errors were detected in relation to the hardware design\footnote{With the exception of electronic component shortages.}, no significant changes were made between iterations, and there were no significant deviations in external requirements that would require a hardware modification.
+
+	Therefore, a single-step ``\acl{BDUF}'' approach would affect the project as follows:
+	\begin{enumerate}[itemsep=-2ex]
+		\item A ``design'' step is added. From \Cref{tab:l_cubesat_time_drivers}, considering the ``best'' (fastest) case for one subsystem of a CubeSat project, the design step would last \qty{40}{days}.
+		\item Iterations \#2 and \#3 would not have been performed. Assuming \qty{27}{person hours} of prototyping and testing time per iteration (\Cref{tab:c_ai4space_times}), this would result in a reduction of \qty{55}{hours} of the overall project time.
+		\item The component purchase cost budget item would not be accounted.
+		\item Risk would not change.
+	\end{enumerate}
+
+	
+	\item \textbf{Iterating over partitions}:
+	2 out of 4 iterations for AI4Space were performed on different partitions and representations of the system, instead of on the entire system as a Qualification/Flight Model.
+
+	Since the first AI4Space iterations did not reveal non-conformances that would require a hardware rework, \emph{working on the qualification model during the early iterations would not have a significant adverse effect}. More specifically:
+	\begin{enumerate}[itemsep=-2ex]
+		\item There would be no need to develop a breadboard model, reducing the development time for iteration \#2 by \(\frac{1}{4}\) of the iteration/prototyping duration.
+		\item Due to the correctness of the \acs{QM}/\acs{FM} produced, there would be no need to perform an additional procurement run for iteration \#4. However, the total procurement cost would remain the same, since component prices are guided by a minimum quantity to maintain adequate spare stock.
+		\item No changes in risk observed.
+	\end{enumerate}
+
+	This case represents an example were a different choice would generally benefit the project. The difference in results between ChipSat-1 and AI4Space can be explained by the higher simplicity of AI4Space's design, which makes a ``one-off'' approach less risky in the general case.
+
+	\item \textbf{Robust software framework}:
+	AI4Space used Python as the main programming language within a Linux-based platform. Even though Python is not safety-oriented, its combination with Linux and the easy reprogramming capabilities were a key factor for the success of the mission. As such, I will consider that a robust software framework \emph{was indeed used}, and successfully decreased risk. Since the selected hardware natively supports all possible language choices, I will not consider any added effort or cost for implementing such a framework.
+
+	\item \textbf{Use of \acl{RPA}}:
+	If manual testing procedures had been used instead of \acs{RPA}, I will not consider a change in development time, due to the added effort of automation countering the added effort for manual test processes. However, I will consider that risk would increase, due to lower repeatability.
+
+	\item Note on \textbf{short, agile iterations}: Since the average iteration length for AI4Space was 3 months, and a large gap was generally observed during the project to focus on other projects, it is more difficult to evaluate the effect of iteration duration on AI4Space. As such, I will not consider this treatment.
+\end{enumerate}
 
 \section{POQUITO}
-Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal \autocite{franzeseSystemDesignPOQUITO2025}
+%Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal \autocite{franzeseSystemDesignPOQUITO2025}
+
+\begin{figure}[h]
+	\acuse{IMU,SD,POWERAMP,MPPT,IC,BMPS}
+	\includegraphics{media/graphics/Block_POQUITO}
+	\caption{Internal block diagram of the POQUITO system}
+	\label{fig:c_poquito_block}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -4483,7 +4612,7 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 		\includegraphics[height=3cm]{pictures/W_POCHIPSAT_2.jpg}
 		\caption{ChipSat Payload}
 	\end{subfigure}
-	\caption{Caption place holder}
+	\caption{POQUITO subsystems}
 \end{figure}
 
 \begin{figure}[h]
@@ -4514,12 +4643,7 @@ Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal 
 	\caption{Example of iterative hardware development through the production of different magnetorquer board versions}
 \end{figure}
 
-\begin{figure}[h]
-	\acuse{IMU,SD,POWERAMP,MPPT,IC,BMPS}
-	\includegraphics{media/graphics/Block_POQUITO}
-	\caption{Internal block diagram of the POQUITO system}
-	\label{fig:c_poquito_block}
-\end{figure}
+
 
 \begin{marginfigure}
 	\includegraphics{graphics/POQUITO_Stack_Render}
