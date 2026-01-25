@@ -15,9 +15,10 @@
 
 \usepackage{amsmath}
 %\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{siunitx}
+%\usepackage{graphicx}
+%\usepackage{siunitx}
 \usepackage{xcolor-material}
+
 
 
 \hypersetup{colorlinks}
@@ -33,8 +34,8 @@
 
 
 
-%\usepackage{tikz}
-%\usetikzlibrary{shapes.geometric, arrows, positioning}
+\usepackage{pgfplots}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
 
 \def\acs#1{\textsf{#1}} 
 \def\acsp#1{\textsf{#1s}}
@@ -87,20 +88,58 @@ Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs
 \colorlet{nice}{MaterialGreen800}
 \colorlet{bad}{MaterialRed800}
 
-\begin{table*}[h]
-	\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
-	\toprule
-\# & Treatment & \multicolumn{1}{l}{Applied?} & \multicolumn{3}{c}{Effect on} \\ \cmidrule(lr){4-6}
- &  & Y/N & \multicolumn{1}{c}{Cost (EUR)} &  \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Risk} \\ \midrule
-1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & +1390 & \qty{+180}{hours} & Higher \\
-2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -2000 & \qty{+72}{hours} & No change \\
-3 & No "\acl{BDUF}" & \textcolor{nice}{Y} &  &  &  \\
-4 & Iterative-style development & \textcolor{nice}{Y} &  &  &  \\
-5 & Iterating over partitions & \textcolor{nice}{Y} & 1000 & \qty{+24}{hours} & Higher \\
-6 & Robust software framework & \textcolor{bad}{N} & 0 & \qty{+40}{hours} & Lower \\ \bottomrule
-\end{tabularx}
-\end{table*}
+
+	\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={CubeSat Size},
+        ylabel={Programme Duration (Years)},
+        xmin=0.5, xmax=4.5,
+        ymin=-0.5, ymax=5.5,
+        xtick={1, 2, 3, 4},
+        xticklabels={1U, 2U, 3U, 6U},
+        ytick={0, 1, 2, 3, 4, 5},
+        yticklabels={0, 1, 2, 3, 4, 5+},
+        grid=major,
+		scatter,
+		%point meta=explicit,
+        enlarge x limits={abs=0.5cm},
+        enlarge y limits={abs=0.5cm},
+        view={0}{90}
+    ]
+
+    \addplot[
+        only marks,
+        scatter,
+        mark=*,
+        %blue!60!black,
+        opacity=0.6,
+        visualization depends on={sqrt(\thisrow{val})*4 \as \perpointradius},
+		visualization depends on={\thisrow{val} \as \val},
+        scatter/@pre marker code/.append style={
+            /tikz/mark size=\perpointradius
+        },
+		nodes near coords*={\tiny\pgfmathprintnumber[int detect]\val},
+		every node near coord/.append style={anchor=center, font=\tiny},
+    ] 
+    table [x=x, y=y, meta=val] {
+        x y val
+        1 3 1
+        1 4 2
+        1 5 13
+        2 0 1
+        2 1 2
+        2 2 2
+        2 3 2
+        2 5 1
+        3 0 1
+        3 2 4
+        3 3 2
+        3 4 2
+        3 5 6
+        4 0 1
+    };
+    \end{axis}
+\end{tikzpicture}
 
 
 \end{document}
