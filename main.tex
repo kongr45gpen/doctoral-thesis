@@ -273,11 +273,11 @@ CubeSats are designed in a modular format consisting of \qtyproduct{10 x 10 x 10
 
 The advances of miniaturisation in electronics since the 1980s have gradually increased the capabilities and utility of nano-satellites \autocite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more CubeSats\footnote{21 constellations of 5 or more nano-satellites have been launched so far. Additionally, CubeSats represent over \qty{90}{\percent} of all nano-satellites launched  \autocite{kuluNanosatsDatabase2023}}. Most CubeSats are orbiting in \acs{LEO}, with a few missions also planned and launched for deep space \autocite{walkerDeepspaceCubeSatsThinking2018}.
 
-The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram}) \draft{ref} has significantly reduced the entry barrier to space
+The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram} \autocite{crispSmallSatelliteLaunch2014}) has significantly reduced the entry barrier to space
 \autocite{poghosyanCubeSatEvolutionAnalyzing2017,sweetingModernSmallSatellitesChanging2018}.
 24\% of launched CubeSat missions are academic in nature.
 94 countries in total have launched CubeSats or smaller satellites \cite{kuluNanosatsDatabase2023}, with some serving as their countries' first launched spacecraft \cite{europeanspaceagencyEIRSAT1OneSmall2025}.
-This has been aided by an evolving CubeSat industry, which has created a market for subsystems and platforms that are, to some degree, interoperable with each other and with common deployers. As of 2023, roughly 20\% of spacecraft in orbit belong in the nano-satellite class \cite{unionofconcernedscientistsSatelliteDatabase2023} (\Cref{fig:i_mass_distribution})\footnote{Excluding the Starlink constellation, which represents \qty{53}{\percent} \cite{unionofconcernedscientistsSatelliteDatabase2023}.}, with 25 CubeSats being launched per year on average since 2020 \cite{kuluNanosatsDatabase2023}, and a more than \num{500} million USD market in 2025 \cite{CubeSatMarketSize}.
+This has been aided by an evolving CubeSat industry, which has created a market for subsystems and platforms that are, to some degree, interoperable with each other and with common deployers. As of 2023, roughly 20\% of spacecraft in orbit belong in the nano-satellite class \cite{unionofconcernedscientistsSatelliteDatabase2023} (\Cref{fig:i_mass_distribution})\footnote{Excluding the Starlink constellation, which represents \qty{53}{\percent} \cite{unionofconcernedscientistsSatelliteDatabase2023}.}, with 25 CubeSats being launched per year on average since 2020 \cite{kuluNanosatsDatabase2023}, and a more than \num{500} million USD market in 2025 \autocite{CubeSatMarketSize}.
 
 Despite the significantly fewer resources needed for CubeSat development and production, there is still a significant cost connected with CubeSat missions. Launch and development costs can range up to millions USD, and development times can range between 1--5 or more years \autocite{berthoudHowSetCubeSat2016}. Despite their reduced complexity, CubeSats also experience a \qty{39}{\percent} failure rate in orbit, often attributed to ad-hoc procedures, insufficient testing to uncover mistakes, and workmanship flaws \autocite{swartwoutCubeSatMissionSuccess2019}.
 
@@ -556,7 +556,7 @@ The specific characteristics of \acs{SCS} that differentiate them from CubeSats 
 	The latter characteristic hastens thermal equilibrium in the hot and cold cases. Combined with the potentially increased difficulty of thermal control due to size, this characteristic discourages the use of thermally-sensitive payloads. From a \acl{SYE} point of view, it makes the use of conventional batteries difficult, as they cannot be charged or discharged below a specific temperature. \citeauthor{manchesterCentimeterScaleSpacecraftDesign2015} performed a thermal analysis of of the Sprite ChipSats, finding that they can reach temperatures down to \qty{-110}{\degreeCelsius} in eclipse \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. These low temperatures also prevent the operation of most commercial electronics.
 
 	A higher drag coefficient will also lead to a faster decay of the spacecraft, reducing its mission life. \citeauthor{manchesterOrbitalDebrisAssessment2013} calculated that a \qty{325}{\kilo\meter} Sprite launch has an expected lifetime of \qty{6}{days}, significantly shorter than the few years calculated for CubeSats\footnote{Even though the re-entry time is also a factor of launch altitude, this parameter cannot be usually controlled by customers, and lies in the range between \qtyrange{500}{550}{\kilo\meter} for \acsp{SSO}.}.
-	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system, as well as fewer interfaces that need to be managed\footnote{See \Cref{sec:INTRODUCTION_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``light-weight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
+	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system, as well as fewer interfaces that need to be managed\footnote{See \Cref{sec:LITERATURE_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``light-weight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
 	
 	At the same time, however, the required miniaturisation of components can increase complexity for specific applications, such as deployment mechanisms and thrusters, because of technical manufacturing and fabrication challenges related to the need for increased precision \todo{[cite?]}. \draft{The construction of miniaturised hardware can prevent the use of an in-house approach, requiring special machinery, and components that are not available commercially.}
 	\item \textbf{\acs{COTS} availability}: Due to both the small size and the lower popularity of \acs{SCS} compared to CubeSat and larger spacecraft, the number of suitable \acf{COTS} components tailored for use in space is limited, especially when considering high-\acs{TRL} parts. Teams will therefore be more likely to design or develop subsystems in-house. This characteristic can also extend to support equipment, such as FlatSat supports, test jigs, or analysis software.
@@ -602,7 +602,7 @@ The above opportunities and possible decisions demostrate that a distinct, tailo
 
 \begin{figure}[p]
 	\includegraphics{graphics/decomp.pdf}
-	\caption{\acf{ARC} diagram for ``Systems Engineering for sub-CubeSat Spacecraft''}
+	\caption[ARC diagram for ``Systems Engineering for sub-CubeSat Spacecraft'']{\acf{ARC} diagram for ``Systems Engineering for sub-CubeSat Spacecraft''}
 	\label{fig:i_thesis_decomposition}
 \end{figure}
 
@@ -1090,7 +1090,7 @@ Available CubeSat project planning literature allows a comparison between differ
 
 \begin{figure*}[h]
 	\includegraphics{analyses/cubesat_durations_chart.pdf}
-	\caption{Time spent for development activities of various CubeSat projects. Graphical representation of \Cref{tab:l_cubesat_time_drivers}.}
+	\caption[Time spent for development activities of various CubeSat projects]{Time spent for development activities of various CubeSat projects. Graphical representation of \Cref{tab:l_cubesat_time_drivers}.}
 \end{figure*}
 
 \newthought{Finally,} to the author's knowledge, there is no comprehensive survey on the number of members in CubeSat teams. However, typical team sizes can range between 5 to over 100 members, \draft{depending on environmental characteristics} \todo{[cite]}.
@@ -1746,7 +1746,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 \end{enumerate}
 
 \begin{figure*}
-	\begin{adjustbox}{width=\textwidth}
+	\begin{adjustbox}{width=0.9\textwidth}
 
 	\begin{tikzpicture}[
 		node distance=0.5cm and 1cm,
@@ -1863,6 +1863,27 @@ I have not selected cost as a measurable criterion, as its accounting will vary 
 
 Finally, the ``target audience'' of the methodology includes the groups of ``hobbyists'' and ``smallsat developers'', as classified by the \citeauthor{swartwoutYouSayPicosat2018} taxonomy \autocite{swartwoutYouSayPicosat2018}\footnote{Also see \Cref{sec:LITERATURE_cubesat_environment} for an explanation of the Swartwout taxonomy.}. This scope excludes ``traditional contractors'' and large constellation developers. This selection is inspired by the common characteristics of the two former groups (\Cref{tab:mission-characteristics}), which also indicate that they are more receptive of a new, Agile-centred approach. The lack of larger scale ``traditional contractors'' within the \acs{SCS} ecosystem as of this moment also prevents data gathering and experimentation for these types of organisations.
 
+% Booktabs with each of the following subsections
+\begin{table*}
+	\begin{tabularx}{\linewidth}{@{}rXp{5cm}l@{}}
+		\toprule
+		\textbf{Section} & \textbf{Name} & \textbf{Covers} & \textbf{Type} \\ \midrule
+		\ref{sec:METHODOLOGY_requirements} & \nameref*{sec:METHODOLOGY_requirements} & Expectations & Method \\
+		\ref{sec:METHODOLOGY_satscrum} & \nameref*{sec:METHODOLOGY_satscrum} & Lifecycle Process & Method \\
+		\ref{sec:METHODOLOGY_slicebased} & \nameref*{sec:METHODOLOGY_slicebased} & Lifecycle Process & Method \\
+		\ref{sec:METHODOLOGY_workpackage} & \nameref*{sec:METHODOLOGY_workpackage} & Expectations & Guideline \\
+		\ref{sec:METHODOLOGY_datamanagement} & \nameref*{sec:METHODOLOGY_datamanagement} & Modelling, Knowledge Management & Method \\
+		\ref{sec:METHODOLOGY_defining_design_solution} & \nameref*{sec:METHODOLOGY_defining_design_solution} & \acf{DSD} & Method \\
+		\ref{sec:METHODOLOGY_design_guidelines} & \nameref*{sec:METHODOLOGY_design_guidelines} & \acs{DSD}, Implementation & Guideline \\
+		\ref{sec:METHODOLOGY_interface_management} & \nameref*{sec:METHODOLOGY_interface_management} & Interface Management & Guideline \\
+		\ref{sec:METHODOLOGY_verification} & \nameref*{sec:METHODOLOGY_verification} & Verification \& Validation & Method \\
+		\ref{sec:METHODOLOGY_operations} & \nameref*{sec:METHODOLOGY_operations} & Maintenance \& Operations & Guideline \\
+		\ref{sec:METHODOLOGY_softwaredevelopment} & \nameref*{sec:METHODOLOGY_softwaredevelopment} & \acs{DSD}, Implementation & Method \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Table of Contents for this section}
+\end{table*}
+
 \FloatBarrier
 
 \newpage
@@ -1932,7 +1953,7 @@ An inspiration for such an approach can come from the \acs{DSDM} Agile framework
 
 While \emph{Must Have} requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
 
-\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.\sidenote[][-5cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
+\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.\sidenote[][-2cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
 
 \paragraph{Requirement Scope}
 
@@ -2004,19 +2025,6 @@ Finally, when a project uses an automated functional testing process or framewor
 \caption{Visualisation of an example \acs{SCS} requirements specification.}
 \end{figure*}
 
-\begin{table*}[h]
-	\caption[Overview of the MoSCoW method]{Overview of the \acs{MOSCOW} method}
-	\begin{tabularx}{\linewidth}{@{}lX@{}}
-		\toprule
-		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{MOSCOW}} Requirements Management Overview}
-		\\ \midrule
-		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \(>\) Expectations \\
-		Basis & \todo{???} \\
-		Main Principle & Classification of requirements into different priorities \\
-		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Amending requirements based on environmental factors and emergence\item Collaboration with stakeholders and interactive definition\end{itemize} \\
-		Benefits & Features, Development Time \\ \bottomrule
-	\end{tabularx}
-\end{table*}
 
 \FloatBarrier
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
@@ -2179,19 +2187,7 @@ An adverse example for this situation would be if, during the last iterations, t
 	This is possible in the case of experienced teams that already have a product developed, and can quickly adapt it to an available launch slot as a back-up for the actual project.
 \end{itemize}
 
-\begin{table*}[p]
-		\caption{Overview of the Sat-Scrum method}
-	\begin{tabularx}{\linewidth}{@{}lXl@{}}
-		\toprule
-		\multicolumn{3}{c}{\acs{SCS} Method: \textbf{Sat-Scrum} Overview}
-		\\ \midrule
-		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Lifecycle / Schedule                                                                                                                          &  \\
-		Basis                                                    & Emergence, Empiricism, Lean Thinking                                                                                                                                           &  \\
-		Main Principle                                           & \qtyrange{4}{8}{week} iterations delivering a complete product                                                                                                                  &  \\
-		Secondary Principles                                     & \begin{itemize}\item Sprint-centred planning and reviews \item Parallel work \item Focus on auxiliary activities \item Testing taking up 50\% of development time\end{itemize} &  \\
-		Benefits                                                 & Development Time, Risk                                                                                                                                                         &  \\ \bottomrule
-	\end{tabularx}
-\end{table*}
+
 
 
 \begin{figure*}[h]
@@ -2310,7 +2306,7 @@ A final layer of abstraction has to be added, since, based on my definition, \te
 		\caption{}
 		\label{subfig:m_slice_system}
 	\end{subfigure}%
-	\caption{Example of (a) module, (b) partition, (c) system. Renders based on QUBIK/POQUITO \cite{daradimosQUBIK1pPocketQube2024}
+	\caption[Example of (a) module, (b) partition, (c) system]{Example of (a) module, (b) partition, (c) system. Renders based on QUBIK/POQUITO \cite{daradimosQUBIK1pPocketQube2024}
 	}
 \end{figure}
 
@@ -2596,30 +2592,19 @@ The shortcomings of document-based specification approaches led to the adoption 
 
 
 \begin{figure*}[h]
-	\caption{Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
+	\caption[Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter]{Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
 	\includegraphics{graphics/spardata_moqup}
 \end{figure*}
 
-\begin{table*}[p]
-	\caption[Overview of the SCS data management method]{Overview of the \acs{SCS} data management method}
-	\begin{tabularx}{\linewidth}{@{}lX@{}}
-		\toprule
-		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{Model-Based Data Management} Overview}
-		\\ \midrule
-		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & Technical Management \textrangle~ Modelling \& Knowledge Management \\
-		Basis & Model-Based Systems Engineering \\
-		Main Principle & Use of a lightweight purpose-built \acs{EDM} tool \\
-		\multirow{1}{*}{Secondary Principles} & \begin{itemize}\item Tool-based approach\item Ease of access to product information\item Instant collaboration on shared information \& documentation\item Reduction of time spent documenting through automation\end{itemize} \\
-		Benefits & Development Time \\ \bottomrule
-	\end{tabularx}
-\end{table*}
 
+\begin{invisible}
 
 \FloatBarrier
 \subsection{Tooling Requirements and Review}
 \label{sec:METHODOLOGY_tooling_requirements}
-
 \draft{Experience from past missions has shown that tools will not be used unless they are actually good.}
+
+\end{invisible}
 
 \FloatBarrier
 \section{Hardware Development Methodology}
@@ -2924,6 +2909,7 @@ Another decision that developers are faced with involves whether they reuse exis
 	\end{tabularx}%
 \end{landscape}
 
+\begin{invisible}
 \draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
 
 \draft{Based on uludagDelfiPQInOrbitPerformance2025 and personal experience: no cables.}
@@ -2948,13 +2934,17 @@ Another decision that developers are faced with involves whether they reuse exis
 \draft{
 	- Delta-CDR is performed in the sprint review
 }
+\end{invisible}
+
+\begin{invisible}
 
 \subsection{Interface Management Guidelines}
 \label{sec:METHODOLOGY_interface_management}
 
 \draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
+\end{invisible}
 
-\subsection{Verification \& Validation Guidelines}
+\subsection{Verification \& Validation Method}
 \label{sec:METHODOLOGY_verification}
 
 Verification and validation is an integral part of a sprint cycle, and is the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
@@ -3027,8 +3017,10 @@ In addition to this general shift towards in-house environmental testing, \ac{SC
 
 As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
 
+\begin{invisible}
 \paragraph{Reduced Testing}
 \todo{Create a paragraph about REDUCED testing, i.e. using equipment that does not reach low levels as required (e.g. vacuum+environmental chamber instead of TVAC). Inspired from AcubeSAT's freezer tests. Reduced radiation testing with laser technology (scholar search: Radiation testing of electronic components using laser from a CD). }
+\end{invisible}
 
 
 
@@ -3058,23 +3050,7 @@ Self-contained and automated test runs can be performed both during and at the e
 \todo{ [[@deckerSystemsengineeringAssessmentMultiple2016]]: Evaluation of the cost benefits of using an Engineering or Qualification Model in a student/hobbyist CubeSat project.}
 
 
-
-\begin{table*}[h]
-	\caption[Overview of the SCS data management method]{Overview of the \acs{SCS} data management method}
-	\begin{tabularx}{\linewidth}{@{}lX@{}}
-		\toprule
-		\multicolumn{2}{c}{\acs{SCS} Method: \textbf{\acs{SCS} Verification \& Validation} Overview}
-		\\ \midrule
-		\acs{SYE} Aspect Covered (\Cref{fig:i_sye_decomposition}) & System Realisation \textrangle~Verification \& Validation \\
-		Basis & Model-Based Systems Engineering \\
-		Main Principle & Prefer regular system testing over analysis \\
-		\multirow{1}{*}{Secondary Principles} & \begin{itemize}
-			\item Automated full functional testing
-			\item In-orbit validation
-		\end{itemize} \\
-		Benefits & Development Time, Risk \\ \bottomrule
-	\end{tabularx}
-\end{table*}
+\begin{invisible}
 
 \subsection{Agile Maintenance \& Operations}
 \label{sec:METHODOLOGY_operations}
@@ -3095,6 +3071,8 @@ While in-orbit operation and ground station design is out of the scope of this t
 	- The trade-off between transmission of responsibility to the user or the spacecraft\\
 	- Initial tracking and acquisition based on help from other people
 }
+
+\end{invisible}
 
 \pagebreak[4]
 \section{Software Development Methodology}
@@ -3480,7 +3458,7 @@ Based on the above, \todo{blablabla}:
 
 \begin{table}[h]
 	\centering
-	\caption{Popularity of GitHub search keywords when filtered by language, providing an indication of the size of a programming language's ecosystem. Data gathered in \draft{2025}.}
+	\caption[Popularity of GitHub search keywords when filtered by language]{Popularity of GitHub search keywords when filtered by language, providing an indication of the size of a programming language's ecosystem. Data gathered in \draft{2025}.}
 	\label{tab:m_software_popularity}
 	\begin{tabular}{@{}llllll@{}}
 		\toprule
@@ -3642,7 +3620,14 @@ In any case, teams should consider adherence to coding standards and best practi
 
 \FloatBarrier
 
+\geometrylscape
+\begin{landscape}
+	\includegraphics{graphics/TheMethodologyTM.pdf}
+	\captionof{figure}{Overview of the proposed \acl{SCS} Systems Engineering methodology}
+\end{landscape}
+\restoregeometry
 
+\begin{invisible}
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
 
@@ -3652,7 +3637,7 @@ In the ideal case, each proposed part of the \ac{SCS} methodology would be suppo
 However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
 
 Because \ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions, I consider tool selection as one of the first decisions that have to be taken when starting a new project.
-\draft{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
+\todo{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
 It is also important to create a distinction between domain-specific tools\footnote{such as analysis/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
 A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
 
@@ -3681,6 +3666,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 \end{table*}
 
 \todo{robot framework}
+\end{invisible}
 
 
 \chapter{Case Studies}
@@ -3765,6 +3751,7 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 
 
 \FloatBarrier
+\begin{invisible}
 \begin{landscape}%
 \vspace*{-2cm}%
 %
@@ -3883,6 +3870,7 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 	%\captionof{figure}{\draft{Very big diagram}}
 %\end{figure*}
 \end{landscape}
+\end{invisible}
 
 \section{ChipSat-1}
 %Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
@@ -3979,6 +3967,11 @@ Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK})
 
 To make the design highly configurable without physical modifications, all processing was done in software, using an \acs{ADC} for reception, with an oversampling factor of \( \times 5 \) to assist in clock recovery.
 
+The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
+
+At a system level, the secondaries transmit data at periodic \draft{???} intervals, while the primary is constantly waiting for data reception.
+Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
+
 \begin{figure*}
 	\centering
 	\begin{tikzpicture}[node distance=1cm,every node/.style={scale=0.85}]
@@ -3999,11 +3992,6 @@ To make the design highly configurable without physical modifications, all proce
 	\caption{ChipSat-1 signal path}
 	\label{fig:c_chipsat_signal_path}
 \end{figure*}
-
-The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
-
-At a system level, the secondaries transmit data at periodic \draft{???} intervals, while the primary is constantly waiting for data reception.
-Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
 
 \todo{Some other stuff maybe}
 
@@ -4930,7 +4918,9 @@ project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
 
+\begin{invisible}
 \chapter{How Software Paradigms can aid SCS Development: A modern C++ serialiser}
+\end{invisible}
 
 \chapter{PCB schematics}
 
