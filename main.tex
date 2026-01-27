@@ -3943,6 +3943,7 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 \end{invisible}
 
 \section{ChipSat-1}
+\label{sec:CASESTUDIES_chipsat1}
 %Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
 
 ChipSat-1 was the first mission I participated in within the scope of this thesis, with the objective of generating data for femto-satellite projects and experimenting on an early iteration of the \ac{SCS} methodology (\Cref{chap:METHODOLOGY}).
@@ -4641,12 +4642,51 @@ The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfac
 \section{POQUITO}
 %Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal \autocite{franzeseSystemDesignPOQUITO2025}
 
+POQUITO (``POcketQUbe for In-orbit Technology Operations'') is a 1p\footnote{That is, \qtyproduct{5 x 5 x 5}{\centi\meter}.} PocketQube developed in the University of Luxembourg, intended to serve as a \acs{LEO} technology demonstration mission. Based on a PocketQube bus that reuses the architecture of Libre Space Foundation's open-source \emph{QUBIK} platform \autocite{daradimosQUBIK1pPocketQube2024}, POQUITO was developed over the course of roughly one year, starting in summer 2023. Its payloads included a ChipSat placed on the top part to demonstrate \acs{VLC} (similar to the one of \Cref{sec:CASESTUDIES_chipsat1}), and an in-house miniaturised \acf{ADCS} system. I participated as a Software and Systems Engineer in the POQUITO project.
+
+\begin{figure}[h]
+	\resizebox{\textwidth}{!}{%
+        \includegraphics[height=1cm]{media/pictures/P1000717_resized.jpg}%
+        \hspace*{0.1cm}%
+        \includegraphics[height=1cm]{media/pictures/P1000724_resized.jpg}%
+    }
+	\caption{Views of the POQUITO \acl{FM}}%
+	\label{fig:c_poquito_fm}
+\end{figure}
+
+\subsection{System Description}
+
+\begin{marginfigure}
+	\includegraphics{pictures/chipsat_on_poquito.jpg}
+	\caption{ChipSat v.2 on the top side of POQUITO}
+\end{marginfigure}
+POQUITO was \draft{introduced based on the need to demonstrate the operation of a ChipSat in orbit}. A PocketQube form factor was selected due to the availability of PocketQube deployers and accessible launch opportunities. Based on strategic goals, POQUITO was designed to include two main payloads:
+\begin{enumerate}
+	\item An electrically independent \textbf{ChipSat} placed on the top side of the PocketQube, based on the previous ChipSat-1 design (\Cref{sec:CASESTUDIES_chipsat1}). This ChipSat was intended to demonstrate \acf{VLC} in free-space for, by using an \acs{LED} to transmit data to the rest of the PocketQube bus, similar to the original ChipSat-1 mission. The small \textbf{intra-satellite} communication range was intended to serve as a stepping stone for independent intra or inter-satellite communication missions \autocite{griffithsHighsensitivityIntersatelliteOptical2021,amanorLinkPerformanceImprovement2017}, for example linked with fractionated spacecraft, or ``parent spacecraft''-based missions \autocite{heinAttoSatsChipSatsOther2019}.
+
+	The ChipSat placed on top of POQUITO, referred to as the second version of the university's ChipSat design, was electrically independent, in the sense that it was responsible for power generation, and \draft{communication was not done electrically, but optically}.
+	This version of the ChipSat included no \acs{RF} link for Earth communication.
+	With a mechanical interface based on four threads, the ChipSat shared only a common electrical ground with the rest of the PocketQube.
+
+	The design of the ChipSat was largely based on ChipSat-1, \draft{continuing} the use of miniaturised solar panels linked to a power-harvesting \acs{MPPT}, and managed by a low-resource microprocessor.
+
+	\item A novel \textbf{\acs{ADCS}} system used to perform active detumbling of the satellite, \draft{evoked} by needs for technology demonstration and an increase in the reliability of the communications link. The development of an \acs{ADCS} system was \draft{inspired} by the lack of \draft{a number of} different alternatives for miniaturised PocketQube \acs{ADCS} which are freely available \autocite{albaorbitalBeginnersGuideOpen2025}.
+	
+	POQUITO's \acs{ADCS} was based on a 9-axis \acf{IMU} and four sun sensors (placed on each side) used for attitude determination. The actuators used were three magnetorquers (one for each axis) in the form of current loops embedded in 4 \acs{PCB} layers each \autocite{anforowiczMagnetorquerCalc2026}. The \acs{ADCS} behaviour was modelled and simulated through a Model-In-The-Loop simulation in MATLAB, with a B-dot controller used for detumbling.
+\end{enumerate}
+
+Owing to the availability of open-source PocketQube buses and the \draft{actual logistical difficulties associated with recruiting engineers to support development}, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including base-plate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accomodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
+
 \begin{figure}[h]
 	\includegraphics{media/graphics/Block_POQUITO}
 	\caption{Internal block diagram of the POQUITO system}
 	\label{fig:c_poquito_block}
 \end{figure}
 \acuse{IMU,SD,POWERAMP,MPPT,IC,BMPS}
+
+One notable point regarding the selected design is the \emph{lack of a dedicated \acl{OBC}}. Instead, following QUBIK's design, the responsibilities of data handling and control were delegated to the communications board. This is possible due to the low complexity and \emph{technical size} of the PocketQube, which removes the need to separate concerns or have a modular architecture.
+
+In terms of additional components, the \acs{ADCS} contains a photodiode, functioning as a receiver for the ChipSat payload\footnote{Even though the \acs{ADCS} should generally not be responsible for payload data handling, in this case this was deemed as the most suitable option against redesigning the communications board as well, or introducing an extra \acs{PCB}.}. The protocol used for communication between the \acs{ADCS} and \acs{COMMS} was \acs{CAN}\footnote{While \acs{CAN} is not used in the original QUBIK, there are \draft{provisions} for a driverless \acs{CAN} interface between two subsystems in the original QUBIK schematics.} through a stacking PQ9 interface \autocite{PQ91}.
 
 \begin{figure}[h]
 	\centering
@@ -4688,41 +4728,131 @@ The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfac
 	\caption{POQUITO subsystems}
 \end{figure}
 
+Power storage was done via a camera battery mounted on the \acs{EPS} board. The antenna used QUBIK's original burn-wire mechanism, placed on the baseplate, which also included two electrical cut-off switches (``kill switches'') to detect deployment. The baseplate also included an outwards-facing 16-pin umbilical connector, intended for debugging and charging after integration, and internally harnessed to all subsystems.\footnote{Even though QUBIK originally had one programmable subsystem, the base-plate and harness designs predicted the need for a second programmable subsystem, which we made use of.} To reduce internal cabling, the solar panels included pads compatible with spring loaded ``pogo pin'' connectors.
+
+Structurally, the subsystem stack was kept in place through four screws and two machined plates (top and bottom), each of which had appropriately sized slots to accommodate the solar panels.
+
+\begin{table*}[htb]
+	\caption[POQUITO initial mission requirements]{POQUITO initial mission requirements}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
+		\toprule
+		Source  & Requirement                                                                            \\ \midrule
+		SYS.010 & The overall satellite system mass shall be lower than or equal to 250 g.\\
+		SYS.020 & The overall satellite system shall comply to the 1P PocketQube form factor.\\
+		SYS.030 & The spacecraft shall occupy a maximum envelope of \qtyproduct{64 x 58 x 51.6}{\milli\meter} mm in stowed configuration.\\
+		SYS.040 & The system shall provide telemetry in the UHF band.\\
+		SYS.041 & The system shall employ the SnT ground station for communication.\\
+		SYS.042 & The system shall not emit RF radiation during the launch and deployment phases.\\
+		SYS.044 & The satellite system shall be able to receive telecommands in UHF band.\\
+		SYS.050 & The system shall integrate an electric power system (EPS) capable of generating and distributing power to all the subsystems when illuminated by the Sun.\\
+		SYS.051 & The power system shall generate at least 0.2 W when in sunlight during nominal operations.\\
+		SYS.052 & The power system shall integrate a battery to store the excess power.\\
+		SYS.060 & The communication system shall be capable of downlinking at least 1 kB of data in UHF during operative phase.\\
+		SYS.070 & The system shall integrate an ADCS equipped with sensors and actuators to determine and control the spacecraft angular rate during the mission lifetime.\\
+		SYS.071 & The system shall be capable of performing a detumbling from a tip-off rate of 20 deg/s about any axes.\\
+		SYS.080 & The system shall integrate an on-board data management and handling system.\\
+		SYS.090 & The spacecraft modules shall survive to a temperature range of [-20; 45]° C. \\
+		SYS.100 & The system shall implement at least the following modes: \begin{itemize*}\item Deployment/Boot \item Nominal\item Communication\item Power Save\end{itemize*}\\
+		SYS.110 & The spacecraft shall be compatible with the designated deployer.\\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
+
+\FloatBarrier
+\subsection{Development Flow}
+
+In terms of lifecycle process, POQUITO followed an iterative approach. Three iterations of the entire system were planned (termed v0, v1 and v2). v0 was intended as a system based on QUBIK but without the POQUITO-specific additions (namely the \acs{ADCS}, ChipSat and custom panels), while the two remaining versions involved iterations of the entire system. In that sense, v0 was a \emph{partition} of a large part of the system, while v1 and v2 were iterations on the entire system. Compared to previous mission, this ``partition-light'' approach was chosen due to the reuse of QUBIK components, and our high confidence in the entire system's operation and correctness.
+
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}[t]{0.2\textwidth}
+	\begin{subfigure}[t]{0.23\textwidth}
 		\centering
-		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
+		\includegraphics[height=3cm]{pictures/MTQ.jpg}
 		\caption{v1}
 	\end{subfigure}%
 	~%
-	\begin{subfigure}[t]{0.2\textwidth}
+	\begin{subfigure}[t]{0.23\textwidth}
 		\centering
 		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
 		\caption{v2}
 	\end{subfigure}%
 	~%
-	\begin{subfigure}[t]{0.2\textwidth}
+	\begin{subfigure}[t]{0.23\textwidth}
 		\centering
-		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
+		\includegraphics[height=3cm]{pictures/W_MTQ_F.jpg}
 		\caption{v3}
 	\end{subfigure}%
 	~%
-	\begin{subfigure}[t]{0.2\textwidth}
+	\begin{subfigure}[t]{0.23\textwidth}
 		\centering
-		\includegraphics[height=3cm]{pictures/W_MTQ_F.jpg}
+		\includegraphics[height=3cm]{pictures/W_MTQ_2_F.jpg}
 		\caption{v4}
 	\end{subfigure}%
-	\caption{Example of iterative hardware development through the production of different magnetorquer board versions}
+	\caption{Example of iterative hardware development through the production of different magnetorquer board versions \todo{more pictures}}
 \end{figure}
 
+The development of subsystems roughly followed that of the system, with 2 versions of the ChipSat payload being produced, \draft{2} versions of the \acs{ADCS} board, \draft{4} versions of the magnetorquer board, and \draft{2} versions of the side solar panels. Software development followed the development of subsystems, which were initially represented by development boards before the procurement of \acsp{PCB}. Software development sometimes took place remotely, due to the location of various members of the team. Structural elements were replaced by 3D-printed versions while procurement of machined parts was pending.
+After each iteration, the entire system was assembled, integrated and functionally tested.
 
+A simple \acs{CAD} model of the system was built and used for visual representation and renders. Nevertheless, we performed fit checks visually and by estimating using available 3D-printed parts. No structural or thermal analysis was performed due to the high confidence in a flight-proven design. However, we performed an \acs{EM} analysis to inform and verify the dimensions of the planned antenna elements\footnote{Due to their dimensions being different from the original QUBIK design.}. The team also performed mission and re-entry analysis, to verify compliance to the 5-year space debris rule \todo{[cite]}.
 
 \begin{marginfigure}
 	\includegraphics{graphics/POQUITO_Stack_Render}
 	\caption{Exploded view of the POQUITO internal stack}
 	\label{fig:c_poquito_stack}
 \end{marginfigure}
+
+In terms of project management, we used Atlassian Jira for task tracking, Inventree for inventory management, and GitLab for source code and schematic version control. The team produced several textual documents, which were part of the documentation required by the Luxembourg Space Agency. % and were generally not used internally
+We furthermore used Excel spreadsheets to track budgets (cost, power, mass, and link), procurement activities, documentation status, and project lifecycle (in the form of a Gantt chart).
+
+Two \textbf{environmental testing campaigns} took place in an external facilities: a qualification campaign for the \emph{v1} iteration, and an acceptance campaign for the \emph{v2} iteration. Both campaigns included vibration and \acs{TVAC} tests, while the second campaign additionally included \acs{EMC} tests, based on the launch provider requirements. Both campaigns ended successfully, with functional tests showing nominal operation after testing.
+
+\begin{marginfigure}
+	\includegraphics{pictures/POQUITO_shaker.jpg}
+	\caption{POQUITO on a vibration test shaker}
+\end{marginfigure}
+
+During POQUITO's development, the team also worked on the ground segment, with the goal of preparing the appropriate GNURadio flowgraphs and transmission hardware. POQUITO planned to use the University of Luxembourg's ground station, which includes a rotator with a high-gain \acs{UHF} Yagi antenna. POQUITO was designed to oeprate on radio-amateur frequencies, and be compatible with the SatNOGS network.
+
+\todo{Diagram, and how long each iteration lasted?}
+\todo{In-house soldering what?}
+
+\subsection{Lessons Learned}
+
+\begin{table*}[h]
+	\caption[POQUITO cost budget]{POQUITO cost budget (not including labour, insurance and ground station costs)}
+	\label{tab:c_poquito_costs}
+	\begin{tabularx}{\textwidth}{@{}lXlS@{}}
+		\toprule
+		No. & \textbf{Cost Driver}                     & Used In                                       & {Value (EUR)} \\ \midrule
+		% procurement 06 + procurement 08 + procurement 09 + (procurement 2023-12 components not related) + (procurement 2024-01 not listed here) + (procurement 2024-03 components not related) 
+		1   & \textbf{Base components + Tooling}                      & v0, v1, v2                  & 3200 \\ 
+
+
+		% 49.93 3D-printed (v0) + 1912 machined (v0) + 454 antenna 3D-printed (v1) + 402 spares (v2)
+		2   & \textbf{Structural components}           & v0, v1, v2                       & 2800 \\
+		% EN23/445372 3075 28 Jul 2023
+		3   & \textbf{PCB Components + Assembly (Platform)}       & v0, v1, v2  & 3100 \\ % (v0)
+		% 2023-97744 + EN23/448289 206.50 30 Aug 2023 (MTQ v1)
+		4   & \textbf{PCB Components + Assembly (\acs{ADCS})}                & v0 & 850   \\ % (v0)
+
+		% ADCS 77.65 (v1) + TOP 60.85 (v1) + SIDE 420 + components (50849.pdf) 1166
+		5   & \textbf{PCB Components + Assembly (Payloads, Panels)}                & v1 & 1700   \\
+
+		% ADCS v2 EN24/477450 879.87 10 Jun 2024 + Baseplate v1 EN24/476347  392.43 27 May 2024 + ChipSat v2.1 EN24/476346 902.15 29 May 2024
+		6   & \textbf{PCB Components + Assembly (Payloads, Panels)}                & v2 & 2200   \\
+
+		% 2024-2240.pdf
+		7   & \textbf{Shaker mechanical interface}                & v1, v2 &  900  \\
+
+		8   & \textbf{Testing service fee}           & v1, v2 & 10000 \\
+		9   & \textbf{Shipment to deployer}           & v2 & 2000 \\
+		\midrule
+		& \textbf{Total Costs}                     &                                               & 26750 \\ \bottomrule
+	\end{tabularx}
+\end{table*}
+
+\subsection{Evaluation}
 
 \section{ChiPySat}
 
@@ -4732,6 +4862,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfac
 	\caption{Internal block diagram of the ChiPySat system}
 	\label{fig:c_chipysat_block}
 \end{figure}
+
 
 \FloatBarrier
 \section{Results}
