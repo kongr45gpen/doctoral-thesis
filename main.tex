@@ -2092,8 +2092,78 @@ These \ac{COP}-related constraints add time uncertainty to each iteration, and m
 \end{itemize}} However, past attempts to mitigate this difficulty by separating an iteration into pre-determined, sequential steps have received criticism, due to propagating the drawbacks of waterfall-based methods \todo{citation}. \draft{The original Scrum itself avoids prescribing the distribution and allocation of work, as that is team-specific and dependent on the self-organisation between developers.} It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
 
 \begin{figure*}[h]
-	\includegraphics{media/drafts/satscrum_iteration}
-	\caption{Activity diagram of one Sat-Scrum iteration \draft{(draft)} \todo{todo}}
+	\begin{adjustbox}{width=1.1\textwidth,center}
+	\begin{tikzpicture}[
+		arrow/.style={-{Stealth[scale=1.2]}},
+		process/.style={
+			draw, 
+			rounded corners, 
+			minimum height=1cm, 
+			align=center, 
+			fill=white,
+			inner sep=6pt
+		},
+		meeting/.style={
+			process, 
+			draw=green!60!black, 
+			text=green!60!black, 
+			pattern=north east lines, 
+			pattern color=green!60!black!20
+		},
+		procurement/.style={
+			process, 
+			draw=red, 
+			text=red, 
+			pattern=north east lines, 
+			pattern color=red!20
+		},
+		aux/.style={
+			process, 
+			pattern=north east lines, 
+			pattern color=gray!20
+		},
+		label_text/.style={
+			font=\scriptsize,
+			color=black
+		},
+		green_label/.style={
+			font=\scriptsize,
+			color=green!60!black
+		}
+	]
+
+
+    \node[meeting] (planning) {Planning};
+    \node[green_label, below=0.1cm of planning] {Meeting};
+    \node[process, right=0.5cm of planning] (design) {Design};
+    \node[label_text, above=0.2cm of design] {1-2 weeks};
+    \node[process, right=1cm of design] (manuf) {Manufacturing (Internal)};
+    \node[procurement, above=0.3cm of manuf] (procure) {Procurement (External)};
+    \node[label_text, above=0.2cm of procure] {1 week};
+    \node[process, below=0.3cm of manuf, xshift=1.5cm, text width=7cm] (software) {Software Development\\Software Verification};
+    \node[aux, below=0.3cm of software, text width=7cm] (aux) {Auxiliary Activities};
+    \node[process, right=1cm of manuf] (integration) {Integration};
+    \node[label_text, above=0.2cm of integration] {1 week};
+    \node[process, right=1cm of integration, text width=3.5cm] (verification) {Verification, Validation\\and Improvement};
+    \node[label_text, above=0.2cm of verification] {1-2 weeks};
+    \node[meeting, right=0.8cm of verification] (review) {Sprint Review \& Retrospective};
+    \node[green_label, below=0.1cm of review] {Meetings};
+
+    \draw[arrow] (planning) -- (design);
+    \draw[arrow] (design.east) -- (procure.west);
+    \draw[arrow] (design.east) -- (manuf.west);
+    \draw[arrow] (design.east) -- (software.west);
+    \draw[arrow] (design.east) -- (aux.west);
+    \draw[arrow] (procure.east) -- (integration.north west);
+    \draw[arrow] (manuf.east) -- (integration.west);
+    \draw[arrow] (integration) -- (verification);
+    \draw[arrow] (software.east) -- (verification.south west);
+    \draw[arrow] (aux.east) -- (verification.south west);
+    \draw[arrow] (verification) -- (review);
+    \draw[arrow, color=green!60!black] (review.north) to[out=90,in=90, looseness=0.5] (planning.north);
+	\end{tikzpicture}
+	\end{adjustbox}
+	\caption{Activity diagram of one Sat-Scrum iteration}
 	\label{fig:m_sat_scrum_iteration}
 \end{figure*}
 
@@ -2944,7 +3014,7 @@ Another decision that developers are faced with involves whether they reuse exis
 \draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 \end{invisible}
 
-\subsection{Verification \& Validation Method}
+\subsection{Verification \& Validation Methods}
 \label{sec:METHODOLOGY_verification}
 
 Verification and validation is an integral part of a sprint cycle, and is the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
