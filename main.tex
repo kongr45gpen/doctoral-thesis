@@ -2947,8 +2947,6 @@ Another decision that developers are faced with involves whether they reuse exis
 \begin{landscape}
 	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
 
-	\todo{Why this table does not stay in the proper page is beyond me}
-
 	\begin{tabularx}{\linewidth}{@{}lllllX@{}}
 		\toprule
 		\textbf{\#} & \textbf{Type} & \textbf{Name} & \textbf{Developer} & \textbf{Year} & \textbf{Description} \\ \midrule
@@ -4989,6 +4987,7 @@ Owing to the short (5-month) duration of my research visit, the intention of the
 \begin{figure*}
 	\includegraphics{external/diffusercam.png}
 	\caption[DiffuserCam setup and reconstruction pipeline]{DiffuserCam setup and reconstruction pipeline. Image taken from \cite{kuoDiffuserCamDiffuserBasedLensless2017}.}
+	\label{fig:c_diffusercam_setup}
 \end{figure*}
 
 \subsection{Mission Description}
@@ -5002,7 +5001,59 @@ Owing to the short (5-month) duration of my research visit, the intention of the
 	\label{fig:c_chipysat_block}
 \end{figure}
 
+The main payload of the ChiPySat system was a \textbf{lens-less camera} based on the \textbf{DiffuserCam} concept \autocite{kuoDiffuserCamDiffuserBasedLensless2017}. The DiffuserCam setup involves placing a diffuser material at a specific distance in front of an image sensor (\Cref{fig:c_diffusercam_setup}). A point light source aimed towards the diffuser creates a material-based caustic pattern on the sensor, which varies based on the lateral position and depth of the source.\footnote{The dependence of the caustic pattern on depth means that it is possible to reconstruct 3D representations of captured scenes, as depth-dependent data are included on the captured image} A real scene therefore projects a superposition of these caustic patterns onto the sensor. In the 2D case, this superposition is mathematically calculated as the convolution between the diffuser's \emph{Point Spread Function} (i.e.\@ its impulse response against a point source) and the actual scene. To reconstruct the original scene, a processor has to solve the inverse problem, by calculating a 2D deconvolution operation. Due to the presence of measurement noise and depth effects, the calculation of the deconvolution involves solving an optimisation problem \cite{kuoDiffuserCamDiffuserBasedLensless2017}.
 
+In practice, the DiffuserCam concept shifts the responsibility of focusing a scene \textbf{from the lens to the processor}. On a miniaturised high-performance system, this displays the benefits of reduced mass, size and \draft{fragility}, and allows implementing features such as \emph{infinite focusing} and \emph{3D reconstruction}.
+
+\begin{marginfigure}
+	\includegraphics{external/diffusercam_side_view.png}
+	\caption[Side view of DiffuserCam]{Side view of DiffuserCam operation. Image taken from \url{https://waller-lab.github.io/DiffuserCam/quickstart.html}.}
+\end{marginfigure}
+
+The question posed by the ChiPySat project was therefore: \textbf{\emph{Is it possible to implement a lens-less camera with on-board processing on a low-footprint ChipSat system?}}
+
+\newthought{The electrical design} of ChiPySat was based on the PyCubed-Mini\footnote{\textellipsis which is also the namesake of the ChiPySat project.} PocketQube platform \autocite{manchesterPyCubedMini,andradePROMETHEUS1SatelliteFramework2025}, which itself is based on the PyCubed CubeSat platform \autocite{hollidayPyCubedOpenSourceRadiationTested2019}. The main differentiator between PyCubed(-Mini) and other \emph{open-source} satellite buses is the use of \textbf{Python} as an embedded programming language, through the use of CircuitPython or OpenMV\footnote{Both CircuitPython and OpenMV are based on MicroPython \cite{george2021micropython}}.
+
+\todo{Stuff about the platform, processor(S) + comms}
+
+The intention of the ChiPySat design was also to build upon Manchester's Sprite design \autocite{manchesterCentimeterScaleSpacecraftDesign2015}, by sacrificing its small size to host batteries and magnetorquer-based attitude control. The design concept selected to support these features was a \textbf{\acs{PCB} ``sandwich'' with the batteries in the middle}.
+
+For energy storage, we designed the system around \acs{COTS} pouch-cell batteries. To combat low temperatures due to a large radiative area, we embedded heaters as \acs{PCB}. A similar trace-based design was envisioned for 3-axis magnetorquers, intended to manage slow detumbling.
+
+
+\begin{figure}[h]
+	\includegraphics{pictures/chipysat_v1.jpg}
+	\includegraphics{pictures/chipysat_v2.jpg}
+	\caption{Renders of the first (top) and second (bottom) ChiPySat iterations}
+	\label{fig:c-chipysat_renders}
+\end{figure}
+
+\newthought{The development} of ChiPySat also followed an iterative approach, albeit with only two iterations performed due to time constraints. Since the project was based on electronic/hardware elements, the changes between iterations mainly involved schematic changes as follows:
+\begin{itemize}[itemsep=-2pt]
+	\item Magnetorquers were added to the design, as they were not present in the first iteration.
+	\item Instead of 2 microcontrollers (one for \acs{CDH} and an ``application'' processor for image processing), the second iterator used a single dual-core microcontroller.
+	\item The \acs{USB} power distribution system was simplified by using two \acs{USB} connectors (for power and data).
+	\item An external non-volatile memory was added, after experimentation showed that internal system memory could be insufficient for image processing.
+\end{itemize}
+
+\todo{Is there anything I forget? (Note the redesign request)}
+
+The first iteration lasted approximately 4 months, including an initial familarisation with the PyCubed-Mini platform, hardware design, software development\footnote{Done on development boards when hardware was not available.}, integration and testing. After completing functional testing and coding for the first iteration, I started working on the second, however \draft{due to an end of internship the schematic/layout was completed but not procured.}
+
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_experiment.jpg}}%
+	\hspace{2cm}%
+	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_psf.jpg}}%
+	\\%
+	\subfloat[]{\includegraphics[height=3cm]{example-image-a}}%
+	\hspace{3.3cm}%
+	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_result.png}}%
+	\caption{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) \draft{Sensor output}. (d) Reconstructed image.}
+	\label{fig:c_chipysat_results}
+\end{figure}
+
+\newthought{The results} are shown in \Cref{fig:c_chipysat_results} and are successful.
 
 \FloatBarrier
 \section{Results}
