@@ -1455,7 +1455,7 @@ sails \cite{atchisonPassiveMicroscaleSolar2008,umansky-castroDesignAlphaCubeSat,
 
 The technology and applications of femto-scale and smaller satellites can also be linked to the development of ``smart dust'' or ``smartdust'' networks, which represent the corresponding swarm concept for terrestrial applications \autocite{ucberkeleyroboticsandintelligentmachineslabSMARTDUST2008}. Smart dust research has focused on energy harvesting, communication and instrumentation \cite{agoginoSensorValidationFusion,warnekeSmartDustCommunicating2001,romerTrackingRealWorldPhenomena2004,romerTrackingRealWorldPhenomena2004}.
 
-\newthought{Recent launches} of femto-satellites and smaller objects in space have given rise to space debris and tracking concerns. Manchester's KickSat-2 mission was initially rejected by the \ac{FCC} on the grounds of increased risk due to lack of traceability \cite{FCCBigProblem2018,thenationalassociationforamateurradioKickSat2AliveBeing2019,nwekeKickSat2DismissalPrejudice2016}. KickSat-2 then sought a \acs{NASA} launch which shifted the responsible regulatory body.
+\newthought{Recent launches}\label{sec:LITERATURE_debris} of femto-satellites and smaller objects in space have given rise to space debris and tracking concerns. Manchester's KickSat-2 mission was initially rejected by the \ac{FCC} on the grounds of increased risk due to lack of traceability \cite{FCCBigProblem2018,thenationalassociationforamateurradioKickSat2AliveBeing2019,nwekeKickSat2DismissalPrejudice2016}. KickSat-2 then sought a \acs{NASA} launch which shifted the responsible regulatory body.
 Another notable case was the one of \emph{Swarm Technologies}, a USA-based startup which attempted to launch four 1/4U spacecraft called \emph{SpaceBEEs}. Despite their attempts for improved tracking\footnote{Including a passive Ku-band radar reflector on each face and a planned GPS beacon}, their application was rejected again due to their small size \autocite{serafiniSWARMDismissalPrejudice2017}. Despite the rejection, Swarm did launch their spacecraft. This led to a halt in their next filing and a fine \autocite{harrisFCCAccusesStealthy2018}.
 
 Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion. \autocite{sperettaCubeSatsPocketQubesOpportunities2016} also analysed a combined PocketQube-CubeSat launch, and found that \acsp{TLE} were acquired for all launched spacecraft of different sizes, noting that PocketQubes and CubeSat experienced similar acquisition times, with the exception of a 1p PocketQube, for which data was aquired after 4 days instead of the average 1.
@@ -1618,7 +1618,7 @@ There are various examples in literature for the implementation of Agile practic
 
 While a number of different Agile frameworks have been proposed, only a small number of them are in effective use in the industry as of 2025.
 Scrum and \acf{SAFE} are the two most popular formal frameworks in use, with developers also creating ad-hoc methods based on agile principles \autocite{digital.aiStateAgileReport2025}.
-A \citeyear{2020} survey by \citeauthor{atzbergerAgileDevelopmentPhysical2020} \autocite{atzbergerAgileDevelopmentPhysical2020} of hardware developers found that \qty{90}{\percent} of the respondents used a form of Scrum as a lifecycle process model, while other methods, such as \emph{Kanban} and \emph{Design Thinking}, also enjoy some popularity.
+A \citeyear{atzbergerAgileDevelopmentPhysical2020} survey by \citeauthor{atzbergerAgileDevelopmentPhysical2020} \autocite{atzbergerAgileDevelopmentPhysical2020} of hardware developers found that \qty{90}{\percent} of the respondents used a form of Scrum as a lifecycle process model, while other methods, such as \emph{Kanban} and \emph{Design Thinking}, also enjoy some popularity.
 
 In this sub-section, I will analyse the most popular Agile frameworks and evaluate their applicability to hardware applications, and more specifically the \ac{SCS} methodology.
 
@@ -1746,7 +1746,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 \end{enumerate}
 
 \begin{figure*}
-	\begin{adjustbox}{width=0.9\textwidth}
+	%\begin{adjustbox}{width=0.9\textwidth}
 
 	\begin{tikzpicture}[
 		node distance=0.5cm and 1cm,
@@ -1804,7 +1804,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 	\end{tikzpicture}
 	\caption[Overview of research approach steps as implemented in this work]{Overview of research approach steps as implemented in this work. Note that, even though the DS-I case study and PS phases for this project were executed in parallel, they are presented sequentially in this work as \Cref{chap:METHODOLOGY} and \Cref{chap:CASESTUDIES}.}
 	\label{fig:r_methodology}
-	\end{adjustbox}
+	%\end{adjustbox}
 \end{figure*}
 
 \draft{}
@@ -2420,6 +2420,7 @@ When a team chooses to use an approach not covered by available (and \draft{appr
 	\caption{\draft{UML} data model for a representation of technical planning in the \acs{SCS} methodology.}
 \end{figure}
 
+\begin{invisible}
 \begin{table*}[h]
 	\footnotesize
 	\def\arraystretch{1.05}
@@ -2481,6 +2482,7 @@ When a team chooses to use an approach not covered by available (and \draft{appr
 	\caption{\todo{This whole table needs to be rewritten!!!}}
 	\label{tab:m_work_package_tool_requirements}
 \end{table*}
+\end{invisible}
 
 To the author's knowledge, despite the plethora of software tools currently available, none is able to completely support the requirements defined in \Cref{tab:m_work_package_tool_requirements}.
 
@@ -2772,6 +2774,9 @@ Therefore, the ideal decision on time spent for early design will vary based on 
 
 \subparagraph{Mathematical Model for design effort}
 
+\draft{[TODO]}
+
+\begin{invisible}
 The drawbacks of incorrect allocation of design time early or late in the project are usually represent in terms of time and cost \begin{enumerate*}
 	\item due to unnecessary design effort, or
 	\item due to reworks because of errors uncovered late.
@@ -2884,6 +2889,8 @@ Considering the above assumptions, the total cost of the design--verification--r
 
 \todo{Perform trade-off, make guidelines}
 
+\end{invisible}
+
 \subsection[SCS Design Guidelines]{\acs{SCS} Design Guidelines}
 \label{sec:METHODOLOGY_design_guidelines}
 
@@ -2936,6 +2943,7 @@ Another decision that developers are faced with involves whether they reuse exis
 	\label{fig:m_reuse}
 \end{figure*}
 
+\geometrylscape
 \begin{landscape}
 	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
 
@@ -2978,6 +2986,7 @@ Another decision that developers are faced with involves whether they reuse exis
 		\bottomrule
 	\end{tabularx}%
 \end{landscape}
+\restoregeometry
 
 \begin{invisible}
 \draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
@@ -4287,6 +4296,7 @@ From a technical point of view, we gathered the following points during developm
 	\item While external manufacturing is convenient and results in high workmanship quality, it suffers from high lead times and difficulty of rework. In many cases, especially when design errors are expected, \ac{PCB} rework will be required in any case.
 	In the case of ChipSat-1, a lead time of approx.~1 week was required for unpopulated \acs{PCB} procurement, and approx.~1 month for manufacturing. This was often augmented by unpredictable turnaround times for university procurement approval.
 	Therefore, teams should consider investing and gaining knowledge regarding in-house manufacturing, especially in electronics and testing equipment.
+	\item The use of solder on solar cells made assembly \& inspections difficult, and was related to one of the major non-conformances during early iterations. Instead, it is preferable to use conductive glue to mount cells, to the degree possible.
 \end{enumerate}
 
 \todo{More Lessons learned}
@@ -4419,6 +4429,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 
 \FloatBarrier
+\newpage
 \section{AI4Space}
 %Seminal papers: \autocite{thoemelLeanDemonstrationOnBoard2024} \autocite{thoemelAI4SpaceSnTLaunches}
 
@@ -4567,15 +4578,15 @@ For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 L
 		2   & \textbf{Software Development}    & 109                \\
 		3   & \textbf{Soldering}               & 24                 \\
 		4   & \textbf{Integration}             & 8                 \\
-		5   & \textbf{Project Management}      & 218                 \\
+		5   & \textbf{Project Management}      & 218                 \\ \midrule
 		& \textbf{Total Time}                  & 468                \\ \bottomrule
 	\end{tabular}
 \end{table*}
 
 \subsection{Evaluation}
+\Cref{sec:CASESTUDIES_ai4space_evaluation}
 
-This counter-factual evaluation of AI4Space follows the same structure as the one of ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}). As we did not record all activity data for the development time, I will use the relevant values from ChipSat-1 as a reference, when similar values for AI4Space do not exist.
-
+This counter-factual evaluation of AI4Space follows the same structure as the one of ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}).
 \begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
@@ -4639,6 +4650,8 @@ The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfac
 	\item Note on \textbf{short, agile iterations}: Since the average iteration length for AI4Space was 3 months, and a large gap was generally observed during the project to focus on other projects, it is more difficult to evaluate the effect of iteration duration on AI4Space. As such, I will not consider this treatment.
 \end{enumerate}
 
+\FloatBarrier
+\newpage
 \section{POQUITO}
 %Seminal papers: Conference \autocite{franzesePOQUITOFirstSatellite2025} Journal \autocite{franzeseSystemDesignPOQUITO2025}
 
@@ -4686,7 +4699,7 @@ Owing to the availability of open-source PocketQube buses and the \draft{actual 
 
 One notable point regarding the selected design is the \emph{lack of a dedicated \acl{OBC}}. Instead, following QUBIK's design, the responsibilities of data handling and control were delegated to the communications board. This is possible due to the low complexity and \emph{technical size} of the PocketQube, which removes the need to separate concerns or have a modular architecture.
 
-In terms of additional components, the \acs{ADCS} contains a photodiode, functioning as a receiver for the ChipSat payload\footnote{Even though the \acs{ADCS} should generally not be responsible for payload data handling, in this case this was deemed as the most suitable option against redesigning the communications board as well, or introducing an extra \acs{PCB}.}. The protocol used for communication between the \acs{ADCS} and \acs{COMMS} was \acs{CAN}\footnote{While \acs{CAN} is not used in the original QUBIK, there are \draft{provisions} for a driverless \acs{CAN} interface between two subsystems in the original QUBIK schematics.} through a stacking PQ9 interface \autocite{PQ91}.
+In terms of additional components, the \acs{ADCS} contains a photodiode, functioning as a receiver for the ChipSat payload\sidenote[][-2cm]{Even though the \acs{ADCS} should generally not be responsible for payload data handling, in this case this was deemed as the most suitable option against redesigning the communications board as well, or introducing an extra \acs{PCB}.}. The protocol used for communication between the \acs{ADCS} and \acs{COMMS} was \acs{CAN}\footnote{While \acs{CAN} is not used in the original QUBIK, there are \draft{provisions} for a driverless \acs{CAN} interface between two subsystems in the original QUBIK schematics.} through a stacking PQ9 interface \autocite{PQ91}.
 
 \begin{figure}[h]
 	\centering
@@ -4737,15 +4750,15 @@ Structurally, the subsystem stack was kept in place through four screws and two 
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
 		Source  & Requirement                                                                            \\ \midrule
-		SYS.010 & The overall satellite system mass shall be lower than or equal to 250 g.\\
+		SYS.010 & The overall satellite system mass shall be lower than or equal to \qty{250}{\gram}.\\
 		SYS.020 & The overall satellite system shall comply to the 1P PocketQube form factor.\\
-		SYS.030 & The spacecraft shall occupy a maximum envelope of \qtyproduct{64 x 58 x 51.6}{\milli\meter} mm in stowed configuration.\\
+		SYS.030 & The spacecraft shall occupy a maximum envelope of \qtyproduct{64 x 58 x 51.6}{\milli\meter} in stowed configuration.\\
 		SYS.040 & The system shall provide telemetry in the UHF band.\\
 		SYS.041 & The system shall employ the SnT ground station for communication.\\
 		SYS.042 & The system shall not emit RF radiation during the launch and deployment phases.\\
 		SYS.044 & The satellite system shall be able to receive telecommands in UHF band.\\
 		SYS.050 & The system shall integrate an electric power system (EPS) capable of generating and distributing power to all the subsystems when illuminated by the Sun.\\
-		SYS.051 & The power system shall generate at least 0.2 W when in sunlight during nominal operations.\\
+		SYS.051 & The power system shall generate at least \qty{0.2}{\watt} when in sunlight during nominal operations.\\
 		SYS.052 & The power system shall integrate a battery to store the excess power.\\
 		SYS.060 & The communication system shall be capable of downlinking at least 1 kB of data in UHF during operative phase.\\
 		SYS.070 & The system shall integrate an ADCS equipped with sensors and actuators to determine and control the spacecraft angular rate during the mission lifetime.\\
@@ -4818,6 +4831,7 @@ During POQUITO's development, the team also worked on the ground segment, with t
 \todo{In-house soldering what?}
 
 \subsection{Lessons Learned}
+\label{sec:CASESTUDIES_poquito_lessons}
 
 \begin{table*}[h]
 	\caption[POQUITO cost budget]{POQUITO cost budget (not including labour, insurance and ground station costs)}
@@ -4852,9 +4866,134 @@ During POQUITO's development, the team also worked on the ground segment, with t
 	\end{tabularx}
 \end{table*}
 
+\begin{table*}[h]
+	\caption[POQUITO development time]{POQUITO development time from start of development until Flight Model delivery, estimated based on task duration and the project Gantt chart.}
+	\label{tab:c_poquito_times}
+	\begin{tabular}{@{}llS@{}}
+		\toprule
+		No. & \textbf{Development Time Driver} & {Time Spent (hours)} \\ \midrule
+		1   & \textbf{Software Development}  & 40                \\
+		2   & \textbf{Integration \& Verification}    & 108                \\
+		3   & \textbf{Platform PCB Design}               & 24                 \\
+		4   & \textbf{ChipSat Delta-Development}             & 52                 \\
+		5   & \textbf{\acs{ADCS} Development}             & 104                 \\
+		6   & \textbf{Soldering}        & 24                 \\
+		7   & \textbf{Antenna Simulation}      & 3                 \\
+		8   & \textbf{Orbital Analysis}      & 66                 \\
+		9   & \textbf{Project Management}      & 226                 \\
+		10  & \textbf{Test Campaign (\acs{QM})} & 48				 \\
+		11  & \textbf{Test Campaign (\acs{FM})} & 64				 \\ \midrule
+		& \textbf{Total Time}                  & 759                \\ \bottomrule
+		% Note: Ground station work not considered as not part of SCS development!!! (out of scope for this work - we look at space segment only)
+	\end{tabular}
+\end{table*}
+
+Compared to the previous mission, POQUITO's status as an independent satellite required significantly higher effort, divided amongst a larger team. Despite the use and adaptation of a \acs{COTS} design, the team still experienced challenges related to technical and programmatic aspects. This was further exacerbated by the logistical environment of the university which reduced the availability of key personnel for engineering tasks and roles.
+
+A list of lessons learned that were gathered by the entirety of the team after the end of the project is shown below:
+\begin{itemize}
+	\item The significant number of \textbf{procurement runs} required increased delays. Lead times were affected both by the university's logistical process\footnote{which is standard across many public institutions}, and the base lead times for custom manufactured components (such as assembled \acsp{PCB} and structural elements). Even though we anticipated \draft{4-month} long iterations to counter approximately the standard 1--2-month long procurement ``latency'', this added significant ``lag'' to the agile iteration lifecycle.
+	
+	The slowest item in POQUITO's critical path was identified to be the procurement of assembled \acsp{PCB}, which lasted \qtyrange{30}{50}{days}. During the mission, the team started preparing the internal tooling for reflow soldering, and managed to solder some subsystems in-house\footnote{Namely the solar panels and \acs{MTQ} boards.}, observing a generally \draft{easier and faster} process.
+	\item The allocation of \textbf{testing time} to the project was insufficient, as shown in \Cref{tab:c_poquito_times}. Combined with the above point, this meant that some specific functions (e.g.\@ telecommands, antenna deployment) could not be stress tested.
+	\item While software tooling was implemented to assist development (for task tracking, inventory management, or documentation), it was often not used consistently, leading to a disagreement between the actual and documented status of the project. This was brought about in part because of the external commitments of team members. However, assigning an accountable person for these items seemed to guarantee good upkeep, with members noting a 45-page Mission Control Document as a particularly useful artifact that provided up-to-date information on the system design.
+	\item Critical members of the team were unable to work on-location, instead having to contribute remotely, and often with limited time. The combination of the above points shows the need to have at least few dedicated engineers working on the project as a primary \draft{affiliation}, even if the system itself requires little development effort (due to e.g.\@ reuse).
+	\item The iterative design approach seemed to perform successfully, as we did not discover any major non-conformances in the developed hardware, and managed to successfully qualify and acceptance-test the system. This was perhaps supported both by the heavy reuse of previous designs (both external and in-house), and the larger experience of the team, based on the two previous missions, and demonstrating a lesser need for a ``\acl{BDUF}''-based approach. The first iteration (``v0''), consisting of a partition of QUBIK parts only, provided experience to the team and allowed them to familiarise themselves with the satellite integration process and connections.
+	\item Roughly 30\% of the project time was spent on project management activities, which were mainly \draft{covered} by regulatory aspects\footnote{Related to national launch requirements, communication authorisations, insurance, and re-entry analysis.}. These preparations also involved orbital analysis, in order to guarantee a safe re-entry after at most 3 years, and establish that the satellite can be tracked (\Cref{sec:LITERATURE_debris}).  Regulatory requirements can vary by country, but will be significantly easier when support can be afforded by an experienced party. \todo{Make this sound scarier}
+\end{itemize}
+
+In terms of technical observations:
+\begin{itemize}
+	\item The original design used \draft{two} Li-Ion camera batteries. These batteries are interfaced using exposed metal terminals which are suited to a specialised mount, but not to soldering, due to safety and connection reliability concerns. It is therefore recommended to use pre-wired batteries, a bespoke battery holder, or a spot welding-based solution.
+	\item Due to the addition of the \acs{ADCS} against the base QUBIK design, POQUITO's \textbf{cable harness} was more complex. This increased difficulty and risk during assembly, and required creating high-quality crimped connections for use with custom, POQUITO-specific cables. On the other hand, the use of spring-loaded pogo pins for the solar panels proved highly reliable and allowed low-effort integration. Teams should therefore invest on reducing the technical size of internal harnesses by using fixed components, to the degree possible.\footnote{This can be \draft{aided} by, for example, an \acs{RF} or optical intra-satellite link.}
+	\item One of the non-conformances detected was the incorrect procurement of \qty{1.6}{\milli\meter}-thick \acsp{PCB} for the solar panels, instead of the required \qty{0.8}{\milli\meter}. This error was detected and resolved before the ``v1'' iteration. However, thanks to access to a university engineering workshop, we were able to \draft{widen} the panel slots in order to perform early fit-checks, without requiring a second procurement run.
+	\item In the ``v1'' iteration, it was discovered that there was little space on the PocketQube for the \emph{accelerometers required for vibration testing}. This was resolved by altering the layout for ``v2''.
+	\item During ``v0'', we discovered fit and clearance issues between the new solar panels and the subsystem stack. While these were resolved within an iteration, it would have been easily possible to avoid them through simple \acs{CAD} modelling, or by prototyping early versions of the \acs{PCB} (e.g.\@ through 3D printing).
+	\item A minor missing element from POQUITO that was later deemed useful were low-power \emph{status-indication \acsp{LED}}, that could be used to increase observability during ground testing by showing the power status of the satellite and its subsystems.
+	% Antenna design? why did we procure 4 magnetorquers? -> staggered DT. We MUST AVOID STAGGERED DT!!!
+	\item As part of the procurement of structural components, the team also purchased a ``deployer stub'', used to represent the \draft{inset} of the PocketQube's deployer during launch.\footnote{\draft{We used a part designed by the Libre Space Foundation in FreeCAD for this purpose.}} This \draft{proved to be} significantly helpful as a fit check device, storage stand, and to keep the PocketQube turned off (thanks to the deployment switches being pressed).
+\end{itemize}
+
 \subsection{Evaluation}
 
+The counter-factual evaluation of POQUITO follows the same structure as the ones of ChipSat-1 and AI4Space (\Cref{sec:CASESTUDIES_chipsat1_evaluation,sec:CASESTUDIES_ai4space_evaluation}).
+
+\begin{table*}[h]
+	\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
+	\toprule
+\# & Treatment & \multicolumn{1}{l}{Applied?} & \multicolumn{3}{c}{Effect on} \\ \cmidrule(lr){4-6}
+ &  & Y/N & \multicolumn{1}{c}{Cost (EUR)} &  \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & 0  & \qty{-180}{hours} & Higher \\
+2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -4020 & \qty{+80}{hours} & Lower  \\
+3 & Multi-step development & \textcolor{nice}{Y} & +7070 & \qty{-248}{hours} & Higher  \\
+4 & Short iterations & \textcolor{bad}{N} & +3050 & \qty{64}{hours} & Lower  \\
+5 & Iterating over partitions & \textcolor{nice}{Y} & -1700 & \qty{-26}{hours} & No change \\
+%6 & Robust software framework & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
+7 & \acl{RPA} & \textcolor{bad}{N} & 0 & \qty{0}{hours} & Lower \\
+\bottomrule
+\end{tabularx}
+\caption{Counter-factual evaluation for POQUITO}
+\label{tab:c_poquito_counterfactuals}
+\end{table*}
+
+The results of the counter-factual evaluation in \Cref{tab:c_poquito_counterfactuals} are explained as follows:
+\begin{enumerate}
+	\item \textbf{Bypassing structural/thermal analysis}:
+	Similar to ChipSat-1 and AI4Space (\Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation}). The analysis time might be greater compared to the other projects, due to more complicated meshing/contact conditions, however here I consider a best case, based on the examples of \Cref{tab:l_cubesat_time_drivers}. Structural and thermal testing showed a nominal operation of the satellite, and the decision to avoid analysis was also based on the previous heritage of the QUBIK design. \todo{But normally you want to know what the battery is doing...}
+	\item \textbf{External manufacturing}:
+	Most \acsp{PCB} were soldered externally. Due to the quantity of \acsp{PCB} with different characteristics\footnote{Mainly layer count.} in POQUITO, \acs{PCB} procurement activities were often a blocking point in the lifecycle of the project. This also includes structural elements (PocketQube frame plates and antenna mounting points). For this point, I consider an assembly time of 2 days per one of 5 \acsp{PCB}, and a reduction to overall project risk due to the \draft{release} of the critical path. Note that in-house reflow soldering of the side solar panel \acsp{PCB} showed successful results during qualification, within the confines of the reduced workmanship standards required for a low-duration \acs{LEO} mission.
+
+	\item \textbf{Iterative multi-step development}:
+	
+	To compare against a single-step, ``\acl{BDUF}'' approach, I will consider the ``best-case'' 40-person-day metric (\Cref{tab:l_cubesat_time_drivers}), reduced \( \frac{2}{3} \) of the integration \& verification time. In a single-step case, the development time of the project would be increased by \( 40\cdot 8 - \frac{2}{3} \cdot 108 = \qty{248}{hours} \). This approach would involve, for example, fit-checks using software-based \acs{CAD} model, a detailed evaluation of assembly and testing requirements to avoid incompatibilities, formal documentation of the proposed design (perhaps compliant to \acs{ECSS} standards \autocite{ECSS-M-ST-10C,ECSS-E-ST-10C}), and significantly more time spent on design review during designated stage-gates. 
+
+	I consider it highly likely that this approach would detect and prevent most or all non-conformances noted in \Cref{sec:CASESTUDIES_poquito_lessons}, thus leading to a successful development of the spacecraft. While both sequential and iterative development would lead to a successfully operating spacecraft, I consider that spending more time on \emph{early design} would lead to a potentially simpler design, e.g.\@ by simplifying POQUITO's harnessing, or by deciding to use a simpler communication protocol\footnote{e.g.\@ \acs{UART} instead of \acs{CAN}.}. Thus, I will consider that multi-step development increases risk. This is also influenced by POQUITO's more complex nature compared to previous missions, leading to a higher potential inertia against change. \todo{[cite]} Finally, I will also consider a significant increase in total manufacturing cost for a multi-step lifecycle process (based on the costs of individual \acsp{PCB} and elements).
+
+	\item \textbf{Short iterations}:
+	POQUITO's iterations are not considered short in terms of typical agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2\footnote{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}.
+	
+	Nevertheless, in the case of POQUITO, short iterations would increase the total cost (based on the cost of components and unassembled \acsp{PCB}) and development time by \( \frac{2}{3} \cdot 108 = \qty{72}{hours} \). However, shorter, timeboxed iterations would lead to a \draft{less staggered} procurement schedule, allowing different hardware engineers to align with each other, and the use of prototypes would help in earlier identification of issues, such as incompatible dimensions and bad fits. I will therefore consider a lower risk,  and an additional reduction of time required for machining by \qty{8}{hours}.
+
+	This example \draft{demonstrates} \todo{again?} that, depending on the environment, external restrictions, and projects, the \acs{SCS} methodology still needs to be tailored to reach a theoretically optimised result in terms of one of its metrics.
+	
+	\item \textbf{Iterating over partitions}:
+	The first iteration of POQUITO did not involve the entire intended system, but only a part of it, consisting of QUBIK's original subsystems.\footnote{Note that, despite the fact that it was a partition, it was still theoretically flight-ready.} In this case, the use of a partition reduced the development costs by not necessitating procurement of payload boards early in the design. In the case of a full first iteration, the team would potentially lack an intuitive understanding of the interfacing requirements for the new subsystems (e.g.\@ position in stack, harnessing/cabling, power requirements), leading to the need for a 3\textsuperscript{rd} payload iteration, or more preliminary analysis. I will therefore consider a \draft{\(\frac{1}{4}\) of the payload \acs{PCB} development time as saved by this treatment}.
+
+	\item \textbf{Use of \acl{RPA}}:
+	POQUITO relied on manual testing procedures, instead of \acs{RPA}. Similar to POQUITO, I will not consider a change in development time and cost because of automation. However, I will consider a risk reduction with \acs{RPA} thanks to the repeatability and larger potential generated samples based on automated tests.
+
+
+	\item Note on using a \textbf{Robust software framework}:
+	POQUITO's software mainly involved the reuse of QUBIK's original flight software, written in C, ChipSat-1's firmware, written in C++, and the \draft{re-implementation of MATLAB-based \acs{ADCS} models based on available libraries}. Due to this amount of reuse, I do not consider the analysis of alternative approaches (such as programming languages or frameworks) as singular and well-grounded.
+\end{enumerate}
+
+\begin{figure}
+	\includegraphics{analyses/cf_poquito_trade}
+	\caption{POQUITO \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+\end{figure}
+
+\FloatBarrier
+\newpage
 \section{ChiPySat}
+
+ChiPySat was a ChipSat project I participated in, as part of a research exchange with the Robotic Exploration Lab at Carnegie Mellon University. It involved developing an independent \emph{\acs{PCB}Sat} or \emph{ChipSat}-sized satellite to demonstrate a \textbf{lens-less camera concept} \autocite{liLenslessCameraUnraveling2024}, which can serve as a stepping stone to miniaturise imaging systems in pocket-sized spacecraft.
+
+\begin{figure}
+	\includegraphics{pictures/chipysat_keyboard.jpg}
+	\caption{ChiPySat Engineering Model}
+\end{figure}
+
+Owing to the short (5-month) duration of my research visit, the intention of the project was to perform successful functional testing of a ChipSat capable of capturing, processing and transmitting lens-less images. I was the main engineer in the project, responsible for hardware and software development.
+
+\begin{figure*}
+	\includegraphics{external/diffusercam.png}
+	\caption[DiffuserCam setup and reconstruction pipeline]{DiffuserCam setup and reconstruction pipeline. Image taken from \cite{kuoDiffuserCamDiffuserBasedLensless2017}.}
+\end{figure*}
+
+\subsection{Mission Description}
+
+\todo{ChiPySat requirements table. It must be somewhere in the laptop.}
 
 \begin{figure}[h]
 	\acuse{IMU,MPPT,UHF,USB,SD}%
@@ -4862,6 +5001,7 @@ During POQUITO's development, the team also worked on the ground segment, with t
 	\caption{Internal block diagram of the ChiPySat system}
 	\label{fig:c_chipysat_block}
 \end{figure}
+
 
 
 \FloatBarrier
@@ -4940,18 +5080,28 @@ Both of the above tests assume a comparison between \textbf{two groups}; in this
 The numerical data for these tests is shown in \Cref{tab:c_aggregate_data}. Before applying the above statistical tests, the data is converted to a \textbf{relative form, in relation to the actual observed development time/cost, for each project}. This transformation is performed in order to reduce the impact of the \textbf{inherent scaling} associated with the different technical sizes of each project. \todo{How is risk quantified?}
 
 \begin{table*}[h]
-\begin{tabularx}{\linewidth}{@{}lXl@{\hskip 1em}S[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
+\begin{tabularx}{\linewidth}{@{}lXcS[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
 \toprule
-Project & Analysis Type & No.\@ of Treatments & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
-\multirow{3}{*}{ChipSat-1} & Actual & 4 & 478 & 8930 & 2 \\
- & Counterfactual (SCS methodology used) & 5 & 550 & 7830 & 2 \\
- & Counterfactual (SCS methodology not used) & 0 & 826 & 7860 & 3 \\
-\multirow{2}{*}{AI4Space} & Actual & 5 & 450 & 10000 & 2 \\
- & Counterfactual (SCS methodology not used) & 0 & 550 & 8000 & 3 \\
-\multirow{2}{*}{POQUITO} & Actual & 5 & 450 & 12000 & 2 \\
- & Counterfactual (SCS methodology not used) & 0 & 550 & 15000 & 2 \\
-\multirow{2}{*}{ChiPySat} & Actual & 2 & 100 & 2000 & 2 \\
- & Counterfactual (SCS methodology not used) & 0 & 120 & 500 & 3 \\ \bottomrule
+Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
+\multirow{3}{*}{ChipSat-1} 
+ & Actual                                    & 4 & 478 & 8930 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
+ & Counterfactual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
+ \midrule
+\multirow{3}{*}{AI4Space} 
+ & Actual                                    & 5 & 468 & 4900 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
+ & Counterfactual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
+ \midrule
+\multirow{3}{*}{POQUITO}
+ & Actual                                    & 3 & 759 & 26750 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
+ & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
+ \midrule
+\multirow{2}{*}{ChiPySat} 
+ & Actual                                    & 6 & 100 & 2000 & 2 \\
+ & Counterfactual (SCS methodology unused) & 0 & 120 & 500 & 3 \\
+ \bottomrule
 \end{tabularx}
 \caption{Case-study counter-factual analysis aggregate data}
 \label{tab:c_aggregate_data}
@@ -5116,14 +5266,20 @@ project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083
 
 \draft{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
 
+\draft{[TODO]}
+
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
 
+\draft{[TODO]}
+
 \begin{invisible}
 \chapter{How Software Paradigms can aid SCS Development: A modern C++ serialiser}
-\end{invisible}
+
 
 \chapter{PCB schematics}
+
+\end{invisible}
 
 \begin{fullwidth}
 \printbibliography[heading=bibnumbered]

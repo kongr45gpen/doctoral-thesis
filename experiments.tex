@@ -42,6 +42,9 @@
 \def\acs#1{\textsf{#1}} 
 \def\acsp#1{\textsf{#1s}}
 \def\acl#1{\textsf{Big Design Up Front}} 
+\def\draft#1{\textcolor{red}{#1}}
+\def\todo#1{\textcolor{blue}{#1}}
+\def\qtyproduct#1#2{#1}
 
 \usepackage{tabularx}
 \usepackage{booktabs}
@@ -55,8 +58,6 @@
 %\subsection{Kalin Imera}
 %\subsubsection{Na exete mia kalh mera}
 \paragraph{Omorfh mera}
-	
-I like to discombobulate my enemies every day.
 
 \begin{figure}
 	\includegraphics{media/graphics/NASASYE}
@@ -223,6 +224,54 @@ AAAA
 \end{figure}
 
 AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
+
+\newgeometry{left=0.2cm, right=0.2cm, top=0.2cm, bottom=3cm,}%
+\begin{landscape}%
+	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}%
+	%
+	\todo{Why this table does not stay in the proper page is beyond me}
+
+	\begin{tabularx}{\linewidth}{@{}lllllX@{}}
+		\toprule
+		\textbf{\#} & \textbf{Type} & \textbf{Name} & \textbf{Developer} & \textbf{Year} & \textbf{Description} \\ \midrule
+		\multicolumn{6}{c}{Pico-satellites} \\ \midrule
+
+		1 & System & \href{https://gitlab.com/librespacefoundation/qubik/}{QUBIK} & Libre Space Foundation & 2019 & 1p radio-amateur PocketQube for \acs{LEO} satellite identification and tracking \\
+
+		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \draft{????} & \draft{?}p PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
+
+		% $50SAT (1.5P), Morehead State university 
+		% https://www.albaorbital.com/open-source-pocketqube#:~:text=%2450SAT%20%281%2E5P%29%2C%20Morehead%20State%20university
+		% Based on the material available, not considered open-source and not possible to reuse.
+		
+		3 & System & \href{https://github.com/kcglab/satllazero}{SATLLA-0} & Ariel University & \draft{????} & 2p system designed as a starting point for academic institutions, based on Arduino software. \\
+
+		4 & System & Tartan Artibeus & Carnegie Mellon University & \draft{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
+
+		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & \draft{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
+
+		x & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
+
+		x & Subsystem & \href{https://gitlab.com/librespacefoundation/pq9ish}{PQ9ISH COMMS} & Libre Space Foundation & 2017 & Communications subsystem based on PQ9 \cite{PQ91} \\
+
+		\multicolumn{6}{c}{\todo{Add more stuff to the list...}} \\
+
+		\midrule
+		\multicolumn{6}{c}{Femto- and atto-satellites} \\ \midrule
+
+		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \draft{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
+
+		x & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \draft{???} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
+
+		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \draft{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
+	
+		\bottomrule
+	\end{tabularx}%
+\end{landscape}
+\restoregeometry
+
+AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
+
 
 \end{document}
 

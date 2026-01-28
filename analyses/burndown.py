@@ -273,7 +273,7 @@ def tradeoff(df, output):
         # Highlight base point(s) (CF # == 0)
         if idx in base_indices:
             ax.scatter(x, y, s=100, marker='D', facecolor='yellow', edgecolor='black', linewidth=1.5, zorder=6)
-            texts.append(ax.text(x, y - 30, "No treatments", va='top', ha='center', fontsize=10, fontweight='bold', zorder=7,
+            texts.append(ax.text(x, y + 30, "No treatments", va='bottom', ha='center', fontsize=10, fontweight='bold', zorder=7,
                     bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', alpha=0.95)))
         else:
             ax.scatter(x, y, s=60, zorder=3)
