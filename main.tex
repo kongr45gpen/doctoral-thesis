@@ -4990,9 +4990,30 @@ Owing to the short (5-month) duration of my research visit, the intention of the
 	\label{fig:c_diffusercam_setup}
 \end{figure*}
 
-\subsection{Mission Description}
+\begin{table*}[]
+\begin{tabularx}{\textwidth}{@{}llXl@{}}
+\toprule
+\textbf{ID} & \textbf{Type} & \textbf{Name} & \textbf{MoSCoW} \\ \midrule
+REQ-010 & Engineering & The spacecraft shall be < 10 × 10 × 2.2 cm in size & Must have \\
+REQ-020 & Engineering & The spacecraft shall be < 7 × 7 × 1 cm in size & Should have \\
+REQ-080 & Design & The spacecraft shall be based on the PyCubed-mini platform & Must have \\
+REQ-090 & Engineering & The spacecraft shall support bidirectional RF comms in the UHF   band & Must have \\
+REQ-100 & Engineering & The spacecraft shall host an earth-pointing lensless camera & Must have \\
+REQ-110 & Engineering & The spacecraft shall   perform on-board image processing, at least a convolution mask & Must have \\
+REQ-120 & Engineering & The spacecraft shall host 3-axis magnetorquers and perform  detumbling & Should have \\
+REQ-130 & Engineering & The spacecraft shall perform nadir pointing with APE <20° & Could have \\
+REQ-140 & Engineering & The spacecraft shall operate during eclipse & Should have \\
+REQ-150 & Engineering & The batteries shall be able to charge at < 0°C & Could have \\
+REQ-160 & Testing & REQ-150 shall be verified in a TVAC chamber & Could have \\
+REQ-170 & Engineering & The batteries can charge via USB & Could have \\
+REQ-200 & Design & The spacecraft shall be   programmed in CircuitPython/MicroPython via USB & Should have \\
+REQ-210 & Design & The spacecraft shall be programmed in Rust & Should have \\
+REQ-220 & Design & The spacecraft shall be programmed in ETH Prusti & Could have \\ \bottomrule
+\end{tabularx}
+\caption{ChiPySat system requirements}
+\end{table*}
 
-\todo{ChiPySat requirements table. It must be somewhere in the laptop.}
+\subsection{Mission Description}
 
 \begin{figure}[h]
 	\acuse{IMU,MPPT,UHF,USB,SD}%
@@ -5036,24 +5057,114 @@ For energy storage, we designed the system around \acs{COTS} pouch-cell batterie
 	\item An external non-volatile memory was added, after experimentation showed that internal system memory could be insufficient for image processing.
 \end{itemize}
 
-\todo{Is there anything I forget? (Note the redesign request)}
+\todo{Is there anything I forget? (Note the redesign request) TODO: FOCUS on performance as a goal - we should do very fast computation using a very small system (is there a paper about it)}
 
 The first iteration lasted approximately 4 months, including an initial familarisation with the PyCubed-Mini platform, hardware design, software development\footnote{Done on development boards when hardware was not available.}, integration and testing. After completing functional testing and coding for the first iteration, I started working on the second, however \draft{due to an end of internship the schematic/layout was completed but not procured.}
 
 \begin{figure}
 	\centering
-	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_experiment.jpg}}%
+	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_experiment.jpg}}%
 	\hspace{2cm}%
-	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_psf.jpg}}%
+	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_psf.jpg}}%
 	\\%
-	\subfloat[]{\includegraphics[height=3cm]{example-image-a}}%
+	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_input.jpg}}%
 	\hspace{3.3cm}%
-	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_result.png}}%
-	\caption{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) \draft{Sensor output}. (d) Reconstructed image.}
+	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_result.png}}%
+	\caption{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) Sensor output. (d) Reconstructed image (rotated 90°).}
 	\label{fig:c_chipysat_results}
 \end{figure}
 
-\newthought{The results} are shown in \Cref{fig:c_chipysat_results} and are successful.
+\newthought{The results} of an off-board processing experiment are shown in \Cref{fig:c_chipysat_results}, and demonstrate the successful application of the DiffuserCam process in terms of hardware and software. In this experiment, the image capture was performed entirely by the ChiPySat lens-less camera and processor, with the data transferred to a desktop computer via \acs{USB}. However, the processing (deconvolution) of the image took place in the computer, and not the satellite.
+
+For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the Micropython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of \begin{enumerate*} \item a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; \item the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and \item  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. \end{enumerate*}. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
+
+Resolving the reduced performance issue was one of the key goals of the second ChiPySat iteration, for which we decided to implement the following measures:
+\begin{itemize}[itemsep=-2pt]
+	\item Switch to a statically-typed and statically-allocated programming language, such as C++.
+	\item Use OpenMV as a library and adopt its camera drivers, instead of using the entire OpenMV \acs{API}.
+	\item Implement an external \acl{RAM} to reduce memory shortage risk. \todo{Dual core?}
+\end{itemize}
+
+For the second iteration, I implemented the \acs{FFT}-based optimisation algorithm in C, showing the possibility of performing the deconvolution on-board without additional external hardware. I also designed the schematics for the second iteration of the \acs{PCB} with the above changes. However, as I was reaching the end of my research visit, I was not able to complete the integration and testing of this iteration.
+
+\begin{table}[h]
+	\caption[ChiPySat cost budget]{ChiPySat cost budget}
+	\label{tab:c_chipysat_costs}
+	\begin{tabularx}{\textwidth}{@{}lXS@{}}
+		\toprule
+		No. & \textbf{Cost Driver}      & {Value (USD)} \\ \midrule
+		1   & \textbf{Tooling}          & 300 \\ 
+		2   & \textbf{Components}       & 600 \\
+		3   & \textbf{\acl{PCB}}        & 100 \\
+		\midrule
+		& \textbf{Total Costs}          & 1000 \\ \bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{Evaluation}
+
+While ChiPySat was a shorter project than the rest, involving a considerably smaller team and \draft{no formal qualification goals}, it can still serve as an interesting point for counter-factual analysis. The main differentiating points compared to previous case studies are \begin{enumerate*}
+	\item the small, non-standardised form factor of a fully independent spacecraft; and
+	\item the implementation of an unknown experimental payload, where there is no guarantee of feasibility.
+\end{enumerate*}
+
+\begin{table*}[h]
+	\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
+	\toprule
+\# & Treatment & \multicolumn{1}{l}{Applied?} & \multicolumn{3}{c}{Effect on} \\ \cmidrule(lr){4-6}
+ &  & Y/N & \multicolumn{1}{c}{Cost (EUR)} &  \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & 0  & \qty{-180}{hours} & Higher \\
+2 & Soldering \acsp{PCB} in-house & \textcolor{nice}{Y} & -2000 & \qty{+24}{hours} & Lower  \\
+3 & Multi-step development & \textcolor{nice}{Y} & -350 & \qty{-160}{hours} & Higher  \\
+% -60 hours if consider 2nd iteration is removed
+% -160 hours if you don't
+4 & Short iterations & \textcolor{bad}{N} & +800 & \qty{-42}{hours} & No change  \\
+%5 & Iterating over partitions & \textcolor{nice}{Y} & -1700 & \qty{-26}{hours} & No change \\
+6 & Robust software framework & \textcolor{bad}{N} & 0 & \qty{-40}{hours} & Lower \\
+7 & \acl{RPA} & \textcolor{bad}{N} & 0 & \qty{+40}{hours} & Lower \\
+\bottomrule
+\end{tabularx}
+\caption{Counter-factual evaluation for ChiPySat}
+\label{tab:c_chipysat_counterfactuals}
+\end{table*}
+
+For the analysis, I considered a development time of \qty{252}{hours}, divided equally between software and hardware. The counter-factual evaluation of each \acs{SCS} methodology treatment (shown in \Cref{tab:c_chipysat_counterfactuals}) is as follows:
+\begin{enumerate}
+	\item \textbf{Bypassing structural/thermal analysis}:
+	Similar to the previous case studies (\Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation,sec:CASESTUDIES_poquito_lessons}), combined with the relatively simple \acs{PCB}-based configuration of the spacecraft.
+	\item \textbf{External manufacturing}:
+	Early in the mission, we considered the tradeoff between in-house and external \acs{PCB} assembly, comparing different available options. We decied to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
+
+	\item \textbf{Iterative multi-step development}:
+	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration. The reasoning for this argument is provided as follows:
+	\begin{itemize}[itemsep=-2pt]
+		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
+		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \draft{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
+		\item The re-use of PyCubed-Mini and OpenMV in their entirety could guarantee the reduction of preliminary and boilerplate work, but not performance. While PyCubed-Mini was understood to be suitable for spacecraft control, with a very smooth learning curve, OpenMV was not suitable for the project in its default configuration.
+	\end{itemize}
+
+	\item \textbf{Short iterations}:
+	ChiPySat's first iteration, lasting 4 months, cannot be considered short, due to the design effort required beforehand. While the actual duration of the iteration was long, it represented a small amount of person-hours, owing to the small team involved. Nevertheless, it would be possible for ChiPySat to perform even shorter, agile-like iterations, by moving to manufacturing more ``aggressively''.
+
+	I consider that using shorter (e.g.\@2-month long) iterations would reduce the overall development time by the initial design time, and would increase it by the time required for 1 additional \acs{PCB} revision. The development flow showed that some of the earlier designs considered would not have increased the number of non-conformances or incomplete requirements, showing that \draft{risk is not increased} by shortening iterations.
+
+	\item \textbf{Robust software framework}:
+	As ChiPySat's development experienced issues due to the performance of the frameworks selected, I consider that the use of a more well-understood platform in terms of embedded systems (such as C++ or Rust) would reduce non-conformances, and therefore risk. I also consider a 3-week reduction in development time, related to the optimisation efforts for the Python-based framework.
+
+	\item \textbf{Use of \acl{RPA}}:
+	As with previous case studies, the use of automation for bus and payload verification would decrease risk thanks to the guarantee of repeatability. However, because of the more \draft{``physical''} nature of the payload, I consider that setting up an automation platform would have taken up more development time. Based on previous experience with AI4Space, I consider this equivalent one week of full-time work.
+
+
+	\item Note on \textbf{Iterating over partitions}:
+	Due to the simplicity and monolithic architecture of ChiPySat, I do not consider that partitioning the system is is practical in this project.\footnote{For example, even if one plans to operate on the payload only (lens-less camera), it is still required to implement a microcontroller-based data interface. The microcontroller requirement flows down to \draft{the rest of the bus.}}
+\end{enumerate}
+
+\begin{figure}
+	\includegraphics{analyses/cf_chipysat_trade}
+	\caption{ChiPySat \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+\end{figure}
+
 
 \FloatBarrier
 \section{Results}
@@ -5149,9 +5260,10 @@ Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multi
  & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
  & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
  \midrule
-\multirow{2}{*}{ChiPySat} 
- & Actual                                    & 6 & 100 & 2000 & 2 \\
- & Counterfactual (SCS methodology unused) & 0 & 120 & 500 & 3 \\
+\multirow{3}{*}{ChiPySat} 
+ & Actual                                    & 3 & 252 & 1000 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
+ & Counterfactual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
  \bottomrule
 \end{tabularx}
 \caption{Case-study counter-factual analysis aggregate data}
