@@ -18,9 +18,10 @@
 %\usepackage{graphicx}
 %\usepackage{siunitx}
 \usepackage{xcolor-material}
-\usepackage{pdflscape}
-\usepackage{caption}
-\usepackage{layout}
+%\usepackage{pdflscape}
+%\usepackage{caption}
+%\usepackage{layout}
+\usepackage{siunitx}
 
 
 \hypersetup{colorlinks}
@@ -200,44 +201,51 @@ Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs
 
 AAAA
 
-\newgeometry{left=0.2cm, right=0.2cm, top=0.2cm, bottom=6.5cm,}%
-\begin{landscape}%
-    %\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm, headheight=0cm, footskip=0cm, marginpar=0cm,textwidth=15cm}%
-    \begin{fullwidth}%
-        \centering
-        %\layout*%
-	    \includegraphics[height=.8\textheight]{media/graphics/TheMethodologyTM.pdf}%
-	    \captionof{figure}{Overview of the proposed \acl{SCS} Systems Engineering methodology}%
-    \end{fullwidth}%
-\end{landscape}%
-\restoregeometry%
+% \newgeometry{left=0.2cm, right=0.2cm, top=0.2cm, bottom=6.5cm,}%
+% \begin{landscape}%
+%     %\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm, headheight=0cm, footskip=0cm, marginpar=0cm,textwidth=15cm}%
+%     \begin{fullwidth}%
+%         \centering
+%         %\layout*%
+% 	    \includegraphics[height=.8\textheight]{media/graphics/TheMethodologyTM.pdf}%
+% 	    \captionof{figure}{Overview of the proposed \acl{SCS} Systems Engineering methodology}%
+%     \end{fullwidth}%
+% \end{landscape}%
+% \restoregeometry%
 
-\begin{figure}[ht]
-    \centering
-    % Resizebox forces the entire contents to match the page width
-    \resizebox{\textwidth}{!}{%
-        \includegraphics[height=1cm, ]{media/pictures/P1000717_resized.jpg}%
-        \hspace*{0.1cm}%
-        \includegraphics[height=1cm, ]{media/pictures/P1000724_resized.jpg}%
-    }
-    \caption{Various types of acceptable food}
-    \label{fig:perfect_fit}
-\end{figure}
+% \begin{figure}[ht]
+%     \centering
+%     % Resizebox forces the entire contents to match the page width
+%     \resizebox{\textwidth}{!}{%
+%         \includegraphics[height=1cm, ]{media/pictures/P1000717_resized.jpg}%
+%         \hspace*{0.1cm}%
+%         \includegraphics[height=1cm, ]{media/pictures/P1000724_resized.jpg}%
+%     }
+%     \caption{Various types of acceptable food}
+%     \label{fig:perfect_fit}
+% \end{figure}
 
 AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
 
-\begin{figure}
-	\centering
-	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_experiment.jpg}}%
-	\hspace{2cm}%
-	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_psf.jpg}}%
-	\\%
-	\subfloat[]{\includegraphics[height=3cm]{example-image-a}}%
-	\hspace{3.3cm}%
-	\subfloat[]{\includegraphics[height=3cm]{media/pictures/chipysat_result.png}}%
-	\caption{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) \draft{Sensor output}. (d) Reconstructed image.}
-\end{figure}
-
+\begin{table*}[ht]
+\centering
+\caption{Statistical Analysis of Development Parameters}
+\label{tab:stat_results}
+\begin{tabular}{llSSS}
+\toprule
+\textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
+\midrule
+Development Time (r.) & Mann-Whitney \(U\) & 16.000 & 0.0286 & \text{---} \\
+                 & \(t\)-test         & 6.181  & 0.0008 & 5.9552 \\
+\addlinespace
+Cost (relative)  & Mann-Whitney \(U\) & 8.500  & 1.0000 & \text{---} \\
+                 & \(t\)-test         & 0.503 & 0.6425 & 3.8741 \\
+\addlinespace
+Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
+                 & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
+\bottomrule
+\end{tabular}
+\end{table*}
 AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
 
 

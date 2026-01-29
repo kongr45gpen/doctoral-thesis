@@ -5076,7 +5076,7 @@ The first iteration lasted approximately 4 months, including an initial familari
 
 \newthought{The results} of an off-board processing experiment are shown in \Cref{fig:c_chipysat_results}, and demonstrate the successful application of the DiffuserCam process in terms of hardware and software. In this experiment, the image capture was performed entirely by the ChiPySat lens-less camera and processor, with the data transferred to a desktop computer via \acs{USB}. However, the processing (deconvolution) of the image took place in the computer, and not the satellite.
 
-For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the Micropython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of \begin{enumerate*} \item a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; \item the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and \item  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. \end{enumerate*}. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
+For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the Micropython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of 1.\@ a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; 2.\@ the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and 3.\@  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
 
 Resolving the reduced performance issue was one of the key goals of the second ChiPySat iteration, for which we decided to implement the following measures:
 \begin{itemize}[itemsep=-2pt]
@@ -5287,46 +5287,78 @@ Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multi
 	\caption{Scatter plot of project risk vs.\@ treatments applied}
 \end{figure}
 
+
 \begin{figure}[p]
 	\includegraphics{analyses/sensitivity_boxplot_development_relative.pdf}
 	\caption{Box plot of project development time vs.\@ treatments applied}
+	\label{fig:c_plot_box_time}
 \end{figure}
 
 \begin{figure}[p]
 	\includegraphics{analyses/sensitivity_boxplot_cost_relative.pdf}
 	\caption{Box plot of project cost vs.\@ treatments applied}
+	\label{fig:c_plot_box_cost}
 \end{figure}
 
 \begin{figure}[p]
 	\includegraphics{analyses/sensitivity_boxplot_risk_relative.pdf}
 	\caption{Box plot of project risk vs.\@ treatments applied}
+	\label{fig:c_plot_box_risk}
 \end{figure}
 
-The results of the analysis are shown in \Cref{tab:stat_results}.
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_hexbin_development_relative.pdf}
+	\caption{Sensitivity plot of project development time vs.\@ treatments applied}
+	\Cref{sec:c_plot_sensitivity_time}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_hexbin_cost_relative.pdf}
+	\caption{Sensitivity plot of project cost vs.\@ treatments applied}
+	\Cref{sec:c_plot_sensitivity_cost}
+\end{figure}
+
+\begin{figure}[p]
+	\includegraphics{analyses/sensitivity_hexbin_risk_relative.pdf}
+	\caption{Sensitivity plot of project risk vs.\@ treatments applied}
+	\Cref{sec:c_plot_sensitivity_risk}
+\end{figure}
 
 \begin{table*}[ht]
 \centering
 \caption{Statistical Analysis of Development Parameters}
+\setfloatalignment{t}
 \label{tab:stat_results}
-\begin{tabular}{llrrr}
+\begin{tabular}{llSSS}
 \toprule
 \textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
 \midrule
-Development Time (r.) & Mann-Whitney \(U\) & 14.000 & 0.1143 & --- \\
-                 & \(t\)-test         & 2.309  & 0.0934 & 3.416 \\
+Development Time (r.) & Mann-Whitney \(U\) & 16.000 & 0.0286 & \text{---} \\
+                 & \(t\)-test         & 6.181  & 0.0008 & 5.9552 \\
 \addlinespace
-Cost (relative)  & Mann-Whitney \(U\) & 6.500  & 0.8857 & --- \\
-                 & \(t\)-test         & -0.573 & 0.5994 & 3.716 \\
+Cost (relative)  & Mann-Whitney \(U\) & 8.500  & 1.0000 & \text{---} \\
+                 & \(t\)-test         & 0.503 & 0.6425 & 3.8741 \\
 \addlinespace
-Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & --- \\
-                 & \(t\)-test         & 0.408  & 0.6981 & 5.647 \\
+Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
+                 & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
+The results of the analysis are shown in \Cref{tab:stat_results}.
+Combined with the visual sensitivity plots of \Cref{fig:c_plot_box_time,fig:c_plot_box_cost,fig:c_plot_box_risk,fig:c_plot_sensitivity_time,fig:c_plot_sensitivity_cost,fig:c_plot_sensitivity_risk}, the following observations can be made:
+\begin{enumerate}[itemsep=-1pt]
+	\item The \textbf{development time} of a project shows a clear \textbf{correlation} with the level of the \acs{SCS} methodology applied. One of the clearest drivers of development time reduction is the selection of a multi-step methodology, which foregoes a typically long \acs{BDUF} design step, especially when combined with minor optimisations in the programmatic and technical aspects of development. While not all treatments have a definitively positive effect on development time, a general reduction trend can be observed.
+	\item The development \textbf{cost}\footnote{This cost does not include labour, insurance, ground segment or asset costs. See \draft{\Cref{sec:LITERATURE_metrics} for the relevant explanation.}} of a project is \textbf{not correlated} to the full application or not of the \acs{SCS} methodology. Most iterative methods that are applied on physical systems tend to increase costs. However, this is highly affected by the project context, and especially different allocations on budget categories.
+	\item The project \textbf{risk} shows \text{no statistically significant correlation} to the application or not of the \acs{SCS} methodology. Based 
+\end{enumerate}
+
 
 
 %\draft{The PAWN method [1] is a moment-independent approach to Global Sensitivity Analysis (GSA). It is described as producing robust results at relatively low sample sizes (see [2]) for the purpose of factor ranking and screening.}
+
+%The results of \Cref{tab:stat_results}, combined with the visual sensitivity plots in 
 
 \begin{comment}
 \FloatBarrier
@@ -5414,15 +5446,38 @@ project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083
 \chapter{Conclusion}
 \label{chap:CONCLUSION}
 
-
 \section{Summary}
+
+This thesis presented a systems engineering methodology for the development of \acf{SCS}, with a focus on the reduction of development time without a negative impact on technical risk.
+The methodology mainly involves the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \draft{\emph{verification \& validation}}. Its foundation mainly lies on agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
+
+\begin{table*}[h]
+\def\arraystretch{1.2}
+\begin{tabularx}{\textwidth}{lXX}
+	\toprule
+	& \textbf{Thesis Objective} & \textbf{Addressed by} \\
+	\midrule
+	1 & Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions. & Initial literature review of small space systems environments and open problems (\Cref{sec:INTRODUCTION_defining_systems_engineering,sec:INTRODUCTION_research_gaps}), detailed literature review of \acs{SCS} development environment and constraints (\Cref{sec:LITERATURE_subcubesat}), interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_interviews}). \\
+	2 & Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches. & Definition of \acs{SYE} metrics based on available literature and \acs{SCS} needs (\Cref{sec:LITERATURE_metrics}). \\
+	3 & Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}. & Investigation of current systems engineering \acs{SOTA} (\Cref{sec:LITERATURE_systems_engineering}), elaboration of a \acs{SCS} methodology (\Cref{chap:METHODOLOGY}). \\
+	4 & Validate the new methodology on at least one space mission that will succeed in environmental qualification. & Four case studies performed in iterative fashion based on action-research principles and counterfactual evaluation (\Cref{chap:CASESTUDIES}) \\
+	\bottomrule
+\end{tabularx}
+\caption{Thesis objectives and how they were addressed}
+\end{table*}
+
+\todo{
+	- What did the thesis do (1 paragraph)
+	- Thesis objectives and how they were addressed
+	- Big big summary
+}
 
 \section{Key Findings and Contributions}
 
-\section{Limitations and Threats to Validity}
+\todo{Limitations and Threats to Validity}
 
 \section{Future Work}
-
+Just one paragraph is enough
 \appendix
 
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
