@@ -23,6 +23,7 @@
 %\usepackage{layout}
 \usepackage{siunitx}
 \usepackage{adjustbox}
+\usepackage[inline]{enumitem}
 
 
 \hypersetup{colorlinks}
@@ -41,6 +42,7 @@
 \usepackage{pgfplots}
 \usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
 
+\def\acf#1{Big Design Up Front (#1)} 
 \def\acs#1{\textsf{#1}} 
 \def\acsp#1{\textsf{#1s}}
 \def\acl#1{\textsf{Big Design Up Front}} 
@@ -338,7 +340,43 @@ Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
 	\end{tabular}
 \end{table*}
 
+\newpage
+\FloatBarrier
 
+\begin{fullwidth}
+	As of 2026, \draft{549} satellites weighing less than \SI{1}{\kilogram} have been launched into Earth orbit.
+	Compared to their larger counterparts, CubeSats, these ``\acf{SCS}'' provide benefits in terms of size, cost and mass, at the expense of reduced functionality and performance.
+	%
+	%\acs{SCS} teams are characterised by small sizes, limited budgets.
+	%
+	%The reduced technical size and complexity of \acs{SCS} have made them suitable for shorter development cycles and \draft{increased understanding}.
+	%However, no established systems engineering methodology currently exists for these spacecraft.
+	%
+	%As there is currently no established systems engineering methodology for these miniaturised spacecraft, most teams adopt the development approaches of CubeSat, or follow ad-hoc processes.
+	However, despite their reduced complexity compared to CubeSats, \acl{SCS} still experience a high failure rate in orbit, and a median development time of \qty{2}{years}, which is significantly higher than the typical \qtyrange{1}{1.5}{year} turnaround for \acs{SCS} launch opportunities. \todo{AI4Space and ChipSat-1 are VERY GOOD EXAMPLES of that where we had a specific 1-year limitation (also the other missions as well tbh)}
+	Scholars have linked these observations to inadequate systems engineering practices and \draft{insufficient} project planning.
+	Currently, the majority of \acs{SCS} developers either use ad-hoc processes or adapt existing methodologies from larger spacecraft.
+	These methodologies are deemed unsuitable for the different technical and environmental characteristics of \acs{SCS} projects, either because of the significant overhead they introduce, or because of their incapability to integrate past lessons learned from similarly-sized missions.
+
+	\vspace{-1cm}
+	\newthought{This thesis presents} a tailored systems engineering methodology for the development of \acl{SCS}, which covers the aspects of Technical Management, System Description, and System Realisation for these systems. The goal of this methodology is to reduce the development duration between development start and qualification, with an aim of consistently achieving \qtyrange{1}{1.5}{year}-missions, without an adverse effect on technical risk.
+
+	The proposed methodology incorporates the practices of agile software engineering, aided by the considerably low manufacturing cost and difficulty of an \acs{SCS} system. The methodology is founded on an iterative lifecycle process model, which revolves around rapid prototyping, short iterations, and continuous system-level verification. Based on this model, more methods suited for \acs{SCS} are proposed, targetting requirements management, technical planning and engineering data management.
+
+	Additionally, the methodology covers technical aspects of the development process, by providing a set of guidelines for defining a design solution and for verification. It is found that the concepts of modularity and reuse have more limited benefits compared to larger spacecraft, while verification via reduced, automated testing instead of analysis can reduce development duration without reducing confidence in the system design. Furthermore, the use of different software development practices is evaluated, showing that an appropriate selection of programming language can generally increase software reliability.
+	
+	The methodology is validated by its implementation on four internal case studies which returned successful results from testing, qualification or flight: \begin{enumerate*}
+		\item a hosted ChipSat mission to demonstrate \acl{VLC},
+		\item a hosted \acs{PCB} payload to demonstrate \acs{AI} edge computing,
+		\item a 1p PocketQube with 2 technology demonstration payloads, and
+		\item an independent ChipSat with a lens-less camera.
+	\end{enumerate*} %Three of these missions were successfully qualified, and one was launched into orbit.
+	
+	By performing counter-factual analysis on the programmatic data generated in these missions, it is estimated that the proposed methodology can reduce development duration by an average of \qty{40}{\percent} compared to waterfall-style approaches. The biggest influences towards a short development time are found to be the \emph{reduced analysis/testing} approach (average 29\% reduction) and the \emph{multi-step iterative process} (average 25\% reduction), with other factors showing a less significant correlation. Risk is found to be affected, either negatively or positively, by the individual \draft{treatments} of a methodology, but not by its complete application.
+
+	From the presented analysis it can be concluded that the methodology can be applied to Sub-CubeSat systems to reduce development duration, but requires
+
+\end{fullwidth}
 
 \end{document}
 
