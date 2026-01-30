@@ -185,56 +185,7 @@ under the License.
 \chapter*{Contribution}
 \todo{I did this. I also did that. I didn't do that.}
 
-\begin{table*}[h]
-	\caption{Contribution matrix for the various projects developed within the scope of this work}
-	
-	\colorlet{AIV}{MaterialDeepOrange700}
-	\colorlet{ADCS}{MaterialOrange800}
-	\colorlet{Comms}{MaterialGreen700}
-	\colorlet{Payload}{MaterialPurple700}
-	\colorlet{Traj}{MaterialTeal700}
-	\colorlet{ProductOwner}{MaterialGrey800}
-	\colorlet{Manager}{MaterialGrey700}
-	\colorlet{Structural}{MaterialBrown700}
-	\colorlet{Systems}{MaterialLightBlue700}
-	\colorlet{Hardware}{MaterialLime800}
-	
-	\begin{adjustbox}{width=\textwidth}
-% LTeX: enabled=false
-\begin{tabular}{@{}lllll@{}}
-	\toprule
-	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
-	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
-%	A.~F.~Bühler &  &  &  &  \\
-	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
-	A.~P.~Du &  &  &  &  \\
-	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\
-	C.~M.~Moreira &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	D.~Aouada &  & \textcolor{ProductOwner}{Product Owner} &  &  \\
-	J.~Laur & \textcolor{AIV}{AIV Engineer} &  &  &  \\
-	J.~M.~Sanabria &  &  & \textcolor{Comms}{Communications Engineer} &  \\
-	J.~Thoemel & \textcolor{Comms}{Communications Engineer} & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  \\
-	L.~Pauly &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	L.~Rana & \textcolor{Payload}{Flight Dynamics Engineer} &  &  &  \\
-	M.~Alandihallaj &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	M.~Ortiz del Castillo &  & \textcolor{Systems}{Systems Engineer}, \textcolor{Hardware}{Hardware Engineer} &  &  \\
-	M.~Sachidanand &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	N.~Khera &  &  & & \textcolor{AIV}{AIV Engineer}  \\
-	N.~Sajjad &  &  & \textcolor{ADCS}{ADCS Engineer} &  \\
-	O.~Borgue & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  &  \\
-	P.~Fisch &  &  &  &  \\
-	S.~Gouvalas &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	S.~K.~Singh &  &  & \textcolor{Hardware}{Payload Hardware Engineer} &  \\
-	T.~D'costa &  &  & \textcolor{Structural}{Structural Engineer} &  \\
-	V.~Franzese &  &  & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  \\
-	Z.~Manchester &  &  & & \textcolor{Manager}{Project Manager}  \\ \bottomrule
-\end{tabular}
-% LTeX: enabled=true
-	\end{adjustbox}
-	\vspace{1ex}
-\end{table*}
+
 
 %%
 % Start the main matter (normal chapters)
@@ -2686,7 +2637,7 @@ In this section, I will go into more detail on the decisions behind selecting an
 \subsection{Defining a Design Solution}
 \label{sec:METHODOLOGY_defining_design_solution}
 
-\draft{\begin{itemize}[itemsep=-3ex]
+\todo{\begin{itemize}[itemsep=-3ex]
 		%\item Reuse of existing tech. List of existing tech. Open source satellites
 		%\item Concurrent design
 		\item HW/SW co-design
@@ -3198,7 +3149,7 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 	\label{tab:m_software_requirements}
 	\begin{tabularx}{\linewidth}{@{}lXp{3cm}@{}}
 		\toprule
-		ID & Text & Justification \\ \midrule
+		ID & Text & \todo{Justification} \\ \midrule
 		\multicolumn{3}{c}{Functional Requirements} \\ \midrule
 		100 & The OBSW shall generate TM of internal values, such as OBSW resources, power parameters, and sensor measurements. & \\
 		110 & The OBSW shall provide at least an ``are-you-alive'' \acs{TC} with the corresponding response. & \\
@@ -3232,7 +3183,7 @@ In this architecture, program memory is split into two halves, one holding the w
 
 \begin{figure*}[h]
 	\includegraphics{graphics/software/block.pdf}
-	\caption{Block diagram of typical satellite firmware\draft{TODO}}
+	\caption{Block diagram of typical satellite firmware\todo{TODO}}
 \end{figure*}
 
 \FloatBarrier
@@ -3470,49 +3421,64 @@ More specifically, the execution and testing plan is elaborated into the followi
 The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
 Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
 
-\begin{table}[h]
+\begin{table*}[h]
 	\caption{Static Analysis results}
 	\label{tab:m_software_fuzz_static}
 	\begin{tabular}{@{}lllllll@{}}
 		\toprule
 		& AcubeSAT (C++) & Antaris (C) & PyCubed (Python) & KubOS &  &  \\ \midrule
-		Source Lines of Code & 10601 & 10007 & 2298 & 31212  &  &  \\
+		Source Lines of Code & 10601 & 10007 & 2298 & 31212  & \draft{[TODO]}  &  \\
 		Token Count & 51024 & 48182 & 10844 & 136180  &  &  \\
-		Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
+		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
+		Average \draft{MCCN} & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
 	\end{tabular}
-\end{table}
+\end{table*}
 
-\begin{table}[h]
+\begin{table*}[h]
 	\caption{Functional test results}
 	\label{tab:m_software_fuzz_functional}
-	\begin{tabular}{@{}llllllll@{}}
+	\begin{tabular}{@{}llllll@{}}
 	\toprule
-	Test Type & Measurement & UpSat (C) & AcubeSAT (C++) & KubOS & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
-	Execution details & Minimum boot time &  & 2s &  & 3 minutes & 2s & 1s \\
-	& Image size &  &  &  &  &  &  \\
-	& RAM requirements &  &  &  &  &  &  \\
-	& Minimum packet latency &  &  &  &  &  &  \\ \midrule
-	Requirements & Requirements passed & 5/5 & 5/5 &  & 5/5 & 5/5 & 5/5 \\
-	& Static tests successful &  &  &  &  &  & 
+	Test Type & Measurement & AcubeSAT (C++) & KubOS & AI4Space (Python) & Prust (Rust) \\ \midrule
+	Execution details & Minimum boot time &  2s &  & 3 minutes & 1s \\
+	& Image size &  &  &  &  \\
+	& RAM requirements &  &  &  &  \\
+	& Minimum packet latency &  &  &  &   \\ \midrule
+	Requirements & Requirements passed & 5/5 & 5/5  & 5/5  & 5/5 \\
+	& Static tests successful &  &  &  & \\
+	\bottomrule
 	\end{tabular}
-\end{table}
+\end{table*}
 
 
-\begin{table}[h]
+% \begin{table*}[h]
+% 	\caption{Fuzzing test results}
+% 	\label{tab:m_software_fuzz_fuzzing}
+% 	\begin{tabular}{@{}llllllll@{}}
+% 		\toprule
+% 		Test Type & Measurement & UpSat (C) & AcubeSAT (C++) & KubOS & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
+% 		\multirow{3}{*}{Unstructured} & Emulated executions &  &  &  &  &  &  \\
+% 		& Solutions &  &  &  &  &  &  \\
+% 		& Distinct solutions &  &  &  &  &  &  \\ \midrule
+% 		\multirow{3}{*}{Structured} & Emulated executions &  &  &  &  &  &  \\
+% 		& Solutions &  & 10 &  & 0 & 2 & 2 \\
+% 		& Distinct solutions &  &  &  &  &  &  \\ \midrule
+% 	\end{tabular}
+% \end{table*}
+
+
+\begin{table*}[h]
 	\caption{Fuzzing test results}
 	\label{tab:m_software_fuzz_fuzzing}
-	\begin{tabular}{@{}llllllll@{}}
+	\begin{tabular}{@{}llllll@{}}
 		\toprule
-		Test Type & Measurement & UpSat (C) & AcubeSAT (C++) & KubOS & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
-		\multirow{3}{*}{Unstructured} & Emulated executions &  &  &  &  &  &  \\
-		& Solutions &  &  &  &  &  &  \\
-		& Distinct solutions &  &  &  &  &  &  \\ \midrule
-		\multirow{3}{*}{Structured} & Emulated executions &  &  &  &  &  &  \\
-		& Solutions &  & 10 &  & 0 & 2 & 2 \\
-		& Distinct solutions &  &  &  &  &  &  \\ \midrule
+		Test Type & Measurement & AcubeSAT (C++) & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
+		\multirow{3}{*}{Structured} & Emulated executions &   &  &  &   \\
+		& Solutions &  10 &  0 & 2 & 2 \\
+		%& Distinct solutions &  &  &  &  &  &  \\ \midrule
+		\bottomrule
 	\end{tabular}
-\end{table}
-
+\end{table*}
 
 
 %\begin{figure*}[h]
@@ -3765,7 +3731,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 	\vspace{2ex}
 \end{table*}
 
-As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I parcipated in four \acs{SCS} projects as a Systems Engineer, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and use the generated data to evaluate the validity of this methodology. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
+As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I participated in four \acs{SCS} projects as a Systems Engineer\footnote{See \Cref{app:contribution_matrix} for information about team members and my contribution to each mission.}, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch. The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and use the generated data to evaluate the validity of this methodology. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
 
 The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and friction points, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}. The projects also represented a diverse range of system types, including a payload, two ChipSat-style spacecraft, and a PocketQube.
 
@@ -3816,11 +3782,19 @@ They follow the techniques of \emph{Pattern Matching} and \emph{Explanation Buil
 	For simplicity, I will not consider interactions between the counter-factual (non)-application of treatments, as that would involve exponentially increaing combinations to explore.
 \end{enumerate}
 
-\marginnote{%
+\marginnote[1cm]{%
 	Regarding the metrics evaluated for the counter-factual analysis:
+
 	\textbf{Cost}: For cost I do not consider labour costs, as their accounting will vary in different organisations. Instead, labour costs should be considered in connection with the development time.
 	
-	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk. In this case, ``risk'' should be perceived as \emph{the probability that a rework (an additional iteration) is needed.} This includes technical in-orbit risk, since \emph{an in-orbit failure implies that ground rework is needed.} Finally, risk is considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from the mission. For example, in the general case, more iterations lead to reduced risk. However, given the information that \emph{the system has been validated}, performing an additional iteration will not decrease risk, since the mission data already demonstrates that sufficient technical performance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
+	\textbf{Risk}: Because there is no quantitative assessment of ChipSat risk and risk factors, I only perform a qualitative evaluation of risk.
+	
+	In this case, ``risk'' should be perceived as %
+	\emph{the probability that a non-conformance is present in the project at qualification or launch.}
+	This definition encompasses the technical aspects of spacecraft functionality. In most cases, a ``non-conformance'' can be understood as a \emph{requirement non-compliance}. \draft{Whether optional requirements (\Cref{sec:METHODOLOGY_requirements}) are considered in this definition depends on each mission, and for this work, ``must have'' and ``should have'' requirements are considered.} In the case of design errors, these non-conformances can appear as ``\acl{DOA}'' or partially successful missions. This definition does not consider programmatic risk of time and budget overruns, as these are considered to be captured by the previous metrics already.
+	%\emph{the probability that a rework (an additional iteration) is needed.} This includes technical in-orbit risk, since \emph{an in-orbit failure implies that ground rework is needed.} Finally, risk is considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from the mission. For example, in the general case, more iterations lead to reduced risk. However, given the information that \emph{the system has been validated}, performing an additional iteration will not decrease risk, since the mission data already demonstrates that sufficient technical performance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
+
+	\draft{All metrics are considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from each mission.} For example, in the general case, more development iterations should lead to reduced risk. However, given the information that \emph{a function has been validated}, performing an additional iteration will not decrease risk, since the validation data already demonstrates that sufficient requirements compliance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
 	
 	%\textbf{Features}: Based on the \acs{MOSCOW} model, desirable (should/can) features are not requirements, but may be included in the final product.
 }
@@ -4200,11 +4174,13 @@ The selection of \ac{RF} transmission characteristics was guided primarily by th
 
 The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \acs{FSK} modulation with a \qty{200}{bit/\second} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
 
+\begin{invisible}
 \begin{table}
 	\caption{ChipSat-1 link budget, performed using Jan King's link tool \todo{todo}}
 	\label{c:chipsat_link_budget}
 	\todo{Link budget table}
 \end{table}
+\end{invisible}
 
 \subsection{Development Flow}
 
@@ -4349,6 +4325,7 @@ From a technical point of view, we gathered the following points during developm
 
 \subsection{Evaluation}
 \label{sec:CASESTUDIES_chipsat_evaluation}
+\label{sec:CASESTUDIES_chipsat1_evaluation}
 
 
 % Be specific about a causal link that led to a specific result that can be identified: By using element of the methodology we had XYZ effect support by XYZ data
@@ -4418,6 +4395,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 \begin{figure}
 	\includegraphics{analyses/cf_chipsat1_trade}
 	\caption{ChipSat-1 \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+	\label{fig:c_tradeoff_chipsat1}
 \end{figure}
 
 %\paragraph{Conclusion}
@@ -4582,7 +4560,7 @@ For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 L
 \end{table*}
 
 \subsection{Evaluation}
-\Cref{sec:CASESTUDIES_ai4space_evaluation}
+\label{sec:CASESTUDIES_ai4space_evaluation}
 
 This counter-factual evaluation of AI4Space follows the same structure as the one of ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}).
 \begin{table*}[h]
@@ -4607,6 +4585,7 @@ This counter-factual evaluation of AI4Space follows the same structure as the on
 \begin{figure}
 	\includegraphics{analyses/cf_ai4space_trade}
 	\caption{AI4Space \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+	\label{fig:c_tradeoff_ai4space}
 \end{figure}
 
 The results of the counter-factual evaluation in \Cref{tab:c_ai4space_counterfactuals} are explained as follows:
@@ -4969,6 +4948,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_poquito_counterfact
 \begin{figure}
 	\includegraphics{analyses/cf_poquito_trade}
 	\caption{POQUITO \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+	\label{fig:c_tradeoff_poquito}
 \end{figure}
 
 \FloatBarrier
@@ -5163,6 +5143,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 \begin{figure}
 	\includegraphics{analyses/cf_chipysat_trade}
 	\caption{ChiPySat \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
+	\label{fig:c_tradeoff_chipysat}
 \end{figure}
 
 
@@ -5175,6 +5156,8 @@ This section presents a cross-case analysis between the four case-studies presen
 \begin{figure*}
 	\includegraphics{graphics/ResultsCausal.pdf}
 	\caption{Observed \acs{SCS} treatment---effect mapping based on case studies}
+	\setfloatalignment{t}
+	\label{fig:c_causal_mapping}
 \end{figure*}
 
 \subsection{Internal Validity}
@@ -5198,9 +5181,9 @@ The development person-hours recorded for each project are \draft{presented} in 
 \label{eq:totalpersondays}
 \end{equation}
 \end{fullwidth}
-\marginnote{Assuming an actual work time of \qty{3}{hours/day}, based on actual observations of daily activities.}
+\marginnote[1cm]{Assuming an actual work time of \qty{3}{hours/day}, based on actual observations of daily activities.}
 
-Even in the worst case of 1 person assigned to each project, the development durations in \Cref{eq:totalpersondays} are below 1 year with adequate margin. This is supported by the causal and counter-factual analysis \todo{(ref boxplot below)}, which suggests that a non-application of the methodology would increase development time \draft{by an average of \(1.5\times\)}.
+Even in the worst case of 1 person assigned to each project, the development durations in \Cref{eq:totalpersondays} are below 1 year with adequate margin. This is supported by the causal and counter-factual analysis, \todo{(ref boxplot below)} which suggests that a non-application of the methodology would increase development time \draft{by an average of \(1.6\times\)}.
 
 Furthermore, non-conformance evaluation showed that \draft{all projects managed to reach a state with no major non-conformances before delivery}, confirming that there are no blocking points towards launch.
 
@@ -5225,50 +5208,26 @@ To evaluate the \textbf{external validity} of the proposed methodology, I will c
 	\end{enumerate}
 	\item Sample size: \( 3\text{ analyses}\cdot 4\text{ projects} = 12 \) data points (each point associated with \(2 \times 3 \) variables)
 	\item Goal: Quantify whether the \emph{dependent variables} have a statistically significant response to the \emph{number of treatments}.
+	%\item Null hypothesis: That the distributions between \emph{time, cost or risk} are identical between the \emph{zero-treatment} and \emph{full-treatment} cases.
 \end{itemize}
 
-In practice, I am seeking to identify whether the application of more \acs{SCS} treatments leads to a reduction in development time, cost, and risk which can be attributed to the methodology (\(X_t\)), and not to differences between projects (\(X_p \)).
+In practice, I am seeking to identify whether the application of more \acs{SCS} treatments leads to a reduction in development time, cost, and risk which can be attributed to the methodology (\(X_t\)), and not to differences between projects (\(X_p \)). After identifying a causal link between a specific treatment and effect, combined with a confirmation by observation, the result can be potentially extrapolated to similar projects.
 
 \marginnote{\todo{Considerations for different methods, .e.g linear regression/ANOVA}}
-The above problem statement can be answered by the following statistical tests:
+The above problem statement can be answered by the following statistical tests: \autocite{chiccoSimpleGuideUse2025}
 \begin{itemize}[itemsep=-2pt]
-	\item The \textbf{Student's \emph{t}-test}, which evaluates whether the difference between the response of two groups is statistically significant. The \(t\)-test assumes that the test statistic follows a normal distribution. \draft{[cite]}
-	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parameteric} and makes no assumption about the distribution of the underlying data.
+	\item The \textbf{Student's \emph{t}-test}, which evaluates whether the difference between the response of two groups is statistically significant. The \(t\)-test assumes that the test statistic follows a normal distribution. It tests the null hypothesis that the two groups have equal means.
+	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parameteric} and makes no assumption about the distribution of the underlying data. It tests the null hypothesis that the distributions of the two groups are identical.
+	It is considered consistent when there is a higher probability that observations from one group are larger than observations the other, and can be used for low sample sizes \autocite{happOptimalSampleSize2019}.
 \end{itemize}
-\marginnote{The Mann---Whitney test can be more or less robust compared to the \(t\)-test, depending on the distribution of the data \cite{zimmermanInvalidationParametricNonparametric1998}. As such, I present both analyses here for completeness.}
+%\marginnote{The Mann---Whitney test can be more or less robust compared to the \(t\)-test, depending on the distribution of the data \cite{zimmermanInvalidationParametricNonparametric1998}. As such, I present both analyses here for completeness.}
+\marginnote{Since no assumptions can be made about the underlying distributions of the data, as seen later in this section, but statistically significant results show a clear skew towards a positive or negative difference (as seen below), it is considered that the Mann---Whitney \( U \) test is more robust in this analysis. As such, the \(t\)-test results are mainly provided for reference.}
 
 Both of the above tests assume a comparison between \textbf{two groups}; in this case, considered to be the \emph{group without treatment}, and the \emph{group with all treatments}, i.e.\@ with the complete application of the \acs{SCS} methodology.
 
-The numerical data for these tests is shown in \Cref{tab:c_aggregate_data}. Before applying the above statistical tests, the data is converted to a \textbf{relative form, in relation to the actual observed development time/cost, for each project}. This transformation is performed in order to reduce the impact of the \textbf{inherent scaling} associated with the different technical sizes of each project. \todo{How is risk quantified?}
+The numerical data for these tests is shown in \Cref{tab:c_aggregate_data}. Before applying the above statistical tests, the data is converted to a \textbf{relative form, in relation to the actual observed development time/cost, for each project}. This transformation is performed in order to reduce the impact of the \textbf{inherent scaling} associated with the different technical sizes of each project.
 
-\begin{table*}[h]
-\begin{tabularx}{\linewidth}{@{}lXcS[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
-\toprule
-Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
-\multirow{3}{*}{ChipSat-1} 
- & Actual                                    & 4 & 478 & 8930 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
- & Counterfactual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
- \midrule
-\multirow{3}{*}{AI4Space} 
- & Actual                                    & 5 & 468 & 4900 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
- & Counterfactual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
- \midrule
-\multirow{3}{*}{POQUITO}
- & Actual                                    & 3 & 759 & 26750 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
- & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
- \midrule
-\multirow{3}{*}{ChiPySat} 
- & Actual                                    & 3 & 252 & 1000 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
- & Counterfactual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
- \bottomrule
-\end{tabularx}
-\caption{Case-study counter-factual analysis aggregate data}
-\label{tab:c_aggregate_data}
-\end{table*}
+Risk (understood here as \textbf{perceived risk}) is measured only as a categorical variable. Risk values \emph{Low, Base, High} are mapped to numerical values \(-1, 0, +1\) respectively when needed for the analysis. Due to the qualitative nature of risk perception, it is not possible to reliably perform arithmetic operations operations on these values. Nevertheless, the results of this quantification will be presented, in order to assess the \textbf{relative} impact of treatments on risk.
 
 \FloatBarrier
 
@@ -5310,26 +5269,74 @@ Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multi
 \begin{figure}[p]
 	\includegraphics{analyses/sensitivity_hexbin_development_relative.pdf}
 	\caption{Sensitivity plot of project development time vs.\@ treatments applied}
-	\Cref{sec:c_plot_sensitivity_time}
+	\label{fig:c_plot_sensitivity_time}
 \end{figure}
 
 \begin{figure}[p]
 	\includegraphics{analyses/sensitivity_hexbin_cost_relative.pdf}
 	\caption{Sensitivity plot of project cost vs.\@ treatments applied}
-	\Cref{sec:c_plot_sensitivity_cost}
+	\label{fig:c_plot_sensitivity_cost}
 \end{figure}
 
 \begin{figure}[p]
 	\includegraphics{analyses/sensitivity_hexbin_risk_relative.pdf}
 	\caption{Sensitivity plot of project risk vs.\@ treatments applied}
-	\Cref{sec:c_plot_sensitivity_risk}
+	\label{fig:c_plot_sensitivity_risk}
 \end{figure}
+
+\begin{figure*}[p]
+	\includegraphics[width=.85\textwidth]{analyses/specific_sensitivity_Time.pdf}
+	\caption{Box plot of effects of specific treatments on development time}
+	\label{fig:c_plot_specific_sensitivity_time}
+\end{figure*}
+
+\begin{figure*}[p]
+	\includegraphics[width=.85\textwidth]{analyses/specific_sensitivity_Cost.pdf}
+	\caption{Box plot of effects of specific treatments on cost}
+	\label{fig:c_plot_specific_sensitivity_cost}
+\end{figure*}
+
+\begin{figure*}[p]
+	\includegraphics[width=.85\textwidth]{analyses/specific_sensitivity_Risk.pdf}
+	\caption{Box plot of effects of specific treatments on risk}
+	\label{fig:c_plot_specific_sensitivity_risk}
+\end{figure*}
+
+\FloatBarrier
+
+\begin{table*}[h]
+\begin{tabularx}{\linewidth}{@{}lXcS[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
+\toprule
+Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
+\multirow{3}{*}{ChipSat-1} 
+ & Actual                                    & 4 & 478 & 8930 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
+ & Counterfactual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
+ \midrule
+\multirow{3}{*}{AI4Space} 
+ & Actual                                    & 5 & 468 & 4900 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
+ & Counterfactual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
+ \midrule
+\multirow{3}{*}{POQUITO}
+ & Actual                                    & 3 & 759 & 26750 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
+ & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
+ \midrule
+\multirow{3}{*}{ChiPySat} 
+ & Actual                                    & 3 & 252 & 1000 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
+ & Counterfactual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
+ \bottomrule
+\end{tabularx}
+\caption{Case-study counter-factual analysis aggregate data}
+\label{tab:c_aggregate_data}
+\setfloatalignment{b}
+\end{table*}
+
 
 \begin{table*}[ht]
 \centering
-\caption{Statistical Analysis of Development Parameters}
-\setfloatalignment{t}
-\label{tab:stat_results}
 \begin{tabular}{llSSS}
 \toprule
 \textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
@@ -5344,103 +5351,88 @@ Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
                  & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
 \bottomrule
 \end{tabular}
+
+\caption{Statistical Analysis of Development Parameters}
+\label{tab:stat_results}
+\setfloatalignment{t}
 \end{table*}
 
-The results of the analysis are shown in \Cref{tab:stat_results}.
-Combined with the visual sensitivity plots of \Cref{fig:c_plot_box_time,fig:c_plot_box_cost,fig:c_plot_box_risk,fig:c_plot_sensitivity_time,fig:c_plot_sensitivity_cost,fig:c_plot_sensitivity_risk}, the following observations can be made:
+
+
+The results of the analysis are shown across \Cref{fig:c_plot_box_time,fig:c_plot_box_cost,fig:c_plot_box_risk,fig:c_plot_sensitivity_time,fig:c_plot_sensitivity_cost,fig:c_plot_sensitivity_risk}, and aggregated in \Cref{tab:stat_results}. 
+These results address the effectiveness of the application of \acs{SCS} on a system as a whole. The effects of the individual treatments (i.e.\@ \acs{SCS} methods) are shown in \Cref{fig:c_plot_specific_sensitivity_time,fig:c_plot_specific_sensitivity_cost,fig:c_plot_specific_sensitivity_risk} and aggregated in \Cref{tab:stat_treatment_results}.
+
+\begin{table*}[h]
+\begin{adjustbox}{width=1.1\textwidth,center}
+
+\begin{tabular}{lS[table-format=1.3]S[table-format=1.4]S[table-format=1.3]l@{\hspace{1em}}S[table-format=1.3]S[table-format=1.4]S[table-format=1.3]l@{\hspace{1em}}S[table-format=1.3]S[table-format=1.4]S[table-format=1.3]}
+\toprule
+ & \multicolumn{3}{c}{\textbf{Time}} &  & \multicolumn{3}{c}{\textbf{Cost}} &  & \multicolumn{3}{c}{\textbf{Risk}} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){6-8}
+\cmidrule(lr){10-12}
+\multicolumn{1}{c}{\textbf{Treatment}} & {Avg} & {Variance} & {$p$-value} &  & {Avg} & {Variance} & {$p$-value} &  & {Avg} & {Variance} & {$p$-value} \\
+\midrule
+1. Bypassing structural/thermal analysis & 0.710 & 0.0087 & \textcolor{nice}{0.029} &   & 1.046 & 0.0085 & \textcolor{bad}{0.686} &   & 1.000 & 0.0000 & \textcolor{nice}{0.029} \\
+2. Soldering PCBs in-house & 1.103 & 0.0017 & \textcolor{nice}{0.029} &   & 0.673 & 0.0537 & \textcolor{nice}{0.029} &   & -0.750 & 0.2500 & \textcolor{bad}{0.114} \\
+3. Multi-step development & 0.750 & 0.0061 & \textcolor{nice}{0.029} &   & 1.175 & 0.0871 & \textcolor{bad}{0.343} &   & 0.250 & 0.9167 & \textcolor{bad}{0.686} \\
+4. Short iterations & 0.906 & 0.0242 & \textcolor{bad}{0.629} &   & 1.333 & 0.1639 & \textcolor{nice}{0.057} &   & 0.000 & 1.0000 & \textcolor{bad}{1.000} \\
+5. Iterating over partitions & 0.978 & 0.0062 & \textcolor{bad}{0.629} &   & 0.923 & 0.0075 & \textcolor{bad}{0.229} &   & 0.333 & 0.3333 & \textcolor{bad}{0.629} \\
+6. Robust software framework & 0.975 & 0.0152 & \textcolor{bad}{1.000} &   & 1.000 & 0.0000 & \textcolor{bad}{1.000} &   & -1.000 & 0.0000 & \textcolor{nice}{0.057} \\
+7. Robotic Process Automation & 1.053 & 0.0084 & \textcolor{bad}{0.629} &   & 1.000 & 0.0000 & \textcolor{bad}{1.000} &   & -1.000 & 0.0000 & \textcolor{nice}{0.057} \\
+\bottomrule
+\end{tabular}
+
+\caption[Effect of individual treatments on time, cost and risk]{Effect of individual treatments on time, cost and risk. The Mann-Whitney \(U\) test \(p\)-values are also shown.}
+\label{tab:stat_treatment_results}
+
+\end{adjustbox}
+\end{table*}
+
+The small sample size of the results prevents generating robust statistical results for all measurements. However, the aggregate results combined from the projects shown above, combined with average treatment effects shown in \Cref{tab:stat_treatment_results}, can reinforce the understanding of the causal effects shown in \Cref{fig:c_causal_mapping}.
+
+Each treatment can be evaluated as follows:
+\begin{enumerate}
+	\item \textbf{Bypassing structural/thermal analysis}:
+	This design choice shows a statistically significant reduction in development time (with project times shrinking to 71\% of the expected value if these analyses had been performed), low change in cost, and a universal increase in risk. This result is expected, following the reported analysis times from past CubeSat missions (\Cref{tab:l_cubesat_time_drivers}), and the estimation of 23 person-days to complete these analysis (\Cref{sec:CASESTUDIES_chipsat_evaluation}). The small dimensions and generally simple physical interfaces of \acs{SCS} reduce the value of \acs{FEM} modelling, which is typically done for larger spacecraft, but can be replaced by \draft{simpler} calculations or repeated tests for smaller systems. This observation is supported by the results of the case studies, which passed environmental qualification without any detected non-conformances.
+	\item \textbf{In-house manufacturing}:
+	The aggregation of the results shows a \qty{10.3}{\percent} increase in development time, a \qty{32.7}{\percent} decrease in cost, and a project-specific change in perceived risk, when a team decides to assembly electronic boards in-house.
+	These results match the expected increase in manufacturing time combined with the high costs associated with external manufacturing, while risk depends on the specific manufacturing requirements, and whether they can be reliably met in-house. However, this analysis has not modelled the lead times of externally-covered processes, which are seen as blocking points in project tasks, but are not accounted here in terms of development time.
+	\item \textbf{Multi-step development}:
+	This treatment represents the use of an iterative lifecycle process, as opposed to a sequential single-step lifecycle. All case-studies were performed using an iterative approach. The counter-factual evaluation was based on estimating the time required for an initial design (considered as 40 person-days, based on \Cref{tab:l_cubesat_time_drivers}), against the time (and cost budget) saved by not performing the development work related to multiple hardware iterations. Nevertheless, I considered that at least one second hardware iteration would have been necessary in some projects, either due to externally changed requirements, or due to an \draft{intrinsic lack of information before experimentation for novel designs}.
+
+	The results indicate that multi-step development reduces development time by \qty{25.0}{\percent} with high confidence. Low-confidence indicators show that it increases cost by \qty{17.5}{\percent}, with a project-specific change in risk.
+	\item \textbf{Short iterations}:
+	Combined with multi-step development, short (1--2 month long) system-level iterations delineate the core of typical agile practices.
+	The impact of this treatment affected development times by \qtyrange{10}{20}{\percent}, but on a direction that was project-specific. On the other hand, short iterations increase cost by 33.3\% with high confidence, while generally increasing perceived risk.
+
+	The selection of iteration duration therefore seems both highly impactful and highly project-specific, with ``larger'' projects (in this case, POQUITO) being less suitable for short iterations compared to simpler projects, due to the correlation between technical size and manufacturing cost/integration time. \draft{This factor also depends on the expected lead times and developer availability for the project.}
+	\item \textbf{Iterating over partitions}:
+	The choice of iterating over partitions over the entire system does not seem to have a significant effect in development time or risk, and reduces cost by \qty{7.7}{\percent} on average, with low confidence.
+
+	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized system (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on a well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
+	\item \textbf{Robust software framework}:
+	The selection of a robust software framework has a varied effect on development time based on the project requirements, without any effects on cost, and a universal reduction in perceived risk.
+	\item \textbf{\acf{RPA}}:
+	The use of \acl{RPA} can incure an increase in development time for some projects, with no changes in cost, and a universal reduction in perceived risk.
+\end{enumerate}
+
+The above results indicate that the ideal or ``optimal'' selection of \acs{SCS} development methods can be project-specific, based on variables both known and unknown at the start of a project, and depending on the desired trade-off between time, cost and risk.
+
+To evaluate the methodology in its entirety, I will consider a ``naive'' application of all the above methods, compared against their complete non-application.\footnote{Alternatively, I could consider the counter-factual project data of applying \emph{only those methods that would lead to the best result}. However, this analysis would have to make assumptions about the possibility to select the appropriate methods a-priori, and the desired optimisation target, making it generally invalid in the general case.}
+Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, the following observations can be made:
 \begin{enumerate}[itemsep=-1pt]
-	\item The \textbf{development time} of a project shows a clear \textbf{correlation} with the level of the \acs{SCS} methodology applied. One of the clearest drivers of development time reduction is the selection of a multi-step methodology, which foregoes a typically long \acs{BDUF} design step, especially when combined with minor optimisations in the programmatic and technical aspects of development. While not all treatments have a definitively positive effect on development time, a general reduction trend can be observed.
+	\item The \textbf{development time} of a project shows a clear \textbf{correlation} with the level of the \acs{SCS} methodology applied. One of the clearest drivers of development time reduction is the selection of a multi-step methodology, which foregoes a typically long \acs{BDUF} design step, especially when combined with minor optimisations in the programmatic and technical aspects of development. While not all treatments have a definitively positive effect on development time, a general reduction trend can be observed. The Mann-Whitney \( U \) test shows a statistically significant difference, with an average reduction of \qty{40.7}{\percent}.
 	\item The development \textbf{cost}\footnote{This cost does not include labour, insurance, ground segment or asset costs. See \draft{\Cref{sec:LITERATURE_metrics} for the relevant explanation.}} of a project is \textbf{not correlated} to the full application or not of the \acs{SCS} methodology. Most iterative methods that are applied on physical systems tend to increase costs. However, this is highly affected by the project context, and especially different allocations on budget categories.
-	\item The project \textbf{risk} shows \text{no statistically significant correlation} to the application or not of the \acs{SCS} methodology. Based 
+	\item The project \textbf{risk} shows \text{no statistically significant correlation} to the application or not of the \acs{SCS} methodology. While \Cref{fig:c_plot_box_risk} shows a general trend of risk reduction after applying the \acs{SCS} methodology, clearer results are shown in \Cref{fig:c_plot_specific_sensitivity_risk}, where it is shown that \acs{SCS} methods are generaly evenly divided between perceived risk increase, decrease, or project-specific behaviour.
+
+	The adoption or not of specific methods can be perceived as a trade-off between time and risk, as shown in \Cref{fig:c_tradeoff_chipsat1,fig:c_tradeoff_ai4space,fig:c_tradeoff_poquito,fig:c_tradeoff_chipysat}.
+	A ``naively assumed'' correlation would expect that higher development time reduces perceived risk. While some treatments do follow this trend, this is not universally true. Notable examples of this are treatments \#6 and \#7, which involve decisions related to software and automation.
+	While there is no indication that the \acs{SCS} methodology increases risk, a generally-applicable guideline to decrease risk cannot be provided, \draft{given the project dependence of this factor}.
 \end{enumerate}
 
 
 
-%\draft{The PAWN method [1] is a moment-independent approach to Global Sensitivity Analysis (GSA). It is described as producing robust results at relatively low sample sizes (see [2]) for the purpose of factor ranking and screening.}
-
-%The results of \Cref{tab:stat_results}, combined with the visual sensitivity plots in 
-
-\begin{comment}
-\FloatBarrier
-\subsection{Development Time}
-
-\begin{figure}
-	\includegraphics{analyses/sensitivity_scatter_development.pdf}
-	\caption{Development Time Scatter Plot}
-\end{figure}
-\begin{figure}
-	\includegraphics{analyses/sensitivity_hexbin_development.pdf}
-	\caption{Development Time Visual Sensitivity Analysis}
-\end{figure}
-
-\begin{table*}
-
-
-\caption{Summary statistics of the normalised performance metrics for all projects analysed through the PAWN method}
-\begin{tabular}{lrrrrrr}
-\toprule
-				& minimum   & mean      & median    & maximum   & CV        & stdev     \\ \midrule
-no. treatments	& 0.305556  & 0.546296  & 0.444444  & 0.888889  & 0.455425  & 0.248797  \\
-project			& 0.222222  & 0.296296  & 0.222222  & 0.444444  & 0.353553  & 0.104757  \\ \bottomrule
-\end{tabular}
-\end{table*}
-
-\FloatBarrier
-\subsection{Cost}
-
-\begin{figure}
-	\includegraphics{analyses/sensitivity_scatter_cost.pdf}
-	\caption{Cost Scatter Plot}
-\end{figure}
-\begin{figure}
-	\includegraphics{analyses/sensitivity_hexbin_cost.pdf}
-	\caption{Cost Visual Sensitivity Analysis}
-\end{figure}
-
-
-\begin{table*}
-
-
-\caption{Cost effect}
-\begin{tabular}{lrrrrrr}
-\toprule
-%
-%
-%no. treatments  0.194444  0.509259  0.555556  0.777778  0.472027  0.240384
-%project         0.333333  0.518519  0.444444  0.777778  0.364216  0.188853
-				& minimum   & mean      & median    & maximum   & CV        & stdev     \\ \midrule
-no. treatments	& 0.194444  & 0.509259  & 0.555556  & 0.777778  & 0.472027  & 0.240384  \\
-project			& 0.333333  & 0.518519  & 0.444444  & 0.777778  & 0.364216  & 0.188853  \\ \bottomrule
-\end{tabular}
-\end{table*}
-
-\FloatBarrier
-\subsection{Risk}
-
-
-\begin{figure}
-	\includegraphics{analyses/sensitivity_scatter_risk.pdf}
-	\caption{Risk Scatter Plot}
-\end{figure}
-\begin{figure}
-	\includegraphics{analyses/sensitivity_hexbin_risk.pdf}
-	\caption{Risk Visual Sensitivity Analysis}
-\end{figure}
-
-\begin{table*}
-\caption{Risk effect}
-\begin{tabular}{lrrrrrr}
-\toprule
-%
-%
-%no. treatments  0.333333  0.361111  0.333333  0.416667  0.108786  0.039284
-%project         0.000000  0.166667  0.166667  0.333333  0.816497  0.136083
-				& minimum   & mean      & median    & maximum   & CV        & stdev     \\ \midrule
-no. treatments	& 0.333333  & 0.361111  & 0.333333  & 0.416667  & 0.108786  & 0.039284  \\
-project			& 0.000000  & 0.166667  & 0.166667  & 0.333333  & 0.816497  & 0.136083  \\ \bottomrule
-\end{tabular}
-\end{table*}
-\end{comment}
 
 
 \chapter{Conclusion}
@@ -5490,6 +5482,62 @@ Just one paragraph is enough
 \label{app:sw_errors_detected}
 
 \draft{[TODO]}
+
+\chapter{Contribution Matrix}
+\label{app:contribution_matrix}
+
+The following table lists the participation and contributions of team members to the different missions used as case studies in this work (\Cref{chap:CASESTUDIES}).
+
+\begin{table*}[h]
+	\caption{Contribution matrix for the various projects developed within the scope of this work}
+	
+	\colorlet{AIV}{MaterialDeepOrange700}
+	\colorlet{ADCS}{MaterialOrange800}
+	\colorlet{Comms}{MaterialGreen700}
+	\colorlet{Payload}{MaterialPurple700}
+	\colorlet{Traj}{MaterialTeal700}
+	\colorlet{ProductOwner}{MaterialGrey800}
+	\colorlet{Manager}{MaterialGrey700}
+	\colorlet{Structural}{MaterialBrown700}
+	\colorlet{Systems}{MaterialLightBlue700}
+	\colorlet{Hardware}{MaterialLime800}
+	
+	\begin{adjustbox}{width=\textwidth}
+% LTeX: enabled=false
+\begin{tabular}{@{}lllll@{}}
+	\toprule
+	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
+	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
+%	A.~F.~Bühler &  &  &  &  \\
+	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
+	A.~P.~Du &  &  &  &  \\
+	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\
+	C.~M.~Moreira &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	D.~Aouada &  & \textcolor{ProductOwner}{Product Owner} &  &  \\
+	J.~Laur & \textcolor{AIV}{AIV Engineer} &  &  &  \\
+	J.~M.~Sanabria &  &  & \textcolor{Comms}{Communications Engineer} &  \\
+	J.~Thoemel & \textcolor{Comms}{Communications Engineer} & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  \\
+	L.~Pauly &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	L.~Rana & \textcolor{Payload}{Flight Dynamics Engineer} &  &  &  \\
+	M.~Alandihallaj &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	M.~Ortiz del Castillo &  & \textcolor{Systems}{Systems Engineer}, \textcolor{Hardware}{Hardware Engineer} &  &  \\
+	M.~Sachidanand &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	N.~Khera &  &  & & \textcolor{AIV}{AIV Engineer}  \\
+	N.~Sajjad &  &  & \textcolor{ADCS}{ADCS Engineer} &  \\
+	O.~Borgue & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  &  \\
+	P.~Fisch &  &  &  &  \\
+	S.~Gouvalas &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	S.~K.~Singh &  &  & \textcolor{Hardware}{Payload Hardware Engineer} &  \\
+	T.~D'costa &  &  & \textcolor{Structural}{Structural Engineer} &  \\
+	V.~Franzese &  &  & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  \\
+	Z.~Manchester &  &  & & \textcolor{Manager}{Project Manager}  \\ \bottomrule
+\end{tabular}
+% LTeX: enabled=true
+	\end{adjustbox}
+	\vspace{1ex}
+\end{table*}
 
 \begin{invisible}
 \chapter{How Software Paradigms can aid SCS Development: A modern C++ serialiser}

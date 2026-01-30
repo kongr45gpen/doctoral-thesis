@@ -22,6 +22,7 @@
 %\usepackage{caption}
 %\usepackage{layout}
 \usepackage{siunitx}
+\usepackage{adjustbox}
 
 
 \hypersetup{colorlinks}
@@ -227,10 +228,14 @@ AAAA
 
 AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
 
+
+AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
+
+
+\FloatBarrier
+
 \begin{table*}[ht]
 \centering
-\caption{Statistical Analysis of Development Parameters}
-\label{tab:stat_results}
 \begin{tabular}{llSSS}
 \toprule
 \textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
@@ -245,8 +250,94 @@ Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
                  & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
 \bottomrule
 \end{tabular}
+\caption{Statistical Analysis of Development Parameters}
+\label{tab:stat_results}
+\setfloatalignment{b}
 \end{table*}
-AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
+
+\FloatBarrier
+
+Second table
+
+\begin{table*}[h]
+\begin{tabularx}{\linewidth}{@{}lXcS[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
+\toprule
+Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
+{3}{*}{ChipSat-1} 
+ & Actual                                    & 4 & 478 & 8930 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
+ & Counterfactual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
+ \midrule
+{3}{*}{AI4Space} 
+ & Actual                                    & 5 & 468 & 4900 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
+ & Counterfactual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
+ \midrule
+{3}{*}{POQUITO}
+ & Actual                                    & 3 & 759 & 26750 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
+ & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
+ \midrule
+{3}{*}{ChiPySat} 
+ & Actual                                    & 3 & 252 & 1000 & 0 \\
+ & Counterfactual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
+ & Counterfactual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
+ \bottomrule
+\end{tabularx}
+\caption{Case-study counter-factual analysis aggregate data}
+\label{tab:c_aggregate_data}
+\end{table*}
+
+\begin{table*}[ht]
+\centering
+\begin{tabular}{llSSS}
+\toprule
+\textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
+\midrule
+Development Time (r.) & Mann-Whitney \(U\) & 16.000 & 0.0286 & \text{---} \\
+                 & \(t\)-test         & 6.181  & 0.0008 & 5.9552 \\
+\addlinespace
+Cost (relative)  & Mann-Whitney \(U\) & 8.500  & 1.0000 & \text{---} \\
+                 & \(t\)-test         & 0.503 & 0.6425 & 3.8741 \\
+\addlinespace
+Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
+                 & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
+\bottomrule
+\end{tabular}
+
+\caption{Statistical Analysis of Development Parameters}
+\label{tab:stat_results}
+\setfloatalignment{b}
+\end{table*}
+
+\begin{table*}[h]
+	\caption{Static Analysis results}
+	\label{tab:m_software_fuzz_static}
+	\begin{tabular}{@{}lllllll@{}}
+		\toprule
+		& AcubeSAT (C++) & Antaris (C) & PyCubed (Python) & KubOS &  &  \\ \midrule
+		Source Lines of Code & 10601 & 10007 & 2298 & 31212  & \draft{[TODO]}  &  \\
+		Token Count & 51024 & 48182 & 10844 & 136180  &  &  \\
+		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
+		Average \draft{MCCN} & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
+	\end{tabular}
+\end{table*}
+
+\begin{table*}[h]
+	\caption{Functional test results}
+	\label{tab:m_software_fuzz_functional}
+	\begin{tabular}{@{}llllll@{}}
+	\toprule
+	Test Type & Measurement & AcubeSAT (C++) & KubOS & AI4Space (Python) & Prust (Rust) \\ \midrule
+	Execution details & Minimum boot time &  2s &  & 3 minutes & 1s \\
+	& Image size &  &  &  &  \\
+	& RAM requirements &  &  &  &  \\
+	& Minimum packet latency &  &  &  &   \\ \midrule
+	Requirements & Requirements passed & 5/5 & 5/5  & 5/5  & 5/5 \\
+	& Static tests successful &  &  &  & 
+	\end{tabular}
+\end{table*}
+
 
 
 \end{document}
