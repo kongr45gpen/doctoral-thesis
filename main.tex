@@ -178,13 +178,14 @@ under the License.
 \justify
 \todo{Space is not a welcoming environment.}
 
+\begin{invisible}
 \chapter*{Objectives}
 
 \lipsum[1]
 
 \chapter*{Contribution}
 \todo{I did this. I also did that. I didn't do that.}
-
+\end{invisible}
 
 
 %%
@@ -612,7 +613,7 @@ In order to develop a sound and valid methodology, I will address the following 
 
 The objectives of this thesis are therefore as follows:
 \begin{enumerate}
-	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions.
+	\item Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} of typical \ac{SCS} missions.
 	\item Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches.
 	\item Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}.
 	\item Validate the new methodology on at least one space mission that will succeed in environmental qualification.
@@ -2972,7 +2973,7 @@ Another decision that developers are faced with involves whether they reuse exis
 \draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 \end{invisible}
 
-\subsection{Verification \& Validation Methods}
+\subsection{Verification \& Validation Method}
 \label{sec:METHODOLOGY_verification}
 
 Verification and validation is an integral part of a sprint cycle, and is the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
@@ -5438,10 +5439,12 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 \chapter{Conclusion}
 \label{chap:CONCLUSION}
 
+\begin{fullwidth}
+
 \section{Summary}
 
 This thesis presented a systems engineering methodology for the development of \acf{SCS}, with a focus on the reduction of development time without a negative impact on technical risk.
-The methodology mainly involves the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \draft{\emph{verification \& validation}}. Its foundation mainly lies on agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
+The methodology focuses on the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \draft{\emph{verification \& validation}}. Its foundation mainly lies on agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
 
 \begin{table*}[h]
 \def\arraystretch{1.2}
@@ -5449,32 +5452,108 @@ The methodology mainly involves the systems engineering fields of \emph{lifecycl
 	\toprule
 	& \textbf{Thesis Objective} & \textbf{Addressed by} \\
 	\midrule
-	1 & Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} and typical \ac{SCS} missions. & Initial literature review of small space systems environments and open problems (\Cref{sec:INTRODUCTION_defining_systems_engineering,sec:INTRODUCTION_research_gaps}), detailed literature review of \acs{SCS} development environment and constraints (\Cref{sec:LITERATURE_subcubesat}), interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_interviews}). \\
+	1 & Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} of typical \ac{SCS} missions. & Initial literature review of small space systems environments and open problems (\Cref{sec:INTRODUCTION_defining_systems_engineering,sec:INTRODUCTION_research_gaps}), detailed literature review of \acs{SCS} development environment and constraints (\Cref{sec:LITERATURE_subcubesat}), interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_interviews}). \\
 	2 & Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches. & Definition of \acs{SYE} metrics based on available literature and \acs{SCS} needs (\Cref{sec:LITERATURE_metrics}). \\
 	3 & Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}. & Investigation of current systems engineering \acs{SOTA} (\Cref{sec:LITERATURE_systems_engineering}), elaboration of a \acs{SCS} methodology (\Cref{chap:METHODOLOGY}). \\
-	4 & Validate the new methodology on at least one space mission that will succeed in environmental qualification. & Four case studies performed in iterative fashion based on action-research principles and counterfactual evaluation (\Cref{chap:CASESTUDIES}) \\
+	4 & Validate the new methodology on at least one space mission that will succeed in environmental qualification. & Four case studies performed in iterative fashion based on action-research principles and counterfactual evaluation (\Cref{chap:CASESTUDIES}). \\
 	\bottomrule
 \end{tabularx}
 \caption{Thesis objectives and how they were addressed}
 \end{table*}
 
-\todo{
-	- What did the thesis do (1 paragraph)
-	- Thesis objectives and how they were addressed
-	- Big big summary
-}
+\vspace{1.5cm}
+In \Cref{sec:INTRODUCTION_research_gaps,sec:LITERATURE_subcubesat}, I investigated the ecosystem and typical development environment of Sub-CubeSat missions, and identified the main characteristics and constraints of \acs{SCS}. Past \acs{SCS} projects have generally involved small teams of up to \draft{10 people}, and development times are driven by launch agreements, which \draft{typically involve 1-year long preparations.} The small technical size and complexity of these spacecraft match the requirements of lightweight agile methodologies. 
+
+In \Cref{sec:LITERATURE_metrics}, I identified development \textbf{time}, development \textbf{cost}, and \textbf{technical risk} as metrics related to the performance of Systems Engineering frameworks when applied to \acl{SCS}.
+Results from the literature and \draft{other missions} have shown that developers place significant weight on reducing development time and increasing spacecraft reliability. This is driven by the low success rates of past small satellite missions, combined with the desire to reduce resource utilisation and programmatic risk, by ensuring that projects do not experience cost overruns. Past literature has linked both of these factors to inadequate systems engineering practices followed by small satellite developers and to a \draft{disregard of previous lessons learned.}
+
+Based on the above, \textbf{development time and technical risk} are identified as optimisation goals for a tailored \acs{SCS} methodology. Informed by findings from topic-specific literature survey and practical mission implementation, this methodology is synthesised in \Cref{chap:METHODOLOGY}, as a combination of:
+\begin{itemize}[itemsep=-3pt]
+	\item A \textbf{requirements management} method based on different degrees of necessity and reduced requirement formalism;
+	\item Two \textbf{lifecycle process models} based on Scrum, and involving short, predefined system-level iterations;
+	\item Guidelines for tool-based technical planning and work-package management;
+	\item A tool-based \textbf{modelling \& knowledge management} method based on lightweight \acl{MBSE};
+	\item A \textbf{hardware} design method and guidelines, specifically for pocket-sized systems;
+	\item Guidelines for \draft{\textbf{interface management}} with the purpose of being compatible with external safety requirements;
+	\item A lightweight test-based \textbf{verification \& validation} method, informed from software engineering and \acl{RPA} approaches;
+	\item Guidelines for \textbf{maintenance \& operations} based on \draft{spacecraft agility}; and
+	\item A set of methods for \textbf{software development}, with a focus on technology choice for reliability increase.
+\end{itemize}
+
+In \Cref{chap:CASESTUDIES}, four case studies, developed within the timeline of this thesis, were used to generate data and retroactively validate the proposed ``\acs{SCS} methodology''.
+Two of the studies were designed as small satellite payloads, while the other two were complete \acs{SCS} missions. 
+Three case studies aimed to achieve successful qualification, while one aimed successful functional testing.
+Different elements of the \acs{SCS} methodology were applied in each case study.
+Based on data from the administrative and technical decisions taken during the mission, as well as available project management literature from other projects, a counter-factual analysis was performed to generate quantitative data on the estimated impact of the \acs{SCS} methodology on the metrics identified above.
+The analysis showed that the \acs{SCS} methodology can reduce development duration by an average of \textbf{\qty{40}{\percent}} compared to the \draft{inverse case}, combined with a limited effect in production cost and risk, and thus achieving the main objective of reducing development time without an adverse effect on risk.
+Additionally, the significance and magnitude of specific parts of the methodology on the selected metrics was evaluated. 
 
 \section{Key Findings and Contributions}
 
-\todo{Limitations and Threats to Validity}
+This thesis has the goal of introducing and validating a systems engineering methodology for the efficient development of satellites less than \SI{1}{\kilo\gram}. ``Efficiency'' is understood as the reduction of development time without a negative impact on technical risk, and with a target of \qty{1}{year} from conception to a flight-ready spacecraft. In this section, I will present the conclusions and limitations of the findings.
+
+Regarding the understanding of the relationship between systems engineering and \acl{SCS}, I report the following findings:
+\begin{itemize}[itemsep=-2pt]
+	\item The success rate of \acs{SCS} missions \draft{is similar to CubeSats}, reaching \draft{an approximate 60\% (TBC)}, which has been identified as a concern amongst \acs{SCS} developers. Current understanding ties this low success rate to inadequate system-level testing, non-following of established procedures, inadequate knowledge transfer, and design decisions that are not considering reliability as a factor.
+	\item Reduction of development time is identified as another main target in \acs{SCS} projects, mainly influenced by logistical requirements placed on project owners, and fixed product delivery deadlines. However, a large variation in development duration of past missions has been identified, ranging from \qtyrange{10}{62}{months}, which cannot be tied to project requirements \& environment alone.
+	\item 
+	In contrast to traditional space systems engineering and CubeSat systems engineering, smaller systems have a disproportionately smaller need for preliminary ``architecting and documenting'' work.
+	\acl{SCS} systems present characteristics, such as small technical size and mass manufacturing, testing \& launch capabilities, that specifically match the environment of lightweight agile software and systems engineering frameworks.
+\end{itemize}
+
+Based on the above findings, I have contributed the definition of a tailored systems engineering methodology, which is comprised of:
+\begin{itemize}[itemsep=-2pt]
+	\item A set of \textbf{methods} covering the systems engineering disciplines deemed most impactful to \acs{SCS} \acl{SYE}, in terms of \emph{Technical Management}, \emph{System Description}, and \emph{System Realisation};
+	\item A set of methods and guidelines for the \textbf{hardware and software design definition} of \acs{SCS} spacecraft based on mission lessons learned and past literature;
+	\item A list of proposed tools or, when not available, tool requirements, to support the aforementioned design activities;
+	\item A tailoring guide to assist developers in selecting the optimal set of methods for their project.
+\end{itemize}
+
+The following findings are reported from the application and counter-factual evaluation of the methodology on four \acs{SCS} case studies:
+\begin{itemize}[itemsep=-2pt]
+	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person hours} for ChipSats and \qty{800}{person hours} for a PocketQube.
+	\item It is possible to shorten \acl{SCS} development duration to approximately 1 year without adverse effects in technical risk or requirements compliance, given that at least the typical workload is performed.
+	\item Compared to a single-step sequential approach, a naive application of the complete \acs{SCS} methodology can reduce \textbf{development duration} by \qty{40}{\percent}. The statistical significance of this result is supported by the \draft{reduction} of time-consuming processes, which \draft{do} not provide significant added value in the performed case studies.
+	\item The naive application of the methodology was not found to have a statistically significant \draft{average} effect on cost and risk.
+	\item The most significant contributing factors to development time were found to be \textbf{frequent testing} (as opposed to detailed analyses) and \textbf{iterative} (as opposed to sequential) development, reducing it by \qty{29}{\percent} and \qty{25}{\percent} respectively.
+	The optimal iteration duration is dependent on the specific project context, with larger projects seemingly being suited for longer iterations.
+	\item In terms of production cost, the most significant contributors were found to be \textbf{in-house manufacturing} (\qty{33}{\percent} reduction) and \textbf{short iteration duration} (\qty{33}{\percent} increase), which are not associated with a significant effect on development time.
+	\item The choice of \textbf{programming language} (and, consequently, software framework), as well as the use of automated software/hardware testing procedures were found to decrease technical risk, without a significant effect on development time or cost.
+	\item The option to \textbf{iterate over partitions} of the system, instead of the entire system, was not found to have predictable results on any of the target metrics. \todo{being instead context specific?}
+\end{itemize}
+
+One limitation of this study is the low sample size of 4 case studies, which limits the robustness of statistical methods applied to the results. Although different mission types and team compositions across two institutions were considered, it is difficult to extrapolate the findings across other missions if some of the environmental parameters were left unchanged across case studies. For this thesis, these fixed parameters can include developer expertise, strategic project goals (e.g.\@ academic vs.\@ corporate), or the quality of available facilities.
+
+Another limitation stems from the counter-factual nature of the experimental analysis. Since it is impractical to design objective systems engineering experiments in the influence of external factors, it was not possible to independently reason about the effects of the methodology. Additionally, as I participated in these projects both as a researcher and an engineer, the limitations of action research also \draft{relevant}, in terms of the application and evaluation of the methodology \cite{davidProblemsParticipationLimits2002}. To address biases during the counter-factual analysis, I relied on recorded data from project reports, or, \draft{in absentia}, estimates of development time and estimated risk from past CubeSat literature. In the case of disagreements of previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
+
+Finally, due to the extent of the proposed methodology, it was not practical to evaluate each of its statements in the counter-factual analysis, with the focus given only on what I perceived as the most \draft{impactful} methods.
+
+%\newthought{It is concluded} that the proposed methodology can be further tailored and applied to new projects 
 
 \section{Future Work}
-Just one paragraph is enough
+
+A major challenge in the definition and evaluation of \acs{SCS} methods is the lack of substantial published data for systems engineering practices, success rates and lessons learned from PocketQube and ChipSat missions. The collection of data would inform decisions taken for the application or verification of the methodology, allowing potential quantitative evaluation of risk and other metrics.
+
+Based on the definition of the \acl{DRM}, this thesis performed only an \emph{initial evaluation} of the \emph{Descriptive Study II} stage, i.e.\@ the investigation of the impact and performance of the development methodology.
+To that end, one future direction for this research is the further application and empirical evaluation of the methodology on new \acs{SCS} projects. This effort can also be supported by schedule, cost and risk modelling approaches from \acl{SYE} research, such as COSYSMO, to provide a formal framework for guiding \draft{binary decisions} during methodology tailoring.
+
+Even though the methodology has not been designed for CubeSats or larger systems, it may be possible to apply it in part or in its entirety on these systems, based on the environmental context. What are the factors that allow agile systems engineering for CubeSats, and which parts of the \acs{SCS} methodology can be transferred to them? As CubeSat manufacturing is predominantly moving to local facilities, it becomes easier to follow approaches (such as 1-month long iterations) that were previously seen as utopian, while still conforming to the mostly stricter safety requirements for CubeSats.
+
+Another notable point of refinement for this work is the set of hardware and software development guidelines, which are mainly sourced from lessons learned during the case studies, but will fundamentally benefit from further experience gained during development and flight, with an end goal of creating a best-practices knowledge base for \acs{SCS} developers, similar to existing attempts for CubeSats.
+
+As software has been identified as a major time allocation and risk driver for \acs{SCS} missions, it would be beneficial to perform more research on the improvement of the time---risk trade-off. Lightweight formal verification techniques for software have been explored, but it is still unknown whether their added benefits overweigh the additional effort needed to instrument the entire or parts of the software, especially for teams without \draft{prior experience with these tools}.
+
+Finally, this thesis identified tooling as a substantial area of interest for small spacecraft development. Apart from the actual development of software tools, future research can focus on identifying the set of functions and suitable designs to cover the requirements for work package management and modelling, without the currently understood overhead associated with formal tools.
+
+\end{fullwidth}
+
 \appendix
+
+
 
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
-\draft{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
+\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
 
 \draft{[TODO]}
 
@@ -5489,7 +5568,7 @@ Just one paragraph is enough
 The following table lists the participation and contributions of team members to the different missions used as case studies in this work (\Cref{chap:CASESTUDIES}).
 
 \begin{table*}[h]
-	\caption{Contribution matrix for the various projects developed within the scope of this work}
+	\caption{Contribution matrix for the various case-studies investigated within the scope of this work}
 	
 	\colorlet{AIV}{MaterialDeepOrange700}
 	\colorlet{ADCS}{MaterialOrange800}
@@ -5511,7 +5590,7 @@ The following table lists the participation and contributions of team members to
 %	A.~F.~Bühler &  &  &  &  \\
 	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
 	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
-	A.~P.~Du &  &  &  &  \\
+%	A.~P.~Du &  &  &  &  \\
 	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
 	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\
 	C.~M.~Moreira &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
@@ -5527,7 +5606,7 @@ The following table lists the participation and contributions of team members to
 	N.~Khera &  &  & & \textcolor{AIV}{AIV Engineer}  \\
 	N.~Sajjad &  &  & \textcolor{ADCS}{ADCS Engineer} &  \\
 	O.~Borgue & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  &  \\
-	P.~Fisch &  &  &  &  \\
+	P.~Fisch &  &  &  & \textcolor{AIV}{AIV Engineer} \\
 	S.~Gouvalas &  &  & \textcolor{AIV}{AIV Engineer} &  \\
 	S.~K.~Singh &  &  & \textcolor{Hardware}{Payload Hardware Engineer} &  \\
 	T.~D'costa &  &  & \textcolor{Structural}{Structural Engineer} &  \\
