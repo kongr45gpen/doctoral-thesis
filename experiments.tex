@@ -25,6 +25,10 @@
 \usepackage{adjustbox}
 \usepackage[inline]{enumitem}
 
+\usepackage[style=ieee,citestyle=numeric-comp,autocite=inline,autopunct=true,backend=biber,maxbibnames=99,maxcitenames=2,mincitenames=1,defernumbers=true]{biblatex}
+\addbibresource{bibliography.bib}
+\addbibresource{contributions.bib}
+
 
 \hypersetup{colorlinks}
 
@@ -37,6 +41,7 @@
 \makeatother
 \ExplSyntaxOff%
 
+\DeclareBibliographyCategory{contributions}
 
 
 \usepackage{pgfplots}
@@ -97,285 +102,20 @@ Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs
 \colorlet{bad}{MaterialRed800}
 
 
-\begin{tikzpicture}[
-    >=stealth,
-    % Define styles for different node types
-    process/.style={
-        draw, 
-        rounded corners, 
-        minimum height=1cm, 
-        align=center, 
-        fill=white,
-        inner sep=6pt
-    },
-    meeting/.style={
-        process, 
-        draw=green!60!black, 
-        text=green!60!black, 
-        pattern=north east lines, 
-        pattern color=green!60!black!20
-    },
-    procurement/.style={
-        process, 
-        draw=red, 
-        text=red, 
-        pattern=north east lines, 
-        pattern color=red!20
-    },
-    aux/.style={
-        process, 
-        pattern=north east lines, 
-        pattern color=gray!20
-    },
-    label_text/.style={
-        font=\scriptsize,
-        color=black
-    },
-    green_label/.style={
-        font=\scriptsize,
-        color=green!60!black
-    }
-]
+\autocite{barnhartSatelliteonaChipFeasibilityStudy2006} said this. \autocite{dallmannAgileSpaceParadigm2015} conversely said that.
 
-    % --- Nodes ---
+\addtocategory{contributions}{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
+\nocite{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
 
-    % Planning
-    \node[meeting] (planning) {Planning};
-    \node[green_label, below=0.1cm of planning] {Meeting};
+\printbibliography[notcategory=contributions]
 
-    % Design
-    \node[process, right=1cm of planning] (design) {Design};
-    \node[label_text, above=0.2cm of design] {1-2 weeks};
-
-    % Parallel Phase Group
-    % We position Manufacturing first to establish the center line, then place others relative to it
-    \node[process, right=2.5cm of design] (manuf) {Manufacturing (Internal)};
-    
-    \node[procurement, above=0.3cm of manuf] (procure) {Procurement (External)};
-    \node[label_text, above=0.2cm of procure] {1 week};
-
-    \node[process, below=0.3cm of manuf, text width=4cm] (software) {Software Development\\Software Verification};
-    
-    \node[aux, below=0.3cm of software, text width=4cm] (aux) {Auxiliary Activities};
-
-    % Integration
-    \node[process, right=1cm of manuf] (integration) {Integration};
-    \node[label_text, above=0.2cm of integration] {1 week};
-
-    % Verification
-    \node[process, right=1cm of integration, text width=3.5cm] (verification) {Verification, Validation\\and Improvement};
-    \node[label_text, above=0.2cm of verification] {1-2 weeks};
-
-    % Reviews
-    \node[meeting, right=0.8cm of verification] (review) {Sprint Review};
-    
-    \node[meeting, right=0.8cm of review] (retro) {Sprint Retrospective};
-    \node[green_label, below=0.1cm of retro] {Meetings};
-
-    % --- Connections ---
-
-    % Linear Flow
-    \draw[->] (planning) -- (design);
-
-    % Diverging from Design
-    \draw[->] (design.east) -- (procure.west);
-    \draw[->] (design.east) -- (manuf.west);
-    \draw[->] (design.east) -- (software.west);
-    \draw[->] (design.east) -- (aux.west);
-
-    % Converging to Integration
-    \draw[->] (procure.east) -- (integration.north west);
-    \draw[->] (manuf.east) -- (integration.west);
-
-    % Converging to Verification
-    \draw[->] (integration) -- (verification);
-    % Software and Aux connect directly to Verification in the diagram
-    \draw[->] (software.east) -- (verification.south west);
-    \draw[->] (aux.east) -- (verification.south west);
-
-    % End sequence
-    \draw[->] (verification) -- (review);
-    \draw[->] (review) -- (retro);
-
-    % Feedback Loop
-    \draw[->, color=green!60!black] (retro.east) to[out=-90,in=-90, looseness=0.4] (planning.south);
-
-\end{tikzpicture}
-
-AAAA
-
-% \newgeometry{left=0.2cm, right=0.2cm, top=0.2cm, bottom=6.5cm,}%
-% \begin{landscape}%
-%     %\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm, headheight=0cm, footskip=0cm, marginpar=0cm,textwidth=15cm}%
-%     \begin{fullwidth}%
-%         \centering
-%         %\layout*%
-% 	    \includegraphics[height=.8\textheight]{media/graphics/TheMethodologyTM.pdf}%
-% 	    \captionof{figure}{Overview of the proposed \acl{SCS} Systems Engineering methodology}%
-%     \end{fullwidth}%
-% \end{landscape}%
-% \restoregeometry%
-
-% \begin{figure}[ht]
-%     \centering
-%     % Resizebox forces the entire contents to match the page width
-%     \resizebox{\textwidth}{!}{%
-%         \includegraphics[height=1cm, ]{media/pictures/P1000717_resized.jpg}%
-%         \hspace*{0.1cm}%
-%         \includegraphics[height=1cm, ]{media/pictures/P1000724_resized.jpg}%
-%     }
-%     \caption{Various types of acceptable food}
-%     \label{fig:perfect_fit}
-% \end{figure}
-
-AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
-
-
-AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB AAAAB 
-
-
-\FloatBarrier
-
-\begin{table*}[ht]
-\centering
-\begin{tabular}{llSSS}
-\toprule
-\textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
-\midrule
-Development Time (r.) & Mann-Whitney \(U\) & 16.000 & 0.0286 & \text{---} \\
-                 & \(t\)-test         & 6.181  & 0.0008 & 5.9552 \\
-\addlinespace
-Cost (relative)  & Mann-Whitney \(U\) & 8.500  & 1.0000 & \text{---} \\
-                 & \(t\)-test         & 0.503 & 0.6425 & 3.8741 \\
-\addlinespace
-Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
-                 & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
-\bottomrule
-\end{tabular}
-\caption{Statistical Analysis of Development Parameters}
-\label{tab:stat_results}
-\setfloatalignment{b}
-\end{table*}
-
-\FloatBarrier
-
-Second table
-
-\begin{table*}[h]
-\begin{tabularx}{\linewidth}{@{}lXcS[table-format=3.0]S[table-format=5.0]S[table-format=3.2]@{}}
-\toprule
-Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
-{3}{*}{ChipSat-1} 
- & Actual                                    & 4 & 478 & 8930 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
- & Counterfactual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
- \midrule
-{3}{*}{AI4Space} 
- & Actual                                    & 5 & 468 & 4900 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
- & Counterfactual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
- \midrule
-{3}{*}{POQUITO}
- & Actual                                    & 3 & 759 & 26750 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
- & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
- \midrule
-{3}{*}{ChiPySat} 
- & Actual                                    & 3 & 252 & 1000 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
- & Counterfactual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
- \bottomrule
-\end{tabularx}
-\caption{Case-study counter-factual analysis aggregate data}
-\label{tab:c_aggregate_data}
-\end{table*}
-
-\begin{table*}[ht]
-\centering
-\begin{tabular}{llSSS}
-\toprule
-\textbf{Parameter} & \textbf{Test} & \textbf{Statistic} & \textbf{$p$-value} & \textbf{df} \\
-\midrule
-Development Time (r.) & Mann-Whitney \(U\) & 16.000 & 0.0286 & \text{---} \\
-                 & \(t\)-test         & 6.181  & 0.0008 & 5.9552 \\
-\addlinespace
-Cost (relative)  & Mann-Whitney \(U\) & 8.500  & 1.0000 & \text{---} \\
-                 & \(t\)-test         & 0.503 & 0.6425 & 3.8741 \\
-\addlinespace
-Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
-                 & \(t\)-test         & 0.7924  & 0.4587 & 5.9199 \\
-\bottomrule
-\end{tabular}
-
-\caption{Statistical Analysis of Development Parameters}
-\label{tab:stat_results}
-\setfloatalignment{b}
-\end{table*}
-
-\begin{table*}[h]
-	\caption{Static Analysis results}
-	\label{tab:m_software_fuzz_static}
-	\begin{tabular}{@{}lllllll@{}}
-		\toprule
-		& AcubeSAT (C++) & Antaris (C) & PyCubed (Python) & KubOS &  &  \\ \midrule
-		Source Lines of Code & 10601 & 10007 & 2298 & 31212  & \draft{[TODO]}  &  \\
-		Token Count & 51024 & 48182 & 10844 & 136180  &  &  \\
-		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
-		Average \draft{MCCN} & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
-	\end{tabular}
-\end{table*}
-
-\begin{table*}[h]
-	\caption{Functional test results}
-	\label{tab:m_software_fuzz_functional}
-	\begin{tabular}{@{}llllll@{}}
-	\toprule
-	Test Type & Measurement & AcubeSAT (C++) & KubOS & AI4Space (Python) & Prust (Rust) \\ \midrule
-	Execution details & Minimum boot time &  2s &  & 3 minutes & 1s \\
-	& Image size &  &  &  &  \\
-	& RAM requirements &  &  &  &  \\
-	& Minimum packet latency &  &  &  &   \\ \midrule
-	Requirements & Requirements passed & 5/5 & 5/5  & 5/5  & 5/5 \\
-	& Static tests successful &  &  &  & 
-	\end{tabular}
-\end{table*}
-
-\newpage
-\FloatBarrier
-
+\chapter{Contributions}
+\renewcommand*{\mkbibnamegiven}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
 \begin{fullwidth}
-	As of 2026, \draft{549} satellites weighing less than \SI{1}{\kilogram} have been launched into Earth orbit.
-	Compared to their larger counterparts, CubeSats, these ``\acf{SCS}'' provide benefits in terms of size, cost and mass, at the expense of reduced functionality and performance.
-	%
-	%\acs{SCS} teams are characterised by small sizes, limited budgets.
-	%
-	%The reduced technical size and complexity of \acs{SCS} have made them suitable for shorter development cycles and \draft{increased understanding}.
-	%However, no established systems engineering methodology currently exists for these spacecraft.
-	%
-	%As there is currently no established systems engineering methodology for these miniaturised spacecraft, most teams adopt the development approaches of CubeSat, or follow ad-hoc processes.
-	However, despite their reduced complexity compared to CubeSats, \acl{SCS} still experience a high failure rate in orbit, and a median development time of \qty{2}{years}, which is significantly higher than the typical \qtyrange{1}{1.5}{year} turnaround for \acs{SCS} launch opportunities. \todo{AI4Space and ChipSat-1 are VERY GOOD EXAMPLES of that where we had a specific 1-year limitation (also the other missions as well tbh)}
-	Scholars have linked these observations to inadequate systems engineering practices and \draft{insufficient} project planning.
-	Currently, the majority of \acs{SCS} developers either use ad-hoc processes or adapt existing methodologies from larger spacecraft.
-	These methodologies are deemed unsuitable for the different technical and environmental characteristics of \acs{SCS} projects, either because of the significant overhead they introduce, or because of their incapability to integrate past lessons learned from similarly-sized missions.
-
-	\vspace{-1cm}
-	\newthought{This thesis presents} a tailored systems engineering methodology for the development of \acl{SCS}, which covers the aspects of Technical Management, System Description, and System Realisation for these systems. The goal of this methodology is to reduce the development duration between development start and qualification, with an aim of consistently achieving \qtyrange{1}{1.5}{year}-missions, without an adverse effect on technical risk.
-
-	The proposed methodology incorporates the practices of agile software engineering, aided by the considerably low manufacturing cost and difficulty of an \acs{SCS} system. The methodology is founded on an iterative lifecycle process model, which revolves around rapid prototyping, short iterations, and continuous system-level verification. Based on this model, more methods suited for \acs{SCS} are proposed, targetting requirements management, technical planning and engineering data management.
-
-	Additionally, the methodology covers technical aspects of the development process, by providing a set of guidelines for defining a design solution and for verification. It is found that the concepts of modularity and reuse have more limited benefits compared to larger spacecraft, while verification via reduced, automated testing instead of analysis can reduce development duration without reducing confidence in the system design. Furthermore, the use of different software development practices is evaluated, showing that an appropriate selection of programming language can generally increase software reliability.
-	
-	The methodology is validated by its implementation on four internal case studies which returned successful results from testing, qualification or flight: \begin{enumerate*}
-		\item a hosted ChipSat mission to demonstrate \acl{VLC},
-		\item a hosted \acs{PCB} payload to demonstrate \acs{AI} edge computing,
-		\item a 1p PocketQube with 2 technology demonstration payloads, and
-		\item an independent ChipSat with a lens-less camera.
-	\end{enumerate*} %Three of these missions were successfully qualified, and one was launched into orbit.
-	
-	By performing counter-factual analysis on the programmatic data generated in these missions, it is estimated that the proposed methodology can reduce development duration by an average of \qty{40}{\percent} compared to waterfall-style approaches. The biggest influences towards a short development time are found to be the \emph{reduced analysis/testing} approach (average 29\% reduction) and the \emph{multi-step iterative process} (average 25\% reduction), with other factors showing a less significant correlation. Risk is found to be affected, either negatively or positively, by the individual \draft{treatments} of a methodology, but not by its complete application.
-
-	From the presented analysis it can be concluded that the methodology can be applied to Sub-CubeSat systems to reduce development duration, but requires
-
+\printbibliography[category=contributions,type=article,heading=subbibliography,title={Journal Publications},resetnumbers=true]
+\printbibliography[category=contributions,type=inproceedings,heading=subbibliography,title={Conference Papers},resetnumbers=true]
+\printbibliography[category=contributions,type=unpublished,heading=subbibliography,title={Conference Presentations},resetnumbers=true]
 \end{fullwidth}
 
 \end{document}

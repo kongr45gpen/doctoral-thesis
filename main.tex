@@ -198,7 +198,7 @@ under the License.
 	\vspace{-1cm}
 	\newthought{This thesis presents} a tailored systems engineering methodology for the development of \acl{SCS}, which covers the aspects of Technical Management, System Description, and System Realisation for these systems. The goal of this methodology is to reduce the development duration between development start and qualification, with an aim of consistently achieving \qtyrange{1}{1.5}{year}-missions, without an adverse effect on technical risk.
 
-	The proposed methodology incorporates the practices of agile software engineering, aided by the considerably low manufacturing cost and difficulty of an \acs{SCS} system. The methodology is founded on an iterative lifecycle process model, which revolves around rapid prototyping, short iterations, and continuous system-level verification. Based on this model, more methods suited for \acs{SCS} are proposed, targetting requirements management, technical planning and engineering data management.
+	The proposed methodology incorporates the practices of agile software engineering, aided by the considerably low manufacturing cost and difficulty of an \acs{SCS} system. The methodology is founded on an iterative lifecycle process model, which revolves around rapid prototyping, short iterations, and continuous system-level verification. Based on this model, more methods suited for \acs{SCS} are proposed, targeting requirements management, technical planning and engineering data management.
 
 	Additionally, the methodology covers technical aspects of the development process, by providing a set of guidelines for defining a design solution and for verification. It is found that the concepts of modularity and reuse have more limited benefits compared to larger spacecraft, while verification via reduced, automated testing instead of analysis can reduce development duration without reducing confidence in the system design. Furthermore, the use of different software development practices is evaluated, showing that an appropriate selection of programming language can generally increase software reliability, based on a case study comparison between different On-Board Computer frameworks.
 	
@@ -248,6 +248,11 @@ under the License.
 
 \chapter{Introduction}
 \label{chap:INTRODUCTION}
+
+\begin{fullwidth}
+\epigraph{\emph{
+    Good work is always done in defiance of management.}}{R.\@ Woodward}
+\end{fullwidth}
 
 \section{Motivation}
 
@@ -326,7 +331,7 @@ These satellites are also classified as pico-, femto- and atto-satellites.\footn
 \end{figure*}
 
 \acl{SCS} have enjoyed increased popularity especially since 2018, with \draft{439} pico-satellites and \draft{110} smaller satellites having been launched (\Cref{fig:i_scs_launched}). 99 of these follow the \textbf{PocketQube} standard.
-The PocketQube concept was introduced in 2009 by Bob Twiggs \autocite{twiggsMakingItSmall2009} and standardised in \citeyear{PQ1} \autocite{PQ1}. Thanks to the availability of deployers targetting different sizes of PocketQubes, this form factor has enjoyed an average rate of \num{18} satellites launched per year since 2021 \autocite{wikipediacontributorsListLaunchedPocketQubes2025}.
+The PocketQube concept was introduced in 2009 by Bob Twiggs \autocite{twiggsMakingItSmall2009} and standardised in \citeyear{PQ1} \autocite{PQ1}. Thanks to the availability of deployers targeting different sizes of PocketQubes, this form factor has enjoyed an average rate of \num{18} satellites launched per year since 2021 \autocite{wikipediacontributorsListLaunchedPocketQubes2025}.
 
 On the sub-PocketQube scale, one of the most notable cases were Zac Manchester's ``Sprite'' ChipSats. Measuring \qtyproduct{3.5 x 3.5}{\centi\metre} (\Cref{subfig:i_manchester_chipsat}), more than 100 ChipSats were deployed by Manchester in 2019, with the goal of allowing members of the public to have ``their personal spacecraft in space'', and marking the first known occasion where atto-satellites were launched into orbit \autocite{manchesterCentimeterScaleSpacecraftDesign2015,thenationalassociationforamateurradioKickSat2AliveBeing2019}.
 
@@ -342,13 +347,13 @@ Due to the smaller size and component count of \acs{SCS}, these systems are gene
 However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
 \marginnote{\todo{Add citations to sidebar}}
-At the same time, literature from CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021}, and link tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
+At the same time, literature from CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
 Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
 This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}, as evidenced by available literature \autocite{heinAttoSatsChipSatsOther2019,bouwmeesterUtilityConstraintsPocketQubes2020} and semi-formal interviews that have been conducted within the scope of this project (\Cref{sec:LITERATURE_interviews}). As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies.
 
 However, the combination of \emph{small scale} with \emph{mission criticality} is one that is not commonly found in other engineering fields. Yet, discussions with \acs{SCS} developers show that they operate in environments and under time/risk constraints similar to those of CubeSat systems (\Cref{sec:LITERATURE_interviews}). \acs{SCS} systems can therefore benefit from a \textbf{tailored methodology} that can take advantage of their unique characteristics. Using a methodology originally intended for \emph{larger spacecraft} or systems can introduce significant overhead in terms of cost and time, which may be unnecessary for these systems.\marginnote{\todo{[cite?]}} On the other hand, the use of an \emph{ad-hoc approach} increases programmatic and technical risk, since it provides no guarantees on the timely results of a project and no observability on factors such as progress, quality, or the critical path \autocite{honourTechnicalReportValue2004}. Nevertheless, due to the mission-critical nature of \acs{SCS} and their integration with larger systems,\footnote{Such as launchers, deployers} develpers need to achieve a correct balance between the effort and time spent across design, realisation and verification \autocite{sebok_value,boehmROISystemsEngineering2008,dillonFasterBetterCheaperProjectsToo2015}.
 
-\newthought{Thus,} the \textbf{main hypothesis} of this research project is that a \textbf{tailored \acl{SYE} methodology} specifically targetting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining an acceptable level of reliability and functionality. This methodology can also serve as a guideline for new missions, allowing first-time developers to establish a starting point for new projects, drawing on lessons learned from previous missions. The methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
+\newthought{Thus,} the \textbf{main hypothesis} of this research project is that a \textbf{tailored \acl{SYE} methodology} specifically targeting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining an acceptable level of reliability and functionality. This methodology can also serve as a guideline for new missions, allowing first-time developers to establish a starting point for new projects, drawing on lessons learned from previous missions. The methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
 
 In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore the concept of \acl{SYE}, showing how it can be partitioned into different fields, and investigating its utility and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
 
@@ -690,7 +695,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 
 \begin{fullwidth}
 \epigraph{\emph{
-		"Agile" doesn't mean "last-minute".}}{Alexander F.\@ B\"uhler}
+		``Agile'' doesn't mean "last-minute".}}{Alexander F.\@ B\"uhler}
 \end{fullwidth}
 
 This chapter will introduce the background information necessary to develop the \ac{SCS} methodology.
@@ -1728,7 +1733,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 	
 	Nevertheless, the intended goal of short \( < \qty{1}{year}\) projects allows implementing and qualitatively validating the proposed \acs{SCS} methodology, as part of specific \textbf{case studies} that are developed in parallel with this thesis.
 	
-	More specifically, during this work I participated in four miniaturised space system design missions, most of them targetting environmental qualification\footnote{equivalent to a \acs{TRL} of 8}.
+	More specifically, during this work I participated in four miniaturised space system design missions, most of them targeting environmental qualification\footnote{equivalent to a \acs{TRL} of 8}.
 	These case studies were used to iteratively generate data, test, and validate the proposed methodology.
 	
 	
@@ -3755,6 +3760,11 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 \chapter{Case Studies}
 \label{chap:CASESTUDIES}
 
+\begin{fullwidth}
+\epigraph{\emph{%
+		The designer of a new system must not only be the implementor and the first large-scale user; the designer should also write the first user manual.}}{Donald E.\@ Knuth}
+\end{fullwidth}
+
 \begin{table*}[h]
 	\caption{Overview of Case Studies developed in the course of this research \todo{Check dev time of the projects}}
 	\label{tab:c_case_studies}
@@ -3963,6 +3973,8 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 \end{landscape}
 \end{invisible}
 
+\FloatBarrier
+\newpage
 \section{ChipSat-1}
 \label{sec:CASESTUDIES_chipsat1}
 %Seminal papers: \autocite{borgueDevelopingDistributedFractionated2022a}
@@ -5187,8 +5199,18 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 \end{figure}
 
 
+
+\chapter{Discussion}
+\label{chap:DISCUSSION}
+
+
+\begin{fullwidth}
+\epigraph{\emph{%
+		All models are wrong, but some are useful.}}{George E.\@ P.\@ Box}
+\end{fullwidth}
+
 \FloatBarrier
-\section{Results}
+\section{Cross-Case Analysis}
 \label{sec:CASESTUDIES_results}
 
 This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
@@ -5205,7 +5227,7 @@ This section presents a cross-case analysis between the four case-studies presen
 \marginnote{%
 	The action research-based approach did not allow us to implement a control/treatment group approach, and as such not all elements of the \acs{SCS} methodology were applied at once. However, based on the counter-factual evaluation performed above, there is no significant difference between the actual and the complete implementation of the \acs{SCS}. In most cases, 5 out of 6 treatments were applied. The exact differences are presented in \draft{a table}.
 }
-To evaluate the \textbf{internal validity} of the \acs{SCS} methodology, I consider whether the conditions introduced by the \acs{SCS} methodology, as applied to these case study, led to successfully achieving the methodology requirements for each mission.
+To evaluate the \textbf{internal validity} of the \acs{SCS} methodology, I consider whether the conditions introduced by the \acs{SCS} methodology, as applied to these case studies, led to successfully achieving the methodology requirements for each mission.
 
 \paragraph{RM1: The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.}
 
@@ -5473,8 +5495,6 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 
 
 
-
-
 \chapter{Conclusion}
 \label{chap:CONCLUSION}
 
@@ -5666,7 +5686,18 @@ The following table lists the participation and contributions of team members to
 \end{invisible}
 
 \begin{fullwidth}
-\printbibliography[heading=bibnumbered]
+
+\chapter{Contributions}
+\addtocategory{contributions}{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
+\nocite{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
+\renewcommand*{\mkbibnamegiven}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
+\printbibliography[category=contributions,type=article,heading=subbibliography,title={Journal Publications},resetnumbers=true]
+\printbibliography[category=contributions,type=inproceedings,heading=subbibliography,title={Conference Papers},resetnumbers=true]
+\printbibliography[category=contributions,type=unpublished,heading=subbibliography,title={Conference Presentations},resetnumbers=true]
+
+
+\printbibliography[heading=bibnumbered,notcategory=contributions]
 \end{fullwidth}
 
 
