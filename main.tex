@@ -865,7 +865,7 @@ Thermal Control & Thermal & -\tnote{2}   \\
 \caption{Example partitions of large spacecraft, CubeSats, and PocketQubes into subsystems}
 \label{tab:l_subsystem_partition}
 \end{table}
-\acuse{TTC}
+\acempty{TTC}
 
 CubeSat payloads, which normally define platform requirements, can serve technology demonstration, imaging, science, communications, or military missions \autocite{berthoudHowSetCubeSat2016}. Most CubeSats are launched in \ac{LEO}, therefore showing significant similarities regarding the basic principles of operation for every subsystem.
 
@@ -4102,7 +4102,9 @@ Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}
 \subsection{System Description}
 
 \begin{figure}[h]
-	\acuse{IC,LED}
+	%\acuse{IC,LED}
+	\acempty{IC}
+	\acempty{LED}
 	\includegraphics{media/graphics/Block_ChipSat}
 	\caption{Internal block diagram of the ChipSat-1 system}
 	\label{fig:c_chipsat_block}
@@ -4504,7 +4506,8 @@ AI4Space was therefore developed as a technology demonstrator platform for \acs{
 \subsection{System Description}
 
 \begin{figure}[h]
-	\acuse{DC}
+	%\acuse{DC}
+	\acempty{DC}
 	\includegraphics{media/graphics/Block_AI4Space}
 	\caption{Internal block diagram of the AI4Space system}
 	\label{fig:c_ai4space_block}
@@ -4724,7 +4727,13 @@ Owing to the availability of open-source PocketQube buses and the \draft{actual 
 	\caption{Internal block diagram of the POQUITO system}
 	\label{fig:c_poquito_block}
 \end{figure}
-\acuse{IMU,SD,POWERAMP,MPPT,IC,BMPS}
+\acempty{IMU}
+\acempty{SD}
+\acempty{POWERAMP}
+\acempty{MPPT}
+\acempty{IC}
+\acempty{BMPS}
+%\acuse{IMU,SD,POWERAMP,MPPT,IC,BMPS}
 
 One notable point regarding the selected design is the \emph{lack of a dedicated \acl{OBC}}. Instead, following QUBIK's design, the responsibilities of data handling and control were delegated to the communications board. This is possible due to the low complexity and \emph{technical size} of the PocketQube, which removes the need to separate concerns or have a modular architecture.
 
@@ -5048,11 +5057,16 @@ REQ-220 & Design & The spacecraft shall be programmed in ETH Prusti & Could have
 \subsection{Mission Description}
 
 \begin{figure}[h]
-	\acuse{IMU,MPPT,UHF,USB,SD}%
+	%\acuse{IMU,MPPT,UHF,USB,SD}%
 	\includegraphics{media/graphics/Block_Chipysat}
 	\caption{Internal block diagram of the ChiPySat system}
 	\label{fig:c_chipysat_block}
 \end{figure}
+\acempty{IMU}%
+\acempty{MPPT}%
+\acempty{UHF}%
+\acempty{USB}%
+\acempty{SD}%
 
 The main payload of the ChiPySat system was a \textbf{lens-less camera} based on the \textbf{DiffuserCam} concept \autocite{kuoDiffuserCamDiffuserBasedLensless2017}. The DiffuserCam setup involves placing a diffuser material at a specific distance in front of an image sensor (\Cref{fig:c_diffusercam_setup}). A point light source aimed towards the diffuser creates a material-based caustic pattern on the sensor, which varies based on the lateral position and depth of the source.\footnote{The dependence of the caustic pattern on depth means that it is possible to reconstruct 3D representations of captured scenes, as depth-dependent data are included on the captured image} A real scene therefore projects a superposition of these caustic patterns onto the sensor. In the 2D case, this superposition is mathematically calculated as the convolution between the diffuser's \emph{Point Spread Function} (i.e.\@ its impulse response against a point source) and the actual scene. To reconstruct the original scene, a processor has to solve the inverse problem, by calculating a 2D deconvolution operation. Due to the presence of measurement noise and depth effects, the calculation of the deconvolution involves solving an optimisation problem \cite{kuoDiffuserCamDiffuserBasedLensless2017}.
 

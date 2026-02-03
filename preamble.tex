@@ -168,6 +168,10 @@ defernumbers=true,
 		\end {description}
 	}
 
+% \acuse does not add page numbers to the acronym list. \acempty does.
+\NewAcroTemplate{empty}{}
+\NewAcroCommand\acempty{m}{\UseAcroTemplate{empty}{#1}}
+
 % Various utilities
 \usepackage{tabularx}
 \usepackage[singlelinecheck=false,font={footnotesize}]{caption}
