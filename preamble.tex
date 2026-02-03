@@ -223,8 +223,10 @@ defernumbers=true,
 
 % Smart citations
 
-
-%\def\blx@imc@mkbibquote{\blx@enquote}
+\xdef\@NextCitationOffsetTemp{0pt}%
+\NewDocumentCommand{\NextCitationOffset}{m}{%
+	\xdef\@NextCitationOffsetTemp{#1}%
+}%
 
 \newbibmacro*{cite:title}{%
   \printtext[bibhyperref]{%
@@ -247,13 +249,14 @@ defernumbers=true,
 
 \newbibmacro*{cite:marginnote}{%
 	\printtext{%
-		\marginnote{%
+		\marginnote[\@NextCitationOffsetTemp]{%
 			\printtext{[\printfield{labelprefix}\printfield{labelnumber}]}%
 			\setunit*{\addspace}%
 			\usebibmacro{cite:full}%
 			\finentry%
 		}%
 	}%
+	\xdef\@NextCitationOffsetTemp{0pt}%
 }
 
 
@@ -268,13 +271,6 @@ defernumbers=true,
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}%
    }
-
-% \DeclareCiteCommand{\dualcite}[\mkbibbrackets]
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%    \usebibmacro{cite}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
 
 \DeclareMultiCiteCommand{\dualcites}[\mkbibbrackets]{\dualcite}{\multicitedelim}
 

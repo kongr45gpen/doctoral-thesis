@@ -250,7 +250,7 @@ under the License.
 \label{chap:INTRODUCTION}
 
 \begin{fullwidth}
-\epigraph{\emph{
+\epigraph{\emph{%
     Good work is always done in defiance of management.}}{R.\@ Woodward}
 \end{fullwidth}
 
@@ -339,7 +339,7 @@ The distinct characteristics of PocketQubes, ChipSats and similar spacecraft, ma
 
 \begin{marginfigure}
 	\includegraphics{media/pictures/starshot.jpg}
-	\caption{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \cite{spacerefBreakthroughStarshotProject2016}}
+	\caption[Artist's depiction of a \emph{Breakthrough Starshot} lightsail]{Artist's depiction of a \emph{Breakthrough Starshot} lightsail \cite{spacerefBreakthroughStarshotProject2016}}
 \end{marginfigure}
 
 Due to the smaller size and component count of \acs{SCS}, these systems are generally simpler and easier to develop than their larger counterparts. While the capabilities of a single system are reduced due to these constraints, these form factors make spacecraft development accessible to engineers and communities that would otherwise not be able to follow the complete \ac{MAIV} process for a CubeSat, with an extreme example being Manchester's \qty{300}{USD} ChipSat Kickstarter cost \autocite{manchesterKickSatYourPersonal2016}. PocketQubes have been described as suitable for education and training in academic environments, especially due to the decreased manufacturing and launch costs \autocite{bouwmeesterSurveyWorldwidePico2010}. \citeauthor{heinAttoSatsChipSatsOther2019} \autocite{heinAttoSatsChipSatsOther2019} also note that the development of flight hardware for ChipSats can be finished within 6 months, costing on the order of dozens to hundreds of dollars for manufacturing, and allowing fast build-and-launch cycles.
@@ -357,12 +357,12 @@ However, the combination of \emph{small scale} with \emph{mission criticality} i
 
 In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore the concept of \acl{SYE}, showing how it can be partitioned into different fields, and investigating its utility and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
 
-\begin{figure}[p]
+\begin{figure}[h]
 	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram.pdf}
 	\caption[Histogram of satellite wet mass, for satellites flying as of 2023]{Histogram of satellite wet mass, for satellites flying as of 2023 \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[h]
 	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram_no_starlink.pdf}
 	\caption[Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink)]{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
 \end{figure}
@@ -527,7 +527,7 @@ Indeed, both nano-satellites and smaller classes can be classified as \emph{(ver
 
 Based on these similarities and the number of successes of launched \acs{SCS} missions so far, one can claim that these methodologies maintain their validity in terms of project quality. Do they, however, maintain their validity in terms of the rest of \Cref{tab:i_success_factors}'s factors, such as schedule and budget? Or, expressed differently, are these methodologies still \emph{effective} and \emph{optimal} for \acs{SCS} projects?
 
-\citeauthor{heinAttoSatsChipSatsOther2019} posited, for example, that atto-satellites offer characteristics that make them possible to develop (from conceptualisation to flight hardware) within 6 months, enabling major accessibility combined with novel or distributed mission concepts. The authors note how rapid low-cost development can motivate capabilities such as rapid technology testing or missions requiring a quickly-produced spacecraft constellation\footnote{Examples include distributed earth observation, data collection, communication and impactor missions, as well as concepts that involve attachment or transportation via larger spacecraft} \autocite{heinAttoSatsChipSatsOther2019}. 
+\citeauthor{heinAttoSatsChipSatsOther2019} posited, for example, that atto-satellites offer characteristics that make them possible to develop (from conceptualisation to flight hardware) within 6 months, enabling major accessibility combined with novel or distributed mission concepts. The authors note how rapid low-cost development can motivate capabilities such as rapid technology testing or missions requiring a quickly-produced spacecraft constellation\footnote{Examples include distributed earth observation, data collection, communication and impactor missions, as well as concepts that involve attachment or transportation via larger spacecraft.} \autocite{heinAttoSatsChipSatsOther2019}. 
 
 The specific characteristics of \acs{SCS} that differentiate them from CubeSats to justify the usage of a different methodology are as follows:
 \begin{itemize}
@@ -624,7 +624,7 @@ In order to establish the area of interest for this thesis, I will use the \acf{
 
 \begin{figure*}[h]
 	\includegraphics{graphics/MindMap.pdf}
-	\caption{Mind-map between the methods and goals of the \acs{SCS} systems engineering methodology}
+	\caption[Mind-map between the methods and goals of the SCS systems engineering methodology][-2cm]{Mind-map between the methods and goals of the \acs{SCS} systems engineering methodology}
 \end{figure*}
 
 From the perspective of \acs{SCS} projects and \acs{SCS} developers, the scope of this thesis is shown in \Cref{fig:i_uoa,fig:i_uoa_all}.
@@ -694,7 +694,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 \label{chap:SURVEY}
 
 \begin{fullwidth}
-\epigraph{\emph{
+\epigraph{\emph{%
 		``Agile'' doesn't mean "last-minute".}}{Alexander F.\@ B\"uhler}
 \end{fullwidth}
 
@@ -736,8 +736,9 @@ Various \acl{SCS} classes have been defined in the literature. Most prominently,
 Apart from the size-based definitions, spacecraft can also be classified based on their mass through the use of metric-like prefixes.
 Note that the widely accepted classification, perhaps misleadingly, does not follow the \acs{SI} definition of unit prefixes. The convention used in this paper is shown in \Cref{tab:satellite_sizes}.
 
+Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites.
 \begin{margindefinition}{Sub-CubeSat Spacecraft}\end{margindefinition}
-Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites. To reduce verbosity, I also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
+To reduce verbosity, I also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
 
 
 \subsection{Method and Methodology}
@@ -887,8 +888,8 @@ A 2018 database of 855 launched CubeSat reveals a 61\% success rate, with a 21\%
 
 \begin{figure*}[h]
 	\includegraphics[width=\textwidth]{analyses/mission_outcomes_by_developer_2018}
-	\caption[CubeSat failure rates by developer type and criticality]{CubeSat failure rates by developer type and criticality (data up to 2018) \cite{swartwoutCubeSatMissionSuccess2019}}
-	\setfloatalignment{b}
+	\caption[CubeSat failure rates by developer type and criticality][-0.5cm]{CubeSat failure rates by developer type and criticality (data up to 2018) \cite{swartwoutCubeSatMissionSuccess2019}}
+	\setfloatalignment{t}
 	\label{fig:l_cubesat_swartwout_2019_failures}
 \end{figure*}
 
@@ -927,7 +928,7 @@ Some of the most common \emph{lessons learned} or recommendations for CubeSat de
 % What about funding importance?
 
 \citeauthor{swartwoutYouSayPicosat2018} has classified CubeSat builders by their \textbf{organisation type} into University, Government, Commercial, and Military developers.
-He noted that certain similar patterns within these organisations can further classify them into four further categories\footnote{\citeauthor{swartwoutYouSayPicosat2018} performed a manual evaluation of CubeSat launch databases and private data to measure the number of each developer category, shown in \Cref{tab:l_cubesat_mission_types}}: \autocite{swartwoutYouSayPicosat2018}
+He noted that certain similar patterns within these organisations can further classify them into four further categories\footnote{\citeauthor{swartwoutYouSayPicosat2018} performed a manual evaluation of CubeSat launch databases and private data to measure the number of each developer category, shown in \Cref{tab:l_cubesat_mission_types}}: \cite{swartwoutYouSayPicosat2018}
 \begin{itemize}[itemsep=-2ex]
 	\item \textbf{Hobbyists}, who approach missions as a side activity and lack standard practices;
 	\item \textbf{Traditional Contractors}, who have an established history and set of practices;
@@ -951,7 +952,7 @@ This classification has an impact on the environmental parameters of CubeSat mis
 \citeauthor{berthoudHowSetCubeSat2016} performed a survey of 40 CubeSat groups (37 from universities) to generate numerical data about CubeSat environments \autocite{berthoudHowSetCubeSat2016}, which are summarised in \Cref{tab:l_cubesat_team_characteristics}. Various CubeSat projects in the design, manufacturing or operations stages have also published extracts from their Project Management plans, providing information about the main drivers behind costs, phases, development effort, and their critical path.
 
 \begin{table*}
-	\caption[CubeSat team characteristics]{CubeSat team characteristics (\(N = 40\)) \cite{berthoudHowSetCubeSat2016}}
+	\caption[CubeSat team characteristics][3ex]{CubeSat team characteristics (\(N = 40\)) \cite{berthoudHowSetCubeSat2016}}
 	\label{tab:l_cubesat_team_characteristics}
 	\def\arraystretch{1.1}
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
@@ -1164,6 +1165,7 @@ Inspired by the success of pocketable microelectronics, the PocketQube idea was 
 	\hfill%
 	\includegraphics[height=6cm]{media/pictures/qubik_bmps.jpg}%
 	\caption[Left: Comparison of a 1p PocketQube with a coin. Right: QUBIK EPS board.]{Left: Size comparison of a 1p PocketQube with a 0.50€ coin. Right: QUBIK \acs{EPS} board.\quad The 9-pin PQ9 connector is visible on the right.}
+	\setfloatalignment{b}
 \end{figure*}
 
 The first PocketQubes were launched in 2013 \autocite{franzesePocketQubePicosatellitesSurvey2025,wikipediacontributorsListLaunchedPocketQubes2025}.
@@ -1174,6 +1176,7 @@ Lists of launched PocketQubes are maintained by \citeauthor{kuluNanosatsDatabase
 \citeauthor{franzesePocketQubePicosatellitesSurvey2025} also released a review of PocketQube missions launched until 2023 \autocite{franzesePocketQubePicosatellitesSurvey2025}.
 As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023}.
 
+
 \begin{figure}
 	\includegraphics{external/picobus.jpg}
 	\caption[The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation]{The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation. Image taken from \autocite{librespacefoundationPICOBUS}.}
@@ -1181,14 +1184,15 @@ As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023
 
 In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmeesterUtilityConstraintsPocketQubes2020} analysed the general constraints and applications of PocketQubes \autocite{bouwmeesterUtilityConstraintsPocketQubes2020}. They identified the main limitations of the technology \draft{to be} space debris regulations and considerations, technology limitations, and \draft{financial conditions}. They also proposed applications in the fields of education, \acs{IOD}, earth/space weather observation, communications, and space exploration.
 
-\newthought{While} no comprehensive survey exists regarding the systems engineering methodology or constraints used by PocketQube and pico-satellite developers,
-\draft{some} individual publications offer insight on the approaches followed by different teams.
-
 \begin{marginfigure}
-	\includegraphics[width=\marginparwidth]{drafts/delfi_pq.png}
+	\centering
+	\includegraphics[width=.8\marginparwidth]{drafts/delfi_pq.png}
 	\caption[Delfi-PQ PocketQube]{Delfi-PQ PocketQube. Taken from \cite{uludagDelfiPQInOrbitPerformance2025}}
 	\label{fig:l_delfi_pq}
 \end{marginfigure}
+
+\newthought{While} no comprehensive survey exists regarding the systems engineering methodology or constraints used by PocketQube and pico-satellite developers,
+\draft{some} individual publications offer insight on the approaches followed by different teams.
 
 \citeauthor{uludagDelfiPQInOrbitPerformance2025} have presented the development of Delfi-PQ, a 3P PocketQube developed at the Delft University of Technology, and launched in 2022 \autocite{uludagDelfiPQInOrbitPerformance2025}. The authors reported \textbf{cost reduction} as one of the main design drivers, and noted the use of an \textbf{iteration-heavy} development schedule, with \textbf{iterations lasting between 3 and 10 weeks} across a 4-year schedule. Their satellite bus consisted of \acs{EPS}, \acs{OBC}, \acs{COMMS}\footnote{including a deployable antenna} and \acs{ADCS}\footnote{based on an active 3-axis magnetorquer system} subsystems.
 
@@ -1415,7 +1419,7 @@ While ThumbSat was active between 2015--2017, it seems that regulatory obstacles
 
 
 %The Sprite, SpinorSat, Monarch and AmbaSat 
-Many of the above designs follow the open-source and open-hardware philosophies, with their source code, hardware design and documentation available online\footnote{\url{https://github.com/space-technologies-at-california/PCBSat} \draft{add other URLs...}}. \todo{As online databases do not typically include objects smaller than PocketQubes, I provide a list of known sub-PocketQube missions in }
+Many of the above designs follow the open-source and open-hardware philosophies, with their source code, hardware design and documentation available online\footnote{\url{https://github.com/space-technologies-at-california/PCBSat} \todo{add other URLs...}}. \todo{As online databases do not typically include objects smaller than PocketQubes, I provide a list of known sub-PocketQube missions in }
 
 %In \citeyear{perezSurveyCurrentFemtosatellite2016}, \citeauthor{perezSurveyCurrentFemtosatellite2016} investigated the current femto-satellite state of the art. \autocite{perezSurveyCurrentFemtosatellite2016}
 
@@ -1531,6 +1535,7 @@ Hybrid approaches that combine incremental and iterative development are also ob
 \begin{figure}[h]
 	\includegraphics{graphics/ProcessModelGroups.pdf}
 	\caption[Different categorisations of lifecycle process models]{Different categorisations of lifecycle process models \cite{sebok_book_211,sebok_book_212,HEEAGER201822}}
+	\setfloatalignment{t}
 \end{figure}
 
 
@@ -1620,8 +1625,9 @@ In this sub-section, I will analyse the most popular Agile frameworks and evalua
 
 \subparagraph{Scrum}
 \label{sec:LITERATURE_scrum}
+Scrum, one of the most popular agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire life cycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}.
 \marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
-Scrum, one of the most popular agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire life cycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}. Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework.
+Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework.
 
 The framework is built around fixed-time iterations called \emph{Sprints}, which follow a repeated pattern of \emph{planning-\-standup-\-review-\-retrospective} with the aim of presenting a complete product at the end of each iteration. It also defines the different terminology and roles within small development team.
 
@@ -2941,7 +2947,7 @@ Another decision that developers are faced with involves whether they reuse exis
 
 \geometrylscape
 \begin{landscape}
-	\captionof{table}[List of known open-source reusable components, subsystems and systems built for Sub-CubeSat Spacecraft]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
+	\captionof{table}[List of known open-source reusable components, subsystems and systems built for SCS]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
 
 	\begin{tabularx}{\linewidth}{@{}lllllX@{}}
 		\toprule
@@ -2956,12 +2962,11 @@ Another decision that developers are faced with involves whether they reuse exis
 		% https://www.albaorbital.com/open-source-pocketqube#:~:text=%2450SAT%20%281%2E5P%29%2C%20Morehead%20State%20university
 		% Based on the material available, not considered open-source and not possible to reuse.
 		
-		3 & System & \href{https://github.com/kcglab/satllazero}{SATLLA-0} & Ariel University & \draft{????} & 2p system designed as a starting point for academic institutions, based on Arduino software. \\
+		3 & System & \href{https://github.com/kcglab/satllazero}{SATLLA-0} & Ariel University & \todo{????} & 2p system designed as a starting point for academic institutions, based on Arduino software. \\
 
-		4 & System & Tartan Artibeus & Carnegie Mellon University & \draft{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
+		4 & System & Tartan Artibeus & Carnegie Mellon University & \todo{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
 
-		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & \draft{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
-
+		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & \todo{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
 		x & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
 
 		x & Subsystem & \href{https://gitlab.com/librespacefoundation/pq9ish}{PQ9ISH COMMS} & Libre Space Foundation & 2017 & Communications subsystem based on PQ9 \cite{PQ91} \\
@@ -2971,11 +2976,11 @@ Another decision that developers are faced with involves whether they reuse exis
 		\midrule
 		\multicolumn{6}{c}{Femto- and atto-satellites} \\ \midrule
 
-		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \draft{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
+		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \todo{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
 
-		x & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \draft{???} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
+		x & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \todo{????} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
 
-		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \draft{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
+		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \todo{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
 	
 		\bottomrule
 	\end{tabularx}%
@@ -4045,7 +4050,7 @@ For ChipSat-1, the available space allowed us to implement two ``secondary'' par
 
 \begin{figure}[h]
 	\includegraphics{drafts/chipsat_parts_render.png}
-	\caption{Render of ChipSat-1, showing its 3 parts. Each part is electrically isolated to the others, sharing only a common ground and the free-space optical link.}
+	\caption[Render of ChipSat-1, showing its 3 parts]{Render of ChipSat-1, showing its 3 parts. Each part is electrically isolated to the others, sharing only a common ground and the free-space optical link.}
 	\label{fig:c_chipsat_parts_render}
 \end{figure}
 
@@ -4306,7 +4311,7 @@ During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in co
 		\includegraphics{pictures/chipsat1_tvac.jpg}
 		%\caption{\label{subfig:c_chipsat_tvac}}
 	\end{subfigure}%
-	\caption{ChipSat-1 during qualification testing \quad (a) on the shaker,\quad (b) in the thermal vacuum chamber}
+	\caption[ChipSat-1 during qualification testing]{ChipSat-1 during qualification testing \quad (a) on the shaker,\quad (b) in the thermal vacuum chamber}
 \end{figure}
 
 \begin{figure*}
@@ -4450,6 +4455,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 	\includegraphics{analyses/cf_chipsat1_trade}
 	\caption{ChipSat-1 \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
 	\label{fig:c_tradeoff_chipsat1}
+	\setfloatalignment{t}
 \end{figure}
 
 %\paragraph{Conclusion}
@@ -4777,6 +4783,7 @@ In terms of additional components, the \acs{ADCS} contains a photodiode, functio
 		\caption{ChipSat Payload}
 	\end{subfigure}
 	\caption{POQUITO subsystems}
+	\setfloatalignment{t}
 \end{figure}
 
 Power storage was done via a camera battery mounted on the \acs{EPS} board. The antenna used QUBIK's original burn-wire mechanism, placed on the baseplate, which also included two electrical cut-off switches (``kill switches'') to detect deployment. The baseplate also included an outwards-facing 16-pin umbilical connector, intended for debugging and charging after integration, and internally harnessed to all subsystems.\footnote{Even though QUBIK originally had one programmable subsystem, the base-plate and harness designs predicted the need for a second programmable subsystem, which we made use of.} To reduce internal cabling, the solar panels included pads compatible with spring loaded ``pogo pin'' connectors.
@@ -5116,7 +5123,7 @@ The first iteration lasted approximately 4 months, including an initial familari
 	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_input.jpg}}%
 	\hspace{3.3cm}%
 	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_result.png}}%
-	\caption{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) Sensor output. (d) Reconstructed image (rotated 90°).}
+	\caption[ChiPySat pipeline example]{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) Sensor output. (d) Reconstructed image (rotated 90°).}
 	\label{fig:c_chipysat_results}
 \end{figure}
 
@@ -5210,6 +5217,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	\includegraphics{analyses/cf_chipysat_trade}
 	\caption{ChiPySat \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
 	\label{fig:c_tradeoff_chipysat}
+	\setfloatalignment{t}
 \end{figure}
 
 
@@ -5232,7 +5240,7 @@ This section presents a cross-case analysis between the four case-studies presen
 \begin{figure*}
 	\includegraphics{graphics/ResultsCausal.pdf}
 	\caption{Observed \acs{SCS} treatment---effect mapping based on case studies}
-	\setfloatalignment{t}
+	\setfloatalignment{b}
 	\label{fig:c_causal_mapping}
 \end{figure*}
 
@@ -5701,17 +5709,17 @@ The following table lists the participation and contributions of team members to
 
 \begin{fullwidth}
 
-\chapter{Contributions}
+\chapter{List of Articles}
 \addtocategory{contributions}{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
 \nocite{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
 \renewcommand*{\mkbibnamegiven}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
 \renewcommand*{\mkbibnamefamily}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
 \printbibliography[category=contributions,type=article,heading=subbibliography,title={Journal Publications},resetnumbers=true]
-\printbibliography[category=contributions,type=inproceedings,heading=subbibliography,title={Conference Papers},resetnumbers=true]
-\printbibliography[category=contributions,type=unpublished,heading=subbibliography,title={Conference Presentations},resetnumbers=true]
+\printbibliography[category=contributions,type=inproceedings,heading=subbibliography,title={Conference Papers},resetnumbers=false]
+\printbibliography[category=contributions,type=unpublished,heading=subbibliography,title={Conference Presentations},resetnumbers=false]
 
 
-\printbibliography[heading=bibnumbered,notcategory=contributions]
+\printbibliography[heading=bibnumbered,notcategory=contributions,resetnumbers=true]
 \end{fullwidth}
 
 

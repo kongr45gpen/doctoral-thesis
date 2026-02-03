@@ -13,21 +13,30 @@
 
 
 
-\usepackage{amsmath}
-%\usepackage{hyperref}
-%\usepackage{graphicx}
-%\usepackage{siunitx}
-\usepackage{xcolor-material}
-%\usepackage{pdflscape}
-%\usepackage{caption}
-%\usepackage{layout}
-\usepackage{siunitx}
-\usepackage{adjustbox}
-\usepackage[inline]{enumitem}
+%\usepackage{amsmath}
+% \usepackage{hyperref}
+% %\usepackage{graphicx}
+% %\usepackage{siunitx}
+% %\usepackage{xcolor-material}
+% %\usepackage{pdflscape}
+% %\usepackage{caption}
+% %\usepackage{layout}
+% %\usepackage{amsmath}
+% \usepackage{cleveref}
+% \usepackage{siunitx}
+% %\usepackage{adjustbox}
+% %\usepackage[inline]{enumitem}
 
-\usepackage[style=ieee,citestyle=numeric-comp,autocite=inline,autopunct=true,backend=biber,maxbibnames=99,maxcitenames=2,mincitenames=1,defernumbers=true]{biblatex}
-\addbibresource{bibliography.bib}
-\addbibresource{contributions.bib}
+% %\usepackage[style=ieee,citestyle=numeric-comp,autocite=inline,autopunct=true,backend=biber,maxbibnames=99,maxcitenames=2,mincitenames=1,defernumbers=true]{biblatex}
+% %\addbibresource{bibliography.bib}
+
+% \usepackage{acro}
+% \DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
+% \DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
+% \DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}}
+% \DeclareAcronym{OPS}{short = OPS, long = {Operations}}
+
+
 
 
 \hypersetup{colorlinks}
@@ -41,55 +50,62 @@
 \makeatother
 \ExplSyntaxOff%
 
-\DeclareBibliographyCategory{contributions}
 
 
-\usepackage{pgfplots}
-\usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
+%\usepackage{pgfplots}
+%\usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
 
-\def\acf#1{Big Design Up Front (#1)} 
-\def\acs#1{\textsf{#1}} 
-\def\acsp#1{\textsf{#1s}}
-\def\acl#1{\textsf{Big Design Up Front}} 
-\def\draft#1{\textcolor{red}{#1}}
-\def\todo#1{\textcolor{blue}{#1}}
-\def\qtyproduct#1#2{#1}
+% \def\acf#1{Big Design Up Front (#1)} 
+% \def\acs#1{\textsf{#1}} 
+% \def\acsp#1{\textsf{#1s}}
+% \def\acl#1{\textsf{Big Design Up Front}} 
+% \def\draft#1{\textcolor{red}{#1}}
+% \def\todo#1{\textcolor{blue}{#1}}
+% \def\qtyproduct#1#2{#1}
 
-\usepackage{tabularx}
-\usepackage{booktabs}
-\usepackage{subfig}
+%\usepackage{tabularx}
+%\usepackage{booktabs}
+%\usepackage{subfig}
+
+\input{preamble.tex}
 
 \begin{document}
 
 \tableofcontents
 
-%\chapter{Boing boing}
-%\section{Kalimera}
-%\subsection{Kalin Imera}
+\printacronyms[pages={display=all,seq/use=false},]
+
+\chapter{Boing boing}
+\section{Kalimera}
+\subsection{Kalin Imera}
+\label{sec:omoerfh_mera}
 %\subsubsection{Na exete mia kalh mera}
 \paragraph{Omorfh mera}
-
-\begin{figure}
-	\includegraphics{media/graphics/NASASYE}
-	\caption{Decomposition of Systems Engineering in connection with Project Management}
-	\label{fig:i_nasa_sye_decomposition}
-\end{figure}
-
-Here is a reference to that figure: Figure~\ref{fig:i_nasa_sye_decomposition}.
-
-I like to eat apples every day.
+ shows a paragraph reference.
 
 \begin{figure*}
-	\includegraphics{media/graphics/NASASYE}
+	%\includegraphics{media/graphics/NASASYE}
+	\caption{Decomposition of Systems Engineering in connection with Project Management}
+	\label{fig:i_nasa_sye_decomposition}
+\end{figure*}
+
+Here is a reference to that figure: Figure~\ref{fig:i_nasa_sye_decomposition}.
+Here is another reference to that figure: \Cref{fig:i_nasa_sye_decomposition}.
+Here is a reference to a paragraph: \Cref{sec:omoerfh_mera}.
+
+I like eat apples every day.
+
+\begin{figure*}
+	%\includegraphics{media/graphics/NASASYE}
 	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management}
 	\label{fig:i_nasa_sye_decomposition_wide}
 \end{figure*}
 
-Here is a reference to that wide figure: Figure~\ref{fig:i_nasa_sye_decomposition_wide}.
+Here is a reference to that wide figure: Figure~\ref{fig:i_nasa_sye_decomposition_wide}. \Cref{fig:i_nasa_sye_decomposition_wide}.
 
 \ref{fig:i_nasa_sye_decomposition_wide}
 
-In fact, my favourite verbosity is discombobulate.f
+In fact, my favourite verbosity is to discombobulate daily. \nameref{sec:omoerfh_mera} page \pageref{sec:omoerfh_mera}.
 
 \begin{figure}
 	\caption{A figure without content}
@@ -97,26 +113,135 @@ In fact, my favourite verbosity is discombobulate.f
 \end{figure}
 
 Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs!?
+Here is another reference to that figure: \Cref{fig:empty_figure}.
+is my the best algorithm.
 
-\colorlet{nice}{MaterialGreen800}
-\colorlet{bad}{MaterialRed800}
+%\colorlet{nice}{MaterialGreen800}
+%\colorlet{bad}{MaterialRed800}
+
+\chapter{Citation Playground}
+
+\section{Autocite}
+
+Example of a single citation: \autocite{kuoDiffuserCamDiffuserBasedLensless2017}
+
+Example of a citation range: \autocite{boehmBalancingAgilityDiscipline2004,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,abrahamssonAgileSoftwareDevelopment2017}.
+
+Example of distinct citations: \autocite{boehmROISystemsEngineering2008,pedersenTheValidationSquareValidating2000,langerReliabilityCubeSatsStatistical2016}.
+
+Example of a complex mess: \autocite{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}
+
+\section{Cite}
+
+Example of a single citation: \cite{kuoDiffuserCamDiffuserBasedLensless2017}
+
+Example of a citation range: \cite{boehmBalancingAgilityDiscipline2004,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,abrahamssonAgileSoftwareDevelopment2017}.
+
+Example of distinct citations: \cite{boehmROISystemsEngineering2008,pedersenTheValidationSquareValidating2000,langerReliabilityCubeSatsStatistical2016}.
+
+Example of a complex mess: \cite{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}.
+
+\section{Dualcite}
+
+Example of a single citation: \dualcite{kuoDiffuserCamDiffuserBasedLensless2017}
+
+Example of a citation range: \dualcites{boehmBalancingAgilityDiscipline2004,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,abrahamssonAgileSoftwareDevelopment2017}.
+
+Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pedersenTheValidationSquareValidating2000,langerReliabilityCubeSatsStatistical2016}.
+
+%Example of a complex mess: \dualcites{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}.
+
+\chapter{Float}
+
+\section{Figures}
+
+\begin{figure*}[h]
+	\includegraphics[width=.5\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Full-width figure}
+\end{figure*}
+
+\begin{figure*}[h]
+	\includegraphics[width=.5\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Full-width figure TOP}
+	\setfloatalignment{t}
+\end{figure*}
+
+\begin{figure*}[h]
+	\includegraphics[width=.5\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Full-width figure BOTTOM}
+	\setfloatalignment{b}
+\end{figure*}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Figure}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Figure TOP}
+	\setfloatalignment{t}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Figure BOTTOM}
+	\setfloatalignment{b}
+\end{figure}
+
+\FloatBarrier
+
+\section{Tables}
+
+\begin{table*}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Full-width table TOP}
+	\setfloatalignment{t}
+\end{table*}
+
+Hello, just some text here, how y'all doing?
+
+\begin{table*}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{Full-width table BOTTOM}
+	\setfloatalignment{b}
+\end{table*}
+
+\newpage
+
+\begin{table}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{table}
+\end{table}
+
+\begin{table}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{table TOP}
+	\setfloatalignment{t}
+\end{table}
+
+\begin{table}[h]
+	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
+	\caption{table BOTTOM}
+	\setfloatalignment{b}
+\end{table}
+
+\FloatBarrier
+
+\chapter{AAA}
+
+\begin{figure*}[h]
+	\includegraphics{graphics/MindMap.pdf}
+	\caption[Mind-map between the methods and goals of the SCS systems engineering methodology][-2cm]{Mind-map between the methods and goals of the SCS systems engineering methodology}
+\end{figure*}
+
+\printbibliography
+
+%\chapter{Yes}
+%What?
+%\printbibliography
 
 
-\autocite{barnhartSatelliteonaChipFeasibilityStudy2006} said this. \autocite{dallmannAgileSpaceParadigm2015} conversely said that.
-
-\addtocategory{contributions}{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
-\nocite{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
-
-\printbibliography[notcategory=contributions]
-
-\chapter{Contributions}
-\renewcommand*{\mkbibnamegiven}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
-\renewcommand*{\mkbibnamefamily}[1]{\ifitemannotation{highlight}{\textbf{#1}}{#1}}
-\begin{fullwidth}
-\printbibliography[category=contributions,type=article,heading=subbibliography,title={Journal Publications},resetnumbers=true]
-\printbibliography[category=contributions,type=inproceedings,heading=subbibliography,title={Conference Papers},resetnumbers=true]
-\printbibliography[category=contributions,type=unpublished,heading=subbibliography,title={Conference Presentations},resetnumbers=true]
-\end{fullwidth}
 
 \end{document}
 
