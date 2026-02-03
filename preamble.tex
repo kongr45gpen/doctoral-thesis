@@ -229,40 +229,54 @@ defernumbers=true,
 \newbibmacro*{cite:title}{%
   \printtext[bibhyperref]{%
     \printfield[citetitle]{labeltitle}}%
-  \finentry}
+  }
 
 \newbibmacro*{cite:shorthand}{%
 	\printtext[bibhyperref]{\printfield{shorthand}}}
 
 \newbibmacro*{cite:full}{%
 	\iffieldundef{shorthand}
-	{\printnames{labelname}%
+	{%
+		\printnames{labelname}%
 		\iffieldundef{year}{}{\setunit*{\addspace}\printtext[parens]{\printfield{year}}}%
 		\setunit*{\printdelim{nametitledelim}}%
-		\usebibmacro{cite:title}%
+		\printtext[bibhyperref]{%
+    	\printfield[citetitle]{labeltitle}}%
 	}%
 	{\usebibmacro{cite:shorthand}}}
 
 \newbibmacro*{cite:marginnote}{%
-	\marginnote{%
-		% \mkbibbrackets should be used here probably
-		[%
-			\printfield{labelprefix}%
-			\printfield{labelnumber}%
-		]
-		\usebibmacro{cite:full}%
+	\printtext{%
+		\marginnote{%
+			\printtext{[\printfield{labelprefix}\printfield{labelnumber}]}%
+			\setunit*{\addspace}%
+			\usebibmacro{cite:full}%
+			\finentry%
+		}%
 	}%
 }
 
-\DeclareCiteCommand{\dualcite}[\mkbibbrackets]
+
+\DeclareCiteCommand{\dualcite}
   {\usebibmacro{cite:init}%
-   \usebibmacro{prenote}}
+   \usebibmacro{prenote}}%
   {\usebibmacro{citeindex}%
    \usebibmacro{cite:marginnote}%
-   \usebibmacro{cite:comp}}%
-  {\multicitedelim}%
+   \usebibmacro{cite:comp}%
+   }%
+  {}%
   {\usebibmacro{cite:dump}%
-   \usebibmacro{postnote}}
+   \usebibmacro{postnote}%
+   }
+
+% \DeclareCiteCommand{\dualcite}[\mkbibbrackets]
+%   {\usebibmacro{prenote}}
+%   {\usebibmacro{citeindex}%
+%    \usebibmacro{cite}}
+%   {\multicitedelim}
+%   {\usebibmacro{postnote}}
+
+\DeclareMultiCiteCommand{\dualcites}[\mkbibbrackets]{\dualcite}{\multicitedelim}
 
 \def\tuftecite{
 	\iffootnote{footnote}{text}
@@ -279,7 +293,7 @@ defernumbers=true,
 \pretocmd{\end@tufte@margin@float}{\togglefalse{inmargin}}{}{}
 
 \def\autocite{%
-	\iftoggle{inmargin}\parencite\dualcite%
+	\iftoggle{inmargin}\parencite\dualcites%
 }
 
 % Tufte disables subparagraphs. This brings them back.
