@@ -368,7 +368,7 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore 
 \end{figure}
 
 \begin{figure*}[h]
-	\includegraphics[width=\textwidth]{analyses/scs_launch_trend.pdf}
+	\includegraphics[width=.9\textwidth]{analyses/scs_launch_trend.pdf}
 	\caption[SCS launches per year]{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
 	\todo{add chipsats?}}
 	\label{fig:i_scs_launched}
@@ -1535,7 +1535,7 @@ Hybrid approaches that combine incremental and iterative development are also ob
 \begin{figure}[h]
 	\includegraphics{graphics/ProcessModelGroups.pdf}
 	\caption[Different categorisations of lifecycle process models]{Different categorisations of lifecycle process models \cite{sebok_book_211,sebok_book_212,HEEAGER201822}}
-	\setfloatalignment{t}
+	\setfloatalignment{b}
 \end{figure}
 
 
@@ -5522,13 +5522,11 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 \label{sec:DISCUSSION_rq_answers}
 
 \NewDocumentCommand{\researchquestion}{mm}{%
-	\begin{fullwidth}%
 	\begin{tikzpicture}
-		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\textwidth,align=center]
+		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=center]
 		at (0,0)
 		{\textbf{#1}: #2};
-	\end{tikzpicture}
-	\end{fullwidth}%
+	\end{tikzpicture}%
 }
 
 \begin{fullwidth}
@@ -5843,9 +5841,9 @@ The \texttt{ok-serializer} library demonstrates how modern programming language 
 \chapter{Contribution Matrix}
 \label{app:contribution_matrix}
 
-\begin{fullwidth}
+%\begin{fullwidth}
 The following table lists the participation and contributions of team members to the different missions used as case studies in this work (\Cref{chap:CASESTUDIES}).
-\end{fullwidth}
+%\end{fullwidth}
 
 \begin{table*}[h]
 	\caption{Contribution matrix for the various case-studies investigated within the scope of this work}
