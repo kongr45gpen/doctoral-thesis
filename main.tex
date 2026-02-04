@@ -736,8 +736,8 @@ Various \acl{SCS} classes have been defined in the literature. Most prominently,
 Apart from the size-based definitions, spacecraft can also be classified based on their mass through the use of metric-like prefixes.
 Note that the widely accepted classification, perhaps misleadingly, does not follow the \acs{SI} definition of unit prefixes. The convention used in this paper is shown in \Cref{tab:satellite_sizes}.
 
-Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites.
 \begin{margindefinition}{Sub-CubeSat Spacecraft}\end{margindefinition}
+Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites.
 To reduce verbosity, I also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
 
 
@@ -1232,7 +1232,7 @@ Within the scope of this thesis, I have also conducted informal interviews and f
 		N/A & University & University of Luxembourg \\
 		N/A & University & University of Luxembourg \\
 		1 & University & Delft University of Technology \\
-		2 & University & Budapest University of Technology and Economic \\
+		2 & University & Budapest University of Technology and Economics \\
 		3 & University & Carnegie Mellon University \\
 		4 & Non-Profit & Libre Space Foundation \\
 		5 & Industrial & PocketQube manufacturer \\
@@ -5234,6 +5234,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 \FloatBarrier
 \section{Cross-Case Analysis}
 \label{sec:CASESTUDIES_results}
+\label{sec:DISCUSSION_crosscase}
 
 This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
 
@@ -5523,22 +5524,33 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 \NewDocumentCommand{\researchquestion}{mm}{%
 	\begin{fullwidth}%
 	\begin{tikzpicture}
-		\draw[fill=MaterialAmber100,draw=MaterialAmber800]
-			(0,0) rectangle (\linewidth,1.5cm)
-			node[pos=.5]{\textbf{#1}: #2};
+		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=center]
+		at (0,0)
+		{\textbf{#1}: #2};
 	\end{tikzpicture}
 	\end{fullwidth}%
 }
 
+
 \researchquestion{RQ1}{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}
+
+A literature review and interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_subcubesat}) do not indicate the existence of a standard \acl{SYE} approach or methodology used for centimetre-scale spacecraft.
+Instead, developers tailor existing approaches from the CubeSat ecosystem, ranging from sequential to highly-iterative lifecycles, but usually with lower fidelity or coverage.
 
 \researchquestion{RQ2}{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
 
-The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}).
+The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}). While cost is often mentioned as a particular benefit for the selection of pocket-sized spacecraft, it is either not referred to as an optimisation target, or already successfully kept low through mainly in-house manufacturing. Instead, developers place significant weight on the improvement of reliability and the reduction of development time (mainly to fit typical academic cycles in educational environments, or to match specific production capabilities). Past mission failures and long average development times indicate a need to focus on reliability and development velocity.
 
-\researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
+\researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address a selection of the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
+
+Due to the existence of previous literature and the difficulty of quantitively reasoning about reliability and cost, I have selected \emph{development time} as the optimisation target for a new \acs{SYE} methodology, with an addititional requirement to not increase technical risk. Previous work from the \acl{SYE}, CubeSat and PocketQube domains has indicated that development time and reliability can be heavily influenced by the systems engineering and systems design approaches used.
+
+\Cref{chap:METHODOLOGY} presents a tailored methodology for \acs{SCS}, based on the principles of Agile software engineering, which covers different aspects of the development of pocket-sized systems. The validity of this methodology, and whether it can address the identified shortcomings, is evaluated in \Cref{sec:CASESTUDIES_results}, through causal and counter-factual analyses, based on data from four case studies. The results show that the appropriate selection of a methodology can reduce total development time by an average of 40\%, even when considering different types of projects, without an upwards change in technical risk.
+\todo{The development time of the case studies was approximately one year.}
+These results are supported by the understanding of the causal effects of each part of the methodology. The answer to this question is therefore positive.
 
 \researchquestion{RQ4}{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
+This research question involves the generalisation of the results of \texttt{RQ3}. Through the four case studies performed, I attempted to cover different mission types (payloads, \acs{PCB}Sats, a PocketQube) that encompass a large set of typical project requirements.  This is supported by the analysis performed in \Cref{sec:CASESTUDIES_results}, showing changes in the measured metrics that are heavily dependent on the methodology used, and not on each specific project. Nevetherless, the number of the case studies is not large enough to take into account all possible parameters and external factors, meaning that more data would be necessary to completely answer \texttt{RQ4}. Therefore, I will consider that the answer to this question is potentially positive.
 
 
 \FloatBarrier
@@ -5659,7 +5671,7 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \appendix
 
 
-
+\begin{invisible}
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
 \todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
@@ -5670,66 +5682,10 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \label{app:sw_errors_detected}
 
 \draft{[TODO]}
+\end{invisible}
 
-\chapter{Contribution Matrix}
-\label{app:contribution_matrix}
-
-The following table lists the participation and contributions of team members to the different missions used as case studies in this work (\Cref{chap:CASESTUDIES}).
-
-\begin{table*}[h]
-	\caption{Contribution matrix for the various case-studies investigated within the scope of this work}
-	
-	\colorlet{AIV}{MaterialDeepOrange700}
-	\colorlet{ADCS}{MaterialOrange800}
-	\colorlet{Comms}{MaterialGreen700}
-	\colorlet{Payload}{MaterialPurple700}
-	\colorlet{Traj}{MaterialTeal700}
-	\colorlet{ProductOwner}{MaterialGrey800}
-	\colorlet{Manager}{MaterialGrey700}
-	\colorlet{Structural}{MaterialBrown700}
-	\colorlet{Systems}{MaterialLightBlue700}
-	\colorlet{Hardware}{MaterialLime800}
-	
-	\begin{adjustbox}{width=\textwidth}
-% LTeX: enabled=false
-\begin{tabular}{@{}lllll@{}}
-	\toprule
-	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
-	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
-%	A.~F.~Bühler &  &  &  &  \\
-	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
-%	A.~P.~Du &  &  &  &  \\
-	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\
-	C.~M.~Moreira &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	D.~Aouada &  & \textcolor{ProductOwner}{Product Owner} &  &  \\
-	J.~Laur & \textcolor{AIV}{AIV Engineer} &  &  &  \\
-	J.~M.~Sanabria &  &  & \textcolor{Comms}{Communications Engineer} &  \\
-	J.~Thoemel & \textcolor{Comms}{Communications Engineer} & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  \\
-	L.~Pauly &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	L.~Rana & \textcolor{Payload}{Flight Dynamics Engineer} &  &  &  \\
-	M.~Alandihallaj &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	M.~Ortiz del Castillo &  & \textcolor{Systems}{Systems Engineer}, \textcolor{Hardware}{Hardware Engineer} &  &  \\
-	M.~Sachidanand &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
-	N.~Khera &  &  & & \textcolor{AIV}{AIV Engineer}  \\
-	N.~Sajjad &  &  & \textcolor{ADCS}{ADCS Engineer} &  \\
-	O.~Borgue & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  &  \\
-	P.~Fisch &  &  &  & \textcolor{AIV}{AIV Engineer} \\
-	S.~Gouvalas &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	S.~K.~Singh &  &  & \textcolor{Hardware}{Payload Hardware Engineer} &  \\
-	T.~D'costa &  &  & \textcolor{Structural}{Structural Engineer} &  \\
-	V.~Franzese &  &  & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  \\
-	Z.~Manchester &  &  & & \textcolor{Manager}{Project Manager}  \\ \bottomrule
-\end{tabular}
-% LTeX: enabled=true
-	\end{adjustbox}
-	\vspace{1ex}
-\end{table*}
 
 \begin{invisible}
-\chapter{How Software Paradigms can aid SCS Development: A modern C++ serialiser}
-
 
 \chapter{PCB schematics}
 
@@ -5829,6 +5785,65 @@ constexpr void serialize_struct(Out &&output, const T &object) {
 The \texttt{ok-serializer} library demonstrates how modern programming language features can help developer efficiency and reliability without a drop in software performance and resource utilisation. By using message-representing structs, it is possible to maintain a single point of reference for \acs{TMTC} of simple systems. With the use of automatic documentation generators, such as \emph{Doxygen}, it is also possible to create in-place documentation of the selected \acs{TMTC} format. However, the customisability of the library is still limited, as it is not possible, for example, to annotate types with additional information, such as validity checkers, ranges, or more complex conditions.
 
 \begin{fullwidth}
+
+\chapter{Contribution Matrix}
+\label{app:contribution_matrix}
+
+\begin{fullwidth}
+The following table lists the participation and contributions of team members to the different missions used as case studies in this work (\Cref{chap:CASESTUDIES}).
+\end{fullwidth}
+
+\begin{table*}[h]
+	\caption{Contribution matrix for the various case-studies investigated within the scope of this work}
+	
+	\colorlet{AIV}{MaterialDeepOrange700}
+	\colorlet{ADCS}{MaterialOrange800}
+	\colorlet{Comms}{MaterialGreen700}
+	\colorlet{Payload}{MaterialPurple700}
+	\colorlet{Traj}{MaterialTeal700}
+	\colorlet{ProductOwner}{MaterialGrey800}
+	\colorlet{Manager}{MaterialGrey700}
+	\colorlet{Structural}{MaterialBrown700}
+	\colorlet{Systems}{MaterialLightBlue700}
+	\colorlet{Hardware}{MaterialLime800}
+	
+	\begin{adjustbox}{width=\textwidth}
+% LTeX: enabled=false
+\begin{tabular}{@{}lllll@{}}
+	\toprule
+	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
+	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
+%	A.~F.~Bühler &  &  &  &  \\
+	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
+%	A.~P.~Du &  &  &  &  \\
+	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\
+	C.~M.~Moreira &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	D.~Aouada &  & \textcolor{ProductOwner}{Product Owner} &  &  \\
+	J.~Laur & \textcolor{AIV}{AIV Engineer} &  &  &  \\
+	J.~M.~Sanabria &  &  & \textcolor{Comms}{Communications Engineer} &  \\
+	J.~Thoemel & \textcolor{Comms}{Communications Engineer} & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  \\
+	L.~Pauly &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	L.~Rana & \textcolor{Payload}{Flight Dynamics Engineer} &  &  &  \\
+	M.~Alandihallaj &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	M.~Ortiz del Castillo &  & \textcolor{Systems}{Systems Engineer}, \textcolor{Hardware}{Hardware Engineer} &  &  \\
+	M.~Sachidanand &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
+	N.~Khera &  &  & & \textcolor{AIV}{AIV Engineer}  \\
+	N.~Sajjad &  &  & \textcolor{ADCS}{ADCS Engineer} &  \\
+	O.~Borgue & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  &  &  \\
+	P.~Fisch &  &  &  & \textcolor{AIV}{AIV Engineer} \\
+	S.~Gouvalas &  &  & \textcolor{AIV}{AIV Engineer} &  \\
+	S.~K.~Singh &  &  & \textcolor{Hardware}{Payload Hardware Engineer} &  \\
+	T.~D'costa &  &  & \textcolor{Structural}{Structural Engineer} &  \\
+	V.~Franzese &  &  & \textcolor{Manager}{Project Manager}, \textcolor{Systems}{Systems Engineer} &  \\
+	Z.~Manchester &  &  & & \textcolor{Manager}{Project Manager}  \\ \bottomrule
+\end{tabular}
+% LTeX: enabled=true
+	\end{adjustbox}
+	\vspace{1ex}
+\end{table*}
+
 
 \chapter{List of Articles}
 \addtocategory{contributions}{contrib1,contrib2,contrib3,contrib4,contrib5,contrib6,contrib7,contrib8,contrib10,contrib11,contrib12,contrib13}
