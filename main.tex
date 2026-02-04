@@ -5103,7 +5103,7 @@ For energy storage, we designed the system around \acs{COTS} pouch-cell batterie
 \end{figure}
 
 \newthought{The development} of ChiPySat also followed an iterative approach, albeit with only two iterations performed due to time constraints. Since the project was based on electronic/hardware elements, the changes between iterations mainly involved schematic changes as follows:
-\begin{itemize}[itemsep=-2pt]
+\begin{itemize}[itemsep=-2ex]
 	\item Magnetorquers were added to the design, as they were not present in the first iteration.
 	\item Instead of 2 microcontrollers (one for \acs{CDH} and an ``application'' processor for image processing), the second iterator used a single dual-core microcontroller.
 	\item The \acs{USB} power distribution system was simplified by using two \acs{USB} connectors (for power and data).
@@ -5132,7 +5132,7 @@ The first iteration lasted approximately 4 months, including an initial familari
 For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the Micropython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of 1.\@ a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; 2.\@ the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and 3.\@  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
 
 Resolving the reduced performance issue was one of the key goals of the second ChiPySat iteration, for which we decided to implement the following measures:
-\begin{itemize}[itemsep=-2pt]
+\begin{itemize}[itemsep=-2ex]
 	\item Switch to a statically-typed and statically-allocated programming language, such as C++.
 	\item Use OpenMV as a library and adopt its camera drivers, instead of using the entire OpenMV \acs{API}.
 	\item Implement an external \acl{RAM} to reduce memory shortage risk. \todo{Dual core?}
@@ -5191,7 +5191,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 
 	\item \textbf{Iterative multi-step development}:
 	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration. The reasoning for this argument is provided as follows:
-	\begin{itemize}[itemsep=-2pt]
+	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
 		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \draft{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
 		\item The re-use of PyCubed-Mini and OpenMV in their entirety could guarantee the reduction of preliminary and boilerplate work, but not performance. While PyCubed-Mini was understood to be suitable for spacecraft control, with a very smooth learning curve, OpenMV was not suitable for the project in its default configuration.
@@ -5281,7 +5281,7 @@ While risk is difficult to quantify, counterfactual analyses showed a balanced r
 \subsection{External Validity}
 
 To evaluate the \textbf{external validity} of the proposed methodology, I will consider whether the results can be generalised to other projects. Since numerical time \& cost data are available, complemented by categorical cost data, a \textbf{statistical analysis} can be performed, based on the following parameters:
-\begin{itemize}[itemsep=-3pt] %??? what's wrong
+\begin{itemize}[itemsep=-2ex]
 	\item Independent variables: \( \text{Project Number } X_p  \), \( \text{Number of Treatments } X_t \)
 	\item Dependent variables: \( \text{Development Time } Y_t \), \( \text{Cost } Y_c \), \( \text{Risk } Y_r \)
 	\item Set:
@@ -5299,7 +5299,7 @@ In practice, I am seeking to identify whether the application of more \acs{SCS} 
 
 \marginnote{\todo{Considerations for different methods, .e.g linear regression/ANOVA}}
 The above problem statement can be answered by the following statistical tests: \autocite{chiccoSimpleGuideUse2025}
-\begin{itemize}[itemsep=-2pt]
+\begin{itemize}[itemsep=-2ex]
 	\item The \textbf{Student's \emph{t}-test}, which evaluates whether the difference between the response of two groups is statistically significant. The \(t\)-test assumes that the test statistic follows a normal distribution. It tests the null hypothesis that the two groups have equal means.
 	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parameteric} and makes no assumption about the distribution of the underlying data. It tests the null hypothesis that the distributions of the two groups are identical.
 	The test is considered consistent when there is a higher probability that observations from one group are larger than observations the other, and it can be used for low sample sizes \autocite{happOptimalSampleSize2019}.
@@ -5515,7 +5515,35 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 	While there is no indication that the \acs{SCS} methodology increases risk, a generally-applicable guideline to decrease risk cannot be provided, \draft{given the project dependence of this factor}.
 \end{enumerate}
 
+\FloatBarrier
+\newpage
+\section{Answers to Research Questions}
+\label{sec:DISCUSSION_rq_answers}
 
+\NewDocumentCommand{\researchquestion}{mm}{%
+	\begin{fullwidth}%
+	\begin{tikzpicture}
+		\draw[fill=MaterialAmber100,draw=MaterialAmber800]
+			(0,0) rectangle (\linewidth,1.5cm)
+			node[pos=.5]{\textbf{#1}: #2};
+	\end{tikzpicture}
+	\end{fullwidth}%
+}
+
+\researchquestion{RQ1}{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}
+
+\researchquestion{RQ2}{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
+
+The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}).
+
+\researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
+
+\researchquestion{RQ4}{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
+
+
+\FloatBarrier
+\section{Limitations and Threats to Validity}
+\label{sec:DISCUSSION_limitations}
 
 \chapter{Conclusion}
 \label{chap:CONCLUSION}
@@ -5706,6 +5734,99 @@ The following table lists the participation and contributions of team members to
 \chapter{PCB schematics}
 
 \end{invisible}
+
+\chapter{A Reflection-Based C++ Serialisation Library}
+\label{app:ok_serializer}
+
+In the pursuit to build reliable and simple systems, software developers endeavour to reduce the \acl{SLOC} and repetition required to implement a single feature (\Cref{sec:METHODOLOGY_software_reliability}).
+One common feature that needs to be implemented by almost all spacecraft is the \textbf{handling of telemetry and telecommands}. In terms of software development, this feature can be separated into:
+\begin{itemize}[itemsep=-2ex]
+	\item Parsing incoming messages
+	\item Formatting outgoing messages
+	\item Creating a data structure to store these messages
+	\item Documenting the format of these messages and structures in a human-readable way
+\end{itemize}
+\marginnote{More sub-features can be potentially identified, such as providing a debugging interface to explain messages, implementing similar features for the ground segment, or sharing this functionality amongst different subsystems.}
+
+In a naive implementation, each of these features would be completed and implemented separately. This approach would increase program size (and therefore complexity) and introduce failure points, in case of mismatches between implementations. Potential changes in message structure would have to be implemented across different parts of the codebase, further increasing development time and risk. However, in an ideal situation, a description of the functionality that describes \acs{TMTC} handling will exist in a single place.
+
+This is generally easy to perform in dynamically-typed languages, such as Python or Julia, which allow changing the behaviour of a program based on its own structure. This is referred to as \emph{run-time reflection} \autocite{smithProceduralReflectionProgramming1982}, but can be implemented using various methods that rely on dynamic memory allocation. Python's \emph{construct} library, for example, allows defining a structure, parser, formatter, and documentation for arbitrary binary messages in a single declaration \autocite{bulskiConstruct2020}.
+
+% \begin{lstlisting}[language=Python, caption=Example telecommand definition from AI4Space using the \emph{construct} library]
+% large_packet_request = \
+% """Prepare to receive a large packet TM. This places the response in a large packet with a specific
+%    name so that it can later be fetched, even if smaller packages are intertwined in between
+% """ * \
+% Struct(
+%     "service" / Const(bytes([common.service.large_packet.intvalue])),
+%     "message" / Const(b"r"),
+%     "name" / Bytes(3) * "Name of the large packet to be used for storage and fetching",
+%     "command" / GreedyBytes,
+% )
+% \end{lstlisting}
+
+However, as seen in \Cref{sec:METHODOLOGY_softwaredevelopment}, developers may not always desire to use interpreted programming languages, instead relying on a restricted subset of compiled, statically allocated languages, while avoiding dynamic and run-time-based features. In this case, \emph{autocoding} has historically been one of the approaches used, by generating the required functions from a single, language-agnostic specification. This is, for example, the approach followed by CubedOS, whose team has developed a tool written in \emph{Scala} that generates \emph{Ada} encoding/decoding subprograms from an \emph{External Data Representation (XDR)} \autocite{brandonCubedOSVerifiedCubeSat2017}. However, this approach adds additional steps and complexity to the software's build cycle, increasing the learning curve and difficulty of maintenance, and adding additional abstractions.
+
+Some compiled programming languages, such as \emph{D} or \emph{Rust}, support \emph{metaprogramming} in various degrees, and are allowed to treat code as data. This can be done through the use of compile-time execution, compile-time reflection, or macros. A combination of these features can allow emulating the autocoding functionality mentioned before, or implementing self-describing encoder/decoder data structures. This is, for example, the approach followed by Rust's \emph{serde} library, which can generate binary (de)serialisers through procedural macros \autocite{tolnaySerdeRust2025}. \todo{code with serde}
+
+C++ in particular allows metaprogramming through \emph{templated} classes and functions. On its own, this mechanism does not allow a single compile-time definition of a data structure and relevant parsers. However, multiple extensions to the C++ standard have been proposed to introduce compile-time reflection. As of the writing of this thesis, the most recent example was revised in \citedate{childersReflectionC++262025}, with a proposed inclusion in C++26.
+One of the notable compiler implementations of previous reflection specification was that of Matus Chochlik\footnote{Available at \url{https://github.com/matus-chochlik/llvm-project}.}, which implements a \citeyear{sankelExtensionsReflection2020} reflection proposal \autocite{sankelExtensionsReflection2020}.
+
+\marginnote[1cm]{This library, named \textbf{\emph{ok\_serialiser}}, is available at \url{https://github.com/kongr45gpen/ok-serializer}.}
+Within the scope of my thesis, \textbf{I developed a (de-)serialisation library that takes advantage of the C++ reflection features of this experimental C++ compiler, with the intention of implementing the guidelines of \Cref{sec:METHODOLOGY_softwaredevelopment} for software development and \Cref{sec:METHODOLOGY_datamanagement} for documentation, targetting decreased development time and risk.}
+
+The core (de-)serialisation functionality of this library was built using Python's \emph{construct} as a reference.
+The library uses internal data types that describe the binary representation (or ``view'') of the data.\footnote{This includes information not embedded in native C++ types, such as endianness or string representation.} Templated \texttt{serialize} and \texttt{deserialize} functions can be used to convert between C++ types and their binary representation.
+A ``bundle'' is used to define a sequence of \texttt{okser} types. \acs{IO} types are used to interface with strings or streams.
+
+The simplest example of serialisation, without a need for reflection, can be performed as follows:
+\begin{lstlisting}[language=C++,]
+using namespace okser;
+
+std::string result;
+auto output = out::stdstring{result};
+
+// 1-byte signed int and 4-byte float
+using MyBundle = bundle<sint<1>, floatp>;
+
+serialize<MyBundle>(output, 63, 3.14f);
+\end{lstlisting}
+Through the use of template metaprogramming, available in stock C++, most of the above expressions can be evaluated at compile-time.
+
+Reflection becomes useful when working with user-provided data structures:
+\begin{lstlisting}[language=C++,]
+struct Message {
+    int8_t a = 104;
+    uint16_t b = 26913;
+};
+\end{lstlisting}
+In the general case,\footnote{The example provided here can actually be simply analysed, e.g.\@ using structured bindings, as it is an aggregate type.} C++ cannot enumerate public class members at compile-time. In this case, it would be necessary to call an additional function to specify the existence and order of members \texttt{a} and \texttt{b}. However, using reflection, it is possible for the compiler to extract this information:
+\begin{lstlisting}[language=C++,]
+// Serialisation
+auto data = serialize_struct_to_string(Message{});
+// data = "hi!"
+
+// Deserialisation
+auto result = deserialize_struct(data);
+\end{lstlisting}
+
+The implementation of a reflective function is provided below as an example:
+\begin{lstlisting}[language=C++,basicstyle=\small]
+template<class T, Output Out, auto config = configuration()>
+constexpr void serialize_struct(Out &&output, const T &object) {
+    auto mirrored_struct = mirror(T);
+    for_each(get_data_members(mirrored_struct), [&](auto member) {
+        const auto &value = get_value(member, object);
+        using type = std::remove_cvref_t<decltype(value)>;
+
+        using serializer = decltype(config)::template default_serializers<type>::ser;
+
+        auto result = serialize<serializer>(std::forward<Out>(output), value);
+    });
+}
+\end{lstlisting}
+
+The \texttt{ok-serializer} library demonstrates how modern programming language features can help developer efficiency and reliability without a drop in software performance and resource utilisation. By using message-representing structs, it is possible to maintain a single point of reference for \acs{TMTC} of simple systems. With the use of automatic documentation generators, such as \emph{Doxygen}, it is also possible to create in-place documentation of the selected \acs{TMTC} format. However, the customisability of the library is still limited, as it is not possible, for example, to annotate types with additional information, such as validity checkers, ranges, or more complex conditions.
 
 \begin{fullwidth}
 
