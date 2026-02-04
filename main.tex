@@ -1644,7 +1644,7 @@ The \acl{SAFE} is another popular set of organisational practices, designed to s
 \subparagraph{Miscellaneous Frameworks}
 Most other documented Agile frameworks are not reported to be as popular, but can still provide an interesting source of \draft{inputs}.
 
-The Rational Unified Process (RUP), introduced in 1998, was an iterative framework created by a division of IBM, designed to be adaptable and tailorable by different software organisations. While it is not officially supported as of 2025, and has received considerable criticism, it is reported to be a precursor of \acs{SAFE} \autocite{schwaberUnSAFeAnySpeed2013}. DAD (Disciplined Agile Delivery), introduced in 2013, is a set of guidelines for Agile software organisations that aims to encapsulate other, more fundamental Agile frameworks \autocite{ChooseYourWoW}. The \acf{DSDM}, introduced in 1994, is a project-specific framework that covers planning, requirements, development and project management \autocite{agilebusinessconsortiumAgilePMHandbookV22014}.
+The Rational Unified Process (RUP), introduced in 1998, was an iterative framework created by a division of IBM, designed to be adaptable and tailorable by different software organisations. While it is not officially supported as of 2025, and has received considerable criticism, it is reported to be a precursor of \acs{SAFE} \autocite{schwaberUnsafeAnySpeed2013}. DAD (Disciplined Agile Delivery), introduced in 2013, is a set of guidelines for Agile software organisations that aims to encapsulate other, more fundamental Agile frameworks \autocite{ChooseYourWoW}. The \acf{DSDM}, introduced in 1994, is a project-specific framework that covers planning, requirements, development and project management \autocite{agilebusinessconsortiumAgilePMHandbookV22014}.
 Crystal, introduced in the 1990s, is a family of frameworks that aim to cover different sizes and criticalities\footnote{The 4 ``criticalities'' in Crystal are \emph{comfort, discretionary money, essential money, and life.}} of projects, although only some of them have been formally described \autocite{boehmBalancingAgilityDiscipline2004}.
 Finally, Feature-Driven Development (FDD), introduced in 1997, is a lightweight process that resembles an incremental waterfall approach. A key concept of FDD is assigning the ownership of code classes to individuals \cite{boehmBalancingAgilityDiscipline2004}.
 % For sources on the dates, check the relevant references on Wikipedia articles
@@ -5217,7 +5217,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	\includegraphics{analyses/cf_chipysat_trade}
 	\caption{ChiPySat \acs{SCS} methodology treatment time vs.\@ risk trade-off analysis}
 	\label{fig:c_tradeoff_chipysat}
-	\setfloatalignment{t}
+	\setfloatalignment{b}
 \end{figure}
 
 
@@ -5524,14 +5524,14 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 \NewDocumentCommand{\researchquestion}{mm}{%
 	\begin{fullwidth}%
 	\begin{tikzpicture}
-		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=center]
+		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\textwidth,align=center]
 		at (0,0)
 		{\textbf{#1}: #2};
 	\end{tikzpicture}
 	\end{fullwidth}%
 }
 
-
+\begin{fullwidth}
 \researchquestion{RQ1}{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}
 
 A literature review and interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_subcubesat}) do not indicate the existence of a standard \acl{SYE} approach or methodology used for centimetre-scale spacecraft.
@@ -5549,13 +5549,55 @@ Due to the existence of previous literature and the difficulty of quantitively r
 \todo{The development time of the case studies was approximately one year.}
 These results are supported by the understanding of the causal effects of each part of the methodology. The answer to this question is therefore positive.
 
+\pagebreak[4]
 \researchquestion{RQ4}{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
 This research question involves the generalisation of the results of \texttt{RQ3}. Through the four case studies performed, I attempted to cover different mission types (payloads, \acs{PCB}Sats, a PocketQube) that encompass a large set of typical project requirements.  This is supported by the analysis performed in \Cref{sec:CASESTUDIES_results}, showing changes in the measured metrics that are heavily dependent on the methodology used, and not on each specific project. Nevetherless, the number of the case studies is not large enough to take into account all possible parameters and external factors, meaning that more data would be necessary to completely answer \texttt{RQ4}. Therefore, I will consider that the answer to this question is potentially positive.
-
+\end{fullwidth}
 
 \FloatBarrier
-\section{Limitations and Threats to Validity}
+\section{Threats to Validity}
 \label{sec:DISCUSSION_limitations}
+\begin{fullwidth}
+	Even though I attempted to use prior knowledge and verifiable claims to inform, synthesise, and validate the proposed \acs{SCS} methodology, each of the performed tasks was limited by the available data and what was practically achievable with the resources allocated to this work.
+	This section presents the limitations and threats to validity of this research, following a sequential order, as specified in the original Research Plan (\Cref{chap:METHODOLOGY}). %Most threats relate 
+
+
+\begin{enumerate}
+	% 43 total organisations according to WP
+	\item[Threat 1.] \textbf{Initial data}: The answers to \texttt{RQ1} and \texttt{RQ2}, as well as data for the definition and validation of the \acs{SCS} methodology, were composed based on a literature review and discussions with past \acs{SCS} developers. Due to the relative novelty of the domain, the amount of available data sources was limited, and biased towards academic projects, as opposed to commercial ones. While I attempted to gather data from diverse sources, the generation and publication of further \acl{SYE} results from future missions will be able to provide a stronger foundation for my initial claims.
+
+	\item[Threat 2.] \textbf{Evaluation of metrics}: ``Development time'' was chosen as the target optimisation metric for the \acs{SCS} methodology. Even if time is understood as an easily quantifiable parameter, both its passage and its measurement can depend on factors which are uncontrollable or unrelated to the systems engineering discipline (such as available resources or launch delays).
+	This affects both the answers to \texttt{RQ2} and the evaluation of the methodology in practical case studies. However, no other salient and comparable parameter could be identified.
+	For this work, development time was measured from the start of the design effort until \draft{integration readiness}.
+
+	\item[Threat 3.] \textbf{Case study-based validation}: The validation of the \acs{SCS} methodology (\texttt{RQ3} and \texttt{RQ4}) was based on four case studies. In contrast to, e.g.\@, an experimental setup, the case study approach does not require control over all environmental parameters and can be practically performed against complete missions, which are the main unit of analysis of this study. Typical concerns connected to case studies relate to the misuse of data, small sample sizes, and incorrect generalisations \cite[266]{yinCaseStudyResearch2014}. I address these concerns by \draft{documenting the gathered qualitative} and quantitative data in \Cref{chap:CASESTUDIES}, by using multiple sources of evidence for claims, and by analytic generalisations of findings in \Cref{sec:CASESTUDIES_results}.
+	
+	\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers \draft{(see \Cref{app:contribution_matrix})}, the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, \draft{follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.}
+
+	\item[Threat 5.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of \draft{action research}. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
+	\begin{enumerate}[itemsep=-1pt]
+		\item \textbf{Uncontrollability}: The researcher \emph{does not have full control over the environment being studied}.
+		This was particularly the \draft{case} in the evaluated case studies, as it was not possible to fully control the application and implementation of the \acs{SCS} methodology, allocate resources, or recruit the desired personnel for technical tasks.
+		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. It is difficult, for example, to reason about the impact of multiple methodology treatments against the project's flow.
+		\item \textbf{Subjectivity}: It is impossible for the researcher to be in a detached position from the subject being studied, \draft{making} it possible to \emph{introduce biases into their conclusions}.
+	\end{enumerate}
+
+	These threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.
+
+	\item [Threat 6.] %counterfactual
+	\textbf{Counter-factual evaluation}:
+	The comparison between the application and non-application of \acs{SCS} methodology treatments in \Cref{chap:CASESTUDIES} was performed through the evaluation of hypothetical scenarios.
+%	It is impossible to accurately model the potential interactions between different approaches on the same project.
+	As it is impossible to accurately predict the results of emulated interactions in a project, these results may not represent \draft{reality}.
+	However, through the participation and evaluation of different \acs{SCS} treatments across four projects, it was possible to generate high-confidence predictions about the effects of each treatment.
+	The data used to inform these predictions was gathered from the missions themselves (e.g.\@ in the case that an alternative option was evaluated but abandoned during the mission), from results gathered from other missions, from past \acs{SCS}/CubeSat literature, or based on a causal evaluation. In the case of disagreements of these previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
+	
+
+	
+	% statistical generalisation (actually not a threat)
+\end{enumerate}
+
+\end{fullwidth}
 
 \chapter{Conclusion}
 \label{chap:CONCLUSION}
@@ -5632,7 +5674,7 @@ Based on the above findings, I have contributed the definition of a tailored sys
 
 The following findings are reported from the application and counter-factual evaluation of the methodology on four \acs{SCS} case studies:
 \begin{itemize}[itemsep=-2pt]
-	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person hours} for ChipSats and \qty{800}{person hours} for a PocketQube.
+	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person-hours} for ChipSats and \qty{800}{person hours} for a PocketQube.
 	\item It is possible to shorten \acl{SCS} development duration to approximately 1 year without adverse effects in technical risk or requirements compliance, given that at least the typical workload is performed.
 	\item Compared to a single-step sequential approach, a naive application of the complete \acs{SCS} methodology can reduce \textbf{development duration} by \qty{40}{\percent}. The statistical significance of this result is supported by the \draft{reduction} of time-consuming processes, which \draft{do} not provide significant added value in the performed case studies.
 	\item The naive application of the methodology was not found to have a statistically significant \draft{average} effect on cost and risk.
@@ -5643,26 +5685,38 @@ The following findings are reported from the application and counter-factual eva
 	\item The option to \textbf{iterate over partitions} of the system, instead of the entire system, was not found to have predictable results on any of the target metrics. \todo{being instead context specific?}
 \end{itemize}
 
-One limitation of this study is the low sample size of 4 case studies, which limits the robustness of statistical methods applied to the results. Although different mission types and team compositions across two institutions were considered, it is difficult to extrapolate the findings across other missions if some of the environmental parameters were left unchanged across case studies. For this thesis, these fixed parameters can include developer expertise, strategic project goals (e.g.\@ academic vs.\@ corporate), or the quality of available facilities.
+One limitation in the validity of the above findings stems from the use of statistical generalisation for the numerical results, as only four case studies were used for the analysis. While an analytical generalisation was performed to demonstrate validity, it is not sufficient to generate a quantitative understanding of the effects of the \acs{SCS} methodology.
 
-Another limitation stems from the counter-factual nature of the experimental analysis. Since it is impractical to design objective systems engineering experiments in the influence of external factors, it was not possible to independently reason about the effects of the methodology. Additionally, as I participated in these projects both as a researcher and an engineer, the limitations of action research also \draft{relevant}, in terms of the application and evaluation of the methodology \cite{davidProblemsParticipationLimits2002}. To address biases during the counter-factual analysis, I relied on recorded data from project reports, or, \draft{in absentia}, estimates of development time and estimated risk from past CubeSat literature. In the case of disagreements of previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
+%One limitation of this study stems from the use of cas study research 
 
-Finally, due to the extent of the proposed methodology, it was not practical to evaluate each of its statements in the counter-factual analysis, with the focus given only on what I perceived as the most \draft{impactful} methods.
+%One limitation of this study is the low sample size of 4 case studies, which 
+%prevents the use of statistical generalisation for numerical results.
+%limits the robustness of statistical methods applied to the results.
+%Although different mission types and team compositions across two institutions were considered, it is difficult to extrapolate the findings across other missions if some of the environmental parameters were left unchanged across case studies. For this thesis, these fixed parameters can include developer expertise, strategic project goals (e.g.\@ academic vs.\@ corporate), or the quality of available facilities. This was mitigated by the use of analytical generalisation in the cross-case analysis. 
+
+%Another limitation stems from the counter-factual nature of the experimental analysis. Since it is impractical to design objective systems engineering experiments in the influence of external factors, it was not possible to independently reason about the effects of the methodology. Additionally, as I participated in these projects both as a researcher and an engineer, the limitations of action research also \draft{relevant}, in terms of the application and evaluation of the methodology \cite{davidProblemsParticipationLimits2002}. To address biases during the counter-factual analysis, I relied on recorded data from project reports, or, \draft{in absentia}, estimates of development time and estimated risk from past CubeSat literature. In the case of disagreements of previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
+
+%Finally, due to the extent of the proposed methodology, it was not practical to evaluate each of its statements in the counter-factual analysis, with the focus given only on what I perceived as the most \draft{impactful} methods.
 
 %\newthought{It is concluded} that the proposed methodology can be further tailored and applied to new projects 
+
+It is concluded that specific systems engineering decisions can have an effect on the development time, cost and technical risk on \acs{SCS} missions. No optimal ``one-size-fits-all'' solution could be identified, with different decisions being more suitable to different goals or projects, with a high dependence on project technical size. However, impactful decisions \draft{can generally be taken in an informed manner} based on the known environment and desired trade-off.
 
 \section{Future Work}
 
 A major challenge in the definition and evaluation of \acs{SCS} methods is the lack of substantial published data for systems engineering practices, success rates and lessons learned from PocketQube and ChipSat missions. The collection of data would inform decisions taken for the application or verification of the methodology, allowing potential quantitative evaluation of risk and other metrics.
 
 Based on the definition of the \acl{DRM}, this thesis performed only an \emph{initial evaluation} of the \emph{Descriptive Study II} stage, i.e.\@ the investigation of the impact and performance of the development methodology.
-To that end, one future direction for this research is the further application and empirical evaluation of the methodology on new \acs{SCS} projects. This effort can also be supported by schedule, cost and risk modelling approaches from \acl{SYE} research, such as COSYSMO, to provide a formal framework for guiding \draft{binary decisions} during methodology tailoring.
+To that end, one future direction for this research is the further application and empirical evaluation of the methodology on new \acs{SCS} projects. This effort can also be supported by schedule, cost and risk modelling approaches from \acl{SYE} research %, such as COSYSMO,
+to provide a formal framework for guiding \draft{binary decisions} during methodology tailoring.
 
 Even though the methodology has not been designed for CubeSats or larger systems, it may be possible to apply it in part or in its entirety on these systems, based on the environmental context. What are the factors that allow agile systems engineering for CubeSats, and which parts of the \acs{SCS} methodology can be transferred to them? As CubeSat manufacturing is predominantly moving to local facilities, it becomes easier to follow approaches (such as 1-month long iterations) that were previously seen as utopian, while still conforming to the mostly stricter safety requirements for CubeSats.
 
 Another notable point of refinement for this work is the set of hardware and software development guidelines, which are mainly sourced from lessons learned during the case studies, but will fundamentally benefit from further experience gained during development and flight, with an end goal of creating a best-practices knowledge base for \acs{SCS} developers, similar to existing attempts for CubeSats.
 
 As software has been identified as a major time allocation and risk driver for \acs{SCS} missions, it would be beneficial to perform more research on the improvement of the time---risk trade-off. Lightweight formal verification techniques for software have been explored, but it is still unknown whether their added benefits overweigh the additional effort needed to instrument the entire or parts of the software, especially for teams without \draft{prior experience with these tools}.
+
+%\Cref{sec:DISCUSSION_limitations}
 
 Finally, this thesis identified tooling as a substantial area of interest for small spacecraft development. Apart from the actual development of software tools, future research can focus on identifying the set of functions and suitable designs to cover the requirements for work package management and modelling, without the currently understood overhead associated with formal tools.
 

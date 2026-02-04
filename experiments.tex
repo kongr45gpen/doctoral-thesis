@@ -230,10 +230,29 @@ Hello, just some text here, how y'all doing?
 
 \chapter{AAA}
 
-\begin{figure*}[h]
-	\includegraphics{graphics/MindMap.pdf}
-	\caption[Mind-map between the methods and goals of the SCS systems engineering methodology][-2cm]{Mind-map between the methods and goals of the SCS systems engineering methodology}
-\end{figure*}
+\def\ac#1{#1}
+
+\NewDocumentCommand{\researchquestion}{mm}{%
+	\begin{fullwidth}%
+	\begin{tikzpicture}
+		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=center]
+		at (0,0)
+		{\textbf{#1}: #2};
+	\end{tikzpicture}
+	\end{fullwidth}%
+}
+
+\researchquestion{RQ1}{What are the current Systems Engineering approaches used by Sub-CubeSat spacecraft developers?}
+
+\researchquestion{RQ2}{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
+
+\researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
+
+\researchquestion{RQ4}{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
+
+\begin{enumerate}
+	\item[Limitation 1.] You suffer but why?
+\end{enumerate}
 
 \printbibliography
 
