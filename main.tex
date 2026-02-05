@@ -1248,6 +1248,7 @@ Through these interviews, I noted the following information:\todo{Check notes fo
 	\item All respondents use some form of \textbf{iterative development} for their satellite, although the duration and scope of each iteration varies between a small amount of hardware models, and system-level rapid prototyping. No respondent follows a \emph{named} or strictly documented methodology\footnote{Such as Agile, Lean, Waterfall, \acs{ECSS} based etc.}. 3 respondents use an \emph{undocumented} form of methodology, where satellite revisions and processes are not formally kept track of. The 3 remaining respondents use some form of formal process or tool to document the system's development lifecycle and status, such as GitLab, Odoo (an \acs{ERP} tool), or Figma (a visual design tool) for revision representation.
 	\item 4 respondents have used elements from \acs{SYE} approaches similar to \textbf{CubeSat} approaches used in the literature or based on their previous experience. % this includes the high production capacity industry which is applicable to cubesats in general but I haven't found any literature specifically pointing to this
 	2 respondents are using highly iterative system-based approaches, which are generally considered impractical for CubeSat projects\footnote{Based on the understanding that it is impractical to perform more than 3 iterations on an entire CubeSat system}.
+	\item \draft{3 respondents mentioned software issues as one of the main sources of issues and non-conformances, many of which were discovered shortly before launch and caused by inadequate prior testing.}
 	\item All respondents have developed the payloads and PocketQube bus in-house, without the use of \acs{COTS} subsystems.
 	\item 4 respondents generally perform soldering in-house.
 	\item All respondents had already acquired or were in the process of acquiring \textbf{in-house testing facilities}, ranging from a plain vacuum chamber to a \acs{TVAC} and a shaker table.
@@ -1359,7 +1360,7 @@ A number of developments followed the introduction of the \emph{N-Prize}, a comp
 The prizes will be awarded to the first persons or groups to put into orbit around the Earth a satellite with a mass of between 9.99 and 19.99 grams, and to prove that it has completed at least 9 orbits. [...]
 
 The cost of the launch, but not ground facilities, must fall within a budget of £999.99.
-\draft{Citation n-prize website from archive (if it still exists)}
+\todo{Citation n-prize website from archive (if it still exists)}
 \end{quote}
 
 \draft{While no satellite managed to successfully fulfil these requirements}, at least 11 teams expressed interest in the competition. 
@@ -1444,7 +1445,7 @@ One of the most famous examples of an application of atto-satellites is the Brea
 \citeauthor{forwardRoundtripInterstellarTravel1984} in \citeyear{forwardRoundtripInterstellarTravel1984} proposed the use of lightsail\footnote{equivalently, laser-sail} spacecraft, calculating different mission designs that can reach Alpha Centauri after \(\sim\)40 years of travel.
 \citeauthor{manchesterStochasticSpaceExploration2011}, on the other hand, proposed using the smaller ChipSat spacecraft for space exploration \autocite{manchesterStochasticSpaceExploration2011}. \todo{Investigate "Starwisp" by Forward} %https://en.wikipedia.org/wiki/Starwisp
 
-The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a \draft{XYZ} array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, \todo{information about starchip}. As of 2026, while scientific progress has been made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
+The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a \draft{laser} array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, \todo{information about starchip}. As of 2026, while scientific progress has been made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
 
 
 
@@ -1563,7 +1564,7 @@ In \citeyear{beckAgileManifesto2001}, the Agile Manifesto \autocite{beckAgileMan
 	\caption[The Agile Manifesto]{The Agile Manifesto \autocite{beckAgileManifesto2001}}
 \end{marginfigure}
 
-The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \draft{Table ???}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
+The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. \todo{The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
 \begin{fullwidth}
 \begin{multicols}{2}
 \begin{itemize}[itemsep=-2ex]
@@ -1588,7 +1589,7 @@ I note that often synonymous terminology is used in methodology definitions and 
 
 \draft{Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.}
 
-The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. \todo{Meta-analyses performed \draft{(how?)} demonstrate that the correct application of Agile methodologies can reduce \draft{something} and increase developer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}}.
+The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. \todo{Meta-analyses performed \todo{(how?)} demonstrate that the correct application of Agile methodologies can reduce \draft{inertia} and increase developer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}}.
 Criticism against Agile is usually targetted towards incorrect implementations.
 Scrum, one of the most popular Agile frameworks, has faced criticism either at its foundation or due to its potential for mismanagement
 \autocite{tsalicoglouHowTransitionAgile2017,bjornDarkAgilePerceiving2019,grayCriticismScrum2015}
@@ -2082,7 +2083,7 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 \end{table*}
 
 \subparagraph{The Sprint}
-Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The difference between \emph{review} and \emph{retrospective} is\draft{...}}.
+Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{\todo{The difference between \emph{review} and \emph{retrospective} is...}}.
 
 The original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
 In industrial environments, iterations can last between 2 to 8 weeks, or even longer \autocite{cooperAgileDevelopmentManufacturing2023}. However, within the context of Scrum combined with \acs{SCS}, 8 weeks will represent a reasonable upper bound for iteration length.
@@ -2774,9 +2775,11 @@ Conversely, they note that the existence of high technical risk and a need to re
 
 Therefore, the ideal decision on time spent for early design will vary based on the members of each time. However, typical \acs{SCS} environments, coupled with the emergent features of such systems, can generally afford a reduced early design time.
 
+\begin{invisible}
 \subparagraph{Mathematical Model for design effort}
 
 \draft{[TODO]}
+\end{invisible}
 
 \begin{invisible}
 The drawbacks of incorrect allocation of design time early or late in the project are usually represent in terms of time and cost \begin{enumerate*}
@@ -2956,7 +2959,7 @@ Another decision that developers are faced with involves whether they reuse exis
 
 		1 & System & \href{https://gitlab.com/librespacefoundation/qubik/}{QUBIK} & Libre Space Foundation & 2019 & 1p radio-amateur PocketQube for \acs{LEO} satellite identification and tracking \\
 
-		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \draft{????} & \draft{?}p PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
+		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \todo{????} & \draft{?}p PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
 
 		% $50SAT (1.5P), Morehead State university 
 		% https://www.albaorbital.com/open-source-pocketqube#:~:text=%2450SAT%20%281%2E5P%29%2C%20Morehead%20State%20university
@@ -3060,7 +3063,8 @@ While verification ensures that the built system satisfies all agreed-on specifi
 \acs{ECSS} defines four verification methods that are typically used in space missions: \emph{review-of-design, analysis, inspection and testing}, which provide different levels of fidelity and reliability \autocite{ECSS-E-ST-10-02C}. It also distinguishes between \emph{acceptance} and \emph{qualification} levels for design parameters, the former of which are used to verify workmanship and functionality, and the latter used to demonstrate design margins, usually at a level that may be destructive for the \ac{DUT} \autocite{ECSS-E-ST-10-03C}.
 Verification is said to be made in ``ambient'' conditions if no attempt is made to simulate the space environment,\footnote{Mainly temperature, pressure, radiation, and electromagnetic environment.} or are classified as ``environmental'' otherwise.
 
-Verification is traditionally done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{For example, SpaceX requires \draft{this kind of testing, cite spacex rideshare}}On the other hand, validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use. When the V-model is used, verification can be performed in a tiered fashion, starting from subsystems to the integrated system \autocite{bundesrepublikdeutschlandVModellXT2006}. On the other hand, smaller systems like CubeSats regularly perform prototyping as part of their early phases, as part of risk-reduction or development activities \autocite{sousaCubeSatDevelopmentFramework2021,karvinenUsingHobbyPrototyping}, where functional or environmental verification takes place before a system-level verification phase.
+Verification is traditionally done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{\todo{For example, SpaceX requires \draft{this kind of testing, cite spacex rideshare}}}
+On the other hand, validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use. When the V-model is used, verification can be performed in a tiered fashion, starting from subsystems to the integrated system \autocite{bundesrepublikdeutschlandVModellXT2006}. On the other hand, smaller systems like CubeSats regularly perform prototyping as part of their early phases, as part of risk-reduction or development activities \autocite{sousaCubeSatDevelopmentFramework2021,karvinenUsingHobbyPrototyping}, where functional or environmental verification takes place before a system-level verification phase.
 
 In the context of \ac{SCS}, verification and validation present an worthwhile target for optimisation.
 The low development cost of \ac{SCS} means that the cost and time overhead to create a \textbf{prototype} are low and can be part of the regular cycles of an Agile lifecycle process, which routinely include verification.
@@ -3093,7 +3097,7 @@ Even if a manufacturing facility cannot support a full environmental testing cam
 
 In addition to this general shift towards in-house environmental testing, \ac{SCS} are usually composed of simple and well-understood structures, such as singular circuit boards or simple subsystem stacks. Past performance of these structures, especially in terms of rigidity and thermal behaviour, is well understood from previous missions. This reduces the benefits of analysis.
 
-As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \draft{Questionable?}}
+As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \todo{Questionable?}}
 
 \begin{invisible}
 \paragraph{Reduced Testing}
@@ -3348,7 +3352,7 @@ Additional testing methods that increase confidence in the design include:
 \begin{enumerate}
 	\item \textbf{Fuzz Testing} (or fuzzing) involves the generation of a vast dataset of random test cases as inputs, which are then fed to the software to evaluate any missed edge-cases\todo{ [cite]}.
 	\item \textbf{Stress Testing} evaluates the performance of the software when it is put under a heavier load\footnote{``Load'' in this case can refer to data volume, data rate, concurrent connections, number of operations etc.} than expected\todo{ [cite]}.
-	\item \textbf{Model Checking}: \draft{[todo]} \todo{[todo]}
+	\item \textbf{Model Checking} \todo{: \draft{[todo]} \todo{[todo]}}
 \end{enumerate}
 
 While the benefits of testing are well understood, software quality assurance has historically \draft{experienced} a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situtation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
@@ -3430,7 +3434,7 @@ For this research, I selected 4 frameworks written in different languages (C++, 
 
 More specifically, the execution and testing plan is elaborated into the following steps (\Cref{fig:m_software_fuzz_activity}):
 \begin{itemize}
-	\item \textbf{Static Analysis}: Involves extracting common metrics to identify code size (\acs{SLOC}) and complexity (cyclomatic complexity) for each tested framework, in order to acquire a general idea about the size \draft{?} of the codebase. I generated this information using the Lizard static analysis tool Lizard analyser \autocite{yinLizardExtensibleCyclomatic2019}\footnote{More specifically, I used a modified version of Lizard, available at \url{https://github.com/kongr45gpen/lizard}, to provide additional and normalised metrics.}
+	\item \textbf{Static Analysis}: Involves extracting common metrics to identify code size (\acs{SLOC}) and complexity (cyclomatic complexity) for each tested framework, in order to acquire a general idea about the size \todo{?} of the codebase. I generated this information using the Lizard static analysis tool Lizard analyser \autocite{yinLizardExtensibleCyclomatic2019}\footnote{More specifically, I used a modified version of Lizard, available at \url{https://github.com/kongr45gpen/lizard}, to provide additional and normalised metrics.}
 	\item \textbf{Emulation and Execution}: Each framework is designed for execution on different sets of hardware, microcontrollers and architectures. However, to ensure similar testing conditions, it would be ideal to employ a similar hardware platform for all tested frameworks, as it is only software that is being evaluated. At the same time, testing on software only, without any hardware involvement, provides much better observability and controllability for the framework under test.
 	
 	Therefore, I decided to use the \textbf{Qemu Emulator}. Qemu provided a common machine to emulate all frameworks\footnote{More specifically, \texttt{mps2-an500} with a Cortex-M7 core for real-time frameworks, and \texttt{virt} with a Cortex-A9 core for Linux guests. I used Yocto Linux to create appropriate distributions for emulation.}. Each framework had to also be adapted for the relevant Qemu machine, by removing machine-specific code from the repository, and inserting generic Qemu-compatible code.\footnote{To ensure repeatability, all patches applied to the software are treated as ``treatments'', are tracked and versioned.}
@@ -4078,7 +4082,7 @@ To make the design highly configurable without physical modifications, all proce
 
 The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
 
-At a system level, the secondaries transmit data at periodic \draft{???} intervals, while the primary is constantly waiting for data reception.
+At a system level, the secondaries transmit data at periodic \todo{???} intervals, while the primary is constantly waiting for data reception.
 Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
 
 \begin{figure*}
@@ -5193,7 +5197,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration. The reasoning for this argument is provided as follows:
 	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
-		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \draft{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
+		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \todo{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
 		\item The re-use of PyCubed-Mini and OpenMV in their entirety could guarantee the reduction of preliminary and boilerplate work, but not performance. While PyCubed-Mini was understood to be suitable for spacecraft control, with a very smooth learning curve, OpenMV was not suitable for the project in its default configuration.
 	\end{itemize}
 

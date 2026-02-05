@@ -1,67 +1,70 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0" version="29.2.7">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
   <diagram name="Page-1" id="r3Qgj-fjqxUsKtvJNuYX">
-    <mxGraphModel dx="1162" dy="822" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="984" dy="588" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="RQ1" vertex="1">
+        <mxCell id="2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="RQ1" vertex="1">
           <mxGeometry height="30" width="60" x="90" y="247" as="geometry" />
         </mxCell>
-        <mxCell id="3" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;" target="14">
+        <mxCell id="3" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontFamily=Open Sans;" target="14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;fontStyle=0;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=north;" value="What are the current SYE approaches used by SCS developers?" vertex="1">
-          <mxGeometry height="60" width="250" x="160" y="232" as="geometry" />
+        <mxCell id="4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;fontStyle=0;gradientColor=#ffd966;fillColor=#fff2cc;gradientDirection=south;strokeColor=#d6b656;" value="What are the current SYE approaches used by SCS developers?" vertex="1">
+          <mxGeometry height="60" width="270" x="160" y="232" as="geometry" />
         </mxCell>
-        <mxCell id="5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="RQ2" vertex="1">
+        <mxCell id="5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="RQ2" vertex="1">
           <mxGeometry height="30" width="60" x="90" y="325" as="geometry" />
         </mxCell>
-        <mxCell id="6" edge="1" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;" target="15">
+        <mxCell id="6" edge="1" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontFamily=Open Sans;" target="15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;fontStyle=0;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=north;" value="What are the shortcomings of SYE approaches used by SCS developers?" vertex="1">
-          <mxGeometry height="60" width="250" x="160" y="310" as="geometry" />
+        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;fontStyle=0;gradientColor=#ffd966;fillColor=#fff2cc;gradientDirection=south;strokeColor=#d6b656;" value="What are the shortcomings of SYE approaches used by SCS developers?" vertex="1">
+          <mxGeometry height="60" width="270" x="160" y="310" as="geometry" />
         </mxCell>
-        <mxCell id="8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="RQ3" vertex="1">
+        <mxCell id="8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="RQ3" vertex="1">
           <mxGeometry height="30" width="60" x="90" y="405" as="geometry" />
         </mxCell>
-        <mxCell id="9" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;" target="16">
+        <mxCell id="9" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontFamily=Open Sans;" target="16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;fontStyle=0;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=north;" value="Can a new, tailored SYE methodology address a selection of the shortcomings identified in RQ2 for SCS?" vertex="1">
-          <mxGeometry height="60" width="250" x="160" y="390" as="geometry" />
+        <mxCell id="Rv5TehmnUsW9WV7DYbjs-21" edge="1" parent="1" source="10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classic;endFill=1;" target="17">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="RQ4" vertex="1">
+        <mxCell id="10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;fontStyle=0;gradientColor=#ffd966;fillColor=#fff2cc;gradientDirection=south;strokeColor=#d6b656;" value="Can a new, tailored SYE methodology address a selection of the shortcomings identified in RQ2 for SCS?" vertex="1">
+          <mxGeometry height="60" width="270" x="160" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="RQ4" vertex="1">
           <mxGeometry height="30" width="60" x="90" y="485" as="geometry" />
         </mxCell>
-        <mxCell id="12" edge="1" parent="1" source="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;" target="17">
+        <mxCell id="12" edge="1" parent="1" source="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontFamily=Open Sans;endArrow=none;endFill=0;" target="17">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;fontStyle=0;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=north;" value="Is the SYE methodology developed in RQ3 effective in practical scenarios?" vertex="1">
-          <mxGeometry height="60" width="250" x="160" y="470" as="geometry" />
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;fontStyle=0;gradientColor=#ffd966;fillColor=#fff2cc;gradientDirection=south;strokeColor=#d6b656;" value="Is the SYE methodology developed in RQ3 effective in practical scenarios?" vertex="1">
+          <mxGeometry height="60" width="270" x="160" y="470" as="geometry" />
         </mxCell>
-        <mxCell id="14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Investigate the current SYE approaches used by SCS developers and gather data about the environment and typical SCS missions" vertex="1">
+        <mxCell id="14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Investigate the current SYE approaches used by SCS developers and gather data about the environment and typical SCS missions" vertex="1">
           <mxGeometry height="71" width="300" x="570" y="226.5" as="geometry" />
         </mxCell>
-        <mxCell id="15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Identify quantifiable parameters that can describe shortcomings in current SYE approaches&amp;nbsp;" vertex="1">
+        <mxCell id="15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Identify quantifiable parameters that can describe shortcomings in current SYE approaches&amp;nbsp;" vertex="1">
           <mxGeometry height="73" width="300" x="570" y="303.5" as="geometry" />
         </mxCell>
-        <mxCell id="16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Synthesise a set of methods for technical management and system realisation that describe a complete SYE methodology for SCS" vertex="1">
+        <mxCell id="16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Synthesise a set of methods for technical management and system realisation that describe a complete SYE methodology for SCS" vertex="1">
           <mxGeometry height="73" width="300" x="570" y="383.5" as="geometry" />
         </mxCell>
-        <mxCell id="17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Validate the new methodology on at least one space mission that will succeed in environmental qualification" vertex="1">
+        <mxCell id="17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSize=14;spacing=6;gradientColor=#E1F5FE;fillColor=#BBDEFB;gradientDirection=west;" value="Validate the new methodology on at least one space mission that will succeed in environmental qualification" vertex="1">
           <mxGeometry height="73" width="300" x="570" y="463.5" as="geometry" />
         </mxCell>
-        <mxCell id="18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="Objective 1" vertex="1">
+        <mxCell id="18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="Objective 1" vertex="1">
           <mxGeometry height="30" width="80" x="890" y="247" as="geometry" />
         </mxCell>
-        <mxCell id="19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="Objective 2" vertex="1">
+        <mxCell id="19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="Objective 2" vertex="1">
           <mxGeometry height="30" width="80" x="890" y="325" as="geometry" />
         </mxCell>
-        <mxCell id="20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="Objective 3" vertex="1">
+        <mxCell id="20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="Objective 3" vertex="1">
           <mxGeometry height="30" width="80" x="890" y="405" as="geometry" />
         </mxCell>
-        <mxCell id="21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=EB Garamond;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DEB%2BGaramond;fontSize=16;fontStyle=1" value="Objective 4" vertex="1">
+        <mxCell id="21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontFamily=Open Sans;fontSize=14;fontStyle=1" value="Objective 4" vertex="1">
           <mxGeometry height="30" width="80" x="890" y="485" as="geometry" />
         </mxCell>
       </root>
