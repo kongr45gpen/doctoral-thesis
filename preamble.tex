@@ -309,7 +309,7 @@ defernumbers=true,
 \newkeytheoremstyle{margincaptionstyle}{
 	headpunct={\hspace{0pt}},
 	postheadspace={0pt},
-	preheadhook = {
+	preheadhook = {%
 		\def\deferred@thm@head#1{%
 			\everypar\dth@everypar%
 			\sbox\@labels{}%
@@ -324,7 +324,7 @@ defernumbers=true,
 		\begin{minipage}[t]{\textwidth}%
 			\@tufte@reset@par%
 	},
-	postfoothook = {
+	postfoothook = {%
 		\vspace{-\baselineskip}%
 		\end{minipage}%
 		\end{lrbox}%
@@ -337,12 +337,12 @@ defernumbers=true,
 
 \newkeytheoremstyle{marginnotestyle}{
 	headpunct = {:},
-	preheadhook = {
+	preheadhook = {%
 		\begin{lrbox}{\definition@margin@box}%
 		\begin{minipage}[t]{\marginparwidth}%
 			\@tufte@marginnote@font\@tufte@marginnote@justification\@tufte@margin@par\vspace*{-1\baselineskip}%
 	},
-	postfoothook = {
+	postfoothook = {%
 		\end{minipage}%
 		\end{lrbox}%
 		\marginnote{\usebox\definition@margin@box}%

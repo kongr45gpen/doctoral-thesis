@@ -1,4 +1,4 @@
-\documentclass[a4paper,nobib,justified]{tufte-book}
+\documentclass[a4paper,nobib,justified,final]{tufte-book}
 
 \hypersetup{colorlinks}
 
@@ -77,10 +77,10 @@
 			\vspace{6ex}
 
 			\large \textit{A thesis submitted in fulfilment of the requirements\\ for the degree of}\\[0.3cm] % University requirement text
-			Docteur de l'Université du Luxembourg en\\
-			Sciences de l'Ingénieur\\[0.3cm]
+			Docteur de l'Université du Luxembourg\\
+			en Informatique\\[0.3cm]
 			\textit{in the}\\[0.4cm]
-			Doctoral School of Computer Science
+			Doctoral School in Science and Engineering
 			\\
 			Faculty of Science, Technology and Medicine
 			\\[1cm] % Research group name and department name
@@ -347,11 +347,11 @@ Due to the smaller size and component count of \acs{SCS}, these systems are gene
 However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
 \marginnote{\todo{Add citations to sidebar}}
-At the same time, literature from CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
-Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
+At the same time, literature from Sub-CubeSat and CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
+Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
 This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}, as evidenced by available literature \autocite{heinAttoSatsChipSatsOther2019,bouwmeesterUtilityConstraintsPocketQubes2020} and semi-formal interviews that have been conducted within the scope of this project (\Cref{sec:LITERATURE_interviews}). As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies.
 
-However, the combination of \emph{small scale} with \emph{mission criticality} is one that is not commonly found in other engineering fields. Yet, discussions with \acs{SCS} developers show that they operate in environments and under time/risk constraints similar to those of CubeSat systems (\Cref{sec:LITERATURE_interviews}). \acs{SCS} systems can therefore benefit from a \textbf{tailored methodology} that can take advantage of their unique characteristics. Using a methodology originally intended for \emph{larger spacecraft} or systems can introduce significant overhead in terms of cost and time, which may be unnecessary for these systems.\marginnote{\todo{[cite?]}} On the other hand, the use of an \emph{ad-hoc approach} increases programmatic and technical risk, since it provides no guarantees on the timely results of a project and no observability on factors such as progress, quality, or the critical path \autocite{honourTechnicalReportValue2004}. Nevertheless, due to the mission-critical nature of \acs{SCS} and their integration with larger systems,\footnote{Such as launchers, deployers} develpers need to achieve a correct balance between the effort and time spent across design, realisation and verification \autocite{sebok_value,boehmROISystemsEngineering2008,dillonFasterBetterCheaperProjectsToo2015}.
+However, the combination of \emph{small scale} with \emph{mission criticality} is one that is not commonly found in other engineering fields. Yet, discussions with \acs{SCS} developers show that they operate in environments and under time/risk constraints similar to those of CubeSat systems (\Cref{sec:LITERATURE_interviews}). \acs{SCS} systems can therefore benefit from a \textbf{tailored methodology} that can take advantage of their unique characteristics. Using a methodology originally intended for \emph{larger spacecraft} or systems can introduce significant overhead in terms of cost and time, which may be unnecessary for these systems.\marginnote{\todo{[cite?]}} On the other hand, the use of an \emph{ad-hoc approach} increases programmatic and technical risk, since it provides no guarantees on the timely results of a project and no observability on factors such as progress, quality, or the critical path \autocite{honourTechnicalReportValue2004}. Nevertheless, due to the mission-critical nature of \acs{SCS} and their integration with larger systems,\footnote{Such as launchers, deployers} developers need to achieve a correct balance between the effort and time spent across design, realisation and verification \autocite{sebok_value,boehmROISystemsEngineering2008,dillonFasterBetterCheaperProjectsToo2015}.
 
 \newthought{Thus,} the \textbf{main hypothesis} of this research project is that a \textbf{tailored \acl{SYE} methodology} specifically targeting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining an acceptable level of reliability and functionality. This methodology can also serve as a guideline for new missions, allowing first-time developers to establish a starting point for new projects, drawing on lessons learned from previous missions. The methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
 
@@ -848,15 +848,15 @@ SMAD \cite{SMAD} & CubeSat \cite{berthoudHowSetCubeSat2016} & PocketQube \cite{u
  & Mission Analysis &    \\
 Cross-cutting Disciplines & Systems Design &    \\
 Payload & Payload & Payload   \\
-Propulsion & Propulsion & -\tnote{1} \\
+Propulsion & Propulsion & ---\tnote{1} \\
 \acs{ADCS} & \acs{ADCS} & \acs{ADCS}   \\
 \acs{OBDH} or \acs{CDH} & \acs{OBDH} & \acs{OBC}   \\
 TT\&C or \acs{COMMS} & \acs{COMMS} & \acs{COMMS}   \\
 Power & Power & \acs{EPS}   \\
-Structures and Mechanisms & Structure &  -  \\
-- & - & Deployables   \\
-Thermal Control & Thermal & -\tnote{2}   \\
-- & Software & -   \\ \bottomrule
+Structures and Mechanisms & Structure &  ---  \\
+--- & --- & Deployables   \\
+Thermal Control & Thermal & ---\tnote{2}   \\
+--- & Software & ---  \\ \bottomrule
 \end{tabular}
 \begin{tablenotes}
 	\item[1] As of 2025, no propulsion systems for PocketQubes have been demonstrated in orbit \cite{franzesePocketQubePicosatellitesSurvey2025}.
@@ -5249,12 +5249,12 @@ This section presents a cross-case analysis between the four case-studies presen
 	\label{fig:c_causal_mapping}
 \end{figure*}
 
-\subsection{Internal Validity}
+\subsection{Success Evaluation}
 
 \marginnote{%
-	The action research-based approach did not allow us to implement a control/treatment group approach, and as such not all elements of the \acs{SCS} methodology were applied at once. However, based on the counter-factual evaluation performed above, there is no significant difference between the actual and the complete implementation of the \acs{SCS}. In most cases, 5 out of 6 treatments were applied. The exact differences are presented in \draft{a table}.
+	The action research-based approach did not allow us to implement a control/treatment group approach, and as such not all elements of the \acs{SCS} methodology were applied at once. However, based on the counter-factual evaluation performed above, there is no significant difference between the actual and the complete implementation of the \acs{SCS}. In most cases, 5 out of 6 treatments were applied. The exact differences are presented in \draft{each section}.
 }
-To evaluate the \textbf{internal validity} of the \acs{SCS} methodology, I consider whether the conditions introduced by the \acs{SCS} methodology, as applied to these case studies, led to successfully achieving the methodology requirements for each mission.
+To evaluate the applicability of the \acs{SCS} methodology to internal missions, I consider whether the conditions introduced by the \acs{SCS} methodology, as applied to these case studies, led to successfully achieving the methodology requirements for each mission.
 
 \paragraph{RM1: The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.}
 
@@ -5285,7 +5285,7 @@ While risk is difficult to quantify, counterfactual analyses showed a balanced r
 \FloatBarrier
 \subsection{External Validity}
 
-To evaluate the \textbf{external validity} of the proposed methodology, I will consider whether the results can be generalised to other projects. Since numerical time \& cost data are available, complemented by categorical cost data, a \textbf{statistical analysis} can be performed, based on the following parameters:
+To evaluate the \textbf{external validity} of the proposed methodology \autocite{yinCaseStudyResearch2014}, I will consider whether the results can be generalised to other projects. Since numerical time \& cost data are available, complemented by categorical cost data, a \textbf{statistical analysis} can be performed, based on the following parameters:
 \begin{itemize}[itemsep=-2ex]
 	\item Independent variables: \( \text{Project Number } X_p  \), \( \text{Number of Treatments } X_t \)
 	\item Dependent variables: \( \text{Development Time } Y_t \), \( \text{Cost } Y_c \), \( \text{Risk } Y_r \)

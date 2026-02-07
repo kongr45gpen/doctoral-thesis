@@ -69,6 +69,8 @@
 
 \input{preamble.tex}
 
+\DeclareAcronym{PCDU}{short = PCDU, long = {Power Conditioning \& Distribution Unit}}
+
 \begin{document}
 
 \tableofcontents
@@ -255,6 +257,13 @@ Hello, just some text here, how y'all doing?
 \end{enumerate}
 
 \printbibliography
+
+\NewAcroCommand\acfoot{m}{\UseAcroTemplate{footnote}{#1}}
+\NewAcroCommand\acmar{m}{\UseAcroTemplate{marginonly}{#1}}
+\NewAcroTemplate{marginonly}{%
+	\marginnote{\AcroFontStyle{\AcroFontSize{\AcroHeadingFontStyle{\AcroHeadingFontSize{#1}}}}}%
+}
+The \acmar{PCDU} is important.
 
 %\chapter{Yes}
 %What?
