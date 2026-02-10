@@ -1,3 +1,5 @@
+% LTeX: enabled=false
+
 \definecolor{draft}{HTML}{bf616a}
 
 %\NewDocumentCommand\draft{m}{%
@@ -56,6 +58,19 @@
 
 \colorlet{invalid}{MaterialAmber900}
 \colorlet{unexpected}{MaterialRed900}
+
+\colorlet{literature}{MaterialDeepOrange900}
+\colorlet{actualdata}{MaterialTeal800}
+\colorlet{estimateddata}{MaterialPurple800}
+
+% Quick Definitions
+\newcommand{\cfnorevisions}{\multicolumn{1}{c}{\textcolor{nice}{---}}}
+%\NewDocumentCommand{\cfnorevisions}{}{\textcolor{nice}{---}}
+\NewDocumentCommand{\cfliterature}{}{\textcolor{literature}{Literature}}
+\NewDocumentCommand{\cfactualdata}{}{\textcolor{actualdata}{Actual Data}}
+\NewDocumentCommand{\cfestimateddata}{}{\textcolor{estimateddata}{Est.\@ Data}}
+\NewDocumentCommand{\cfyes}{}{\textcolor{nice}{Y}}
+\NewDocumentCommand{\cfno}{}{\textcolor{bad}{N}}
 
 %------------------------------------------
 % Styles for Models

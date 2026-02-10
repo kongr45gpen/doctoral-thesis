@@ -1,4 +1,4 @@
-\documentclass[a4paper,nobib,justified,final]{tufte-book}
+\documentclass[a4paper,nobib,justified]{tufte-book}
 
 \hypersetup{colorlinks}
 
@@ -1813,7 +1813,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 \draft{}
 
 \begin{figure*}[p]
-	\includegraphics{graphics/Research.Activity.pdf}
+	\includegraphics[height=1.1\textheight]{graphics/Research.Activity.pdf}
 	\caption{Activity diagram of thesis research approach}
 	\label{fig:r_activity}
 \end{figure*}
@@ -3862,8 +3862,52 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 \begin{figure*}[p]
 	\centering
 	\includegraphics[height=\textheight]{graphics/CaseStudy.Process.pdf}
-	\caption[][-2cm]{Activity diagram of the case study research flow}
+	\caption[][-0.5cm]{Activity diagram of the case study research flow}
+	\label{fig:c_activity_diagram}
 \end{figure*}
+
+\newthought{A detailed} process diagram for the counter-factual analysis research flow is shown in \Cref{fig:c_activity_diagram}. 
+The process intents intends to perform internal and external validation of the \acs{SCS} methodology, following the definitions proposed by \citeauthor{yinCaseStudyResearch2014} \cite[33]{yinCaseStudyResearch2014}. As the purpose of internal validation is to establish whether the \acs{SCS} methodology actually affects the \acs{SYE} metrics of a project from a causal (rather than spurious) relationship, the questions that have to be answered are: \cite{yinCaseStudyResearch2014}
+\begin{enumerate}[itemsep=-2ex]
+	\item Can we infer that the methodology significantly affects a project metric?
+	\item Have we considered rival explanations and possibilities?
+	\item Does the evidence appear convergent and airtight?
+\end{enumerate}
+One of the processes that can answer these questions is \emph{explanation building}, which involves the following steps \cite[120]{yinCaseStudyResearch2014}:
+\begin{enumerate}
+	\item[x1.] Making an initial but tentative explanatory proposition
+	\item[x2.] Comparing the data from the case study against this proposition
+	\item[x3.] Revising the earlier proposition
+	\item[x4.] On a multiple-case study, comparing amongst the set of revised propositions
+\end{enumerate}
+In order to be able to clearly make logical conclusions and evaluate confouding factors, this process is isolated and tailored for each proposed ``treatment'' of the \acs{SCS} methodology. The end result, linked to each step of the explanation building process, is also shown in \Cref{fig:c_explanation_building}.
+
+The list of investigated treatments is listed in \Cref{tab:c_list_of_treatments}, as a selection of proposed methodology parts from \Cref{chap:METHODOLOGY}. The internal validity and explanation building is evaluated for each case study, in \Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation,sec:CASESTUDIES_poquito_evaluation,sec:CASESTUDIES_chipysat_evaluation}.
+
+The cross-case step of the \emph{explanation building} process is elaborated in \Cref{sec:DISCUSSION_crosscase}. \citeauthor{yinCaseStudyResearch2014} \autocite{yinCaseStudyResearch2014} identifies \textbf{\emph{statistical generalisation}} and \textbf{\emph{analytical generalisation}} as two distinct methods of generalising data from individual case studies to evaluate external validity. Due to the small sample size compared to the information available, analytical generalisation is proposed to extrapolate the results into other missions. However, in cases where there are clear distinctions between the application and non-application of treatments, statistical generalisation can also be used to complement the results of the former approach.
+
+\begin{table*}[]
+\renewcommand{\arraystretch}{1.8}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\begin{adjustbox}{max width=1.1\textwidth,center}
+\begin{tabularx}{1.1\textwidth}{@{}l>{\raggedright}p{3.5cm}XX@{}}
+\toprule
+ & Treatment & Description & Initial theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
+2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\draft{\Cref{sec:METHODOLOGY_design_guidelines}}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space) \\
+3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
+4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
+5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
+6 & \textbf{Robust software framework} & \Cref{sec:METHODOLOGY_softwaredevelopment} proposes the use of a software language and/or framework that theoretically increases reliability without an increase in development time. & Development time and cost should stay the same, with reduced risk. \\
+7 & \textbf{Robotic Process Automation} & \Cref{sec:METHODOLOGY_automated_testing} proposes the use of automated testing processes and tools to streamline the system's verification. & Development time should be project-dependent (cost of automation vs.\@ less manual effort). Cost should increase (when infrastructure needed to automate testing). Risk should decrease (general assumption based on increased testing). \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Evaluated methodology treatments and initial statements}
+\label{tab:c_list_of_treatments}
+\end{table*}
+
+
+
 
 \FloatBarrier
 \begin{invisible}
@@ -4403,6 +4447,25 @@ This data can be used to speculatively and retroactively evaluate the different 
 Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:METHODOLOGY}, I will consider the \emph{\acs{SCS} methodology} methods used by the team and evaluate their impact on \textbf{cost, schedule, features} and \textbf{risk}. 
 
 \begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity affects chance of non-conformance. & The decision to perform no analysis led to a reduction in development time and an increase in cost due to testing. & \cfnorevisions \\
+2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity affects chance of non-conformance. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
+3 & \textbf{Multi-step development} & \cfyes & \cfestimateddata & Team expertise. External/supplier requirements. & Changes in external requirements necessitated multiple iterations. Otherwise, a high initial design time prevails over year-long projects. Multiple iterations lead to a cost increase. Risk depends on the quality of the design/iterations. & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfyes & \cfestimateddata & System complexity. Team expertise. & Development time and cost can be accurately predicted based on the times \& cost of a single iteration. Risk, however, depends on the reduction of work quality (due to less design) over each iteration. & \cfnorevisions \\
+5 & \textbf{Iterating over partitions} & \cfyes & \cfestimateddata & System complexity. & Cost can be accurately predicted based on the project's cost budget. Lower initial design costs reduce development time. Risk is increased due to less initial data generated. & \cfnorevisions \\
+6 & \textbf{Robust software framework} & \cfyes & \cfestimateddata & System complexity. Component compatibility. Team expertise. & Development time can change, based on the technical compatibility of the system with a desirable framework. No manufacturing cost associated with software. Generalised risk decrease expected based on literature. & Development time is project-dependent (based on technical compatibility). Cost should remain similar. Risk decreases due to inherent software framework characteristics. \\
+7 & \textbf{Robotic Process Automation} & \cfno & None available. &  &  &  \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for ChipSat-1 (analytical results)}
+\end{table*}
+
+\begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
 	\toprule
@@ -4415,7 +4478,7 @@ Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:
 5 & Iterating over partitions & \textcolor{nice}{Y} & -1840 & \qty{-50}{hours} & Higher \\
 6 & Robust software framework & \textcolor{bad}{Y} & 0 & \qty{+40}{hours} & Lower \\ \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for ChipSat-1}
+\caption{Counter-factual evaluation for ChipSat-1 (quantitative results)}
 \label{tab:c_chipsat_counterfactuals}
 \end{table*}
 
@@ -4969,6 +5032,7 @@ In terms of technical observations:
 \end{itemize}
 
 \subsection{Evaluation}
+\label{sec:CASESTUDIES_poquito_evaluation}
 
 The counter-factual evaluation of POQUITO follows the same structure as the ones of ChipSat-1 and AI4Space (\Cref{sec:CASESTUDIES_chipsat1_evaluation,sec:CASESTUDIES_ai4space_evaluation}).
 
@@ -5164,6 +5228,7 @@ For the second iteration, I implemented the \acs{FFT}-based optimisation algorit
 \end{table}
 
 \subsection{Evaluation}
+\label{sec:CASESTUDIES_chipysat_evaluation}
 
 While ChiPySat was a shorter project than the rest, involving a considerably smaller team and \draft{no formal qualification goals}, it can still serve as an interesting point for counter-factual analysis. The main differentiating points compared to previous case studies are \begin{enumerate*}
 	\item the small, non-standardised form factor of a fully independent spacecraft; and
@@ -5568,6 +5633,7 @@ This research question involves the generalisation of the results of \texttt{RQ3
 	Even though I attempted to use prior knowledge and verifiable claims to inform, synthesise, and validate the proposed \acs{SCS} methodology, each of the performed tasks was limited by the available data and what was practically achievable with the resources allocated to this work.
 	This section presents the limitations and threats to validity of this research, following a sequential order, as specified in the original Research Plan (\Cref{chap:METHODOLOGY}). %Most threats relate 
 
+	\todo{FOR EACH EXTERNAL FACTOR IDENTIFIED AS INFLUENCE, A SPECIFIC MITIGATION HAS BEEN APPLIED!!!!}
 
 \begin{enumerate}
 	% 43 total organisations according to WP
