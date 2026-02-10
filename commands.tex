@@ -4,21 +4,20 @@
 %	\textcolor{draft!65!black}{#1}%
 %}
 
-\NewDocumentCommand\draft{m}{%
-	#1%???
-}
-
-% \NewDocumentCommand\todo{m}{%
-% 	\textcolor{draft}{#1}%
-% }
-\NewDocumentCommand\todo{m}{%
-	%???
+\ifoptionfinal{
+	\NewDocumentCommand\draft{m}{#1}
+	\NewDocumentCommand\todo{m}{}
+}{
+	% if not final
+	\NewDocumentCommand\draft{m}{%
+		\textcolor{draft!65!black}{#1}%
+	}
+	\NewDocumentCommand\todo{m}{%
+	 	\textcolor{draft}{#1}%
+	}
 }
 
 \makeatletter
-
-%\newcommand\draft{\bgroup\color{draft!50!white}\markoverwith
-%	{\textcolor{black}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
 
 \newcommand\footurl@[1]{\footnote{\url@{#1}}}
 \DeclareRobustCommand{\footurl}{\hyper@normalise\footurl@}
@@ -36,11 +35,6 @@
 
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
-% Transitions
-\AtBeginDocument{
-\colorlet{invalid}{MaterialAmber900}
-\colorlet{unexpected}{MaterialRed900}
-}
 
 \def\ar{ \( \rightarrow \) }
 
@@ -59,6 +53,9 @@
 
 \colorlet{nice}{MaterialGreen800}
 \colorlet{bad}{MaterialRed800}
+
+\colorlet{invalid}{MaterialAmber900}
+\colorlet{unexpected}{MaterialRed900}
 
 %------------------------------------------
 % Styles for Models

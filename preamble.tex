@@ -83,7 +83,7 @@ defernumbers=true,
 %}
 
 \usepackage{siunitx}
-
+\usepackage[yyyymmdd]{datetime}
 \usepackage{ifdraft}
 
 % Draft packages
@@ -91,10 +91,10 @@ defernumbers=true,
 \excludecomment{invisible}
 
 % Final packages
-\ifoptionfinal{
+%\ifoptionfinal{
 	%\usepackage[protrusion=true,expansion,babel=true]{microtype}
 	\usepackage{microtype}
-}{}
+%}{}
 
 % Modifications to the default tufte template to make it more applicable to a thesis
 % Credit goes to Tiffany Tseng, lalider, see https://github.com/lalider/tufte-latex-thesis
