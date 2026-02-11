@@ -18,7 +18,7 @@
 
 \hypersetup{
 	pdftitle={Systems Engineering for Sub-CubeSat Spacecraft},
-	pdfsubject={PhD Thesis},
+	pdfsubject={Doctoral Thesis},
 	pdfauthor={Konstantinos Kanavouras},
 	addtopdfcreator={tufte-book class}
 }
@@ -139,7 +139,7 @@
 \setlength{\parskip}{\baselineskip}
 Copyright \copyright\ \the\year\ \thanklessauthor
 
-\par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
+\par\smallcaps{\href{https://github.com/kongr45gpen/doctoral-thesis}{Https://Github.com/Kongr45gpen/Doctoral-Thesis}}
 
 %\par
 %I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
@@ -3819,7 +3819,25 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 Finally, with the emergence of highly-automated ``vibe coding'' as of 2026, where software generation can be performed in large volumes by \acsp{LLM}, rapid changes in the systems engineering software ecosystem are expected to be seen in the short-term. Most notably, \acsp{LLM} can potentially encourage the development of in-house tools, tailored for each mission, and progressively adapted to an organisation's needs \autocite{liscioRIPLowCode2026}.
 
 \subsection{Tailoring Questionnaire}
-\todo{Tailoring questionnaire}
+
+The methodology presented in \Cref{chap:METHODOLOGY} does not constitute a ``one-size-fits-all'' solution.
+Practitioners are encouraged to pick methods suited to their projects (for example, selecting between a system-level or partition-level iteration approach), or internally tailor each method to the degree necessary.
+
+In general, tailoring is not uncommon for agile methodologies. \citeauthor{campanelliAgileMethodsTailoring2015} analysed 56 studies about agile method tailoring \autocite{campanelliAgileMethodsTailoring2015}. 
+They found that the identification of main environmetal criteria, as defined by \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013}, is a common first step in the tailoring process.
+\textbf{Method engineering} is the main tailoring approach used thereafter. \citeauthor{fitzgeraldEmpiricalStudySystem} have defined an approach to method engineering, which suggests that ``methods be represented as discrete pre-defined and pretested components'', making a method engineer/administrator responsible for selection of the appropriate ones \autocite{fitzgeraldEmpiricalStudySystem}. This is not unlike the approach already proposed in this work.
+
+\citeauthor{xuUsingProcessTailoring2008} have proposed a slightly different process-tailoring strategy, mainly focused for software engineering applications \autocite{xuUsingProcessTailoring2008}.
+Their strategy consists of the following steps:
+\begin{enumerate}[itemsep=-1ex]
+	\item \textbf{Evaluating the project goals and environment.} This is similar to the elaboration of the project characteristics per \citeauthor{kalusCriteriaSoftwareProcess2013} \cite{kalusCriteriaSoftwareProcess2013}.
+	\item \textbf{Assessing challenges.}  This is similar to the previous step, but assesses specific hardships that are encountered by the project in the areas of resources, communication, requirements management, politics, and techical aspects.
+	\item \textbf{Determining tailoring strategies for various process elements}.
+	Here, the authors provide specific options for actions that can be taken to modify a process.
+	They link \textbf{verbs} (\emph{add, downsize, drop/skip, expand, redefine, replace}) with \textbf{elements} (\emph{task, sequence, artifact/document, role, iteration}).
+	For example, tailoring may result in increasing the amount of documentation (\texttt{add + document}) or reducing product scope (\texttt{downsize + task}).
+	\item \textbf{Validating, executing and evaluating the tailored process} in an iterative fashion.
+\end{enumerate}
 
 \chapter{Case Studies}
 \label{chap:CASESTUDIES}
@@ -5812,7 +5830,7 @@ This research question involves the generalisation of the results of \texttt{RQ3
 	More specifically:
 	\begin{enumerate}[itemsep=-2ex]
 		\item The case studies covered a large gamut of the \acs{SCS} systems targetted by this methodology, from a \acs{PCB}-based payload to a PocketQube, with different hardware/software designs for each one, as well as different launch configurations.
-		\item The case studies were executed in two institutions.
+		\item The case studies were distributed over two institutions.
 		\item All projects were performed by different teams, with (predominantly) different participants and different sizes.
 		\item While executing the case studies, we performed incremental updates to the universities' lab infrastructure, increasing the amount of local facilities available.
 		\item Different external suppliers/manufacturers were used for each project, including \acs{PCB} manufacturers, \acs{PCB} assemblers, machine shops, component suppliers, testing facilities, and launch providers. More specifically, within the first three case studies, we selected between 2--4 different companies for each of the aforementioned tasks.
