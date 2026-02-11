@@ -49,7 +49,13 @@
 	\let\@@author\@empty
 	\let\@@date\@empty
 	\thispagestyle{empty}
-	\begin{fullwidth}
+	\begin{fullwidth}%
+		\ifoptionfinal{}{%
+			\begin{tikzpicture}[remember picture,overlay]
+				\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
+					{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+			\end{tikzpicture}
+		}%
 		\vfill
 		\begin{center}
 			\includegraphics[height=2.5cm]{external/logo.pdf}\par
@@ -89,10 +95,10 @@
 
 			{\large February 14, 2026}\\[4cm] % Date
 
-		\end{center}
-		\vfill
-	\end{fullwidth}
-	\endgroup
+		\end{center}%
+		\vfill%
+	\end{fullwidth}%
+	\endgroup%
 	\thispagestyle{plain}% suppress the running head
 	\tuftebreak% add some space before the text begins
 	\@afterindentfalse\@afterheading% suppress indentation of the next paragraph
@@ -111,7 +117,7 @@
 \setlength{\parskip}{\baselineskip}
 Copyright \copyright\ \the\year\ \thanklessauthor
 
-%\par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
+\par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
 
 \par
 I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
@@ -683,7 +689,7 @@ The chapters of this thesis are organised as follows:
 
 \begin{figure*}[h]
 	\includegraphics{graphics/Research.Structure.pdf}
-	\caption{Thesis Chapter Structure \todo{[increase font size]}}
+	\caption{Thesis Chapter Structure}
 	\label{fig:i_thesis_structure}
 \end{figure*}
 
@@ -1165,13 +1171,14 @@ Inspired by the success of pocketable microelectronics, the PocketQube idea was 
 	\hfill%
 	\includegraphics[height=6cm]{media/pictures/qubik_bmps.jpg}%
 	\caption[Left: Comparison of a 1p PocketQube with a coin. Right: QUBIK EPS board.]{Left: Size comparison of a 1p PocketQube with a 0.50€ coin. Right: QUBIK \acs{EPS} board.\quad The 9-pin PQ9 connector is visible on the right.}
-	\setfloatalignment{b}
+	\setfloatalignment{t}
 \end{figure*}
 
 The first PocketQubes were launched in 2013 \autocite{franzesePocketQubePicosatellitesSurvey2025,wikipediacontributorsListLaunchedPocketQubes2025}.
 After the execution of different community workshops, the first version of the PocketQube standard was published in \citeyear{PQ1} \autocite{PQ1}.
 Since then, companies and organisations such as \emph{FOSSA Systems}, \emph{Alba Orbital} and the \emph{Libre Space Foundation} have developed commercial buses, subsystems and deployers to support the PocketQube ecosystem. The PQ60 \autocite{PQ60}, PQ9 and CS14 \autocite{PQ91} standards provided shared electrical interfaces that could be used for a \draft{modular subsystem ecosystem}, similar to the CubeSat PC/104 subsystem form-factor.
 
+\NextCitationOffset{3cm}
 Lists of launched PocketQubes are maintained by \citeauthor{kuluNanosatsDatabase2023} \autocite{kuluNanosatsDatabase2023} and on Wikipedia \autocite{wikipediacontributorsListLaunchedPocketQubes2025}.
 \citeauthor{franzesePocketQubePicosatellitesSurvey2025} also released a review of PocketQube missions launched until 2023 \autocite{franzesePocketQubePicosatellitesSurvey2025}.
 As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023}.
@@ -3896,7 +3903,7 @@ The cross-case step of the \emph{explanation building} process is elaborated in 
 1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
 2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\draft{\Cref{sec:METHODOLOGY_design_guidelines}}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space) \\
 3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
-4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
+4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. Note that no restriction is set on the iterations having a fixed length; instead, their length was flexible (pre-determined or not). & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
 5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
 6 & \textbf{Robust software framework} & \Cref{sec:METHODOLOGY_softwaredevelopment} proposes the use of a software language and/or framework that theoretically increases reliability without an increase in development time. & Development time and cost should stay the same, with reduced risk. \\
 7 & \textbf{Robotic Process Automation} & \Cref{sec:METHODOLOGY_automated_testing} proposes the use of automated testing processes and tools to streamline the system's verification. & Development time should be project-dependent (cost of automation vs.\@ less manual effort). Cost should increase (when infrastructure needed to automate testing). Risk should decrease (general assumption based on increased testing). \\ \bottomrule
@@ -4463,6 +4470,7 @@ Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:
 \end{tabularx}
 \end{adjustbox}
 \caption{Counter-factual evaluation for ChipSat-1 (analytical results)}
+\label{tab:c_chipsat_counterfactuals_text}
 \end{table*}
 
 \begin{table*}[h]
@@ -4696,6 +4704,28 @@ For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 L
 \label{sec:CASESTUDIES_ai4space_evaluation}
 
 This counter-factual evaluation of AI4Space follows the same structure as the one of ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}).
+
+\begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity affects chance of non-conformance. Manufacturing quality. & The decision to perform no analysis led to a reduction in development time and no additional testing (in this case, due to system simplicity). & Consistent reduction in development time. Test campaigns may increase cost. Increase in risk (due to undetected errors). \\
+2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity affects chance of non-conformance. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
+3 & \textbf{Multi-step development} & \cfyes & \cfestimateddata\@ \& \cfliterature & System complexity. Team expertise. & A high initial design time would prevail over the actual fast schedule of the mission, influenced by its simplicity. Multiple iterations lead to a cost increase. Risk depends on the quality of the design/iterations. & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfno & None available. &  &  & \\
+5 & \textbf{Iterating over partitions} & \cfyes & \cfactualdata & System complexity. Team expertise. & The use of partitions led to a delay in manufacturing and testing a complete system. In turn, this led to later data generation for the system. The use of partitions did not generate significant \& meaningful data to be used for later. & Development time increased due to unnecessary partitioning. Cost remained similar (no more components purchased). Risk unchanged (no significant information affected system design). \\
+6 & \textbf{Robust software framework} & \cfyes & \cfactualdata & System complexity. Component compatibility. Team expertise. & System specifications and team expertise allowed for an implementation of a more ``robust'' software framework. We identified actual non-conformances related to the software technologies used (mainly latency, unpredictability, low throughput). Other frameworks or architectures are not shown to be prone to these errors. No indications for change in development time/cost. & \cfnorevisions \\
+7 & \textbf{Robotic Process Automation} & \cfyes & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team expertise. Available facilities. & Repeated testing identified regressions after software/hardware changes. Added effort for process automation counterbalanced by hypothetical repeated effort for manual testing. No hardware equipment needed for \acs{RPA}, leading to no cost change.  & \cfnorevisions \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for AI4Space (analytical results)}
+\label{tab:c_ai4space_counterfactuals_text}
+\end{table*}
+
+
 \begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
@@ -4711,7 +4741,7 @@ This counter-factual evaluation of AI4Space follows the same structure as the on
 7 & \acl{RPA} & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
 \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for AI4Space}
+\caption{Counter-factual evaluation for AI4Space (quantitative results)}
 \label{tab:c_ai4space_counterfactuals}
 \end{table*}
 
@@ -5037,6 +5067,28 @@ In terms of technical observations:
 The counter-factual evaluation of POQUITO follows the same structure as the ones of ChipSat-1 and AI4Space (\Cref{sec:CASESTUDIES_chipsat1_evaluation,sec:CASESTUDIES_ai4space_evaluation}).
 
 \begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity. Manufacturing quality. Team size. & The decision to perform no analysis led to a reduction in development time and no additional testing (in this case, due to reuse). & Consistent reduction in development time. Test campaigns may increase cost. Increase in risk (due to undetected errors). \\
+2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
+3 & \textbf{Multi-step development} & \cfyes & \cfactualdata\@ \& \cfliterature & System complexity. Team expertise. & Specific \acs{BDUF} tasks identified that would increase development time and reduce risk. Cost can be calculated by measuring the cost of added iterations.  & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfno & \cfestimateddata & System complexity. Team expertise.  & Each system-level iteration of POQUITO is associated with a base manufacturing/testing effort and cost, which increases with the number of iterations. Actual project schedule shows that baseline design effort is also required, meaning that shorter iterations would also require more iterations. Schedule and cost impact can be inferred then directly. Risk seems affected by low-level technical aspects.  &
+Development time depends on project complexity, with shorter iterations being faster for projects of a smaller technical size. Cost increases due to manufacturing runs. Risk is project-dependent due to low-level factors.
+\\
+5 & \textbf{Iterating over partitions} & \cfyes & \cfactualdata & System complexity. Team expertise. & The use of a partition generated engineering data to be used for later iterations (therefore reducing risk). Cost and time changes are a direct result of working on reduced versions of the system. & Development time decreased (no integration effort). Cost reduced (less manufacturing). Risk decreased (information used in later iterations before system completion). \\
+6 & \textbf{Robust software framework} & \cfyes & None available. &  &  &  \\
+7 & \textbf{Robotic Process Automation} & \cfno & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team size. Team expertise. Available facilities. & Manual testing procedures were not repeatable, leading to the delayed discovery of regressions. Due to the availability of equipment and tooling, \acs{RPA} would add no identifiable delays or costs. & \cfnorevisions \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for POQUITO (analytical results)}
+\label{tab:c_poquito_counterfactuals_text}
+\end{table*}
+
+\begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
 	\toprule
@@ -5045,13 +5097,13 @@ The counter-factual evaluation of POQUITO follows the same structure as the ones
 1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & 0  & \qty{-180}{hours} & Higher \\
 2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -4020 & \qty{+80}{hours} & Lower  \\
 3 & Multi-step development & \textcolor{nice}{Y} & +7070 & \qty{-248}{hours} & Higher  \\
-4 & Short iterations & \textcolor{bad}{N} & +3050 & \qty{64}{hours} & Lower  \\
+4 & Short iterations & \textcolor{bad}{N} & +3050 & \qty{+64}{hours} & Lower  \\
 5 & Iterating over partitions & \textcolor{nice}{Y} & -1700 & \qty{-26}{hours} & No change \\
 %6 & Robust software framework & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
 7 & \acl{RPA} & \textcolor{bad}{N} & 0 & \qty{0}{hours} & Lower \\
 \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for POQUITO}
+\caption{Counter-factual evaluation for POQUITO (quantitative results)}
 \label{tab:c_poquito_counterfactuals}
 \end{table*}
 
@@ -5064,12 +5116,12 @@ The results of the counter-factual evaluation in \Cref{tab:c_poquito_counterfact
 
 	\item \textbf{Iterative multi-step development}:
 	
-	To compare against a single-step, ``\acl{BDUF}'' approach, I will consider the ``best-case'' 40-person-day metric (\Cref{tab:l_cubesat_time_drivers}), reduced \( \frac{2}{3} \) of the integration \& verification time. In a single-step case, the development time of the project would be increased by \( 40\cdot 8 - \frac{2}{3} \cdot 108 = \qty{248}{hours} \). This approach would involve, for example, fit-checks using software-based \acs{CAD} model, a detailed evaluation of assembly and testing requirements to avoid incompatibilities, formal documentation of the proposed design (perhaps compliant to \acs{ECSS} standards \autocite{ECSS-M-ST-10C,ECSS-E-ST-10C}), and significantly more time spent on design review during designated stage-gates. 
+	To compare against a single-step, ``\acl{BDUF}'' approach, I will consider the ``best-case'' 40-person-day metric (\Cref{tab:l_cubesat_time_drivers}), reduced by \( \frac{2}{3} \) of the integration \& verification time. In a single-step case, the development time of the project would be increased by \( 40\cdot 8 - \frac{2}{3} \cdot 108 = \qty{248}{hours} \). This approach would involve, for example, fit-checks using a software-based \acs{CAD} model, a detailed evaluation of assembly and testing requirements to avoid incompatibilities, formal documentation of the proposed design (perhaps compliant to \acs{ECSS} standards \autocite{ECSS-M-ST-10C,ECSS-E-ST-10C}), and significantly more time spent on design review during designated stage-gates. 
 
 	I consider it highly likely that this approach would detect and prevent most or all non-conformances noted in \Cref{sec:CASESTUDIES_poquito_lessons}, thus leading to a successful development of the spacecraft. While both sequential and iterative development would lead to a successfully operating spacecraft, I consider that spending more time on \emph{early design} would lead to a potentially simpler design, e.g.\@ by simplifying POQUITO's harnessing, or by deciding to use a simpler communication protocol\footnote{e.g.\@ \acs{UART} instead of \acs{CAN}.}. Thus, I will consider that multi-step development increases risk. This is also influenced by POQUITO's more complex nature compared to previous missions, leading to a higher potential inertia against change. \todo{[cite]} Finally, I will also consider a significant increase in total manufacturing cost for a multi-step lifecycle process (based on the costs of individual \acsp{PCB} and elements).
 
 	\item \textbf{Short iterations}:
-	POQUITO's iterations are not considered short in terms of typical agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2\footnote{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}.
+	POQUITO's iterations are not considered short in terms of typical agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2.\footnote{\draft{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}}
 	
 	Nevertheless, in the case of POQUITO, short iterations would increase the total cost (based on the cost of components and unassembled \acsp{PCB}) and development time by \( \frac{2}{3} \cdot 108 = \qty{72}{hours} \). However, shorter, timeboxed iterations would lead to a \draft{less staggered} procurement schedule, allowing different hardware engineers to align with each other, and the use of prototypes would help in earlier identification of issues, such as incompatible dimensions and bad fits. I will therefore consider a lower risk,  and an additional reduction of time required for machining by \qty{8}{hours}.
 
@@ -5236,6 +5288,28 @@ While ChiPySat was a shorter project than the rest, involving a considerably sma
 \end{enumerate*}
 
 \begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity. Manufacturing quality. Team size. & The decision to perform no analysis led to a reduction in development time and no additional testing (in this case, due to reuse). & Consistent reduction in development time. Test campaigns may increase cost. Increase in risk (due to undetected errors). \\ %ok
+2 & \textbf{In-house manufacturing} & \cfyes & \cfactualdata & \acs{DUT} complexity. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\ %ok
+3 & \textbf{Multi-step development} & \cfyes & \cfactualdata\@ \& \cfliterature & System complexity. Team expertise. & Specific \acs{BDUF} shortcomings identified, caused because of the software complexity and lack of specific experience, that would anyway require a second iteration. Cost can be calculated based on component prices. Risk assumed to increase due to the reduced design effort. & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfno & \cfestimateddata & System complexity. Team expertise. Team size. & Effects of short iterations generally linked to small team size. Cost can be calculated based on component sizes. &
+Development time depends on project complexity and team size. Cost increases due to manufacturing runs. Risk is project-dependent due to low-level factors.
+\\
+5 & \textbf{Iterating over partitions} & \cfno & None available. &  &  & \\
+6 & \textbf{Robust software framework} & \cfno & \cfactualdata & System complexity. Team expertise. Team size. \acs{COTS} availability. & Software performance and reliability issues identified, caused by technical aspects of the chosen software architecture and technologies. Development time for software changes influenced heavily by expertise, prior work, hardware, and features. No cost change factors identified. & Development time depends on low-level factors. Cost remains similar. Risk is reduced.  \\
+7 & \textbf{Robotic Process Automation} & \cfno & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team expertise. Available facilities. & On the one hand, manual testing procedures were not repeatable, leading to increased development time. On the other hand, due to the ``photographic'' nature of the project,\acs{RPA} would require additional effort which cannot be easily estimated. Due to the availability of equipment and tooling, \acs{RPA} would add no identifiable costs. & \cfnorevisions \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for ChiPySat (analytical results)}
+\label{tab:c_chipysat_counterfactuals_text}
+\end{table*}
+
+\begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
 	\toprule
@@ -5252,7 +5326,7 @@ While ChiPySat was a shorter project than the rest, involving a considerably sma
 7 & \acl{RPA} & \textcolor{bad}{N} & 0 & \qty{+40}{hours} & Lower \\
 \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for ChiPySat}
+\caption{Counter-factual evaluation for ChiPySat (quantitative results)}
 \label{tab:c_chipysat_counterfactuals}
 \end{table*}
 
@@ -5264,7 +5338,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	Early in the mission, we considered the tradeoff between in-house and external \acs{PCB} assembly, comparing different available options. We decied to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
 
 	\item \textbf{Iterative multi-step development}:
-	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration. The reasoning for this argument is provided as follows:
+	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
 	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
 		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \todo{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
