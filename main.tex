@@ -38,6 +38,26 @@
 %\blankpage
 
 % r.3 full title page
+
+% For pre-publication version:
+\makeatletter%
+\thispagestyle{empty}%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+  \ifoptionfinal{}{%
+		\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
+			{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+  }%
+\end{tikzpicture}%
+\newpage%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=2,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+\end{tikzpicture}%
+\makeatother%
+\newpage%
+
+% For post-publication version:
+\begin{comment}
 \makeatletter
 \renewcommand{\maketitle}{%
 	\newpage
@@ -105,9 +125,11 @@
 }
 \makeatother
 \maketitle
+\newpage
+\end{comment}
 
 % v.4 copyright page
-\newpage
+
 \phantomsection
 \addcontentsline{toc}{section}{Copyrights}
 \begin{fullwidth}
@@ -119,14 +141,12 @@ Copyright \copyright\ \the\year\ \thanklessauthor
 
 \par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
 
-\par
-I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
-submitted for the award of a doctorate, on my own (without external help), have used
-only the sources and aids indicated and have marked passages included from other
-works, whether verbatim or in content, as such. I swear upon oath that these
-statements are true and that I have not concealed anything.
-
-\todo{AI declaration}
+%\par
+%I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
+%submitted for the award of a doctorate, on my own (without external help), have used
+%only the sources and aids indicated and have marked passages included from other
+%works, whether verbatim or in content, as such. I swear upon oath that these
+%statements are true and that I have not concealed anything.
 
 \par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
 use this file except in compliance with the License. You may obtain a copy
@@ -222,15 +242,6 @@ under the License.
 	As future work, the proposed methodology can be expanded with more \acs{SCS}-specific mission data to aid tailoring decisions, or extended to apply to larger spacecraft domains.
 
 \end{fullwidth}
-
-\begin{invisible}
-\chapter*{Objectives}
-
-\lipsum[1]
-
-\chapter*{Contribution}
-\todo{I did this. I also did that. I didn't do that.}
-\end{invisible}
 
 
 %%
@@ -352,7 +363,6 @@ Due to the smaller size and component count of \acs{SCS}, these systems are gene
 
 However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
-\marginnote{\todo{Add citations to sidebar}}
 At the same time, literature from Sub-CubeSat and CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
 Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
 This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}, as evidenced by available literature \autocite{heinAttoSatsChipSatsOther2019,bouwmeesterUtilityConstraintsPocketQubes2020} and semi-formal interviews that have been conducted within the scope of this project (\Cref{sec:LITERATURE_interviews}). As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies.
@@ -3739,47 +3749,77 @@ In any case, teams should consider adherence to coding standards and best practi
 \end{landscape}
 \restoregeometry
 
-\begin{invisible}
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
 
 \subsection{Recommended Tools}
 
+\ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions.
 In the ideal case, each proposed part of the \ac{SCS} methodology would be supported by dedicated hardware and software tools, compliant with the requirements described in \Cref{sec:METHODOLOGY_tooling_requirements}, and tailored to each specific use case.
 However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
 
-Because \ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions, I consider tool selection as one of the first decisions that have to be taken when starting a new project.
-\todo{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
-It is also important to create a distinction between domain-specific tools\footnote{such as analysis/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
+I consider tool selection as one of the first decisions that have to be taken when starting a new project.
+This is suppoorted by case studies found in the literature.
+\citeauthor{garrettProjectManagementSystems2022} \autocite{garrettProjectManagementSystems2022} notes that accessibility issues (in this case, difficult installation and no online collaboration options) encountered when using Microsoft Project led to noticeable delays in project schedule.
+\citeauthor{honore-livermoreManagingProductDevelopment2021} \autocite{honore-livermoreManagingProductDevelopment2021} claims that appropriate tools can be helpful by aiding design traceability, cohesiveness and documentation, but require support from dedicated people to be useful.
+\citeauthor{eilertsenOpenSpace2025} \autocite{eilertsenOpenSpace2025}, on the other hand, claims that incorrectly designed human-machine interfaces, as often found in software tools for space systems engineering, can negatively impact cognitive load and situational awareness. In turn, this leads to slower work or processes, and an increased chance of mistakes.
+
+\marginnote{It is important to create a distinction between domain-specific tools, such as analysis/testing software, data gathering utilities, programming languages or design software, and generic \ac{SYE} tools.}
+
+It is also hard to identify an ideal, globally-applicable set of tools for \acs{SCS} space missions, as tool selection will depend on the specific project requirements, team expectations and prior experience. However, a high-level list of requirements or needs can be elaborated as follows:
+\begin{enumerate}[itemsep=-2ex]
+	\item New tools should not increase the schedule or cost overhead of a project. If they do, this should be justified by a significant technical risk reduction.
+	\item New tools should be easy to use.\footnote{Ease-of-use is a subjective term that differs between teams. However, different User-Experienced definitions can be used to quantify this \cite{internetarchiveHumancomputerInteractionNew2002}.} In practice, tool design should encourage a preference of using a specific tool against other approaches.
+	\item Tools should not fragment information.\footnote{For example, if a \emph{requirements management} tool does not support writing a justification for a requirement, developers may be tempted to create a separate document or use a separate tool to store this information. This leads to data fragmentation, requires keeping more than one database up-to-date, and makes information retrieval harder.} This can be achieved by using generalisable/tailorable tools.
+	\item The overall cognitive load of team members related to tool usage should be reduced, by limiting the amount of different loci that have to be monitored or updated. This can be achieved, for example, by limiting the amount of tools, using tools that combine multiple functions, or using automated notification/update processes.
+	\item Project Management should actively support the use of tools. This can be achieved through regular training sessions, high support availability, and consistent maintenance of databases.
+\end{enumerate}
+
 A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
+
+
+
 
 \begin{table*}[h]
 	\caption{Indicative systems engineering tools to support agile sub-CubeSat development}
 	\label{tab:methodology_indicative_tools}
-	\begin{tabularx}{\linewidth}{@{}llX@{}}
+	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+	\begin{adjustbox}{center}
+	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.5cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
 		\toprule
 		\multicolumn{2}{l}{Task} & Example Tools \\ \midrule
-		Project Management and Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
-		Internal Communication & & Slack, Mattermost, Zulip, Discord, Microsoft Teams, Zoom \\
-		\multirow{4}{*}{Knowledge Management} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} \\
-		& Document-based formal & Microsoft Office, LibreOffice, LaTeX \\
-		& Model-based informal & CDP4-COMET, Valispace \\
+		Requirements Management \cite{pankevichOpenSourceRequirements2025} & & Jira, GitLab, Open-Needs, Doorstop, Duro, Notion, \emph{spreadsheets} \\
+		\addlinespace[2ex]
+		Project Management and Technical Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
+		\addlinespace[2ex]
+		Internal Communication \cite{grafEuropeanAlternativesSlack} & & Zulip, Discord, Zoom, Microsoft Teams, Slack, Mattermost \\
+		\addlinespace[2ex]
+		\multirow{4}{*}{Knowledge Mgmt.} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} (e.g.\@ Wiki.js) \\
+		& Document-based formal & LaTeX, LibreOffice, LaSuite Docs, Microsoft Office, \textit{Wiki software} (e.g.\@ MediaWiki)  \\
+		& Model-based informal \cite{morlingGunnarmorlingAwesomeopensourcedataengineering2024} & CDP4-COMET, Valispace, Duro, Nanospace \\
 		& Model-based formal & SysML, Capella, Papyrus, Cameo Systems Modeler, Enterprise Architect \\
+		\addlinespace[2ex]
 		Asset Management & & Inventree, ERPNext \\
-		Artifact Management & Software and hardware & Github, GitLab \\
-		Requirements Management &  & Jira, Notion \\
+		\addlinespace[2ex]
+		Artifact Management & Software and hardware & Github, GitLab, Gitea, Forgejo \\
+		\addlinespace[2ex]
 		Test and Defect Management &  & Jira, Notion \\
+		\addlinespace[2ex]
 		Verification &  & LabView, Selenium, Python Robot Framework \\
-		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators} \\
-		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting} \\
-		\multicolumn{3}{c}{\todo{This table needs to be updated to include more tools, details, and match the recommended methods}} \\
+		\addlinespace[2ex]
+		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators, \acs{PCB} design software, calculation spreadsheets, interactive notebooks} \\
+		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting, Robotic Process Automation} (e.g.\@ Robot framework) \\
+		\addlinespace[2ex]
+		Operations & & YAMCS, OpenC3 COSMOS, Grafana, SatNOGS \\
 		\bottomrule
 	\end{tabularx}
+	\end{adjustbox}
 \end{table*}
 
-\todo{robot framework}
-\end{invisible}
+Finally, with the emergence of highly-automated ``vibe coding'' as of 2026, where software generation can be performed in large volumes by \acsp{LLM}, rapid changes in the systems engineering software ecosystem are expected to be seen in the short-term. Most notably, \acsp{LLM} can potentially encourage the development of in-house tools, tailored for each mission, and progressively adapted to an organisation's needs \autocite{liscioRIPLowCode2026}.
 
+\subsection{Tailoring Questionnaire}
+\todo{Tailoring questionnaire}
 
 \chapter{Case Studies}
 \label{chap:CASESTUDIES}

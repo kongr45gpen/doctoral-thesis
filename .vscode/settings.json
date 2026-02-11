@@ -13,24 +13,31 @@
             ]
         },
         {
-            "name": "pdflatex -> bibtex -> pdflatex * 2",
+            "name": "pdflatex -> biber -> pdflatex * 2",
             "tools": [
                 "pdflatex",
-                "bibtex",
+                "biber",
                 "pdflatex",
                 "pdflatex"
             ]
         },
         {
-            "name": "pdflatex -> bibtex -> pdflatex",
+            "name": "pdflatex -> biber -> pdflatex",
             "tools": [
                 "pdflatex",
-                "bibtex",
+                "biber",
                 "pdflatex"
             ]
         },
         {
-            "name": "pdflatex ",
+            "name": "biber -> pdflatex",
+            "tools": [
+                "biber",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex",
             "tools": [
                 "pdflatex",
             ]
@@ -125,6 +132,14 @@
         {
             "name": "bibtex",
             "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
             "args": [
                 "%DOCFILE%"
             ],

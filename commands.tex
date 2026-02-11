@@ -9,6 +9,7 @@
 \ifoptionfinal{
 	\NewDocumentCommand\draft{m}{#1}
 	\NewDocumentCommand\todo{m}{}
+	\excludecomment{invisible}
 }{
 	% if not final
 	\NewDocumentCommand\draft{m}{%
@@ -17,6 +18,7 @@
 	\NewDocumentCommand\todo{m}{%
 	 	\textcolor{draft}{TODO: #1}%
 	}
+	\includecomment{invisible}
 }
 
 \makeatletter

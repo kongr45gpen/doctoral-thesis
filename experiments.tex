@@ -73,6 +73,19 @@
 
 \begin{document}
 
+% For pre-publication version:
+\makeatletter%
+\thispagestyle{empty}%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+\end{tikzpicture}%
+\newpage%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=2,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+\end{tikzpicture}%
+\makeatother%
+
+
 \tableofcontents
 
 \printacronyms[pages={display=all,seq/use=false},]
@@ -274,25 +287,41 @@ Hello, just some text here, how y'all doing?
 \def\acf#1{#1}
 
 
-\begin{table*}[]
-\renewcommand{\arraystretch}{1.8}
-\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
-\begin{adjustbox}{max width=\textwidth,center}
-\begin{tabularx}{1.2\textwidth}{@{}l>{\raggedright}m{3cm}XXX@{}}
-\toprule
- &    &  \multicolumn{3}{c}{Revised Theory} \\ \cmidrule(lr){3-5}
- & Treatment & \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Cost} & \multicolumn{1}{c}{Risk} \\ \midrule
-1 & \textbf{Bypassing structural/thermal analysis} & Consistent \textcolor{nice}{reduction}, due to large fixed effort to set up analysis, compared with days-long testing. & Test campaigns may \textcolor{bad}{increase} cost. & Risk \textcolor{bad}{increases} (undetected non-conformances). \\
-2 & \textbf{In-house manufacturing} & Consistent \textcolor{bad}{increase} due to in-house effort. However, note that this model does not emulate delays caused due to external lead times. & Consistent \textcolor{nice}{reduction} in costs, under the assumption of ``expensive'' external manufacturing and internal facilities. & Depends on team, facilities, and external suppliers. \\
-3 & \textbf{Multi-step development} & Standard iteration durations are consistently \textcolor{nice}{shorter} than an initial \acs{BDUF} step. & Consistent \textcolor{bad}{increase} due to manufacturing costs. & Depends on low-level project details and team expertise. \\
-4 & \textbf{Short iterations} & Depends on project complexity and team size. Longer iterations suited for projects with a larger technical size. & Short iterations imply more iterations, more manufacturing runs, and therefore a consistent cost \textcolor{bad}{increase}. & Depends on low-level project details. \\
-5 & \textbf{Iterating over partitions} & Depends on project complexity. Partitioning suited for more complex projects. &  Cost may \textcolor{nice}{decrease} (due to reduced manufacturing) & Depends on project complexity. Risk \textcolor{bad}{increases} when partitioning simpler projects, and vice versa. \\
-6 & \textbf{Robust software framework} & Depends on low-level factors. & No factors influence cost. & Risk \textcolor{nice}{decreases} due to inherent software framework characteristics. \\
-7 & \textbf{Robotic Process Automation} & Depends on project testing complexity (automation vs.\@ manual effort) & \textcolor{bad}{Increases} when hardware infrastructure required. &  Risk \textcolor{nice}{decreases} due to capability for continual, immediate testing after changes. \\ \bottomrule
-\end{tabularx}
-\end{adjustbox}
-\caption{Revised methodology treatment statements}
-\label{tab:d_new_statements}
+\begin{table*}[h]
+	\caption{Indicative systems engineering tools to support agile sub-CubeSat development}
+	\label{tab:methodology_indicative_tools}
+	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+	\begin{adjustbox}{center}
+	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.5cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
+		\toprule
+		\multicolumn{2}{l}{Task} & Example Tools \\ \midrule
+		Requirements Management \cite{pankevichOpenSourceRequirements2025} & & Jira, GitLab, Open-Needs, Doorstop, Duro, Notion, \emph{spreadsheets} \\
+		\addlinespace[2ex]
+		Project Management and Technical Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
+		\addlinespace[2ex]
+		Internal Communication \cite{grafEuropeanAlternativesSlack} & & Zulip, Discord, Zoom, Microsoft Teams, Slack, Mattermost \\
+		\addlinespace[2ex]
+		\multirow{4}{*}{Knowledge Mgmt.} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} (e.g.\@ Wiki.js) \\
+		& Document-based formal & LaTeX, LibreOffice, LaSuite Docs, Microsoft Office, \textit{Wiki software} (e.g.\@ MediaWiki)  \\
+		& Model-based informal \cite{morlingGunnarmorlingAwesomeopensourcedataengineering2024} & CDP4-COMET, Valispace, Duro, Nanospace \\
+		& Model-based formal & SysML, Capella, Papyrus, Cameo Systems Modeler, Enterprise Architect \\
+		\addlinespace[2ex]
+		Asset Management & & Inventree, ERPNext \\
+		\addlinespace[2ex]
+		Artifact Management & Software and hardware & Github, GitLab, Gitea, Forgejo \\
+		\addlinespace[2ex]
+		Test and Defect Management &  & Jira, Notion \\
+		\addlinespace[2ex]
+		Verification &  & LabView, Selenium, Python Robot Framework \\
+		\addlinespace[2ex]
+		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators, \acs{PCB} design software, calculation spreadsheets, interactive notebooks} \\
+		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting, Robotic Process Automation} (e.g.\@ Robot framework) \\
+		\addlinespace[2ex]
+		Operations & & YAMCS, OpenC3 COSMOS, Grafana, SatNOGS \\
+		\bottomrule
+	\end{tabularx}
+	\end{adjustbox}
 \end{table*}
+
 \end{document}
 
