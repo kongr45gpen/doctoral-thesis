@@ -1742,6 +1742,14 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 	The DS-II stage includes the validation of the application and impact of the proposed design support, based on the execution of empirical studies.
 	
 	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}.
+	\marginnote{%
+		An alternative definition of validity is given by \citeauthor{pedersenVALIDATINGDESIGNMETHODS} \cite{pedersenVALIDATINGDESIGNMETHODS}. In this work, \citeauthor{yinCaseStudyResearch2014}'s \emph{internal} and \emph{external} validation are represented by \textbf{performance validation}, which tests whether:
+		\begin{enumerate}[itemsep=-1ex]
+			\item ``the outcome of the method is useful with respect to the initial purpose for some chosen example problem(s)'';
+			\item ``the achieved usefulness is linked to applying the method''; and
+			\item ``the usefulness of the method is beyond the case studies''.
+		\end{enumerate}
+	}
 	
 	In an ideal scenario, I could perform a statistical evaluation of the support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through complete A/B experiments. However,  Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
 	
@@ -5386,12 +5394,16 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 
 This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
 
+The introductory section of \Cref{chap:CASESTUDIES} presents the data gathering process and analysis approach that will also be followed for this chapter.
+
 \begin{figure*}
 	\includegraphics{graphics/ResultsCausal.pdf}
 	\caption{Observed \acs{SCS} treatment---effect mapping based on case studies}
 	\setfloatalignment{b}
 	\label{fig:c_causal_mapping}
 \end{figure*}
+
+
 
 \subsection{Success Evaluation}
 
@@ -5643,12 +5655,35 @@ Each treatment can be evaluated as follows:
 	\item \textbf{Iterating over partitions}:
 	The choice of iterating over partitions over the entire system does not seem to have a significant effect in development time or risk, and reduces cost by \qty{7.7}{\percent} on average, with low confidence.
 
-	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized system (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on a well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
+	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized systems (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on a well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
 	\item \textbf{Robust software framework}:
-	The selection of a robust software framework has a varied effect on development time based on the project requirements, without any effects on cost, and a universal reduction in perceived risk.
+	The selection of a robust software framework has a varied effect on development time based on the project requirements and hardware, without any effects on cost, and a universal reduction in perceived risk.
 	\item \textbf{\acf{RPA}}:
 	The use of \acl{RPA} can incure an increase in development time for some projects, with no changes in cost, and a universal reduction in perceived risk.
 \end{enumerate}
+
+A summary of these results, along with the identified causal links, is shown in \Cref{tab:d_new_statements}.
+
+\begin{table*}[]
+\renewcommand{\arraystretch}{1.8}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabularx}{1.2\textwidth}{@{}l>{\raggedright}m{3cm}XXX@{}}
+\toprule
+ &    &  \multicolumn{3}{c}{Revised Theory} \\ \cmidrule(lr){3-5}
+ & Treatment & \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Cost} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & Consistent \textcolor{nice}{reduction}, due to large fixed effort to set up analysis, compared with days-long testing. & Test campaigns may \textcolor{bad}{increase} cost. & Risk \textcolor{bad}{increases} (undetected non-conformances). \\
+2 & \textbf{In-house manufacturing} & Consistent \textcolor{bad}{increase} due to in-house effort. However, note that this model does not emulate delays caused due to external lead times. & Consistent \textcolor{nice}{reduction} in costs, under the assumption of ``expensive'' external manufacturing and internal facilities. & Depends on team, facilities, and external suppliers. \\
+3 & \textbf{Multi-step development} & Standard iteration durations are consistently \textcolor{nice}{shorter} than an initial \acs{BDUF} step. & Consistent \textcolor{bad}{increase} due to manufacturing costs. & Depends on low-level project details and team expertise. \\
+4 & \textbf{Short iterations} & Depends on project complexity and team size. Longer iterations suited for projects with a larger technical size. & Short iterations imply more iterations, more manufacturing runs, and therefore a consistent cost \textcolor{bad}{increase}. & Depends on low-level project details. \\
+5 & \textbf{Iterating over partitions} & Depends on project complexity. Partitioning suited for more complex projects. &  Cost may \textcolor{nice}{decrease} (due to reduced manufacturing) & Depends on project complexity. Risk \textcolor{bad}{increases} when partitioning simpler projects, and vice versa. \\
+6 & \textbf{Robust software framework} & Depends on low-level factors. & No factors influence cost. & Risk \textcolor{nice}{decreases} due to inherent software framework characteristics. \\
+7 & \textbf{Robotic Process Automation} & Depends on project testing complexity (automation vs.\@ manual effort) & \textcolor{bad}{Increases} when hardware infrastructure required. &  Risk \textcolor{nice}{decreases} due to capability for continual, immediate testing after changes. \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Revised methodology treatment statements}
+\label{tab:d_new_statements}
+\end{table*}
 
 The above results indicate that the ideal or ``optimal'' selection of \acs{SCS} development methods can be project-specific, based on variables both known and unknown at the start of a project, and depending on the desired trade-off between time, cost and risk.
 
@@ -5706,8 +5741,8 @@ This research question involves the generalisation of the results of \texttt{RQ3
 \begin{fullwidth}
 	Even though I attempted to use prior knowledge and verifiable claims to inform, synthesise, and validate the proposed \acs{SCS} methodology, each of the performed tasks was limited by the available data and what was practically achievable with the resources allocated to this work.
 	This section presents the limitations and threats to validity of this research, following a sequential order, as specified in the original Research Plan (\Cref{chap:METHODOLOGY}). %Most threats relate 
+	Most identified threats relate to external influencing factors that can affect case study results by threatening the logical conclusions that can be made regarding the methodology. For each external factor identified as an influence, a specific mitigation is applied, as shown below:
 
-	\todo{FOR EACH EXTERNAL FACTOR IDENTIFIED AS INFLUENCE, A SPECIFIC MITIGATION HAS BEEN APPLIED!!!!}
 
 \begin{enumerate}
 	% 43 total organisations according to WP
@@ -5719,19 +5754,59 @@ This research question involves the generalisation of the results of \texttt{RQ3
 
 	\item[Threat 3.] \textbf{Case study-based validation}: The validation of the \acs{SCS} methodology (\texttt{RQ3} and \texttt{RQ4}) was based on four case studies. In contrast to, e.g.\@, an experimental setup, the case study approach does not require control over all environmental parameters and can be practically performed against complete missions, which are the main unit of analysis of this study. Typical concerns connected to case studies relate to the misuse of data, small sample sizes, and incorrect generalisations \cite[266]{yinCaseStudyResearch2014}. I address these concerns by \draft{documenting the gathered qualitative} and quantitative data in \Cref{chap:CASESTUDIES}, by using multiple sources of evidence for claims, and by analytic generalisations of findings in \Cref{sec:CASESTUDIES_results}.
 	
-	\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers \draft{(see \Cref{app:contribution_matrix})}, the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, \draft{follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.}
+	In \Cref{chap:CASESTUDIES}, I identified various external/confounding factors that can threaten the logical inferences required to validate the proposed methodology, namely:
+	\begin{enumerate}[itemsep=-2ex]
+		\item Project technical size, Project complexity
+		\item Team expertise, Team size, Available facilities
+		\item Launch provider requirements
+		\item External supplier/manufacturer conditions (requirements, lead times, cost, quality)
+		\item Low-level project specifications
+	\end{enumerate}
+	The external factors identified as affecting each evaluation point are listed in each individual case study.
 
-	\item[Threat 5.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of \draft{action research}. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
+	In general, to control for these factors, 
+	I identified their potential influence against each treatment, and if it affected the predicted results. In this way, the cross-case analysis pinpointed aspects of the methodology that do or do not depend on project-specific or environment-specific factors (\Cref{tab:d_new_statements}).
+
+	%\citeauthor{yinCaseStudyResearch2014} \cite{yinCaseStudyResearch2014}
+	Additionally, I participated in a diverse set of case studies, to the extent possible, in order to cover a sufficiently wide range of external conditions.
+	More specifically:
+	\begin{enumerate}[itemsep=-2ex]
+		\item The case studies covered a large gamut of the \acs{SCS} systems targetted by this methodology, from a \acs{PCB}-based payload to a PocketQube, with different hardware/software designs for each one, as well as different launch configurations.
+		\item The case studies were executed in two institutions.
+		\item All projects were performed by different teams, with (predominantly) different participants and different sizes.
+		\item While executing the case studies, we performed incremental updates to the universities' lab infrastructure, increasing the amount of local facilities available.
+		\item Different external suppliers/manufacturers were used for each project, including \acs{PCB} manufacturers, \acs{PCB} assemblers, machine shops, component suppliers, testing facilities, and launch providers. More specifically, within the first three case studies, we selected between 2--4 different companies for each of the aforementioned tasks.
+	\end{enumerate}
+
+	Nevertheless, two invariants remained unchanged across all case studies:
+	\begin{itemize}[itemsep=-2ex]
+		\item All case studies were performed within an academic environment. 
+		Based on the initial literature survey, academic projects can have small but discernible differences compared to their industrial counterparts.
+		More specifically, the former may have different goals, increased bureaucracy,  smaller or less experienced teams, high turnover rates, and low duty cycles of participating members. These effects are more pronounced with student projects (as opposed to e.g.\@ research projects).
+		
+		To mitigate this invariant, \draft{all executed projects were made within a research context, with limited student involvement}. Team members were assigned to projects for the duration of the entire mission (with the exception of students invited to take ownership of specific work packages) and based on their expertise and prior familiarity with the used technologies (especially in terms of software/hardware development and satellite integration). This combination of factors can be considered a suitable middle-ground between fully student-led and fully commercial projects.
+
+		Nevertheless, follow-up studies can be performed to confidently evaluate the impact of the different environmental context.
+		\item I participated as a systems engineer in all case studies. To mitigate the influencing effect of a constant participant with a single responsibility, I was assigned to different work packages for each project, or shared my responsibilities with other core team members. This involved, for example, switching between the technical tasks of system design, \acs{PCB} design, software development, and testing amongst all projects, while I shared the \emph{systems engineer} role with other participants.
+	\end{itemize}
+	
+	%\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers \draft{(see \Cref{app:contribution_matrix})}, the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, \draft{follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.}
+	
+	%A particular similarity amongst all case studies was that they were performed within 
+
+	\item[Threat 4.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of \draft{action research}. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
 	\begin{enumerate}[itemsep=-1pt]
 		\item \textbf{Uncontrollability}: The researcher \emph{does not have full control over the environment being studied}.
 		This was particularly the \draft{case} in the evaluated case studies, as it was not possible to fully control the application and implementation of the \acs{SCS} methodology, allocate resources, or recruit the desired personnel for technical tasks.
-		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. It is difficult, for example, to reason about the impact of multiple methodology treatments against the project's flow.
-		\item \textbf{Subjectivity}: It is impossible for the researcher to be in a detached position from the subject being studied, \draft{making} it possible to \emph{introduce biases into their conclusions}.
+
+		A critical result of this threat, combined with the iterative nature of action research, is that no case study was performed with the complete methodology applied (or not applied). Instead, all case studies involved the application of \emph{most} aspects of the methodology on them, with the complete application being evaluated based on the counter-factual inference.
+		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. \draft{It is difficult, for example, to reason about the impact of multiple methodology treatments against the project's flow.}
+		\item \textbf{Subjectivity}: \draft{It is impossible for the researcher to be in a detached position from the subject being studied, \draft{making} it possible to \emph{introduce biases into their conclusions}.}
 	\end{enumerate}
 
-	These threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.
+	\draft{In general, these threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.}
 
-	\item [Threat 6.] %counterfactual
+	\item [Threat 5.] %counterfactual
 	\textbf{Counter-factual evaluation}:
 	The comparison between the application and non-application of \acs{SCS} methodology treatments in \Cref{chap:CASESTUDIES} was performed through the evaluation of hypothetical scenarios.
 %	It is impossible to accurately model the potential interactions between different approaches on the same project.
@@ -5739,8 +5814,19 @@ This research question involves the generalisation of the results of \texttt{RQ3
 	However, through the participation and evaluation of different \acs{SCS} treatments across four projects, it was possible to generate high-confidence predictions about the effects of each treatment.
 	The data used to inform these predictions was gathered from the missions themselves (e.g.\@ in the case that an alternative option was evaluated but abandoned during the mission), from results gathered from other missions, from past \acs{SCS}/CubeSat literature, or based on a causal evaluation. In the case of disagreements of these previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
 	
+	\item [Threat 6.] % validation
+	\textbf{Lack of mission results}:
+	For this research, I gathered in-orbit data from one mission only (AI4Space), which demonstrated a performance within the expected envelope. Two other missions (ChipSat, ChiPySat) were never launched, while POQUITO was launched but not detected by ground stations.
 
-	
+	An obstacle specifically linked to space missions is that no definitive data can be generated about their success until they manage to transmit data from orbit.
+	The launch itself requires finding appropriate funding and a compatible launch slot.
+	The validation of a mission requires that it is qualified, launched, deployed, and successful.	In the case of a mission failure (either early or late), it is very likely that, due to reduced observability, no information can be gathered about the cause of the failure, and whether the cause is linked to the \acl{SYE} methodology or not.
+
+	To mitigate against the uncertainty of mission events, and to discount their effect on the evaluation of the \acs{SCS} methodology, I defined the success of environmental qualification as the main goal of the methodology. Qualification is a valuable stage-gate, which can provide timely results, and locate critical system faults that are not obvious by inspection. This is represented by a reduced ``\acl{TRL}'' of 8 in NASA's \acs{TRL} scale, which demonstrates that a system is flight-qualified, but not flight-proven \cite{sheaNASASystemsEngineering2020}.
+	All three tested case studies passed the qualification step successfully.
+	In-orbit demonstration missions are then a typical next step to increase this rating to the maximum 9.
+
+
 	% statistical generalisation (actually not a threat)
 \end{enumerate}
 
@@ -6013,7 +6099,7 @@ The following table lists the participation and contributions of team members to
 \begin{tabular}{@{}lllll@{}}
 	\toprule
 	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
-	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
+	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
 %	A.~F.~Bühler &  &  &  &  \\
 	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
 	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\

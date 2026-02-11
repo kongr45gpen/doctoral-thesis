@@ -274,46 +274,25 @@ Hello, just some text here, how y'all doing?
 \def\acf#1{#1}
 
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
 \begin{table*}[]
 \renewcommand{\arraystretch}{1.8}
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
-\begin{adjustbox}{max width=1.1\textwidth,center}
-\begin{tabularx}{1.1\textwidth}{@{}l>{\raggedright}p{3.5cm}XX@{}}
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabularx}{1.2\textwidth}{@{}l>{\raggedright}m{3cm}XXX@{}}
 \toprule
- & Treatment & Description & Initial theory \\ \midrule
-1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
-2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points \draft{\Cref{sec:METHODOLOGY_design_guidelines}} in a project's development flow. This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space) \\
-3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
-4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
-5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
-6 & \textbf{Robust software framework} & \Cref{sec:METHODOLOGY_softwaredevelopment} proposes the use of a software language and/or framework that theoretically increases reliability without an increase in development time. & Development time and cost should stay the same, with reduced risk. \\
-7 & \textbf{Robotic Process Automation} & \Cref{sec:METHODOLOGY_automated_testing} proposes the use of automated testing processes and tools to streamline the system's verification. & Development time should be project-dependent (cost of automation vs.\@ less manual effort). Cost should increase (when infrastructure needed to automate testing). Risk should decrease (general assumption based on increased testing). \\ \bottomrule
+ &    &  \multicolumn{3}{c}{Revised Theory} \\ \cmidrule(lr){3-5}
+ & Treatment & \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Cost} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & Consistent \textcolor{nice}{reduction}, due to large fixed effort to set up analysis, compared with days-long testing. & Test campaigns may \textcolor{bad}{increase} cost. & Risk \textcolor{bad}{increases} (undetected non-conformances). \\
+2 & \textbf{In-house manufacturing} & Consistent \textcolor{bad}{increase} due to in-house effort. However, note that this model does not emulate delays caused due to external lead times. & Consistent \textcolor{nice}{reduction} in costs, under the assumption of ``expensive'' external manufacturing and internal facilities. & Depends on team, facilities, and external suppliers. \\
+3 & \textbf{Multi-step development} & Standard iteration durations are consistently \textcolor{nice}{shorter} than an initial \acs{BDUF} step. & Consistent \textcolor{bad}{increase} due to manufacturing costs. & Depends on low-level project details and team expertise. \\
+4 & \textbf{Short iterations} & Depends on project complexity and team size. Longer iterations suited for projects with a larger technical size. & Short iterations imply more iterations, more manufacturing runs, and therefore a consistent cost \textcolor{bad}{increase}. & Depends on low-level project details. \\
+5 & \textbf{Iterating over partitions} & Depends on project complexity. Partitioning suited for more complex projects. &  Cost may \textcolor{nice}{decrease} (due to reduced manufacturing) & Depends on project complexity. Risk \textcolor{bad}{increases} when partitioning simpler projects, and vice versa. \\
+6 & \textbf{Robust software framework} & Depends on low-level factors. & No factors influence cost. & Risk \textcolor{nice}{decreases} due to inherent software framework characteristics. \\
+7 & \textbf{Robotic Process Automation} & Depends on project testing complexity (automation vs.\@ manual effort) & \textcolor{bad}{Increases} when hardware infrastructure required. &  Risk \textcolor{nice}{decreases} due to capability for continual, immediate testing after changes. \\ \bottomrule
 \end{tabularx}
 \end{adjustbox}
-\caption{Evaluated methodology treatments and initial evaluation}
-\label{tab:c_list_of_treatments}
+\caption{Revised methodology treatment statements}
+\label{tab:d_new_statements}
 \end{table*}
-
-\begin{table*}[]
-\renewcommand{\arraystretch}{1.8}
-%\renewcommand\tabularxcolumn[1]{m{#1}}
-\begin{adjustbox}{width=1.1\linewidth,center}
-\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
-\toprule
- & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
-1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity affects chance of non-conformance. & The decision to perform no analysis led to a reduction in development time and an increase in cost due to testing. & \cfnorevisions \\
-2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity affects chance of non-conformance. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
-3 & \textbf{Multi-step development} & \cfyes & \cfestimateddata & Team expertise. External/supplier requirements. & Changes in external requirements necessitated multiple iterations. Otherwise, a high initial design time prevails over year-long projects. Multiple iterations lead to a cost increase. Risk depends on the quality of the design/iterations. & \cfnorevisions \\
-4 & \textbf{Short iterations} & \cfyes & \cfestimateddata & System complexity. Team expertise. & Development time and cost can be accurately predicted based on the times \& cost of a single iteration. Risk, however, depends on the reduction of work quality (due to less design) over each iteration. & \cfnorevisions \\
-5 & \textbf{Iterating over partitions} & \cfyes & \cfestimateddata & System complexity. & Cost can be accurately predicted based on the project's cost budget. Lower initial design costs reduce development time. Risk is increased due to less initial data generated. & \cfnorevisions \\
-6 & \textbf{Robust software framework} & \cfyes & \cfestimateddata & System complexity. Component compatibility. Team expertise. & Development time can change, based on the technical compatibility of the system with a desirable framework. No manufacturing cost associated with software. Generalised risk decrease expected based on literature. & Development time is project-dependent (based on technical compatibility). Cost should remain similar. Risk decreases due to inherent software framework characteristics. \\
-7 & \textbf{Robotic Process Automation} & \cfno & None available. &  &  &  \\ \bottomrule
-\end{tabularx}
-\end{adjustbox}
-\caption{ChipSat-1 treatment analytical evaluation}
-\end{table*}
-
 \end{document}
 
