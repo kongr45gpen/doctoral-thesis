@@ -73,6 +73,19 @@
 
 \begin{document}
 
+% For pre-publication version:
+\makeatletter%
+\thispagestyle{empty}%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+\end{tikzpicture}%
+\newpage%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=2,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+\end{tikzpicture}%
+\makeatother%
+
+
 \tableofcontents
 
 \printacronyms[pages={display=all,seq/use=false},]
@@ -258,18 +271,57 @@ Hello, just some text here, how y'all doing?
 
 \printbibliography
 
-\NewAcroCommand\acfoot{m}{\UseAcroTemplate{footnote}{#1}}
-\NewAcroCommand\acmar{m}{\UseAcroTemplate{marginonly}{#1}}
-\NewAcroTemplate{marginonly}{%
-	\marginnote{\AcroFontStyle{\AcroFontSize{\AcroHeadingFontStyle{\AcroHeadingFontSize{#1}}}}}%
-}
-The \acmar{PCDU} is important.
+% \NewAcroCommand\acfoot{m}{\UseAcroTemplate{footnote}{#1}}
+% \NewAcroCommand\acmar{m}{\UseAcroTemplate{marginonly}{#1}}
+% \NewAcroTemplate{marginonly}{%
+% 	\marginnote{\AcroFontStyle{\AcroFontSize{\AcroHeadingFontStyle{\AcroHeadingFontSize{#1}}}}}%
+% }
+% The \acmar{PCDU} is important.
 
 %\chapter{Yes}
 %What?
 %\printbibliography
 
+\def\acs#1{\textsf{#1}}
+\def\acf#1{#1}
+\def\acf#1{#1}
 
+
+\begin{table*}[h]
+	\caption{Indicative systems engineering tools to support agile sub-CubeSat development}
+	\label{tab:methodology_indicative_tools}
+	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+	\begin{adjustbox}{center}
+	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.5cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
+		\toprule
+		\multicolumn{2}{l}{Task} & Example Tools \\ \midrule
+		Requirements Management \cite{pankevichOpenSourceRequirements2025} & & Jira, GitLab, Open-Needs, Doorstop, Duro, Notion, \emph{spreadsheets} \\
+		\addlinespace[2ex]
+		Project Management and Technical Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
+		\addlinespace[2ex]
+		Internal Communication \cite{grafEuropeanAlternativesSlack} & & Zulip, Discord, Zoom, Microsoft Teams, Slack, Mattermost \\
+		\addlinespace[2ex]
+		\multirow{4}{*}{Knowledge Mgmt.} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} (e.g.\@ Wiki.js) \\
+		& Document-based formal & LaTeX, LibreOffice, LaSuite Docs, Microsoft Office, \textit{Wiki software} (e.g.\@ MediaWiki)  \\
+		& Model-based informal \cite{morlingGunnarmorlingAwesomeopensourcedataengineering2024} & CDP4-COMET, Valispace, Duro, Nanospace \\
+		& Model-based formal & SysML, Capella, Papyrus, Cameo Systems Modeler, Enterprise Architect \\
+		\addlinespace[2ex]
+		Asset Management & & Inventree, ERPNext \\
+		\addlinespace[2ex]
+		Artifact Management & Software and hardware & Github, GitLab, Gitea, Forgejo \\
+		\addlinespace[2ex]
+		Test and Defect Management &  & Jira, Notion \\
+		\addlinespace[2ex]
+		Verification &  & LabView, Selenium, Python Robot Framework \\
+		\addlinespace[2ex]
+		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators, \acs{PCB} design software, calculation spreadsheets, interactive notebooks} \\
+		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting, Robotic Process Automation} (e.g.\@ Robot framework) \\
+		\addlinespace[2ex]
+		Operations & & YAMCS, OpenC3 COSMOS, Grafana, SatNOGS \\
+		\bottomrule
+	\end{tabularx}
+	\end{adjustbox}
+\end{table*}
 
 \end{document}
 

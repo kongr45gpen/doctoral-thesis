@@ -1,3 +1,5 @@
+% LTeX: enabled=false
+
 \definecolor{draft}{HTML}{bf616a}
 
 %\NewDocumentCommand\draft{m}{%
@@ -7,14 +9,16 @@
 \ifoptionfinal{
 	\NewDocumentCommand\draft{m}{#1}
 	\NewDocumentCommand\todo{m}{}
+	\excludecomment{invisible}
 }{
 	% if not final
 	\NewDocumentCommand\draft{m}{%
 		\textcolor{draft!65!black}{#1}%
 	}
 	\NewDocumentCommand\todo{m}{%
-	 	\textcolor{draft}{#1}%
+	 	\textcolor{draft}{TODO: #1}%
 	}
+	\includecomment{invisible}
 }
 
 \makeatletter
@@ -56,6 +60,19 @@
 
 \colorlet{invalid}{MaterialAmber900}
 \colorlet{unexpected}{MaterialRed900}
+
+\colorlet{literature}{MaterialDeepOrange900}
+\colorlet{actualdata}{MaterialTeal800}
+\colorlet{estimateddata}{MaterialPurple800}
+
+% Quick Definitions
+\newcommand{\cfnorevisions}{\multicolumn{1}{c}{\textcolor{nice}{---}}}
+%\NewDocumentCommand{\cfnorevisions}{}{\textcolor{nice}{---}}
+\NewDocumentCommand{\cfliterature}{}{\textcolor{literature}{Literature}}
+\NewDocumentCommand{\cfactualdata}{}{\textcolor{actualdata}{Actual Data}}
+\NewDocumentCommand{\cfestimateddata}{}{\textcolor{estimateddata}{Est.\@ Data}}
+\NewDocumentCommand{\cfyes}{}{\textcolor{nice}{Y}}
+\NewDocumentCommand{\cfno}{}{\textcolor{bad}{N}}
 
 %------------------------------------------
 % Styles for Models

@@ -1,3 +1,5 @@
+# Parts of this script were generated using generative AI (GPT-4o, GPT-4.1, GPT-5 mini through GitHub Copilot on Microsoft VS Code). All code, input data and results were manually reviewed ane edited. The author takes full responsibility for this work. The software is provided ``as is'' without any express or implied warranties.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns

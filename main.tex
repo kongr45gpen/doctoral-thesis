@@ -1,4 +1,4 @@
-\documentclass[a4paper,nobib,justified,final]{tufte-book}
+\documentclass[a4paper,nobib,justified]{tufte-book}
 
 \hypersetup{colorlinks}
 
@@ -18,7 +18,7 @@
 
 \hypersetup{
 	pdftitle={Systems Engineering for Sub-CubeSat Spacecraft},
-	pdfsubject={PhD Thesis},
+	pdfsubject={Doctoral Thesis},
 	pdfauthor={Konstantinos Kanavouras},
 	addtopdfcreator={tufte-book class}
 }
@@ -38,6 +38,26 @@
 %\blankpage
 
 % r.3 full title page
+
+% For pre-publication version:
+\makeatletter%
+\thispagestyle{empty}%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+  \ifoptionfinal{}{%
+		\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
+			{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+  }%
+\end{tikzpicture}%
+\newpage%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=2,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+\end{tikzpicture}%
+\makeatother%
+\newpage%
+
+% For post-publication version:
+\begin{comment}
 \makeatletter
 \renewcommand{\maketitle}{%
 	\newpage
@@ -49,7 +69,13 @@
 	\let\@@author\@empty
 	\let\@@date\@empty
 	\thispagestyle{empty}
-	\begin{fullwidth}
+	\begin{fullwidth}%
+		\ifoptionfinal{}{%
+			\begin{tikzpicture}[remember picture,overlay]
+				\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
+					{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+			\end{tikzpicture}
+		}%
 		\vfill
 		\begin{center}
 			\includegraphics[height=2.5cm]{external/logo.pdf}\par
@@ -89,19 +115,21 @@
 
 			{\large February 14, 2026}\\[4cm] % Date
 
-		\end{center}
-		\vfill
-	\end{fullwidth}
-	\endgroup
+		\end{center}%
+		\vfill%
+	\end{fullwidth}%
+	\endgroup%
 	\thispagestyle{plain}% suppress the running head
 	\tuftebreak% add some space before the text begins
 	\@afterindentfalse\@afterheading% suppress indentation of the next paragraph
 }
 \makeatother
 \maketitle
+\newpage
+\end{comment}
 
 % v.4 copyright page
-\newpage
+
 \phantomsection
 \addcontentsline{toc}{section}{Copyrights}
 \begin{fullwidth}
@@ -111,16 +139,14 @@
 \setlength{\parskip}{\baselineskip}
 Copyright \copyright\ \the\year\ \thanklessauthor
 
-%\par\smallcaps{\href{https://github.com/kongr45gpen/phd-thesis}{Https://Github.com/Kongr45gpen/PhD-Thesis}}
+\par\smallcaps{\href{https://github.com/kongr45gpen/doctoral-thesis}{Https://Github.com/Kongr45gpen/Doctoral-Thesis}}
 
-\par
-I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
-submitted for the award of a doctorate, on my own (without external help), have used
-only the sources and aids indicated and have marked passages included from other
-works, whether verbatim or in content, as such. I swear upon oath that these
-statements are true and that I have not concealed anything.
-
-\todo{AI declaration}
+%\par
+%I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
+%submitted for the award of a doctorate, on my own (without external help), have used
+%only the sources and aids indicated and have marked passages included from other
+%works, whether verbatim or in content, as such. I swear upon oath that these
+%statements are true and that I have not concealed anything.
 
 \par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
 use this file except in compliance with the License. You may obtain a copy
@@ -216,15 +242,6 @@ under the License.
 	As future work, the proposed methodology can be expanded with more \acs{SCS}-specific mission data to aid tailoring decisions, or extended to apply to larger spacecraft domains.
 
 \end{fullwidth}
-
-\begin{invisible}
-\chapter*{Objectives}
-
-\lipsum[1]
-
-\chapter*{Contribution}
-\todo{I did this. I also did that. I didn't do that.}
-\end{invisible}
 
 
 %%
@@ -346,7 +363,6 @@ Due to the smaller size and component count of \acs{SCS}, these systems are gene
 
 However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
-\marginnote{\todo{Add citations to sidebar}}
 At the same time, literature from Sub-CubeSat and CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
 Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
 This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}, as evidenced by available literature \autocite{heinAttoSatsChipSatsOther2019,bouwmeesterUtilityConstraintsPocketQubes2020} and semi-formal interviews that have been conducted within the scope of this project (\Cref{sec:LITERATURE_interviews}). As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies.
@@ -683,7 +699,7 @@ The chapters of this thesis are organised as follows:
 
 \begin{figure*}[h]
 	\includegraphics{graphics/Research.Structure.pdf}
-	\caption{Thesis Chapter Structure \todo{[increase font size]}}
+	\caption{Thesis Chapter Structure}
 	\label{fig:i_thesis_structure}
 \end{figure*}
 
@@ -1165,13 +1181,14 @@ Inspired by the success of pocketable microelectronics, the PocketQube idea was 
 	\hfill%
 	\includegraphics[height=6cm]{media/pictures/qubik_bmps.jpg}%
 	\caption[Left: Comparison of a 1p PocketQube with a coin. Right: QUBIK EPS board.]{Left: Size comparison of a 1p PocketQube with a 0.50€ coin. Right: QUBIK \acs{EPS} board.\quad The 9-pin PQ9 connector is visible on the right.}
-	\setfloatalignment{b}
+	\setfloatalignment{t}
 \end{figure*}
 
 The first PocketQubes were launched in 2013 \autocite{franzesePocketQubePicosatellitesSurvey2025,wikipediacontributorsListLaunchedPocketQubes2025}.
 After the execution of different community workshops, the first version of the PocketQube standard was published in \citeyear{PQ1} \autocite{PQ1}.
 Since then, companies and organisations such as \emph{FOSSA Systems}, \emph{Alba Orbital} and the \emph{Libre Space Foundation} have developed commercial buses, subsystems and deployers to support the PocketQube ecosystem. The PQ60 \autocite{PQ60}, PQ9 and CS14 \autocite{PQ91} standards provided shared electrical interfaces that could be used for a \draft{modular subsystem ecosystem}, similar to the CubeSat PC/104 subsystem form-factor.
 
+\NextCitationOffset{3cm}
 Lists of launched PocketQubes are maintained by \citeauthor{kuluNanosatsDatabase2023} \autocite{kuluNanosatsDatabase2023} and on Wikipedia \autocite{wikipediacontributorsListLaunchedPocketQubes2025}.
 \citeauthor{franzesePocketQubePicosatellitesSurvey2025} also released a review of PocketQube missions launched until 2023 \autocite{franzesePocketQubePicosatellitesSurvey2025}.
 As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023}.
@@ -1735,6 +1752,14 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 	The DS-II stage includes the validation of the application and impact of the proposed design support, based on the execution of empirical studies.
 	
 	Validation is usually separated into \emph{internal validity}, which establishes a causal relationship between the premises and results of the proposed support, and \emph{external validity}, which shows whether these results can be generalised \autocite{yinCaseStudyResearch2014}.
+	\marginnote{%
+		An alternative definition of validity is given by \citeauthor{pedersenVALIDATINGDESIGNMETHODS} \cite{pedersenVALIDATINGDESIGNMETHODS}. In this work, \citeauthor{yinCaseStudyResearch2014}'s \emph{internal} and \emph{external} validation are represented by \textbf{performance validation}, which tests whether:
+		\begin{enumerate}[itemsep=-1ex]
+			\item ``the outcome of the method is useful with respect to the initial purpose for some chosen example problem(s)'';
+			\item ``the achieved usefulness is linked to applying the method''; and
+			\item ``the usefulness of the method is beyond the case studies''.
+		\end{enumerate}
+	}
 	
 	In an ideal scenario, I could perform a statistical evaluation of the support, for example by comparing the application (or non-application) of our methodology over a large number of projects, or through complete A/B experiments. However,  Space Systems Engineering projects are lengthy, taking multiple years and resources to complete. Systems design is also highly contextual and non-repetitive, making the generation of statistical data even more difficult. I have therefore concluded that only an initial part of the DS-II stage is within the scope of this study.
 	
@@ -1813,7 +1838,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 \draft{}
 
 \begin{figure*}[p]
-	\includegraphics{graphics/Research.Activity.pdf}
+	\includegraphics[height=1.1\textheight]{graphics/Research.Activity.pdf}
 	\caption{Activity diagram of thesis research approach}
 	\label{fig:r_activity}
 \end{figure*}
@@ -3724,47 +3749,103 @@ In any case, teams should consider adherence to coding standards and best practi
 \end{landscape}
 \restoregeometry
 
-\begin{invisible}
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
 
 \subsection{Recommended Tools}
 
+\ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions.
 In the ideal case, each proposed part of the \ac{SCS} methodology would be supported by dedicated hardware and software tools, compliant with the requirements described in \Cref{sec:METHODOLOGY_tooling_requirements}, and tailored to each specific use case.
 However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
 
-Because \ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions, I consider tool selection as one of the first decisions that have to be taken when starting a new project.
-\todo{General list of tool requirements, e.g. familiarity/experience of developers and comfort, tailorability, cost, available support, tool fatigue}
-It is also important to create a distinction between domain-specific tools\footnote{such as analysis/testing software, data gathering utilities, programming languages or design software} and generic \ac{SYE} tools.
+I consider tool selection as one of the first decisions that have to be taken when starting a new project.
+This is suppoorted by case studies found in the literature.
+\citeauthor{garrettProjectManagementSystems2022} \autocite{garrettProjectManagementSystems2022} notes that accessibility issues (in this case, difficult installation and no collaboration options) encountered when using \emph{Microsoft Project} led to noticeable delays in project schedule.
+\citeauthor{honore-livermoreManagingProductDevelopment2021} \autocite{honore-livermoreManagingProductDevelopment2021} claim that appropriate tools can be helpful by aiding design traceability, cohesiveness and documentation, but require support from dedicated people to be useful.
+\citeauthor{eilertsenOpenSpace2025} \autocite{eilertsenOpenSpace2025}, on the other hand, claims that incorrectly designed human-machine interfaces, as often found in software tools for space systems engineering, can adversely impact cognitive load and situational awareness. In turn, this leads to slower work or processes, and an increased chance of mistakes.
+
+\marginnote{It is important to create a distinction between domain-specific tools, such as analysis/testing software, data gathering utilities, programming languages or design software, and generic \ac{SYE} tools.}
+
+It is also hard to identify an ideal, globally-applicable set of tools for \acs{SCS} space missions, as tool selection will depend on the specific project requirements, team expectations and prior experience. However, a high-level list of requirements or needs can be elaborated as follows:
+\begin{enumerate}[itemsep=-2ex]
+	\item New tools should not increase the schedule or cost overhead of a project. If they do, this should be justified by a significant technical risk reduction.
+	\item New tools should be easy to use\footnote{Ease-of-use is a subjective term that differs between teams. However, different User-Experienced definitions can be used to quantify this \cite{internetarchiveHumancomputerInteractionNew2002}.}. In practice, tool design should encourage a preference of using a specific tool against other approaches.
+	\item Tools should not fragment information\footnote{For example, if a \emph{requirements management} tool does not support writing a justification for a requirement, developers may be tempted to create a separate document or use a separate tool to store this justification. This leads to data fragmentation, requires keeping more than one database up-to-date, and makes information retrieval harder.}. This can be achieved by using generalisable/tailorable tools.
+	\item The overall cognitive load of team members related to tool usage should be reduced, by limiting the amount of different loci that have to be monitored or updated. This can be achieved, for example, by limiting the amount of tools, using tools that combine multiple functions, or using automated notification/update processes.
+	\item Project Management should actively support the use of tools. This can be achieved through regular training sessions, high support availability, and consistent maintenance of databases.
+	\citeauthor{honore-livermoreManagingProductDevelopment2021} \cite{honore-livermoreManagingProductDevelopment2021} recommend assigning ``champions'', i.e.\@ people responsible for the upkeep of these tools.
+\end{enumerate}
+
 A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
+
+
+
 
 \begin{table*}[h]
 	\caption{Indicative systems engineering tools to support agile sub-CubeSat development}
 	\label{tab:methodology_indicative_tools}
-	\begin{tabularx}{\linewidth}{@{}llX@{}}
+	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+	\begin{adjustbox}{center}
+	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.5cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
 		\toprule
 		\multicolumn{2}{l}{Task} & Example Tools \\ \midrule
-		Project Management and Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
-		Internal Communication & & Slack, Mattermost, Zulip, Discord, Microsoft Teams, Zoom \\
-		\multirow{4}{*}{Knowledge Management} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} \\
-		& Document-based formal & Microsoft Office, LibreOffice, LaTeX \\
-		& Model-based informal & CDP4-COMET, Valispace \\
+		Requirements Management \cite{pankevichOpenSourceRequirements2025} & & Jira, GitLab, Open-Needs, Doorstop, Duro, Notion, \emph{spreadsheets} \\
+		\addlinespace[2ex]
+		Project Management and Technical Planning &  & Jira, OpenProject, Plane, Wrike, Trello \\
+		\addlinespace[2ex]
+		Internal Communication \cite{grafEuropeanAlternativesSlack} & & Zulip, Discord, Zoom, Microsoft Teams, Slack, Mattermost \\
+		\addlinespace[2ex]
+		\multirow{4}{*}{Knowledge Mgmt.} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} (e.g.\@ Wiki.js) \\
+		& Document-based formal & LaTeX, LibreOffice, LaSuite Docs, Microsoft Office, \textit{Wiki software} (e.g.\@ MediaWiki)  \\
+		& Model-based informal \cite{morlingGunnarmorlingAwesomeopensourcedataengineering2024} & CDP4-COMET, Valispace, Duro, Nanospace \\
 		& Model-based formal & SysML, Capella, Papyrus, Cameo Systems Modeler, Enterprise Architect \\
+		\addlinespace[2ex]
 		Asset Management & & Inventree, ERPNext \\
-		Artifact Management & Software and hardware & Github, GitLab \\
-		Requirements Management &  & Jira, Notion \\
+		\addlinespace[2ex]
+		Artifact Management & Software and hardware & Github, GitLab, Gitea, Forgejo \\
+		\addlinespace[2ex]
 		Test and Defect Management &  & Jira, Notion \\
+		\addlinespace[2ex]
 		Verification &  & LabView, Selenium, Python Robot Framework \\
-		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators} \\
-		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting} \\
-		\multicolumn{3}{c}{\todo{This table needs to be updated to include more tools, details, and match the recommended methods}} \\
+		\addlinespace[2ex]
+		\multirow{2}{*}{Implementation} & Hardware & \textit{3D printers, multiphysics simulators, \acs{PCB} design software, calculation spreadsheets, interactive notebooks} \\
+		& Software & \textit{Design by Contract, Code Generation, In-orbit scripting, Robotic Process Automation} (e.g.\@ Robot framework) \\
+		\addlinespace[2ex]
+		Operations & & YAMCS, OpenC3 COSMOS, Grafana, SatNOGS \\
 		\bottomrule
 	\end{tabularx}
+	\end{adjustbox}
 \end{table*}
 
-\todo{robot framework}
-\end{invisible}
+For software, developers have to choose between proprietary or open-source tools, which can be hosted on-premises or in the cloud.
+Recent discourse has identified vendor lock-in as a major risk in long-lasting projects \autocite{lundellPerceivedActualLockin2021}, with additional concerns over the control and security of user data. Anecdotal reports suggest that educational or non-profit discounts may not be perpetually honoured \autocite{kalamSlackExtortingUs2025,elodidthatMaxonStudentLicenses2024}. The European Commission has identified the reliance on external technology suppliers as a ``strategic liability'' and ``supply chain risk'', posing open-source hardware and software as an ideal solution \autocite{europeancommissionCommissionOpensCall2026,pageBrusselsPlotsOpen2026}.
 
+Finally, with the emergence of highly-automated ``vibe coding'' as of 2026, where software generation can be performed in large volumes by \acsp{LLM}, rapid changes in the systems engineering software ecosystem are expected to be seen in the short-term. Most notably, \acsp{LLM} can potentially encourage the development of in-house tools, tailored for each mission, and progressively adapted to an organisation's needs \autocite{liscioRIPLowCode2026}.
+
+\subsection{Tailoring Questionnaire}
+
+The methodology presented in \Cref{chap:METHODOLOGY} does not constitute a ``one-size-fits-all'' solution.
+Practitioners are encouraged to pick methods suited to their projects (for example, selecting between a system-level or partition-level iteration approach), or internally tailor each method to the degree necessary.
+
+In general, tailoring is not uncommon for agile methodologies. \citeauthor{campanelliAgileMethodsTailoring2015} analysed 56 studies about agile method tailoring \autocite{campanelliAgileMethodsTailoring2015}. 
+They found that the identification of main environmetal criteria, as defined by \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013}, is a common first step in the tailoring process.
+\textbf{Method engineering} is the main tailoring approach used thereafter. \citeauthor{fitzgeraldEmpiricalStudySystem} have defined an approach to method engineering, which suggests that ``methods be represented as discrete pre-defined and pretested components'', making a method engineer/administrator responsible for selection of the appropriate ones \autocite{fitzgeraldEmpiricalStudySystem}. This is not unlike the approach already proposed in this work.
+
+\citeauthor{xuUsingProcessTailoring2008} have proposed a slightly different process-tailoring strategy, mainly focused for software engineering applications \autocite{xuUsingProcessTailoring2008}.
+Their strategy consists of the following steps:
+\begin{enumerate}[itemsep=-1ex]
+	\item \textbf{Evaluating the project goals and environment.} This is similar to the elaboration of the project characteristics per \citeauthor{kalusCriteriaSoftwareProcess2013} \cite{kalusCriteriaSoftwareProcess2013}.
+	\item \textbf{Assessing challenges.}  This is similar to the previous step, but assesses specific hardships that are encountered by the project in the areas of resources, communication, requirements management, politics, and techical aspects.
+	
+	Challenge assessment is done through a \emph{challenge assessment questionnaire}. The authors present a 26-question form which evaluates typical project difficulties or strengths for each of the above areas, and assigns a score to each, in order to inform where the tailoring efforts should be focused\footnote{Note that some challenge scores may be countering each other. For example, one evaluation question (resource challenges) asks whether ``the project has enough personnel with relevant skills [\textellipsis]'', while another (communication challenges) asks whether ``the team size is small''.
+	For a large project, the project goals might warrant a large team size a priori. In this case, a \emph{large} actual team might encourage focusing the tailoring on \emph{communication}, while a \emph{small} team will call for a focus on \emph{resource} challenges.
+	}.
+	\item \textbf{Determining tailoring strategies for various process elements}.
+	Here, the authors provide specific options for actions that can be taken to modify a process.
+	They link \textbf{verbs} (\emph{add, downsize, drop/skip, expand, redefine, replace}) with \textbf{elements} (\emph{task, sequence, artifact/document, role, iteration}).
+	For example, tailoring may result in increasing the amount of documentation (\texttt{add + document}) or reducing product scope (\texttt{downsize + task}).
+	\item \textbf{Validating, executing and evaluating the tailored process} in an iterative fashion.
+\end{enumerate}
 
 \chapter{Case Studies}
 \label{chap:CASESTUDIES}
@@ -3862,8 +3943,52 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 \begin{figure*}[p]
 	\centering
 	\includegraphics[height=\textheight]{graphics/CaseStudy.Process.pdf}
-	\caption[][-2cm]{Activity diagram of the case study research flow}
+	\caption[][-0.5cm]{Activity diagram of the case study research flow}
+	\label{fig:c_activity_diagram}
 \end{figure*}
+
+\newthought{A detailed} process diagram for the counter-factual analysis research flow is shown in \Cref{fig:c_activity_diagram}. 
+The process intents intends to perform internal and external validation of the \acs{SCS} methodology, following the definitions proposed by \citeauthor{yinCaseStudyResearch2014} \cite[33]{yinCaseStudyResearch2014}. As the purpose of internal validation is to establish whether the \acs{SCS} methodology actually affects the \acs{SYE} metrics of a project from a causal (rather than spurious) relationship, the questions that have to be answered are: \cite{yinCaseStudyResearch2014}
+\begin{enumerate}[itemsep=-2ex]
+	\item Can we infer that the methodology significantly affects a project metric?
+	\item Have we considered rival explanations and possibilities?
+	\item Does the evidence appear convergent and airtight?
+\end{enumerate}
+One of the processes that can answer these questions is \emph{explanation building}, which involves the following steps \cite[120]{yinCaseStudyResearch2014}:
+\begin{enumerate}
+	\item[x1.] Making an initial but tentative explanatory proposition
+	\item[x2.] Comparing the data from the case study against this proposition
+	\item[x3.] Revising the earlier proposition
+	\item[x4.] On a multiple-case study, comparing amongst the set of revised propositions
+\end{enumerate}
+In order to be able to clearly make logical conclusions and evaluate confouding factors, this process is isolated and tailored for each proposed ``treatment'' of the \acs{SCS} methodology. The end result, linked to each step of the explanation building process, is also shown in \Cref{fig:c_explanation_building}.
+
+The list of investigated treatments is listed in \Cref{tab:c_list_of_treatments}, as a selection of proposed methodology parts from \Cref{chap:METHODOLOGY}. The internal validity and explanation building is evaluated for each case study, in \Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation,sec:CASESTUDIES_poquito_evaluation,sec:CASESTUDIES_chipysat_evaluation}.
+
+The cross-case step of the \emph{explanation building} process is elaborated in \Cref{sec:DISCUSSION_crosscase}. \citeauthor{yinCaseStudyResearch2014} \autocite{yinCaseStudyResearch2014} identifies \textbf{\emph{statistical generalisation}} and \textbf{\emph{analytical generalisation}} as two distinct methods of generalising data from individual case studies to evaluate external validity. Due to the small sample size compared to the information available, analytical generalisation is proposed to extrapolate the results into other missions. However, in cases where there are clear distinctions between the application and non-application of treatments, statistical generalisation can also be used to complement the results of the former approach.
+
+\begin{table*}[]
+\renewcommand{\arraystretch}{1.8}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\begin{adjustbox}{max width=1.1\textwidth,center}
+\begin{tabularx}{1.1\textwidth}{@{}l>{\raggedright}p{3.5cm}XX@{}}
+\toprule
+ & Treatment & Description & Initial theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
+2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\draft{\Cref{sec:METHODOLOGY_design_guidelines}}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space) \\
+3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
+4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. Note that no restriction is set on the iterations having a fixed length; instead, their length was flexible (pre-determined or not). & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
+5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
+6 & \textbf{Robust software framework} & \Cref{sec:METHODOLOGY_softwaredevelopment} proposes the use of a software language and/or framework that theoretically increases reliability without an increase in development time. & Development time and cost should stay the same, with reduced risk. \\
+7 & \textbf{Robotic Process Automation} & \Cref{sec:METHODOLOGY_automated_testing} proposes the use of automated testing processes and tools to streamline the system's verification. & Development time should be project-dependent (cost of automation vs.\@ less manual effort). Cost should increase (when infrastructure needed to automate testing). Risk should decrease (general assumption based on increased testing). \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Evaluated methodology treatments and initial statements}
+\label{tab:c_list_of_treatments}
+\end{table*}
+
+
+
 
 \FloatBarrier
 \begin{invisible}
@@ -4403,6 +4528,26 @@ This data can be used to speculatively and retroactively evaluate the different 
 Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:METHODOLOGY}, I will consider the \emph{\acs{SCS} methodology} methods used by the team and evaluate their impact on \textbf{cost, schedule, features} and \textbf{risk}. 
 
 \begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity affects chance of non-conformance. & The decision to perform no analysis led to a reduction in development time and an increase in cost due to testing. & \cfnorevisions \\
+2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity affects chance of non-conformance. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
+3 & \textbf{Multi-step development} & \cfyes & \cfestimateddata & Team expertise. External/supplier requirements. & Changes in external requirements necessitated multiple iterations. Otherwise, a high initial design time prevails over year-long projects. Multiple iterations lead to a cost increase. Risk depends on the quality of the design/iterations. & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfyes & \cfestimateddata & System complexity. Team expertise. & Development time and cost can be accurately predicted based on the times \& cost of a single iteration. Risk, however, depends on the reduction of work quality (due to less design) over each iteration. & \cfnorevisions \\
+5 & \textbf{Iterating over partitions} & \cfyes & \cfestimateddata & System complexity. & Cost can be accurately predicted based on the project's cost budget. Lower initial design costs reduce development time. Risk is increased due to less initial data generated. & \cfnorevisions \\
+6 & \textbf{Robust software framework} & \cfyes & \cfestimateddata & System complexity. Component compatibility. Team expertise. & Development time can change, based on the technical compatibility of the system with a desirable framework. No manufacturing cost associated with software. Generalised risk decrease expected based on literature. & Development time is project-dependent (based on technical compatibility). Cost should remain similar. Risk decreases due to inherent software framework characteristics. \\
+7 & \textbf{Robotic Process Automation} & \cfno & None available. &  &  &  \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for ChipSat-1 (analytical results)}
+\label{tab:c_chipsat_counterfactuals_text}
+\end{table*}
+
+\begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
 	\toprule
@@ -4415,7 +4560,7 @@ Based on the classification of the \ac{SCS} methodology presented in \Cref{chap:
 5 & Iterating over partitions & \textcolor{nice}{Y} & -1840 & \qty{-50}{hours} & Higher \\
 6 & Robust software framework & \textcolor{bad}{Y} & 0 & \qty{+40}{hours} & Lower \\ \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for ChipSat-1}
+\caption{Counter-factual evaluation for ChipSat-1 (quantitative results)}
 \label{tab:c_chipsat_counterfactuals}
 \end{table*}
 
@@ -4633,6 +4778,28 @@ For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 L
 \label{sec:CASESTUDIES_ai4space_evaluation}
 
 This counter-factual evaluation of AI4Space follows the same structure as the one of ChipSat-1 (\Cref{sec:CASESTUDIES_chipsat_evaluation}).
+
+\begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity affects chance of non-conformance. Manufacturing quality. & The decision to perform no analysis led to a reduction in development time and no additional testing (in this case, due to system simplicity). & Consistent reduction in development time. Test campaigns may increase cost. Increase in risk (due to undetected errors). \\
+2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity affects chance of non-conformance. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
+3 & \textbf{Multi-step development} & \cfyes & \cfestimateddata\@ \& \cfliterature & System complexity. Team expertise. & A high initial design time would prevail over the actual fast schedule of the mission, influenced by its simplicity. Multiple iterations lead to a cost increase. Risk depends on the quality of the design/iterations. & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfno & None available. &  &  & \\
+5 & \textbf{Iterating over partitions} & \cfyes & \cfactualdata & System complexity. Team expertise. & The use of partitions led to a delay in manufacturing and testing a complete system. In turn, this led to later data generation for the system. The use of partitions did not generate significant \& meaningful data to be used for later. & Development time increased due to unnecessary partitioning. Cost remained similar (no more components purchased). Risk unchanged (no significant information affected system design). \\
+6 & \textbf{Robust software framework} & \cfyes & \cfactualdata & System complexity. Component compatibility. Team expertise. & System specifications and team expertise allowed for an implementation of a more ``robust'' software framework. We identified actual non-conformances related to the software technologies used (mainly latency, unpredictability, low throughput). Other frameworks or architectures are not shown to be prone to these errors. No indications for change in development time/cost. & \cfnorevisions \\
+7 & \textbf{Robotic Process Automation} & \cfyes & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team expertise. Available facilities. & Repeated testing identified regressions after software/hardware changes. Added effort for process automation counterbalanced by hypothetical repeated effort for manual testing. No hardware equipment needed for \acs{RPA}, leading to no cost change.  & \cfnorevisions \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for AI4Space (analytical results)}
+\label{tab:c_ai4space_counterfactuals_text}
+\end{table*}
+
+
 \begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{lXcS[table-format=5.0,retain-explicit-plus=true]S[retain-explicit-plus=true]l}
@@ -4648,7 +4815,7 @@ This counter-factual evaluation of AI4Space follows the same structure as the on
 7 & \acl{RPA} & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
 \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for AI4Space}
+\caption{Counter-factual evaluation for AI4Space (quantitative results)}
 \label{tab:c_ai4space_counterfactuals}
 \end{table*}
 
@@ -4969,8 +5136,31 @@ In terms of technical observations:
 \end{itemize}
 
 \subsection{Evaluation}
+\label{sec:CASESTUDIES_poquito_evaluation}
 
 The counter-factual evaluation of POQUITO follows the same structure as the ones of ChipSat-1 and AI4Space (\Cref{sec:CASESTUDIES_chipsat1_evaluation,sec:CASESTUDIES_ai4space_evaluation}).
+
+\begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity. Manufacturing quality. Team size. & The decision to perform no analysis led to a reduction in development time and no additional testing (in this case, due to reuse). & Consistent reduction in development time. Test campaigns may increase cost. Increase in risk (due to undetected errors). \\
+2 & \textbf{In-house manufacturing} & \cfno & \cfactualdata & \acs{DUT} complexity. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\
+3 & \textbf{Multi-step development} & \cfyes & \cfactualdata\@ \& \cfliterature & System complexity. Team expertise. & Specific \acs{BDUF} tasks identified that would increase development time and reduce risk. Cost can be calculated by measuring the cost of added iterations.  & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfno & \cfestimateddata & System complexity. Team expertise.  & Each system-level iteration of POQUITO is associated with a base manufacturing/testing effort and cost, which increases with the number of iterations. Actual project schedule shows that baseline design effort is also required, meaning that shorter iterations would also require more iterations. Schedule and cost impact can be inferred then directly. Risk seems affected by low-level technical aspects.  &
+Development time depends on project complexity, with shorter iterations being faster for projects of a smaller technical size. Cost increases due to manufacturing runs. Risk is project-dependent due to low-level factors.
+\\
+5 & \textbf{Iterating over partitions} & \cfyes & \cfactualdata & System complexity. Team expertise. & The use of a partition generated engineering data to be used for later iterations (therefore reducing risk). Cost and time changes are a direct result of working on reduced versions of the system. & Development time decreased (no integration effort). Cost reduced (less manufacturing). Risk decreased (information used in later iterations before system completion). \\
+6 & \textbf{Robust software framework} & \cfyes & None available. &  &  &  \\
+7 & \textbf{Robotic Process Automation} & \cfno & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team size. Team expertise. Available facilities. & Manual testing procedures were not repeatable, leading to the delayed discovery of regressions. Due to the availability of equipment and tooling, \acs{RPA} would add no identifiable delays or costs. & \cfnorevisions \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for POQUITO (analytical results)}
+\label{tab:c_poquito_counterfactuals_text}
+\end{table*}
 
 \begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
@@ -4981,13 +5171,13 @@ The counter-factual evaluation of POQUITO follows the same structure as the ones
 1 & Bypassing structural/thermal analysis & \textcolor{nice}{Y} & 0  & \qty{-180}{hours} & Higher \\
 2 & Soldering \acsp{PCB} in-house & \textcolor{bad}{N} & -4020 & \qty{+80}{hours} & Lower  \\
 3 & Multi-step development & \textcolor{nice}{Y} & +7070 & \qty{-248}{hours} & Higher  \\
-4 & Short iterations & \textcolor{bad}{N} & +3050 & \qty{64}{hours} & Lower  \\
+4 & Short iterations & \textcolor{bad}{N} & +3050 & \qty{+64}{hours} & Lower  \\
 5 & Iterating over partitions & \textcolor{nice}{Y} & -1700 & \qty{-26}{hours} & No change \\
 %6 & Robust software framework & \textcolor{nice}{Y} & 0 & \qty{0}{hours} & Lower \\
 7 & \acl{RPA} & \textcolor{bad}{N} & 0 & \qty{0}{hours} & Lower \\
 \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for POQUITO}
+\caption{Counter-factual evaluation for POQUITO (quantitative results)}
 \label{tab:c_poquito_counterfactuals}
 \end{table*}
 
@@ -5000,12 +5190,12 @@ The results of the counter-factual evaluation in \Cref{tab:c_poquito_counterfact
 
 	\item \textbf{Iterative multi-step development}:
 	
-	To compare against a single-step, ``\acl{BDUF}'' approach, I will consider the ``best-case'' 40-person-day metric (\Cref{tab:l_cubesat_time_drivers}), reduced \( \frac{2}{3} \) of the integration \& verification time. In a single-step case, the development time of the project would be increased by \( 40\cdot 8 - \frac{2}{3} \cdot 108 = \qty{248}{hours} \). This approach would involve, for example, fit-checks using software-based \acs{CAD} model, a detailed evaluation of assembly and testing requirements to avoid incompatibilities, formal documentation of the proposed design (perhaps compliant to \acs{ECSS} standards \autocite{ECSS-M-ST-10C,ECSS-E-ST-10C}), and significantly more time spent on design review during designated stage-gates. 
+	To compare against a single-step, ``\acl{BDUF}'' approach, I will consider the ``best-case'' 40-person-day metric (\Cref{tab:l_cubesat_time_drivers}), reduced by \( \frac{2}{3} \) of the integration \& verification time. In a single-step case, the development time of the project would be increased by \( 40\cdot 8 - \frac{2}{3} \cdot 108 = \qty{248}{hours} \). This approach would involve, for example, fit-checks using a software-based \acs{CAD} model, a detailed evaluation of assembly and testing requirements to avoid incompatibilities, formal documentation of the proposed design (perhaps compliant to \acs{ECSS} standards \autocite{ECSS-M-ST-10C,ECSS-E-ST-10C}), and significantly more time spent on design review during designated stage-gates. 
 
 	I consider it highly likely that this approach would detect and prevent most or all non-conformances noted in \Cref{sec:CASESTUDIES_poquito_lessons}, thus leading to a successful development of the spacecraft. While both sequential and iterative development would lead to a successfully operating spacecraft, I consider that spending more time on \emph{early design} would lead to a potentially simpler design, e.g.\@ by simplifying POQUITO's harnessing, or by deciding to use a simpler communication protocol\footnote{e.g.\@ \acs{UART} instead of \acs{CAN}.}. Thus, I will consider that multi-step development increases risk. This is also influenced by POQUITO's more complex nature compared to previous missions, leading to a higher potential inertia against change. \todo{[cite]} Finally, I will also consider a significant increase in total manufacturing cost for a multi-step lifecycle process (based on the costs of individual \acsp{PCB} and elements).
 
 	\item \textbf{Short iterations}:
-	POQUITO's iterations are not considered short in terms of typical agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2\footnote{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}.
+	POQUITO's iterations are not considered short in terms of typical agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2.\footnote{\draft{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}}
 	
 	Nevertheless, in the case of POQUITO, short iterations would increase the total cost (based on the cost of components and unassembled \acsp{PCB}) and development time by \( \frac{2}{3} \cdot 108 = \qty{72}{hours} \). However, shorter, timeboxed iterations would lead to a \draft{less staggered} procurement schedule, allowing different hardware engineers to align with each other, and the use of prototypes would help in earlier identification of issues, such as incompatible dimensions and bad fits. I will therefore consider a lower risk,  and an additional reduction of time required for machining by \qty{8}{hours}.
 
@@ -5164,11 +5354,34 @@ For the second iteration, I implemented the \acs{FFT}-based optimisation algorit
 \end{table}
 
 \subsection{Evaluation}
+\label{sec:CASESTUDIES_chipysat_evaluation}
 
 While ChiPySat was a shorter project than the rest, involving a considerably smaller team and \draft{no formal qualification goals}, it can still serve as an interesting point for counter-factual analysis. The main differentiating points compared to previous case studies are \begin{enumerate*}
 	\item the small, non-standardised form factor of a fully independent spacecraft; and
 	\item the implementation of an unknown experimental payload, where there is no guarantee of feasibility.
 \end{enumerate*}
+
+\begin{table*}[h]
+\renewcommand{\arraystretch}{1.8}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\begin{adjustbox}{width=1.1\linewidth,center}
+\begin{tabularx}{1.5\textwidth}{@{}l>{\raggedright}p{3cm}c>{\raggedright}p{2.5cm}>{\raggedright}p{3cm}XX@{}}
+\toprule
+ & Treatment & ? & Source & External factors & Effects & Revised theory \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & \cfyes & \cfactualdata\@ \& \cfliterature & \acs{DUT} complexity. Manufacturing quality. Team size. & The decision to perform no analysis led to a reduction in development time and no additional testing (in this case, due to reuse). & Consistent reduction in development time. Test campaigns may increase cost. Increase in risk (due to undetected errors). \\ %ok
+2 & \textbf{In-house manufacturing} & \cfyes & \cfactualdata & \acs{DUT} complexity. Time, cost \& risk delta depend on external manufacturer. & Fixed processes, leading to almost identical results, can predictably increase/decrease development time and cost. Risk, however, depends on manufacturing capabilities, communication, and added delays. & Actual development time increases due to the added internal effort (blocking time is not modelled in this cumulative model). Cost decreases (no external manufacturing costs). Risk is project-dependent due to confounding factors. \\ %ok
+3 & \textbf{Multi-step development} & \cfyes & \cfactualdata\@ \& \cfliterature & System complexity. Team expertise. & Specific \acs{BDUF} shortcomings identified, caused because of the software complexity and lack of specific experience, that would anyway require a second iteration. Cost can be calculated based on component prices. Risk assumed to increase due to the reduced design effort. & \cfnorevisions \\
+4 & \textbf{Short iterations} & \cfno & \cfestimateddata & System complexity. Team expertise. Team size. & Effects of short iterations generally linked to small team size. Cost can be calculated based on component sizes. &
+Development time depends on project complexity and team size. Cost increases due to manufacturing runs. Risk is project-dependent due to low-level factors.
+\\
+5 & \textbf{Iterating over partitions} & \cfno & None available. &  &  & \\
+6 & \textbf{Robust software framework} & \cfno & \cfactualdata & System complexity. Team expertise. Team size. \acs{COTS} availability. & Software performance and reliability issues identified, caused by technical aspects of the chosen software architecture and technologies. Development time for software changes influenced heavily by expertise, prior work, hardware, and features. No cost change factors identified. & Development time depends on low-level factors. Cost remains similar. Risk is reduced.  \\
+7 & \textbf{Robotic Process Automation} & \cfno & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team expertise. Available facilities. & On the one hand, manual testing procedures were not repeatable, leading to increased development time. On the other hand, due to the ``photographic'' nature of the project,\acs{RPA} would require additional effort which cannot be easily estimated. Due to the availability of equipment and tooling, \acs{RPA} would add no identifiable costs. & \cfnorevisions \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Counter-factual evaluation for ChiPySat (analytical results)}
+\label{tab:c_chipysat_counterfactuals_text}
+\end{table*}
 
 \begin{table*}[h]
 	\renewcommand{\arraystretch}{1.2}
@@ -5187,7 +5400,7 @@ While ChiPySat was a shorter project than the rest, involving a considerably sma
 7 & \acl{RPA} & \textcolor{bad}{N} & 0 & \qty{+40}{hours} & Lower \\
 \bottomrule
 \end{tabularx}
-\caption{Counter-factual evaluation for ChiPySat}
+\caption{Counter-factual evaluation for ChiPySat (quantitative results)}
 \label{tab:c_chipysat_counterfactuals}
 \end{table*}
 
@@ -5199,7 +5412,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	Early in the mission, we considered the tradeoff between in-house and external \acs{PCB} assembly, comparing different available options. We decied to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
 
 	\item \textbf{Iterative multi-step development}:
-	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration. The reasoning for this argument is provided as follows:
+	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
 	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
 		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \todo{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
@@ -5247,12 +5460,16 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 
 This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
 
+The introductory section of \Cref{chap:CASESTUDIES} presents the data gathering process and analysis approach that will also be followed for this chapter.
+
 \begin{figure*}
 	\includegraphics{graphics/ResultsCausal.pdf}
 	\caption{Observed \acs{SCS} treatment---effect mapping based on case studies}
 	\setfloatalignment{b}
 	\label{fig:c_causal_mapping}
 \end{figure*}
+
+
 
 \subsection{Success Evaluation}
 
@@ -5504,12 +5721,35 @@ Each treatment can be evaluated as follows:
 	\item \textbf{Iterating over partitions}:
 	The choice of iterating over partitions over the entire system does not seem to have a significant effect in development time or risk, and reduces cost by \qty{7.7}{\percent} on average, with low confidence.
 
-	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized system (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on a well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
+	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized systems (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on a well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
 	\item \textbf{Robust software framework}:
-	The selection of a robust software framework has a varied effect on development time based on the project requirements, without any effects on cost, and a universal reduction in perceived risk.
+	The selection of a robust software framework has a varied effect on development time based on the project requirements and hardware, without any effects on cost, and a universal reduction in perceived risk.
 	\item \textbf{\acf{RPA}}:
 	The use of \acl{RPA} can incure an increase in development time for some projects, with no changes in cost, and a universal reduction in perceived risk.
 \end{enumerate}
+
+A summary of these results, along with the identified causal links, is shown in \Cref{tab:d_new_statements}.
+
+\begin{table*}[]
+\renewcommand{\arraystretch}{1.8}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabularx}{1.2\textwidth}{@{}l>{\raggedright}m{3cm}XXX@{}}
+\toprule
+ &    &  \multicolumn{3}{c}{Revised Theory} \\ \cmidrule(lr){3-5}
+ & Treatment & \multicolumn{1}{c}{Time} & \multicolumn{1}{c}{Cost} & \multicolumn{1}{c}{Risk} \\ \midrule
+1 & \textbf{Bypassing structural/thermal analysis} & Consistent \textcolor{nice}{reduction}, due to large fixed effort to set up analysis, compared with days-long testing. & Test campaigns may \textcolor{bad}{increase} cost. & Risk \textcolor{bad}{increases} (undetected non-conformances). \\
+2 & \textbf{In-house manufacturing} & Consistent \textcolor{bad}{increase} due to in-house effort. However, note that this model does not emulate delays caused due to external lead times. & Consistent \textcolor{nice}{reduction} in costs, under the assumption of ``expensive'' external manufacturing and internal facilities. & Depends on team, facilities, and external suppliers. \\
+3 & \textbf{Multi-step development} & Standard iteration durations are consistently \textcolor{nice}{shorter} than an initial \acs{BDUF} step. & Consistent \textcolor{bad}{increase} due to manufacturing costs. & Depends on low-level project details and team expertise. \\
+4 & \textbf{Short iterations} & Depends on project complexity and team size. Longer iterations suited for projects with a larger technical size. & Short iterations imply more iterations, more manufacturing runs, and therefore a consistent cost \textcolor{bad}{increase}. & Depends on low-level project details. \\
+5 & \textbf{Iterating over partitions} & Depends on project complexity. Partitioning suited for more complex projects. &  Cost may \textcolor{nice}{decrease} (due to reduced manufacturing) & Depends on project complexity. Risk \textcolor{bad}{increases} when partitioning simpler projects, and vice versa. \\
+6 & \textbf{Robust software framework} & Depends on low-level factors. & No factors influence cost. & Risk \textcolor{nice}{decreases} due to inherent software framework characteristics. \\
+7 & \textbf{Robotic Process Automation} & Depends on project testing complexity (automation vs.\@ manual effort) & \textcolor{bad}{Increases} when hardware infrastructure required. &  Risk \textcolor{nice}{decreases} due to capability for continual, immediate testing after changes. \\ \bottomrule
+\end{tabularx}
+\end{adjustbox}
+\caption{Revised methodology treatment statements}
+\label{tab:d_new_statements}
+\end{table*}
 
 The above results indicate that the ideal or ``optimal'' selection of \acs{SCS} development methods can be project-specific, based on variables both known and unknown at the start of a project, and depending on the desired trade-off between time, cost and risk.
 
@@ -5567,6 +5807,7 @@ This research question involves the generalisation of the results of \texttt{RQ3
 \begin{fullwidth}
 	Even though I attempted to use prior knowledge and verifiable claims to inform, synthesise, and validate the proposed \acs{SCS} methodology, each of the performed tasks was limited by the available data and what was practically achievable with the resources allocated to this work.
 	This section presents the limitations and threats to validity of this research, following a sequential order, as specified in the original Research Plan (\Cref{chap:METHODOLOGY}). %Most threats relate 
+	Most identified threats relate to external influencing factors that can affect case study results by threatening the logical conclusions that can be made regarding the methodology. For each external factor identified as an influence, a specific mitigation is applied, as shown below:
 
 
 \begin{enumerate}
@@ -5579,19 +5820,59 @@ This research question involves the generalisation of the results of \texttt{RQ3
 
 	\item[Threat 3.] \textbf{Case study-based validation}: The validation of the \acs{SCS} methodology (\texttt{RQ3} and \texttt{RQ4}) was based on four case studies. In contrast to, e.g.\@, an experimental setup, the case study approach does not require control over all environmental parameters and can be practically performed against complete missions, which are the main unit of analysis of this study. Typical concerns connected to case studies relate to the misuse of data, small sample sizes, and incorrect generalisations \cite[266]{yinCaseStudyResearch2014}. I address these concerns by \draft{documenting the gathered qualitative} and quantitative data in \Cref{chap:CASESTUDIES}, by using multiple sources of evidence for claims, and by analytic generalisations of findings in \Cref{sec:CASESTUDIES_results}.
 	
-	\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers \draft{(see \Cref{app:contribution_matrix})}, the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, \draft{follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.}
+	In \Cref{chap:CASESTUDIES}, I identified various external/confounding factors that can threaten the logical inferences required to validate the proposed methodology, namely:
+	\begin{enumerate}[itemsep=-2ex]
+		\item Project technical size, Project complexity
+		\item Team expertise, Team size, Available facilities
+		\item Launch provider requirements
+		\item External supplier/manufacturer conditions (requirements, lead times, cost, quality)
+		\item Low-level project specifications
+	\end{enumerate}
+	The external factors identified as affecting each evaluation point are listed in each individual case study.
 
-	\item[Threat 5.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of \draft{action research}. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
+	In general, to control for these factors, 
+	I identified their potential influence against each treatment, and if it affected the predicted results. In this way, the cross-case analysis pinpointed aspects of the methodology that do or do not depend on project-specific or environment-specific factors (\Cref{tab:d_new_statements}).
+
+	%\citeauthor{yinCaseStudyResearch2014} \cite{yinCaseStudyResearch2014}
+	Additionally, I participated in a diverse set of case studies, to the extent possible, in order to cover a sufficiently wide range of external conditions.
+	More specifically:
+	\begin{enumerate}[itemsep=-2ex]
+		\item The case studies covered a large gamut of the \acs{SCS} systems targetted by this methodology, from a \acs{PCB}-based payload to a PocketQube, with different hardware/software designs for each one, as well as different launch configurations.
+		\item The case studies were distributed over two institutions.
+		\item All projects were performed by different teams, with (predominantly) different participants and different sizes.
+		\item While executing the case studies, we performed incremental updates to the universities' lab infrastructure, increasing the amount of local facilities available.
+		\item Different external suppliers/manufacturers were used for each project, including \acs{PCB} manufacturers, \acs{PCB} assemblers, machine shops, component suppliers, testing facilities, and launch providers. More specifically, within the first three case studies, we selected between 2--4 different companies for each of the aforementioned tasks.
+	\end{enumerate}
+
+	Nevertheless, two invariants remained unchanged across all case studies:
+	\begin{itemize}[itemsep=-2ex]
+		\item All case studies were performed within an academic environment. 
+		Based on the initial literature survey, academic projects can have small but discernible differences compared to their industrial counterparts.
+		More specifically, the former may have different goals, increased bureaucracy,  smaller or less experienced teams, high turnover rates, and low duty cycles of participating members. These effects are more pronounced with student projects (as opposed to e.g.\@ research projects).
+		
+		To mitigate this invariant, \draft{all executed projects were made within a research context, with limited student involvement}. Team members were assigned to projects for the duration of the entire mission (with the exception of students invited to take ownership of specific work packages) and based on their expertise and prior familiarity with the used technologies (especially in terms of software/hardware development and satellite integration). This combination of factors can be considered a suitable middle-ground between fully student-led and fully commercial projects.
+
+		Nevertheless, follow-up studies can be performed to confidently evaluate the impact of the different environmental context.
+		\item I participated as a systems engineer in all case studies. To mitigate the influencing effect of a constant participant with a single responsibility, I was assigned to different work packages for each project, or shared my responsibilities with other core team members. This involved, for example, switching between the technical tasks of system design, \acs{PCB} design, software development, and testing amongst all projects, while I shared the \emph{systems engineer} role with other participants.
+	\end{itemize}
+	
+	%\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers \draft{(see \Cref{app:contribution_matrix})}, the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, \draft{follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.}
+	
+	%A particular similarity amongst all case studies was that they were performed within 
+
+	\item[Threat 4.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of \draft{action research}. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
 	\begin{enumerate}[itemsep=-1pt]
 		\item \textbf{Uncontrollability}: The researcher \emph{does not have full control over the environment being studied}.
 		This was particularly the \draft{case} in the evaluated case studies, as it was not possible to fully control the application and implementation of the \acs{SCS} methodology, allocate resources, or recruit the desired personnel for technical tasks.
-		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. It is difficult, for example, to reason about the impact of multiple methodology treatments against the project's flow.
-		\item \textbf{Subjectivity}: It is impossible for the researcher to be in a detached position from the subject being studied, \draft{making} it possible to \emph{introduce biases into their conclusions}.
+
+		A critical result of this threat, combined with the iterative nature of action research, is that no case study was performed with the complete methodology applied (or not applied). Instead, all case studies involved the application of \emph{most} aspects of the methodology on them, with the complete application being evaluated based on the counter-factual inference.
+		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. \draft{It is difficult, for example, to reason about the impact of multiple methodology treatments against the project's flow.}
+		\item \textbf{Subjectivity}: \draft{It is impossible for the researcher to be in a detached position from the subject being studied, \draft{making} it possible to \emph{introduce biases into their conclusions}.}
 	\end{enumerate}
 
-	These threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.
+	\draft{In general, these threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.}
 
-	\item [Threat 6.] %counterfactual
+	\item [Threat 5.] %counterfactual
 	\textbf{Counter-factual evaluation}:
 	The comparison between the application and non-application of \acs{SCS} methodology treatments in \Cref{chap:CASESTUDIES} was performed through the evaluation of hypothetical scenarios.
 %	It is impossible to accurately model the potential interactions between different approaches on the same project.
@@ -5599,8 +5880,19 @@ This research question involves the generalisation of the results of \texttt{RQ3
 	However, through the participation and evaluation of different \acs{SCS} treatments across four projects, it was possible to generate high-confidence predictions about the effects of each treatment.
 	The data used to inform these predictions was gathered from the missions themselves (e.g.\@ in the case that an alternative option was evaluated but abandoned during the mission), from results gathered from other missions, from past \acs{SCS}/CubeSat literature, or based on a causal evaluation. In the case of disagreements of these previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
 	
+	\item [Threat 6.] % validation
+	\textbf{Lack of mission results}:
+	For this research, I gathered in-orbit data from one mission only (AI4Space), which demonstrated a performance within the expected envelope. Two other missions (ChipSat, ChiPySat) were never launched, while POQUITO was launched but not detected by ground stations.
 
-	
+	An obstacle specifically linked to space missions is that no definitive data can be generated about their success until they manage to transmit data from orbit.
+	The launch itself requires finding appropriate funding and a compatible launch slot.
+	The validation of a mission requires that it is qualified, launched, deployed, and successful.	In the case of a mission failure (either early or late), it is very likely that, due to reduced observability, no information can be gathered about the cause of the failure, and whether the cause is linked to the \acl{SYE} methodology or not.
+
+	To mitigate against the uncertainty of mission events, and to discount their effect on the evaluation of the \acs{SCS} methodology, I defined the success of environmental qualification as the main goal of the methodology. Qualification is a valuable stage-gate, which can provide timely results, and locate critical system faults that are not obvious by inspection. This is represented by a reduced ``\acl{TRL}'' of 8 in NASA's \acs{TRL} scale, which demonstrates that a system is flight-qualified, but not flight-proven \cite{sheaNASASystemsEngineering2020}.
+	All three tested case studies passed the qualification step successfully.
+	In-orbit demonstration missions are then a typical next step to increase this rating to the maximum 9.
+
+
 	% statistical generalisation (actually not a threat)
 \end{enumerate}
 
@@ -5873,7 +6165,7 @@ The following table lists the participation and contributions of team members to
 \begin{tabular}{@{}lllll@{}}
 	\toprule
 	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
-	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
+	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
 %	A.~F.~Bühler &  &  &  &  \\
 	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
 	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
