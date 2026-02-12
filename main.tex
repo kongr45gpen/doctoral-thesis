@@ -3847,6 +3847,56 @@ Their strategy consists of the following steps:
 	\item \textbf{Validating, executing and evaluating the tailored process} in an iterative fashion.
 \end{enumerate}
 
+\marginnote{%
+Note that the tailoring suggestions presented here are not intended to replace the case study results and explanations presented in \Cref{chap:CASESTUDIES,chap:DISCUSSION}. Instead, they are given as an initial reference to practitioners.%
+}
+Since this work proposes a more concrete methodology, it is possible to extend the idea of a \textbf{tailoring questionnaire} based on specific questions and \textbf{recommendations}, influenced either by logical expectations or actual data from the case studies (\Cref{chap:CASESTUDIES}).
+
+\begin{table*}[p]
+	\def\arraystretch{1.2}
+	\begin{adjustbox}{max width=1.2\textwidth,center}
+	\rowcolors{2}{gray!10}{gray!25}
+	\begin{tabularx}{1.2\textwidth}{lp{7cm}>{\small}X}
+	\toprule
+	% See https://tex.stackexchange.com/questions/404515/cancel-rowcolors-for-a-specific-cell for a better solution
+	\rowcolor{white}
+	\multicolumn{2}{l}{\textbf{Project}} & Recommendations\\ \midrule
+	1 & What is the project's form factor? & Larger satellites are usually associated with a larger technical size and more required features. \\
+	2 & What is the project's technical size? & Larger-scale projects may require longer iterations and more support infrastructure. \\
+	3 & How many functional requirements are there? & It may not be possible to implement all functions in early system iterations, thus encouraging a partition-based approach for iterations. \\
+	4 & What is the degree of reuse? & Reused components can increase confidence in a system, reducing low-level (but not system-level!) testing requirements and encouraging system-level (rather than partition-level) iterations. \\
+	5 & Have the used technologies been demonstrated before? & When there is high confidence in the technology used, teams can immediately use system-level (rather than partition-level) iterations. \\
+	6 & How much technical risk can be accepted? & High risk acceptance reduces the need for high-fidelity analysis and \acl{BDUF}. \\ \midrule
+	\rowcolor{white}
+	\multicolumn{2}{l}{\textbf{Technical}} &  \\ \midrule
+	7 & Which subsystems need to be implemented? &  \\
+	8 & How much miniaturisation is required? & Highly miniaturised platforms may require spending more time in design optimisation, thus increasing the length of the design phase within iterations. \\
+	9 & How many features are implemented in   hardware vs.\@ software? & Software-heavy projects can benefit highly from automated testing infrastructure. Compare to hardware-heavy projects, where overhead/constraints to automation may be present. \\
+	10 & Does the project include mechanical   elements (e.g.\@ deployable antennas, propulsion)? & Mechanical elements are a common failure point across spacecraft, and may need to be repeatedly tested independently (or as a partition). \\ \midrule
+	\rowcolor{white}
+	\multicolumn{2}{l}{\textbf{Team}} &  \\ \midrule
+	11 & How large is the team? & Large team sizes may increase the difficulty of communication and coordination (notably, task management), requiring \\
+	12 & Is the turnover rate high? & A high turnover rate will require a stricter knowledge transfer plan, which may involve better documentation coverage. \\
+	13 & Does the team have expertise/familiarity   with the used technologies? & High expertise can encourage shorter, system-level iterations. Team expertise may guide the use of less risky software/hardware technologies. \\
+	14 & Does the team have access to technical   support? & --- \\ \midrule
+	\rowcolor{white}
+	\multicolumn{2}{l}{\textbf{Internal Environment}} &  \\ \midrule
+	15 & Does the institution have the required tools/infrastructure available in-house? & In-house manufacturing provides many advantages when the capability and expertise is available internally. \\
+	16 & What is the available cost budget? & --- \\
+	17 & Does the project have adequate time to achieve its goals? & --- \\ \midrule
+	\rowcolor{white}
+	\multicolumn{2}{l}{\textbf{External Environment}} & \\ \midrule
+	18 & Are external stakeholders accessible? & --- \\
+	19 & How volatile are the external   requirements? & Changing requirements will require flexibility towards design changes, which can be managed through shorter iterations. \\
+	20 & How accepting are external stakeholders   of specification changes? & --- \\
+	21 & How many are the formal interface/safety   requirements? & --- \\ \bottomrule
+	\end{tabularx}
+	\end{adjustbox}
+	\caption[SCS methodology tailoring questionnaire]{\acs{SCS} methodology tailoring questionnaire. Based on \cite{xuUsingProcessTailoring2008}.}
+\end{table*}
+
+
+
 \chapter{Case Studies}
 \label{chap:CASESTUDIES}
 
@@ -6027,9 +6077,9 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \begin{invisible}
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
-\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
+\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal} \draft{[TODO]}
 
-\draft{[TODO]}
+\includegraphics{CheatSheet.pdf}
 
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}

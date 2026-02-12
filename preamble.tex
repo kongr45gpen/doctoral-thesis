@@ -216,7 +216,7 @@ defernumbers=true,
 \usepackage{listings}
 
 % Git magic
-\write18{git log --pretty='format:\@percentchar Creset\@percentchar s' --no-merges -1 > \jobname.git1.tmp}
+\write18{git log --pretty='\@percentchar Creset\@percentchar s' --no-merges -1 > \jobname.git1.tmp}
 \write18{git rev-parse --short HEAD > \jobname.git2.tmp}
 \def\gitcommit{\input{\jobname.git2.tmp}\unskip}
 \def\gitcommitmessage{\input{\jobname.git1.tmp}\unskip}

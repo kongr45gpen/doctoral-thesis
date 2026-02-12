@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
   <diagram name="Page-1" id="wxaQnkaeCA_MrgQPdO1f">
-    <mxGraphModel dx="2593" dy="1591" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2037" dy="2350" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -16,7 +16,7 @@
         <mxCell id="ftJcdM4gyXqZt9gC5y0X-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#9CCC65;gradientColor=#558B2F;strokeColor=none;gradientDirection=radial;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="20" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="ftJcdM4gyXqZt9gC5y0X-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Semibold;fontSize=24;" value="SO, YOU HAVE YOUR MISSION IDEA." vertex="1">
+        <mxCell id="ftJcdM4gyXqZt9gC5y0X-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Semibold;fontSize=24;fontStyle=1" value="SO, YOU HAVE YOUR MISSION IDEA." vertex="1">
           <mxGeometry height="60" width="315" x="10" y="30" as="geometry" />
         </mxCell>
         <mxCell id="ftJcdM4gyXqZt9gC5y0X-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;fontStyle=0;horizontal=1;fontFamily=Quicksand Heavy;fontSize=24;" value="REQUIREMENTS MANAGEMENT" vertex="1">
@@ -178,8 +178,29 @@
         <mxCell id="KnWBJ0p6U5LNeN_XKAOE-66" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Quicksand;fontColor=#FFFFFF;fontSize=9;" value="iterate on sets of modules!" vertex="1">
           <mxGeometry height="20" width="120" x="1045" y="205.23" as="geometry" />
         </mxCell>
-        <mxCell id="KnWBJ0p6U5LNeN_XKAOE-68" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Semibold;fontSize=24;" value="&lt;div&gt;&lt;div&gt;TIME TO BUILD IT!&lt;/div&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="KnWBJ0p6U5LNeN_XKAOE-68" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand;fontSize=24;fontStyle=1" value="&lt;div&gt;&lt;div&gt;TIME TO BUILD IT!&lt;/div&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="315" x="10" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;gradientColor=#EEEEEE;strokeColor=#F5F5F5;gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="210" width="1220" x="30" y="-200" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#424242;fontStyle=1;horizontal=1;fontFamily=Quicksand;fontSize=24;" value="BEFORE YOU START..." vertex="1">
+          <mxGeometry height="40" width="270" x="60" y="-190" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#757575;fontStyle=0;horizontal=1;fontFamily=Quicksand Heavy;fontSize=22;" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;Evaluate the environment&lt;/span&gt;" vertex="1">
+          <mxGeometry height="32" width="240" x="330" y="-186" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Medium;fontColor=#424242;fontSize=11;fontStyle=0" value="&lt;div style=&quot;line-height: 190%;&quot;&gt;&lt;div&gt;What is the project&#39;s form factor?&lt;/div&gt;&lt;div&gt;What is the project&#39;s technical size?&lt;/div&gt;&lt;div&gt;How many functional requirements are there?&lt;/div&gt;&lt;div&gt;What is the degree of reuse?&lt;/div&gt;&lt;div&gt;Have the used technologies been demoed before?&lt;/div&gt;&lt;div&gt;How much technical risk can be accepted?&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="270" x="70" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Medium;fontColor=#424242;fontSize=11;fontStyle=0" value="&lt;div style=&quot;line-height: 190%;&quot;&gt;&lt;div&gt;Which subsystems need to be implemented?&lt;/div&gt;&lt;div&gt;How much miniaturisation is required?&lt;/div&gt;&lt;div&gt;How many features are implemented in HW vs. SW?&lt;/div&gt;&lt;div&gt;Does the project include mechanical elements?&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="280" x="350" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Medium;fontColor=#424242;fontSize=11;fontStyle=0" value="&lt;div style=&quot;line-height: 190%;&quot;&gt;&lt;div&gt;How large is the team?&lt;/div&gt;&lt;div&gt;Is the turnover rate high?&lt;/div&gt;&lt;div&gt;Is the team familiar with the used technologies?&lt;/div&gt;&lt;div&gt;Does the team have access to technical support?&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="260" x="630" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="xFenNF8ksm78lh0Gskk3-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=Quicksand Medium;fontColor=#424242;fontSize=11;fontStyle=0" value="&lt;div style=&quot;line-height: 190%;&quot;&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(66, 66, 66), rgb(180, 180, 180));&quot;&gt;Does the institution have the required infrastructure in-house?&lt;/span&gt;&lt;/div&gt;&lt;div&gt;What is the available cost budget?&lt;/div&gt;&lt;div&gt;Does the project have adequate time to achieve its goals?&lt;/div&gt;&lt;div&gt;Are external stakeholders accessible?&lt;/div&gt;&lt;div&gt;How volatile are the external requirements?&lt;/div&gt;&lt;div&gt;How accepting of changes&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(66, 66, 66), rgb(180, 180, 180));&quot;&gt;are external stakeholders&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(66, 66, 66), rgb(180, 180, 180));&quot;&gt;?&lt;/span&gt;&lt;/div&gt;&lt;div&gt;How many are the formal interface/safety requirements?&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="337.48" x="900" y="-150" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
