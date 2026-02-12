@@ -3760,19 +3760,20 @@ However, as this undertaking is impractical and would require large amounts of r
 
 I consider tool selection as one of the first decisions that have to be taken when starting a new project.
 This is suppoorted by case studies found in the literature.
-\citeauthor{garrettProjectManagementSystems2022} \autocite{garrettProjectManagementSystems2022} notes that accessibility issues (in this case, difficult installation and no online collaboration options) encountered when using Microsoft Project led to noticeable delays in project schedule.
-\citeauthor{honore-livermoreManagingProductDevelopment2021} \autocite{honore-livermoreManagingProductDevelopment2021} claims that appropriate tools can be helpful by aiding design traceability, cohesiveness and documentation, but require support from dedicated people to be useful.
-\citeauthor{eilertsenOpenSpace2025} \autocite{eilertsenOpenSpace2025}, on the other hand, claims that incorrectly designed human-machine interfaces, as often found in software tools for space systems engineering, can negatively impact cognitive load and situational awareness. In turn, this leads to slower work or processes, and an increased chance of mistakes.
+\citeauthor{garrettProjectManagementSystems2022} \autocite{garrettProjectManagementSystems2022} notes that accessibility issues (in this case, difficult installation and no collaboration options) encountered when using \emph{Microsoft Project} led to noticeable delays in project schedule.
+\citeauthor{honore-livermoreManagingProductDevelopment2021} \autocite{honore-livermoreManagingProductDevelopment2021} claim that appropriate tools can be helpful by aiding design traceability, cohesiveness and documentation, but require support from dedicated people to be useful.
+\citeauthor{eilertsenOpenSpace2025} \autocite{eilertsenOpenSpace2025}, on the other hand, claims that incorrectly designed human-machine interfaces, as often found in software tools for space systems engineering, can adversely impact cognitive load and situational awareness. In turn, this leads to slower work or processes, and an increased chance of mistakes.
 
 \marginnote{It is important to create a distinction between domain-specific tools, such as analysis/testing software, data gathering utilities, programming languages or design software, and generic \ac{SYE} tools.}
 
 It is also hard to identify an ideal, globally-applicable set of tools for \acs{SCS} space missions, as tool selection will depend on the specific project requirements, team expectations and prior experience. However, a high-level list of requirements or needs can be elaborated as follows:
 \begin{enumerate}[itemsep=-2ex]
 	\item New tools should not increase the schedule or cost overhead of a project. If they do, this should be justified by a significant technical risk reduction.
-	\item New tools should be easy to use.\footnote{Ease-of-use is a subjective term that differs between teams. However, different User-Experienced definitions can be used to quantify this \cite{internetarchiveHumancomputerInteractionNew2002}.} In practice, tool design should encourage a preference of using a specific tool against other approaches.
-	\item Tools should not fragment information.\footnote{For example, if a \emph{requirements management} tool does not support writing a justification for a requirement, developers may be tempted to create a separate document or use a separate tool to store this information. This leads to data fragmentation, requires keeping more than one database up-to-date, and makes information retrieval harder.} This can be achieved by using generalisable/tailorable tools.
+	\item New tools should be easy to use\footnote{Ease-of-use is a subjective term that differs between teams. However, different User-Experienced definitions can be used to quantify this \cite{internetarchiveHumancomputerInteractionNew2002}.}. In practice, tool design should encourage a preference of using a specific tool against other approaches.
+	\item Tools should not fragment information\footnote{For example, if a \emph{requirements management} tool does not support writing a justification for a requirement, developers may be tempted to create a separate document or use a separate tool to store this justification. This leads to data fragmentation, requires keeping more than one database up-to-date, and makes information retrieval harder.}. This can be achieved by using generalisable/tailorable tools.
 	\item The overall cognitive load of team members related to tool usage should be reduced, by limiting the amount of different loci that have to be monitored or updated. This can be achieved, for example, by limiting the amount of tools, using tools that combine multiple functions, or using automated notification/update processes.
 	\item Project Management should actively support the use of tools. This can be achieved through regular training sessions, high support availability, and consistent maintenance of databases.
+	\citeauthor{honore-livermoreManagingProductDevelopment2021} \cite{honore-livermoreManagingProductDevelopment2021} recommend assigning ``champions'', i.e.\@ people responsible for the upkeep of these tools.
 \end{enumerate}
 
 A list of example recommendations is provided in \Cref{tab:methodology_indicative_tools}.
@@ -3816,6 +3817,9 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 	\end{adjustbox}
 \end{table*}
 
+For software, developers have to choose between proprietary or open-source tools, which can be hosted on-premises or in the cloud.
+Recent discourse has identified vendor lock-in as a major risk in long-lasting projects \autocite{lundellPerceivedActualLockin2021}, with additional concerns over the control and security of user data. Anecdotal reports suggest that educational or non-profit discounts may not be perpetually honoured \autocite{kalamSlackExtortingUs2025,elodidthatMaxonStudentLicenses2024}. The European Commission has identified the reliance on external technology suppliers as a ``strategic liability'' and ``supply chain risk'', posing open-source hardware and software as an ideal solution \autocite{europeancommissionCommissionOpensCall2026,pageBrusselsPlotsOpen2026}.
+
 Finally, with the emergence of highly-automated ``vibe coding'' as of 2026, where software generation can be performed in large volumes by \acsp{LLM}, rapid changes in the systems engineering software ecosystem are expected to be seen in the short-term. Most notably, \acsp{LLM} can potentially encourage the development of in-house tools, tailored for each mission, and progressively adapted to an organisation's needs \autocite{liscioRIPLowCode2026}.
 
 \subsection{Tailoring Questionnaire}
@@ -3832,6 +3836,10 @@ Their strategy consists of the following steps:
 \begin{enumerate}[itemsep=-1ex]
 	\item \textbf{Evaluating the project goals and environment.} This is similar to the elaboration of the project characteristics per \citeauthor{kalusCriteriaSoftwareProcess2013} \cite{kalusCriteriaSoftwareProcess2013}.
 	\item \textbf{Assessing challenges.}  This is similar to the previous step, but assesses specific hardships that are encountered by the project in the areas of resources, communication, requirements management, politics, and techical aspects.
+	
+	Challenge assessment is done through a \emph{challenge assessment questionnaire}. The authors present a 26-question form which evaluates typical project difficulties or strengths for each of the above areas, and assigns a score to each, in order to inform where the tailoring efforts should be focused\footnote{Note that some challenge scores may be countering each other. For example, one evaluation question (resource challenges) asks whether ``the project has enough personnel with relevant skills [\textellipsis]'', while another (communication challenges) asks whether ``the team size is small''.
+	For a large project, the project goals might warrant a large team size a priori. In this case, a \emph{large} actual team might encourage focusing the tailoring on \emph{communication}, while a \emph{small} team will call for a focus on \emph{resource} challenges.
+	}.
 	\item \textbf{Determining tailoring strategies for various process elements}.
 	Here, the authors provide specific options for actions that can be taken to modify a process.
 	They link \textbf{verbs} (\emph{add, downsize, drop/skip, expand, redefine, replace}) with \textbf{elements} (\emph{task, sequence, artifact/document, role, iteration}).
