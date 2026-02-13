@@ -44,11 +44,11 @@
 \thispagestyle{empty}%
 \begin{tikzpicture}[remember picture,overlay]
   \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
-  %\ifoptionfinal{}{%
+  \ifoptionfinal{}{%
 		\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
-			%{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
-			{ DRAFT\\Purpose: Last Friday check.};
-  %}%
+			{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+			%{ DRAFT\\Purpose: Last Friday check.};
+  }%
 \end{tikzpicture}%
 \newpage%
 \begin{tikzpicture}[remember picture,overlay]
@@ -447,6 +447,7 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore 
 \section{The Scope and Impact of Systems Engineering}
 \label{sec:INTRODUCTION_defining_systems_engineering}
 
+\NextCitationOffset{1cm}%
 Systems Engineering is defined as a process of synthesis, development and operation of a real-world system that satisfies the requirements for that system \autocite{sebok}.
 Systems Engineering processes are especially useful for complex and/or critical systems, such as those used in aerospace engineering \autocite{SMAD,sheaNASASystemsEngineering2020}.
 The \acs{NASA} Systems Engineering Handbook partitions Systems Engineering into further specific sub-disciplines, showing its connection with Project Management (\Cref{fig:i_nasa_sye_decomposition}).
@@ -659,17 +660,26 @@ The main objective of this thesis is to develop a new Systems Engineering method
 
 In order to develop a sound and valid methodology, I will address the following research questions:
 
-\paragraph{Research Question 1 (RQ1)}
-\textbf{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}
+\begin{fullwidth}
+\begin{tikzpicture}
+		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=left,inner sep=1.5em]
+		at (0,0)
+		{
+Research Question 1 (RQ1):
+\textbf{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}\\[2ex]
 
-\paragraph{Research Question 2 (RQ2)}
-\textbf{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
+Research Question 2 (RQ2):
+\textbf{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}\\[2ex]
 
-\paragraph{Research Question 3 (RQ3)}
-\textbf{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
+Research Question 3 (RQ3):
+\textbf{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}\\[2ex]
 
-\paragraph{Research Question 4 (RQ4)}
-\textbf{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
+Research Question 4 (RQ4):
+\textbf{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}\\[2ex]
+		};
+\end{tikzpicture}%
+\end{fullwidth}
+
 
 The objectives of this thesis are therefore as follows:
 \begin{enumerate}
@@ -2472,7 +2482,7 @@ When a team chooses to use an approach not covered by available (and \draft{appr
 The Scrum method attempts to answer the first question of \emph{Who} and \emph{How} to manage work packages, by employing the concept of \textbf{self-organising teams} \autocite{schwaverDefinitiveGuideScrum2020}. Tasks are elaborated in meetings which occur daily and before each iteration. Work packages are elaborated through a collaboration between the developers and the product owner. Scrum also defines task management aspects that permeate the previous processes, including the fact that developers need to hold each other accountable.
 
 A potential data model for task management would have to support the typical attributes of work packages defined typically in agile environments, such as:
-\begin{itemize}[itemsep=-2ex]
+\begin{itemize}[itemsep=-3ex]
 	\item Story points
 	\item Priority
 	\item Current status
@@ -2480,14 +2490,13 @@ A potential data model for task management would have to support the typical att
 	\item Assigned team member(s)\footnote{Potentially more than 1 for strictly collaborative tasks}
 \end{itemize}
 with attributes typically found in project management models, such as:
-\begin{itemize}[itemsep=-2ex]
-	\item Task dependencies
+\begin{itemize}[itemsep=-3ex]
+	\item Task dependencies/blocking tasks
 	\item Resource dependencies (facilities, manufacturing, external suppliers)
-	\item Blocking tasks
 	\item Linked requirement
 \end{itemize}
 along with attributes specific to the \acs{SCS} methodology:
-\begin{itemize}
+\begin{itemize}[itemsep=-3ex]
 	\item Linked slice
 	\item Linked module
 	\item Linked partition \todo{Anything more?}
@@ -3218,18 +3227,18 @@ Another decision that developers are faced with involves whether they reuse exis
 	\label{fig:m_reuse}
 \end{figure*}
 
-\geometrylscape
 \begin{landscape}
 	\captionof{table}[List of known open-source reusable components, subsystems and systems built for SCS]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}
 
-	\begin{tabularx}{\linewidth}{@{}lllllX@{}}
+	%\centering
+	\begin{tabularx}{.9\linewidth}{@{}lllllX@{}}
 		\toprule
 		\textbf{\#} & \textbf{Type} & \textbf{Name} & \textbf{Developer} & \textbf{Year} & \textbf{Description} \\ \midrule
 		\multicolumn{6}{c}{Pico-satellites} \\ \midrule
 
 		1 & System & \href{https://gitlab.com/librespacefoundation/qubik/}{QUBIK} & Libre Space Foundation & 2019 & 1p radio-amateur PocketQube for \acs{LEO} satellite identification and tracking \\
 
-		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \todo{????} & \draft{?}p PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
+		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \todo{????} & \todo{?p} PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
 
 		% $50SAT (1.5P), Morehead State university 
 		% https://www.albaorbital.com/open-source-pocketqube#:~:text=%2450SAT%20%281%2E5P%29%2C%20Morehead%20State%20university
@@ -3263,7 +3272,7 @@ Another decision that developers are faced with involves whether they reuse exis
 \paragraph{Interface Management}
 \label{sec:METHODOLOGY_interface_management}
 
-\marginnote{%
+\marginnote[1cm]{%
 	External interfaces can be categorised into:
 	\begin{itemize}[itemsep=-1ex]
 		\item Mechanical (e.g.\@ allowable envelope, fasteners, load limits)
@@ -3396,7 +3405,7 @@ The most critical physical aspects of a design\footnote{Such as the verification
 
 The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
 
-Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
+Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration\todo{But we said above this is not good}, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
 The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where \draft{payload runs} need multiple days to complete). Different test coverage models are therefore typically defined in missions.
 \marginnote{Typical test coverage models can include: \todo{citation}
 \begin{itemize}
@@ -6413,15 +6422,17 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \appendix
 
 
-\begin{invisible}
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
 \begin{fullwidth}
-\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal} \draft{[TODO]}
+%\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal} 
 
-\fbox{\includegraphics{CheatSheet.pdf}}
+\vspace*{-1cm}%
+\centering%
+\fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
 \end{fullwidth}
 
+\begin{invisible}
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
 
