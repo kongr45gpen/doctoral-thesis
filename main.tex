@@ -1,4 +1,4 @@
-\documentclass[a4paper,nobib,justified]{tufte-book}
+\documentclass[a4paper,nobib,justified,final]{tufte-book}
 
 \hypersetup{colorlinks}
 
@@ -46,7 +46,8 @@
   \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
   \ifoptionfinal{}{%
 		\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
-			{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+			%{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
+			{ DRAFT\\Purpose: Last Friday check.}
   }%
 \end{tikzpicture}%
 \newpage%
@@ -1902,7 +1903,7 @@ Finally, the ``target audience'' of the methodology includes the groups of ``hob
 		\ref{sec:METHODOLOGY_datamanagement} & \nameref*{sec:METHODOLOGY_datamanagement} & Modelling, Knowledge Management & Method \\
 		\ref{sec:METHODOLOGY_defining_design_solution} & \nameref*{sec:METHODOLOGY_defining_design_solution} & \acf{DSD} & Method \\
 		\ref{sec:METHODOLOGY_design_guidelines} & \nameref*{sec:METHODOLOGY_design_guidelines} & \acs{DSD}, Implementation & Guideline \\
-		\ref{sec:METHODOLOGY_interface_management} & \nameref*{sec:METHODOLOGY_interface_management} & Interface Management & Guideline \\
+		%\ref{sec:METHODOLOGY_interface_management} & \nameref*{sec:METHODOLOGY_interface_management} & Interface Management & Guideline \\
 		\ref{sec:METHODOLOGY_verification} & \nameref*{sec:METHODOLOGY_verification} & Verification \& Validation & Method \\
 		\ref{sec:METHODOLOGY_operations} & \nameref*{sec:METHODOLOGY_operations} & Maintenance \& Operations & Guideline \\
 		\ref{sec:METHODOLOGY_softwaredevelopment} & \nameref*{sec:METHODOLOGY_softwaredevelopment} & \acs{DSD}, Implementation & Method \\
@@ -2372,10 +2373,13 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \FloatBarrier
 \subsection{Project Lifecycle Approach: The Partition-Based Sat-Scrum Model}
 \label{sec:METHODOLOGY_slicebased}
+\label{sec:METHODOLOGY_partitions}
 
-\citeauthor{iberleAgileGetsPhysical2022} noticed that industrial Agile environments incorporating software and hardware have to deal with confusion and conflicts when the work of different engineering teams has to be intergated \autocite{iberleAgileGetsPhysical2022}. In traditional Scrum, a single work package that can be completed by one person within a Sprint may require additional interfacing functionality to translate to a product feature or function. \citeauthor{iberleAgileGetsPhysical2022} provide an example of three teams (hardware, firmware, cloud software) collaborating on the same product, who however implement different iteration durations and have to deal with an iteration lag when errors need to be fixed in another part of the product. This is exacerbated by the fact that software teams can affort to perform short iterations, while hardware teams have to spend multiples of that time to produce and verify a physical product \autocite{cooperAgileDevelopmentManufacturing2023}.
+\citeauthor{iberleAgileGetsPhysical2022} noticed that industrial Agile environments incorporating software and hardware have to deal with confusion and conflicts when the work of different engineering teams has to be intergated \autocite{iberleAgileGetsPhysical2022}. In traditional Scrum, a single work package that can be completed by one person within a Sprint may require additional interfacing functionality to translate to a product feature or function. \citeauthor{iberleAgileGetsPhysical2022} provide an example of three teams (hardware, firmware, cloud software) collaborating on the same product, who however implement different iteration durations and have to deal with an iteration lag when errors need to be fixed in another part of the product. This is exacerbated by the fact that software teams can affort to perform short iterations, while hardware teams have to spend multiples of that time to produce and verify a physical product \autocite{cooperAgileDevelopmentManufacturing2023}. 
 
 This criticism of Scrum for systems engineering essentially targets the ``Definition of Done'' and ``Sprint Goal'' aspects, which by default are either expressed in a simple form, or refer to a requirement against the product as a whole. Instead, \citeauthor{iberleAgileGetsPhysical2022} proposes the concept of a \textbf{slice} (\Cref{def:slice}), which describes a single batch of integration/testing that defines a single, typically user-visible, feature. Apart from the features only, a slice also defines a rough testing plan that will be followed after integration is completed. Then, \textbf{every iteration/Sprint is defined to cover only a single or more slices}. Developers from the hardware and software disciplines can therefore select the work packages that work towards this common goal.
+
+% Partition-based is different from slice-based since we are actually making only a subset of the system. But there is no need to mention this because there is no need to claim difference against slice-based.
 
 In Sat-Scrum, a complete iteration de facto involves the entire product. However, building upon the concept of slices, usually it is only parts of the product that need to be iterated on, especially for more complex ``systems of systems''. A slice will usually match only one physical (i.e.\@ structural) or functional part of the entire system. These parts were defined above as \textbf{modules} (\Cref{def:module}). When an iteration is tied to one or more slices, these slices will be, by definition, assigned to one or more physical or functional modules. It can therefore be inferred that each iteration is tied to one or more modules, or that \textbf{during each iteration, only a subset of system modules are altered}.
 
@@ -2846,12 +2850,9 @@ Conversely, they note that the existence of high technical risk and a need to re
 
 Therefore, the ideal decision on time spent for early design will vary based on the members of each time. However, typical \acs{SCS} environments, coupled with the emergent features of such systems, can generally afford a reduced early design time.
 
-\begin{invisible}
 \subparagraph{Mathematical Model for design effort}
 
-\end{invisible}
 
-\begin{invisible}
 The drawbacks of incorrect allocation of design time early or late in the project ed in terms of time and cost overruns \begin{enumerate*}
 	\item due to unnecessary design effort, or
 	\item due to reworks because of errors uncovered late.
@@ -2963,14 +2964,202 @@ Considering the above assumptions, the total cost of the design--verification--r
 \end{equation}
 and the systems engineering ``sweet spot'' can be found by tuning a project's engineering parameters to find the minimum of \( C \).
 
-To provide an example, I will consider that the manufacturing costs \( C_m \) and verification costs \( C_v \) of a sample project are fixed.
-The probabilities of rework \( p_1,p_2 \) should be decreasing functions of the linked design costs \( C_{d_0}, C_d \) respectively. This function is generally not known. Different models have been proposed to link between the two and external confounding factors \autocite{leImpactsConcurrencyIteration2012,tanRelativeImpactEarly2017}.
+To provide an example, I will consider that the manufacturing costs \( C_m \) and verification costs \( C_v \) of a sample project are fixed. The initial design cost can be considered as a multiple of the redesign cost, i.e.\@ \( C_{d_0} = k_0 C_d \).
+The probabilities of rework \( p_1,p_2 \) should be decreasing functions of the linked design costs \( C_{d_0}, C_d \) respectively. This function is generally not known. Different models have been proposed to link between the two and external confounding factors \autocite{leImpactsConcurrencyIteration2012,tanRelativeImpactEarly2017}. Example heuristic estimations of rework probabilities can be made with an exponential function: \cite{leImpactsConcurrencyIteration2012}: \begin{equation}
+p(C) = e^{-kC} \text{ for some } k
+\end{equation} or a sigmoid function \cite{kucharavyApplicationSshapedCurves2011}: 
+\marginnote{\(k_\infty\) represents the asymptotic probability when cost goes to infinity. \( k_S \) represents the steepness of the curve.}%
+\begin{equation}
+p(C) = \frac{2 - 2\frac{k_\infty}{2} }{1+e^{k_S C}} + k_\infty.
+\end{equation}
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = {Iteration design cost \(C_d\)},
+    ylabel = {Probability of rework \(p\)},
+    domain = 0:4,
+	ymin = 0,
+	ymax = 1.1,
+    samples = 100,
+    restrict y to domain = 0:1,
+    legend pos = north east,
+    grid = major,
+    grid style = {dashed, gray!30},
+    thick,
+	width = \textwidth,
+	axis x line*=bottom,
+	x label style={at={(axis description cs:1,0)},anchor=west},
+]
+
+\addplot [
+	color=MaterialBlue800,
+    ]
+    {exp(-x)};
+\addlegendentry{\(e^{-x}\)}
+
+\addplot [
+    color=MaterialRed800,
+    ]
+    {(2 - 0.2)/(1 + exp(x)) + 0.1};
+\addlegendentry{\(\frac{1.8}{1+e^x} + 0.1\)}
+
+\addplot [
+    color=MaterialOrange800,
+    ]
+    {(2 - 0.2)/(1 + exp(2*x)) + 0.1};
+\addlegendentry{\(\frac{1.8}{1+e^{2x}} + 0.1\)}
+
+\addplot [
+    color=MaterialYellow800,
+    ]
+    {(2 - 0.2)/(1 + exp(3*x)) + 0.1};
+\addlegendentry{\(\frac{1.8}{1+e^{3x}} + 0.1\)}
+
+\end{axis}
+\end{tikzpicture}
+\caption[][2cm]{Heuristic design cost vs.\@ probability of rework functions}
+\end{figure}
 
 
-\todo{Perform trade-off, make guidelines}
 
-\end{invisible}
 
+
+\begin{figure}[h]
+\begin{tikzpicture}
+
+% HEURISTIC FUNCTIONS
+% input: cost C, output: probability of rework p
+\pgfmathdeclarefunction{p1}{1}{%
+  \pgfmathparse{exp(-(#1))}%
+}
+\pgfmathdeclarefunction{p2}{1}{%
+  \pgfmathparse{(2 - 0.2)/(1 + exp(x)) + 0.1}%
+}
+\pgfmathdeclarefunction{p3}{1}{%
+  \pgfmathparse{(2 - 0.2)/(1 + exp(2*x)) + 0.1}%
+}
+\pgfmathdeclarefunction{p4}{1}{%
+  \pgfmathparse{(2 - 0.2)/(1 + exp(3*x)) + 0.1}%
+}
+
+% E_rework defines the expected number of reworks (Markov result)
+% input: p1 (probability of rework from init design), p2 (probability of rework from redesign)
+\pgfmathdeclarefunction{expected}{2}{%
+  \pgfmathparse{#1 / (1 - #2)}%
+}
+
+\begin{axis}[
+    axis lines = middle,
+    xlabel = {Up-front design coefficient \(k_0\)},
+    ylabel = {Total project cost \(C\)},
+    domain = 1:3,
+	ymin = 0,
+	%ymax = 1.1,
+    samples = 200,
+    restrict y to domain = 0:5,
+    legend pos = south east,
+    grid = major,
+    grid style = {dashed, gray!30},
+    thick,
+	width = \textwidth,
+	axis x line*=bottom,
+	x label style={at={(axis description cs:1,0)},anchor=west},
+	y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+]
+
+\addplot [
+	color=MaterialBlue800,
+    ]
+	% Plots equation 4.4.
+	% input: k_0 (i.e. imbalance between BDUF or not.)
+	% k_0 = 0 means zero design up front
+	% k_0 = 1 means equal design up front and redesign cost (i.e. very agile iteration)
+	% k_0 = 4 means heavy design up front (i.e. BDUF)
+	% We assume that C_d = C_m + C_v = 1 unit cost. It is anyway a scaling factor.
+	% Remember: Cd0 = k0 Cd = k0
+    {
+		x + expected( p1(x), p1(1) ) * (1 + 1) + 1
+	};
+\addlegendentry{\(p=e^{-x}\)};
+
+\addplot [
+	color=MaterialRed800,
+    ]
+	% Plots equation 4.4.
+	% input: k_0 (i.e. imbalance between BDUF or not.)
+	% k_0 = 0 means zero design up front
+	% k_0 = 1 means equal design up front and redesign cost (i.e. very agile iteration)
+	% k_0 = 4 means heavy design up front (i.e. BDUF)
+	% We assume that C_d = C_m + C_v = 1 unit cost. It is anyway a scaling factor.
+	% Remember: Cd0 = k0 Cd = k0
+    {
+		x + expected( p2(x), p3(1) ) * (1 + 1) + 1
+	};
+\addlegendentry{\(p_1 = \frac{1.8}{1+e^x} + 0.1, p_2 = \frac{1.8}{1+e^{2x}} + 0.1\)};
+
+\addplot [
+	color=MaterialOrange800,
+    ]
+	% Plots equation 4.4.
+	% input: k_0 (i.e. imbalance between BDUF or not.)
+	% k_0 = 0 means zero design up front
+	% k_0 = 1 means equal design up front and redesign cost (i.e. very agile iteration)
+	% k_0 = 4 means heavy design up front (i.e. BDUF)
+	% We assume that C_d = C_m + C_v = 1 unit cost. It is anyway a scaling factor.
+	% Remember: Cd0 = k0 Cd = k0
+    {
+		x + expected( p2(x), p4(1) ) * (1 + 1) + 1
+	};
+\addlegendentry{\(p_1 = \frac{1.8}{1+e^x} + 0.1, p_2 = \frac{1.8}{1+e^{3x}} + 0.1\)};
+
+\end{axis}
+
+% \begin{axis}[
+%   domain = 1:3,
+%   ylabel = {Expected number of reworks},
+%   y label style={at={(axis description cs:1.1,.5)},rotate=90,anchor=south},
+%   axis y line*=right,
+%   legend=none,
+% ]
+
+% \addplot [
+% 	color=MaterialBlue800,
+%     ]
+%     {
+% 		expected( p1(x), p1(1) )
+% 	};
+% \addlegendentry{\(p=e^{-x}\)};
+
+% \addplot [
+% 	color=MaterialRed800,
+%     ]
+%     {
+% 		expected( p2(x), p3(1) )
+% 	};
+% \addlegendentry{\(p_1 = \frac{1.8}{1+e^x} + 0.1, p_2 = \frac{1.8}{1+e^{2x}} + 0.1\)};
+
+% \addplot [
+% 	color=MaterialOrange800,
+%     ]
+%     {
+% 		expected( p2(x), p4(1) )
+% 	};
+% \addlegendentry{\(p_1 = \frac{1.8}{1+e^x} + 0.1, p_2 = \frac{1.8}{1+e^{3x}} + 0.1\)};
+
+%\end{axis}
+
+
+\end{tikzpicture}
+\caption[Up-front design coefficient vs.\@ total project cost]{Up-front design coefficient \( k_0 \) vs.\@ total project cost for different heuristic rework probability functions. A higher \(k_0\) means more time spent in early design. Assuming unit design costs for one iteration \( C_d = C_m + C_v = 1 \).}
+\end{figure}
+
+
+\todo{Patch this up a bit}
+
+
+\FloatBarrier
 \subsection[SCS Design Guidelines]{\acs{SCS} Design Guidelines}
 \label{sec:METHODOLOGY_design_guidelines}
 
@@ -3010,8 +3199,10 @@ While the above anecdotal examples do not need to translate to \acs{SCS} as-is, 
 
 In practical terms, if the developers decide to implement a modular architecture, this might involve:
 \begin{itemize}[itemsep=-2ex]
-	\item Separate the spacecraft into different subsystems following a common interface.
-	\item \todo{Ran out of ideas...}
+	\item Separating the spacecraft into different subsystems following a common interface.
+	\item Drafting a fixed specification (using a common or proprietary protocol) for the communication between subsystems.
+	\item Developing software that can does not make assumptions about the existence or position of different components.
+	\todo{\item I ran out of ideas}
 \end{itemize}
 
 \paragraph{On Component Reuse}
@@ -3065,8 +3256,67 @@ Another decision that developers are faced with involves whether they reuse exis
 \end{landscape}
 \restoregeometry
 
+\paragraph{Interface Management}
+\label{sec:METHODOLOGY_interface_management}
+
+\marginnote{%
+	External interfaces can be categorised into:
+	\begin{itemize}[itemsep=-1ex]
+		\item Mechanical (e.g.\@ allowable envelope, fasteners, load limits)
+		\item Electrical (e.g.\@ interconnects, voltage/power limits, switches)
+		\item Software (e.g.\@ protocols, data rates, packet throughput)
+	\end{itemize}
+}
+External interfaces, usually defined between the spacecraft and its launch provider, represent one of the fixed functional requirements of an \acs{SCS} mission. These interfaces can be standard and well-defined (e.g.\@ the PocketQube standard \cite{PQ1}), or proprietary and, sometimes, ambiguous. Teams should focus on verifying these interfaces as early as possible, for example through the use of simulators or test jigs, ideally provided by the interfacing entities.
+
+In the case of high-severity interfaces (such as the ones informing the satellite when it is safe to operate), formal documentation must be provided and agreed upon between stakeholders, as stress-testing of the actual interface is rarely possible, and launch providers want to ensure that these requirements are maintained under different environmental conditions. Typical interface documentation will be provided in a document-based format (to ease interoperability between different entities) and include:\footnote{Based on \cite{gerstenmaierInternationalDockingSystem2016} and experience from past missions.}
+\begin{enumerate}[itemsep=-2ex]
+	\item The intention and justification behind the interface.
+	\item Acceptable environmental conditions for operation and storage (temperature, humidity).
+	\item Types of protocols used, and if/how they are tailored. For public protocols, a link to the reference implementation\footnote{This is important in the case of protocols like \acs{I2C} which are not supported by a universal standard.}.
+	\item The performance envelope of inputs and outputs (e.g.\@ acceptable voltages, maximum torque, static envelope).
+	\item The performance envelope of undesired inputs and outputs (e.g.\@ maximum ripple, dynamic envelope).
+	\item Timing or repetition limitations (e.g.\@ maximum number of mates, maximum data rate, maximum packet rate).
+	\item Cleanliness, \acs{EMC}, outgassing and documentation requirements.
+	\item What assumptions can be made about the reliability of either end (e.g.\@ guaranteed correct operation at all times / no guarantee of operation but guarantee that the line will be kept in Hi-Z).
+	\item For physical interfaces, a \acs{CAD} model of the interface or its exterior, along with a specification of the coordinate system used.
+	\item For electrical connectors, if there are any mechanical restrictions (e.g.\@ material, compliance, maximum force).
+	\item For conductive materials, what the grounding requirements are.
+	\item Where newer versions or errata of the interface specification can be found.
+	\todo{\item  anything more?}
+\end{enumerate}
+
+This more ``strict'' approach to interface definition represents a deviation to the ``lighter'' agile approach described in the rest of this chapter, since the potential impact of an interface device (or interface requirement) failure could be considered catastrophic (e.g.\@ loss of launcher, major injury). 
+
+%Finally, interface specifications should be kept up-to-date
+
+% In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
+
+\paragraph{Miscellaneous}
+This paragraph will enumerate \draft{other} low-level design guidelines based on lessons learned that do not fit into any of the above categories:
+\begin{itemize}
+	\item Traditional satellite manufacturers focus heavily on the reduction of in-orbit technical risk through administrative measures (e.g.\@ \acf{FMEA}), system-level solutions (e.g.\@ redundancy) or high-reliability components \autocite{kanavourasDesignFaultDetection2021}.
+	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs{TID} effects are typically less severe than random \acs{SEE} effects.}
+	Due to the general lack of statistics to evaluate the criticality and reliability effects of different choices, it is not always possible to confidently assert whether an amount of risk aversion is ``enough'' or not\footnote{Although it is generally possible to assert whether risk decreases after the implementation of a reliability measure.}.
+
+	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accomodated by the \draft{spacecraft design}. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other system \draft{points}.
+
+	One proposed risk mitigation solution is the execution of a system-level \acs{FMEA} at the beginning of a project, and its revision at the beginning of every iteration. System-level \acsp{FMEA} start from evaluating the top-level subsystems and critical components of the product tree\footnote{It is important to follow a top-down approach when executing a \acs{FMEA} analysis, by starting with an overview of the design, instead of trying to enumerate possible failures based on experience. Subsystems and components usually have limited failure modes (e.g.\@ unacceptable performance, temporarily inoperable, permanently inoperable, ``babbling idiot''-type faults) which can be enumerated for each and are listed in pre-made databases}, but do not go into detail on each component.
+	Within the context of \acs{SCS}, they can be performed in an informal fashion\footnote{An informal \acs{FMEA} can be converted to an informal \acs{FMECA} by integrating failure probability rates of subsystems based on lessons learned from past missions, or available CubeSat reliability surveys.}.
+	Teams can use these analyses to make a more informed decision on whether to accept or 
+	mitigate risks.
+	\item Prototyping is heavily encouraged in \acs{SCS} projects, through the creation of low-fidelity parts that can be used as Development or Engineering, but not Flight Models. These parts can aid in the creation of partitions, to avoid testing subsystems in isolation (\Cref{sec:METHODOLOGY_partitions}), and can include structural elements (spacers, struts, frames), expensive components (e.g.\@ batteries, reaction wheels) or entire subsystems.
+	It is common to use additive manufacturing (e.g.\@ 3D printing) for relatively rapid prototyping of parts in-house, with some custom solutions also available for more specialised parts (e.g.\@ \acs{PCB} printers).
+	\item Apart from software, which is analysed in \Cref{sec:METHODOLOGY_softwaredevelopment}, satellite failures are often manifested in \textbf{energy storage} and \textbf{deployable mechanisms}.
+	Batteries, in particular, are sensitive to temperatures below \qty{0}{\degreeCelsius}, where they may refuse to provide adequate current, or might get damaged if charged \autocite{uludagDelfiPQInOrbitPerformance2025}. Hardware state control, heaters or other passive thermal maangement solutions are recommended to mitigate these issues. On the other hand, deployable antenna mechanisms represent a common source of errors, especially during ground testing, due to the sensitivity of common solutions (e.g.\@ melt lines) to the external environment (especially during cold deployment temperatures) \autocite{sanchoLessonsLearnedFYS2021}. For this reason, \citeauthor{sanchoLessonsLearnedFYS2021} recommend early definition, implementation and testing of mechanisms, especially in a \acs{TVAC}.
+	\item Access to cleanroom facilities is a significant burden, especially for academic spacecraft developers. If the launch provider's cleanliness requirements are relaxed, developers can consider a laminar flow bench, a ``glove box'', or a restricted-access room \cite{sanchoLessonsLearnedFYS2021}. These solutions can potentially reduce the burden of interaction between team members who are located in different rooms. \todo{However, a separate facility to work on a flight model might encourage people to be more careful.}
+	\item On low-performance systems, there is no need to have a central orchestrator and/or router for subsystem functions and spacecraft state. In practical terms, there is no need to have a separate board or microcontroller for an \acs{SCS} \acf{OBC}, with this functionality being transferable to e.g.\@ \acs{COMMS} or \acs{ADCS}. This choice also reduces the number of interfaces, and therefore satellite complexity.
+	\item With the goal of miniaturisation, developers are encouraged to make use of the most real estate possible, through the use of dense designs, multi-purpose \acsp{IC}, multi-layer \acsp{PCB}, and packages without exposed pins. The disadvantages of this approach mainly constitute the difficulty of testing and inspection, as well as potential \acs{EMC} issues\footnote{Note, however, that the low performance and power of these systems tends to counteract the small distances between components}.
+	\item Hardware--software co-design is highly desirable, as it allows early verification of the interactions between the two, without requiring detailed formal specification. In the ideal case, all software will be written and tested on representative hardware from the onset. However, this is impractical due to the numerous \acl{COP}. \draft{Developers can consider the use of \acf{HIL} systems, \acf{RPA} or emulators to ensure software--hardware compatibility.}
+\end{itemize}
+
 \begin{invisible}
-\draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that:  • Standard, off-the-shelf parts and processes are preferred to reduce lead time and increase repeatability. Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. • Depending on the device, modularity might need to be carefully considered. Devices with non-standard shapes (e.g. ChipSats) or limited space might be impeded by the overhead added by modularity. Regarding software, while the typical aspects of Agile software development are applicable to space systems [34], some aspects specific to sub-CubeSat spacecraft are:  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. • Based on the project, different programming languages or techniques can be used, with the aim of increasing reliability without sacrificing development speed. Examples include static analysis, automated testing/fuzzing, Design by Contract (DbC), Domain-Specific Languages (DSLs), or automated code generation.  Finally, for both aspects, technology and code reuse is highly encouraged [85].}
+\draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that: Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. •  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. }
 
 \draft{Based on uludagDelfiPQInOrbitPerformance2025 and personal experience: no cables.}
 \draft{
@@ -3081,7 +3331,6 @@ Another decision that developers are faced with involves whether they reuse exis
 	- use combined ICs instead of individual ICs, e.g. DC-DC packages, energy harvesters/MPPTs, transceiver-microcontroller combinations
 	- smart/cognitive radio
 	- power generation: R. Amirtharajah et al., “A Micropower Programmable DSP  Powered Using a MEMS-Based Vibration-to-Electric Energy Converter,” 2000 IEEE Int’l Solid-State Circuits Conf., IEEE Press, Piscataway, N.J., 2000, pp. 362-363, 469. / power harvesting. solar power is not always required 
-	- tere should be a minimum big-design-up-front level/ what is the absolute minimum of BDUF that has to be done before moving on to development? zero?
 	- There is no need to have a separate OBC (perhaps even ADCS), unless you need it. Interfaces add complexity and complexity is bad. It is better to have a single big microcontroller for everything (redundancy is overrated anyways)
 	- retroreflectors are nice
 	- Check the POQUITO lessons learned table and implement the lessons learned
@@ -3090,14 +3339,8 @@ Another decision that developers are faced with involves whether they reuse exis
 \draft{
 	- Delta-CDR is performed in the sprint review
 }
-\end{invisible}
 
-\begin{invisible}
 
-\subsection{Interface Management Guidelines}
-\label{sec:METHODOLOGY_interface_management}
-
-\draft{REWRITE!!! External interfaces with the launch provider or other entities may require components not directly available to the development team. As such, they may not be available for immediate experimentation and testing within a few sprint, and require specific attention during development [79, p. 95]. Such interfaces and interface requirements can be categorised into:  • Mechanical (e.g allowable envelope, fasteners, load limits) • Electrical (e.g interconnects, voltage/power limits, deployment switches) • Software (e.g protocols, data rates, packet throughput)  As interface compliance is a “must-have” requirement for all missions, interfaces should be implemented early in the design and documented in greater detail than the rest of the system. Depending on the launch opportunity selected, hosts may agree on a specific interface with their guests, share detailed documentation, or provide “mock” interface simulators to them. Developers should validate interfaces as early as possible, and attempt to integrate prototype implementations with the host’s systems (“hardware-in-the-loop” testing [76]). This will allow them to follow the need for system-level verification at every iteration of our process. They should also be cautious of revisions, especially when the flight heritage of their host is limited. If possible, developers should be physically present to verify the final hand-off or integration before launch, and allow for a few days to correct small deviations if needed. In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 \end{invisible}
 
 \subsection{Verification \& Validation Method}
@@ -3207,29 +3450,38 @@ Self-contained and automated test runs can be performed both during and at the e
 \todo{ [[@deckerSystemsengineeringAssessmentMultiple2016]]: Evaluation of the cost benefits of using an Engineering or Qualification Model in a student/hobbyist CubeSat project.}
 
 
-\begin{invisible}
+
 
 \subsection{Agile Maintenance \& Operations}
 \label{sec:METHODOLOGY_operations}
-Sometimes there is confusion between agile-systems engineering and agile systems-engineering \autocite{haberfellnerAgileSystemsEngineeringAgileSystems2005}.
 
-\todo{See what to do about this section. Probably not include too much content because it is not completely within scope - however we have to design for operations so it is important to have at least a few paragraphs in.}
+While spacecraft operations are not strictly part of its development, and therefore outside the scope of this thesis, it is important to consider the needs of a spacecraft and its operators after launch, to make sure that no additional failures are generated, and that any faults caused by inadequate design are mitigated to the degree possible.
 
-While in-orbit operation and ground station design is out of the scope of this thesis, spacecraft still have to be developed with operations and operations planning in mind. 
+In theory, the main boon for space systems operations is \textbf{the ability to reprogram a spacecraft in orbit}. While hardware can (mostly) not be reconfigured, the use of in-orbit programming can, in essence, allow completely reconfiguring a spacecraft's functions. However, in practice, small-scale development teams do not plan for this feature, due to its high implementation complexity. When implemented, in-orbit programming should be robust, by allowing a reversal of the process if errors are detected, and rejecting corrupted code. \todo{Surely there must be more interesting things about this here. Ability to reupload and reprogram software. Need to keep original engineers in the team. Test on a jig before uploading}
+
+Additional guidelines for operations planning include \autocite{lillAgileMissionOperations2018}:
+\begin{itemize}[itemsep=-2ex]
+	\item An idea about a potential operating scheme, mainly based on parameters and events, is given by the ECSS-E-ST-70-41C standard \autocite{ECSS-E-ST-70-41C}. The standard defines a modular architecture that allows almost full configuration of a spacecraft's housekeeping and \acs{FDIR} behaviour. This is further supported by publically available software libraries implementing parts of the standard.
+	
+	\item Security vulnerabilities have been identified in small satellites in the past \autocite{willboldSpaceOdysseyExperimental2023}.
+	These vulnerabilities may involved unauthorised access to a satellite's data\footnote{For radio-amateur satellites, most data is required to be unencrypted. In practice, \acs{SCS} developers have few reasons to encrypt transmitted data.} or unauthorised control through unsigned \acs{TC}. Developers should consider the risk of unauthorised telecommanding, and consider implementing cryptographic signatures (e.g.\@ \acs{HMAC}). In many cases, these implementations will be available off-the-shelf for specific communication protocols (e.g.\@ \acs{CCSDS}).
+
+	\item The success of a satellite's mission relies on its successful identification via radar and its unique transmissions. To that end, it is helpful for developers to participate in a ground station network (e.g.\@ SatNOGS/TinyGS). This action is usually mutually beneficial, with satellite teams offering their ground station to others when it is unused, while benefitting from a larger geographical coverage.
+	
+	\item The concept of reuse can be applied to operational software, with tools like \emph{YAMCS} providing an off-the-shelf interface for \acs{TC} generation, \acs{TM} parsing, alerts and custom functions.
+\end{itemize}
+
+%While in-orbit operation and ground station design is out of the scope of this thesis, spacecraft still have to be developed with operations and operations planning in mind. 
 
 \todo{
-	- Yamcs usage or other operational software\\
-	- Ability to reupload and reprogram software. Need to keep original engineers in the team\\
-	- Participation in large networks, either proprietary or SatNOGS/TinyGS\\
 	- lillAgileMissionOperations2018\\
 	- The use of operational procedures or not\\
 	- Critical commands and arming them or not\\
 	- Ground station planning and design (it is a separate project so it does not concern us)\\
 	- The trade-off between transmission of responsibility to the user or the spacecraft\\
-	- Initial tracking and acquisition based on help from other people
 }
 
-\end{invisible}
+
 
 \pagebreak[4]
 \section{Software Development Methodology}
@@ -3427,7 +3679,7 @@ Additional testing methods that increase confidence in the design include:
 \begin{enumerate}
 	\item \textbf{Fuzz Testing} (or fuzzing) involves the generation of a vast dataset of random test cases as inputs, which are then fed to the software to evaluate any missed edge-cases\todo{ [cite]}.
 	\item \textbf{Stress Testing} evaluates the performance of the software when it is put under a heavier load\footnote{``Load'' in this case can refer to data volume, data rate, concurrent connections, number of operations etc.} than expected\todo{ [cite]}.
-	\item \textbf{Model Checking} \todo{: \draft{[todo]} \todo{[todo]}}
+	\item \textbf{Model Checking}, which tries to prove that a program is correct by logically exploring its theoretical state space \autocite{beyerSoftwareVerificationTesting2017}.
 \end{enumerate}
 
 While the benefits of testing are well understood, software quality assurance has historically \draft{experienced} a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situtation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
@@ -3550,6 +3802,7 @@ More specifically, the execution and testing plan is elaborated into the followi
 The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
 Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
 
+\begin{invisible}
 \begin{table*}[h]
 	\caption{Static Analysis results}
 	\label{tab:m_software_fuzz_static}
@@ -3562,17 +3815,19 @@ Since the number of faults and frameworks tested do not allow statistical analys
 		Average \draft{MCCN} & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
 	\end{tabular}
 \end{table*}
+\end{invisible}
 
 \begin{table*}[h]
 	\caption{Functional test results}
 	\label{tab:m_software_fuzz_functional}
 	\begin{tabular}{@{}llllll@{}}
 	\toprule
-	Test Type & Measurement & AcubeSAT (C++) & KubOS & AI4Space (Python) & Prust (Rust) \\ \midrule
-	Execution details & Minimum boot time &  2s &  & 3 minutes & 1s \\
-	& Image size &  &  &  &  \\
-	& RAM requirements &  &  &  &  \\
-	& Minimum packet latency &  &  &  &   \\ \midrule
+	Test Type & Measurement & AcubeSAT (C++) & CubedOS (Ada) & AI4Space (Python) & Prust (Rust) \\ \midrule
+	Execution details & Minimum boot time &  2s & 1s & 3 minutes & 1s \\
+	%& Image size &  &  &  &  \\
+	%& RAM requirements &  &  &  &  \\
+	& Minimum packet latency & \qty{10}{\milli\second} & \qty{10}{\milli\second} & \qty{200}{\milli\second}  & \qty{10}{\milli\second}  \\ 
+	\midrule
 	Requirements & Requirements passed & 5/5 & 5/5  & 5/5  & 5/5 \\
 	& Static tests successful &  &  &  & \\
 	\bottomrule
@@ -4058,11 +4313,11 @@ The process intents intends to perform internal and external validation of the \
 	\item Does the evidence appear convergent and airtight?
 \end{enumerate}
 One of the processes that can answer these questions is \emph{explanation building}, which involves the following steps \cite[120]{yinCaseStudyResearch2014}:
-\begin{enumerate}
-	\item[x1.] Making an initial but tentative explanatory proposition
-	\item[x2.] Comparing the data from the case study against this proposition
-	\item[x3.] Revising the earlier proposition
-	\item[x4.] On a multiple-case study, comparing amongst the set of revised propositions
+\begin{enumerate}[itemsep=-1ex]
+	\item[e1.] Making an initial but tentative explanatory proposition
+	\item[e2.] Comparing the data from the case study against this proposition
+	\item[e3.] Revising the earlier proposition
+	\item[e4.] On a multiple-case study, comparing amongst the set of revised propositions
 \end{enumerate}
 In order to be able to clearly make logical conclusions and evaluate confouding factors, this process is isolated and tailored for each proposed ``treatment'' of the \acs{SCS} methodology. The end result, linked to each step of the explanation building process, is also shown in \Cref{fig:c_explanation_building}.
 
@@ -4807,13 +5062,13 @@ AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicr
 
 \todo{Format this whole section}
 
-The use of a Raspberry Pi provided another unexpected advantage by allowing \textbf{remote programming and monitoring} through Ethernet and Wi-Fi. This meant that multiple developers could work simultaneously on the same unit, with no physical connection or wiring requirements. This also significantly simplified the \ac{EGSE} required for testing. However, as with any \acs{RF} system, care had to be taken to disable transmissions inside resonating structures (e.g.~\acs{TVAC} chambers) and before launch.
+The use of a Raspberry Pi provided another unexpected advantage by allowing \textbf{remote programming and monitoring} through Ethernet and Wi-Fi\footnote{However, as with any \acs{RF} system, care had to be taken to disable transmissions inside resonating structures (e.g.~\acs{TVAC} chambers) and before launch.}. This meant that multiple developers could work simultaneously on the same unit, with no physical connection or wiring requirements. This also significantly simplified the \ac{EGSE} required for testing. 
 
-While RabbitMQ was a flexible databroker that allowed the effective use of Remote Process Calls and broadcast messages between microservices, it introduced a measurable performance overhead, including boot time, memory consumption, and latency.
+The easy capability for reprogramming, thanks to the file management capability provided by the Linux terminal and interfaces, was made use of after AI4Space was launched and operated in orbit.
+After launch, we discovered a major non-conformance in the data interface between the payload and the host: Due to an incorrect understanding of the bidirectional messaging sequence, AI4Space was able to receive (and execute), but not transmit messages. This issue was not discovered during ground testing, as we assumed that our understanding of the provided documentation and the test jig was correct. However, after clarifying the correct sequence, we were able to transmit a software patch (in the form of a Python script) that allowed proper communication. Since the project was split into different scripts, the reprogramming process only required uploading a single file. A notable future recommendation from this experience is the \textbf{recommendation to test and verify electrical interfaces with the actual launch provider}, if the opportunity is available.
 
-The project suffered from the peak of the electronic component shortage in 2022. One of the shortcomings of the design was the inertia in making considered changes to the design versus performing patches on \acsp{PCB} and waiting for components to be available. Two components were mostly affected by this issue: Namely, the Arduino ATMega328 processor used as the dummy thermal generator, and an I2C multiplexer \ac{IC}. Both components were replaceable with a \acs{PCB} change: The Arduino processor with a similar stocked \acs{MCU}, and the multiplexer with an equivalent chip of a different form factor. Alternatively, earlier preparation would have called for an early stock of components during the \acs{PCB} design process.
 
-The component shortage also proved difficult to navigate due to institutional procurement restrictions, combined with the fact that many stock items were only available from one or two days from standard distributors before being depleted.
+The project suffered from the peak of the electronic component shortage in 2022. One of the shortcomings of the design was the inertia in making considered changes to the design versus performing patches on \acsp{PCB} and waiting for components to be available. Two components were mostly affected by this issue: Namely, the Arduino ATMega328 processor used as the dummy thermal generator, and an I2C multiplexer \ac{IC}. Both components were replaceable with a \acs{PCB} change: The Arduino processor with a similar stocked \acs{MCU}, and the multiplexer with an equivalent chip of a different form factor. Alternatively, earlier preparation would have called for an early stock of components during the \acs{PCB} design process. The component shortage also proved difficult to navigate due to institutional procurement restrictions, combined with the fact that many stock items were only available from one or two days from standard distributors before being depleted.
 
 \todo{
 The Raspbian operating system, installed by default on the Raspberry Pi, requires a small amount of configuration before it can be safely used as flight software, namely:
@@ -4823,16 +5078,34 @@ The Raspbian operating system, installed by default on the Raspberry Pi, require
 Alternatively, a Yocto distribution can be used.
 }
 
-Edge Impulse generates a binary version of the model for ARM32 systems. The sizes of these binaries were in the order of ~100 MB, making uploading close to impossible. Different binary diff methods were examined with no immediate success. Recommending to use a more standardised format for model weights in the future.
+We also noted some additional observations, related to low-level elements of AI4Space:
 
-The main obstacles in the critical path were interfaces with external providers and collaborators. The typical procurement times of \acp{PCB} and components were significant and had to be planned around. Any unexpected delays also significantly influenced progress towards the iteration goal. While preparation for such cases might be possible in some contexts, Agile frameworks usually suggest maintaining direct communications with external collaborators, to the extent possible.
+\begin{itemize}[itemsep=-1ex]
+\item While RabbitMQ was a flexible databroker that allowed the effective use of Remote Process Calls and broadcast messages between microservices, it introduced a measurable performance overhead, including boot time, memory consumption, and latency.
 
-\todo{
+
+\item Edge Impulse generated a binary version of the model for ARM32 systems. The sizes of these binaries were in the order of ~100 MB, making uploading close to impossible. Different binary diff methods were examined with no immediate success. Recommending to use a more standardised format for model weights in the future.
+
+\item The main obstacles in the critical path were interfaces with external providers and collaborators. The typical procurement times of \acp{PCB} and components were significant and had to be planned around. Any unexpected delays also significantly influenced progress towards the iteration goal. While preparation for such cases might be possible in some contexts, Agile frameworks usually suggest maintaining direct communications with external collaborators, to the extent possible.
+
+\item AI4Space heavily used Python's \emph{Robot} framework and test-specific Python scripts for automation. These scripts were used to automate:
+\begin{itemize}[itemsep=-2ex]
+	\item Execution of \acs{TC} schedules during normal development
+	\item Functional testing
+	\item Testing for unintended situations/inputs
+	\item Repeated procedures (such as log rotation or cache clearing)
+\end{itemize}
+Prior to automation, we used the command line and a custom-build web interface to manually configure the payload and release the intended \acs{TC}.
+The use of automation proved highly beneficial for this project, as it allowed repeated execution of fixed schedules. Especially for AI4Space, these schedules could last up to an hour, which would be impractical for a human to execute and monitor manually.
+
+\end{itemize}
+
+%\todo{
 %\subsection{Verification}
-For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 LSF presentation about the use of Robot framework.}
-}
+%For AI4Space, we used the Robot Framework for automation %\draft{Cite OSCW2025 LSF presentation about the use of Robot framework.}
+%}
 
-\todo{in-orbit patchin}
+%\todo{in-orbit patchin}
 %\subsection{Operations}
 
 %\paragraph{In-Orbit Patching}
