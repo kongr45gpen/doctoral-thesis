@@ -44,11 +44,11 @@
 \thispagestyle{empty}%
 \begin{tikzpicture}[remember picture,overlay]
   \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
-  \ifoptionfinal{}{%
+  %\ifoptionfinal{}{%
 		\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
 			%{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
-			{ DRAFT\\Purpose: Last Friday check.}
-  }%
+			{ DRAFT\\Purpose: Last Friday check.};
+  %}%
 \end{tikzpicture}%
 \newpage%
 \begin{tikzpicture}[remember picture,overlay]
@@ -535,7 +535,7 @@ The above results show that an adequate balance needs to be found when adopting 
 \section{Research Gaps}
 \label{sec:INTRODUCTION_research_gaps}
 
-The impact and benefit of Systems Engineering is widely understood in the fields of space systems, and more specifically, \textbf{CubeSat engineering}. Apart from individual missions that explore tailor-made \acl{SYE} approaches \autocite{cappaertBuildingDeployingOperating2018,chaiebOpenOrbiterCubeSatSystemofsystems2015,dallmannAgileSpaceParadigm2015,lillAgileMissionOperations2018,lubian-arenillasNanosatelliteDevelopmentMethodology2019,segretPavingStonesInitial2014}, research has been made on more generic space methodologies that can be universally applied to nano-satellite projects \autocite{alanaziEngineeringMethodologyStudentDriven2019,andersonEnterpriseModelingCubeSats2014,deckerSystemsengineeringAssessmentMultiple2016}. These methodologies generally use a foundation based on traditional phase-based lifecycle processes \cite{sheaNASASystemsEngineering2020}, augmented with iterative or incremental elements. Many CubeSat methodologies also implement Agile practices, which represent a philosophy focused on emergent and interpersonal methods \autocite{beckAgileManifesto2001}. Conversely, another set of CubeSat projects does not use a well-defined methodology, instead implementing original ad-hoc approaches applicable to specific missions \todo{[cite]}.
+The impact and benefit of Systems Engineering is widely understood in the fields of space systems, and more specifically, \textbf{CubeSat engineering}. Apart from individual missions that explore tailor-made \acl{SYE} approaches \cite{cappaertBuildingDeployingOperating2018,chaiebOpenOrbiterCubeSatSystemofsystems2015,dallmannAgileSpaceParadigm2015,lillAgileMissionOperations2018,lubian-arenillasNanosatelliteDevelopmentMethodology2019,segretPavingStonesInitial2014}, research has been made on more generic space methodologies that can be universally applied to nano-satellite projects \autocite{alanaziEngineeringMethodologyStudentDriven2019,andersonEnterpriseModelingCubeSats2014,deckerSystemsengineeringAssessmentMultiple2016}. These methodologies generally use a foundation based on traditional phase-based lifecycle processes \cite{sheaNASASystemsEngineering2020}, augmented with iterative or incremental elements. Many CubeSat methodologies also implement Agile practices, which represent a philosophy focused on emergent and interpersonal methods \autocite{beckAgileManifesto2001}. Conversely, another set of CubeSat projects does not use a well-defined methodology, instead implementing original ad-hoc approaches applicable to specific missions \todo{[cite]}.
 
 The development approaches for current \acf{SCS}, mainly PocketQubes and ChipSats, largely follow the aforementioned approaches for CubeSats, with examples following hybrid \todo{[cite]}, Agile-based \autocite{sperettaCubeSatsPocketQubesOpportunities2016} and ad-hoc \autocite{manchesterCentimeterScaleSpacecraftDesign2015,daradimosQUBIK1pPocketQube2024} methodologies.
 
@@ -763,6 +763,7 @@ As the primary objective of this work is to synthesise a \emph{methodology} for 
 
 \citeauthor{gerickeWhatWeNeed2017}'s works \autocite{gerickeWhatWeNeed2017,gerickeElementsDesignMethod2022} investigate the differences between different definitions of the above terms. I adopt the following definitions:
 
+\vspace*{2ex} %vadOK
 \begin{definition}[Design Method]
 	A method is specification of how a specified result is to be achieved. This may include specifications of how information is to be shown, what information is to be used as inputs to the method, what tools are to be used, what actions are to be performed and how, and how the task should be decomposed and how actions should be sequenced. \cite{gerickeWhatWeNeed2017}
 \end{definition}
@@ -1196,6 +1197,7 @@ As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023
 
 \begin{figure}
 	\includegraphics{external/picobus.jpg}
+	\setfloatalignment{b} %vadOK
 	\caption[The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation]{The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation. Image taken from \autocite{librespacefoundationPICOBUS}.}
 \end{figure}
 
@@ -1258,7 +1260,7 @@ Within the scope of this thesis, I have also conducted informal interviews and f
 	\end{tabularx}
 \end{table}
 
-Through these interviews, I noted the following information:\todo{Check notes for question marks}
+Through these discussions, I noted the following information:\todo{Check notes for question marks}
 \begin{itemize}[itemsep=-1ex]
 	\item All respondents have had at least one \acs{SCS} satellite launched and successfully operated in \acs{LEO}.
 	\item 3 respondents noted \emph{development time} as their main constaint, one respondent noted \emph{cost}, one responded noted \emph{reliability}, and one \emph{production capability}.
@@ -1644,7 +1646,7 @@ In this sub-section, I will analyse the most popular Agile frameworks and evalua
 \subparagraph{Scrum}
 \label{sec:LITERATURE_scrum}
 Scrum, one of the most popular agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire life cycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}.
-\marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
+\marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. \todo{The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}}
 Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework.
 
 The framework is built around fixed-time iterations called \emph{Sprints}, which follow a repeated pattern of \emph{planning-\-standup-\-review-\-retrospective} with the aim of presenting a complete product at the end of each iteration. It also defines the different terminology and roles within small development team.
@@ -1981,6 +1983,7 @@ An inspiration for such an approach can come from the \acs{DSDM} Agile framework
 
 While \emph{Must Have} requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
 
+%vadOK
 \acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.\sidenote[][-2cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
 
 \paragraph{Requirement Scope}
@@ -2116,7 +2119,7 @@ In industrial environments, iterations can last between 2 to 8 weeks, or even lo
 These \ac{COP}-related constraints add time uncertainty to each iteration, and make the direct application of Scrum difficult, as they have the potential of adding ``waiting time'', when developers cannot verify a product before a certain external process is completed \cite{cooperAgileDevelopmentManufacturing2023}. The context of \acs{SCS} development makes it possible to control these so-called ``deadtime periods'', by proactively reducing external lead time.\marginnote{Reduction of external lead time can be done by:\begin{itemize}
 		\item Moving manufacturing in-house, to the degree possible
 		\item Collaborating with \draft{entities also following an Agile work system}
-		\item \todo{some other things...}
+		\todo{\item some other things...}
 \end{itemize}} However, past attempts to mitigate this difficulty by separating an iteration into pre-determined, sequential steps have received criticism, due to propagating the drawbacks of waterfall-based methods \todo{citation}. \draft{The original Scrum itself avoids prescribing the distribution and allocation of work, as that is team-specific and dependent on the self-organisation between developers.} It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
 
 \begin{figure*}[h]
@@ -2301,6 +2304,7 @@ A question that can then come up is how the proposed lifecycle process should be
 
 Gantt charts are a common tool used in project scheduling, showing the durations and dependencies between different parallel activities \autocite{honore-livermoreIntegratingAgileSystems2022}. They also provide utility by allowing developers to predict the durations of tasks and the critical path of a project. \citeauthor{douglassAgileSystemsEngineering2015} \autocite[62]{douglassAgileSystemsEngineering2015} provides a statistical estimation method for task predictions. Gantt charts can be augmented with resource allocation or simplified by showing monthly planning only, as required. In any case, they need to be updated at the end of each iteration, to account for the updated project status and knowledge.
 
+% vadOK
 \marginnote{%
 	The statistical estimation method by \citeauthor{douglassAgileSystemsEngineering2015} \cite{douglassAgileSystemsEngineering2015} calculates the estimate of a task duration as:
 	\[
@@ -2597,16 +2601,6 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 \[
 	\text{Potential value} = \text{Produced value} \cdot C \cdot R \cdot U \cdot F \cdot T
 \]%
-\marginnote{where:
-\begin{itemize}[itemsep=-0.5ex]
-	\item Produced value is guesstimated by the producers of the artifact.
-	\item \(C\) is the percentage of the artifact that is currently “correct”.
-	\item \(R\) = The chance that the artifact will be read by the intended audience.
-	\item \(U\) = The chance that the document that is actually understood by the intended audience.
-	\item \(F\) = The chance that the advice contained in artifact will be followed.
-	\item \(T\) = The chance that the advice will be trusted.
-\end{itemize}
-}
 
 \begin{table}[h]
 	\colorlet{No}{MaterialRed600}
@@ -2637,6 +2631,16 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 \end{table}
 
 
+\marginnote{where:
+\begin{itemize}[itemsep=-0.5ex]
+	\item Produced value is guesstimated by the producers of the artifact.
+	\item \(C\) is the percentage of the artifact that is currently “correct”.
+	\item \(R\) = The chance that the artifact will be read by the intended audience.
+	\item \(U\) = The chance that the document that is actually understood by the intended audience.
+	\item \(F\) = The chance that the advice contained in artifact will be followed.
+	\item \(T\) = The chance that the advice will be trusted.
+\end{itemize}
+}
 As I lack the statistical data to quantify \ac{EDM} approaches based on this equation, I instead define the following \textbf{criteria for \acl{EDM} processes}:
 \begin{enumerate}
 	\item \textbf{Correctness}: The System Description should contain factual information at any point in time.
@@ -3236,20 +3240,20 @@ Another decision that developers are faced with involves whether they reuse exis
 		4 & System & Tartan Artibeus & Carnegie Mellon University & \todo{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
 
 		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & \todo{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
-		x & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
+		6 & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
 
-		x & Subsystem & \href{https://gitlab.com/librespacefoundation/pq9ish}{PQ9ISH COMMS} & Libre Space Foundation & 2017 & Communications subsystem based on PQ9 \cite{PQ91} \\
+		7 & Subsystem & \href{https://gitlab.com/librespacefoundation/pq9ish}{PQ9ISH COMMS} & Libre Space Foundation & 2017 & Communications subsystem based on PQ9 \cite{PQ91} \\
 
 		\multicolumn{6}{c}{\todo{Add more stuff to the list...}} \\
 
 		\midrule
 		\multicolumn{6}{c}{Femto- and atto-satellites} \\ \midrule
 
-		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \todo{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
+		8 & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \todo{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
 
-		x & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \todo{????} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
+		9 & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \todo{????} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
 
-		x & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \todo{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
+		10 & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \todo{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
 	
 		\bottomrule
 	\end{tabularx}%
@@ -3494,10 +3498,7 @@ While the small size of \acs{SCS} systems limits the number of physical subsyste
 \subsection[SCS Software Features]{\acs{SCS} Software Features}
 \label{sec:METHODOLOGY_software_features}
 
-\acs{ESA}'s requirements for standard on-board software functionality are provided by the \emph{ECSS-E-ST-70-11C} standard \autocite{ECSS-E-ST-70-11C}, which explain the required functionality for \ac{TMTC}, mission control, configuration management, and autonomy. These functions are further augmented by the \emph{ECSS-E-ST-70-41C} \acf{PUS} standard \autocite{ECSS-E-ST-70-41C}, which defines 20 services (along with their interfaces) for system bus control. While the combination of the two standards guarantees a high degree of observability, flexibility and safety, combined they represent \num{3533} requirements and considerable effort to implement. Therefore, a tailoring is recommended to select a proper balance of requirements for a small SCS system.
-% ECSS-E-ST-70-41C: 3185
-% ECSS-E-ST-70-11C: 348
-
+%vadOK
 \marginnote{%
 Required software features for a \acs{SCS} based on \Cref{tab:m_software_requirements} can be summarised as:
 \begin{itemize}[itemsep=-0.5ex]
@@ -3521,6 +3522,10 @@ Examples of features that would be typically present in larger spacecraft but \e
 	\item Redundancy
 \end{itemize}
 }
+\acs{ESA}'s requirements for standard on-board software functionality are provided by the \emph{ECSS-E-ST-70-11C} standard \autocite{ECSS-E-ST-70-11C}, which explain the required functionality for \ac{TMTC}, mission control, configuration management, and autonomy. These functions are further augmented by the \emph{ECSS-E-ST-70-41C} \acf{PUS} standard \autocite{ECSS-E-ST-70-41C}, which defines 20 services (along with their interfaces) for system bus control. While the combination of the two standards guarantees a high degree of observability, flexibility and safety, combined they represent \num{3533} requirements and considerable effort to implement. Therefore, a tailoring is recommended to select a proper balance of requirements for a small SCS system.
+% ECSS-E-ST-70-41C: 3185
+% ECSS-E-ST-70-11C: 348
+
 I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This table can function as a starting point for a list of software features and work packages in terms of software functionality, and further tailored by \acs{SCS} teams. Compared to CubeSats and larger spacecraft, the overall functionality remains similar, but there are fewer requirements for each general feature.\footnote{For example, requirement \emph{5.8.5.f} from \cite{ECSS-E-ST-70-11C} demands that a \acs{TC} schedule be separable into sub-schedules which can be individually commanded, which is not necessary for \acs{SCS} where these schedules are expected to be only a few commands long.} Also note that these requirements only cover the basic needs of the system bus, and not additional payload-specific functionality that is different for each mission.
 
 
@@ -3528,7 +3533,7 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 \begin{table*}[h]
 	\caption[SCS main software operability requirements]{\acs{SCS} main software operability requirements\todo{Fix this table}}
 	\label{tab:m_software_requirements}
-	\begin{tabularx}{\linewidth}{@{}lXp{3cm}@{}}
+	\begin{tabularx}{\linewidth}{@{}lXp{1cm}@{}}
 		\toprule
 		ID & Text & \todo{Justification} \\ \midrule
 		\multicolumn{3}{c}{Functional Requirements} \\ \midrule
@@ -3785,7 +3790,7 @@ More specifically, the execution and testing plan is elaborated into the followi
 
 \begin{figure*}[h]
 	\includegraphics{graphics/software/activity.pdf}
-	\caption{Activity diagram of the CubeSat framework evaluation process}
+	\caption[][-2cm]{Activity diagram of the CubeSat framework evaluation process}
 	\label{fig:m_software_fuzz_activity}
 \end{figure*}
 
@@ -3799,8 +3804,8 @@ More specifically, the execution and testing plan is elaborated into the followi
 	\caption{Screenshot of software-under-test result}
 \end{figure}
 
-The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
-Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
+\todo{The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
+Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.}
 
 \begin{invisible}
 \begin{table*}[h]
@@ -3817,9 +3822,11 @@ Since the number of faults and frameworks tested do not allow statistical analys
 \end{table*}
 \end{invisible}
 
+%vadj
 \begin{table*}[h]
 	\caption{Functional test results}
 	\label{tab:m_software_fuzz_functional}
+	\begin{adjustbox}{max width=\textwidth,center}
 	\begin{tabular}{@{}llllll@{}}
 	\toprule
 	Test Type & Measurement & AcubeSAT (C++) & CubedOS (Ada) & AI4Space (Python) & Prust (Rust) \\ \midrule
@@ -3832,6 +3839,7 @@ Since the number of faults and frameworks tested do not allow statistical analys
 	& Static tests successful &  &  &  & \\
 	\bottomrule
 	\end{tabular}
+\end{adjustbox}
 \end{table*}
 
 
@@ -3872,7 +3880,7 @@ Since the number of faults and frameworks tested do not allow statistical analys
 
 \subparagraph{Conclusions}
 
-Based on the above, \todo{blablabla}:
+Based on the above\todo{blablabla}:
 \begin{itemize}
 	\item The selection of programming language alone \textbf{cannot guarantee program correctness}. \draft{Simple issues were identified in projects of all 4 evaluated languages.}
 	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to program termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a program where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks.
@@ -5340,7 +5348,7 @@ In terms of additional components, the \acs{ADCS} contains a photodiode, functio
 		\caption{ChipSat Payload}
 	\end{subfigure}
 	\caption{POQUITO subsystems}
-	\setfloatalignment{t}
+	\setfloatalignment{b} %vadOK
 \end{figure}
 
 Power storage was done via a camera battery mounted on the \acs{EPS} board. The antenna used QUBIK's original burn-wire mechanism, placed on the baseplate, which also included two electrical cut-off switches (``kill switches'') to detect deployment. The baseplate also included an outwards-facing 16-pin umbilical connector, intended for debugging and charging after integration, and internally harnessed to all subsystems.\footnote{Even though QUBIK originally had one programmable subsystem, the base-plate and harness designs predicted the need for a second programmable subsystem, which we made use of.} To reduce internal cabling, the solar panels included pads compatible with spring loaded ``pogo pin'' connectors.
