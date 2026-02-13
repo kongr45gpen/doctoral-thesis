@@ -369,41 +369,13 @@ This observation is combined with the fact that, in contrast to CubeSats and lar
 
 However, the combination of \emph{small scale} with \emph{mission criticality} is one that is not commonly found in other engineering fields. Yet, discussions with \acs{SCS} developers show that they operate in environments and under time/risk constraints similar to those of CubeSat systems (\Cref{sec:LITERATURE_interviews}). \acs{SCS} systems can therefore benefit from a \textbf{tailored methodology} that can take advantage of their unique characteristics. Using a methodology originally intended for \emph{larger spacecraft} or systems can introduce significant overhead in terms of cost and time, which may be unnecessary for these systems.\marginnote{\todo{[cite?]}} On the other hand, the use of an \emph{ad-hoc approach} increases programmatic and technical risk, since it provides no guarantees on the timely results of a project and no observability on factors such as progress, quality, or the critical path \autocite{honourTechnicalReportValue2004}. Nevertheless, due to the mission-critical nature of \acs{SCS} and their integration with larger systems,\footnote{Such as launchers, deployers} developers need to achieve a correct balance between the effort and time spent across design, realisation and verification \autocite{sebok_value,boehmROISystemsEngineering2008,dillonFasterBetterCheaperProjectsToo2015}.
 
-\newthought{Thus,} the \textbf{main hypothesis} of this research project is that a \textbf{tailored \acl{SYE} methodology} specifically targeting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining an acceptable level of reliability and functionality. This methodology can also serve as a guideline for new missions, allowing first-time developers to establish a starting point for new projects, drawing on lessons learned from previous missions. The methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
-
-In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore the concept of \acl{SYE}, showing how it can be partitioned into different fields, and investigating its utility and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
-
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram.pdf}
-	\caption[Histogram of satellite wet mass, for satellites flying as of 2023]{Histogram of satellite wet mass, for satellites flying as of 2023 \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram_no_starlink.pdf}
-	\caption[Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink)]{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
-\end{figure}
-
-\begin{figure*}[h]
-	\includegraphics[width=.9\textwidth]{analyses/scs_launch_trend.pdf}
-	\caption[SCS launches per year]{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
-	\todo{add chipsats?}}
-	\label{fig:i_scs_launched}
-\end{figure*}
-
-%\draft{Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
-%However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
-
-
-
-\FloatBarrier
-
-\begin{landscape}
-		\captionof{table}[Development time of sub-CubeSat missions]{Development time of sub-CubeSat missions (from start of development until Flight Model integration)}
+\begin{table*}[b]
+		\caption[Development time of sub-CubeSat missions]{Development time of sub-CubeSat missions (from start of development until Flight Model integration)}
 		\label{tab:i_otherdevtime}
 		\centering
-		\begin{tabular}{llll@{\hskip 0.5em}ll}
-			\hline
-			Mission Name & Launch Year & Type & Development Dates & & Development Time \\ \hline
+		\begin{tabular}{@{}llll@{\hskip 0.5em}ll@{}}
+			\toprule
+			Mission Name & Launch Year & Type & Development Dates & & Development Time \\ \midrule
 			FossaSat-1 & 2019 & 1P PocketQube & Jul 2018 -- Dec 2019&  \cite{fossasat-1GithubCommits} & 16 months \\
 			SMOG-P & 2019 & 1P PocketQube & Jul 2014 -- Sep 2019 & \cite{SMOG14thHungarian2021} & 62 months \\
 			% Integration in Glasgow, Sept. 9 2019 (http://152.66.80.46/smog1/satellites.pdf)
@@ -438,11 +410,38 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore 
 			% source: kickstarter updates page
 			% Project launch: 2011-10-20
 			% Integration with deployer: 2013-12 https://www.kickstarter.com/projects/zacinaction/kicksat-your-personal-spacecraft-in-space/posts/691950
-			SpinorSat & 2019 & ChipSat & Mar 2018 -- Feb 2019 & \cite{brashearsSpinorSatStep502018} & 10 months \\ \hline
+			SpinorSat & 2019 & ChipSat & Mar 2018 -- Feb 2019 & \cite{brashearsSpinorSatStep502018} & 10 months \\ \bottomrule
 			% source: github, https://github.com/space-technologies-at-california/PCBSat
 			\multicolumn{4}{c}{\todo{This table needs to be updated, improved and with new data}}
 		\end{tabular}
-\end{landscape}
+\end{table*}
+
+\newthought{Thus,} the \textbf{main hypothesis} of this research project is that a \textbf{tailored \acl{SYE} methodology} specifically targeting \acf{SCS} can take advantage of their unique characteristics to reduce time-to-orbit and cost, while maintaining an acceptable level of reliability and functionality. This methodology can also serve as a guideline for new missions, allowing first-time developers to establish a starting point for new projects, drawing on lessons learned from previous missions. The methodology should cover the aspects of \acl{SYE} that affect high-level planning and design, as well as daily work, being concrete enough to not require ``reinventing the wheel'', but flexible enough to be tailored for different pocket-sized projects. In practical terms, it should cover the entire development lifecycle of a spacecraft, from design and technical management to implementation and validation.
+
+In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore the concept of \acl{SYE}, showing how it can be partitioned into different fields, and investigating its utility and current approaches. \Cref{sec:INTRODUCTION_research_gaps} will explore the gaps in \acl{SYE} research in the field of \acf{SCS}, and analyse the shortcomings of current approaches. Finally, \Cref{sec:INTRODUCTION_research_questions,sec:INTRODUCTION_structure} will explain how I plan to address these shortcomings, by gathering data to synthesise and verify a bespoke \acs{SYE} methodology for pocket-sized systems.
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram.pdf}
+	\caption[Histogram of satellite wet mass, for satellites flying as of 2023]{Histogram of satellite wet mass, for satellites flying as of 2023 \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram_no_starlink.pdf}
+	\caption[Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink)]{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+\end{figure}
+
+\begin{figure*}[h]
+	\includegraphics[width=.9\textwidth]{analyses/scs_launch_trend.pdf}
+	\caption[SCS launches per year]{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
+	\todo{add chipsats?}}
+	\label{fig:i_scs_launched}
+\end{figure*}
+
+%\draft{Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
+%However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
+
+
+
 
 \section{The Scope and Impact of Systems Engineering}
 \label{sec:INTRODUCTION_defining_systems_engineering}
@@ -1377,7 +1376,7 @@ A number of developments followed the introduction of the \emph{N-Prize}, a comp
 The prizes will be awarded to the first persons or groups to put into orbit around the Earth a satellite with a mass of between 9.99 and 19.99 grams, and to prove that it has completed at least 9 orbits. [...]
 
 The cost of the launch, but not ground facilities, must fall within a budget of £999.99.
-\todo{Citation n-prize website from archive (if it still exists)}
+\autocite{OfficialSiteNPrize2022}
 \end{quote}
 
 \draft{While no satellite managed to successfully fulfil these requirements}, at least 11 teams expressed interest in the competition. 
@@ -1462,7 +1461,7 @@ One of the most famous examples of an application of atto-satellites is the Brea
 \citeauthor{forwardRoundtripInterstellarTravel1984} in \citeyear{forwardRoundtripInterstellarTravel1984} proposed the use of lightsail\footnote{equivalently, laser-sail} spacecraft, calculating different mission designs that can reach Alpha Centauri after \(\sim\)40 years of travel.
 \citeauthor{manchesterStochasticSpaceExploration2011}, on the other hand, proposed using the smaller ChipSat spacecraft for space exploration \autocite{manchesterStochasticSpaceExploration2011}. \todo{Investigate "Starwisp" by Forward} %https://en.wikipedia.org/wiki/Starwisp
 
-The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a \draft{laser} array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, \todo{information about starchip}. As of 2026, while scientific progress has been made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
+The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a \draft{laser} array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, a \qty{15}{\milli\meter}-long carrier for a metre-scale lightsail, fitted with experimental technologies, such as atomic batteries \autocite{wordenBreakthroughPrizes2017}. As of 2026, while scientific progress has been made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
 
 
 
@@ -2002,7 +2001,7 @@ The above conversation already defines a two-tiered requirement hierarchy. Howev
 
 I will define this unit to be a \textbf{``module''}, defined as follows, based on the dictionary definition of the noun \autocite{merriam-websterDefinitionMODULE2026}:
 \begin{definition}[Module]
-	A \textbf{module} is an independently functional part of the total function or structure of a spacecraft. \\%
+	A \textbf{module} is an independently functional part of the total function or structure of a spacecraft that contains no other modules. \\%
 	(Note that this definition is not directly related to the concept of modularity.)
 	\label{def:module}
 \end{definition}
@@ -2108,7 +2107,7 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 \end{table*}
 
 \subparagraph{The Sprint}
-Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{\todo{The difference between \emph{review} and \emph{retrospective} is...}}.
+Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The purpose of the Sprint Review is to assess technical completion and future goals, while the Retrospective is a programmatic assessment of processes and interactions \cite{schwaverDefinitiveGuideScrum2020}}.
 
 The original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
 In industrial environments, iterations can last between 2 to 8 weeks, or even longer \autocite{cooperAgileDevelopmentManufacturing2023}. However, within the context of Scrum combined with \acs{SCS}, 8 weeks will represent a reasonable upper bound for iteration length.
@@ -2373,18 +2372,12 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \FloatBarrier
 \subsection{Project Lifecycle Approach: The Partition-Based Sat-Scrum Model}
 \label{sec:METHODOLOGY_slicebased}
-\todo{\begin{itemize}[itemsep=-2ex]
-		\item Why do we need a different approach? (what are the drawbacks of the previous approach)
-		\item Why did we choose slice-based, what are the concepts from systems theory
-		\item Who has done it before
-		\item What has Kathleen done?
-\end{itemize}}
 
 \citeauthor{iberleAgileGetsPhysical2022} noticed that industrial Agile environments incorporating software and hardware have to deal with confusion and conflicts when the work of different engineering teams has to be intergated \autocite{iberleAgileGetsPhysical2022}. In traditional Scrum, a single work package that can be completed by one person within a Sprint may require additional interfacing functionality to translate to a product feature or function. \citeauthor{iberleAgileGetsPhysical2022} provide an example of three teams (hardware, firmware, cloud software) collaborating on the same product, who however implement different iteration durations and have to deal with an iteration lag when errors need to be fixed in another part of the product. This is exacerbated by the fact that software teams can affort to perform short iterations, while hardware teams have to spend multiples of that time to produce and verify a physical product \autocite{cooperAgileDevelopmentManufacturing2023}.
 
 This criticism of Scrum for systems engineering essentially targets the ``Definition of Done'' and ``Sprint Goal'' aspects, which by default are either expressed in a simple form, or refer to a requirement against the product as a whole. Instead, \citeauthor{iberleAgileGetsPhysical2022} proposes the concept of a \textbf{slice} (\Cref{def:slice}), which describes a single batch of integration/testing that defines a single, typically user-visible, feature. Apart from the features only, a slice also defines a rough testing plan that will be followed after integration is completed. Then, \textbf{every iteration/Sprint is defined to cover only a single or more slices}. Developers from the hardware and software disciplines can therefore select the work packages that work towards this common goal.
 
-In Sat-Scrum, a complete iteration de facto involves the entire product. However, building upon the concept of slices, usually it is only parts of the product that need to be itereated on, especially for more complex ``systems of systems''. A slice will usually match only one physical (i.e.\@ structural) or functional part of the entire system. These parts were defined above as \textbf{modules} (\Cref{def:module}). When an iteration is tied to one or more slices, these slices will be, by definition, assigned to one or more physical or functional modules. It can therefore be inferred that each iteration is tied to one or more modules, or that \textbf{during each iteration, only a subset of system modules are altered}.
+In Sat-Scrum, a complete iteration de facto involves the entire product. However, building upon the concept of slices, usually it is only parts of the product that need to be iterated on, especially for more complex ``systems of systems''. A slice will usually match only one physical (i.e.\@ structural) or functional part of the entire system. These parts were defined above as \textbf{modules} (\Cref{def:module}). When an iteration is tied to one or more slices, these slices will be, by definition, assigned to one or more physical or functional modules. It can therefore be inferred that each iteration is tied to one or more modules, or that \textbf{during each iteration, only a subset of system modules are altered}.
 
 A final layer of abstraction has to be added, since, based on my definition, \textbf{a module won't always represent a physically ``buildable'' or ``interfaceable'' part that can be manufactured and verified independently of other modules}. For example, in the case of a ChipSat, the power system can represent a single module, however, as it is part of a \acl{PCB}, it may not be practically manufactured and interfaced independently to the rest of the system. When the iteration is tied to such a module, \textbf{the developers will have to iterate on this module only, but construct and verify the rest of the circuit board as well}.
 
@@ -2406,11 +2399,38 @@ A final layer of abstraction has to be added, since, based on my definition, \te
 	\end{subfigure}%
 	\caption[Example of (a) module, (b) partition, (c) system]{Example of (a) module, (b) partition, (c) system. Renders based on QUBIK/POQUITO \cite{daradimosQUBIK1pPocketQube2024}
 	}
+	\label{fig:m_partition_example}
 \end{figure}
 
-\newthought{Compared to } Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, 
+As a next logical step therefore, one can define a \textbf{partition} as a set of modules that not only outline a \emph{functional} boundary of the system, but also a unit which can be physically manufactured and tested on its own.
+\begin{definition}[Partition]
+	A partition is a set of \hyperlink{def:module}{modules}, whose combination can be manufactured and verified, and represents a useful proportion of the system that can potentially be an iteration target.
+	\label{def:partition}
+\end{definition}
 
+A synonym of partition is a ``configuration'' of subsystems.
 
+An example of the difference between a \emph{module}, \emph{partition} and \emph{system} is shown in \Cref{fig:m_partition_example}, where a module is a single subsystem\emph{In this case, the subsystem is also a distinct physical unit that can be manufactured and tested independently. However, this might not be the case in a ChipSat project, where a subsystem may be part of a \acl{PCB}.}, the system is an entire PocketQube, and the partition is \textbf{a stack of some subsystems}, without side/top walls or mechanisms. In this example, the developers might have decided to work on a partition because:
+\begin{enumerate}[itemsep=-1ex]
+	\item Working on a single subsystem prevents the generation of knowledge about interface compatibility, running fit checks, and practicing the assembly of the spacecraft.
+	\item The can perform rudimentary procurement and design activities for the required interfacing elements, in order to generate minimal prior knowledge about these components.
+	\item Changes or design decisions on the rest of the design depend on the results gained from elements of this partition only.
+	\item They do not want to spend additional time within a single iteration to work on the entire system.
+\end{enumerate}
+
+In CubeSat systems, an example of a well-known commonly defined partition is that of a ``\textbf{FlatSat}''\footnote{Sometimes referred to as an Engineering Test Unit} \autocite{desouzaFlightSoftwareDevelopment2022,nasacubesatlaunchinitiativeCubeSat101Basic2017}, where all subsystems of a satellite are laid out, connected and tested in the same level, before their integration-ready versions are combined in the CubeSat stack.
+The FlatSat method is often supported by harnesses, boards or test jigs that facilitate the interconnection of all subsystems, provide ready-to-use voltage rails, and expose test points for observability. These benefits can often be also attained in an \acs{SCS} environment \autocite{raduDelfiPQFirstPocketqube2018}, especially for larger form factors. However, developers need to consider whether the added effort to create a configuration not present in the flight design is worthwhile; especially for simple designs with few interfaces, the results of a FlatSat might be also \draft{obtainable} from a stacked configuration, or an integrated system build.
+
+In an extreme interpretation of \Cref{def:partition}, a subsystem's \textbf{software} can be considered as a partition, if there is adequate infrastructure to ``manufacture'', execute and test it without the linked hardware (e.g.\@ using an emulator\footnote{Similarly to FlatSat, care has to be taken when creating support for a configuration not present in the final flight model. The development of mocks and emulation support can potentially be a particularly large undertaking if no reusable libraries are integrated.}). Indeed, some projects may want to perform system-wide iterations on software only if necessary, for example for software-heavy projects. 
+
+\newthought{Compared to} system-level Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, \emph{partition-level Sat-Scrum} also addresses an inherent problem with agile methods when applied to complex physical systems: During the first iterations in a project, only a few weeks are allocated towards design efforts. However, in hardware engineering, it is possible that many activities with a minimum baseline of effort need to take place in every iteration, such as design elaboration, analysis/optimisation, \acs{PCB} design/routing, \acs{BOM} consolidation, prototype building, and more. For a system with multiple in-house boards that require these processes, it may be impractical or impossible to complete this design effort within a single iteration, thus requiring either lengthening the iteration, or the use of partition-based Sat-Scrum.
+
+Partition-based iterations are also similar to the V-style or incremental approaches favoured by CubeSat projects, where distinct subsystems are manufactured first, often in parallel, before being integrated into the entire system.
+The main differentiating element of
+a partition-based approach are the recommendation to always iterate on \textbf{a combination of more than one module at a time} in order to encourage interface definition through verification instead of specification. Partition Sat-Scrum also encourages the flexible definition and usage of partitions, which can be done between system-wide iterations when project needs dictate.
+
+The main disadvantage of partition-based Sat-Scrum, compared to iterating strictly system-wide, is that it defers iterating on some parts of the system (and therefore also interfaces) to  later time points, therefore either reducing the total knowledge gained within a fixed duration, or increasing the total development time of a project.
+In extreme cases, developers may be enticed to delay working on parts of the system until the later stages of a project, thus risking that neither enough design nor iteration effort has been dedicated to them. For this reason, it is important to define and maintain a robust work management and planning approach.
 \FloatBarrier
 \subsection{Technical Planning Approaches}
 \label{sec:METHODOLOGY_workpackage}
@@ -2425,7 +2445,7 @@ Almost all spacecraft development teams, even those following ad-hoc methodologi
 	\item How do we record and store the answers to the above questions?
 \end{itemize}
 
-In traditional Scrum, these activities are part of a highly visible backlog that is continuously updated by developers themselves in real-time \autocite{schwaverDefinitiveGuideScrum2020}. This is usually supported by the popularised \textbf{Kanban} methods, whose original concept involved posting features on a physical board where developers could interact with post-it notes, but is now supported by specialised software tools \autocite{kanbanGuide}. To assign estimated effort and priorities to these tasks, \textbf{story point} calculation methods or heuristic scoring models such as RICE (Reach, Impact, Confidence, Effort) are used \todo{[cite]}.
+In traditional Scrum, these activities are part of a highly visible backlog that is continuously updated by developers themselves in real-time \autocite{schwaverDefinitiveGuideScrum2020}. This is usually supported by the popularised \textbf{Kanban} methods, whose original concept involved posting features on a physical board where developers could interact with post-it notes, but is now supported by specialised software tools \autocite{kanbanGuide}. To assign estimated effort and priorities to these tasks, \textbf{story point} calculation methods or heuristic scoring models such as RICE (Reach, Impact, Confidence, Effort) are used \autocite{mcbrideRICESimplePrioritization2018}.
 
 In theory, technical planning supported by software tools can easily answer all of the above posited questions. However, in practice, developers have expressed frustration both in task management processes \autocite{singhExploringLivedExperiences2023} and tools \autocite{hadiCriticalSuccessFactors2021a,johanssonHowCanAtlassian2017,correiadasilvaOptimizingUserExperience2025}. Given that technical planning is an activity that developers need to be informed about and participate daily, it makes sense intuitively that the overhead of any task management process and tool needs to be minimal and the benefit significant, in order to both improve the productivity and comfort of team members.
 
@@ -2433,20 +2453,47 @@ Most technical planning tools that are presently documented belong in either of 
 	\item \textbf{Project management-centric} approaches, involving high-level planning approaches (such as Gantt charts) and supported by tools such as Microsoft Project; and
 	\item \textbf{Software development-centric} approaches, which are tailored to the software engineering discipline, involve low-level task planning, and are linked with software-specific features, such as code reviews and Continuous Integration.
 \end{enumerate}
-When a team chooses to use an approach not covered by available (and \draft{approachable}) tools, they may decide to use a \textbf{spreadsheet} or \textbf{\acf{ERP}} solution, after customising it to the specific data model that has been \draft{decided}.
+When a team chooses to use an approach not covered by available (and \draft{approachable}) tools, they may decide to use a \textbf{spreadsheet} or \textbf{\acf{ERP}} solution, after customising it to the specific data model that has been \draft{decided}. Alternatively, practical paper-based approaches can also be used, such as the original Kanban \todo{[cite]}, provided that the team is co-located\footnote{Complete co-location of teams is highly unlikely given the increasing popularity and benefits of home-working. \todo{[cite]} Even if a team needs to physically work on hardware devices and be present on location, usually different rooms are used for meetings, design, manufacturing, integration and testing, making a post-it-based approach impractical.\label{txt:colocation}}.
 
 \newthought{Within the context of \acs{SCS}}, the following questions then need to be answered:\begin{enumerate}[itemsep=-2ex]
 	\item Who should be responsible for answering the questions in the beginning of this section, and how should they be answered?
 	\item What is a reference data model that can represent work packages in the \acs{SCS} methodology?
-	\item What are the characteristics of a software tool that can effecively support the \acs{SCS} technical planning process?
+	\todo{\item What are the characteristics of a software tool that can effectively support the \acs{SCS} technical planning process?}
 \end{enumerate}
 
-\todo{Some blabla here that answers the previous  questions}
+The Scrum method attempts to answer the first question of \emph{Who} and \emph{How} to manage work packages, by employing the concept of \textbf{self-organising teams} \autocite{schwaverDefinitiveGuideScrum2020}. Tasks are elaborated in meetings which occur daily and before each iteration. Work packages are elaborated through a collaboration between the developers and the product owner. Scrum also defines task management aspects that permeate the previous processes, including the fact that developers need to hold each other accountable.
+
+A potential data model for task management would have to support the typical attributes of work packages defined typically in agile environments, such as:
+\begin{itemize}[itemsep=-2ex]
+	\item Story points
+	\item Priority
+	\item Current status
+	\item Target iteration
+	\item Assigned team member(s)\footnote{Potentially more than 1 for strictly collaborative tasks}
+\end{itemize}
+with attributes typically found in project management models, such as:
+\begin{itemize}[itemsep=-2ex]
+	\item Task dependencies
+	\item Resource dependencies (facilities, manufacturing, external suppliers)
+	\item Blocking tasks
+	\item Linked requirement
+\end{itemize}
+along with attributes specific to the \acs{SCS} methodology:
+\begin{itemize}
+	\item Linked slice
+	\item Linked module
+	\item Linked partition \todo{Anything more?}
+\end{itemize}
+
+Some of these attributes are already implemented in some form across available task tracking software. For example, \emph{Jira} defines the concepts of an \textbf{\emph{Epic}} and a \textbf{\emph{Component}}, which can be linked to \emph{slices} and \emph{modules} respectively. Alternatively, I provide a sample data model for technical planning in \Cref{fig:m_uml_planning_draft}.
 
 \begin{figure}[p]
 	\includegraphics{drafts/WPDataModel.pdf}
 	\caption{\draft{UML} data model for a representation of technical planning in the \acs{SCS} methodology.}
+	\label{fig:m_uml_planning_draft}
 \end{figure}
+
+A procedural trade-off that has to be kept in mind  is that the more attributes are added to a task/work tracking model, the more the cognitive load of its maintainers increases, leading to either an undesirable increase in overhead, or more distractions from actual development. In most cases, modern software tools should be able to minimise this administrative overhead by offering convenience or automation functions to allow mass inspection, creation and modification of these artifacts.
 
 \begin{invisible}
 \begin{table*}[h]
@@ -2510,9 +2557,11 @@ When a team chooses to use an approach not covered by available (and \draft{appr
 	\caption{\todo{This whole table needs to be rewritten!!!}}
 	\label{tab:m_work_package_tool_requirements}
 \end{table*}
-\end{invisible}
 
-To the author's knowledge, despite the plethora of software tools currently available, none is able to completely support the requirements defined in \Cref{tab:m_work_package_tool_requirements}.
+\todo{To the author's knowledge, despite the plethora of software tools currently available, none is able to completely support the requirements defined in \Cref{tab:m_work_package_tool_requirements}.}
+
+
+\end{invisible}
 
 \FloatBarrier
 \subsection{Data Management: A Model-Based Approach}
@@ -2537,7 +2586,7 @@ In the context of \ac{SCS}, ``Engineering Data'' can specifically mean:
 
 It is important to make a distinction between \ac{EDM} and the term ``documentation'', \todo{so let's make it. What we call “Engineering Data” may be combined with project documentation, or be stored in an independent format, in a structured manner or a domain-specific model.}
 
-As Engineering Data is most likely stored and handled in a digital format\footnote{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management \todo{cite kanban/scrum}, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data (\Cref{sec:scope}), making their digital representation essentially a requirement.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools.
+As Engineering Data is most likely stored and handled in a digital format\footnote{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management \todo{cite kanban/scrum}, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data (\Cref{sec:scope}), making their digital representation essentially a requirement. Also see \Cpageref{txt:colocation}.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools.
 
 In general, the success of an \ac{EDM} method does not only depend on the short and long-term correctness of the available data, but should also be focused on minimising the additional \ac{SYE} overhead.
 A quantitative model for the evaluation of documentation effectiveness was proposed by \citeauthor{amblerStrategiesAgileSoftware2008} \autocite{amblerStrategiesAgileSoftware2008} as follows:
@@ -2545,7 +2594,7 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 	\text{Potential value} = \text{Produced value} \cdot C \cdot R \cdot U \cdot F \cdot T
 \]%
 \marginnote{where:
-\begin{itemize}%[itemsep=-1ex]
+\begin{itemize}[itemsep=-0.5ex]
 	\item Produced value is guesstimated by the producers of the artifact.
 	\item \(C\) is the percentage of the artifact that is currently “correct”.
 	\item \(R\) = The chance that the artifact will be read by the intended audience.
@@ -2576,8 +2625,8 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 		& \textbf{Informal} & \textbf{Formal} & \textbf{Informal} & \textbf{Formal} \\ \midrule
 		\textbf{Completeness} & \lowbad  & \highgood  & \depends  & \highgood  \\
 		\textbf{Efficiency} & \highgood & \lowbad  & \highgood & \lowbad \\
-		\textbf{Flexibility} & \highgood & \highgood  & \lowbad  & \highgood  \\
-		\textbf{Accessibility} & \highgood & \lowbad  & \depends  & \lowbad  \\
+		\textbf{Flexibility} & \depends & \highgood  & \lowbad  & \highgood  \\
+		\textbf{Accessibility} & \depends & \lowbad  & \depends  & \lowbad  \\
 		\textbf{Maintainability} &  \highgood & \lowbad  & \depends & \lowbad \\
 		\bottomrule
 	\end{tabular}
@@ -2603,7 +2652,15 @@ The combination of human language with rich text capabilities (e.g.~images, tabl
 		\item \emph{efficiency}, as additions and modifications require tampering with entire documents.
 \end{enumerate*}}
 
-The shortcomings of document-based specification approaches led to the adoption of model-based approaches, most notably SysML. \todo{blablabla capella MBSE status-quo etc}
+The shortcomings of document-based specification approaches (\Cref{tab:documentation}) led to the adoption of model-based approaches, such as SysML. While \ac{MBSE} is not always used to represent the same data as text-based documentation, there is a significant overlap between the two, in terms of the definition of the system, its functions, and its interfaces\footnote{This is also where most \acs{MBSE} documentation focuses, along with performance information, decision justifications, and test results.}.
+
+\citeauthor{hendersonValueBenefitsModelbased2021} have performed a literature review of 360 published works citing benefits of \ac{MBSE}, but concluded that there is insufficient evidence to definitively support these claims \autocite{hendersonValueBenefitsModelbased2021}. The authors also found that there is no consensus on the predominant benefits of \ac{MBSE}, if any.
+\citeauthor{campoModelbasedSystemsEngineering2023} also investigated the perceived value of \ac{MBSE} from 60 academic sources, and found the counter-intuitive result that \textbf{different authors perceive the same project metrics as having been both worsened and improved by \acs{MBSE}}, with \emph{time, cost, consistency} and \emph{manage-complexity} listed as the overlapping benefits and drawbacks amongst the top 10 \autocite{campoModelbasedSystemsEngineering2023}.
+
+While there is no systematic evidence linking the benefits of \acs{MBSE} to specific project or team characteristics, \citeauthor{campoModelbasedSystemsEngineering2023} found that the drawbacks of \acs{MBSE} can be linked to a lack of training or familiarity with the used tools. Regarding development time, they note that ``due to the significant time needed for building  a model of the system, implementation of MBSE on short-term projects  may not yield much, if any, return on investment.'' \cite{campoModelbasedSystemsEngineering2023}
+This matches the expectation of a ``Systems Engineering sweet spot'', as explored in \Cref{sec:INTRODUCTION_defining_systems_engineering}.
+
+While the use of a formal model might prove prohibitive for systems such as \acl{SCS}, an informal model-based approach has the potential to provide some of the perceived benefits of \acs{MBSE}, while reducing the overhead required to maintain such a model. As an example, I provide an opinionated list of requirements (\Cref{tab:m_edm_requirements}) and a graphical mockup (\Cref{fig:m_edm_mockup}) for such a tool.
 
 \begin{table*}[h]
 	\footnotesize
@@ -2650,10 +2707,8 @@ The shortcomings of document-based specification approaches led to the adoption 
 		\\
 		\textbf{EDM-060} & The tool shall be extensible by code.
 		&   
-		It is difficult to find a middle ground between too \emph{few} features and too \emph{many}. 
-		
-		\todo{blablabla}
-		
+		It is difficult to find a middle ground between too \emph{few} features and too \emph{many}, with platforms either offering too limited flexibility/modularity, an opinionated operation, or 
+				
 	%	  Informal \acs{MBSE} platforms often have limited flexibility/modularity as a result of \todo{having} an opinionated layout or limited feature set. On the other hand, formal \acs{MBSE} platforms provide a much larger \todo{margin of creativity/blanker slate}.  This expects users to implement the structure of their model themselves, and format it as they see fit.
 		
 	%	As an example, an informal \acs{MBSE} platform may already have a \emph{position} parameter defined for components, which includes 3 integers (for each axis) and can be state dependent (e.g.~stowed/deployed). In a formal \acs{MBSE} platform, the use will have to create the position parameter and associate it with a product, including the appropriate representation for each axis and state. On the other hand, an informal \acs{MBSE} platform may have no way to attach an interface link or an image file to a component.
@@ -2683,7 +2738,8 @@ The shortcomings of document-based specification approaches led to the adoption 
 		
 		\\ \bottomrule
 	\end{tabularx}
-	\caption[Example requirements for an EDM tool]{Example requirements for an \ac{EDM} tool \todo{update, rewrite, cleanup}}
+	\caption[Example requirements for an EDM tool]{Example requirements for an \ac{EDM} tool}
+	\label{tab:m_edm_requirements}
 \end{table*}
 
 
@@ -2693,18 +2749,10 @@ The shortcomings of document-based specification approaches led to the adoption 
 
 \begin{figure*}[h]
 	\caption[Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter]{Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
+	\label{fig:m_edm_mockup}
 	\includegraphics{graphics/spardata_moqup}
 \end{figure*}
 
-
-\begin{invisible}
-
-\FloatBarrier
-\subsection{Tooling Requirements and Review}
-\label{sec:METHODOLOGY_tooling_requirements}
-\draft{Experience from past missions has shown that tools will not be used unless they are actually good.}
-
-\end{invisible}
 
 \FloatBarrier
 \section{Hardware Development Methodology}
@@ -2734,7 +2782,7 @@ defines a ``design solution definition process [that translates] high-level requ
 From a formal point of view, a Design Space can be defined as the set of all possible design solutions that satisfy a set of requirements; then, the process of Design Space Exploration selects a specific design solution that seems the most ``optimal'' based on project-specific criteria (such as cost, performance, or value). Different methods have been proposed since the mid-20\textsuperscript{th} century both to evaluate different design solutions, and to achieve the highest possible coverage of the design space during the exploration process  \autocite{griesMethodsEvaluatingCovering2004}.
 
 CubeSat projects have traditionally followed less formal approaches to design \todo{[cite]}. The \acs{NASA} \acs{SYE} handbook defines the following steps to defining a design solution \autocite[66]{sheaNASASystemsEngineering2020}:\footnote{Presented here simplified}
-\begin{enumerate}[itemsep=-2ex]
+\begin{enumerate}[itemsep=-3ex]
 	\item Define alternative design solutions
 	\item Analyse each design solution
 	\item Select the best alternative
@@ -2766,15 +2814,13 @@ Examples of design solution evaluation criteria can include:\begin{itemize}
 	\item Any combination of the above
 	\end{itemize}
 }
-Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative or qualitative in nature \todo{...}
-
-While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software. \todo{So what?}
+Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative (such as analyses, measurements, experiments, heuristic scoring, or data re-use) or qualitative (such as consultations, reviews, comparisons, or \acs{SWOT} analyses) in nature. \todo{...} While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software. \todo{So what?}
 
 \paragraph[Concurrent Design]{\acf{CDE}}
 Traditionally, the initial design phases of a space system are performed using a Concurrent Engineering or \emph{\acf{CDE}} method, where all subsystem experts are gathered in a single location to iterate over the design elements of the system. These iterations are aided by automated simplified analyses, usually performed with simple spreadsheet software and mission analysis tools \autocite{bandecchiConcurrentEngineeringApplied1999}.
 The \acs{CDE} method is supported by specialised tools that allow almost instant exchange of parameters and data between experts,\footnote{This software typically has features that assist with the design solution defininition. For example, different \emph{options} of parameter sets can be created, and then \emph{evaluated} based on algorithmically calculated metrics, answering the two main questions of design definition.} along with technical support in a physical location that facilitates screen sharing and online collaboration \autocite{ranaVisionNextGenConcurrent2021}. This exchange can also take place through online meetings \autocite{retselisAdaptationAcubeSATNanosatellite2022}, although \citeauthor{bandecchiConcurrentEngineeringApplied1999} have noted the importance of organic interactions to influence the design rather than cooperation during strictly scheduled meetings only \cite{bandecchiConcurrentEngineeringApplied1999}. \todo{I don't know if this citation is the one where bandecchi mentions this, or if it has been written somewhere.} The \acs{CDE} method is often viewed as an alternative to a centralised \acs{SYE} authority, which decides on the high-level design and subsystem requirements, which then flow down to individual vendors.
 
-Within the context of the \acs{SCS} methodology, the design solution definition process has to be repeated in the beginning of every iteration (\Cref{fig:m_sat_scrum_iteration}). On the other hand, the small teams dedicated to \acs{SCS} are usually co-located or are able to communicate on a frequent bases. These characteristics make it possible to \textbf{implement \acs{CDE} during every iteration of the project}. This idea makes it possible to evaluate the different dependencies between disciplines and provide instant feedback on design changes.
+Within the context of the \acs{SCS} methodology, the design solution definition process has to be repeated in the beginning of every iteration (\Cref{fig:m_sat_scrum_iteration}). On the other hand, the small teams dedicated to \acs{SCS} are usually co-located or are able to communicate on a frequent basis. These characteristics make it possible to \textbf{implement \acs{CDE} during every iteration of the project}. This idea makes it possible to evaluate the different dependencies between disciplines and provide instant feedback on design changes.
 
 \begin{margindefinition}[Timebox]
 	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
@@ -2803,11 +2849,10 @@ Therefore, the ideal decision on time spent for early design will vary based on 
 \begin{invisible}
 \subparagraph{Mathematical Model for design effort}
 
-\draft{[TODO]}
 \end{invisible}
 
 \begin{invisible}
-The drawbacks of incorrect allocation of design time early or late in the project are usually represent in terms of time and cost \begin{enumerate*}
+The drawbacks of incorrect allocation of design time early or late in the project ed in terms of time and cost overruns \begin{enumerate*}
 	\item due to unnecessary design effort, or
 	\item due to reworks because of errors uncovered late.
 \end{enumerate*}
@@ -2916,6 +2961,11 @@ Considering the above assumptions, the total cost of the design--verification--r
 \begin{equation}
 	C = C_{d_0} + E_{\mathrm{rework}} C_d + \left( E_{\mathrm{rework}} + 1 \right) \left( C_m + C_v \right)
 \end{equation}
+and the systems engineering ``sweet spot'' can be found by tuning a project's engineering parameters to find the minimum of \( C \).
+
+To provide an example, I will consider that the manufacturing costs \( C_m \) and verification costs \( C_v \) of a sample project are fixed.
+The probabilities of rework \( p_1,p_2 \) should be decreasing functions of the linked design costs \( C_{d_0}, C_d \) respectively. This function is generally not known. Different models have been proposed to link between the two and external confounding factors \autocite{leImpactsConcurrencyIteration2012,tanRelativeImpactEarly2017}.
+
 
 \todo{Perform trade-off, make guidelines}
 
@@ -3354,7 +3404,7 @@ A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}
 \label{fig:m_software_testing_ds1}
 \end{marginfigure}
 
-In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \todo{[cite] - note: venturini notes this}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration\todo{ [ref section]}. In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
+In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \autocite{venturiniImprovingMissionSuccess2017}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration (\Cref{sec:METHODOLOGY_satscrum}). In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
 \begin{enumerate}
 	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality \autocite{chengWhatImprovesDeveloper2022, kemererImpactDesignCode2009}. Code inspection can also involve automated static analysis through automated tools.
 	
@@ -3368,7 +3418,7 @@ In typical CubeSat systems engineering documentation, developers are recommended
 
 	As such, in practice, developers create a limited number of test-cases that aim to evaluate the most likely and representative states of the software, with the goal of increasing statement and branch coverage of the source code. Additional techniques used to cover potentially invalid states include edge-case testing and regression testing. For complex software, test-cases evaluate code modules at low (unit) or high (integration) levels \autocite{myersArtSoftwareTesting2012}.
 
-	Nevertheless, various approaches are often used in academia and industry to increase software reliability through different methods of formal verification, with examples being Ada's SPARK \todo{[cite]}, Frama-C for C \autocite{kirchnerFramaCSoftwareAnalysis2015} and \draft{Prusti} for Rust \autocite{astrauskasLeveragingRustTypes2019}. However, the complexity and effort required with applying these methods prevents their direct application to entire space systems \autocite{jacklinSurveyVerificationValidation2015}.
+	Nevertheless, various approaches are often used in academia and industry to increase software reliability through different methods of formal verification, with examples being Ada's SPARK \todo{[cite]}, Frama-C for C \autocite{kirchnerFramaCSoftwareAnalysis2015} and Prusti for Rust \autocite{astrauskasLeveragingRustTypes2019}. However, the complexity and effort required with applying these methods prevents their direct application to entire space systems \autocite{jacklinSurveyVerificationValidation2015}.
 
 	\item \textbf{User Testing}: Usually referred to as ``usability testing'', this involves the actual use and interaction with software by its intended users. Even though \acs{SCS} software systems lack a user interface\footnote{Although one could still evaluate user-facing properties of the software, such as error message fidelity, response time, degree of available functionality etc.}, user testing expresses a need to perform a manual evaluation of the software running on actual hardware after every iteration, to make sure that the \draft{integration with untested systems is valid.}
 \end{enumerate}
@@ -3421,7 +3471,7 @@ The selected frameworks are: \todo{[cite]}
 For this research, I selected 4 frameworks written in different languages (C++, Rust, Ada and Python) that implement a similar set of functionality representing the needs of typical \acs{OBC} software (\Cref{tab:m_software_requirements}). In order to extract information about the actual number and cause of defects in each framework, I will compile and execute the \acs{OBC} software, and then perform automated testing using \textbf{fuzzing}. For each identified major defect, I will evaluate the influence of programming language choice, and \draft{evaluate} whether a different programming language would prevent the introduction of the fault, or if another quality assurance measure would have prevented it.
 
 \begin{table*}[h]
-	\caption{Frameworks under test}
+	\caption{Frameworks under test \todo{fix}}
 	\label{tab:m_software_fuzz_frameworks}
 	\renewcommand{\arraystretch}{1.1}
 	\begin{tabularx}{\textwidth}{@{}p{3cm}XXXX@{}}
@@ -3477,7 +3527,7 @@ More specifically, the execution and testing plan is elaborated into the followi
 		\item Running the \draft{\emph{havoc} and \emph{Grimoire} mutators} in AFL to generate new permutations of the inputs,
 		\item Feeding these inputs to the framework under test via the emulated communication interface in Qemu,
 		\item Evaluating whether the software is in a good state, by checking for processor exceptions, Qemu exceptions, language panics, and by running a unit test (\acs{RFT}) suite, and
-		\item Letting the fuzzer run for \draft{24 hours} to generate a \draft{sizeable} dataset.
+		\item Letting the fuzzer run for 6 hours to generate a substantial dataset.
 	\end{enumerate}
 \end{itemize}
 
@@ -3661,7 +3711,7 @@ In CubeSats and PocketQubes, this interface is typically provided by a friction-
 	\item \textbf{\acf{FFC} connectors and cables} that increase the density of connections, but usually require dedicated breakout boards to interface with \acs{COTS} \acs{EGSE}.
 	\item \textbf{\acs{USB} connectors}, usually compliant to the USB-C specification, take advantage of the miniaturisation and power delivery capabilities of this common standard and allow directly interfacing a computer with the spacecraft. However, they require compatibility with the \acs{MCU}, additional power management hardware and a firmware bootloader. This approach is used by PyCubed-Mini \todo{[cite]}.
 	\item \textbf{Other miniaturised connectors} that provide a high density, including industrial and commercial components. For example, the Monarch ChipSat used a 19-pin Micro-HDMI connector with a non-compliant pinout (\Cref{subfig:m_connectors_microhdmi}) \autocite{adamsRSelectedSpacecraft2019}.
-	\item \textbf{Unpopulated vias, holes (``test points'') or pads} that can be accessed by probes, by soldering temporary connectors, or by using spring-loaded test pins. This approach is used by the Sprite (\Cref{subfig:m_connectors_pth}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015} and SpinorSat \autocite{brashearsSpinorSatStep502018} ChipSats. To further reduce space, these nodes can be placed on \acs{PCB} edges. This kind of breakout pins were also envisioned by \citeauthor{adamsRSelectedSpacecraft2019}' StarChip concept \autocite{adamsRSelectedSpacecraft2019}. \todo{[check]}
+	\item \textbf{Unpopulated vias, holes (``test points'') or pads} that can be accessed by probes, by soldering temporary connectors, or by using spring-loaded test pins. This approach is used by the Sprite (\Cref{subfig:m_connectors_pth}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015} and SpinorSat \autocite{brashearsSpinorSatStep502018} ChipSats. To further reduce space, these nodes can be placed on \acs{PCB} edges. This kind of breakout pins were also envisioned by the Breakthrough Initiatives StarChip concept \autocite{wordenBreakthroughPrizes2017}. 
 	\item A \textbf{snap-off development board that encloses the ChipSat} and provides development-only interfaces. This is also a concept used by the Sprite ChipSats (\Cref{subfig:m_connectors_detachable}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. The disadvantage is that, after the development board is separated, it is harder to reprogram the spacecraft (e.g.\space after integration).
 	\item \textbf{\acf{OTA} programming through a wireless network}. This network can be the nominal \acs{RF} link used by the satellite, or a purpose-specific link, if supported by the microcontroller, such as Wi-Fi or Bluetooth. % NFC?
 	\item \textbf{Programming through another wireless technology}, such as infrared/visible light or sound. This requires dedicated hardware. This concept has been explored for use in Smart Dust devices through active or passive optical transmitters \autocite{warnekeSmartDustCommunicating2001}.
@@ -3697,13 +3747,14 @@ It is interesting to note the concept presented by \citeauthor{warnekeSmartDustC
 		\centering
 		% Image source: https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg
 		\includegraphics[height=3cm]{media/external/esp32}
-		\caption[Plated Through-Holes on board edge]{Plated Through-Holes on board edge\footnotemark}
+		\caption[Plated Through-Holes on board edge]{Plated Through-Holes on board edge\footnotesize\footnotemark}
 		\label{subfig:m_connectors_pthedge}
 	\end{subfigure}\hfill
 	\begin{subfigure}[t]{0.27\textwidth}
+		% Image source: https://www.unoosa.org/documents/pdf/hlf/HLF2017/presentations/Day2/Session_4/Presentation7.pdf
 		\centering
-		\includegraphics[height=3cm]{example-image-a}
-		\caption{Die-level test points (\emph{StarChip}) \todo{[todo]}}
+		\includegraphics[height=3cm]{drafts/starchip.png}
+		\caption{Die-level test points (\emph{StarChip}) \cite{wordenBreakthroughPrizes2017}}
 		\label{subfig:m_connectors_die}
 	\end{subfigure}\hfill
 %	\begin{subfigure}[t]{0.27\textwidth}
@@ -3819,6 +3870,8 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 
 For software, developers have to choose between proprietary or open-source tools, which can be hosted on-premises or in the cloud.
 Recent discourse has identified vendor lock-in as a major risk in long-lasting projects \autocite{lundellPerceivedActualLockin2021}, with additional concerns over the control and security of user data. Anecdotal reports suggest that educational or non-profit discounts may not be perpetually honoured \autocite{kalamSlackExtortingUs2025,elodidthatMaxonStudentLicenses2024}. The European Commission has identified the reliance on external technology suppliers as a ``strategic liability'' and ``supply chain risk'', posing open-source hardware and software as an ideal solution \autocite{europeancommissionCommissionOpensCall2026,pageBrusselsPlotsOpen2026}.
+
+An important consideration is that of \textbf{versioning} software data. The word ``versioning'' encapsulates the need for data to be archivable (with the ability to peek and restore history), traceable (with the ability to identify why/by whom a change was made), and shareable across team members. The use of this terms originates from software Version Control Systems used for collaboration on code. Software utilities sometimes offer these features out-of-the-box. Alternatively, off-the-shelf versioning software can be used on raw data \autocite{broschIntroductionModelVersioning2012}.
 
 Finally, with the emergence of highly-automated ``vibe coding'' as of 2026, where software generation can be performed in large volumes by \acsp{LLM}, rapid changes in the systems engineering software ecosystem are expected to be seen in the short-term. Most notably, \acsp{LLM} can potentially encourage the development of in-house tools, tailored for each mission, and progressively adapted to an organisation's needs \autocite{liscioRIPLowCode2026}.
 
@@ -4189,26 +4242,26 @@ The main constraint that restricted the selection of possible missions and class
 we hosted brainstorming sessions to decide on a mission concept, based on the criteria of complexity, cost, development time, novelty, risk, available competences, and strategy alignment.
 
 \begin{table*}[]
-	\caption{ChipSat-1 initial mission requirements \todo{todo}}
+	\caption{ChipSat-1 initial mission requirements}
 	\begin{tabularx}{\linewidth}{@{}llX@{}}
 		\toprule
 		& Source  & Requirement                                                                            \\ \midrule
-		1 & Host    & ChipSat-1 should cover a maximum area of \qtyproduct{5 x 5 x 1}{\centi\meter}          \\
-		2 & Host    & ChipSat-1 should weigh at most \qty{50}{\gram}                                         \\
-		3 & Host    & ChipSat-1 shall comply to an agreed-upon electrical inhibition mechanism               \\
-		4 & Host    & ChipSat-1 shall conform to an agreed-upon mechanical interface                         \\
-		5 & Host    & ChipSat-1 should be compatible with a \qtyrange{450}{550}{\kilo\meter} \acs{SSO} orbit \\
-		6 & Host    & ChipSat-1 shall be electrically independent of its host                                \\
-		7 & Mission & ChipSat-1 shall demonstrate an inter-satellite communication technology            \\
-		8 & Mission & ChipSat-1 should demonstrate free-space Visible Light Communication in orbit				\\
-		9 & Mission & ChipSat-1 shall validate its operations by transmitting data to the ground             \\
-		10 & Mission & ChipSat-1 should be compatible with the SatNOGS network             \\
-		11 & Mission & ChipSat-1 should survive for at least 1 year in orbit             \\
-		12 & Mission & ChipSat-1 can generate and transmit environmental data from temperature, light, radiation, vibration, cameras, and/or magnetic field sensors \\
-		13 & Mission & ChipSat-1 should not rely on earth-pointing \\
-		14 & System  & ChipSat-1 shall generate on-board energy using solar radiation             \\
-		15 & System & ChipSat-1 should be operational during eclipse             \\
-		16 & System & ChipSat-1 should be separated into one primary and more, electrically independent, secondaries \\
+		1 & Host    & ChipSat-1 should cover a maximum area of \qtyproduct{5 x 5 x 1}{\centi\meter}.          \\
+		2 & Host    & ChipSat-1 should weigh at most \qty{50}{\gram}.                                         \\
+		3 & Host    & ChipSat-1 shall comply to an agreed-upon electrical inhibition mechanism.               \\
+		4 & Host    & ChipSat-1 shall conform to an agreed-upon mechanical interface.                         \\
+		5 & Host    & ChipSat-1 should be compatible with a \qtyrange{450}{550}{\kilo\meter} \acs{SSO} orbit. \\
+		6 & Host    & ChipSat-1 shall be electrically independent of its host.                                \\
+		7 & Mission & ChipSat-1 shall demonstrate an inter-satellite communication technology.            \\
+		8 & Mission & ChipSat-1 should demonstrate free-space Visible Light Communication in orbit.				\\
+		9 & Mission & ChipSat-1 shall validate its operations by transmitting data to the ground.             \\
+		10 & Mission & ChipSat-1 should be compatible with the SatNOGS network.             \\
+		11 & Mission & ChipSat-1 should survive for at least 1 year in orbit.             \\
+		12 & Mission & ChipSat-1 can generate and transmit environmental data from temperature, light, radiation, vibration, cameras, and/or magnetic field sensors. \\
+		13 & Mission & ChipSat-1 should not rely on earth-pointing. \\
+		14 & System  & ChipSat-1 shall generate on-board energy using solar radiation.             \\
+		15 & System & ChipSat-1 should be operational during eclipse.             \\
+		16 & System & ChipSat-1 should be separated into one primary and more, electrically independent, secondaries. \\
 		
 		\bottomrule
 	\end{tabularx}
@@ -4242,6 +4295,7 @@ For ChipSat-1, the available space allowed us to implement two ``secondary'' par
 
 The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \draft{what} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
 
+\begin{invisible}
 \begin{margintable}
 	\caption{ChipSat-1 \acl{BOM} \todo{Fill table}}
 	\begin{tabular}{@{}lr@{}}
@@ -4251,6 +4305,7 @@ The main components comprising the payload are red \acs{COTS} \ac{LED} emitters 
 		\bottomrule
 	\end{tabular}
 \end{margintable}
+\end{invisible}
 
 Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK}) to transmit bytes, each bit corresponding to one symbol, with Manchester code applied\footnote{\emph{Manchester code} describes a pattern where one bit is encoded as low, then high, or high, then low. This guarantees that every symbol will have at least one bit transition. While this code reduces bit rate to half, it \begin{enumerate*}
 		\item guarantees that no \ac{DC} component remains in the output signal, allowing easy high pass filtering to reduce the influence of ambient light (mainly sunlight);
@@ -4316,10 +4371,13 @@ The \ac{MCU} is responsible for handling spacecraft status, sensor inputs and da
 The resulting block diagram can be seen in \Cref{fig:c_chipsat_block}.
 
 \paragraph{Power Generation}
+
+\begin{invisible}
 \begin{marginfigure}
 	\todo{todo}
 	\caption{ChipSat-1's solar panels \todo{blablabla dimensions coverage}}
 \end{marginfigure}
+\end{invisible}
 
 While an unconventional system, such as a ChipSat, can attract the application of unconventional technologies for power generation, such as primary batteries or thermoelectric sources \autocite{SMAD}, we followed an approach similar to past ChipSats, by relying on fixed miniaturised solar cells.
 
@@ -4683,7 +4741,7 @@ The AI4Space mission was developed in the University of Luxembourg in the form o
 
 \subsection{Mission Description}
 
-\begin{table*}[]
+\begin{table*}[h]
 	% Source: AI4SpaceLeanProjectPlanAndControl - Copy
 	\caption{AI4Space mission requirements}
 	\begin{tabularx}{\linewidth}{@{}llX@{}}
@@ -6077,9 +6135,11 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \begin{invisible}
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
+\begin{fullwidth}
 \todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal} \draft{[TODO]}
 
-\includegraphics{CheatSheet.pdf}
+\fbox{\includegraphics{CheatSheet.pdf}}
+\end{fullwidth}
 
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
@@ -6216,9 +6276,10 @@ The following table lists the participation and contributions of team members to
 	\toprule
 	\textbf{Name} & \textbf{ChipSat-1} & \textbf{AI4Space} & \textbf{POQUITO} & \textbf{ChiPySat} \\ \midrule
 	\textbf{K.~Kanavouras} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} & \textbf{\color{Systems}Systems Engineer} & \textbf{\color{Systems}Systems \& Software Engineer} \\ 
+	\rowcolors{2}{white}{gray!5}
 %	A.~F.~Bühler &  &  &  &  \\
 	A.~Herasimenka &  &  & \textcolor{AIV}{AIV Engineer} &  \\
-	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
+	A.~M.~Hein & \textcolor{ProductOwner}{Product Owner}, \textcolor{Manager}{Project Manager} & \textcolor{ProductOwner}{Product Owner} & \textcolor{ProductOwner}{Product Owner} &  \\
 %	A.~P.~Du &  &  &  &  \\
 	A.~Rathinam &  & \textcolor{Payload}{Payload Software Engineer} &  &  \\
 	C.~B.~Rosete & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  & \textcolor{Traj}{Flight Dynamics Engineer}, \textcolor{AIV}{AIV Engineer} &  \\

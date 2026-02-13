@@ -288,47 +288,51 @@ Hello, just some text here, how y'all doing?
 \def\acl#1{#1}
 
 \begin{table*}[h]
-	\def\arraystretch{1.2}
-	\begin{adjustbox}{max width=1.2\textwidth,center}
-	\rowcolors{2}{gray!10}{gray!25}
-	\begin{tabularx}{1.2\textwidth}{lp{7cm}>{\small}X}
-	\toprule
-	% See https://tex.stackexchange.com/questions/404515/cancel-rowcolors-for-a-specific-cell for a better solution
-	\rowcolor{white}
-	\multicolumn{2}{l}{\textbf{Project}} & Recommendations\\ \midrule
-	1 & What is the project's form factor? & Larger satellites are usually associated with a larger technical size and more required features. \\
-	2 & What is the project's technical size? & Larger-scale projects may require longer iterations and more support infrastructure. \\
-	3 & How many functional requirements are there? & It may not be possible to implement all functions in early system iterations, thus encouraging a partition-based approach for iterations. \\
-	4 & What is the degree of reuse? & Reused components can increase confidence in a system, reducing low-level (but not system-level!) testing requirements and encouraging system-level (rather than partition-level) iterations. \\
-	5 & Have the used technologies been demonstrated before? & When there is high confidence in the technology used, teams can immediately use system-level (rather than partition-level) iterations. \\
-	6 & How much technical risk can be accepted? & High risk acceptance reduces the need for high-fidelity analysis and \acl{BDUF}. \\ \midrule
-	\rowcolor{white}
-	\multicolumn{2}{l}{\textbf{Technical}} &  \\ \midrule
-	7 & Which subsystems need to be implemented? &  \\
-	8 & How much miniaturisation is required? & Highly miniaturised platforms may require spending more time in design optimisation, thus increasing the length of the design phase within iterations. \\
-	9 & How many features are implemented in   hardware vs.\@ software? & Software-heavy projects can benefit highly from automated testing infrastructure. Compare to hardware-heavy projects, where overhead/constraints to automation may be present. \\
-	10 & Does the project include mechanical   elements (e.g.\@ deployable antennas, propulsion)? & Mechanical elements are a common failure point across spacecraft, and may need to be repeatedly tested independently (or as a partition). \\ \midrule
-	\rowcolor{white}
-	\multicolumn{2}{l}{\textbf{Team}} &  \\ \midrule
-	11 & How large is the team? & Large team sizes may increase the difficulty of communication and coordination (notably, task management), requiring \\
-	12 & Is the turnover rate high? & A high turnover rate will require a stricter knowledge transfer plan, which may involve better documentation coverage. \\
-	13 & Does the team have expertise/familiarity   with the used technologies? & High expertise can encourage shorter, system-level iterations. Team expertise may guide the use of less risky software/hardware technologies. \\
-	14 & Does the team have access to technical   support? & --- \\ \midrule
-	\rowcolor{white}
-	\multicolumn{2}{l}{\textbf{Internal Environment}} &  \\ \midrule
-	15 & Does the institution have the required tools/infrastructure available in-house? & In-house manufacturing provides many advantages when the capability and expertise is available internally. \\
-	16 & What is the available cost budget? & --- \\
-	17 & Does the project have adequate time to achieve its goals? & --- \\ \midrule
-	\rowcolor{white}
-	\multicolumn{2}{l}{\textbf{External Environment}} & \\ \midrule
-	18 & Are external stakeholders accessible? & --- \\
-	19 & How volatile are the external   requirements? & Changing requirements will require flexibility towards design changes, which can be managed through shorter iterations. \\
-	20 & How accepting are external stakeholders   of specification changes? & --- \\
-	21 & How many are the formal interface/safety   requirements? & --- \\ \bottomrule
-	\end{tabularx}
-	\end{adjustbox}
-	\caption[SCS methodology tailoring questionnaire]{\acs{SCS} methodology tailoring questionnaire. Based on \cite{xuUsingProcessTailoring2008}.}
-	\end{table*}
+		\caption[Development time of sub-CubeSat missions]{Development time of sub-CubeSat missions (from start of development until Flight Model integration)}
+		\label{tab:i_otherdevtime}
+		\centering
+		\begin{tabular}{@{}llll@{\hskip 0.5em}ll@{}}
+			\toprule
+			Mission Name & Launch Year & Type & Development Dates & & Development Time \\ \midrule
+			FossaSat-1 & 2019 & 1P PocketQube & Jul 2018 -- Dec 2019&  \cite{fossasat-1GithubCommits} & 16 months \\
+			SMOG-P & 2019 & 1P PocketQube & Jul 2014 -- Sep 2019 & \cite{SMOG14thHungarian2021} & 62 months \\
+			% Integration in Glasgow, Sept. 9 2019 (http://152.66.80.46/smog1/satellites.pdf)
+			% SMOG-P (prototype) launch at 06 Dec 2019 (https://www.bme.hu/news/20210318/SMOG_1_the_4th_hungarian_satellite_of_BME_is_ready_for_launch?language=en)
+			% First mention of PocketQube (https://gnd.bme.hu/smog/Publications - http://www.albaorbital.com/meet-the-pocketqube-team-bme-1) July 2014
+			Qubik & 2021 & 1P PocketQube & Sep 2019 -- Oct 2020 & \cite{triantafyllopoulouQUBIKProjectReady2020} & 12 months \\
+			% To find when the project started, usually one can look at Github/Gitlab commits/issue activities. We measure
+			% the point where *development* started, not mission concept/ideation/preliminary design.
+			% Check https://gitlab.com/groups/librespacefoundation/qubik/-/issues/?sort=created_asc&state=all&first_page_size=20,
+			% first comments were made on Sept 2019
+			% PFM campaign completed on 12 Feb 2020 (https://libre.space/2020/04/22/the-qubik-project-the-progress-so-far/)
+			% Last software commit on 
+			% Integration to deployer completed on 25 Oct 2020 (https://www.youtube.com/watch?v=-42QPHEwcLE)
+			% Firefly launch at 3 Sept 2021 (https://en.wikipedia.org/wiki/Firefly_Alpha)
+			STECCO & 2021 & 6P PocketQube & Oct 2019 -- Dec 2021 & \cite{sapienzauniversitadiromaSapienzaSkyStecco2021} & 25 months \\
+			% Latest start of development: 2019-10-31 (https://www.mdpi.com/2226-4310/6/12/133)
+			% EXIF data of header image: https://www.uniroma1.it/en/notizia/sapienza-sky-stecco (integration) taken at 2020-12-19
+			% Launch on 2021-03-22
+			Delfi-PQ & 2022 & 3P PocketQube & Apr 2016 -- Jan 2019 & \cite{raduDelfiPQFirstPocketqube2018} & 32 months \\
+			% First mention in IAC article (https://pure.tudelft.nl/ws/portalfiles/portal/10329798/IAC_16_B4.7.5_A.pdf) and Gunter D. Krebs (https://space.skyrocket.de/doc_sdat/delfi-pq.htm) on Apr 15 2016
+			% Vibration test according to IAC article (https://pure.tudelft.nl/ws/portalfiles/portal/47563560/IAC_18_B4_6B_5_x43866.pdf) scheduled for January 2019
+			% Launched on 13 Jan 2022 (https://space.skyrocket.de/doc_sdat/delfi-pq.htm)
+			FEES & 2021 & 0.3U CubeSat & Jul 2017 -- Jan 2020 & \cite{surelCubeSatInorbitTechnology2019} & 29 months \\
+			% Earliest found mentions:
+			% 2017-07-23 https://www.eucass.eu/doi/EUCASS2017-489.pdf
+			% Thesis: https://www.politesi.polimi.it/handle/10589/145922 (2019-04-08)
+			% 2019-05-28 (https://icubesat.files.wordpress.com/2019/05/b.1.3.201905241518-morelli.pdf) expects launch at Q1 2020
+			% Launch: https://db.satnogs.org/satellite/FXHJ-9671-3244-3623-7704 (2021-03-22)
+			% A commit made on https://github.com/4m1g0/tinygs-decoders/commit/8d627fc0637cc91358b3bbf080119ee3587eac1c (2021-05-19)
+			% Archived website (https://web.archive.org/web/20220701082130/http://www.gpadvancedprojects.com/fees.html) expects launch at Q4 2020
+			Sprite & 2015 & ChipSat & Oct 2011 -- Dec 2013 & \cite{manchesterKickSatYourPersonal2016} & 27 months \\
+			% source: kickstarter updates page
+			% Project launch: 2011-10-20
+			% Integration with deployer: 2013-12 https://www.kickstarter.com/projects/zacinaction/kicksat-your-personal-spacecraft-in-space/posts/691950
+			SpinorSat & 2019 & ChipSat & Mar 2018 -- Feb 2019 & \cite{brashearsSpinorSatStep502018} & 10 months \\ \bottomrule
+			% source: github, https://github.com/space-technologies-at-california/PCBSat
+			\multicolumn{4}{c}{\todo{This table needs to be updated, improved and with new data}}
+		\end{tabular}
+\end{table*}
 
 \end{document}
 
