@@ -205,5 +205,29 @@
             "env": {}
         }
     ],
-    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "todo-tree.general.tags": [
+        "todo",
+        "draft"
+    ],
+    "todo-tree.highlights.customHighlight": {
+        "todo": {
+            "foreground": "#ff0000",
+            "type": "text"
+        },
+        "draft": {
+            "foreground": "#ff6600",
+            "type": "text",
+            "icon": "bug"
+        }
+    },
+    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|%|\\\\)\\s*($TAGS)\\{*|^\\s*- \\[ \\])",
+    "todo-tree.tree.showBadges": true,
+    "todo-tree.tree.showCountsInTree": true,
+    "todo-tree.filtering.includeGlobs": [
+        "**/main.tex"
+    ]
 }
