@@ -365,7 +365,7 @@ Due to the smaller size and component count of \acs{SCS}, these systems are gene
 However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of 26 months, going up to 62 months (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
 At the same time, literature from Sub-CubeSat and CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
-Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
+Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and improved reliability \autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}.
 This observation is combined with the fact that, in contrast to CubeSats and larger spacecraft, there is \textbf{no widely established \acl{SYE} methodology} associated with PocketQubes, ChipSats, and other \acs{SCS}, as evidenced by available literature \autocite{heinAttoSatsChipSatsOther2019,bouwmeesterUtilityConstraintsPocketQubes2020} and semi-formal interviews that have been conducted within the scope of this project (\Cref{sec:LITERATURE_interviews}). As a result, developers need to either adopt existing approaches from larger systems, or develop their own ad-hoc methodologies.
 
 
@@ -610,7 +610,7 @@ The above opportunities and possible decisions demostrate that a distinct, tailo
 \begin{enumerate}[itemsep=-1ex]
 	\item Demonstrate \textbf{internal and external validity} \autocite[34]{yinCaseStudyResearch2014}, showing that it can indeed be used to bring an \acs{SCS} project from conceptualisation to qualification/launch.
 	\item Demonstrate that its effects on one or more of the aforementioned success criteria are \textbf{significant} compared to other environmental, programmatic or technical factors.
-	\item Demonstrate that it has \textbf{improved performance}\todo{?} compared to current State-of-the-Art approaches for pocket-sized spacecraft, in terms of one or more of these factors.
+	\item Demonstrate that it has \textbf{improved performance} \autocite{pedersenVALIDATINGDESIGNMETHODS} compared to current State-of-the-Art approaches for pocket-sized spacecraft, in terms of one or more of these factors.
 \end{enumerate}
 
 
@@ -1731,6 +1731,7 @@ Because of the introduction of Agile methods into hardware development, a number
 %\section{Research Problem Formulation}
 %\label{sec:LITERATURE_problem_formulation}
 
+\todo{FOUNDATIONAL: Add answer to RQ2}
 
 \chapter{Research Approach}
 \label{chap:RESEARCH_APPROACH}
@@ -1900,14 +1901,14 @@ Before identifying and realising the functions of the intended methodology, the 
 
 \begin{table*}[h]
 	\def\arraystretch{1.1}
-	\begin{tabularx}{\linewidth}{@{}lXl@{}}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
-		\textbf{No.} & \textbf{Requirement}                  & \textbf{Type}                                                                                            \\ \midrule
-		RM1            & The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance. & Mission-specific \\
-		RM2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \Cref{sec:INTRODUCTION_defining_systems_engineering}. & Foundational                 \\
-		RM3            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.  & Generalised    \\
-		RM4            & The SCS Methodology shall enable equally or less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies. & Mission-specific \\
-		RM5            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. & Generalised\\
+		\textbf{No.} & \textbf{Requirement}                                                   \\ \midrule
+		RM1            & The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.  \\
+		RM2            & The SCS Methodology shall cover all aspects of Systems Engineering of SCS, as identified in \Cref{sec:INTRODUCTION_defining_systems_engineering}.                 \\
+		RM3            & The SCS Methodology shall enable faster development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.    \\
+		RM4            & The SCS Methodology shall enable equally or less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.  \\
+		RM5            & The SCS Methodology shall be applicable to both industrial and academic developers of single spacecraft and small constellations. \\
 		\bottomrule
 	\end{tabularx}
 	\caption[SCS Methodology Requirements]{\acs{SCS} Methodology Requirements}
@@ -1920,7 +1921,7 @@ Out of the metrics identified in \Cref{sec:LITERATURE_metrics}, I have chosen tw
 	\item common key targets for optimisation in academic and industrial environments, and
 	\item causally linked to the selection and application of a \acl{SYE} methodology or process. \todo{[cite]}
 \end{enumerate*}
-I have not selected cost as a measurable criterion, as its accounting will vary by different orders of magnitude between different projects, and as it is also often positively correlated with development time\footnote{Nevertheless, I will evaluate any potential cost savings or cost increases of different methods/approaches, but I will not consider cost as a success criterion or requirement}.
+I have not selected cost as a target criterion, as its accounting will vary by different orders of magnitude between different projects, and as it is also often positively correlated with development time\footnote{Nevertheless, I will evaluate any potential cost savings or cost increases of different methods/approaches, but I will not consider cost as a success criterion or requirement}.
 
 Finally, the ``target audience'' of the methodology includes the groups of ``hobbyists'' and ``smallsat developers'', as classified by the \citeauthor{swartwoutYouSayPicosat2018} taxonomy \autocite{swartwoutYouSayPicosat2018}\footnote{Also see \Cref{sec:LITERATURE_cubesat_environment} for an explanation of the Swartwout taxonomy.}. This scope excludes ``traditional contractors'' and large constellation developers. This selection is inspired by the common characteristics of the two former groups (\Cref{tab:mission-characteristics}), which also indicate that they are more receptive of a new, Agile-centred approach. The lack of larger scale ``traditional contractors'' within the \acs{SCS} ecosystem as of this moment also prevents data gathering and experimentation for these types of organisations.
 
@@ -1929,10 +1930,10 @@ Finally, the ``target audience'' of the methodology includes the groups of ``hob
 	\begin{tabularx}{\linewidth}{@{}rXp{5cm}l@{}}
 		\toprule
 		\textbf{Section} & \textbf{Name} & \textbf{Covers} & \textbf{Type} \\ \midrule
-		\ref{sec:METHODOLOGY_requirements} & \nameref*{sec:METHODOLOGY_requirements} & Expectations & Method \\
+		\ref{sec:METHODOLOGY_requirements} & \nameref*{sec:METHODOLOGY_requirements} & Requirements & Method \\
 		\ref{sec:METHODOLOGY_satscrum} & \nameref*{sec:METHODOLOGY_satscrum} & Lifecycle Process & Method \\
 		\ref{sec:METHODOLOGY_slicebased} & \nameref*{sec:METHODOLOGY_slicebased} & Lifecycle Process & Method \\
-		\ref{sec:METHODOLOGY_workpackage} & \nameref*{sec:METHODOLOGY_workpackage} & Expectations & Guideline \\
+		\ref{sec:METHODOLOGY_workpackage} & \nameref*{sec:METHODOLOGY_workpackage} & Requirements & Guideline \\
 		\ref{sec:METHODOLOGY_datamanagement} & \nameref*{sec:METHODOLOGY_datamanagement} & Modelling, Knowledge Management & Method \\
 		\ref{sec:METHODOLOGY_defining_design_solution} & \nameref*{sec:METHODOLOGY_defining_design_solution} & \acf{DSD} & Method \\
 		\ref{sec:METHODOLOGY_design_guidelines} & \nameref*{sec:METHODOLOGY_design_guidelines} & \acs{DSD}, Implementation & Guideline \\
@@ -1953,7 +1954,8 @@ Finally, the ``target audience'' of the methodology includes the groups of ``hob
 
 This section will cover the \emph{Technical Management} aspect of \acf{SCS} Systems Engineering (as shown in \Cref{fig:i_sye_decomposition}), which relates to how both the high-level plan and day-to-day work of a project and a development team are organised.
 
-\Cref{sec:METHODOLOGY_requirements} will present how project goals and requirements should be managed. Then, \Cref{sec:METHODOLOGY_satscrum,sec:METHODOLOGY_slicebased} will present two lifecycle process models that guide most decisions behind \acs{SCS} development. In \Cref{sec:METHODOLOGY_workpackage}, I will present recommendations for work package and task tracking, while \Cref{sec:METHODOLOGY_datamanagement} will compare different approaches to documentation, modelling, and \acf{EDM}. Finally, \Cref{sec:METHODOLOGY_tailoring} is orthogonal to the previous sections, presenting the requirements and needs for software tools that support the recommended methods, as well as a tailoring guideline.
+\Cref{sec:METHODOLOGY_requirements} will present how project goals and requirements should be managed. Then, \Cref{sec:METHODOLOGY_satscrum,sec:METHODOLOGY_slicebased} will present two lifecycle process models that guide most decisions behind \acs{SCS} development. In \Cref{sec:METHODOLOGY_workpackage}, I will present recommendations for work package and task tracking, while \Cref{sec:METHODOLOGY_datamanagement} will compare different approaches to documentation, modelling, and \acf{EDM}.
+%Finally, \Cref{sec:METHODOLOGY_tailoring} is orthogonal to the previous sections, presenting the requirements and needs for software tools that support the recommended methods, as well as a tailoring guideline.
 
 
 \FloatBarrier
@@ -1993,7 +1995,7 @@ Especially for \acs{SCS} projects, I have also made the following observations:
 	\item Due to the lack of standard launch interfaces, specifications and standards, these requirements may change by the relevant stakeholders during the project.
 	\item The planned feature-set of a project may change during its course (usually via the removal of functionality) due to incorrect planning, external requirement change or une
 	Projects with fixed deadlines will prefer to remove features, instead of adding additional iterations or reworking the product, since the latter may lead to a launch cancellation.
-	\item Each project evolves around a central strategic goal that expresses a simple objective (such as \emph{receive at least some data from orbit} or \emph{demonstrate a specific technology}). Additional objectives, when completed, increase the perceived \emph{value} of the project \todo{Ask Alex about the definition of value}.
+	\item Each project evolves around a central strategic goal that expresses a simple objective (such as \emph{receive at least some data from orbit} or \emph{demonstrate a specific technology}). Additional objectives, when completed, increase the perceived \emph{value} of the project.
 	\item The definition of strictly specified requirements itself as a process can last up to a month, and requires some prior knowledge of the system's principles, feasibility and available technology. In the case of inexperienced teams, external reviews may be necessary.
 	\item Well-specified requirements can be the guide for functional and environmental testing campaigns. However, requirements-based testing campaigns cannot offer complete coverage of the executed design, as they do not cover design-specific activity flows and edge cases.
 \end{itemize}
@@ -2015,11 +2017,11 @@ An inspiration for such an approach can come from the \acs{DSDM} Agile framework
 While \emph{Must Have} requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
 
 %vadOK
-\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during \draft{the sprint planning phase of each iteration}.\sidenote[][-2cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
+\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during the sprint planning phase of each iteration (\Cref{sec:METHODOLOGY_satscrum}).\sidenote[][-2cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
 
 \paragraph{Requirement Scope}
 
-\citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} observed a mismatch between the ``large batches'' that are \draft{often being iterated on} by hardware models, compared to the smaller batches of work that take place before automated software verification, creating a disconnect between the delivery of hardware and software. To resolve this, they introduced the concept of a \textbf{``slice''}, which is defined as follows:
+\citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} observed a mismatch between the ``large batches'' that are often being iterated on by hardware models, compared to the smaller batches of work that take place before automated software verification, creating a disconnect between the delivery of hardware and software. To resolve this, they introduced the concept of a \textbf{``slice''}, which is defined as follows:
 \begin{definition}[Slice]
 	A \textbf{slice} is a set of hardware and software changes, as well as test suites, that describe a single set of testable behaviour \cite{radekaWhenAgileGets2022}.
 	\label{def:slice}
@@ -2037,16 +2039,16 @@ The above conversation already defines a two-tiered requirement hierarchy. Howev
 I will define this unit to be a \textbf{``module''}, defined as follows, based on the dictionary definition of the noun \autocite{merriam-websterDefinitionMODULE2026}:
 \begin{definition}[Module]
 	A \textbf{module} is an independently functional part of the total function or structure of a spacecraft that contains no other modules. \\%
-	(Note that this definition is not directly related to the concept of modularity.)
+	\emph{(Note that this definition is not directly related to the concept of modularity.)}
 	\label{def:module}
 \end{definition}
 
-With this definition, one can finally define a three-tiered system requirement specification system, which starts from high-level modules, linked to slices, linked to requirements. This requirement specification method does not follow a ``one-to-many'' relationship, meaning that complex structures can be created as needed, but still in a restricted structure that can be supported by e.g.\@ spreadsheet tools. Even though traditionally the decomposition of a system into modules or subsystems would happen after the requirements have been specified, in the context of \acs{SCS} \begin{enumerate*}
+With this definition, one can finally define a three-tiered system requirement specification system, which starts from high-level modules, linked to slices, linked to requirements. This requirement specification method does not follow a strict ``one-to-many'' relationship, meaning that complex structures can be created as needed, but still in a restricted structure that can be supported by e.g.\@ spreadsheet tools. Even though traditionally the decomposition of a system into modules or subsystems would happen after the requirements have been specified, in the context of \acs{SCS} \begin{enumerate*}
 	\item the decomposition into a few overarching modules is usually obvious from the offset, and 
 	\item an emergent, iterative process can lead to future modifications.
 \end{enumerate*}
 
-Finally, when a project uses an automated functional testing process or framework, the specific testing objectives and goals have to be coded as part of a formally specified testing suite. This means that the \textbf{test suite definition becomes the technical specification itself} (\Cref{sec:METHODOLOGY_automated_testing}). This capability even further reduces the need for a formal requirements specification, and reduces time by combining the requirements specification process with the test preparation \draft{process}.
+Finally, when a project uses an automated functional testing process or framework, the specific testing objectives and goals have to be coded as part of a formally specified testing suite. This means that the \textbf{test suite definition becomes the technical specification itself} (\Cref{sec:METHODOLOGY_automated_testing}). This capability even further reduces the need for a formal requirements specification, and reduces time by combining the requirements specification process with the test preparation actions.
 
 \begin{figure*}[h]
 	\begin{adjustbox}{width=\textwidth}
@@ -2084,7 +2086,7 @@ Finally, when a project uses an automated functional testing process or framewor
     %\draw[dashed, gray!50] ([xshift=1.5cm]h2.east |- comm.north) -- ([xshift=1.5cm]h2.east |- bdot.south);
 \end{tikzpicture}
 \end{adjustbox}
-\caption{Visualisation of an example \acs{SCS} requirements specification.}
+\caption[Visualisation of an example SCS requirements specification.]{Visualisation of an example \acs{SCS} requirements specification. Notice how some slices are not linked to requirements, and a requirement is not linked to a slice/module.}
 \end{figure*}
 
 
@@ -2092,13 +2094,9 @@ Finally, when a project uses an automated functional testing process or framewor
 \subsection{Project Lifecycle Approach: The Sat-Scrum Model}
 \label{sec:METHODOLOGY_satscrum}
 
-%\draft{
 	%What makes Agile interesting?
-%}
 
-%\draft{	
 	%It is that it is a sequential yet evolutionary process. The number of iterations must not be predetermined but what happens inside an iteration is. This is the conicept of the sat-scrum model.
-%}
 
 The previous section explained how the main goals and objectives of a space engineering project can be defined, typically in the first days of development. Before the rest of the development can continue, it is important to define the \textbf{lifecycle process model} that an \acs{SCS} project will use. The specific model will guide the high-level and daily actions of the team, specifying the trajectory from specification to qualification, and will inform the rest of the methods attached to the \acs{SCS} methodology.
 
@@ -2111,11 +2109,11 @@ A first version of a lifecycle process model can be inspired by the characterist
 		\item Integrate Continuously
 		\item Validate Frequently
 \end{enumerate}} which involve dynamic, iterative/incremental work, with verification/validation cycles at the end of every iteration.
-When comparing existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a \draft{proposed methodology}; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that \draft{are not within the scope of this work.}
+When comparing existing frameworks (\Cref{par:LITERATURE_agile_frameworks}), a disparity becomes quickly apparent: Agile Frameworks built for systems and large-scale deployments carry with them significant overhead and would not fit within the benefits of a proposed methodology; while lower-overhead Agile frameworks are built around software development only, and prescribe day-to-day individual operations or enterprise structures that are not within the scope of this work.
 
 As such, it is beneficial to synthesise a lifecycle process model for \acs{SCS}. The \textbf{\emph{Scrum}} framework, in particular, has already gathered attention in the hardware engineering community \autocite{bottAnalysisTheoriesSupporting2019,doveFundamentalsAgileSystems2014} and has been implemented in previous CubeSat systems and subsystems \autocite{honore-livermoreDigitalEngineeringDevelopment2022,garzanitiEffectivenessScrumMethodology2019}. \citeauthor{boehmBalancingAgilityDiscipline2004} \autocite{boehmBalancingAgilityDiscipline2004} describes Scrum as covering the management, risk handling, and customer interfacing processes of the entire lifecycle of a project, which can range from a system built by an individual to a business system.\marginnote{Note that the, while scaled tailorings of Scrum described in \Cref{sec:LITERATURE_scrum} might seem suitable for systems more complex than software, such as \acs{SCS}, they instead cover the more administrative aspects of larger organisations, and are therefore out of scope for this work.} Finally, the suitability of Scrum for the \acs{SCS} context, particularly \textbf{``hobbyists''} and \textbf{``smallsat developers''}, is supported by evaluating the typical environmental characteristics of these projects, which are generally compatible with Scrum's principles (\Cref{tab:mission-characteristics}).
 
-For the remainder of this section, I will tailor the Scrum process for use in \ac{SCS} systems. This tailoring will roughly follow the steps proposed by ECSS-S-ST-00-02C \autocite{ECSS-S-ST-00-02C}, which include the identification of project characteristics, and selection/modification of applicable requirements, after going \draft{section-by-section}. Apart from the official definition of Scrum \cite{schwaverDefinitiveGuideScrum2020}, I will rely on \draft{external analyses} \cite{boehmBalancingAgilityDiscipline2004} and criticisms \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} of incorrect applications of it.
+For the remainder of this section, I will tailor the Scrum process for use in \ac{SCS} systems. This tailoring will roughly follow the steps proposed by ECSS-S-ST-00-02C \autocite{ECSS-S-ST-00-02C}, which include the identification of project characteristics, and selection/modification of applicable requirements, after going through each aspect of the method. Apart from the official definition of Scrum \cite{schwaverDefinitiveGuideScrum2020}, I will rely on external elaborations \cite{boehmBalancingAgilityDiscipline2004} and criticisms \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} of incorrect applications of it.
 
 \paragraph{Tailoring of The Scrum Process}
 
@@ -2142,16 +2140,18 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 \end{table*}
 
 \subparagraph{The Sprint}
-Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product at \draft{its end}. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, What can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The purpose of the Sprint Review is to assess technical completion and future goals, while the Retrospective is a programmatic assessment of processes and interactions \cite{schwaverDefinitiveGuideScrum2020}}.
+Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product when it ends. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, what can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The purpose of the Sprint Review is to assess technical completion and future goals, while the Retrospective is a programmatic assessment of processes and interactions \cite{schwaverDefinitiveGuideScrum2020}.}.
 
 The original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
 In industrial environments, iterations can last between 2 to 8 weeks, or even longer \autocite{cooperAgileDevelopmentManufacturing2023}. However, within the context of Scrum combined with \acs{SCS}, 8 weeks will represent a reasonable upper bound for iteration length.
 
 These \ac{COP}-related constraints add time uncertainty to each iteration, and make the direct application of Scrum difficult, as they have the potential of adding ``waiting time'', when developers cannot verify a product before a certain external process is completed \cite{cooperAgileDevelopmentManufacturing2023}. The context of \acs{SCS} development makes it possible to control these so-called ``deadtime periods'', by proactively reducing external lead time.\marginnote[-1cm]{Reduction of external lead time can be done by:\begin{itemize} %vadOK
 		\item Moving manufacturing in-house, to the degree possible
-		\item Collaborating with \draft{entities also following an Agile work system}
-		\todo{\item some other things...}
-\end{itemize}} However, past attempts to mitigate this difficulty by separating an iteration into pre-determined, sequential steps have received criticism, due to propagating the drawbacks of waterfall-based methods \todo{citation}. \draft{The original Scrum itself avoids prescribing the distribution and allocation of work, as that is team-specific and dependent on the self-organisation between developers.} It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
+		\item Collaborating with entities also following an Agile methodology
+		\item Preparing ready-to-use alternatives in case an external product is not ready on time
+\end{itemize}}
+Mitigating this difficulty by separating an iteration into pre-determined, sequential steps, runs the risk of propagating the drawbacks of waterfall-based methods. It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
+%However, past attempts to mitigate this difficulty by separating an iteration into pre-determined, sequential steps have received criticism, due to propagating the drawbacks of waterfall-based methods. The original Scrum itself avoids prescribing the distribution and allocation of work, as that is team-specific and dependent on the self-organisation between developers.It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
 
 \begin{figure*}[h]
 	\begin{adjustbox}{width=1.1\textwidth,center}
@@ -2239,11 +2239,11 @@ These \ac{COP}-related constraints add time uncertainty to each iteration, and m
 		\item Structural component design
 	\end{itemize}
 	
-	The design phase is defined at \qtyrange{1}{2}{weeks}, but can take longer during the early stages of a project, where iterations are expected to last longer. However, this design time is significantly shorter than traditional, often year-long design phases in space projects. In Scrum, instead of a ``\textbf{\acf{BDUF}}'', the design definition process is split into smaller chunks \autocite{watermanHowMuchUpFront2015}.
+	The design phase is defined to last \qtyrange[range-units = single]{1}{2}{weeks}, but can take longer during the early stages of a project, where iterations are expected to last longer. However, this design time is significantly shorter than traditional, often year-long design phases in space projects. In Scrum, instead of a ``\textbf{\acf{BDUF}}'', the design definition process is split into smaller chunks \autocite{watermanHowMuchUpFront2015}.
 	\item \textbf{Procurement} and \textbf{manufacturing} activities involve waiting for the preparation of physical components by external providers or internal process completion, and essentially prevent the verification of the design made in the previous step, acting as blockers in the critical path. After procurement and manufacturing is completed, \textbf{integration} involves ``putting those components together'', which can include breadboard prototyping, soldering, cabling, and assembly.
-	\item \textbf{Software Development} is defined as a separate activity, as the act of writing, and sometimes testing (see \Cref{sec:METHODOLOGY_softwaredevelopment}) software can often be performed independent of the designed hardware in the previous steps. \acs{SCS} are also software-heavy systems that require appropriate time dedicated to software completion, which has been demonstrated to be often neglected in CubeSat projects \todo{cite}.
+	\item \textbf{Software Development} is defined as a separate activity, as the act of writing, and sometimes testing (see \Cref{sec:METHODOLOGY_softwaredevelopment}) software can often be performed independent of the designed hardware in the previous steps. \acs{SCS} are also software-heavy systems that require appropriate time dedicated to software completion, which has been demonstrated to be often neglected in CubeSat projects \autocite{sanchoLessonsLearnedFYS2021}.
 	
-	\todo{Talk about software testing, link to HIL}
+	% Talk about software testing, link to HIL
 	\item \textbf{Auxiliary Activities} define those activities that are essential to support a hardware project, can be completed in parallel to work towards the Product Goal, and do not fit in any other category. They are usually team and environment-dependent and can include:
 	\begin{itemize}[itemsep=-2ex]
 		\item Preparing and managing testing infrastructure and equipment
@@ -2257,14 +2257,15 @@ These \ac{COP}-related constraints add time uncertainty to each iteration, and m
 	
 	While there is no single definition for these activities as they are heavily project-specific, experience from case studies has shown that they are key to reducing the development and integration time and reducing risk.
 	\todo{We have good experience from AI4Space demonstrating this. Make sure that his is mentioned in that section}
-	\todo{Would be nice to find a reference for this, or categorise these references somehow}
 	\item \textbf{Verification, Validation \& Improvement} activities represent \textbf{inspection and testing} of the, now manufactured, product's hardware and software. Testing may include functional verification only, or also involve environmental verification which may be done in external facilities.
 	
 	In software-only Scrum and Agile engineering, verification \& validation is not considered as a separate phase, as it is made in tandem with development by means of \ac{CI}/\ac{CD}. In Sat-Scrum, this is represented by the ``improvement'' keyword, which requires this almost-instant feedback loop, to the degree possible.
 	
-	The improvement step prescribes the correction of faults and non-conformances. In the case of software, this can be \draft{easily} done. In the case of hardware, reworks of layout errors and component replacement can sometimes be done.
+	The improvement step prescribes the correction of faults and non-conformances. In the case of software, this can be done swiftly. In the case of hardware, reworks of layout errors and component replacement can sometimes be done.
 	
-	The duration of this phase can be long, depending on the complexity of testing, the need for external facilities, and the amount of non-conformances discovered. \draft{ESA} often allocates \draft{50\%} of the project development time into \draft{testing}. Experience from past projects has shown that testing time is often underestimated. It is therefore important for developers to accurately time this phase, adding appropriate margins.\marginnote{For example, when external testing is involved, this phase should last at least 3 weeks, including: \begin{itemize}
+	The duration of this phase can be long, depending on the complexity of testing, the need for external 
+	facilities, and the amount of non-conformances discovered. A common guideline is to allocate 50\% of a project's development time into testing activities \autocite{venturiniImprovingMissionSuccess2017}.
+	Experience from past projects has shown that testing time is often underestimated. It is therefore important for developers to account the duration of this phase, adding appropriate margins.\marginnote{For example, when external testing is involved, this phase should last at least 3 weeks, including: \begin{itemize}
 			\item Preparatory activities (such as test fixture design) performed before the verification phase, as part of the \emph{auxiliary} activities
 			\item 1 week for functional testing of the \ac{DUT}
 			\item 1 week for environmental testing
@@ -2273,7 +2274,7 @@ These \ac{COP}-related constraints add time uncertainty to each iteration, and m
 
 	\item \textbf{Sprint Planning, Review \& Retrospective} activities represent the administrative tasks that need to take place at the beginning and the end of each Sprint, in order to clarify the goals of the iteration, the work that can and needs to be done, the results of the previous processes, and the status of the project.
 	
-	The Scrum guide separates reviews and retrospectives, with the review addressing the technical aspects and \textbf{changes in the environment and external requirements}, often with external stakeholders present, and the retrospective focusing on interactions within the team. The guide also recommends timeboxing these events, to prevent \draft{unnecessary time spent.}
+	The Scrum guide separates reviews and retrospectives, with the review addressing the technical aspects and \textbf{changes in the environment and external requirements}, often with external stakeholders present, and the retrospective focusing on interactions within the team. The guide also recommends timeboxing these events to reduce lost time.
 
 	Finally, the Scrum guide also defines a 15-minute ``Daily Scrum'' meeting, in order to allow developers to create an actionable plan for a single day of work. In practice, it might be difficult to guarantee a daily meeting time for student teams, teams working asynchronously, or teams with members who have a limited duty cycle of contribution to the project. Daily meetings also have a generally negative reputation and perception in the software engineering community \autocite{singhExploringLivedExperiences2023,cooperAgileDevelopmentManufacturing2023}. As daily meetings are therefore more closely related to Project Management, I consider their evaluation as out-of-scope for this work.
 \end{itemize}
