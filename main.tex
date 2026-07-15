@@ -362,7 +362,7 @@ The distinct characteristics of PocketQubes, ChipSats and similar spacecraft, ma
 
 Due to the smaller size and component count of \acs{SCS}, these systems are generally simpler and easier to develop than their larger counterparts. While the capabilities of a single system are reduced due to these constraints, these form factors make spacecraft development accessible to engineers and communities that would otherwise not be able to follow the complete \ac{MAIV} process for a CubeSat, with an extreme example being Manchester's \qty{300}{USD} ChipSat Kickstarter cost \autocite{manchesterKickSatYourPersonal2016}. PocketQubes have been described as suitable for education and training in academic environments, especially due to the decreased manufacturing and launch costs \autocite{bouwmeesterSurveyWorldwidePico2010}. \citeauthor{heinAttoSatsChipSatsOther2019} \autocite{heinAttoSatsChipSatsOther2019} also note that the development of flight hardware for ChipSats can be finished within 6 months, costing on the order of dozens to hundreds of dollars for manufacturing, and allowing fast build-and-launch cycles.
 
-However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of \draft{26 months}, going up to \draft{62 months} (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
+However, an investigation of available data for \acs{SCS} missions reveals a different story; even though their complexity and scale is low, their development time follows a median of 26 months, going up to 62 months (\Cref{tab:i_otherdevtime}). Yet, outliers that develop systems with similar constraints and form factors at or below a 1 year limit are present. 
 
 At the same time, literature from Sub-CubeSat and CubeSat systems points to \textbf{inadequate \acl{SYE} practices and knowledge} as a main reason for reduced mission success \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025}, and links tailored \acs{SYE} approaches with improved understanding, error identification, shortened integration times and lower costs \autocite{honore-livermoreIntegratingAgileSystems2022}.
 Authors have emphasised the need for reduced development times \autocite{pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and improved reliability \draft{\autocite{swartwoutCubeSatMissionSuccess2019,villelaThousandthCubeSatStatistical2019}}.
@@ -866,7 +866,7 @@ As CubeSats present similarities with \acl{SCS}\footnote{This is true for nano-s
 
 From a technical point of view, the shared requirements of CubeSats are defined by the CubeSat Design Specification \autocite{CDS14}. The main constraint for CubeSat design is the dimensional envelope defined by the specification, which dictates the mechanical interfaces of the spacecraft. With regards to the internals, CubeSats are typically separated mechanically, electrically and functionally into subsystems, with an example partition shown in \Cref{tab:l_subsystem_partition}.
 
-While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs{COTS} subsystems\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoprability is not guaranteed.}. The LibreCube specification defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
+While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs{COTS} subsystems\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoprability is not guaranteed.}. The LibreCube specification \autocite{BoardSpecificationLibreCube} defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
 
 \begin{marginfigure}
 	\includegraphics{external/board_stacking.png}
@@ -971,16 +971,23 @@ He noted that certain similar patterns within these organisations can further cl
 \begin{margintable}
 \caption[Developer types of CubeSats flown, 2000--2015]{Developer types of CubeSats flown, 2000--2015 \cite{swartwoutYouSayPicosat2018}}
 \label{tab:l_cubesat_mission_types}
-\begin{tabularx}{\linewidth}{@{}Xc@{}}
+\newcommand{\smallbarplot}[2]{%
+    \begin{tikzpicture}[baseline=(char.base)]
+        \pgfmathsetmacro{\barwidth}{#1 / #2 * 1.5} 
+        \fill[black!80!white] (0,0) rectangle (\barwidth, 0.15);
+        \node[inner sep=0pt, minimum height=0pt, outer sep=0pt] (char) at (0,0) {};
+    \end{tikzpicture}%
+}%
+\begin{tabularx}{\linewidth}{@{}Xlc@{}}
 \toprule
-Hobbyists & 131 \\
-Traditional & 32 \\
-SmallSat & 125 \\
-Constellation & 147
+Hobbyists & \smallbarplot{131}{150} & 131 \\
+Traditional & \smallbarplot{32}{150} & 32 \\
+SmallSat & \smallbarplot{125}{150} & 125 \\
+Constellation & \smallbarplot{147}{150} & 147
 \\ \bottomrule
 \end{tabularx}
 \end{margintable}
-This classification has an impact on the environmental parameters of CubeSat missions, such as the available resources, developer experience, and degree of risk acceptance, and can inform the desired scope of this work. \Cref{tab:l_cubesat_mission_types} shows that all developer types cover a roughly equal amount of the development spectrum, with the exception of traditional contractors, who represent only \draft{7\%} of CubeSat missions flown.
+This classification has an impact on the environmental parameters of CubeSat missions, such as the available resources, developer experience, and degree of risk acceptance, and can inform the desired scope of this work. \Cref{tab:l_cubesat_mission_types} shows that all developer types cover a roughly equal amount of the development spectrum, with the exception of traditional contractors, who represent only 7\% of CubeSat missions flown.
 
 \citeauthor{berthoudHowSetCubeSat2016} performed a survey of 40 CubeSat groups (37 from universities) to generate numerical data about CubeSat environments \autocite{berthoudHowSetCubeSat2016}, which are summarised in \Cref{tab:l_cubesat_team_characteristics}. Various CubeSat projects in the design, manufacturing or operations stages have also published extracts from their Project Management plans, providing information about the main drivers behind costs, phases, development effort, and their critical path.
 
@@ -1000,12 +1007,10 @@ This classification has an impact on the environmental parameters of CubeSat mis
 	\end{tabularx}
 \end{table*}
 
-%Two interesting observations can be made from \citeauthor{berthoudHowSetCubeSat2016}'s data: First, the estimated project costs displayed a wide range, from below \qty{5000}{EUR} to above \qty{500000}{EUR}. Apart from potential differences in project scale, this also reflects accounting differences on which costs are considered to be part of financial budgets\footnote{\todo{Write about launch costs here etc}}.
-
 
 
 In terms of cost, results can vary significantly, depending on the environment and objectives of the project.
-\citeauthor{berthoudHowSetCubeSat2016}'s data display a wide range of estimated project costs, from below \qty{5000}{EUR} to above \qty{500000}{EUR}. As an example, two extremes can be found in the EQUiSat project, which is a 1U CubeSat bus costing \SI{3800}{USD} \autocite{equisat}, and the Hermes proposal, which has estimated \SI{35300000}{USD} for a 9U deep-space CubeSat \autocite{pujolgasullaHermesCubesatOnsite2021}. The accounting for CubeSat projects highly depends on whether labour, facility and launch costs are considered. These services may often not be accounted in project budgets, or be provided for free as part of an external agreement\footnote{For example, space agency projects may cover test campaigns and launch opportunities, or laboratory facilities may already available. Labour costs are sometimes not considered in academic projects in the case of voluntary participation.}.  \todo{cite paper from SW} In case labour costs are considered, the project cost will be also very closely tied to development time.
+\citeauthor{berthoudHowSetCubeSat2016}'s data display a wide range of estimated project costs, from below \qty{5000}{EUR} to above \qty{500000}{EUR} \cite{berthoudHowSetCubeSat2016}. As an example, two extremes can be found in the EQUiSat project, which is a 1U CubeSat bus costing \SI{3800}{USD} \autocite{equisat}, and the Hermes proposal, which has estimated \SI{35300000}{USD} for a 9U deep-space CubeSat \autocite{pujolgasullaHermesCubesatOnsite2021}. The accounting for CubeSat projects highly depends on whether labour, facility and launch costs are considered. These services may often not be accounted in project budgets, or be provided for free as part of an external agreement \autocite{gambleMetricsSpacecraftDesign2012} \footnote{For example, space agency projects may cover test campaigns and launch opportunities, or laboratory facilities may already available. Labour costs are sometimes not considered in academic projects in the case of voluntary participation.}. In case labour costs are considered, the project cost will be also very closely tied to development time.
 
 Due to this high variance between project costs, and the lack of concrete data on team environment and cost budgets, I have not performed a comparative analysis of CubeSat project costs.
 
@@ -1072,16 +1077,16 @@ Due to this high variance between project costs, and the lack of concrete data o
 	\item Lower cost, affordability, wider market availability; and
 	\item Better knowledge retainment for university teams;
 \end{itemize}
-Individual organisations and missions have also noted their desire to restrict development time within a specific limit \draft{\cite{sousaCubeSatDevelopmentFramework2021}}.
+Individual organisations and missions have also noted their desire to restrict development time within a specific limit \cite{sousaCubeSatDevelopmentFramework2021,cheongRobustFrameworkLowCost2020,cappaertBuildingDeployingOperating2018}.
 
-A comparison between CubeSat unit sizes and programme duration does not reveal an obvious correlation (\Cref{fig:l_cubesat_size_duration}). Initially, one would expect that programme duration would scale with the technical size of the mission, which itself should be linked with the physical CubeSat size. However, the data shows that smaller CubeSat projects last disproportionately longer. This can be explained by a weaker link between physical and technical size, as well as by a preference of smaller, amateur teams with less funding, \draft{correlating with increased delays}, for smaller satellites.
+A comparison between CubeSat unit sizes and programme duration does not reveal an obvious correlation (\Cref{fig:l_cubesat_size_duration}). Initially, one would expect that programme duration would scale with the technical size of the mission, which itself should be linked with the physical CubeSat size. However, the data shows that smaller CubeSat projects last disproportionately longer. This can be explained by a weaker link between physical and technical size, as well as by a preference of smaller, amateur teams with less funding, linked with increased delays, for smaller satellites.
 
-Available CubeSat project planning literature allows a comparison between different CubeSat schedules. A sample of projects based on available project planning literature is shown in \Cref{tab:l_cubesat_time_drivers}. The comparison between different time allocation strategies reveals that:
+Available CubeSat project planning literature allows comparing between different CubeSat schedules. A sample of projects based on available project planning literature is shown in \Cref{tab:l_cubesat_time_drivers}. The comparison between different time allocation strategies reveals that:
 \begin{itemize}
 	\item Some projects allocate work packages to ``preparatory'' activities, such as feasibility assessment and training for the application of methodologies and tools. These activities are not strictly part of a project's engineering efforts, but can be necessary before work can continue on certain engineering tasks.
 	\item ``Procurement'' as an activity is planned and often part of the critical path. While it usually involves little to no work from the developers, this downtime is significant and long enough to be part of high-level plans.
 	\item The estimated duration of the same activity can vary significantly between projects, often crossing one order of magnitude. This is affected by different project-specific and environment-specific parameters.
-	\item Some engineering tasks have only been considered as part of the project plan only by a single project, such as \emph{software development}, \emph{prototyping} or \emph{reviewing}.
+	\item Some engineering tasks have only been considered as part of the project plan only by a single project, such as \emph{software development} or \emph{reviewing}.
 \end{itemize}
 
 \begin{table*}[h]
@@ -1099,7 +1104,7 @@ Available CubeSat project planning literature allows a comparison between differ
 		Design & 827 days & 40 days \tnote{1} & 280 days & 300 days & 122 days & 60 days\\
 		Review &  &  & & 160 days & &\\
 		Procurement & 450 days  & 43 days&  & 80 days & & 9 days\\
-		Prototyping &  & &  & & & \\
+		%Prototyping &  & &  & & & \\
 		Software Development & 320 days & & & & & \\
 		Manufacturing & 102 days & & 100 days & 120 days & & \\
 		Assembly \& Integration & 195 days & & & 180 days & 25 days &\\
@@ -1123,7 +1128,7 @@ Available CubeSat project planning literature allows a comparison between differ
 	\caption[Time spent for development activities of various CubeSat projects]{Time spent for development activities of various CubeSat projects. Graphical representation of \Cref{tab:l_cubesat_time_drivers}.}
 \end{figure*}
 
-\newthought{Finally,} to the author's knowledge, there is no comprehensive survey on the number of members in CubeSat teams. However, typical team sizes can range between 5 to over 100 members, \draft{depending on environmental characteristics} \todo{[cite]}.
+\newthought{Finally,} to the author's knowledge, there is no comprehensive survey on the number of members in CubeSat teams. However, typical team sizes can range between 5 to over 100 members, depending on the project and its environment.
 
 \subsection{CubeSat Development Approaches}
 
@@ -1131,7 +1136,7 @@ There is \textbf{no single and universally followed development approach}, metho
 Even though the satellites present technical similarities, the development environments of different teams can vary significantly. 
 
 A comprehensive analysis and comparison of different CubeSat development lifecycles was made by \citeauthor{sousaCubeSatDevelopmentFramework2021}, as part of an effort to define a complete CubeSat development framework \autocite{sousaCubeSatDevelopmentFramework2021}. 
-In \draft{his} work, \citeauthor{sousaCubeSatDevelopmentFramework2021} compared the lifecycle models of different national, military and academic organisations, some of which have been directly applied to CubeSat projects. The identified lifecycles are shown in \Cref{fig:l_cubesat_lifecycles_sousa}.
+In his work, \citeauthor{sousaCubeSatDevelopmentFramework2021} compared the lifecycle models of different national, military and academic organisations, some of which have been directly applied to CubeSat projects. The identified lifecycles are shown in \Cref{fig:l_cubesat_lifecycles_sousa}.
 
 \begin{figure*}[p]
 	\includegraphics{external/Sousa_Lifecycles.png}
@@ -1189,8 +1194,8 @@ Different works explore the benefits of ``sequential-like'' \autocite{shiotaniEn
 
 \subsection{Pico-satellites}
 
-The success of the CubeSat platform combined with increasing trends of miniaturisation encouraged the creation of the PocketQube platform.
-With the assumption that electronics can be infinitely miniaturised, the limiting factor for spacecraft size and mass become physics restrictions, and most importantly communications power/antenna size, solar panel area, and battery size.
+The success of the CubeSat platform combined with increasing trends of miniaturisation encouraged the \textbf{inception of the PocketQube platform}.
+With the practical assumption that electronics can be infinitely miniaturised, the limiting factor for spacecraft size and mass become physics restrictions, and most importantly communications power/antenna size, solar panel area, and battery size.
 Inspired by the success of pocketable microelectronics, the PocketQube idea was proposed by Bob Twiggs on the 2009 Cal Poly Developers' Workshop \autocite{twiggsMakingItSmall2009}. The \qtyproduct{5 x 5 x 5}{\centi\meter} footprint was selected to provide dimensional compatibility with standard CubeSat deployers.
 
 \begin{figure*}
@@ -1203,7 +1208,7 @@ Inspired by the success of pocketable microelectronics, the PocketQube idea was 
 
 The first PocketQubes were launched in 2013 \autocite{franzesePocketQubePicosatellitesSurvey2025,wikipediacontributorsListLaunchedPocketQubes2025}.
 After the execution of different community workshops, the first version of the PocketQube standard was published in \citeyear{PQ1} \autocite{PQ1}.
-Since then, companies and organisations such as \emph{FOSSA Systems}, \emph{Alba Orbital} and the \emph{Libre Space Foundation} have developed commercial buses, subsystems and deployers to support the PocketQube ecosystem. The PQ60 \autocite{PQ60}, PQ9 and CS14 \autocite{PQ91} standards provided shared electrical interfaces that could be used for a \draft{modular subsystem ecosystem}, similar to the CubeSat PC/104 subsystem form-factor.
+Since then, companies and organisations such as \emph{FOSSA Systems}, \emph{Alba Orbital} and the \emph{Libre Space Foundation} have developed commercial buses, subsystems and deployers to support the PocketQube ecosystem. The PQ60 \autocite{PQ60}, PQ9 and CS14 \autocite{PQ91} standards provided shared electrical interfaces that could be used for a modular ecosystem, similar to the CubeSat PC/104 subsystem form-factor.
 
 \NextCitationOffset{3cm}
 Lists of launched PocketQubes are maintained by \citeauthor{kuluNanosatsDatabase2023} \autocite{kuluNanosatsDatabase2023} and on Wikipedia \autocite{wikipediacontributorsListLaunchedPocketQubes2025}.
@@ -1217,7 +1222,7 @@ As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023
 	\caption[The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation]{The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation. Image taken from \autocite{librespacefoundationPICOBUS}.}
 \end{figure}
 
-In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmeesterUtilityConstraintsPocketQubes2020} analysed the general constraints and applications of PocketQubes \autocite{bouwmeesterUtilityConstraintsPocketQubes2020}. They identified the main limitations of the technology \draft{to be} space debris regulations and considerations, technology limitations, and \draft{financial conditions}. They also proposed applications in the fields of education, \acs{IOD}, earth/space weather observation, communications, and space exploration.
+In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmeesterUtilityConstraintsPocketQubes2020} analysed the general constraints and applications of PocketQubes \autocite{bouwmeesterUtilityConstraintsPocketQubes2020}. They identified space debris regulations and considerations, technology limitations, and financial constraints as the main limitations encountered by PocketQube developers. They also proposed applications in the fields of education, \acs{IOD}, earth/space weather observation, communications, and space exploration.
 
 \begin{marginfigure}
 	\centering
@@ -1226,8 +1231,7 @@ In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmees
 	\label{fig:l_delfi_pq}
 \end{marginfigure}
 
-\newthought{While} no comprehensive survey exists regarding the systems engineering methodology or constraints used by PocketQube and pico-satellite developers,
-\draft{some} individual publications offer insight on the approaches followed by different teams.
+\newthought{While} no comprehensive survey exists regarding the systems engineering methodology or constraints used by PocketQube and pico-satellite developers, a number of individual publications offer insight on the approaches followed by different teams.
 
 \citeauthor{uludagDelfiPQInOrbitPerformance2025} have presented the development of Delfi-PQ, a 3P PocketQube developed at the Delft University of Technology, and launched in 2022 \autocite{uludagDelfiPQInOrbitPerformance2025}. The authors reported \textbf{cost reduction} as one of the main design drivers, and noted the use of an \textbf{iteration-heavy} development schedule, with \textbf{iterations lasting between 3 and 10 weeks} across a 4-year schedule. Their satellite bus consisted of \acs{EPS}, \acs{OBC}, \acs{COMMS}\footnote{including a deployable antenna} and \acs{ADCS}\footnote{based on an active 3-axis magnetorquer system} subsystems.
 
@@ -1276,14 +1280,14 @@ Within the scope of this thesis, I have also conducted informal interviews and f
 	\end{tabularx}
 \end{table}
 
-Through these discussions, I noted the following information:\todo{Check notes for question marks}
+Through these discussions, I noted the following information:
 \begin{itemize}[itemsep=-1ex]
 	\item All respondents have had at least one \acs{SCS} satellite launched and successfully operated in \acs{LEO}.
 	\item 3 respondents noted \emph{development time} as their main constaint, one respondent noted \emph{cost}, one responded noted \emph{reliability}, and one \emph{production capability}.
 	\item All respondents use some form of \textbf{iterative development} for their satellite, although the duration and scope of each iteration varies between a small amount of hardware models, and system-level rapid prototyping. No respondent follows a \emph{named} or strictly documented methodology\footnote{Such as Agile, Lean, Waterfall, \acs{ECSS} based etc.}. 3 respondents use an \emph{undocumented} form of methodology, where satellite revisions and processes are not formally kept track of. The 3 remaining respondents use some form of formal process or tool to document the system's development lifecycle and status, such as GitLab, Odoo (an \acs{ERP} tool), or Figma (a visual design tool) for revision representation.
 	\item 4 respondents have used elements from \acs{SYE} approaches similar to \textbf{CubeSat} approaches used in the literature or based on their previous experience. % this includes the high production capacity industry which is applicable to cubesats in general but I haven't found any literature specifically pointing to this
 	2 respondents are using highly iterative system-based approaches, which are generally considered impractical for CubeSat projects\footnote{Based on the understanding that it is impractical to perform more than 3 iterations on an entire CubeSat system}.
-	\item \draft{3 respondents mentioned software issues as one of the main sources of issues and non-conformances, many of which were discovered shortly before launch and caused by inadequate prior testing.}
+	\item 3 respondents mentioned software issues as one of the main sources of issues and non-conformances, many of which were discovered shortly before launch and caused by inadequate prior testing.
 	\item All respondents have developed the payloads and PocketQube bus in-house, without the use of \acs{COTS} subsystems.
 	\item 4 respondents generally perform soldering in-house.
 	\item All respondents had already acquired or were in the process of acquiring \textbf{in-house testing facilities}, ranging from a plain vacuum chamber to a \acs{TVAC} and a shaker table.
@@ -1379,7 +1383,7 @@ One of the first mentions of pocket-sized satellites was made by \citeauthor{jan
 A few years later, \citeauthor{dasilvacurielSpacecraftonachip2003} \autocite{dasilvacurielSpacecraftonachip2003} proposed a \qtyproduct{90 x 55}{\milli\meter} ``Spacecraft-on-a-Chip'' design called ``PalmSat'' \autocite{underwoodSCIENCEMISSIONSCENARIOS}.
 The proposed PalmSat design included solar cells generating \SI{2}{\watt} of power, a PIC microcontroller, a magnetorquer and reaction-wheel-based \acs{ADCS}, and space for a camera-based remote-sensing payload.
 
-\citeauthor{barnhartSatelliteonaChipFeasibilityStudy2006} \autocite{barnhartSatelliteonaChipFeasibilityStudy2006} proposed another conceptual design for a ``satellite-on-a-chip''. The authors drew from the concept of ``Smart Dust'' computers \autocite{warnekeSmartDustCommunicating2001} to propose a self-powered\footnote{Using miniaturised capacitors and solar cells generating an average of \SI{16}{\milli\watt} based on an area of \draft{\SI{43}{\centi\meter\squared}}} femto-satellite. Communications would be made using a \SI{3.4}{\centi\meter} antenna and a low \SI{300}{\bit/\second} data rate, and the system would include a passive \acs{ADCS} and a small camera as payload.
+\citeauthor{barnhartSatelliteonaChipFeasibilityStudy2006} \autocite{barnhartSatelliteonaChipFeasibilityStudy2006} proposed another conceptual design for a ``satellite-on-a-chip''. The authors drew from the concept of ``Smart Dust'' computers \autocite{warnekeSmartDustCommunicating2001} to propose a self-powered\footnote{Using miniaturised capacitors and solar cells generating an average of \SI{16}{\milli\watt} based on an area of \SI{7}{\centi\meter\squared}} femto-satellite. Communications would be made using a \SI{3.4}{\centi\meter} antenna and a low \SI{300}{\bit/\second} data rate, and the system would include a passive \acs{ADCS} and a small camera as payload.
 
 \begin{figure}[h]
 	\centering
@@ -1388,7 +1392,7 @@ The proposed PalmSat design included solar cells generating \SI{2}{\watt} of pow
 	\label{fig:l_proposed_spacechip}
 \end{figure}
 
-\citeauthor{barnhartVerySmallSatelliteDesignDistributed2007} further evolved the ``Satellite-on-a-Chip'' design by proposing a \qtyproduct{18 x 20}{\milli\meter} single-die \ac{ASIC} which would contain all spacecraft subsystems, an external antenna, and no other structural elements (\Cref{fig:l_proposed_spacechip}) \autocite{barnhartVerySmallSatelliteDesignDistributed2007}. The authors also designed and manufactured a \qtyproduct{9 x 9.5}{\centi\meter} \SI{70}{\gram} ``PCBSat'' hosted on a \acl{PCB}, intended to be producible solely with low-cost \acs{COTS} components.
+\citeauthor{barnhartVerySmallSatelliteDesignDistributed2007} further evolved the ``Satellite-on-a-Chip'' design by proposing a \qtyproduct{18 x 20}{\milli\meter} single-die \ac{ASIC} which would contain all spacecraft subsystems, an external antenna, and no other structural elements (\Cref{fig:l_proposed_spacechip}) \autocite{barnhartVerySmallSatelliteDesignDistributed2007}. The authors also designed and manufactured a \qtyproduct{9 x 9.5}{\centi\meter} and \SI{70}{\gram} ``PCBSat'' hosted on a \acl{PCB}, intended to be producible solely with low-cost \acs{COTS} components.
 
 A number of developments followed the introduction of the \emph{N-Prize}, a competition launched in 2008 by Cambridge biologist Paul H.~Dear. The N-Prize was a £9,999.99 prize fund that would be offered to teams that could sent a femto-satellite to space, or more specifically:
 \begin{quote}
@@ -1398,9 +1402,12 @@ The cost of the launch, but not ground facilities, must fall within a budget of 
 \autocite{OfficialSiteNPrize2022}
 \end{quote}
 
-\draft{While no satellite managed to successfully fulfil these requirements}, at least 11 teams expressed interest in the competition. 
-WikiSat was one such example, where a prototype of a \qtyproduct{14 x 3 x 0.7}{\centi\metre} femto-satellite was qualified and tested on a few balloon missions between 2009--2014 \autocite{tristanchoImplementationFemtosatelliteMinilauncher2010}
-\todo{citation wikisat wiki}. Another femto-satellite prototype, RyeFemSat, was built by \citeauthor{stuurmanRyeFemSatRyersonUniversity2010} \autocite{stuurmanRyeFemSatRyersonUniversity2010}, measuring \qtyproduct{9 x 9 x 1}{\centi\meter}. \todo{Maybe include images of all of these satellites from the respective publications}
+\begin{marginfigure}
+	\includegraphics{external/WikiSat-v1-preliminary-design.png}
+	\caption[WikiSat preliminary design]{WikiSat preliminary design. Image taken from \cite{tristanchoProbeConceptFemtosatellites2011}}
+\end{marginfigure}
+While the prize was never awarded, at least 11 teams expressed interest in the competition. 
+WikiSat was one such example, where a prototype of a \qtyproduct{14 x 3 x 0.7}{\centi\metre} femto-satellite was qualified and tested on a few balloon missions between 2009--2014 \autocite{tristanchoImplementationFemtosatelliteMinilauncher2010,WikisatWiki}. Another femto-satellite prototype, RyeFemSat, was built by \citeauthor{stuurmanRyeFemSatRyersonUniversity2010} \autocite{stuurmanRyeFemSatRyersonUniversity2010}, measuring \qtyproduct{9 x 9 x 1}{\centi\meter}.
 
 In \citeyear{atchisonPassiveSunpointingMillimeterscale2010}, \citeauthor{atchisonPassiveSunpointingMillimeterscale2010} \autocite{atchisonPassiveSunpointingMillimeterscale2010} proposed a \SI{1}{\centi\meter} square silicon chip called ``Sprite'', modelling it as a solar sail thanks to its estimated mass of \SI{7.5}{\milli\gram}. They envisioned a thin dipole antenna connected to the chip, transmitting a simple beacon with \SI{10}{\milli\watt} of power. This initial Sprite was the precursor of the ``KickSat'' project.
 
@@ -1413,11 +1420,11 @@ Manchester designed ``KickSat'', a crowd-funded mission to design and launch mul
 \end{figure}
 
 The Sprites were atto-satelites based on a single-\acs{PCB} design, measuring \qtyproduct{3.5 x 3.5}{\centi\meter} and weighing \qtyproduct{5}{\gram}. They included solar cells, a transmitter, and a V-dipole antenna. KickSat had a capacity of 104 Sprites.
-A Sprite's development cost, as shown on the crowdfunding campaign, was close to \SI{300}{USD}\footnote{The crowdfunding campaign mentioned that launch costs are not covered by the raised funds.}, allowing supporters to purchase ``their own Sprite in space with [their] initials in its radio transmissions'' \autocite{manchesterKickSatYourPersonal2016}. 
+A Sprite's development cost, as shown on the crowdfunding campaign, was close to \SI{300}{USD}\footnote{The crowdfunding campaign mentioned that launch costs were not covered by the raised funds.}, allowing supporters to purchase ``their own Sprite in space with [their] initials in its radio transmissions'' \autocite{manchesterKickSatYourPersonal2016}. 
 
 The Kickstarter crowdfunding campaign was successful, raising \SI{74586}{USD}.
-The first ChipSats were exposed on the ISS in May 2011 \autocite[Sec.~2.5]{manchesterCentimeterScaleSpacecraftDesign2015}. Although the location at which they were mounted prevented their signals from reaching Earth, testing after their return showed that the Sprites remained in working conditions.
-The actual launch of the KickSat-1 spacecraft took place in April 2014, however, due to anomalies in the CubeSat, the Sprite deployment failed.
+The first ChipSats were exposed on the ISS in May 2011 \autocite[Sec.~2.5]{manchesterCentimeterScaleSpacecraftDesign2015}. Although the location at which they were mounted prevented their signals from reaching Earth, testing after their return showed that the Sprites remained in working condition.
+The actual launch of the KickSat-1 spacecraft took place in April 2014, although, due to anomalies in the CubeSat, the Sprite deployment failed.
 The Sprite design was tested once again in space, as a secondary payload of the Venta-1 mission in 2017, with a successful demonstration \autocite{adamsTheoryApplicationsGramScale2020}.
 A second attempt to launch the Sprites took place with the KickSat-2 project, which followed a different CubeSat bus design based on pycubed \autocite{hollidayKickSat2DesignArchitecture}, and could include 105 ChipSats.
 KickSat-2 was deployed from Cygnus NG-10 in 2018-11 \autocite{thenationalassociationforamateurradioKickSat2AliveBeing2019}.
@@ -1425,12 +1432,13 @@ KickSat-2 was deployed from Cygnus NG-10 in 2018-11 \autocite{thenationalassocia
 The Sprites were originally not allowed to be deployed due to FCC constraints. However, they were eventually deployed on 18 March 2019, and re-entered the atmosphere on 21 March 2019 \autocite{abateInexpensiveChipsizeSatellites2019}.
 Their signals were detected on Earth, demonstrating a successful deployment \autocite{estevezDetectingSpritesKickSat22019}.
 
-KickSat-2 also included six \todo{or seven?} ChipSats designed by a separate team from UC Berkeley \autocite{brashearsSpinorSatStep502018}, referred to as \emph{PCBSats} or \emph{SpinorSats}, measuring \qtyproduct{3.5 x 3.5 x 0.4}{\milli\metre}.
+% According to brashearsSpinorSatStep502018 (introduction): seven
+KickSat-2 also included seven ChipSats designed by a separate team from UC Berkeley \autocite{brashearsSpinorSatStep502018}, referred to as \emph{PCBSats} or \emph{SpinorSats}, measuring \qtyproduct{3.5 x 3.5 x 0.4}{\milli\metre}.
 The authors also provide cost information for their satellites, measuring \SI{5400}{USD} for a single spacecraft, or \SI{3000}{USD} at scale.
 
 \begin{figure}[t]
 	\includegraphics{external/cornell}
-	\caption[View of an older Sprite iteration, a Sprite, and a Monarch ChipSat]{View of an older Sprite iteration, a Sprite, and a Monarch ChipSat. Image taken from \cite{cornelluniversityAlphaCubesatHomePage2025}}
+	\caption[View of an early Sprite iteration, a Sprite, and a Monarch ChipSat]{View of an early Sprite iteration, a Sprite, and a Monarch ChipSat. Image taken from \cite{cornelluniversityAlphaCubesatHomePage2025}}
 \end{figure}
 
 The popularity and success of the KickSat project sparked follow-ups in both research and projects. For example:
@@ -1440,8 +1448,8 @@ An early \SI{10}{\gram} \qtyproduct{3.5 x 3.5 x 0.6}{\centi\metre} \acs{PCB}-bas
 %The spacecraft was tested in the stratosphere ([[@WaferScaleSpacecraft]]), and was also carried by a solo-piloted aircraft on a pole-to-pole expedition (https://www.deepspace.ucsb.edu/wafer-scale-spacecraft-pole-to-pole-flight-nov-2019-to-aug-2020).
  \item At Cornell University, \citeauthor{adamsTheoryApplicationsGramScale2020} designed the ``Monarch'' ChipSats as an evolution of the Sprite design \autocite{adamsRSelectedSpacecraft2019,adamsTheoryApplicationsGramScale2020}. A number of them have been deployed on earth for use in agriculture and stockraising \autocite{adamsTheoryApplicationsGramScale2020,nuttMonarchSatellitesOpen2019}. On December 2025, Cornell launched a CubeSat light-sail mission which had 4 ChipSats mounted on the edges of the sail, in order to demonstrate the capability of a free-flying sail \autocite{cornelluniversityAlphaCubesatHomePage2025}.
 \item The {ThumbSat} initiative was a commercial project allowing customers to launch a payload on a \qtyproduct{4.8 x 4.8 x 3}{\centi\meter} platform \autocite{singhDoItYourselfSatellitesApplications2019}.
-While ThumbSat was active between 2015--2017, it seems that regulatory obstacles due to the \acs{FCC} led to their \draft{inactivity} \autocite{vanlandinghamThumbSatOrbitalDebris2017,vanlandinghamExhibitSubmissionThumbSat2017}.
-\item \emph{AmbaSat} is another UK-based company offering a \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat launch for a cost of \SI{1200}{GDB}, based on a 3U Kicksat-like deployer. \todo{citation}
+While ThumbSat was active between 2015--2017, it seems that regulatory obstacles due to the \acs{FCC} led to a halt of operations \autocite{vanlandinghamThumbSatOrbitalDebris2017,vanlandinghamExhibitSubmissionThumbSat2017}.
+\item \emph{AmbaSat} is another UK-based company offering a \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat launch for a cost of \SI{1200}{GDB}, based on a 3U Kicksat-like deployer \autocite{3AmbaSat1Satellite}.
 %They also list the price of their individual spacecraft at \SI{140}{GDB}, without a launch opportunity.
 \item Project Pinpoint, managed by the Initiative for Interstellar Studies, designed a \qtyproduct{2.5 x 2.5}{\centi\metre} atto-satellite as a precursor to a laser-sail equipped ChipSat \autocite{broekerProjectPinpointPushing2021}.
 
@@ -1455,8 +1463,10 @@ While ThumbSat was active between 2015--2017, it seems that regulatory obstacles
 
 
 %The Sprite, SpinorSat, Monarch and AmbaSat 
-Many of the above designs follow the open-source and open-hardware philosophies, with their source code, hardware design and documentation available online\footnote{\url{https://github.com/space-technologies-at-california/PCBSat} \todo{add other URLs...}}. \todo{As online databases do not typically include objects smaller than PocketQubes, I provide a list of known sub-PocketQube missions in }
+A comprehensive list of femto-satellites and other ``PlanarSats'' is also provided by \citeauthor{uludagAttoFemtoScale2026} \autocite[p.\ 24]{uludagAttoFemtoScale2026}. Many of these designs follow the open-source and open-hardware philosophies, with their source code, hardware design and documentation available online.
 
+
+%\footnote{\url{https://github.com/space-technologies-at-california/PCBSat} \
 %In \citeyear{perezSurveyCurrentFemtosatellite2016}, \citeauthor{perezSurveyCurrentFemtosatellite2016} investigated the current femto-satellite state of the art. \autocite{perezSurveyCurrentFemtosatellite2016}
 
 \begin{figure}[h]
@@ -1477,10 +1487,11 @@ Authors have also explored different specific applications of atto-satellites, e
 One of the most famous examples of an application of atto-satellites is the Breakthrough Starshot project.
 \citeauthor{marxInterstellarVehiclePropelled1966} initially proposed the idea of using terrestrial lasers to propel interstellar spacecraft in \citeyear{marxInterstellarVehiclePropelled1966} \autocite{marxInterstellarVehiclePropelled1966}, while
 %
-\citeauthor{forwardRoundtripInterstellarTravel1984} in \citeyear{forwardRoundtripInterstellarTravel1984} proposed the use of lightsail\footnote{equivalently, laser-sail} spacecraft, calculating different mission designs that can reach Alpha Centauri after \(\sim\)40 years of travel.
-\citeauthor{manchesterStochasticSpaceExploration2011}, on the other hand, proposed using the smaller ChipSat spacecraft for space exploration \autocite{manchesterStochasticSpaceExploration2011}. \todo{Investigate "Starwisp" by Forward} %https://en.wikipedia.org/wiki/Starwisp
+\citeauthor{forwardRoundtripInterstellarTravel1984} in \citeyear{forwardRoundtripInterstellarTravel1984} proposed the use of lightsail\footnote{equivalently, laser-sail} spacecraft, calculating different mission designs that can reach Alpha Centauri after \(\sim\)40 years of travel \autocite{forwardRoundtripInterstellarTravel1984}\footnote{\citeauthor{forwardStarwispUltralightInterstellar1985} also proposed an alternative interstellar probe concept based on beamed \acs{RF} microwaves \cite{forwardStarwispUltralightInterstellar1985}}.
+\citeauthor{manchesterStochasticSpaceExploration2011}, on the other hand, proposed using the smaller ChipSat spacecraft for space exploration \autocite{manchesterStochasticSpaceExploration2011}.
+%https://en.wikipedia.org/wiki/Starwisp
 
-The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a \draft{laser} array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, a \qty{15}{\milli\meter}-long carrier for a metre-scale lightsail, fitted with experimental technologies, such as atomic batteries \autocite{wordenBreakthroughPrizes2017}. As of 2026, while scientific progress has been made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
+The Breakthrough Starshot project was announced in 2016 by Breakthrough Initiatives \autocite{finkbeinerNearLightSpeedMissionAlpha2017}. It envisioned the use of a laser array that would propel \SI{15}{\milli\meter}-wide ChipSats to Proxima Centauri to speeds between \(0.15c\) and \(0.9c\) \autocite{parkinBreakthroughStarshotSystem2018}. At the core of Breakthrough Starshot was the \emph{StarChip}, a \qty{15}{\milli\meter}-long carrier for a metre-scale lightsail, fitted with experimental technologies, such as atomic batteries \autocite{wordenBreakthroughPrizes2017}. As of 2026, while scientific progress has been made towards the Proxima Centauri goal, the Starshot project seems to be on hold \autocite{scoles$100MillionMissionAnother2025}.
 
 
 
@@ -1503,7 +1514,7 @@ Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} cl
 \subsection{Metrics}
 \label{sec:LITERATURE_metrics}
 
-\citeauthor{honourUnderstandingValueSystems2004} \autocite{honourUnderstandingValueSystems2004} provides a list of quantifiable parameters that can gauge the effect of Systems Engineering:
+\citeauthor{honourUnderstandingValueSystems2004} \autocite{honourUnderstandingValueSystems2004} provides a list of quantifiable\footnote{Compare with the more \emph{qualitative} parameters defined in \Cref{sec:INTRODUCTION_defining_systems_engineering}.} parameters that can gauge the effect of Systems Engineering:
 \begin{itemize}
 	\item \textbf{Project Duration}: The overall time between the initial conceptualisation until the validation of a product. In aerospace, ``validation'' can be taken to mean environmental testing and qualification, or an actual flight of a project.
 	\item \textbf{Project Cost}: In the context of aerospace systems, this can include launch costs, personnel costs, material costs, and further development costs. One should note that academic projects often include volunteer engineers, resulting in lower or zero personnel costs.
@@ -1540,7 +1551,7 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 \label{sec:LITERATURE_life_cycle_models}
 The selection of a life cycle model for the development phases is a key decision in systems engineering.
 The \ac{SEBOK} wiki defines a life cycle as ``a series of stages [\textellipsis] which confirm that the system is mature enough to leave one stage and enter another'' \autocite{sebok}.
-\marginnote{For this work, when using the term ``life cycle'', I refer to the life cycle of the \emph{project}, and not the \emph{system} or an instance of the system. The former includes all project stages, from initial ideation to operations, while the latter refers to the stages in the life of a physical system, such as commissioning, \draft{main mission operations}, and disposal.} %This is also where terms like "infant mortality" come into place, see Bathtub curve.
+\marginnote{For this work, when using the term ``life cycle'', I refer to the life cycle of the \emph{project}, and not the \emph{system} or an instance of the system. The former includes all project stages, from initial ideation to operations, while the latter refers to the stages in the life of a physical system, such as commissioning, main mission operations, and disposal.} %This is also where terms like "infant mortality" come into place, see Bathtub curve.
 A life cycle model is individual and specific to each project, but usually follows a pre-specified life cycle \emph{process model}. 
 \acs{SEBOK} categorises these models into three categories:
 \begin{enumerate}
@@ -1565,9 +1576,6 @@ Incremental development defines an approach where complete versions (\emph{incre
 while iterative development refers to an approach where different \emph{pieces} of the system are reworked one at a time.
 Hybrid approaches that combine incremental and iterative development are also observed \autocite{garzanitiHybridAgileProduct2020,carpenterAgileTooFragile2014}.
 
-\marginnote{\todo{Check [[@larmanIterativeIncrementalDevelopment2003]] for the classification iterative-incremental }}
-
-
 \begin{figure}[h]
 	\includegraphics{graphics/ProcessModelGroups.pdf}
 	\caption[Different categorisations of lifecycle process models]{Different categorisations of lifecycle process models \cite{sebok_book_211,sebok_book_212,HEEAGER201822}}
@@ -1576,30 +1584,44 @@ Hybrid approaches that combine incremental and iterative development are also ob
 
 
 Traditional space systems engineering has traditionally followed a V or waterfall-type process \autocite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}, with well-defined stage-gates between different project stages.
-Project phases are typically separated into Phase 0 (concept studies/mission analysis/needs identification), Phase A (feasibility/concept development/technology development), Phase B (preliminary definition), Phase C (detailed definition/fabrication), Phase D (assembly/qualification), Phase E (operations) and Phase F (close-out/disposal) \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}.
+Project phases are typically separated into: \cite{ECSS-M-ST-10C,sheaNASASystemsEngineering2020}
+\begin{itemize}[itemsep=-2ex]
+	\item Phase 0 (concept studies/mission analysis/needs identification),
+	\item Phase A (feasibility/concept development/technology development),
+	\item Phase B (preliminary definition),
+	\item Phase C (detailed definition/fabrication),
+	\item Phase D (assembly/qualification),
+	\item Phase E (operations), and
+	\item Phase F (close-out/disposal).
+\end{itemize}
 This approach arises from the high costs associated with early space systems engineering, and the risk-averse attitude of developers, especially in the case of human spaceflight.
-Indeed, \draft{a significant time spent during the early definition phases combined with a rigorous review process has been shown to reduce later mission cost, risk, and delays} \todo{[cite sebok\_value]}.
-However, this paradigm has often come under challenge, with different missions taking incremental or iterative approaches to system design \autocite{carpenterAgileTooFragile2014}, the most notable example being SpaceX's ``move fast and break things'' approach. \todo{CITATION!}
+Indeed, more time spent during the early definition phases combined with a rigorous review process has been shown to reduce later mission cost, risk, and delays. \autocite{sebok_value}.
+However, this paradigm has often come under challenge, with different missions taking incremental or iterative approaches to system design \autocite{carpenterAgileTooFragile2014}, the most notable example being SpaceX's ``move fast and break things'' approach \autocite{chrisimpeySpaceXScienceFailure2023}.
 \acs{SEBOK} claims that the integrated and interactive nature of modern hardware-software systems has rendered pre-specified processes obsolete, as system interfaces and behaviours can emerge better with their use, rather than extensive and bureaucratic processes.
 
 
 On the other hand, it is possible for engineering projects to be associated with no predetermined lifecycle process.
 These projects can be said to follow a ``by-default'' or ``ad-hoc'' model \autocite{cowper941SystemsEngineering2004}.
-This is often the case for small, volunteer-based or ``\ac{DIY}'' projects \autocite{bohmerOpenInnovationEcosystem}. However, even if no formal description is provided for the lifecycle used, the models described earlier in this section can still describe the actual work process followed. Simple projects follow a single-step process, which can potentially evolve into a multi-step process with an undetermined number of steps \todo{citation needed}, with the benefits of systems engineering and a predetermined methodology becoming clear as the project scale grows (\Cref{sec:INTRODUCTION_defining_systems_engineering}).
+This is often the case for small, volunteer-based or ``\ac{DIY}'' projects \autocite{bohmerOpenInnovationEcosystem}. However, even if no formal description is provided for the lifecycle used, the models described earlier in this section can still describe the actual work process followed. Very simple projects follow a single-step process, which can potentially evolve into a multi-step process with an undetermined number of steps, with the benefits of systems engineering and a predetermined methodology becoming clear as the project scale grows (\Cref{sec:INTRODUCTION_defining_systems_engineering}).
 
 \subsection{Agile Systems Engineering}
 
 Pre-specified life cycle processes, as described in the above section, usually prescribe a predetermined stage or product at the end of each development phase \autocite{sebok_incremental}.
-However, this requires prior knowledge about the system, and often involves the expectation of no errors or external \draft{disturbances} during design or development.
+However, this requires prior knowledge about the system, and often involves the expectation of no errors or external influences during design or development.
 
 In \citeyear{beckAgileManifesto2001}, the Agile Manifesto \autocite{beckAgileManifesto2001}, signed by 17 prominent software engineers, sought to challenge this model by essentially proposing ``evolutionary'' processes, where the end state of each phase of development is unknown.
 
 \begin{marginfigure}
-	\todo{The agile manifesto}
+	\begin{tcolorbox}[colback=white, colframe=black, sharp corners, boxrule=0.5pt, width=\linewidth]
+	\small Individuals and interactions over processes and tools\\%
+	Working software over comprehensive documentation\\%
+Customer collaboration over contract negotiation\\%
+Responding to change over following a plan%
+	\end{tcolorbox}
 	\caption[The Agile Manifesto]{The Agile Manifesto \autocite{beckAgileManifesto2001}}
 \end{marginfigure}
 
-The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. \todo{The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
+The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \cite{beckAgileManifesto2001}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
 \begin{fullwidth}
 \begin{multicols}{2}
 \begin{itemize}[itemsep=-2ex]
@@ -1622,19 +1644,17 @@ These methodologies cover different parts of the lifecycle of a system, and are 
 While their core is usually the lifecycle process model, some of them also branch into other system engineering fields. \citeauthor{boehmBalancingAgilityDiscipline2004} \cite{boehmBalancingAgilityDiscipline2004} provides a comprehensive comparison of the above methodologies.
 I note that often synonymous terminology is used in methodology definitions and description, creating potential confusion in comparisons; especially words such as ``agile'', ``lean'', ``rapid'', and more are sometimes used interchangeably or with conflicting definitions. 
 
-\draft{Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.}
+Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.
 
-The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. \todo{Meta-analyses performed \todo{(how?)} demonstrate that the correct application of Agile methodologies can reduce \draft{inertia} and increase developer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}}.
-Criticism against Agile is usually targetted towards incorrect implementations.
-Scrum, one of the most popular Agile frameworks, has faced criticism either at its foundation or due to its potential for mismanagement
-\autocite{tsalicoglouHowTransitionAgile2017,bjornDarkAgilePerceiving2019,grayCriticismScrum2015}
-\todo{explain better}.
-\citeauthor{kustersScreamGuide2020,jeffriesDarkScrum2016} \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} have notably produced tongue-in-cheek documentation demonstrating common incorrect applications of the Scrum approach.
+The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. Meta-analyses performed against case-studies, surveys and experiments, have found that the correct application of Agile methodologies can reportedly reduce project management inertia and increase developer and customer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}.
+Criticism against Agile is often targetted towards incorrect implementations.
+Scrum, one of the most popular Agile frameworks, has faced criticism both for its foundation, and due to its potential for misuse \autocite{tsalicoglouHowTransitionAgile2017,bjornDarkAgilePerceiving2019,grayCriticismScrum2015}.\marginnote{\citeauthor{kustersScreamGuide2020,jeffriesDarkScrum2016} \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} have notably produced tongue-in-cheek documentation demonstrating common incorrect applications of the Scrum approach.}
 
-The success of Agile in software engineering has naturally encouraged its adoption in the engineering and development of physical products. The main obstacle that has to be overcome are what are referred to as ``\acp{COP}''  \autocite{schmidtAgileDevelopmentConstraints2017,petersonWhenWorldsCollide2021}.
+The success of Agile in software engineering has encouraged its adoption in the engineering and development of physical products. The main obstacle that has to be overcome are what are referred to as ``\acp{COP}''  \autocite{schmidtAgileDevelopmentConstraints2017,petersonWhenWorldsCollide2021}.
 These constraints are related to the difficulties of creating shippable increments for each iteration, higher complexity, or increased external requirements. In the context of \ac{SCS}, f these constraints are impactful because of a reliance on physical components that may not be manufactured in-house, such as \acsp{IC}, \acsp{PCB}, or machined parts, the impracticality of automated testing, especially in the case of environmental qualification, and the expensive, non-repeatable launch process.
 
-For this reason, different approaches and methodologies have been investigated for the use of Agile in Systems Engineering \autocite{carsonCanSystemsEngineering2013,AgileComplexSystems,mcdanielGoodBadAgile2003,darrinAgileManifestoDesign2017,bottAnalysisTheoriesSupporting2019,petersonWhenWorldsCollide2021} \todo{Expand a little bit}. \draft{SEBOK Agile} and \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} have provided a comprehensive tailoring of Agile for Systems Engineering. \citeauthor{douglassAgileSystemsEngineering2015} notably adapted the four Agile principles as follows \autocite{douglassAgileSystemsEngineering2015}:
+For this reason, different approaches and methodologies have been investigated for the use of Agile in Systems Engineering \autocite{carsonCanSystemsEngineering2013,AgileComplexSystems,mcdanielGoodBadAgile2003,darrinAgileManifestoDesign2017,bottAnalysisTheoriesSupporting2019,petersonWhenWorldsCollide2021}.
+The \acf{SEBOK} \autocite{sebok_agile} and \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} have provided comprehensive tailorings of Agile for Systems Engineering. \citeauthor{douglassAgileSystemsEngineering2015} notably adapted the four Agile principles as follows \autocite{douglassAgileSystemsEngineering2015}:
 \begin{enumerate}[itemsep=-2ex]
 	\item \emph{Individuals and interactions over processes and tools}
 	\item \emph{Verifiably correct specifications over comprehensive documentation}
@@ -1644,17 +1664,15 @@ For this reason, different approaches and methodologies have been investigated f
 
 Agile approaches have also been documented for use in critical systems and space systems. One of the earliest applications of practices similar to Agile can be observed in NASA's \emph{Faster-Better-Cheaper} approach in the 1990's, which is considered by some to be a success. \autocite{dimarioSystemicsNASAFasterBetterCheaper2005} provides a comprehensive review of the approach, its results, and successes and failures. \autocite{dillonFasterBetterCheaperProjectsToo2015} also analyses the controversy on the results of the FBC paradigm by comparing its strong and weak outcomes.
 
-There are various examples in literature for the implementation of Agile practices in entire, or at least parts of, space projects, such as for the Multi Mission Bus Demonstrator \autocite{huangAgileHardwareSoftware2012}.
-\todo{Find some more examples}
-
+There are various examples in literature investigating the adoption of Agile practices in entire, or at least parts of, space projects, such as for the Multi Mission Bus Demonstrator \autocite{huangAgileHardwareSoftware2012}. %
  %have not yet found a strong footing on safety-critical and highly mission-critical systems:
- \autocite{kasauliSafetyCriticalSystemsAgile2018} is a meta-analysis of only software development for such systems. \autocite{carpenterAgileTooFragile2014} tries to investigate how Agile could be tailored for such systems. Fully agile approaches, where increments involve versions of the entire system, are not yet documented in the literature.
+ \autocite{kasauliSafetyCriticalSystemsAgile2018} is a meta-analysis of only software development for such systems, while \autocite{carpenterAgileTooFragile2014} tries to investigate how Agile could be tailored for such systems. Fully agile approaches, where increments involve versions of the entire system for large-scale spacecraft, are not yet documented in the literature.
  
 \paragraph{Agile Frameworks}
 \label{par:LITERATURE_agile_frameworks}
 
-While a number of different Agile frameworks have been proposed, only a small number of them are in effective use in the industry as of 2025.
-Scrum and \acf{SAFE} are the two most popular formal frameworks in use, with developers also creating ad-hoc methods based on agile principles \autocite{digital.aiStateAgileReport2025}.
+While a number of different Agile frameworks have been proposed, only a small number of them are in effective use in the industry as of 2026.
+Scrum and the \acf{SAFE} are the two most popular formal frameworks in use, with developers also creating ad-hoc methods based on agile principles \autocite{digital.aiStateAgileReport2025}.
 A \citeyear{atzbergerAgileDevelopmentPhysical2020} survey by \citeauthor{atzbergerAgileDevelopmentPhysical2020} \autocite{atzbergerAgileDevelopmentPhysical2020} of hardware developers found that \qty{90}{\percent} of the respondents used a form of Scrum as a lifecycle process model, while other methods, such as \emph{Kanban} and \emph{Design Thinking}, also enjoy some popularity.
 
 In this sub-section, I will analyse the most popular Agile frameworks and evaluate their applicability to hardware applications, and more specifically the \ac{SCS} methodology.
@@ -1662,23 +1680,23 @@ In this sub-section, I will analyse the most popular Agile frameworks and evalua
 \subparagraph{Scrum}
 \label{sec:LITERATURE_scrum}
 Scrum, one of the most popular agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire life cycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}.
-\marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. \todo{The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}}
+\marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
 Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework.
 
 The framework is built around fixed-time iterations called \emph{Sprints}, which follow a repeated pattern of \emph{planning-\-standup-\-review-\-retrospective} with the aim of presenting a complete product at the end of each iteration. It also defines the different terminology and roles within small development team.
 
-With its main description being no more than 14 pages long, Scrum is considered a light-weight framework, and can therefore be easily applied or tailored for different organisations. Popular generic tailorings include \acf{LESS} and \emph{Scrum@Scale}, variants designed for organisations with multiple Scrum-based teams that may be building one or more products \autocite{larmanLargescaleScrumMore2017}.
+With its main description being no more than 14 pages long, Scrum is considered a light-weight framework, and can therefore be easily applied or tailored for different organisations. Popular generic tailorings include \acf{LESS} and \emph{Scrum@Scale}, variants designed for organisations with multiple Scrum-based teams that may be building one or more products \autocite{larmanLargescaleScrumMore2017,ReadScrumScaleGuide}.
 
 \subparagraph{Extreme Programming (XP)}
 Extreme Programming is a software development methodology, similar to Scrum, which combines different methods and guidelines that particularly apply to software development.
-Typical aspects of XP include having a customer representative continuously present on-site, iterations lasting three weeks or less, pair programming, code reviews, frequent refactoring, test-driven development, and continuous integration. Despite its initial popularity, it received criticism due to its environment-specific assumption, and difficulties in scaling \autocite{boehmBalancingAgilityDiscipline2004}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey shows that it was used by \qty{7}{\percent} of industrial developers \autocite{atzbergerAgileDevelopmentPhysical2020}.
+Typical aspects of XP include having a customer representative continuously present on-site, iterations lasting three weeks or less, pair programming, code reviews, frequent refactoring, test-driven development, and continuous integration. Despite its initial popularity, it received criticism due to its environment-specific assumptions, and difficulties in scaling \autocite{boehmBalancingAgilityDiscipline2004}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey shows that it was used by \qty{7}{\percent} of industrial developers \autocite{atzbergerAgileDevelopmentPhysical2020}.
 
 \subparagraph[SAFe (Scaled Agile Framework)]{\acf{SAFE}}
 
 The \acl{SAFE} is another popular set of organisational practices, designed to scale Agile across organisations consisting of multiple teams. It includes concepts such as \emph{Lean Portfolio Management} to guide an organisation's strategy, it guides the product integration and delivery flow based on Scrum-like iterations, and it provides guidance for leadership and organisational structure. Its primary concept is the \emph{``Release Train''}, a team-of-teams with more than 50 individuals that share a common goal. As a scaled framework, it mainly targets organisations with more than 250--1000 developers \autocite{heusserIntroducingScaledAgile2015}. Common criticisms against \acl{SAFE} address its rigidity and strict hierarchical structure, as well as its dependence on predictability, which are said to only create an illusion of implementing Agile \autocite{schwaberUnsafeAnySpeed2013}.
 
 \subparagraph{Miscellaneous Frameworks}
-Most other documented Agile frameworks are not reported to be as popular, but can still provide an interesting source of \draft{inputs}.
+Most other documented Agile frameworks are not reported to be as popular, but can still represent useful inputs for the proposed methodology.
 
 The Rational Unified Process (RUP), introduced in 1998, was an iterative framework created by a division of IBM, designed to be adaptable and tailorable by different software organisations. While it is not officially supported as of 2025, and has received considerable criticism, it is reported to be a precursor of \acs{SAFE} \autocite{schwaberUnsafeAnySpeed2013}. DAD (Disciplined Agile Delivery), introduced in 2013, is a set of guidelines for Agile software organisations that aims to encapsulate other, more fundamental Agile frameworks \autocite{ChooseYourWoW}. The \acf{DSDM}, introduced in 1994, is a project-specific framework that covers planning, requirements, development and project management \autocite{agilebusinessconsortiumAgilePMHandbookV22014}.
 Crystal, introduced in the 1990s, is a family of frameworks that aim to cover different sizes and criticalities\footnote{The 4 ``criticalities'' in Crystal are \emph{comfort, discretionary money, essential money, and life.}} of projects, although only some of them have been formally described \autocite{boehmBalancingAgilityDiscipline2004}.
@@ -1692,25 +1710,23 @@ Apart from frameworks that cover the entire structure of a team, project, or org
 	\includegraphics{external/Kanban Board.pdf}
 	\caption[Mockup of a Kanban board]{Mockup of a Kanban board. Taken from \autocite{falcoKanbanBoardRepresentation2023}}
 \end{marginfigure}
-Kanban is a visual approach to manage work in human systems, which aims to create a single view of tasks at various stages by modelling them as cards that are moved across different columns on a board \todo{[ref]}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey measures a \qty{75}{\percent} usage of Kanban in the physical product industry \cite{atzbergerAgileDevelopmentPhysical2020}.
+Kanban is a visual approach to manage work in human systems, which aims to create a single view of tasks at various stages by modelling them as cards that are moved across different columns on a board \autocite{ChooseYourWoW}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey measures a \qty{75}{\percent} usage of Kanban in the physical product industry \cite{atzbergerAgileDevelopmentPhysical2020}.
 
-Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks \todo{[ref]} \todo{more}.
+Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks. In TDD, the tests are considered equivalent to the specification of the software (or, correspondingly, the requirements of a space system) \autocite{IntroductionTestDriven2023}.
 
 \paragraph{Hardware-specific Frameworks}
-Because of the introduction of Agile methods into hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}, with the field being supported instead by various proprietary approaches. \draft{Nevertheless}, most developers tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
+Because of the introduction of Agile methods into hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}, with the field being supported instead by various proprietary approaches. Nevertheless, most developers tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
 
 \subparagraph{Agile-Stage-Gate}
 \citeauthor{cooperAgileDevelopmentManufacturing2023} \autocite{cooperAgileDevelopmentManufacturing2023} observed an emergent hybrid model that is used by physical product developers, which replaces traditional project management methods with Scrum, but maintains traditional stages and gates \emph{``for strategic and directional reasons''}. In contrast to Scrum, iterations can last between two weeks and three months, stand up meetings are only held two--three times per week, and each iteration has the goal of presenting a ``demo'' to management or customer.
 
 \subparagraph{Slice-Based Integration}
-\citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} also propose a Scrum-based framework, based on the concept of a \textbf{slice}, which is an independently verifiable feature or set of features of a product\footnote{Also see \Cref{def:slice}.}. Then, instead of working on the entire product, teams have a clear set of functionality that needs to be achieved at the end of every timebox. This purportedly helps coordinating hardware and software development. Likewise for verification, different test sets are defined and distributed across iterations.
+\citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} also proposed a Scrum-based framework, based on the concept of a \textbf{slice}, which is an independently verifiable feature or set of features of a product\footnote{Also see \Cref{def:slice}.}. Then, instead of working on the entire product, teams have a clear set of functionality that needs to be achieved at the end of every timebox. This purportedly helps coordinating hardware and software development. Likewise for verification, different test sets are defined and distributed across iterations.
 
 \begin{figure}[h]
 	\includegraphics{drafts/iberle_slices.png}
 	\caption[Example of an Agile slice-based integration plan for a physical product]{Example of an Agile slice-based integration plan for a physical product. Image taken from \cite{iberleAgileGetsPhysical2022}}
 \end{figure}
-
-\todo{Any other frameworks worth considering? Skunkworks? Guidelines?}
 
 %\section{Research Problem Formulation}
 %\label{sec:LITERATURE_problem_formulation}
