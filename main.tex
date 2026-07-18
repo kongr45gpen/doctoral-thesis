@@ -1712,7 +1712,7 @@ Apart from frameworks that cover the entire structure of a team, project, or org
 \end{marginfigure}
 Kanban is a visual approach to manage work in human systems, which aims to create a single view of tasks at various stages by modelling them as cards that are moved across different columns on a board \autocite{ChooseYourWoW}. \citeauthor{atzbergerAgileDevelopmentPhysical2020}'s survey measures a \qty{75}{\percent} usage of Kanban in the physical product industry \cite{atzbergerAgileDevelopmentPhysical2020}.
 
-Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks. In TDD, the tests are considered equivalent to the specification of the software (or, correspondingly, the requirements of a space system) \autocite{IntroductionTestDriven2023}.
+Test-Driven Development (TDD) is a software development method which prioritises writing working, automated unit tests before the actual code, and is natively supported by different programming languages and frameworks. In TDD, the tests are considered equivalent to the specification of the software (or, correspondingly, the requirements of a space system) \autocite{beckTestDrivenDevelopment2002}.
 
 \paragraph{Hardware-specific Frameworks}
 Because of the introduction of Agile methods into hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}, with the field being supported instead by various proprietary approaches. Nevertheless, most developers tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
@@ -2293,8 +2293,13 @@ The Definition of Done and Sprint Goal are agreed upon at the \emph{sprint plann
 
 It is not always possible to complete Sprint Backlog items within a single iteration. In this case, these items can be postponed and pushed to a future Sprint.
 
-The Scrum guide does not...
-\todo{reviews when}
+\newthought{The Scrum guide does not describe a \textbf{review}} process as part of the design and development activities. This expectation of self-organisation conflicts with the strict review hierarchy that is expected in traditional space systems.
+\label{sec:METHODOLOGY_reviews_general}
+
+The importance of reviews can be ascertained from the software development field, where various studies have been performed on the efficacy of \emph{code reviews}. Meta-analyses of expert opinion surveys show that code reviews increase perceived code quality, understanding and defect minimisation \autocite{badampudiModernCodeReviews2023,yangRoadmapModernCode2026}. While this is supported by data-backed studies \autocite{kononenkoInvestigatingCodeReview2015,bavotaFourEyesAre2015,krutauzCodeReviewMeasures2020,kemererImpactDesignCode2009}, these findings are not consistent, especially depending on reviewer workload and experience.
+
+Given these positive indications, \acs{SCS} can potentially also benefit from a design review scheme, when experienced developers are involved, as an auxiliary activity. Alternatively, automated \acs{LLM}-based reviews have also been proposed and are supported by typical engineering artifact platforms, triggered when a change is pushed to a repository \autocite{rasheedAIpoweredCodeReview2024}. For non-text artifacts\footnote{For example, screenshots of engineering drawings or \acs{PCB} layouts}, multi-modal \acs{AI} models can be used, and since real-time responses are not required, the environmental impact of \acsp{LLM} can be reduced.
+
 
 \paragraph{High-level planning}
 
@@ -2530,7 +2535,7 @@ along with attributes specific to the \acs{SCS} methodology:
 Some of these attributes are already implemented in some form across available task tracking software. For example, \emph{Jira} defines the concepts of an \textbf{\emph{Epic}} and a \textbf{\emph{Component}}, which can be linked to \emph{slices} and \emph{modules} respectively. Alternatively, I provide a sample data model for technical planning in \Cref{fig:m_uml_planning_draft}.
 
 \begin{figure}[p]
-	\includegraphics{drafts/WPDataModel.pdf}
+	\includegraphics{plantuml/WPDataModel.pdf}
 	\caption{\acs{UML} data model for a representation of technical planning in the \acs{SCS} methodology.}
 	\label{fig:m_uml_planning_draft}
 \end{figure}
@@ -2555,7 +2560,7 @@ A procedural trade-off that has to be kept in mind  is that the more attributes 
 		\textbf{TP-100} & The tool shall be available as Free and Open Source software.
 		\\ \bottomrule
 	\end{tabularx}
-	\caption[Example requirements for an SCS Project Management tool]{Example requirements for an \acs{SCS} Project Management tools}
+	\caption[Example requirements for an SCS Project Management tool]{Example requirements for an \acs{SCS} Project Management tool. See \Cref{tab:m_edm_requirements} for reference justifications.}
 	\label{tab:m_work_package_tool_requirements}
 \end{table*}
 
@@ -3128,9 +3133,6 @@ p(C) = \frac{2 - 2\frac{k_\infty}{2} }{1+e^{k_S C}} + k_\infty.
 \end{figure}
 
 
-\todo{Patch this up a bit}
-
-
 \FloatBarrier
 \subsection[SCS Design Guidelines]{\acs{SCS} Design Guidelines}
 \label{sec:METHODOLOGY_design_guidelines}
@@ -3139,8 +3141,6 @@ This section will describe guidelines for various choices that have to be taken 
 
 \paragraph{Modularity}
 \label{sec:METHODOLOGY_modularity}
-
-\todo{For sources of this section, check bibliography of mathieuAssessingFractionatedSpacecraft2006}
 
 A defining characteristic of CubeSats and, to a lesser extent, PocketQubes, is their \textbf{modular structure}.
 
@@ -3182,7 +3182,7 @@ Another decision that developers are faced with involves whether they reuse exis
 
 \begin{figure*}[h]
 	\includegraphics{graphics/Reuse.pdf}
-	\caption{Concept map comparing component reuse (as a built-system or pure design reuse) against in-house development \todo{Todo: fix font}}
+	\caption{Concept map comparing component reuse (as a built-system or pure design reuse) against in-house development}
 	\label{fig:m_reuse}
 \end{figure*}
 
@@ -3220,7 +3220,7 @@ Another decision that developers are faced with involves whether they reuse exis
 
 		9 & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & 2019 & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
 
-		10 & System & Monarch & \draft{Van Hunter Adams} & 2018 & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \qtyproduct{5 x 5}{\centi\meter} Chipsat by Van Hunter Adams \\
+		10 & System & Monarch & Van Hunter Adams & 2018 & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \qtyproduct{5 x 5}{\centi\meter} Chipsat by Van Hunter Adams \\
 	
 		\bottomrule
 	\end{tabularx}%
@@ -3345,7 +3345,7 @@ The most critical physical aspects of a design\footnote{Such as the verification
 
 The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
 
-Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
+Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} relies on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}. Complete software emulation of external devices can be also used to verify functional requirements.} and full functional or mission  tests are executed manually or (semi)automatically.
 The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where payload runs need multiple days to complete). Different test coverage models are therefore typically defined in missions.
 \marginnote{Typical test coverage models can include: \autocite{ECSS-E-ST-10-03C}
 \begin{itemize}
@@ -3389,7 +3389,7 @@ In some cases, the resources available to a development team may encourage desig
 This approach may be risky, as the lead time between the production of a \acl{FM} and its operation can be too long to fit within limited iteration cycles. However, it can be appropriate for teams that have a ready-to-use spacecraft bus, already have plans or access to multiple low-cost flight opportunities, or want to replace generally-costly test campaigns, such as radiation testing.
 In-Orbit Testing need also not be performed on the entire system, and can follow the slice-based approach, especially when simple low-cost payload flight opportunities are available.
 
-\todo{Here we add a section about balloon testing and how it ties to the whole idea.}
+Alternatively, when available, high-altitude testing platforms can be used instead of test flights, such as \textbf{high-altitude balloons}, drones, or sounding rockets \autocite{berthoudHowSetCubeSat2016,WikisatWiki}. However, the cost-benefit ratio of these solutions will need to be carefully examined, as the conditions simulated by them can often also be emulated on the ground.
 
 In general, the verification \& validation process of an \ac{SCS}-methodology team will differ considerably from the equivalent in a CubeSat process.
 However, it will still vary between teams, as it depends on variables set by the internal and external environment. I provide further guidelines for methodology tailoring in \Cref{sec:METHODOLOGY_tailoring}.
@@ -3398,25 +3398,26 @@ However, it will still vary between teams, as it depends on variables set by the
 \label{sec:METHODOLOGY_automated_testing}
 
 \begin{figure}
-	\includegraphics{drafts/robot_ai4space.png}
+	\includegraphics{graphics/AI4Space_Robot.pdf}
 	\caption{Example test suite for an end-to-end test, written in the Robot framework}
 \end{figure}
 
 There is significant benefit to automating the functional testing processes. The use of \acf{RPA} is finding increased popularity for testing integrated systems in space engineering \autocite{malyshkinaMissionControlSoftware2025}. 
 
-Self-contained and automated test runs can be performed both during and at the end of a \todo{blablab....}
-
-\todo{ [[@deckerSystemsengineeringAssessmentMultiple2016]]: Evaluation of the cost benefits of using an Engineering or Qualification Model in a student/hobbyist CubeSat project.}
+Self-contained and automated test runs can be performed both during and at the end of a Sat-Scrum iteration. A fully automated test-suite, executing both unit and integration tests \autocite{myersArtSoftwareTesting2012}, can be part of the \acs{CI}/\acs{CD} process that can be executed automatically after every software modification, or by manual trigger when there are hardware modifications. When designed correctly, such a test suite should be completed in a limited amount of time, allowing multiple executions per day. Ideally, automated testing should verify the \textbf{combination of hardware and software} which is best done through a \textbf{\acf{HIL} setup} \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}.
 
 
+However, one has to take care with the additional overhead added by implementing automated solutions, when a manual process can suffice. When a test case requires, for example, changing the hardware configuration or cable connections of the \acs{DUT}, the developers have to consider whether it is more beneficial to automate this process, keep working maually, or forego the test for some iterations.%\marginnote{These calculations can be easily made using unit-aware calculators. For example, if a process takes \(t_m\) time to execute manually, \( t_a \) to automate, then it makes sense to automate when a project lasts more than \( \frac{t_a}{t_m} \) iterations.}
+This decision can often be made with back-of-the-envelope calculations on unit-aware calculators; however, care has to be taken, when estimating the manual effort required for a process, to consider reruns that may not be part of the original testing plan.
+%\footnote{This can often leave to seemingly counter-intuitive results. If, for example, a process takes 30 minutes to execute manually, is executed twice per iteration, and would take 6 hours to automate, it would make sense to automate when a project lasts more than \( \frac{\SI{6}{hours}}{2\cdot \SI{30}{minute}} =  6\) iterations.}.
 
 
 \subsection{Agile Maintenance \& Operations}
 \label{sec:METHODOLOGY_operations}
 
-While spacecraft operations are not strictly part of its development, and therefore outside the scope of this thesis, it is important to consider the needs of a spacecraft and its operators after launch, to make sure that no additional failures are generated, and that any faults caused by inadequate design are mitigated to the degree possible.
+While spacecraft operations are not strictly part of their development, and therefore outside the scope of this thesis, it is important to consider the needs of a spacecraft and its operators after launch, to make sure that no additional failures are generated, and that any faults caused by inadequate design are mitigated to the degree possible.
 
-In theory, the main boon for space systems operations is \textbf{the ability to reprogram a spacecraft in orbit}. While hardware can (mostly) not be reconfigured, the use of in-orbit programming can, in essence, allow completely reconfiguring a spacecraft's functions. However, in practice, small-scale development teams do not plan for this feature, due to its high implementation complexity. When implemented, in-orbit programming should be robust, by allowing a reversal of the process if errors are detected, and rejecting corrupted code. \todo{Surely there must be more interesting things about this here. Ability to reupload and reprogram software. Need to keep original engineers in the team. Test on a jig before uploading}
+In theory, the main boon for space systems operations is \textbf{the ability to reprogram a spacecraft in orbit}. While hardware can (mostly) not be reconfigured, the use of in-orbit programming can, in essence, allow completely reconfiguring a spacecraft's functions. However, in practice, small-scale development teams do not often plan for this feature, due to its high implementation complexity. When implemented, in-orbit programming should be robust, by allowing a reversal of the process if errors are detected, and rejecting corrupted code.
 
 Additional guidelines for operations planning include \autocite{lillAgileMissionOperations2018}:
 \begin{itemize}[itemsep=-2ex]
@@ -3428,19 +3429,13 @@ Additional guidelines for operations planning include \autocite{lillAgileMission
 	\item The success of a satellite's mission relies on its successful identification via radar and its unique transmissions. To that end, it is helpful for developers to participate in a ground station network (e.g.\@ SatNOGS/TinyGS). This action is usually mutually beneficial, with satellite teams offering their ground station to others when it is unused, while benefitting from a larger geographical coverage.
 	
 	\item The concept of reuse can be applied to operational software, with tools like \emph{YAMCS} providing an off-the-shelf interface for \acs{TC} generation, \acs{TM} parsing, alerts and custom functions.
+
+	\item \acf{GS} planning and development is usually an activity separate from spacecraft design, which can be easily postponed after spacecraft delivery. However, to support complete end-to-end testing as imagined in Sat-Scrum, it is beneficial to have a ready-to-use \acl{GS} setup for commanding and telemetry. To that end, teams can re-use off-the-shelf \acs{GS} components and software, such as the ones provided by SatNOGS \autocite{BuildSatNOGSWiki}. Then, teams can build their communication subsystem with the goal of conforming to the requirements of an already working \acs{GS}, following the \ac{TDD} approach.
+
+	\item When the spacecraft architecture allows, a \textbf{common user interface} can be used to operate the spacecraft for ground-level development and in-orbit operation. On the one hand, this limits the number of data interfaces that have to be developed for the spacecraft, and on the other, it encourages developers to implement a flexible telecommanding scheme. \acs{COTS} tools such as Grafana or OpenC3 Cosmos have been traditionally used to this effect \autocite{slaneyEnhancingGroundStation2024}.
+	
+	\item Depending on the nature of the project, the engineers responsible for developing the spacecraft might not be the ones responsible for operating it. In the case of non-nominal operating situations, this might result in a poor understanding of the function of the system. When the original developers are not available, software source code and test results can serve as sources of information.
 \end{itemize}
-
-%While in-orbit operation and ground station design is out of the scope of this thesis, spacecraft still have to be developed with operations and operations planning in mind. 
-
-\todo{
-	- lillAgileMissionOperations2018\\
-	- The use of operational procedures or not\\
-	- Critical commands and arming them or not\\
-	- Ground station planning and design (it is a separate project so it does not concern us)\\
-	- The trade-off between transmission of responsibility to the user or the spacecraft\\
-}
-
-
 
 \pagebreak[4]
 \section{Software Development Methodology}
@@ -3448,7 +3443,7 @@ Additional guidelines for operations planning include \autocite{lillAgileMission
 
 While the small size of \acs{SCS} systems limits the number of physical subsystems, components and interfaces, these constraints are less influential for the software itself. In terms of software requirements, as most \acs{SCS} need to be independent and autonomous spacecraft, a minimum set of functionality should be present, such as energy gathering, communication with the earth and failure recovery.
 
-\Cref{sec:METHODOLOGY_software_features} will therefore describe, based on available standards and recommendations, the operability requirements or features that should be present in most \acs{SCS} software, along with standard interfaces and ecosystems that are used. \draft{\Cref{sec:METHODOLOGY_software_reliability} will present a methodology to design and develop this software that is compatible with the Sat-Scrum methods presented above. Finally, \Cref{sec:METHODOLOGY_debugging_interfaces} will delve into the interface between software and hardware, by presenting what methods developers can use to upload and monitor their software without wasting real estate.}
+\Cref{sec:METHODOLOGY_software_features} will therefore describe, based on available standards and recommendations, the operability requirements or features that should be present in most \acs{SCS} software, along with standard interfaces and ecosystems that are used. \Cref{sec:METHODOLOGY_software_reliability} will focus on the reliability of on-board software, and factors that can improve it without significant time investment. Finally, \Cref{sec:METHODOLOGY_debugging_interfaces} will delve into the interface between software and hardware, by presenting what methods developers can use to upload and monitor their software without wasting real estate.
 
 \subsection[SCS Software Features]{\acs{SCS} Software Features}
 \label{sec:METHODOLOGY_software_features}
@@ -3477,7 +3472,7 @@ Examples of features that would be typically present in larger spacecraft but \e
 	\item Redundancy
 \end{itemize}
 }
-\acs{ESA}'s requirements for standard on-board software functionality are provided by the \emph{ECSS-E-ST-70-11C} standard \autocite{ECSS-E-ST-70-11C}, which explain the required functionality for \ac{TMTC}, mission control, configuration management, and autonomy. These functions are further augmented by the \emph{ECSS-E-ST-70-41C} \acf{PUS} standard \autocite{ECSS-E-ST-70-41C}, which defines 20 services (along with their interfaces) for system bus control. While the combination of the two standards guarantees a high degree of observability, flexibility and safety, combined they represent \num{3533} requirements and considerable effort to implement. Therefore, a tailoring is recommended to select a proper balance of requirements for a small SCS system.
+\acs{ESA}'s requirements for standard on-board software functionality are provided by the \emph{ECSS-E-ST-70-11C} standard \autocite{ECSS-E-ST-70-11C}, which explains the required functionality for \ac{TMTC}, mission control, configuration management, and autonomy. These functions are further augmented by the \emph{ECSS-E-ST-70-41C} \acf{PUS} standard \autocite{ECSS-E-ST-70-41C}, which defines 20 services (along with their interfaces) for satellite bus control. While the combination of the two standards guarantees a high degree of observability, flexibility and safety, combined they represent \num{3533} requirements and considerable effort to implement. Therefore, a tailoring is recommended to select a proper balance of requirements for a small SCS system.
 % ECSS-E-ST-70-41C: 3185
 % ECSS-E-ST-70-11C: 348
 
@@ -3486,36 +3481,34 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 
 
 \begin{table*}[h]
-	\caption[SCS main software operability requirements]{\acs{SCS} main software operability requirements\todo{Fix this table}}
+	\caption[SCS main software operability requirements]{\acs{SCS} main software operability requirements}
 	\label{tab:m_software_requirements}
-	\begin{tabularx}{\linewidth}{@{}lXp{1cm}@{}}
+	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
-		ID & Text & \todo{Justification} \\ \midrule
+		ID & Text & \\ \midrule
 		\multicolumn{3}{c}{Functional Requirements} \\ \midrule
-		100 & The OBSW shall generate TM of internal values, such as OBSW resources, power parameters, and sensor measurements. & \\
-		110 & The OBSW shall provide at least an ``are-you-alive'' \acs{TC} with the corresponding response. & \\
-		120 & The OBSW shall provide acknowledgement and/or execution status responses for any correct \acs{TC} received. & \\
-		130 & The OBSW shall report an internal timestamp accurate to within 100 ppm (points per million). & \\
-		140 & The OBSW shall have the capability to switch between a ``nominal'' and a ``safe'' mode ensuring spacecraft survival.&  \\
-		150 & The OBSW shall be capable of running autonomously for at least 24 hours, without restarts. & \\
-		160 & The OBSW shall provide the capability to enable or disable the emission of TM to the ground segment. & \\ \midrule
+		100 & The OBSW shall generate TM of internal values, such as OBSW resources, power parameters, and sensor measurements. \\
+		110 & The OBSW shall provide at least an ``are-you-alive'' \acs{TC} with the corresponding response. \\
+		120 & The OBSW shall provide acknowledgement and/or execution status responses for any correct \acs{TC} received. \\
+		130 & The OBSW shall report an internal timestamp accurate to within 100 ppm (points per million). \\
+		140 & The OBSW shall have the capability to switch between a ``nominal'' and a ``safe'' mode ensuring spacecraft survival.  \\
+		150 & The OBSW shall be capable of running autonomously for at least 24 hours, without restarts. \\
+		160 & The OBSW shall provide the capability to enable or disable the emission of TM to the ground segment. \\
+		170 & The OBSW shall provide the capability of scheduling TC for later execution. \\
+		\midrule
 		\multicolumn{3}{c}{Reliability Requirements} \\ \midrule
-		200 & The OBSW shall include adequate FDIR to detect, report, and recover from failures. & \\
-		210 & No single TC executed at the wrong time or wrong configuration shall lead to loss of mission. & \\
-		220 & The OBSW shall verify the integrity of each data stream received. & \\
-		230 & Repetition of the same TC shall not result in any permanent degradation or loss of on-board functionality. & \\
-		240 & The maximum execution duration of a TC shall be bounded. & \\
-		250 & Failure of TC parsing or execution at any stage shall be reported or observable in TM.& \\
-		260 & Invalid datastreams received from the OBSW shall not preclude its functional requirements. & \\
-		270 & Nominal operation of the OBSW (i.e.~without any radiation effects, but with any potential input) shall not lead to an exception or lock-up & \\ \bottomrule
+		200 & The OBSW shall include adequate FDIR to detect, report, and recover from failures. \\
+		210 & No single TC executed at the wrong time or wrong configuration shall lead to loss of mission. \\
+		220 & The OBSW shall verify the integrity of each data stream received. \\
+		230 & Repetition of the same TC shall not result in any permanent degradation or loss of on-board functionality. \\
+		240 & The maximum execution duration of a TC shall be bounded. \\
+		250 & Failure of TC parsing or execution at any stage shall be reported or observable in TM. \\
+		260 & Invalid datastreams received from the OBSW shall not preclude its functional requirements. \\
+		270 & Nominal operation of the OBSW (i.e.~without any radiation effects, but with any potential input) shall not lead to an exception or lock-up. \\ \bottomrule
 	\end{tabularx}
 \end{table*}
 
-In general, the focus of software developers should be to achieve a balance between delegating functionality and complexity to the spacecraft and the ground segment. More specifically:
-\begin{itemize}
-	\item On the one hand, performing calculations and finely controlling the spacecraft from the ground makes it easier for operators to handle unexpected issues and improve functionality.
-	\item On the other hand, on-the-edge processing is necessary to reduce the downlinked data in the case of restricted data budgets.
-\end{itemize}
+In general, the focus of software developers should be to achieve a balance between delegating functionality and complexity to the spacecraft and the ground segment. On the one hand, performing calculations and finely controlling the spacecraft from the ground makes it easier for operators to handle unexpected issues and improve functionality. On the other, on-the-edge processing is necessary to reduce the downlinked data in the case of restricted data budgets.
 
 \newthought{One} important capability that should be planned from the beginning is \textbf{software reprogramming}, which allows developers to patch the on-board software even after launch. While it is recommended by most standards and guides, it is by far the most complex feature to implement, as it depends on the hardware capabilities of each processor, usually involves handling large data volumes, and requires knowledge of the fundamentals of the firmware architectures used.
 
@@ -3524,24 +3517,20 @@ In this architecture, program memory is split into two halves, one holding the w
 
 \begin{figure*}[h]
 	\includegraphics{graphics/software/block.pdf}
-	\caption{Block diagram of typical satellite firmware\todo{TODO}}
+	\caption{Partitioning of typical satellite firmware}
 \end{figure*}
 
 \FloatBarrier
 \subsection[Improving SCS Software Reliability]{Improving \acs{SCS} Software Reliability}
 \label{sec:METHODOLOGY_software_reliability}
 
-\draft{Thanks to the prominence of the software engineering field, significant research has been performed on the factors affecting software reliability.} A \citeyear{zhuComparisonAnalysisEnvironmental2015} survey of software practicioners identified 32 environmental factors affecting software reliability, which span specification, testing, programmer skill, standards, and technologies used \autocite{zhuComparisonAnalysisEnvironmental2015}. Specifically for flight software, a \citeyear{prokopSoftwareErrorIncident2024} analysis of 55 aerospace software errors categorised their causes into:%
-%vadOK
-\marginnote[2ex]{}% %for spacing
-\begin{margindefinition}[Test coverage]
-	Testing coverage is a measure of how much of the software's source code has been executed during the testing process. It can be expressed in terms of functions, lines, statements or branches.
-\end{margindefinition}%
+Owing to the prominence of the software engineering field, significant research has been performed on the factors affecting software reliability. A \citeyear{zhuComparisonAnalysisEnvironmental2015} survey of software practicioners identified 32 environmental factors affecting software reliability, which span specification, testing, programmer skill, standards, and technologies used \autocite{zhuComparisonAnalysisEnvironmental2015}. Specifically for flight software, a \citeyear{prokopSoftwareErrorIncident2024} analysis of 55 aerospace software errors categorised their causes into:%
+
 \begin{enumerate}[itemsep=-1ex]
-	\item An unexpected combination of states, which may be individually tested, but their combination is not
-	\item Issues that rely on receiving an unexpected combination of environmental inputs (e.g.~unprotected numeric type conversion in the Ariane 5 Maiden Flight)
-	\item Issues arising due to incorrect synchronisation between \acl{OS} tasks, which in many systems is inherently non-deterministic (e.g.~deadlocks, priority inversion)
-	\item Aging-related issues (e.g.~clock overflows or float error propagation) \autocite{alonsoNatureTimesFlight2012}
+	\item An unexpected combination of states, which may be individually tested, but their combination is not,
+	\item Issues that rely on receiving an unexpected combination of environmental inputs (e.g.~unprotected numeric type conversion in the Ariane 5 Maiden Flight),
+	\item Issues arising due to incorrect synchronisation between \acl{OS} tasks, which in many systems is inherently non-deterministic (e.g.~deadlocks, priority inversion), and
+	\item Aging-related issues (e.g.~clock overflows or float error propagation) \autocite{alonsoNatureTimesFlight2012}.
 \end{enumerate}%
 
 \marginnote{%
@@ -3559,6 +3548,11 @@ Additionally, \citeauthor{curboResearchAgendaSpace2023} identified six design co
 
 Unfortunately, \acs{SCS} projects do not have control over some of the parameters that are said to increase software reliability, such as the rate of specification changes and developer experience. As such, for this section, I will focus on two technical factors that are related to software engineering only: testing practices and programming language selection.
 
+\marginnote[2ex]{}% %for spacing
+\begin{margindefinition}[Test coverage]
+	Testing coverage is a measure of how much of the software's source code has been executed during the testing process. It can be expressed in terms of functions, lines, statements or branches.
+\end{margindefinition}%
+
 \paragraph{Software Testing}
 \citeauthor{zhuComparisonAnalysisEnvironmental2015}'s survey lists the following testing-related factors as affecting software reliability: \autocite{zhuComparisonAnalysisEnvironmental2015}
 \begin{multicols}{2}
@@ -3571,7 +3565,7 @@ Unfortunately, \acs{SCS} projects do not have control over some of the parameter
 \end{itemize}
 \end{multicols}
 
-A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This \draft{behaviour} has been modeled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
+A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This observation has been modeled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
 
 \begin{marginfigure}
 \begin{tikzpicture}
@@ -3620,7 +3614,7 @@ A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}
 
 In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \autocite{venturiniImprovingMissionSuccess2017}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration (\Cref{sec:METHODOLOGY_satscrum}). In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
 \begin{enumerate}
-	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality \autocite{chengWhatImprovesDeveloper2022, kemererImpactDesignCode2009}. Code inspection can also involve automated static analysis through automated tools.
+	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality (\Cref{sec:METHODOLOGY_reviews_general}). Code inspection can also involve automated static analysis through automated tools. \todo{check link points ok}
 	
 	\item \textbf{Test-case execution}: The most common form of software testing involves the creation of programmatic test-cases that verify individual software modules or their integration. The goal of executing test-cases is usually two-fold:
 	\begin{enumerate}[itemsep=-2ex]
@@ -3632,32 +3626,32 @@ In typical CubeSat systems engineering documentation, developers are recommended
 
 	As such, in practice, developers create a limited number of test-cases that aim to evaluate the most likely and representative states of the software, with the goal of increasing statement and branch coverage of the source code. Additional techniques used to cover potentially invalid states include edge-case testing and regression testing. For complex software, test-cases evaluate code modules at low (unit) or high (integration) levels \autocite{myersArtSoftwareTesting2012}.
 
-	Nevertheless, various approaches are often used in academia and industry to increase software reliability through different methods of formal verification, with examples being Ada's SPARK \todo{[cite]}, Frama-C for C \autocite{kirchnerFramaCSoftwareAnalysis2015} and Prusti for Rust \autocite{astrauskasLeveragingRustTypes2019}. However, the complexity and effort required with applying these methods prevents their direct application to entire space systems \autocite{jacklinSurveyVerificationValidation2015}.
+	Nevertheless, various approaches are often used in academia and industry to increase software reliability through different methods of formal verification, with examples being Ada's SPARK \autocite{SPARKReferenceManual}, Frama-C for C \autocite{kirchnerFramaCSoftwareAnalysis2015} and Prusti for Rust \autocite{astrauskasLeveragingRustTypes2019}. However, the complexity and effort required with applying these methods prevents their direct application to entire space systems \autocite{jacklinSurveyVerificationValidation2015}.
 
-	\item \textbf{User Testing}: Usually referred to as ``usability testing'', this involves the actual use and interaction with software by its intended users. Even though \acs{SCS} software systems lack a user interface\footnote{Although one could still evaluate user-facing properties of the software, such as error message fidelity, response time, degree of available functionality etc.}, user testing expresses a need to perform a manual evaluation of the software running on actual hardware after every iteration, to make sure that the \draft{integration with untested systems is valid.}
+	\item \textbf{User Testing}: Usually referred to as ``usability testing'', this involves the actual use and interaction with software by its intended users. Even though \acs{SCS} software systems lack a user interface\footnote{Although one could still evaluate user-facing properties of the software, such as error message fidelity, response time, degree of available functionality etc.}, user testing expresses a need to perform a manual evaluation of the software running on actual hardware after every iteration, to make sure that the intended system is being built.
 \end{enumerate}
 
 Additional testing methods that increase confidence in the design include:
 \begin{enumerate}
-	\item \textbf{Fuzz Testing} (or fuzzing) involves the generation of a vast dataset of random test cases as inputs, which are then fed to the software to evaluate any missed edge-cases\todo{ [cite]}.
-	\item \textbf{Stress Testing} evaluates the performance of the software when it is put under a heavier load\footnote{``Load'' in this case can refer to data volume, data rate, concurrent connections, number of operations etc.} than expected\todo{ [cite]}.
+	\item \textbf{Fuzz Testing} (or fuzzing) involves the generation of a vast dataset of random test cases as inputs, which are then fed to the software to evaluate any missed edge-cases \autocite{godefroidAutomatedWhiteboxFuzz2008}.
+	\item \textbf{Stress Testing} evaluates the performance of the software when it is put under a heavier load\footnote{``Load'' in this case can refer to data volume, data rate, concurrent connections, number of operations etc.} than expected \autocite{myersArtSoftwareTesting2012}.
 	\item \textbf{Model Checking}, which tries to prove that a program is correct by logically exploring its theoretical state space \autocite{beyerSoftwareVerificationTesting2017}.
 \end{enumerate}
 
-While the benefits of testing are well understood, software quality assurance has historically \draft{experienced} a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situtation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
+While the benefits of testing are well understood, software quality assurance has historically met a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situtation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
 
 \newthought{Therefore}, the recommendations for software testing within the context of \acs{SCS} entail finding an optimal point between effort spent testing and reliability improvements. Indicatively, they can involve:
 \begin{enumerate}
 	\item \textbf{Implementing an embedded testing suite} that lets developers execute and evaluate microcontroller code. This can involve, for example:
 	\begin{itemize}[itemsep=-1ex]
-		\item A \textbf{\acf{HIL}} system, where all the relevant hardware components\footnote{Development Boards, Engineering Models, or Qualification/Flight Models} are physically tested in tandem. Specifically for implementors of the \acs{SCS} methodology, the existence of a complete system model for every iteration \draft{makes this approach easier}.\marginnote{A practical \acs{HIL} setup can involve, for example, an ``instrumentation'' computer that sends \acs{TC} to the \acl{OBC} of the satellite, and evaluates the \acs{TM} received, as part of high-level test cases. Low-level test cases can be implemented by uploading custom testing software to the microcontroller, or by including a test-suite in development versions of the software.}
+		\item A \textbf{\acf{HIL}} system, where all the relevant hardware components\footnote{Development Boards, Engineering Models, or Qualification/Flight Models} are physically tested in tandem. Specifically for implementors of the \acs{SCS} methodology, the existence of a complete system model for every iteration simplifies \acs{HIL} construction.\marginnote{A practical \acs{HIL} setup can involve, for example, an ``instrumentation'' computer that sends \acs{TC} to the \acl{OBC} of the satellite, and evaluates the \acs{TM} received, as part of high-level test cases. Low-level test cases can be implemented by uploading custom testing software to the microcontroller, or by including a test-suite in development versions of the software.}
 		\item A simulated version of the satellite, running completely on a desktop computer, and based on microcontroller and peripheral emulation.
 	\end{itemize}
 	\item \textbf{Implementing static analysis tools}, which can assist the code review process by identifying non-compliances to accepted best practices. Many static analysis tools can be used as ``drop-in'' plugins to standard \acs{CI}/\acs{CD} pipelines.
 	\item \textbf{Attempting to reach maximum test coverage}, as coverage is one of the metrics typically correlated with defect rate.\marginnote{While coverage can be simply evaluated in plain \acs{SW} testing, embedded systems are not instrumented to share this information by default. To that end, \citeauthor{tsiodrasCoverMe2016} provides a hardware-agnostic coverage generation method based on the gdb debugger \autocite{tsiodrasCoverMe2016}.}
 	\item \textbf{Automating the testing process}: The functional requirements of \acs{SCS} usually involve simple functions, and most can be evaluated by plain protocols and processes, such as nominal \acs{TMTC}. This makes \acs{SCS} functional testing suitable for \acf{RPA} methods, where data transfer, analysis and event 
-	trigerring are performed by an automated process \autocite{hofmannRoboticProcessAutomation2020}. The availability of ready-to-use automation tools reduces the developer effort needed to automate this process \draft{as well}.
-	\item \textbf{Focus on integration testing before unit testing}, as most errors are usually observed on the boundaries of components and the interactions between them \todo{[cite]}. This includes a special focus on \textbf{external interfaces} that are attached to a spacecraft.
+	trigerring are performed by an automated process \autocite{hofmannRoboticProcessAutomation2020}. The availability of ready-to-use automation tools also reduces the developer effort needed to automate this process.
+	\item \textbf{Focus on integration testing before unit testing}, as, based on project experience, most errors are usually observed on the boundaries of components and the interactions between them. This includes a special focus on \textbf{external interfaces} that are attached to a spacecraft.
 \end{enumerate}
 
 \paragraph{Programming Languages}
