@@ -3656,37 +3656,42 @@ While the benefits of testing are well understood, software quality assurance ha
 
 \paragraph{Programming Languages}
 
-An increasing number of programming languages are starting to be used for small space system firmware, which have started moving away from the compiled, statically-type paradigm. Languages such as Python \autocite{hollidayPyCubedOpenSourceRadiationTested2019}, Java \todo{[cite]} and shell scripts\todo{ [cite]} have been used for CubeSats, along with the compiled options of C, C++, Ada and Rust.
-While the aforementioned research notes a weak correlation between programming language and software reliability in typical \acs{SW} engineering contexts, typical \acs{SCS} projects differ in terms of team size, developer experience, and fault tolerance\todo{  [cite]}. This difference can potentially increase the effect of programming language selection on fault prevention.\marginnote{\todo{What is a fault?}}
+An increasing number of programming languages are starting to be used for small space system firmware, which have started moving away from the compiled, statically-type paradigm. Languages such as Python \autocite{hollidayPyCubedOpenSourceRadiationTested2019} and Java \autocite{dorinSuitabilityJavaSatellite2019} %and shell scripts (????)
+have been used for CubeSats, along with the compiled options of C, C++, Ada and Rust.
+While the aforementioned research notes a weak correlation between programming language and software reliability in typical \acs{SW} engineering contexts, typical \acs{SCS} projects differ from conventional projects in terms of team size, developer experience, and fault tolerance. This difference can potentially increase the effect of programming language selection on fault prevention.
 
-\citeauthor{ashmoreProgrammingLanguageEvaluation2022} have hypothesised that specific programming language features can support the detection or prevent the introduction of errors, providing the example of the \emph{Rust} language which avoids memory allocation errors by design. \draft{\citeauthor{rayLargescaleStudyProgramming2017} \autocite{rayLargescaleStudyProgramming2017} analysed 728 GitHub projects, identifying commits that fixed bugs, and concluded that ``there is a small but significant relationship between language class and defects''.
+\citeauthor{ashmoreProgrammingLanguageEvaluation2022} have hypothesised that specific programming language features can support the detection or prevent the introduction of errors, providing the example of the \emph{Rust} language which avoids memory allocation errors by design. \citeauthor{rayLargescaleStudyProgramming2017} \autocite{rayLargescaleStudyProgramming2017} analysed 728 GitHub projects, identifying commits that fixed bugs, and concluded that ``there is a small but significant relationship between language class and defects''.
 \citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programs of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.}
 
-Both CubeSat and \acs{SCS} software development team are usually faced with a choice of programming language when starting development. Based on the above \draft{findings, it would be an interesting research question to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability}. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be used as case-studies to investigate the effect of language on software defect rate.
+Both CubeSat and \acs{SCS} software development teams are usually faced with a choice of programming language when starting development. Based on the above findings, it would be interesting to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be serve \textbf{case-studies to investigate the effect of language on software defect rate}.
+
+The remainder of this section will present this \textbf{small-scale multiple-case study} of four \textbf{on-board software frameworks} to evaluate defects that are detected, and identify whether the use of a different programming language or framework would have prevented them.\marginnote{Due to the limited number of available \acs{OBSW} frameworks conforming to the requirements of \Cref{tab:m_software_requirements}, the current lack of diversity in programming languages in \acs{OBSW}, and the difficulty of identifying defects in third-party software, I did not perform an experimental analysis, relying only on the individual interpretation of case-study results.
+
+I also consider CubeSat (instead of just \acs{SCS}) software, because the functional requirements are not different between the two form factors, and no diverse programming languages are publically available for \acs{SCS} spacecraft.}
 
 \subparagraph{Libraries Under Test}
 \marginnote{%
-The selected frameworks are: \todo{[cite]}
+The selected frameworks are:
 
-\textbf{AcubeSAT}'s C++ on-board software. AcubeSAT is a 3U CubeSat developed in the Aristotle University of Thessaloniki, Greece, implementing the ECSS-E-ST-70-41C services \autocite{ECSS-E-ST-70-41C}.
+\textbf{AcubeSAT}'s C++ on-board software. AcubeSAT is a 3U CubeSat developed in the Aristotle University of Thessaloniki, Greece, implementing the ECSS-E-ST-70-41C services \autocite{tsouposOnBoardComputerAcubeSAT2025,ECSS-E-ST-70-41C}.
 
-\textbf{Prust}, an open-source implementation of the ECSS-E-ST-70-41C standard in Rust.
+\textbf{Prust}, an open-source implementation of the ECSS-E-ST-70-41C standard in Rust \cite{ozleyenOpenSourceImplementation2020}.
 
-\textbf{CubedOS}, an implementation of a CubeSat \acs{OBC} in native Ada.
+\textbf{CubedOS}, an implementation of a CubeSat \acs{OBC} in native Ada \cite{brandonCubedOSVerifiedCubeSat2017}.
 
 \textbf{AI4Space}, a microservice-based Python platform for a Linux payload, developed for the scope of this thesis.
 }
-For this research, I selected 4 frameworks written in different languages (C++, Rust, Ada and Python) that implement a similar set of functionality representing the needs of typical \acs{OBC} software (\Cref{tab:m_software_requirements}). In order to extract information about the actual number and cause of defects in each framework, I will compile and execute the \acs{OBC} software, and then perform automated testing using \textbf{fuzzing}. For each identified major defect, I will evaluate the influence of programming language choice, and \draft{evaluate} whether a different programming language would prevent the introduction of the fault, or if another quality assurance measure would have prevented it.
+For this research, I selected 4 frameworks written in different languages (C++, Rust, Ada and Python) that implement a similar set of functionality representing the needs of typical \acs{OBC} software (\Cref{tab:m_software_requirements}). In order to extract information about the actual number and cause of defects in each framework, I will compile and execute the \acs{OBC} software, and then perform automated testing using \textbf{fuzzing}. For each identified major defect, I will evaluate the influence of programming language choice, and assess whether a different programming language would prevent the introduction of the fault, or if another quality assurance measure would have prevented it.
 
 \begin{table*}[h]
-	\caption{Frameworks under test \todo{fix}}
+	\caption{Frameworks under test}
 	\label{tab:m_software_fuzz_frameworks}
 	\renewcommand{\arraystretch}{1.1}
 	\begin{tabularx}{\textwidth}{@{}p{3cm}XXXX@{}}
 		\toprule
 		Framework  & AcubeSAT & AI4Space & CubedOS & Prust  \\ \midrule
 		Developer  & Aristotle University of Thessaloniki &  University of Luxembourg & Vermont State University & Vision Space Tech \\
-		%Version & \todo{version} & 1.21.0 & v05 & \todo{version} \\
+		%Version & version & 1.21.0 & v05 & version \\
 		Language & \textbf{C++} & \textbf{Python} & \textbf{Ada} & \textbf{Rust} \\
 		Comms Protocol & ECSS-E-ST-70-41C & Proprietary & Proprietary  & ECSS-E-ST-40-71C \\
 		Operating System & FreeRTOS & Linux & Ada Tasking (Ravenscar) & FreeRTOS \\
@@ -3717,7 +3722,9 @@ For this research, I selected 4 frameworks written in different languages (C++, 
 
 More specifically, the execution and testing plan is elaborated into the following steps (\Cref{fig:m_software_fuzz_activity}):
 \begin{itemize}
-	\item \textbf{Static Analysis}: Involves extracting common metrics to identify code size (\acs{SLOC}) and complexity (cyclomatic complexity) for each tested framework, in order to acquire a general idea about the size \todo{?} of the codebase. I generated this information using the Lizard static analysis tool Lizard analyser \autocite{yinLizardExtensibleCyclomatic2019}\footnote{More specifically, I used a modified version of Lizard, available at \url{https://github.com/kongr45gpen/lizard}, to provide additional and normalised metrics.}
+	\item \textbf{Static Analysis}: Involves extracting common metrics to identify code size (\acs{SLOC}) and complexity (cyclomatic complexity) for each tested framework, in order to estimate the scale and complexity of the codebase. I generated this information using the Lizard static analysis tool Lizard analyser \autocite{yinLizardExtensibleCyclomatic2019}%
+	\footnote{Since Lizard does not offer support for Ada, a custom script was used to generate results for this language only.}.
+	%\footnote{More specifically, I used a modified version of Lizard, available at \url{https://github.com/kongr45gpen/lizard}, to provide additional and normalised metrics.}
 	\item \textbf{Emulation and Execution}: Each framework is designed for execution on different sets of hardware, microcontrollers and architectures. However, to ensure similar testing conditions, it would be ideal to employ a similar hardware platform for all tested frameworks, as it is only software that is being evaluated. At the same time, testing on software only, without any hardware involvement, provides much better observability and controllability for the framework under test.
 	
 	Therefore, I decided to use the \textbf{Qemu Emulator}. Qemu provided a common machine to emulate all frameworks\footnote{More specifically, \texttt{mps2-an500} with a Cortex-M7 core for real-time frameworks, and \texttt{virt} with a Cortex-A9 core for Linux guests. I used Yocto Linux to create appropriate distributions for emulation.}. Each framework had to also be adapted for the relevant Qemu machine, by removing machine-specific code from the repository, and inserting generic Qemu-compatible code.\footnote{To ensure repeatability, all patches applied to the software are treated as ``treatments'', are tracked and versioned.}
@@ -3732,7 +3739,7 @@ More specifically, the execution and testing plan is elaborated into the followi
 	The fuzzing process involved:
 	\begin{enumerate}[itemsep=-2ex]
 		\item Generating a corpus, based on the valid \acs{TC} packets created for unit testing,
-		\item Running the \draft{\emph{havoc} and \emph{Grimoire} mutators} in AFL to generate new permutations of the inputs,
+		\item Running the \emph{havoc} and \emph{Grimoire} mutators in AFL to generate new permutations of the inputs,
 		\item Feeding these inputs to the framework under test via the emulated communication interface in Qemu,
 		\item Evaluating whether the software is in a good state, by checking for processor exceptions, Qemu exceptions, language panics, and by running a unit test (\acs{RFT}) suite, and
 		\item Letting the fuzzer run for 6 hours to generate a substantial dataset.
@@ -3755,23 +3762,23 @@ More specifically, the execution and testing plan is elaborated into the followi
 	\caption{Screenshot of software-under-test result}
 \end{figure}
 
-\todo{The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
-Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.}
+The use of fuzz testing as a methodology cannot ensure that all possible software defects are identified. Fuzz testing relies on an automated process that can identify when a running program has reached an erroneous state: in this investigation, this is represented by a \textbf{crash} (e.g.\ segmentation fault) or an unhandled exception. This approach also does not fully cover the set of all inputs to the software and its state: priority was given to \acs{TC} fuzzing. Nevertheless, the fuzzer managed to identify some software defects that caused undefined behaviour or an unhandled exception when a specially-crafted \acs{TC} was sent to the spacecraft. \textbf{In most cases, these telecommands would cause a software restart or hang if executed in-orbit}.
 
-\begin{invisible}
+The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
+Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
+
 \begin{table*}[h]
 	\caption{Static Analysis results}
 	\label{tab:m_software_fuzz_static}
-	\begin{tabular}{@{}lllllll@{}}
+	\begin{tabular}{@{}lllll@{}}
 		\toprule
-		& AcubeSAT (C++) & Antaris (C) & PyCubed (Python) & KubOS &  &  \\ \midrule
-		Source Lines of Code & 10601 & 10007 & 2298 & 31212  & \draft{[TODO]}  &  \\
-		Token Count & 51024 & 48182 & 10844 & 136180  &  &  \\
+		& AcubeSAT (C++) & Antaris (C) & AI4Space (Python) & CubedOS (Ada) \\ \midrule
+		Source Lines of Code & \num{10601} & \num{10007} &  \num{4571} & \num{4052}  \\
+		Token Count & \num{51024} & \num{48182} & \num{21022} & \num{26362}     \\
 		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
-		Average \draft{MCCN} & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
+		Average \acs{CCN} & \num{2.3} & \num{3.1} & \num{3.0} & \num{1.87} \\ \bottomrule
 	\end{tabular}
 \end{table*}
-\end{invisible}
 
 \begin{table*}[h]
 	\caption{Functional test results}
@@ -3786,6 +3793,8 @@ Since the number of faults and frameworks tested do not allow statistical analys
 	& Minimum packet latency & \qty{10}{\milli\second} & \qty{10}{\milli\second} & \qty{200}{\milli\second}  & \qty{10}{\milli\second}  \\ 
 	\midrule
 	Requirements & Requirements passed & 5/5 & 5/5  & 5/5  & 5/5 \\
+	\midrule
+	Fuzzing Tests & Distinct solutions (crashes) & 10 & 0  & 2  & 2 \\
 	%& Static tests successful &  &  &  & \\
 	\bottomrule
 	\end{tabular}
@@ -3810,43 +3819,44 @@ Since the number of faults and frameworks tested do not allow statistical analys
 % \end{table*}
 
 
-\begin{table*}[h]
-	\caption{Fuzzing test results}
-	\label{tab:m_software_fuzz_fuzzing}
-	\vspace{0.5cm}
-	\begin{tabular}{@{}llllll@{}}
-		\toprule
-		Test Type & Measurement & AcubeSAT (C++) & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
-		%\multirow{3}{*}{Structured} & Emulated executions &   &  &  &   \\
-		Structured & Solutions &  10 &  0 & 2 & 2 \\
-		%& Distinct solutions &  &  &  &  &  &  \\ \midrule
-		\bottomrule
-	\end{tabular}
-\end{table*}
+% \begin{table*}[h]
+% 	\caption{Fuzzing test results}
+% 	\label{tab:m_software_fuzz_fuzzing}
+% 	\vspace{0.5cm}
+% 	\begin{tabular}{@{}llllll@{}}
+% 		\toprule
+% 		Test Type & Measurement & AcubeSAT (C++) & AI4Space (Python) & CubedOS (Ada) & Prust (Rust) \\ \midrule
+% 		%\multirow{3}{*}{Structured} & Emulated executions &   &  &  &   \\
+% 		Structured & Solutions &  10 &  0 & 2 & 2 \\
+% 		%& Distinct solutions &  &  &  &  &  &  \\ \midrule
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table*}
 
 
 %\begin{figure*}[h]
 %	\includegraphics{graphics/software/splitdown.pdf}
-%	\caption{\draft{TODO}}
 %\end{figure*}
 
 \pagebreak[4] %vadj
 \subparagraph{Conclusions}
 
-Based on the above\todo{blablabla}:
+The selected frameworks are characterised by a similar order-of-magnitude in terms of scale and complexity, with the most significant difference found in AcubeSAT's token count being \(2.4\times\) the one of AI4Space. The number of defects found is generally low, and prevents generating statistical insights\footnote{It is important to note, however, that the testing performed cannot guarantee that all possible defects have been identified.}. 
 \begin{itemize}
-	\item The selection of programming language alone \textbf{cannot guarantee program correctness}. \draft{Simple issues were identified in projects of all 4 evaluated languages.}
-	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to program termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a program where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks.
+	\item The selection of programming language alone \textbf{cannot guarantee program correctness}. Relatively simple issues were identified in projects in 3 out of 4 evaluated languages.
+	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to program termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a program where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks. However, in Python, the fuzzer identified no crashes, as the nested exception handling in Python seemed to intercept incorrect \acs{TC}.
 	\item In C/C++, unsafe calls (such as null dereferencing or out-of-bounds array access) commonly lead to \textbf{undefined behaviour}, which can propagate as a crash (segmentation/bus fault), incorrect data, incorrect functionality, or an infinite loop. On the contrary, the default data access functions of Rust, Ada and Python perform run-time checks and guarantee either a handled panic on invalid calls, or the propagation of the error to a user-defined mechanism. 
 	\item The Rust compiler enforces an \textbf{exhaustiveness check} on enumerations and function results by default. Although this can be bypassed, it serves as an additiona layer of safety against unhandled edge cases and logical paths.
 	\item The reliability benefit of a programming language selection has to be considered in relation to the \textbf{effort} associated with writing code in that language, and the various other environmental factors affected by this choice.
 	
-	The frameworks tested did not present noteworthy differences in terms of size and complexity that are causally linked to the language. However, \acs{SCS} teams have to consider the knowledge/experience of developers for each language, along with its potential learning curve, as well as the size of the available ecosystem. An indication of this ``popularity'' is given in \Cref{tab:m_software_popularity}, which shows that Python and C/C++ have a larger ecosystem for embedded space applications compared to Rust, while Ada \draft{enjoys more than an order of magnitude more limited ecosystem.} In turn, this metric provides an idea on the availability of open-source libraries for reuse, as well as the common \draft{experience} of students and young graduates, who are more likely to participate in academic \acs{SCS} projects.
+	The frameworks tested did not present noteworthy differences in terms of size and complexity that can be causally linked to the language. However, \acs{SCS} teams have to consider the knowledge/experience of developers for each language, along with its potential learning curve, as well as the size of the available ecosystem. An indication of this ``popularity'' is given in \Cref{tab:m_software_popularity}, which shows that Python and C/C++ have a larger ecosystem for embedded space applications compared to Rust, while Ada has a more than an order of magnitude more limited ecosystem. In turn, this metric provides an idea on the availability of open-source libraries for reuse, as well as the typical experience of students and young graduates, who are more likely to participate in academic \acs{SCS} projects.
+
+	I also noted that Python, while offering a more robust to errors exception handling mechanism, seemed to be the least performant amongst the languages used. While low performance is a common criticism of Python \autocite{stoicoEmpiricalStudyPerformance2025}, additionally supported by performed interviews, the \acs{OBSW} framework used in this example was built around a microservice-based architecture, which may add additional overhead to performance. Therefore, no conclusion was made regarding Python's performance.
 \end{itemize}
 
 \begin{table}[h]
 	\centering
-	\caption[Popularity of GitHub search keywords when filtered by language]{Popularity of GitHub search keywords when filtered by language, providing an indication of the size of a programming language's ecosystem. Data gathered in \draft{2025}.}
+	\caption[Popularity of GitHub search keywords when filtered by language]{Popularity of GitHub search keywords when filtered by language, providing an indication of the size of a programming language's ecosystem. Data gathered in 2025.}
 	\label{tab:m_software_popularity}
 	\begin{tabular}{@{}llllll@{}}
 		\toprule
@@ -3855,7 +3865,6 @@ Based on the above\todo{blablabla}:
 		\texttt{cubesat} & 392 & 209 & 247 & 22 & 2 \\
 		\texttt{sensor driver} & 558 & 1.4\,k & 1.2\,k & 206 & 8 \\
 		\texttt{CCSDS} & 65 & 49 & 36 & 20 & 1 \\
-		%&  &  &  &  &  \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -3872,22 +3881,22 @@ Many of \Cref{tab:m_software_requirements}'s requirements embody the communicati
 CubeSat developers have therefore traditionally relied on custom (in-house) or generic solutions for communication, especially for the physical layer.
 
 The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, making these satellites resemble more \ac{IOT} devices than spacecraft.
-The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem\todo{ [cite]}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
+The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem \autocite{khalighiSurveyFreeSpace2014}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
 
 I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be furter derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
 
 \begin{table*}[h]
-\caption[][1ex]{Communication protocols typically used in CubeSats and pocket-sized spacecraft \todo{[cite]}} %vadOK
+\caption[][1ex]{Communication protocols typically used in CubeSats and pocket-sized spacecraft}
 \label{tab:m_comms_protocols}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\linewidth}{@{}lp{5cm}X@{}}
 	\toprule
 	Name & Layers & Description \\ \midrule
 	\textbf{AX.25} & Data Link & Framing for radio-amateur stations \\
-	\textbf{CubeSat Space Protocol} & Data Link, Network, Transport, Application & A protocol stack designed for CubeSats with support for modular services and inter-subsystem communication \\
+	\textbf{CubeSat Space Protocol} & Data Link, Network, Transport, Application & A protocol stack designed for CubeSats with support for modular services and inter-subsystem communication \cite{belaliConceptStandardTrajectory2025a} \\
 	\textbf{LoRa} & Physical & Spread spectrum modulation built for low-power, long-range communication. The protocol is proprietary and its implementation details are not public. \\
 	\textbf{DASH7} & Physical & Open-source LoRa alternative \\
-	\textbf{OSDLP} & Data Link, Application & A stack of \acs{CCSDS} protocols for \acs{TMTC} data links that is lightweight enough for CubeSats and PocketQubes \\
+	\textbf{OSDLP} & Data Link, Application & A stack of \acs{CCSDS} protocols for \acs{TMTC} data links that is lightweight enough for CubeSats and PocketQubes \cite{vardakisOpenSpaceData} \\
 	% https://gitlab.com/librespacefoundation/osdlp
 	\bottomrule
 \end{tabularx}
@@ -3902,7 +3911,7 @@ One part of the hardware-software interface that is used often during developmen
 	\item Upload new software versions to a microcontroller
 	\item Use a debugger to examine and alter the current state of the software
 	\item Receive logs and \acs{TM} in various formats
-	\item Inject \acl{TC}
+	\item Inject \acp{TC}
 \end{itemize}
 
 This function is usually performed by a native debugging interface provided by the microcontroller\footnote{such as \acs{SWD} or \acs{JTAG}}, which is exposed through a dedicated \acs{PCB} connector. This interface then connects to a dedicated ``programmer'' device that interfaces between this \acs{MCU} signal and the programming computer. Spacecraft with multiple subsystems provide this functionality through a so-called \textbf{``umbilical connection''}, which provides diagnostic access to the satellite's power supply, batteries, and debugging interfaces.
@@ -3925,7 +3934,7 @@ In CubeSats and PocketQubes, this interface is typically provided by a friction-
 }%
 \begin{itemize}
 	\item \textbf{\acf{FFC} connectors and cables} that increase the density of connections, but usually require dedicated breakout boards to interface with \acs{COTS} \acs{EGSE}.
-	\item \textbf{\acs{USB} connectors}, usually compliant to the USB-C specification, take advantage of the miniaturisation and power delivery capabilities of this common standard and allow directly interfacing a computer with the spacecraft. However, they require compatibility with the \acs{MCU}, additional power management hardware and a firmware bootloader. This approach is used by PyCubed-Mini \todo{[cite]}.
+	\item \textbf{\acs{USB} connectors}, usually compliant to the USB-C specification, take advantage of the miniaturisation and power delivery capabilities of this common standard and allow directly interfacing a computer with the spacecraft. However, they require compatibility with the \acs{MCU}, additional power management hardware and a firmware bootloader. This approach is used by PyCubed-Mini \autocite{manchesterPyCubedMini}.
 	\item \textbf{Other miniaturised connectors} that provide a high density, including industrial and commercial components. For example, the Monarch ChipSat used a 19-pin Micro-HDMI connector with a non-compliant pinout (\Cref{subfig:m_connectors_microhdmi}) \autocite{adamsRSelectedSpacecraft2019}.
 	\item \textbf{Unpopulated vias, holes (``test points'') or pads} that can be accessed by probes, by soldering temporary connectors, or by using spring-loaded test pins. This approach is used by the Sprite (\Cref{subfig:m_connectors_pth}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015} and SpinorSat \autocite{brashearsSpinorSatStep502018} ChipSats. To further reduce space, these nodes can be placed on \acs{PCB} edges. This kind of breakout pins were also envisioned by the Breakthrough Initiatives StarChip concept \autocite{wordenBreakthroughPrizes2017}. 
 	\item A \textbf{snap-off development board that encloses the ChipSat} and provides development-only interfaces. This is also a concept used by the Sprite ChipSats (\Cref{subfig:m_connectors_detachable}) \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. The disadvantage is that, after the development board is separated, it is harder to reprogram the spacecraft (e.g.\space after integration).
@@ -3986,28 +3995,28 @@ To reduce reliance on mechanical parts, this concept can be further extended by 
 		\centering
 		% Image source: Own (from KiCad), see https://github.com/kicksat/sprite
 		\includegraphics[height=3cm]{media/external/sprite_detach}
-		\caption{Detachable development board (\emph{Sprite}) \cite{manchesterCentimeterScaleSpacecraftDesign2015} \todo{[check source]}}
+		\caption{Detachable development board (\emph{Sprite}) \cite{manchesterCentimeterScaleSpacecraftDesign2015}}
 		\label{subfig:m_connectors_detachable}
 	\end{subfigure}%
 	\caption{Examples of debugging/umbilical connections}
 \end{figure*}
 
-Finally, developers should consider solutions to reduce the data volume that needs to be transmitted for in-orbit programming, such as compression or binary diffing. \cite{rosenkrantzInnovativeModulatingRetroreflector2013} note that in centimetre-scale miniaturisation levels it is much easier to \emph{compute} than to communicate, the authors conclude that software-based signal-enhancing measures are beneficial. In the context of the \acs{SCS} methodology, however, the additional complexity and effort required for this additional features has to be compared against the mission's goals.
+Finally, developers should consider solutions to reduce the data volume that needs to be transmitted for in-orbit programming, such as compression or binary diffing. \citeauthor{rosenkrantzInnovativeModulatingRetroreflector2013} note that in centimetre-scale miniaturisation levels it is much easier to \emph{compute} than to communicate, the authors conclude that software-based signal-enhancing measures are beneficial. In the context of the \acs{SCS} methodology, however, the additional complexity and effort required for this additional features has to be compared against the mission's goals.
 
 \paragraph{Use of generative \acs{AI}}
 \footnotetext{Credit: \href{https://dl.espressif.com/dl/schematics/pictures/esp32-wroom-32-front-back.jpg}{Espressif}}
 Since the mid-2020s, \acs{AI}-assisted software development has become prevalent, through the use of \acfp{LLM} trained on publically available source code repositories.
-\acs{AI} tools\footnote{Running on the cloud or locally} can offer assistance ranging from code completion to generation of code structures and architectures. The training set of coding models usually contains embedded firmware for popular platforms, \draft{making them compatible with typical \acs{SCS} software development.}
+\acs{AI} tools\footnote{Running on the cloud or locally} can offer assistance ranging from code completion to generation of code structures and architectures. The training set of coding models usually contains embedded firmware for popular platforms, making them suitable for typical \acs{SCS} software development.
 
-Initially, the use of generative \acs{AI} seems attractive for \acs{SCS} software, as it can easily generate large amounts of base code with less effort from developers. However, the quality and safety of generated code for use in mission-critical systems is still under investigation in research. A \citeyear{liuEmpiricalStudyCode2024} empirical study on three software problems found that ``the current language understanding and generation capabilities of the LLMs are not sufficient to generate complete functional code from highly specialized domain requirements'' \autocite{liuEmpiricalStudyCode2024}. The researchers found that, by default, the generated code from the specification may be incomplete and non-compliant to safety standards\footnote{In this case, the MISRA C standard.}. However, they noted that augmented prompts following a defined procedure can improve code quality.\marginnote{In \cite{liuEmpiricalStudyCode2024}, \citeauthor{liuEmpiricalStudyCode2024} compare \acs{LLM} code generation with model-based code generation, concluding that the latter requires a large investment of developer time and requires a correct model a priori. It therefore does not \draft{seem initially suitable for the \acs{SCS} methodology context.}}
+Initially, the use of generative \acs{AI} seems attractive for \acs{SCS} software, as it can easily generate large amounts of base code with less effort from developers. However, the quality and safety of generated code for use in mission-critical systems is still under investigation in research. A \citeyear{liuEmpiricalStudyCode2024} empirical study on three software problems found that ``the current language understanding and generation capabilities of the LLMs are not sufficient to generate complete functional code from highly specialized domain requirements'' \autocite{liuEmpiricalStudyCode2024}. The researchers found that, by default, the generated code from the specification may be incomplete and non-compliant to safety standards\footnote{In this case, the MISRA C standard.}. However, they noted that augmented prompts following a defined procedure can improve code quality.\marginnote{In \cite{liuEmpiricalStudyCode2024}, \citeauthor{liuEmpiricalStudyCode2024} compared \acs{LLM} code generation with model-based code generation, concluding that the latter requires a large investment of developer time and requires a correct model a priori.}
 
-In \citeyear{tihanyiHowSecureAIgenerated2025}, \citeauthor{tihanyiHowSecureAIgenerated2025} compared state-of-the-art \acsp{LLM} and found that 62\% of the generated C programs included at least one security vulnerability, such as buffer overflows and dereference failures \autocite{tihanyiHowSecureAIgenerated2025}.
+In \citeyear{tihanyiHowSecureAIgenerated2025}, \citeauthor{tihanyiHowSecureAIgenerated2025} compared state-of-the-art \acsp{LLM} and found that 62\% of the generated C programs included at least one security vulnerability, such as a buffer overflow or dereference failure \autocite{tihanyiHowSecureAIgenerated2025}.
 
-On the other hand, a \citeyear{kirchnerGeneratingAutomotiveCode2025} comparison of locally-deployable \acsp{LLM} used an iterative generation (or ``code refinement'') process, where static and dynamic analysis is performed on the generated code, and the (potentially negative) results are fed back to the \acs{LLM}, until the acceptable code is produced \autocite{kirchnerGeneratingAutomotiveCode2025}. The researchers found that this method can produce code that performs the intended functionality and is compliant with the \draft{relevant} specifications.
+On the other hand, a \citeyear{kirchnerGeneratingAutomotiveCode2025} comparison of locally-deployable \acsp{LLM} used an iterative generation (or ``code refinement'') process, where static and dynamic analysis is performed on the generated code, and the (potentially negative) results are fed back to the \acs{LLM}, until the acceptable code is produced \autocite{kirchnerGeneratingAutomotiveCode2025}. The researchers found that this method can produce code that performs the intended functionality and is compliant with the applicable specifications.
 
-\acsp{LLM} are constantly evolving as of 2026, and it is difficult to provide \draft{lasting} recommendations for their use in \acs{SCS} software development. \draft{Nevertheless, it seems that \acs{AI}-assisted coding can provide significant utility, as long as developers maintain an understanding of the principles and functions of the generated software, are aware of the potential safety and reliability risks, and perform adequate verification.}
+\acsp{LLM} are constantly evolving as of 2026, and it is difficult to provide long-lasting recommendations for their use in \acs{SCS} software development. Nevertheless, it seems that \acs{AI}-assisted coding can provide significant utility, as long as developers maintain an understanding of the principles and functions of the generated software, are aware of the potential safety and reliability risks, and perform adequate verification.
 
-In any case, teams should consider adherence to coding standards and best practices when developing. This can be aided by freely available static analysis tools, such as \emph{Cppcheck}, \emph{clang-analyzer} or \emph{NASA IKOS}. Various coding standards\footnote{such as MISRA or the JSF AV C++ standards} are used in the safety-critical software industry, but are often criticised due to their false positive rates, difficulty of static verification, and added ``noise'' \autocite{boogerdAssessingValueCoding2008}. A \citeyear{boogerdAssessingValueCoding2008} empirical study assessed the number of rule violations and actual faults of an industrial project overtime, finding a negative correlation \autocite{boogerdAssessingValueCoding2008}. Instead, they identified a set of 12 rules\footnote{Due to licensing restrictions of the MISRA standard, I cannot reproduce these rules here.} that performed well in predicting faults, commenting however that it is ``possible that adherence to the MISRA standard as a whole would have made the software less reliable''. In practical terms, static analysis tools provide recommendations of rule subsets that can be provide the required \draft{usability to developers}.
+In any case, teams should consider adherence to coding standards and best practices when developing. This can be aided by freely available static analysis tools, such as \emph{Cppcheck}, \emph{clang-analyzer} or \emph{NASA IKOS}. Various coding standards\footnote{such as MISRA or the JSF AV C++ standards} are used in the safety-critical software industry, but are often criticised due to their false positive rates, difficulty of static verification, and added ``noise'' \autocite{boogerdAssessingValueCoding2008}. A \citeyear{boogerdAssessingValueCoding2008} empirical study assessed the number of rule violations and actual faults of an industrial project overtime, finding a negative correlation \autocite{boogerdAssessingValueCoding2008}. Instead, they identified a set of 12 rules\footnote{Due to licensing restrictions of the MISRA standard, I cannot reproduce these rules here.} that performed well in predicting faults, commenting however that it is ``possible that adherence to the MISRA standard as a whole would have made the software less reliable''. In practical terms, off-the-shelf static analysis tools provide recommendations of rule subsets that can be provide the required utility to developers.
 
 \FloatBarrier
 
