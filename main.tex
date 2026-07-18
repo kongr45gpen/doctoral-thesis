@@ -3322,7 +3322,7 @@ In traditional space systems engineering, \acs{ECSS} defines verification as the
 
 \begin{figure}
 	\includegraphics{pictures/POQUITO_at_work.jpg}
-	\caption{A Hardware-In-the-Loop testing platform can consist of the system under test, and an external programmer.}
+	\caption[A Hardware-In-the-Loop testing platform]{A Hardware-In-the-Loop testing platform can consist of the system under test and an external programmer.}
 \end{figure}
 
 
@@ -3346,8 +3346,8 @@ The most critical physical aspects of a design\footnote{Such as the verification
 The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
 
 Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
-The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where \draft{payload runs} need multiple days to complete). Different test coverage models are therefore typically defined in missions.
-\marginnote{Typical test coverage models can include: \todo{citation}
+The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where payload runs need multiple days to complete). Different test coverage models are therefore typically defined in missions.
+\marginnote{Typical test coverage models can include: \autocite{ECSS-E-ST-10-03C}
 \begin{itemize}
 	\item (Very) Reduced Functional Test
 	\item Full Functional Test
@@ -3360,23 +3360,29 @@ The required frequency of functional tests for complex mission means that it is 
 
 
 On the other hand, environmental verification usually involves specialised equipment\footnote{Such as shakers, shock benches, \ac{TVAC} chambers, or anechoic chambers} that is used to simulate space conditions for the \ac{DUT}.
-The emulation of these conditions is necessary in order to examine their expected and unexpected effects on electronics, structures and mechanisms.\marginnote{These conditions can also affect component behaviour that is difficult or impractical to analyse, such as the behaviour of \acs{COTS} fastener materials, or temperature-dependent electronic performance degradation \todo{format}}
+The emulation of these conditions is necessary in order to examine their expected and unexpected effects on electronics, structures and mechanisms\footnote{These conditions can also affect component behaviour that is difficult or impractical to analyse, such as the behaviour of \acs{COTS} fastener materials, or temperature-dependent electronic performance degradation.}.
 
-Environmental testing has generally required access to expensive, time-limited remote facilities. \todo{cite}
-However, the small size of \acs{SCS} and the popularity increase of the nano-satellite industry have started to make the purchase, operation and maintenance of in-house testing equipment more attractive, with \ac{TVAC} chambers, shakers, environmental chambers and Helmholtz cages starting to become more popular in university campuses and  \draft{industry conglomerations}.\footnote{This matches the Agile principle of centralising development as described in \todo{Tade}} \todo{cite, e.g. lsf facilities}
+Environmental testing has generally required access to expensive, time-limited remote facilities.
+However, the small size of \acs{SCS} and the popularity increase of the nano-satellite industry have started to make the purchase, operation and maintenance of in-house testing equipment more attractive, with \ac{TVAC} chambers, shakers, environmental chambers and Helmholtz cages starting to become more popular in university and industry campuses. %\footnote{This matches the Agile principle of centralising development as described in Tade}
 Even if a manufacturing facility cannot support a full environmental testing campaign, it may be able to perform activities that drastically increase confidence in the design.
 
 In addition to this general shift towards in-house environmental testing, \ac{SCS} are usually composed of simple and well-understood structures, such as singular circuit boards or simple subsystem stacks. Past performance of these structures, especially in terms of rigidity and thermal behaviour, is well understood from previous missions. This reduces the benefits of analysis.
 
-As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels. \todo{Questionable?}}
+As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels, and especially when manufacturing runs produce spare units that have no other use.}
 
-\begin{invisible}
+
 \paragraph{Reduced Testing}
-\todo{Create a paragraph about REDUCED testing, i.e. using equipment that does not reach low levels as required (e.g. vacuum+environmental chamber instead of TVAC). Inspired from AcubeSAT's freezer tests. Reduced radiation testing with laser technology (scholar search: Radiation testing of electronic components using laser from a CD). }
-\end{invisible}
 
+When facilities for full-scale testing are not available or are cost-prohibitive, an alternative is to perform reduced testing, when not performing the final acceptance or qualification of a system. In practice, this can mean reducing the testing levels, the fidelity of measurements, the duration of the tests, or performing a parallel process sequentially. While the results from reduced tests may not fully reflect the equivalent results from a traditional testing process, they still retain high value for intermediate iterations, since they often emulate the environmental levels required for defects to be detectable.
 
+Examples can be conceived by components of tests or test platforms with \acs{COTS} alternatives, and can include:
+\begin{itemize}[itemsep=-2ex]
+\item Using a plain vacuum chamber instead of a \acf{TVAC} to emulate reduced pressure
+\item Using a household heater or freezer instead of a \acs{TVAC} to emulate extreme temperatures
+\item Using a \acs{COTS} laser setup to emulate radiation effects \autocite{zollnerGeneratingSELSEU2016}
+\end{itemize}
 
+Based on the available literature, vibration tests seem the most difficult to replicate in a reduced fidelity. However, various approaches have been proposed to implement a low-cost shaker, especially in the fields of biology and chemistry \autocite{hollinghamOpenHW3OpensourceLowcost2024,diaz-roncerosDesignImplementationLowcost2023}.
 
 \paragraph{In-Orbit Testing}
 In some cases, the resources available to a development team may encourage designating an \textbf{orbital launch} as a verification (and validation) method. Indeed, this is the approach taken by the \emph{SMOG-1} PocketQube team, who launched the \emph{SMOG-P} PocketQube as an early prototype \autocite{SMOG14thHungarian2021}.
@@ -3386,7 +3392,7 @@ In-Orbit Testing need also not be performed on the entire system, and can follow
 \todo{Here we add a section about balloon testing and how it ties to the whole idea.}
 
 In general, the verification \& validation process of an \ac{SCS}-methodology team will differ considerably from the equivalent in a CubeSat process.
-However, it will still vary between teams, as it depends on variables set by the internal and external environment. I provide further guidelines for methodology tailoring in \Cref{sec:METHODOLOGY_tailoring}. \todo{Do I?}
+However, it will still vary between teams, as it depends on variables set by the internal and external environment. I provide further guidelines for methodology tailoring in \Cref{sec:METHODOLOGY_tailoring}.
 
 \paragraph{Automated Testing}
 \label{sec:METHODOLOGY_automated_testing}
@@ -3456,10 +3462,10 @@ Required software features for a \acs{SCS} based on \Cref{tab:m_software_require
 	\item Ping (``are-you-alive'') tests
 	\item Time-keeping
 	\item \ac{FDIR}
-	\item \draft{Time-stamped command execution}
+	\item Scheduled command execution
 	\item Spacecraft passivation (permanently disabling \acs{TM})
-	\item \draft{Reprogramming}
-	\item \draft{Bus subsystem autonomy}
+	\item Reconfigurability
+	%\item Bus subsystem autonomy
 	\item Payload commanding/data downlinking
 \end{itemize}
 
@@ -3647,9 +3653,9 @@ While the benefits of testing are well understood, software quality assurance ha
 		\item A \textbf{\acf{HIL}} system, where all the relevant hardware components\footnote{Development Boards, Engineering Models, or Qualification/Flight Models} are physically tested in tandem. Specifically for implementors of the \acs{SCS} methodology, the existence of a complete system model for every iteration \draft{makes this approach easier}.\marginnote{A practical \acs{HIL} setup can involve, for example, an ``instrumentation'' computer that sends \acs{TC} to the \acl{OBC} of the satellite, and evaluates the \acs{TM} received, as part of high-level test cases. Low-level test cases can be implemented by uploading custom testing software to the microcontroller, or by including a test-suite in development versions of the software.}
 		\item A simulated version of the satellite, running completely on a desktop computer, and based on microcontroller and peripheral emulation.
 	\end{itemize}
-	\item \textbf{Implementing static analysis tools}, which can assist the code review process by identifying non-compliances to accepted best practices. Many static analysis tools can be used as ``drop-in'' \draft{plugins to standard compliation pipelines.}
+	\item \textbf{Implementing static analysis tools}, which can assist the code review process by identifying non-compliances to accepted best practices. Many static analysis tools can be used as ``drop-in'' plugins to standard \acs{CI}/\acs{CD} pipelines.
 	\item \textbf{Attempting to reach maximum test coverage}, as coverage is one of the metrics typically correlated with defect rate.\marginnote{While coverage can be simply evaluated in plain \acs{SW} testing, embedded systems are not instrumented to share this information by default. To that end, \citeauthor{tsiodrasCoverMe2016} provides a hardware-agnostic coverage generation method based on the gdb debugger \autocite{tsiodrasCoverMe2016}.}
-	\item \textbf{Automating the testing process}: The functional requirements of \acs{SCS} usually involve simple \draft{instructions}, and most can be evaluated by plain protocols and processes, such as nominal \acs{TMTC}. This makes \acs{SCS} functional testing suitable for \acf{RPA} methods, where data transfer, analysis and event 
+	\item \textbf{Automating the testing process}: The functional requirements of \acs{SCS} usually involve simple functions, and most can be evaluated by plain protocols and processes, such as nominal \acs{TMTC}. This makes \acs{SCS} functional testing suitable for \acf{RPA} methods, where data transfer, analysis and event 
 	trigerring are performed by an automated process \autocite{hofmannRoboticProcessAutomation2020}. The availability of ready-to-use automation tools reduces the developer effort needed to automate this process \draft{as well}.
 	\item \textbf{Focus on integration testing before unit testing}, as most errors are usually observed on the boundaries of components and the interactions between them \todo{[cite]}. This includes a special focus on \textbf{external interfaces} that are attached to a spacecraft.
 \end{enumerate}
@@ -3871,7 +3877,7 @@ Many of \Cref{tab:m_software_requirements}'s requirements embody the communicati
 }
 CubeSat developers have therefore traditionally relied on custom (in-house) or generic solutions for communication, especially for the physical layer.
 
-The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, \draft{making devices look more like \ac{IOT} devices than spacecraft}.
+The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, making these satellites resemble more \ac{IOT} devices than spacecraft.
 The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem\todo{ [cite]}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
 
 I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be furter derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
@@ -4716,7 +4722,7 @@ In the early planning stages of the ChipSat-1 project, it was decided to follow 
 
 For project management, the team followed a low-overhead, primarily ``ad-hoc'' approach. We used Microsoft's 365 suite for communication and document sharing, spreadsheets for task tracking, and GitLab for software and hardware versioning.
 
-During the \emph{1\textsuperscript{st} iteration}, we performed initial prototyping and experimentation to confirm the planned design and component selection. More specifically, I experimented on the wireless transmission as well as payload conceptualisation. This involved purchasing electronics and development boards, and setting up a \emph{breadboard model} of the required functionality. I also started iterating on the operational software, developed in C/C++. Finally, we set up purchase orders for critical \acsp{IC} that were identified, in order to maintain enough stock against the chip shortage that was still in effect during 2022 \todo{ref}. 
+During the \emph{1\textsuperscript{st} iteration}, we performed initial prototyping and experimentation to confirm the planned design and component selection. More specifically, I experimented on the wireless transmission as well as payload conceptualisation. This involved purchasing electronics and development boards, and setting up a \emph{breadboard model} of the required functionality. I also started iterating on the operational software, developed in C/C++. Finally, we set up purchase orders for critical \acsp{IC} that were identified, in order to maintain enough stock against the chip shortage that was still in effect during 2022 \autocite{mohammadGlobalSemiconductorChip2022}.
 
 This initial iteration provided positive results on the concept feasibility and component suitability, and yielded no significant needs for design changes. It lasted \draft{2} months.
 
@@ -4728,7 +4734,7 @@ During the \emph{2\textsuperscript{nd} iteration}, enough information was gather
 	\label{fig:c_burn_antenna}
 \end{marginfigure}
 
-I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \todo{cite IEC/EIA/IPC}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had a manufacturing period of \draft{30} days for manufacturing, during which software engineering was done.
+I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \todo{cite IEC/EIA/IPC}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had a waiting period for manufacturing of approx.\ 30 days for manufacturing, during which software engineering was done.
 	
 The rest of the team also iterated on a deployable antenna design based on a burn wire release mechanism (\Cref{fig:c_burn_antenna}). However, this design was abandoned in favour of a conventional fixed dipole, as the deployable mechanism would have presented a risk of damage to our host spacecraft.
 	
@@ -5263,7 +5269,7 @@ Owing to the availability of open-source PocketQube buses and the \draft{actual 
 
 One notable point regarding the selected design is the \emph{lack of a dedicated \acl{OBC}}. Instead, following QUBIK's design, the responsibilities of data handling and control were delegated to the communications board. This is possible due to the low complexity and \emph{technical size} of the PocketQube, which removes the need to separate concerns or have a modular architecture.
 
-In terms of additional components, the \acs{ADCS} contains a photodiode, functioning as a receiver for the ChipSat payload\sidenote[][-2cm]{Even though the \acs{ADCS} should generally not be responsible for payload data handling, in this case this was deemed as the most suitable option against redesigning the communications board as well, or introducing an extra \acs{PCB}.}. The protocol used for communication between the \acs{ADCS} and \acs{COMMS} was \acs{CAN}\footnote{While \acs{CAN} is not used in the original QUBIK, there are \draft{provisions} for a driverless \acs{CAN} interface between two subsystems in the original QUBIK schematics.} through a stacking PQ9 interface \autocite{PQ91}.
+In terms of additional components, the \acs{ADCS} contains a photodiode, functioning as a receiver for the ChipSat payload\sidenote[][-2cm]{Even though the \acs{ADCS} should generally not be responsible for payload data handling, in this case this was deemed as the most suitable option against redesigning the communications board as well, or introducing an extra \acs{PCB}.}. The protocol used for communication between the \acs{ADCS} and \acs{COMMS} was \acs{CAN}\footnote{While \acs{CAN} is not used in the original QUBIK, there are provisions for a driverless \acs{CAN} interface between two subsystems in the original QUBIK schematics.} through a stacking PQ9 interface \autocite{PQ91}.
 
 \begin{figure}[h]
 	\centering
@@ -5459,10 +5465,10 @@ A list of lessons learned that were gathered by the entirety of the team after t
 \begin{itemize}
 	\item The significant number of \textbf{procurement runs} required increased delays. Lead times were affected both by the university's logistical process\footnote{which is standard across many public institutions}, and the base lead times for custom manufactured components (such as assembled \acsp{PCB} and structural elements). Even though we anticipated \draft{4-month} long iterations to counter approximately the standard 1--2-month long procurement ``latency'', this added significant ``lag'' to the agile iteration lifecycle.
 	
-	The slowest item in POQUITO's critical path was identified to be the procurement of assembled \acsp{PCB}, which lasted \qtyrange{30}{50}{days}. During the mission, the team started preparing the internal tooling for reflow soldering, and managed to solder some subsystems in-house\footnote{Namely the solar panels and \acs{MTQ} boards.}, observing a generally \draft{easier and faster} process.
+	The slowest item in POQUITO's critical path was identified to be the procurement of assembled \acsp{PCB}, which lasted \qtyrange{30}{50}{days}. During the mission, the team started preparing the internal tooling for reflow soldering, and managed to solder some subsystems in-house\footnote{Namely the solar panels and \acs{MTQ} boards.}, observing a generally smoother process compared to external procurement.
 	\item The allocation of \textbf{testing time} to the project was insufficient, as shown in \Cref{tab:c_poquito_times}. Combined with the above point, this meant that some specific functions (e.g.\@ telecommands, antenna deployment) could not be stress tested.
 	\item While software tooling was implemented to assist development (for task tracking, inventory management, or documentation), it was often not used consistently, leading to a disagreement between the actual and documented status of the project. This was brought about in part because of the external commitments of team members. However, assigning an accountable person for these items seemed to guarantee good upkeep, with members noting a 45-page Mission Control Document as a particularly useful artifact that provided up-to-date information on the system design.
-	\item Critical members of the team were unable to work on-location, instead having to contribute remotely, and often with limited time. The combination of the above points shows the need to have at least few dedicated engineers working on the project as a primary \draft{affiliation}, even if the system itself requires little development effort (due to e.g.\@ reuse).
+	\item Critical members of the team were unable to work on-location, instead having to contribute remotely, and often with limited time. The combination of the above points shows the need to have at least few dedicated engineers working on the project as a primary occupation, even if the system itself requires little development effort (due to e.g.\@ reuse).
 	\item The iterative design approach seemed to perform successfully, as we did not discover any major non-conformances in the developed hardware, and managed to successfully qualify and acceptance-test the system. This was perhaps supported both by the heavy reuse of previous designs (both external and in-house), and the larger experience of the team, based on the two previous missions, and demonstrating a lesser need for a ``\acl{BDUF}''-based approach. The first iteration (``v0''), consisting of a partition of QUBIK parts only, provided experience to the team and allowed them to familiarise themselves with the satellite integration process and connections.
 	\item Roughly 30\% of the project time was spent on project management activities, which were mainly \draft{covered} by regulatory aspects\footnote{Related to national launch requirements, communication authorisations, insurance, and re-entry analysis.}. These preparations also involved orbital analysis, in order to guarantee a safe re-entry after at most 3 years, and establish that the satellite can be tracked (\Cref{sec:LITERATURE_debris}).  Regulatory requirements can vary by country, but will be significantly easier when support can be afforded by an experienced party. \todo{Make this sound scarier}
 \end{itemize}
@@ -5470,7 +5476,7 @@ A list of lessons learned that were gathered by the entirety of the team after t
 In terms of technical observations:
 \begin{itemize}
 	\item The original design used \draft{two} Li-Ion camera batteries. These batteries are interfaced using exposed metal terminals which are suited to a specialised mount, but not to soldering, due to safety and connection reliability concerns. It is therefore recommended to use pre-wired batteries, a bespoke battery holder, or a spot welding-based solution.
-	\item Due to the addition of the \acs{ADCS} against the base QUBIK design, POQUITO's \textbf{cable harness} was more complex. This increased difficulty and risk during assembly, and required creating high-quality crimped connections for use with custom, POQUITO-specific cables. On the other hand, the use of spring-loaded pogo pins for the solar panels proved highly reliable and allowed low-effort integration. Teams should therefore invest on reducing the technical size of internal harnesses by using fixed components, to the degree possible.\footnote{This can be \draft{aided} by, for example, an \acs{RF} or optical intra-satellite link.}
+	\item Due to the addition of the \acs{ADCS} against the base QUBIK design, POQUITO's \textbf{cable harness} was more complex. This increased difficulty and risk during assembly, and required creating high-quality crimped connections for use with custom, POQUITO-specific cables. On the other hand, the use of spring-loaded pogo pins for the solar panels proved highly reliable and allowed low-effort integration. Teams should therefore invest on reducing the technical size of internal harnesses by using fixed components, to the degree possible.\footnote{This can be supported, for example, by an \acs{RF} or optical intra-satellite link.}
 	\item One of the non-conformances detected was the incorrect procurement of \qty{1.6}{\milli\meter}-thick \acsp{PCB} for the solar panels, instead of the required \qty{0.8}{\milli\meter}. This error was detected and resolved before the ``v1'' iteration. However, thanks to access to a university engineering workshop, we were able to \draft{widen} the panel slots in order to perform early fit-checks, without requiring a second procurement run.
 	\item In the ``v1'' iteration, it was discovered that there was little space on the PocketQube for the \emph{accelerometers required for vibration testing}. This was resolved by altering the layout for ``v2''.
 	\item During ``v0'', we discovered fit and clearance issues between the new solar panels and the subsystem stack. While these were resolved within an iteration, it would have been easily possible to avoid them through simple \acs{CAD} modelling, or by prototyping early versions of the \acs{PCB} (e.g.\@ through 3D printing).
@@ -5776,7 +5782,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 
 
 	\item Note on \textbf{Iterating over partitions}:
-	Due to the simplicity and monolithic architecture of ChiPySat, I do not consider that partitioning the system is is practical in this project.\footnote{For example, even if one plans to operate on the payload only (lens-less camera), it is still required to implement a microcontroller-based data interface. The microcontroller requirement flows down to \draft{the rest of the bus.}}
+	Due to the simplicity and monolithic architecture of ChiPySat, I do not consider that partitioning the system is practical in this project.\footnote{For example, even if one plans to operate on the payload only (lens-less camera), it is still required to implement a microcontroller-based data interface. The microcontroller requirement flows down to \draft{the rest of the bus.}}
 \end{enumerate}
 
 \begin{figure}
