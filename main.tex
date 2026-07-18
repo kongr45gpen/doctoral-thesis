@@ -2727,7 +2727,7 @@ While the use of a formal model might prove prohibitive for systems such as \acl
 		\\
 		\textbf{EDM-080} & The tool shall be available as Free and Open Source software. &
 		
-		On the one hand, small teams might have difficulty to fund software expenditures consistently. On the other, larger teams have to ensure that the software they use can remain usable, maintainable and supported for long periods of time. Less popular software may be more prone to vendor lock-in \autocite{opara-martinsCriticalAnalysisVendor2016} and should not act as a project single-point-of-failure.
+		On the one hand, small teams might have difficulty to fund software expenditures consistently. On the other, larger teams have to ensure that the software they use can remain usable, maintainable and supported for long periods of time. Less popular software may be more prone to vendor lock-in \autocite{lundellPerceivedActualLockin2021,opara-martinsCriticalAnalysisVendor2016} and should not act as a project single-point-of-failure.
 		
 		
 		%While the choice of making technology available as open-source depends on the team and stakeholders of this project, we believe that a \acs{FOSS} tool would present higher value to its users.% The ability to tweak the functionality and ... no ideas...
@@ -4032,7 +4032,8 @@ In any case, teams should consider adherence to coding standards and best practi
 
 \subsection{Recommended Tools}
 
-\ac{SCS} development is highly tool-based and the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions.
+\ac{SCS} development is highly tool-based. At the same time, the overhead added by \ac{SYE} has to be minimised, especially to reduce repetitive actions.
+
 In the ideal case, each proposed part of the \ac{SCS} methodology would be supported by dedicated hardware and software tools, and tailored to each specific use case.
 However, as this undertaking is impractical and would require large amounts of research, development and testing, I instead recommend using well-established and industry standard tools that offer a degree of tailoring so that they can adequately support the \ac{SCS} methodology.
 
@@ -4049,7 +4050,7 @@ It is also hard to identify an ideal, globally-applicable set of tools for \acs{
 	\item New tools should not increase the schedule or cost overhead of a project. If they do, this should be justified by a significant technical risk reduction.
 	\item New tools should be easy to use\footnote{Ease-of-use is a subjective term that differs between teams. However, different User-Experienced definitions can be used to quantify this \cite{internetarchiveHumancomputerInteractionNew2002}.}. In practice, tool design should encourage a preference of using a specific tool against other approaches.
 	\item Tools should not fragment information\footnote{For example, if a \emph{requirements management} tool does not support writing a justification for a requirement, developers may be tempted to create a separate document or use a separate tool to store this justification. This leads to data fragmentation, requires keeping more than one database up-to-date, and makes information retrieval harder.}. This can be achieved by using generalisable/tailorable tools.
-	\item The overall cognitive load of team members related to tool usage should be reduced, by limiting the amount of different loci that have to be monitored or updated. This can be achieved, for example, by limiting the amount of tools, using tools that combine multiple functions, or using automated notification/update processes.
+	\item The overall cognitive load of team members related to tool usage should be reduced, by limiting the amount of different loci that have to be monitored or updated. This can be achieved, for example, by limiting the amount of tools, using tools that combine multiple functions, or using automated notification/update processes \autocite{goodwinWhatSaaSSprawl2025}.
 	\item Project Management should actively support the use of tools. This can be achieved through regular training sessions, high support availability, and consistent maintenance of databases.
 	\citeauthor{honore-livermoreManagingProductDevelopment2021} \cite{honore-livermoreManagingProductDevelopment2021} recommend assigning ``champions'', i.e.\@ people responsible for the upkeep of these tools.
 \end{enumerate}
@@ -4073,7 +4074,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 		\addlinespace[2ex]
 		Internal Communication \cite{grafEuropeanAlternativesSlack} & & Zulip, Discord, Zoom, Microsoft Teams, Slack, Mattermost \\
 		\addlinespace[2ex]
-		\multirow{4}{*}{Knowledge Mgmt.} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} (e.g.\@ Wiki.js) \\
+		\multirow{4}{*}{Knowledge Management} & Document-based informal & MkDocs, Sphinx, Doxygen, Excalidraw, \textit{Wiki software} (e.g.\@ Wiki.js) \\
 		& Document-based formal & LaTeX, LibreOffice, LaSuite Docs, Microsoft Office, \textit{Wiki software} (e.g.\@ MediaWiki)  \\
 		& Model-based informal \cite{morlingGunnarmorlingAwesomeopensourcedataengineering2024} & CDP4-COMET, Valispace, Duro, Nanospace \\
 		& Model-based formal & SysML, Capella, Papyrus, Cameo Systems Modeler, Enterprise Architect \\
@@ -4127,7 +4128,7 @@ Their strategy consists of the following steps:
 	\item \textbf{Validating, executing and evaluating the tailored process} in an iterative fashion.
 \end{enumerate}
 
-\marginnote{%
+\marginnote[2cm]{%
 Note that the tailoring suggestions presented here are not intended to replace the case study results and explanations presented in \Cref{chap:CASESTUDIES,chap:DISCUSSION}. Instead, they are given as an initial reference to practitioners.%
 }
 Since this work proposes a more concrete methodology, it is possible to extend the idea of a \textbf{tailoring questionnaire} based on specific questions and \textbf{recommendations}, influenced either by logical expectations or actual data from the case studies (\Cref{chap:CASESTUDIES}).
@@ -4141,7 +4142,7 @@ Since this work proposes a more concrete methodology, it is possible to extend t
 	% See https://tex.stackexchange.com/questions/404515/cancel-rowcolors-for-a-specific-cell for a better solution
 	\rowcolor{white}
 	\multicolumn{2}{l}{\textbf{Project}} & Recommendations\\ \midrule
-	1 & What is the project's form factor? & Larger satellites are usually associated with a larger technical size and more required features. \\
+	1 & What is the project's form factor? & Larger satellites are usually associated with a larger technical size and more required features, but also encourage partition-based iterations. \\
 	2 & What is the project's technical size? & Larger-scale projects may require longer iterations and more support infrastructure. \\
 	3 & How many functional requirements are there? & It may not be possible to implement all functions in early system iterations, thus encouraging a partition-based approach for iterations. \\
 	4 & What is the degree of reuse? & Reused components can increase confidence in a system, reducing low-level (but not system-level!) testing requirements and encouraging system-level (rather than partition-level) iterations. \\
@@ -4155,7 +4156,7 @@ Since this work proposes a more concrete methodology, it is possible to extend t
 	10 & Does the project include mechanical   elements (e.g.\@ deployable antennas, propulsion)? & Mechanical elements are a common failure point across spacecraft, and may need to be repeatedly tested independently (or as a partition). \\ \midrule
 	\rowcolor{white}
 	\multicolumn{2}{l}{\textbf{Team}} &  \\ \midrule
-	11 & How large is the team? & Large team sizes may increase the difficulty of communication and coordination (notably, task management), requiring \\
+	11 & How large is the team? & Large team sizes may increase the difficulty of communication and coordination (notably, task management), requiring a higher overhead in Project Management. \\
 	12 & Is the turnover rate high? & A high turnover rate will require a stricter knowledge transfer plan, which may involve better documentation coverage. \\
 	13 & Does the team have expertise/familiarity   with the used technologies? & High expertise can encourage shorter, system-level iterations. Team expertise may guide the use of less risky software/hardware technologies. \\
 	14 & Does the team have access to technical   support? & --- \\ \midrule
