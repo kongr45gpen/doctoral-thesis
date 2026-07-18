@@ -744,7 +744,7 @@ Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footno
 
 The CubeSat Design Specification \autocite{CDS14} defines a CubeSat as a class of satellite composed of 1 to 12 cube units with a size of \SI{10}{\centi\meter}  (``U''). As such, I define \textbf{\acf{SCS}} to include all spacecraft classes smaller than \SI{10}{\centi\meter} on all dimensions. Depending on launch requirements, this definition will usually restrict an \acs{SCS} mass to less than \SI{2}{\kg}, the maximum mass for a 1U CubeSat \cite{CDS14}.
 
-Various \acl{SCS} classes have been defined in the literature. Most prominently, \textbf{PocketQubes} are standardised in the PocketQube Standard \autocite{raduDelfiPQFirstPocketqube2018} as combinations of \SI{5}{\centi\meter} cube units (``p''). Smaller sizes are represented by classes such as \textbf{\acs{PCB}sats} \autocite{barnhartLowcostFemtosatelliteEnable2009}, which are typically flat in one direction, and \textbf{SpaceChips} or satellites-on-a-chip \autocite{barnhartSatelliteonaChipFeasibilityStudy2006}, which would be complete spacecraft implemented on an \acf{IC} smaller than \qtyproduct{2 x 2}{\centi\meter}. The notion of a \textbf{ChipSat} can define a flat-sized spacecraft with an envelope smaller than \qtyproduct{5 x 5}{\centi\meter} \autocite{manchesterCentimeterScaleSpacecraftDesign2015}.
+Various \acl{SCS} classes have been defined in the literature. Most prominently, \textbf{PocketQubes} are standardised in the PocketQube Standard \autocite{raduDelfiPQFirstPocketqube2018} as combinations of \SI{5}{\centi\meter} cube units (``p''). Smaller sizes are represented by classes such as \textbf{\acs{PCB}sats}\footnote{Also referred to as ``\textbf{PlanarSats}'', not to be confused with \emph{FlatSat}, a type of partition of a satellite system.} \autocite{barnhartLowcostFemtosatelliteEnable2009}, which are typically flat in one direction, and \textbf{SpaceChips} or satellites-on-a-chip \autocite{barnhartSatelliteonaChipFeasibilityStudy2006}, which would be complete spacecraft implemented on an \acf{IC} smaller than \qtyproduct{2 x 2}{\centi\meter}. The notion of a \textbf{ChipSat} can define a flat-sized spacecraft with an envelope smaller than \qtyproduct{5 x 5}{\centi\meter} \autocite{manchesterCentimeterScaleSpacecraftDesign2015}.
 
 ``Fractional-unit CubeSats'' have been also developed and launched (e.g.~1/2U, 1/3U, 1/4U) \autocite{kuluNanosatsDatabase2023}. While these conform to many standard CubeSat requirements and are designed to be hosted in CubeSat containers, they are not part of the official CubeSat Design Specification \cite{CDS14}, and due to their size, are considered \acl{SCS} and therefore within the scope of this work.
 
@@ -2289,7 +2289,7 @@ The Scrum Guide \cite{schwaverDefinitiveGuideScrum2020} defines a \emph{Definiti
 
 The Definition of Done is linked to the \emph{Sprint Goal}, which is a \textbf{single objective} that the team needs to achive during the Sprint. The singularity of the goal implies that it can be described in one single sentence. 
 
-The Definition of Done and Sprint Goal are agreed upon at the \emph{sprint planning} phase of each iteration, and usually refer to characteristics of the entire product. The more specific work packages that need to be completed during the Sprint are defined as items of \textbf{backlogs}, which are ordered lists of ``what is needed to improve the product''. The set of all work packages related to a product are listed in the Product Backlog, and then copied to the Sprint Backlog during the planning phase. It is then the responsibility of the developers to advance the development of the product by implementing specific Sprint Backlog items.
+The Definition of Done and Sprint Goal are agreed upon at the \emph{sprint planning} phase of each iteration, and usually refer to characteristics of the entire product. The more specific work packages that need to be completed during the Sprint are defined as items of \textbf{backlogs}, which are ordered lists of ``what is needed to improve the product''. The set of all work packages related to a product are listed in the Product Backlog, and then copied to the Sprint Backlog during the planning phase. It is then the responsibility of the developers to advance the development of the product by implementing specific Sprint Backlog items. In the case of \acs{SCS} engineering, the Definition of Done and Sprint Goal can be typically linked to the success of the performed functional and environmental verification campaigns, which in turn verify that specific requirements are complied to.
 
 It is not always possible to complete Sprint Backlog items within a single iteration. In this case, these items can be postponed and pushed to a future Sprint.
 
@@ -2499,16 +2499,16 @@ I have classified most technical planning tools that are presently in either of 
 When a team chooses to use an approach not covered by available (and easy-to-use) tools, they may decide to use a \textbf{spreadsheet} or \textbf{\acf{ERP}} solution, after customising it to the specific data model that has been agreed on. Alternatively, practical paper-based approaches can also be used, such as traditional Kanban, provided that the team is co-located\footnote{Complete co-location of teams is highly unlikely given the increasing popularity and benefits of home-working \cite{honore-livermoreManagingProductDevelopment2021}. Even if a team needs to physically work on hardware devices and be present on location, usually different rooms are used for meetings, design, manufacturing, integration and testing, making a post-it-based approach impractical.\label{txt:colocation}}.
 
 \newthought{Within the context of \acs{SCS}}, the following questions then need to be answered:\begin{enumerate}[itemsep=-2ex]
-	\item Who should be responsible for answering the questions in the beginning of this section, and how should they be answered?
+	\item Who should be responsible for responding to the questions in the beginning of this section, and how should they be answered?
 	\item What is a reference data model that can represent work packages in the \acs{SCS} methodology?
-	\todo{\item What are the characteristics of a software tool that can effectively support the \acs{SCS} technical planning process?}
+	\item What are the characteristics of a software tool that can effectively support the \acs{SCS} technical planning process?
 \end{enumerate}
 
 The Scrum method attempts to answer the first question of \emph{Who} and \emph{How} to manage work packages, by employing the concept of \textbf{self-organising teams} \autocite{schwaverDefinitiveGuideScrum2020}. Tasks are elaborated in meetings which occur daily and before each iteration. Work packages are elaborated through a collaboration between the developers and the product owner. Scrum also defines task management aspects that permeate the previous processes, including the fact that developers need to hold each other accountable.
 
 A potential data model for task management would have to support the typical attributes of work packages defined typically in agile environments, such as:
 \begin{itemize}[itemsep=-3ex]
-	\item Story points
+	\item Story points (or estimated time)
 	\item Priority
 	\item Current status
 	\item Target iteration
@@ -2524,14 +2524,14 @@ along with attributes specific to the \acs{SCS} methodology:
 \begin{itemize}[itemsep=-3ex]
 	\item Linked slice
 	\item Linked module
-	\item Linked partition \todo{Anything more?}
+	\item Linked partition
 \end{itemize}
 
 Some of these attributes are already implemented in some form across available task tracking software. For example, \emph{Jira} defines the concepts of an \textbf{\emph{Epic}} and a \textbf{\emph{Component}}, which can be linked to \emph{slices} and \emph{modules} respectively. Alternatively, I provide a sample data model for technical planning in \Cref{fig:m_uml_planning_draft}.
 
 \begin{figure}[p]
 	\includegraphics{drafts/WPDataModel.pdf}
-	\caption{\draft{UML} data model for a representation of technical planning in the \acs{SCS} methodology.}
+	\caption{\acs{UML} data model for a representation of technical planning in the \acs{SCS} methodology.}
 	\label{fig:m_uml_planning_draft}
 \end{figure}
 
@@ -2541,67 +2541,23 @@ A procedural trade-off that has to be kept in mind  is that the more attributes 
 \begin{table*}[h]
 	\footnotesize
 	\def\arraystretch{1.05}
-	\begin{tabularx}{\textwidth}{cp{4cm}X}
+	\begin{tabularx}{\textwidth}{cX}
 		\toprule
-		\textbf{EDM-010} & The tool shall represent a system in a hierarchical tree-like structure of multiple entities containing multiple parameters each. & 
-		A ``product tree'' structure is commonly used to represent different abstraction levels within a product, and is often seen in most \ac{EDM} tools. A single level of abstraction is equivalent to the model of each entity taking up one row in a spreadsheet.
-		
-		Compared to a Block Definition Diagram or an Internal Block Diagram, a tree itself cannot represent interfaces or relations between components, apart from hierarchy, which should however be enough for low-complexity projects.
-		
-		Each element in the tree can represent a physical component, a function, or an abstract concept (such as a trajectory).
-
-
-		\\
-		\textbf{EDM-020} & The complete functionality of the tool shall be accessible from a web browser. &
-		While this can be seen as a design-constraining requirement, it ensures that a system model is available for reading and writing to any device with access to a network. This removes hardware or software limitations and ensures that all participants in the project have a similar experience.
-		
-
-		\\
-		\textbf{EDM-030} & Stored data shall be version controlled. &
-		This requirement ensures traceability of changes, accountability, and, more importantly, allows restoring older changes and known working configurations.
-		
-		Tools such as \emph{Git} and \emph{Dolt} are already well-established solutions for version-controlled databases.
-
-		\\
-		\textbf{EDM-040} & Users shall be able to access any engineering parameter within 20 seconds of having access to a web browser. &  This requirement ensures that all data is easily accessible under an intuitive navigation scheme, which can include a comprehensive overview of the system, or an efficient search function.
-		
-		
-		A more extreme version would require all actions to follow the ``three-click rule'', which suggests that no function or page on a User Interface should take more than 3 clicks to access \cite{glasseyProximityIndicatorEGovernment2005}. While this is not a strict requirement, it can still provide a \draft{motivation} on how to simplify user interactions.
-		
-		\todo{Something about progressive disclosure}
-
-		\\
-		\textbf{EDM-050} & The tool shall provide an \acf{API}. &      Space Engineering often involves combining different generic and domain-specific models. Therefore, \acs{EDM} tools should offer a method of fetching and updating this data automatically.
-		
-
-		\\
-		\textbf{EDM-060} & The tool shall be extensible by code.
-		&   
-		It is difficult to find a middle ground between too \emph{few} features and too \emph{many}. 
-		
-		\todo{blablabla}
-		
-
-		\\
-		\textbf{EDM-070} & The tool shall notify users on changes.
-		&     \draft{Introducing a new tool to a development environment has the risk of exacerbating tool fatigue \todo{find a reference that explains what tool fatigue even is or if such a thing exists}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.}
-		
-		\todo{blablabla}
-		\\
-		\textbf{EDM-080} & The tool shall be available as Free and Open Source software. &
-		
-		On the one hand, small teams might have difficulty to fund software expenditures consistently. On the other, larger teams have to ensure that the software they use can remain usable, maintainable and supported for long periods of time
-		\todo{cite one of the many websites that say something about this... and write something better}
-		
-		
+		\textbf{TP-010} & The tool shall represent ``activities'' (i.e.\ tasks), iterations, slices, modules, partitions, requirements, and the links between them.\\
+		\textbf{TP-020} & The tool shall allow adding custom attributes and types as fields to objects. \\
+		\textbf{TP-030} & The tool shall be able to generate and automatically schedule a Gantt-style chart based on iteration durations, task dependencies and resource availability \\
+		\textbf{TP-040} & The complete functionality of the tool shall be accessible from a web browser. \\
+		\textbf{TP-050} & Stored data shall be version controlled. \\
+		\textbf{TP-060} & Users shall be able to access any project management object within 20 seconds of having access to a web browser. \\
+		\textbf{TP-070} & The tool shall provide an \acf{API}. \\
+		\textbf{TP-080} & The tool shall be extensible by code. \\
+		\textbf{TP-090} & The tool shall notify users on changes. \\
+		\textbf{TP-100} & The tool shall be available as Free and Open Source software.
 		\\ \bottomrule
 	\end{tabularx}
-	\caption{\todo{This whole table needs to be rewritten!!!}}
+	\caption[Example requirements for an SCS Project Management tool]{Example requirements for an \acs{SCS} Project Management tools}
 	\label{tab:m_work_package_tool_requirements}
 \end{table*}
-
-\todo{To the author's knowledge, despite the plethora of software tools currently available, none is able to completely support the requirements defined in \Cref{tab:m_work_package_tool_requirements}.}
-
 
 \end{invisible}
 
@@ -2799,26 +2755,11 @@ In this section, I will go into more detail on the decisions behind selecting an
 \subsection{Defining a Design Solution}
 \label{sec:METHODOLOGY_defining_design_solution}
 
-\todo{\begin{itemize}[itemsep=-3ex]
-		%\item Reuse of existing tech. List of existing tech. Open source satellites
-		%\item Concurrent design
-		\item HW/SW co-design
-		%\item When does this need to happen? Big design up front?
-		\item Do we need to define a logical decomposition beforehand?
-		%\item On Modularity
-		\item Miscellaneous Design guidelines
-		\item FDIR
-		\item Hardware considerations: Thermal, structural, power storage (battery etc.), sails, navigation/guidance/propulsion, storage
-		\item The question is, starting from a cubesat, which components scale linearly (e.g. reaction wheels, magnetorquers), and which do not (antennas)
-		\item List of new technologies based on the literature, such as lens-less camera, MEMS etc.
-		\item Transferring of the design effort towards earth: High-gain ground station design for low-gain antennas, scheduling experiments and commands instead of autonomous operations, reprogrammability instead of perfection
-\end{itemize}}
-
 The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
 defines a ``design solution definition process [that translates] high-level requirements [...] and the outputs of the Logical Decompisition Process into a design solution''. In Design Research (\Cref{def:design_research}), a ``design solution'' can be defined as a ``description or set of instructions to make something''\footnote{Also see \Cref{def:design}.} \autocite{loveDefinitionDesign2015}.
 From a formal point of view, a Design Space can be defined as the set of all possible design solutions that satisfy a set of requirements; then, the process of Design Space Exploration selects a specific design solution that seems the most ``optimal'' based on project-specific criteria (such as cost, performance, or value). Different methods have been proposed since the mid-20\textsuperscript{th} century both to evaluate different design solutions, and to achieve the highest possible coverage of the design space during the exploration process  \autocite{griesMethodsEvaluatingCovering2004}.
 
-CubeSat projects have traditionally followed less formal approaches to design \todo{[cite]}. The \acs{NASA} \acs{SYE} handbook defines the following steps to defining a design solution \autocite[66]{sheaNASASystemsEngineering2020}:\footnote{Presented here simplified}
+CubeSat projects have traditionally followed less formal approaches to design \autocite{sousaCubeSatDevelopmentFramework2021}. The \acs{NASA} \acs{SYE} handbook defines the following steps to defining a design solution \autocite[66]{sheaNASASystemsEngineering2020}:\footnote{Presented here simplified}
 \begin{enumerate}[itemsep=-3ex]
 	\item Define alternative design solutions
 	\item Analyse each design solution
@@ -2830,10 +2771,10 @@ CubeSat projects have traditionally followed less formal approaches to design \t
 Based on the above, the two main questions that need to be answered when defining a design solution are:
 \begin{itemize}
 	\item How can one discover possible design solutions?
-	\item How and under what criteria are design solutions evaluated?\footnote{Evaluating a design solution is a different process compared to the verification of a built system (\Cref{sec:METHODOLOGY_verification}). \todo{blablabla} Evaluation needs to predict the performance, feasibility and correctness of a design solution \emph{before} the solution is built.}
+	\item How and under what criteria are design solutions evaluated?\footnote{Evaluating a design solution is a different process compared to the verification of a built system (\Cref{sec:METHODOLOGY_verification}). Evaluation needs to predict the performance, feasibility and correctness of a design solution \emph{before} the solution is built.}
 \end{itemize}
 
-\newthought{Within the context of \acs{SCS}}, the design solution definition is one of the most critical aspects of a project's life cycle, as it is the process that converts the product's requirements to the actual product. It depends on the available technology\todo{ and some other things too}.
+\newthought{Within the context of \acs{SCS}}, the design solution definition is one of the most critical aspects of a project's life cycle, as it is the process that converts the product's requirements to the actual product. It depends on the available technology, capabilities/preferences of the developers involved, and the available institutional support.
 Usually, it involves the selection and arrangement of hardware components at a system or subsystem level.
 \marginnote{Examples of design decisions that can be taken include:
 \begin{itemize}[itemsep=0ex]
@@ -2851,18 +2792,18 @@ Examples of design solution evaluation criteria can include:\begin{itemize}
 	\item Any combination of the above
 	\end{itemize}
 }
-Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative (such as analyses, measurements, experiments, heuristic scoring, or data re-use) or qualitative (such as consultations, reviews, comparisons, or \acs{SWOT} analyses) in nature. \todo{...} While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software. \todo{So what?}
+Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative (such as analyses, measurements, experiments, heuristic scoring, or data re-use) or qualitative (such as consultations, reviews, comparisons, or \acs{SWOT} analyses) in nature. While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software.
 
 \paragraph[Concurrent Design]{\acf{CDE}}
 Traditionally, the initial design phases of a space system are performed using a Concurrent Engineering or \emph{\acf{CDE}} method, where all subsystem experts are gathered in a single location to iterate over the design elements of the system. These iterations are aided by automated simplified analyses, usually performed with simple spreadsheet software and mission analysis tools \autocite{bandecchiConcurrentEngineeringApplied1999}.
-The \acs{CDE} method is supported by specialised tools that allow almost instant exchange of parameters and data between experts,\footnote{This software typically has features that assist with the design solution defininition. For example, different \emph{options} of parameter sets can be created, and then \emph{evaluated} based on algorithmically calculated metrics, answering the two main questions of design definition.} along with technical support in a physical location that facilitates screen sharing and online collaboration \autocite{ranaVisionNextGenConcurrent2021}. This exchange can also take place through online meetings \autocite{retselisAdaptationAcubeSATNanosatellite2022}, although \citeauthor{bandecchiConcurrentEngineeringApplied1999} have noted the importance of organic interactions to influence the design rather than cooperation during strictly scheduled meetings only \cite{bandecchiConcurrentEngineeringApplied1999}. \todo{I don't know if this citation is the one where bandecchi mentions this, or if it has been written somewhere.} The \acs{CDE} method is often viewed as an alternative to a centralised \acs{SYE} authority, which decides on the high-level design and subsystem requirements, which then flow down to individual vendors.
+The \acs{CDE} method is supported by specialised tools that allow almost instant exchange of parameters and data between experts,\footnote{This software typically has features that assist with the design solution defininition. For example, different \emph{options} of parameter sets can be created, and then \emph{evaluated} based on algorithmically calculated metrics, answering the two main questions of design definition.} along with technical support in a physical location that facilitates screen sharing and online collaboration \autocite{ranaVisionNextGenConcurrent2021}. This exchange can also take place through online meetings \autocite{retselisAdaptationAcubeSATNanosatellite2022}, although \citeauthor{bandecchiConcurrentEngineeringApplied1999} have noted the importance of organic interactions to influence the design rather than cooperation during strictly scheduled meetings only \cite{bandecchiConcurrentEngineeringApplied1999}. The \acs{CDE} method is often viewed as an alternative to a centralised \acs{SYE} authority, which decides on the high-level design and subsystem requirements, which then flow down to individual vendors.
 
 Within the context of the \acs{SCS} methodology, the design solution definition process has to be repeated in the beginning of every iteration (\Cref{fig:m_sat_scrum_iteration}). On the other hand, the small teams dedicated to \acs{SCS} are usually co-located or are able to communicate on a frequent basis. These characteristics make it possible to \textbf{implement \acs{CDE} during every iteration of the project}. This idea makes it possible to evaluate the different dependencies between disciplines and provide instant feedback on design changes.
 
 \begin{margindefinition}[Timebox]
 	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
 \end{margindefinition}
-Depending on the project, the \acs{CDE} sessions can follow a formal, tool-based structure, or an informal approach, where information is stored in documents or directly insterted into domain-specific models, where available. An important aspect is to keep these sessions timeboxed, as the primary \draft{way} of generating information in Agile methodologies is through experimentation, and not up-front design. The resolution of the \acs{CDE} result can be better than a high-level subsystem specification, but needs not answer low-level questions that can be handled by engineers as part of their daily work.
+Depending on the project, the \acs{CDE} sessions can follow a formal, tool-based structure, or an informal approach, where information is stored in documents or directly insterted into domain-specific models, where available. An important aspect is to keep these sessions timeboxed, as the primary strategy of generating information in Agile methodologies is through experimentation, and not up-front design. The resolution of the \acs{CDE} result can be better than a high-level subsystem specification, but needs not answer low-level questions that can be handled by engineers as part of their daily work.
 
 \paragraph[On Big Design Up-Front]{On \acf{BDUF}}
 Since common practices and the \acs{SCS} methodology separate design into more than one iteration, a question that often comes up is \emph{``how much time to spend on initial design''}.
@@ -2879,14 +2820,12 @@ The authors note the following factors as reducing the need or effectiveness of 
 	\item Customer agility
 	\item Team experience
 \end{itemize}
-Conversely, they note that the existence of high technical risk and a need to reduce that risk reduce the effectiveness of iterative design. \todo{Maybe we can cite the software convex curve paper here?}
-
-Therefore, the ideal decision on time spent for early design will vary based on the members of each time. However, typical \acs{SCS} environments, coupled with the emergent features of such systems, can generally afford a reduced early design time.
+Conversely, they note that the existence of high technical risk and a need to reduce that risk reduce the effectiveness of iterative design. Therefore, the ideal decision on time spent for early design will vary based on the environment of each project. However, typical \acs{SCS} environments, coupled with the emergent features of such systems, can generally afford a reduced early design time.
 
 \subparagraph{Mathematical Model for design effort}
 
 
-The drawbacks of incorrect allocation of design time early or late in the project ed in terms of time and cost overruns \begin{enumerate*}
+The drawbacks of incorrect allocation of design time early or late in the project can be described in terms of time and cost overruns \begin{enumerate*}
 	\item due to unnecessary design effort, or
 	\item due to reworks because of errors uncovered late.
 \end{enumerate*}
@@ -2914,7 +2853,7 @@ This stochastic process for a single product iteration can be modelled as an abs
 % simplified mathematical model can be created to describe the design--verification--rework cycle, based on the possibility of defects unidentified during the design.
 For this model, I am making the folowing assumptions:
 \begin{itemize}[itemsep=-1ex]
-	\item A first transient state, \textbf{\emph{``Design''}}, represents the completion of the initial engineering effort to produce the iteration's \draft{product}.
+	\item A first transient state, \textbf{\emph{``Design''}}, represents the completion of the initial engineering effort to produce the iteration's result.
 	
 	A second transient state, \textbf{\emph{``Rework''}}, represents the completion of an added iteration with additional engineering effort to design and produce an extra product, in case of defects or unfulfilled needs found during the previous iteration.
 	
@@ -2940,7 +2879,7 @@ Given the above, the problem of measuring the expected cost of the Markov proces
 	\end{matrix}
 \right]
 \]
-where each row represents a source state, each column a destination state, \( \mathbf{Q} \) a \( t \times t \) transition matrix and \( \mathbf{R} \) a \( t \times r \) transition matrix.
+where each row represents a source state, each column a destination state, \( \mathbf{Q} \) is a \( t \times t \) transition matrix and \( \mathbf{R} \) is a \( t \times r \) transition matrix.
 
 For an absorbing Markov chain, the \(i,j\) entry of the \emph{fundamental matrix} \( \mathbf{N} \) is the expected number of times the chain is in state \( s_j \) if it starts in state \( s_i \) \cite{grinsteadChapter11Markov1998}, where:
 \[
@@ -3196,6 +3135,8 @@ p(C) = \frac{2 - 2\frac{k_\infty}{2} }{1+e^{k_S C}} + k_\infty.
 \subsection[SCS Design Guidelines]{\acs{SCS} Design Guidelines}
 \label{sec:METHODOLOGY_design_guidelines}
 
+This section will describe guidelines for various choices that have to be taken during the \acs{SCS} design process, starting from the over-arching concepts of \textbf{Modularity} and \textbf{Reuse}, and continuing with more specific guidelines based on lessons-learned for interfaces and miscellaneous spacecraft design aspects.
+
 \paragraph{Modularity}
 \label{sec:METHODOLOGY_modularity}
 
@@ -3205,7 +3146,6 @@ A defining characteristic of CubeSats and, to a lesser extent, PocketQubes, is t
 
 \begin{definition}[Modularity]
 	Modularity can be understood as the use of interfaces to connect different subsystems/components of a system, in a way that allows them to be separated and recombined in different ways.
-	\todo{[ref?]}
 \end{definition}
 Modularity can be described in terms of:
 \begin{itemize}[itemsep=-2ex]
@@ -3213,16 +3153,16 @@ Modularity can be described in terms of:
 	\item \textbf{Electrical Modularity}, where the interfaces are electrical, and used to transfer power and/or data.
 \end{itemize}
 
-In CubeSats, modularity is achieved through the use of PC/104-sized boards, along with a roughly-defined electrical interconnect specification \autocite{BoardSpecificationLibreCube}. Commercial CubeSat subsystems can then be placed inside a shared subsystem ``stack'', and often rearranged as needed. A list of protocols, such as \acs{I2C} or \acs{CAN}, allow the communication between subsystems of different manufacturers.
+In CubeSats, modularity can be achieved through the use of PC/104-sized boards, along with a roughly-defined electrical interconnect specification \autocite{BoardSpecificationLibreCube}. Commercial CubeSat subsystems can then be placed inside a shared subsystem ``stack'', and often rearranged as needed. A list of protocols, such as \acs{I2C} or \acs{CAN}, allow the communication between subsystems of different manufacturers.
 However, in practice, different subsystems may show incompatibilities with each other. There is also no shared specification for low-level interfaces, meaning that additional work may be needed to allow different subsystems to communicate.
 
 For \acs{SCS}, modularity presents more challenges, as it introduces constraints to a system's design. For example:
 \begin{itemize}
-	\item In a PC/104 board, the 104-pin connector covers \qtyproduct{6 x 0.8}{cm} of the \qtyproduct{9.6 x 9.0}{cm} board, taking up \qty{5.6}{\percent} of the available area, even though all 104 pins are rarely used. \todo{[ref?]}
+	\item In a PC/104 board, the 104-pin connector covers \qtyproduct{6 x 0.8}{cm} of the \qtyproduct{9.6 x 9.0}{cm} board, taking up \qty{5.6}{\percent} of the available area, even though all 104 pins are rarely used \autocite{BoardSpecificationLibreCube}.
 	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt} \footnote{Assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
 	\item Most standard CubeSat packages separate the \emph{\acf{COMMS}} and \emph{\ac{OBDH}} functions into different boards, in order to accomodate the required flexibility of supporting different communication schemes and different subsystem vendors respectively. However, recent single-purpose missions have combined \ac{COMMS} and \ac{OBDH} into a single board, as \ac{OBDH} functionality is not usually resource-intensive.
 \end{itemize}
-While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve \draft{different decisions across different parts of the system}.
+While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve implementing different levels of modularity across different system modules.
 
 \begin{figure*}[h]
 	\includegraphics{graphics/Monolithic.pdf}
@@ -3235,7 +3175,6 @@ In practical terms, if the developers decide to implement a modular architecture
 	\item Separating the spacecraft into different subsystems following a common interface.
 	\item Drafting a fixed specification (using a common or proprietary protocol) for the communication between subsystems.
 	\item Developing software that can does not make assumptions about the existence or position of different components.
-	\todo{\item I ran out of ideas}
 \end{itemize}
 
 \paragraph{On Component Reuse}
@@ -3259,31 +3198,29 @@ Another decision that developers are faced with involves whether they reuse exis
 
 		1 & System & \href{https://gitlab.com/librespacefoundation/qubik/}{QUBIK} & Libre Space Foundation & 2019 & 1p radio-amateur PocketQube for \acs{LEO} satellite identification and tracking \\
 
-		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & \todo{????} & \todo{?p} PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
+		2 & System & \href{https://github.com/PyCubed-Mini}{PyCubed-Mini} & Carnegie Mellon University & 2021 & 1P PocketQube designed to be programmable in Python, based on the PyCubed CubeSats. Reused by \href{https://github.com/AFS-pt/PROMETHEUS-1}{PROMETHEUS-1}. \\
 
 		% $50SAT (1.5P), Morehead State university 
 		% https://www.albaorbital.com/open-source-pocketqube#:~:text=%2450SAT%20%281%2E5P%29%2C%20Morehead%20State%20university
 		% Based on the material available, not considered open-source and not possible to reuse.
 		
-		3 & System & \href{https://github.com/kcglab/satllazero}{SATLLA-0} & Ariel University & \todo{????} & 2p system designed as a starting point for academic institutions, based on Arduino software. \\
+		3 & System & \href{https://github.com/kcglab/satllazero}{SATLLA-0} & Ariel University & 2023 & 2p system designed as a starting point for academic institutions, based on Arduino software. \\
 
-		4 & System & Tartan Artibeus & Carnegie Mellon University & \todo{????} & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
+		4 & System & Tartan Artibeus & Carnegie Mellon University & 2021 & \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Hardware} and \href{https://github.com/CMUAbstract/tartan-artibeus-hw}{Software} for a baterry-less 1p PocketQube \\
 
-		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & \todo{????} & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
+		5 & System & \href{https://wiki.nanosatlab.space/shelves/ieee-open-pocketqube-kit-mFR}{\textsuperscript{Po}Cat} & Universitat Polit\`{e}cnica de Catalunya & 2025 & \href{https://github.com/nanosatlab/pocat-hw}{Hardware} and \href{https://github.com/nanosatlab/pocat-lektron-sw}{Software} for a reusable 1p system, part of \acs{ESA}'s Fly Your Satellite! \\
 		6 & System & \href{https://gitlab.com/wiredlab/space/bcon-2}{BCON-2} & Valpo University & 2024 & 0.5U data downlink demonstration mission based on QUBIK \\
 
 		7 & Subsystem & \href{https://gitlab.com/librespacefoundation/pq9ish}{PQ9ISH COMMS} & Libre Space Foundation & 2017 & Communications subsystem based on PQ9 \cite{PQ91} \\
 
-		\multicolumn{6}{c}{\todo{Add more stuff to the list...}} \\
-
 		\midrule
 		\multicolumn{6}{c}{Femto- and atto-satellites} \\ \midrule
 
-		8 & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Zac Manchester} & \todo{????} & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
+		8 & System & \href{https://github.com/kicksat/sprite}{Sprite} & Zac Manchester & 2016 & \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat used in Zac Manchester's \emph{KickSat} mission \\
 
-		9 & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & \todo{????} & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
+		9 & System & \href{https://github.com/space-technologies-at-california/PCBSat}{PCBSat} & UC Berkeley & 2019 & \qtyproduct{3.1 x 3.1}{\centi\meter} ChipSat based on Manchester's Sprite \\
 
-		10 & System & \href{https://github.com/kicksat/sprite}{Sprite} & \draft{Van Hunter Adams} & \todo{????} & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \draft{Chipsat by Van Hunter Adams} \\
+		10 & System & Monarch & \draft{Van Hunter Adams} & 2018 & \href{https://github.com/vha3/Monarch-Board}{Hardware} and \href{https://github.com/vha3/Monarch-Board}{Software} for a \qtyproduct{5 x 5}{\centi\meter} Chipsat by Van Hunter Adams \\
 	
 		\bottomrule
 	\end{tabularx}%
@@ -3317,7 +3254,6 @@ In the case of high-severity interfaces (such as the ones informing the satellit
 	\item For electrical connectors, if there are any mechanical restrictions (e.g.\@ material, compliance, maximum force).
 	\item For conductive materials, what the grounding requirements are.
 	\item Where newer versions or errata of the interface specification can be found.
-	\todo{\item  anything more?}
 \end{enumerate}
 
 This more ``strict'' approach to interface definition represents a deviation to the ``lighter'' agile approach described in the rest of this chapter, since the potential impact of an interface device (or interface requirement) failure could be considered catastrophic (e.g.\@ loss of launcher, major injury). 
@@ -3327,60 +3263,44 @@ This more ``strict'' approach to interface definition represents a deviation to 
 % In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 
 \paragraph{Miscellaneous}
-This paragraph will enumerate \draft{other} low-level design guidelines based on lessons learned that do not fit into any of the above categories:
+This paragraph will enumerate further low-level design guidelines based on lessons learned that do not fit into any of the above categories:
 \begin{itemize}
-	\item Traditional satellite manufacturers focus heavily on the reduction of in-orbit technical risk through administrative measures (e.g.\@ \acf{FMEA}), system-level solutions (e.g.\@ redundancy) or high-reliability components \autocite{kanavourasDesignFaultDetection2021}.
+	\item Traditional satellite manufacturers focus heavily on the \textbf{reduction of in-orbit technical risk} through administrative measures (e.g.\@ \acl{FMEA}), system-level solutions (e.g.\@ redundancy) or high-reliability components \autocite{kanavourasDesignFaultDetection2021}.
 	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs{TID} effects are typically less severe than random \acs{SEE} effects.}
 	Due to the general lack of statistics to evaluate the criticality and reliability effects of different choices, it is not always possible to confidently assert whether an amount of risk aversion is ``enough'' or not\footnote{Although it is generally possible to assert whether risk decreases after the implementation of a reliability measure.}.
 
-	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accomodated by the \draft{spacecraft design}. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other system \draft{points}.
+	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accomodated by the system's requirements. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other risk-reduction measurements.
 
 	One proposed risk mitigation solution is the execution of a system-level \acs{FMEA} at the beginning of a project, and its revision at the beginning of every iteration. System-level \acsp{FMEA} start from evaluating the top-level subsystems and critical components of the product tree\footnote{It is important to follow a top-down approach when executing a \acs{FMEA} analysis, by starting with an overview of the design, instead of trying to enumerate possible failures based on experience. Subsystems and components usually have limited failure modes (e.g.\@ unacceptable performance, temporarily inoperable, permanently inoperable, ``babbling idiot''-type faults) which can be enumerated for each and are listed in pre-made databases}, but do not go into detail on each component.
 	Within the context of \acs{SCS}, they can be performed in an informal fashion\footnote{An informal \acs{FMEA} can be converted to an informal \acs{FMECA} by integrating failure probability rates of subsystems based on lessons learned from past missions, or available CubeSat reliability surveys.}.
 	Teams can use these analyses to make a more informed decision on whether to accept or 
-	mitigate risks.
+	mitigate risks, as well as to implement an \acs{FDIR} plan.
 	\item Prototyping is heavily encouraged in \acs{SCS} projects, through the creation of low-fidelity parts that can be used as Development or Engineering, but not Flight Models. These parts can aid in the creation of partitions, to avoid testing subsystems in isolation (\Cref{sec:METHODOLOGY_partitions}), and can include structural elements (spacers, struts, frames), expensive components (e.g.\@ batteries, reaction wheels) or entire subsystems.
 	It is common to use additive manufacturing (e.g.\@ 3D printing) for relatively rapid prototyping of parts in-house, with some custom solutions also available for more specialised parts (e.g.\@ \acs{PCB} printers).
 	\item Apart from software, which is analysed in \Cref{sec:METHODOLOGY_softwaredevelopment}, satellite failures are often manifested in \textbf{energy storage} and \textbf{deployable mechanisms}.
-	Batteries, in particular, are sensitive to temperatures below \qty{0}{\degreeCelsius}, where they may refuse to provide adequate current, or might get damaged if charged \autocite{uludagDelfiPQInOrbitPerformance2025}. Hardware state control, heaters or other passive thermal maangement solutions are recommended to mitigate these issues. On the other hand, deployable antenna mechanisms represent a common source of errors, especially during ground testing, due to the sensitivity of common solutions (e.g.\@ melt lines) to the external environment (especially during cold deployment temperatures) \autocite{sanchoLessonsLearnedFYS2021}. For this reason, \citeauthor{sanchoLessonsLearnedFYS2021} recommend early definition, implementation and testing of mechanisms, especially in a \acs{TVAC}.
-	\item Access to cleanroom facilities is a significant burden, especially for academic spacecraft developers. If the launch provider's cleanliness requirements are relaxed, developers can consider a laminar flow bench, a ``glove box'', or a restricted-access room \cite{sanchoLessonsLearnedFYS2021}. These solutions can potentially reduce the burden of interaction between team members who are located in different rooms. \todo{However, a separate facility to work on a flight model might encourage people to be more careful.}
+	Batteries, in particular, are sensitive to temperatures below \qty{0}{\degreeCelsius}, where they may refuse to provide adequate current, or might get damaged if charged \autocite{uludagDelfiPQInOrbitPerformance2025}. Hardware state control, heaters or other passive thermal management solutions are recommended to mitigate these issues. On the other hand, deployable antenna mechanisms represent a common source of errors, especially during ground testing, due to the sensitivity of common solutions (e.g.\@ melt lines) to the external environment (especially during cold deployment temperatures) \autocite{sanchoLessonsLearnedFYS2021}. For this reason, \citeauthor{sanchoLessonsLearnedFYS2021} recommend early definition, implementation and testing of mechanisms, especially in a \acs{TVAC}.
+	\item \marginnote{Nevertheless, I note that the existence of a separated ``clean'' environment can motivate developers to adopt a more ``cautious'' approach when working with flight equipment, compared to the latter being co-located with normal developmennt activities in the same physical space.} Access to cleanroom facilities is a significant burden, especially for academic spacecraft developers. If the launch provider's cleanliness requirements are relaxed, developers can consider a laminar flow bench, a ``glove box'', or a restricted-access room \cite{sanchoLessonsLearnedFYS2021}. These solutions can potentially reduce the burden of interaction between team members who are located in different rooms.
 	\item On low-performance systems, there is no need to have a central orchestrator and/or router for subsystem functions and spacecraft state. In practical terms, there is no need to have a separate board or microcontroller for an \acs{SCS} \acf{OBC}, with this functionality being transferable to e.g.\@ \acs{COMMS} or \acs{ADCS}. This choice also reduces the number of interfaces, and therefore satellite complexity.
-	\item With the goal of miniaturisation, developers are encouraged to make use of the most real estate possible, through the use of dense designs, multi-purpose \acsp{IC}, multi-layer \acsp{PCB}, and packages without exposed pins. The disadvantages of this approach mainly constitute the difficulty of testing and inspection, as well as potential \acs{EMC} issues\footnote{Note, however, that the low performance and power of these systems tends to counteract the small distances between components}.
-	\item Hardware--software co-design is highly desirable, as it allows early verification of the interactions between the two, without requiring detailed formal specification. In the ideal case, all software will be written and tested on representative hardware from the onset. However, this is impractical due to the numerous \acl{COP}. \draft{Developers can consider the use of \acf{HIL} systems, \acf{RPA} or emulators to ensure software--hardware compatibility.}
+	\item With the goal of miniaturisation, developers are encouraged to make use of the most real estate possible, through the use of dense designs, multi-purpose \acsp{IC}, multi-layer \acsp{PCB}, and packages without exposed pins. The disadvantages of this approach mainly constitute the difficulty of testing and inspection, as well as potential \acs{EMC} issues\footnote{Note, however, that the low performance and power of these systems tends to counteract the small distances between components, in terms of \acs{EMC}.}.
+	\item Easy-to-assemble board-to-board \textbf{connectors} should be preferred in favour of cables, as routing cables on a limited space increases volume, time spent and risk during assembly \autocite{uludagDelfiPQInOrbitPerformance2025}. Alternative ideas can include spring-loaded ``pogo'' pins, magnetic connectors, or traditional stackable board-to-board connections\footnote{With the appropriate attention given to correct alignment with adequate margins.}.
+	\item New, experimental technologies that have not been demonstrated in-space or commercialised can prove useful for \acs{SCS}, as the risks associated with low \acsp{TRL} can be more easily accepted. Specifically, mobile device technologies can strike a valuable balance between size and manufacturability. Examples include lens-less cameras \autocite{liLenslessCameraUnraveling2024}, high-density batteries \autocite{guptaDesigningAdvancedLithiumBased2020}, low-power radios \autocite{gouvalasSmallestInterSatelliteTerminal2024,liangCognitiveRadioNetworking2011}, energy harvesting \autocite{amirtharajahMicropowerProgrammableDSP2000}, low-power \acsp{FPGA} or \acfp{NPU} for edge processing \autocite{moreiraEdgeComputingSpace2025}, or low-volume \acp{ASIC}.
+	\item Hardware--software co-design is highly desirable, as it allows early verification of the interactions between the two, without requiring detailed formal specification. In the ideal case, all software will be written and tested on representative hardware from the onset. However, this is impractical due to the numerous \acl{COP}. Developers can consider the use of \acf{HIL} systems, \acf{RPA} or emulators to ensure software--hardware compatibility.
+	\item As the reduced \acs{BDUF} may fail to accurately predict in-orbit conditions, \acs{SCS} should support a minimum amount of \textbf{reconfigurability} from the ground that can persist through software restarts. This is, for example, supported by implementations of the \acs{ECSS} \acl{PUS} standard \autocite{ECSS-E-ST-70-41C}. Accordingly, less attention should be dedicated to designing a fully-autonomous spacecraft, in favour of a manually operated approach, potentially based on scheduled \acs{TC}.
+	\item Operators should investigate the trackability of their spacecraft before the start of the design to ensure compliance with local regulations. Passive measures, such as retro-reflectors, are preferred to make \acs{SCS} systems more trackable, as active solutions may not be able to guarantee constant and correct operation. 
 \end{itemize}
 
-\begin{invisible}
-\draft{REWRITE!!! The definition and implementation of the design solution for a sub-CubeSat satellite is split into hardware (including electronics and mechanical parts) and software. For hardware, considering the lower cost and need for simplicity, we can consider that: Radiationtolerant parts can be avoided, circuit boards should follow standard formats, and manufacturing tolerances should not be strict. • Prototyping can be made at different levels of representativeness, and as early as possible. Examples of low-fidelity parts include 3D-printed parts, Breadboard Models, Development Models, or Mock devices. •  • Ideally, software will be developed on representative hardware, such that any constraints or issues caused by hardware differences are identified as early as possible. In the absence of representative hardware, simulators or mock-ups can be used, as long as they do not require disproportionate effort to implement. Remote or concurrent access to hardware is highly desirable as well. }
+	
 
-\draft{Based on uludagDelfiPQInOrbitPerformance2025 and personal experience: no cables.}
 \draft{
-	- to be or to be not be
-	- batteries should be presoldered
-	- spring-loaded connectors (but watch out for alignment!)
-	- your battery will get cold, warm it up, or don't charge it (check uludag for more details)
-	- you don't need a cleanroom
-	- launch finding process: the chipsat does not need to fly independent, instead it can be mounted on another spacecraft. examples of concepts from lightsails, payload sharing missions etc. usually you can talk to cubesats looking for a secondary payload.
-	- processing on the edge, but offer capabilities for more
-	- read the software section and implement reprogramming
-	- use combined ICs instead of individual ICs, e.g. DC-DC packages, energy harvesters/MPPTs, transceiver-microcontroller combinations
-	- smart/cognitive radio
-	- power generation: R. Amirtharajah et al., “A Micropower Programmable DSP  Powered Using a MEMS-Based Vibration-to-Electric Energy Converter,” 2000 IEEE Int’l Solid-State Circuits Conf., IEEE Press, Piscataway, N.J., 2000, pp. 362-363, 469. / power harvesting. solar power is not always required 
-	- There is no need to have a separate OBC (perhaps even ADCS), unless you need it. Interfaces add complexity and complexity is bad. It is better to have a single big microcontroller for everything (redundancy is overrated anyways)
-	- retroreflectors are nice
 	- Check the POQUITO lessons learned table and implement the lessons learned
-	- Lean and small ADCS is all you need
+	- Lean and small ADCS is all you need -  Hardware considerations: Thermal, structural, power storage (battery etc.), sails, navigation/guidance/propulsion, storage
 	}
-\draft{
-	- Delta-CDR is performed in the sprint review
-}
 
-
-\end{invisible}
 
 \subsection{Verification \& Validation Method}
 \label{sec:METHODOLOGY_verification}
 
-Verification and validation is an integral part of a sprint cycle, and is the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
+Verification and validation are an integral part of a sprint cycle, and describe the stage that generates insight about the developed systems that can be reused as lessons learned and applied to the next cycle.
 
 %The distinction between the ``verification'' and ``validation'' terms is provided 
 
@@ -3388,7 +3308,7 @@ Verification and validation is an integral part of a sprint cycle, and is the st
 	\textbf{Validation} is the process which demonstrates that the product is able to accomplish its intended use in the intended operational environment \cite{ECSS-S-ST-00-01C}.
 \end{margindefinition}
 
-In traditional space systems engineering, \acs{ECSS} defines verification as the process demonstrating that the built system satisfies all requirements and is free of defects \cite{ECSS-S-ST-00-01C}. However, in the \ac{SCS} methodology, the system is not strictly defined by its requirements specification, but also by an agreement between the developers and stakeholders on its capability and performance. Therefore, based on the \acs{ECSS} definition \cite{ECSS-S-ST-00-01C}, I \draft{modify the definition of verification as follows:}
+In traditional space systems engineering, \acs{ECSS} defines verification as the process demonstrating that the built system satisfies all requirements and is free of defects \cite{ECSS-S-ST-00-01C}. However, in the \ac{SCS} methodology, the system is not strictly defined by its requirements specification, but also by an agreement between the developers and stakeholders on its capability and performance. Therefore, based on the \acs{ECSS} definition \cite{ECSS-S-ST-00-01C}, I propose the following alternative definition:
 
 \begin{definition}[Verification]
 	\textbf{Verification} is the process which generates objective evidence to evaluate a product artifact, with the goals of:
@@ -3396,7 +3316,7 @@ In traditional space systems engineering, \acs{ECSS} defines verification as the
 		\item Assessing the number of requirements that the product is compliant with, based on the current requirements specification (see \Cref{sec:METHODOLOGY_requirements})
 		\item Demonstrating that the product is free of defects
 		\item Measuring the product's performance
-		\item \draft{Confirming the implementation of all features requested as part of work packages}
+		\item Confirming the implementation of all features requested as part of work packages
 	\end{enumerate}
 \end{definition}
 
@@ -3415,18 +3335,17 @@ While verification ensures that the built system satisfies all agreed-on specifi
 \acs{ECSS} defines four verification methods that are typically used in space missions: \emph{review-of-design, analysis, inspection and testing}, which provide different levels of fidelity and reliability \autocite{ECSS-E-ST-10-02C}. It also distinguishes between \emph{acceptance} and \emph{qualification} levels for design parameters, the former of which are used to verify workmanship and functionality, and the latter used to demonstrate design margins, usually at a level that may be destructive for the \ac{DUT} \autocite{ECSS-E-ST-10-03C}.
 Verification is said to be made in ``ambient'' conditions if no attempt is made to simulate the space environment,\footnote{Mainly temperature, pressure, radiation, and electromagnetic environment.} or are classified as ``environmental'' otherwise.
 
-Verification is traditionally done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{\todo{For example, SpaceX requires \draft{this kind of testing, cite spacex rideshare}}}
-On the other hand, validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use. When the V-model is used, verification can be performed in a tiered fashion, starting from subsystems to the integrated system \autocite{bundesrepublikdeutschlandVModellXT2006}. On the other hand, smaller systems like CubeSats regularly perform prototyping as part of their early phases, as part of risk-reduction or development activities \autocite{sousaCubeSatDevelopmentFramework2021,karvinenUsingHobbyPrototyping}, where functional or environmental verification takes place before a system-level verification phase.
+Traditionally, verification is done during the dedicated Phase D. Launch providers usually require some form of analysis and testing, in order to ensure that any failures on the hosted systems do not propagate to the host or other clients. \marginnote{For example, SpaceX requires random vibration, inhibit functional, and (when applicable) leak testing for CubeSats \autocite{SpacexRideshareGuide2024}.} Validation is typically said to be performed during the operational Phase E, where the usefulness and correctness of a system can be asserted after its actual use. When the V-model is used, verification can be performed in a tiered fashion, starting from subsystems to the integrated system \autocite{bundesrepublikdeutschlandVModellXT2006}. On the other hand, smaller systems like CubeSats regularly perform prototyping as part of their early phases, as part of risk-reduction or development activities \autocite{sousaCubeSatDevelopmentFramework2021,karvinenUsingHobbyPrototyping}, where functional or environmental verification takes place before a system-level verification phase.
 
 In the context of \ac{SCS}, verification and validation present an worthwhile target for optimisation.
 The low development cost of \ac{SCS} means that the cost and time overhead to create a \textbf{prototype} are low and can be part of the regular cycles of an Agile lifecycle process, which routinely include verification.
 While CubeSats traditionally experiment with subsystem prototypes or reduced system mock-ups, in the case of \ac{SCS}, the \textbf{entire system} can be verified as part of these short cycles.
 
-The most critical physical aspects of a design\footnote{Such as the verification of the functionality of deployables and actuators, the verification of masses and envelopes, thermal and electromagnetic behaviour \draft{etc.}} have traditionally involved both detailed analysis and testing for verification. In particular, environmental testing of subsystems and systems requires costly dedicated facilities; developers are therefore typically incentivised to create and execute domain-specific models and analyses of their systems before committing to a testing campaign.
+The most critical physical aspects of a design\footnote{Such as the verification of the functionality of deployables and actuators, masses and envelopes, or thermal and electromagnetic behaviour.} have traditionally involved both detailed analysis and testing for verification. In particular, environmental testing of subsystems and systems requires costly dedicated facilities; developers are therefore typically incentivised to create and execute domain-specific models and analyses of their systems before committing to a testing campaign.
 
 The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
 
-Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration\todo{But we said above this is not good}, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
+Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} rely on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts. Complete software emulation of external devices can be also used to verify functional requirements. \todo{citations}} and full functional or mission  tests are executed manually or (semi)automatically.
 The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where \draft{payload runs} need multiple days to complete). Different test coverage models are therefore typically defined in missions.
 \marginnote{Typical test coverage models can include: \todo{citation}
 \begin{itemize}

@@ -1,0 +1,63 @@
+@startuml WPDataModel
+
+enum Status
+
+class Activity {
+    +Title : String
+    +Description : String
+    +StoryPoints : Integer
+    +Priority : Integer
+    +Status : Status
+    +IsExternal : Boolean
+    +IsRecurring : Boolean
+}
+
+class Iteration {
+    +Name : String
+    +StartDate : Date
+    +EndDate : Date
+}
+
+class Slice {
+    +Name : String
+    +Description : String
+    +Status : Status
+}
+
+class Requirement {
+    +Text : String
+}
+
+class Partition {
+    +Name : String
+}
+
+class Module {
+    +Name : String
+}
+
+class ResourceAllocation {
+    +Duration : Time
+}
+
+enum Resource {}
+
+entity Person
+
+Partition "1" *-- "1..*" Module : contains
+Partition "1" o-- "0..*" Iteration
+Iteration "1" o-- "0..*" Activity
+
+Activity "0..*" -- "0..*" Person : assigned to
+Slice "0..*" -- "0..*" Person : assigned to
+
+Activity "0..1" --> Requirement : implements
+Activity "0..1" --> Slice : belongs to
+
+Requirement "0..1" --> Slice : belongs to
+
+Activity "0..*" --> "0..*" Activity : depends on
+Activity "0..*" --> "0..*" ResourceAllocation : requires
+ResourceAllocation "0..*" --> "1" Resource : allocates
+
+@enduml
