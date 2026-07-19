@@ -3779,6 +3779,7 @@ Since the number of faults and frameworks tested do not allow statistical analys
 		Average \acs{CCN} & \num{2.3} & \num{3.1} & \num{3.0} & \num{1.87} \\ \bottomrule
 	\end{tabular}
 \end{table*}
+\acempty{CCN}
 
 \begin{table*}[h]
 	\caption{Functional test results}
@@ -4230,7 +4231,7 @@ The execution of these case studies followed an action research plan as shown in
 		\drawcycle{0}
 		\drawcycle{6}
 	\end{tikzpicture}
-	\caption{Example of action research action-reflection cycles \cite{mcniffActionResearchPrinciples2003} \todo{TODO}}
+	\caption{Example of action research action-reflection cycles \cite{mcniffActionResearchPrinciples2003}}
 	\label{fig:c_action_research}
 \end{figure}
 
@@ -4590,11 +4591,11 @@ The constraint of the flat \qtyproduct{5 x 5}{\centi\meter} shape of ChipSat-1 w
 
 In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated.\footnote{See \Cref{sec:METHODOLOGY_modularity}} We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
 
-\marginnote{We selected the \draft{STM32WL} line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
+\marginnote{We selected the STM32WL line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
 The ``brain'' of the satellite is a \acf{MCU} \ac{IC} with an integrated transceiver and power amplifier, essentially consolidating two subsystems in a single package.
 \marginnote{We avoided the use of ``radiation-tolerant'' or ``radiation-hardened'' packages due to their usually high cost, size, and supply chain restrictions. Instead, we decided to consider \ac{SEE} damage as an acceptable risk. \todo{elaborate on trade-off}}
 
-The \ac{MCU} is responsible for handling spacecraft status, sensor inputs and data outputs. While the primary used a transceiver-equipped \ac{MCU}, the secondaries used a smaller footprint \ac{IC} without wireless capabilities. The primary also included an \draft{\acs{FRAM}} memory for packet storage. Programming and debugging was done through an integrated ribbon connector, present on all parts.
+The \ac{MCU} is responsible for handling spacecraft status, sensor inputs and data outputs. While the primary used a transceiver-equipped \ac{MCU}, the secondaries used a smaller footprint \ac{IC} without wireless capabilities. The primary also included an \acs{FRAM} memory for packet storage. Programming and debugging was done through an integrated ribbon connector, present on all parts.
 
 The resulting block diagram can be seen in \Cref{fig:c_chipsat_block}.
 
@@ -4699,7 +4700,7 @@ Because of the small size of the ChipSat and the lack of pointing, \ac{RF} commu
 	\caption{View of the external side of the ChipSat, with the antenna elements attached}
 \end{marginfigure}
 
-The selection of \ac{RF} transmission characteristics was guided primarily by the selected transceiver \ac{IC}, limiting us at \( + \qty{22}{dBm}\) of output power and the \qtyrange{435}{438}{\mega\hertz} radio-amateur band. Different antenna configurations were considered in conversation with our host provider. We settled on a short-wave dipole\draft{\@ powered by an impedance matching circuit}, with preliminary antenna analysis performed on HFSS software.
+The selection of \ac{RF} transmission characteristics was guided primarily by the selected transceiver \ac{IC}, limiting us at \( + \qty{22}{dBm}\) of output power and the \qtyrange{435}{438}{\mega\hertz} radio-amateur band. Different antenna configurations were considered in conversation with our host provider. We settled on a short-wave dipole powered by an impedance matching circuit, with preliminary antenna analysis performed on HFSS software.
 
 The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \acs{FSK} modulation with a \qty{200}{bit/\second} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
 
@@ -4738,7 +4739,7 @@ During the \emph{2\textsuperscript{nd} iteration}, enough information was gather
 	\label{fig:c_burn_antenna}
 \end{marginfigure}
 
-I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \todo{cite IEC/EIA/IPC}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had a waiting period for manufacturing of approx.\ 30 days for manufacturing, during which software engineering was done.
+I designed the schematic and layout using the KiCad software. An early technical decision was to use passive components no smaller than 0603\marginnote{0603 (imperial) refers to passive components with dimensions \qtyproduct{0.8 x 1.6}{\milli\meter} \cite{ECIAEIA1981F}}, in order to aid potential future rework. The manufacturing and assembly of the \acs{PCB} was done by an external partner. Between the completion of the design and initial testing, we had a waiting period for manufacturing of approx.\ 30 days for manufacturing, during which software engineering was done.
 	
 The rest of the team also iterated on a deployable antenna design based on a burn wire release mechanism (\Cref{fig:c_burn_antenna}). However, this design was abandoned in favour of a conventional fixed dipole, as the deployable mechanism would have presented a risk of damage to our host spacecraft.
 	
@@ -5245,18 +5246,18 @@ POQUITO was \draft{introduced based on the need to demonstrate the operation of 
 \begin{enumerate}
 	\item An electrically independent \textbf{ChipSat} placed on the top side of the PocketQube, based on the previous ChipSat-1 design (\Cref{sec:CASESTUDIES_chipsat1}). This ChipSat was intended to demonstrate \acf{VLC} in free-space for, by using an \acs{LED} to transmit data to the rest of the PocketQube bus, similar to the original ChipSat-1 mission. The small \textbf{intra-satellite} communication range was intended to serve as a stepping stone for independent intra or inter-satellite communication missions \autocite{griffithsHighsensitivityIntersatelliteOptical2021,amanorLinkPerformanceImprovement2017}, for example linked with fractionated spacecraft, or ``parent spacecraft''-based missions \autocite{heinAttoSatsChipSatsOther2019}.
 
-	The ChipSat placed on top of POQUITO, referred to as the second version of the university's ChipSat design, was electrically independent, in the sense that it was responsible for power generation, and \draft{communication was not done electrically, but optically}.
+	The ChipSat placed on top of POQUITO, referred to as the second version of the university's ChipSat design, was electrically independent, in the sense that it was responsible for power generation, and communication was wirelessly, through a \ac{VLC} link.
 	This version of the ChipSat included no \acs{RF} link for Earth communication.
 	With a mechanical interface based on four threads, the ChipSat shared only a common electrical ground with the rest of the PocketQube.
 
-	The design of the ChipSat was largely based on ChipSat-1, \draft{continuing} the use of miniaturised solar panels linked to a power-harvesting \acs{MPPT}, and managed by a low-resource microprocessor.
+	The design of the ChipSat was largely based on ChipSat-1, reusing miniaturised solar panels linked to a power-harvesting \acs{MPPT}, and managed by a low-resource microprocessor.
 
-	\item A novel \textbf{\acs{ADCS}} system used to perform active detumbling of the satellite, \draft{evoked} by needs for technology demonstration and an increase in the reliability of the communications link. The development of an \acs{ADCS} system was \draft{inspired} by the lack of \draft{a number of} different alternatives for miniaturised PocketQube \acs{ADCS} which are freely available \autocite{albaorbitalBeginnersGuideOpen2025}.
+	\item A novel \textbf{\acs{ADCS}} system was used to perform active detumbling of the satellite, on account of a need for technology demonstration and an increase in the reliability of the communications link. The development of an \acs{ADCS} system was motivated by the limited number of alternatives for miniaturised PocketQube \acs{ADCS} which are freely available \autocite{albaorbitalBeginnersGuideOpen2025}.
 	
 	POQUITO's \acs{ADCS} was based on a 9-axis \acf{IMU} and four sun sensors (placed on each side) used for attitude determination. The actuators used were three magnetorquers (one for each axis) in the form of current loops embedded in 4 \acs{PCB} layers each \autocite{anforowiczMagnetorquerCalc2026}. The \acs{ADCS} behaviour was modelled and simulated through a Model-In-The-Loop simulation in MATLAB, with a B-dot controller used for detumbling.
 \end{enumerate}
 
-Owing to the availability of open-source PocketQube buses and the \draft{actual logistical difficulties associated with recruiting engineers to support development}, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including base-plate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accomodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
+Owing to the availability of open-source PocketQube buses and the small number of engineers on our team, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including base-plate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accomodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
 
 \begin{figure}[h]
 	\includegraphics{media/graphics/Block_POQUITO}
@@ -5474,14 +5475,14 @@ A list of lessons learned that were gathered by the entirety of the team after t
 	\item While software tooling was implemented to assist development (for task tracking, inventory management, or documentation), it was often not used consistently, leading to a disagreement between the actual and documented status of the project. This was brought about in part because of the external commitments of team members. However, assigning an accountable person for these items seemed to guarantee good upkeep, with members noting a 45-page Mission Control Document as a particularly useful artifact that provided up-to-date information on the system design.
 	\item Critical members of the team were unable to work on-location, instead having to contribute remotely, and often with limited time. The combination of the above points shows the need to have at least few dedicated engineers working on the project as a primary occupation, even if the system itself requires little development effort (due to e.g.\@ reuse).
 	\item The iterative design approach seemed to perform successfully, as we did not discover any major non-conformances in the developed hardware, and managed to successfully qualify and acceptance-test the system. This was perhaps supported both by the heavy reuse of previous designs (both external and in-house), and the larger experience of the team, based on the two previous missions, and demonstrating a lesser need for a ``\acl{BDUF}''-based approach. The first iteration (``v0''), consisting of a partition of QUBIK parts only, provided experience to the team and allowed them to familiarise themselves with the satellite integration process and connections.
-	\item Roughly 30\% of the project time was spent on project management activities, which were mainly \draft{covered} by regulatory aspects\footnote{Related to national launch requirements, communication authorisations, insurance, and re-entry analysis.}. These preparations also involved orbital analysis, in order to guarantee a safe re-entry after at most 3 years, and establish that the satellite can be tracked (\Cref{sec:LITERATURE_debris}).  Regulatory requirements can vary by country, but will be significantly easier when support can be afforded by an experienced party. \todo{Make this sound scarier}
+	\item Roughly 30\% of the project time was spent on project management activities, which were mainly devoted to regulatory aspects\footnote{Related to national launch requirements, communication authorisations, insurance, and re-entry analysis.}. These preparations also involved orbital analysis, in order to guarantee a safe re-entry after at most 3 years, and establish that the satellite can be tracked (\Cref{sec:LITERATURE_debris}).  Regulatory requirements can vary by country, but will be significantly easier when support can be afforded by an experienced party. \todo{Make this sound scarier}
 \end{itemize}
 
 In terms of technical observations:
 \begin{itemize}
-	\item The original design used \draft{two} Li-Ion camera batteries. These batteries are interfaced using exposed metal terminals which are suited to a specialised mount, but not to soldering, due to safety and connection reliability concerns. It is therefore recommended to use pre-wired batteries, a bespoke battery holder, or a spot welding-based solution.
+	\item The original design used two Li-Ion camera batteries. These batteries are interfaced using exposed metal terminals which are suited to a specialised mount, but not to soldering, due to safety and connection reliability concerns. It is therefore recommended to use pre-wired batteries, a bespoke battery holder, or a spot welding-based solution.
 	\item Due to the addition of the \acs{ADCS} against the base QUBIK design, POQUITO's \textbf{cable harness} was more complex. This increased difficulty and risk during assembly, and required creating high-quality crimped connections for use with custom, POQUITO-specific cables. On the other hand, the use of spring-loaded pogo pins for the solar panels proved highly reliable and allowed low-effort integration. Teams should therefore invest on reducing the technical size of internal harnesses by using fixed components, to the degree possible.\footnote{This can be supported, for example, by an \acs{RF} or optical intra-satellite link.}
-	\item One of the non-conformances detected was the incorrect procurement of \qty{1.6}{\milli\meter}-thick \acsp{PCB} for the solar panels, instead of the required \qty{0.8}{\milli\meter}. This error was detected and resolved before the ``v1'' iteration. However, thanks to access to a university engineering workshop, we were able to \draft{widen} the panel slots in order to perform early fit-checks, without requiring a second procurement run.
+	\item One of the non-conformances detected was the incorrect procurement of \qty{1.6}{\milli\meter}-thick \acsp{PCB} for the solar panels, instead of the required \qty{0.8}{\milli\meter}. This error was detected and resolved before the ``v1'' iteration. However, thanks to access to a university engineering workshop, we were able to enlarge the panel slots in order to perform early fit-checks, without requiring a second procurement run.
 	\item In the ``v1'' iteration, it was discovered that there was little space on the PocketQube for the \emph{accelerometers required for vibration testing}. This was resolved by altering the layout for ``v2''.
 	\item During ``v0'', we discovered fit and clearance issues between the new solar panels and the subsystem stack. While these were resolved within an iteration, it would have been easily possible to avoid them through simple \acs{CAD} modelling, or by prototyping early versions of the \acs{PCB} (e.g.\@ through 3D printing).
 	\item A minor missing element from POQUITO that was later deemed useful were low-power \emph{status-indication \acsp{LED}}, that could be used to increase observability during ground testing by showing the power status of the satellite and its subsystems.
@@ -5540,7 +5541,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_poquito_counterfact
 	\item \textbf{Bypassing structural/thermal analysis}:
 	Similar to ChipSat-1 and AI4Space (\Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation}). The analysis time might be greater compared to the other projects, due to more complicated meshing/contact conditions, however here I consider a best case, based on the examples of \Cref{tab:l_cubesat_time_drivers}. Structural and thermal testing showed a nominal operation of the satellite, and the decision to avoid analysis was also based on the previous heritage of the QUBIK design. \todo{But normally you want to know what the battery is doing...}
 	\item \textbf{External manufacturing}:
-	Most \acsp{PCB} were soldered externally. Due to the quantity of \acsp{PCB} with different characteristics\footnote{Mainly layer count.} in POQUITO, \acs{PCB} procurement activities were often a blocking point in the lifecycle of the project. This also includes structural elements (PocketQube frame plates and antenna mounting points). For this point, I consider an assembly time of 2 days per one of 5 \acsp{PCB}, and a reduction to overall project risk due to the \draft{release} of the critical path. Note that in-house reflow soldering of the side solar panel \acsp{PCB} showed successful results during qualification, within the confines of the reduced workmanship standards required for a low-duration \acs{LEO} mission.
+	Most \acsp{PCB} were soldered externally. Due to the quantity of \acsp{PCB} with different characteristics\footnote{Mainly layer count.} in POQUITO, \acs{PCB} procurement activities were often a blocking point in the lifecycle of the project. This also includes structural elements (PocketQube frame plates and antenna mounting points). For this point, I consider an assembly time of 2 days per one of 5 \acsp{PCB}, and a reduction to overall project risk due to the clearing of the critical path. Note that in-house reflow soldering of the side solar panel \acsp{PCB} showed successful results during qualification, within the confines of the reduced workmanship standards required for a low-duration \acs{LEO} mission.
 
 	\item \textbf{Iterative multi-step development}:
 	
@@ -5688,7 +5689,8 @@ Resolving the reduced performance issue was one of the key goals of the second C
 \begin{itemize}[itemsep=-2ex]
 	\item Switch to a statically-typed and statically-allocated programming language, such as C++.
 	\item Use OpenMV as a library and adopt its camera drivers, instead of using the entire OpenMV \acs{API}.
-	\item Implement an external \acl{RAM} to reduce memory shortage risk. \todo{Dual core?}
+	\item Implement an external \acl{RAM} to reduce memory shortage risk.
+	\item Switch to a single, dual-core \acs{MCU} instead of a dual-\acs{MCU} design to reduce the real estate required and simplify hardware interfaces.
 \end{itemize}
 
 For the second iteration, I implemented the \acs{FFT}-based optimisation algorithm in C, showing the possibility of performing the deconvolution on-board without additional external hardware. I also designed the schematics for the second iteration of the \acs{PCB} with the above changes. However, as I was reaching the end of my research visit, I was not able to complete the integration and testing of this iteration.
@@ -5710,7 +5712,7 @@ For the second iteration, I implemented the \acs{FFT}-based optimisation algorit
 \subsection{Evaluation}
 \label{sec:CASESTUDIES_chipysat_evaluation}
 
-While ChiPySat was a shorter project than the rest, involving a considerably smaller team and \draft{no formal qualification goals}, it can still serve as an interesting point for counter-factual analysis. The main differentiating points compared to previous case studies are \begin{enumerate*}
+While ChiPySat was a shorter project than the rest, involving a considerably smaller team and no formal qualification goals, it can still serve as an interesting point for counter-factual analysis. The main differentiating points compared to previous case studies are \begin{enumerate*}
 	\item the small, non-standardised form factor of a fully independent spacecraft; and
 	\item the implementation of an unknown experimental payload, where there is no guarantee of feasibility.
 \end{enumerate*}
@@ -6059,7 +6061,7 @@ The small sample size of the results prevents generating robust statistical resu
 Each treatment can be evaluated as follows:
 \begin{enumerate}
 	\item \textbf{Bypassing structural/thermal analysis}:
-	This design choice shows a statistically significant reduction in development time (with project times shrinking to 71\% of the expected value if these analyses had been performed), low change in cost, and a universal increase in risk. This result is expected, following the reported analysis times from past CubeSat missions (\Cref{tab:l_cubesat_time_drivers}), and the estimation of 23 person-days to complete these analysis (\Cref{sec:CASESTUDIES_chipsat_evaluation}). The small dimensions and generally simple physical interfaces of \acs{SCS} reduce the value of \acs{FEM} modelling, which is typically done for larger spacecraft, but can be replaced by \draft{simpler} calculations or repeated tests for smaller systems. This observation is supported by the results of the case studies, which passed environmental qualification without any detected non-conformances.
+	This design choice shows a statistically significant reduction in development time (with project times shrinking to 71\% of the expected value if these analyses had been performed), low change in cost, and a universal increase in risk. This result is expected, following the reported analysis times from past CubeSat missions (\Cref{tab:l_cubesat_time_drivers}), and the estimation of 23 person-days to complete these analysis (\Cref{sec:CASESTUDIES_chipsat_evaluation}). The small dimensions and generally simple physical interfaces of \acs{SCS} reduce the value of \acs{FEM} modelling, which is typically done for larger spacecraft, but can be replaced by simpler calculations or repeated tests for smaller systems. This observation is supported by the results of the case studies, which passed environmental qualification without any detected non-conformances.
 	\item \textbf{In-house manufacturing}:
 	The aggregation of the results shows a \qty{10.3}{\percent} increase in development time, a \qty{32.7}{\percent} decrease in cost, and a project-specific change in perceived risk, when a team decides to assembly electronic boards in-house.
 	These results match the expected increase in manufacturing time combined with the high costs associated with external manufacturing, while risk depends on the specific manufacturing requirements, and whether they can be reliably met in-house. However, this analysis has not modelled the lead times of externally-covered processes, which are seen as blocking points in project tasks, but are not accounted here in terms of development time.
@@ -6329,8 +6331,8 @@ The following findings are reported from the application and counter-factual eva
 \begin{itemize}[itemsep=-2pt]
 	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person-hours} for ChipSats and \qty{800}{person hours} for a PocketQube.
 	\item It is possible to shorten \acl{SCS} development duration to approximately 1 year without adverse effects in technical risk or requirements compliance, given that at least the typical workload is performed.
-	\item Compared to a single-step sequential approach, a naive application of the complete \acs{SCS} methodology can reduce \textbf{development duration} by \qty{40}{\percent}. The statistical significance of this result is supported by the \draft{reduction} of time-consuming processes, which \draft{do} not provide significant added value in the performed case studies.
-	\item The naive application of the methodology was not found to have a statistically significant \draft{average} effect on cost and risk.
+	\item Compared to a single-step sequential approach, a naive application of the complete \acs{SCS} methodology can reduce \textbf{development duration} by \qty{40}{\percent}. The statistical significance of this result is supported by the reduction of time-consuming processes, which did not prove to provide significant added value in the performed case studies.
+	\item The naive application of the methodology was not found to have a statistically significant effect on cost and risk.
 	\item The most significant contributing factors to development time were found to be \textbf{frequent testing} (as opposed to detailed analyses) and \textbf{iterative} (as opposed to sequential) development, reducing it by \qty{29}{\percent} and \qty{25}{\percent} respectively.
 	The optimal iteration duration is dependent on the specific project context, with larger projects seemingly being suited for longer iterations.
 	\item In terms of production cost, the most significant contributors were found to be \textbf{in-house manufacturing} (\qty{33}{\percent} reduction) and \textbf{short iteration duration} (\qty{33}{\percent} increase), which are not associated with a significant effect on development time.
@@ -6393,7 +6395,6 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
 
 \begin{fullwidth}
-%\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal} 
 
 \vspace*{-1cm}%
 \centering%
@@ -6411,6 +6412,7 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \begin{invisible}
 
 \chapter{PCB schematics}
+\draft{[TODO]}
 
 \end{invisible}
 
