@@ -1,7 +1,6 @@
 \documentclass[a4paper,nobib,justified]{tufte-book}
 %\documentclass[a4paper]{book}
 
-
 %\usepackage{graphicx,biblatex,cleveref}
 %\input{preamble.tex}
 
@@ -10,8 +9,6 @@
 %\title{Systems Engineering for Sub-CubeSat Spacecraft}
 %\author[Konstantinos Kanavouras]{Konstantinos Kanavouras}
 %\publisher{University of Luxembourg}
-
-
 
 %\usepackage{amsmath}
 % \usepackage{hyperref}
@@ -36,29 +33,21 @@
 % \DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}}
 % \DeclareAcronym{OPS}{short = OPS, long = {Operations}}
 
-
-
-
 \hypersetup{colorlinks}
-
 
 \ExplSyntaxOn
 \makeatletter
 
-
-
 \makeatother
 \ExplSyntaxOff%
-
-
 
 %\usepackage{pgfplots}
 %\usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
 
-% \def\acf#1{Big Design Up Front (#1)} 
-% \def\acs#1{\textsf{#1}} 
+% \def\acf#1{Big Design Up Front (#1)}
+% \def\acs#1{\textsf{#1}}
 % \def\acsp#1{\textsf{#1s}}
-% \def\acl#1{\textsf{Big Design Up Front}} 
+% \def\acl#1{\textsf{Big Design Up Front}}
 % \def\draft#1{\textcolor{red}{#1}}
 % \def\todo#1{\textcolor{blue}{#1}}
 % \def\qtyproduct#1#2{#1}
@@ -85,7 +74,6 @@
 \end{tikzpicture}%
 \makeatother%
 
-
 \tableofcontents
 
 \printacronyms[pages={display=all,seq/use=false},]
@@ -96,12 +84,12 @@
 \label{sec:omoerfh_mera}
 %\subsubsection{Na exete mia kalh mera}
 \paragraph{Omorfh mera}
- shows a paragraph reference.
+shows a paragraph reference.
 
 \begin{figure*}
-	%\includegraphics{media/graphics/NASASYE}
-	\caption{Decomposition of Systems Engineering in connection with Project Management}
-	\label{fig:i_nasa_sye_decomposition}
+  %\includegraphics{media/graphics/NASASYE}
+  \caption{Decomposition of Systems Engineering in connection with Project Management}
+  \label{fig:i_nasa_sye_decomposition}
 \end{figure*}
 
 Here is a reference to that figure: Figure~\ref{fig:i_nasa_sye_decomposition}.
@@ -111,9 +99,9 @@ Here is a reference to a paragraph: \Cref{sec:omoerfh_mera}.
 I like eat apples every day.
 
 \begin{figure*}
-	%\includegraphics{media/graphics/NASASYE}
-	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management}
-	\label{fig:i_nasa_sye_decomposition_wide}
+  %\includegraphics{media/graphics/NASASYE}
+  \caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management}
+  \label{fig:i_nasa_sye_decomposition_wide}
 \end{figure*}
 
 Here is a reference to that wide figure: Figure~\ref{fig:i_nasa_sye_decomposition_wide}. \Cref{fig:i_nasa_sye_decomposition_wide}.
@@ -123,8 +111,8 @@ Here is a reference to that wide figure: Figure~\ref{fig:i_nasa_sye_decompositio
 In fact, my favourite verbosity is to discombobulate daily. \nameref{sec:omoerfh_mera} page \pageref{sec:omoerfh_mera}.
 
 \begin{figure}
-	\caption{A figure without content}
-	\label{fig:empty_figure}
+  \caption{A figure without content}
+  \label{fig:empty_figure}
 \end{figure}
 
 Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs!?
@@ -166,205 +154,152 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
 
 %Example of a complex mess: \dualcites{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}.
 
-\chapter{Float}
+\def\acs#1{\textsf{#1}}
 
-\section{Figures}
+\begin{tikzpicture}
+  \begin{scope}[node distance=0.2cm and 0.3cm]
+    \node[align=center, font=\large] (legendtitle) {Legend};
 
-\begin{figure*}[h]
-	\includegraphics[width=.5\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Full-width figure}
-\end{figure*}
+    % Left column
+	\node[pcb, below=-0.2cm of legendtitle.south west, yshift=-0.4cm] (pcbnode) {};
+    \node[right=of pcbnode] {PCB Manufacturing};
 
-\begin{figure*}[h]
-	\includegraphics[width=.5\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Full-width figure TOP}
-	\setfloatalignment{t}
-\end{figure*}
+    \node[component, below=of pcbnode] (compnode) {};
+    \node[right=of compnode] {Component Procurement};
 
-\begin{figure*}[h]
-	\includegraphics[width=.5\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Full-width figure BOTTOM}
-	\setfloatalignment{b}
-\end{figure*}
+    \node[softiter, below=of compnode] (softnode) {};
+    \node[right=of softnode] {Software Iteration};
 
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Figure}
-\end{figure}
+    \node[harditer, below=of softnode] (hardnode) {};
+    \node[right=of hardnode] {Hardware Iteration};
 
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Figure TOP}
-	\setfloatalignment{t}
-\end{figure}
+    % Right column title
+    \node[right=6.5cm of legendtitle] (iterlabel) {};
 
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Figure BOTTOM}
-	\setfloatalignment{b}
-\end{figure}
+    % Right column
+    \node[func, below=of iterlabel] (funciter) {};
+    \node[right=of funciter] {Functional (Ambient) Test};
 
-\FloatBarrier
+    \node[env, below=of funciter] (enviter) {};
+    \node[right=of enviter] {Environmental Test};
 
-\section{Tables}
+    \node[orbital, below=of enviter] (orb) {};
+    \node[right=of orb] {Orbital Flight};
 
-\begin{table*}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Full-width table TOP}
-	\setfloatalignment{t}
-\end{table*}
+	\node[slice, below=0.6cm of orb, rounded corners=5pt] (slice) {};
+	\node[right=of slice] {Module};
 
-Hello, just some text here, how y'all doing?
+    \draw ([xshift=-2mm,yshift=-2mm]current bounding box.south west) rectangle ([xshift=2mm,yshift=2mm]current bounding box.north east);
+  \end{scope}
+  \begin{scope}[font=\scriptsize,yshift=-10.5cm,node distance=0cm and 0cm]
 
-\begin{table*}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{Full-width table BOTTOM}
-	\setfloatalignment{b}
-\end{table*}
+    % --- Iteration 1 ---
+    \node[softiter] (i1s1) at (0,0) {};
+    \node[softiter, right=of i1s1] (i1s2) {};
+    \node[softiter, right=of i1s2] (i1s3) {};
+    \node[func,right=of i1s3] (i1t1) {};
+
+    % --- Iteration 2 ---
+    \node[softiter, right=of i1t1] (i2s1) {};
+    \node[softiter, right=of i2s1] (i2s2) {};
+    \node[softiter, right=of i2s2] (i2s3) {};
+    \node[func,right=of i2s3] (i2t1) {};
+
+    % --- Iteration 3 ---
+    \node[softiter, right=1cm of i2t1] (i5s1) {};
+    \node[func,right=of i5s1] (i5t1) {};
+
+    % --- Iteration 4 ---
+    \node[softiter, right=1cm of i5t1] (i3s1) {};
+    \node[softiter, right=of i3s1] (i3s2) {};
+    \node[softiter, right=of i3s2] (i3s3) {};
+    \node[func,right=of i3s3] (i3t1) {};
+    \node[env,right=of i3t1] (i3t2) {};
+
+    % --- Iteration 5 ---
+    \node[softiter, right=of i3t2] (i4s1) {};
+    \node[func,right=of i4s1] (i4t1) {};
+    \node[env,right=of i4t1] (i4t2) {};
+    \node[orbital,right=of i4t2] (i4t3) {};
+
+    \coordinate (end0) at (i1s1.west); % Origin
+    \coordinate (end1) at (i1t1.east);
+    \coordinate (end2) at (i2t1.east);
+    \coordinate (end3) at (i3s1.west);
+    \coordinate (end4) at (i3t2.east);
+    \coordinate (end5) at (i4t3.east);
+
+    \coordinate (start) at (0, 3.5);
+    \foreach \i in {1,...,5} {
+      \pgfmathtruncatemacro{\prev}{ \i - 1 }
+      \coordinate (mid\i) at ($(end\prev)!0.5!(end\i)$);
+    }
+
+    % --- Procurement/Manufacture Icons ---
+    \foreach \anchor/\type/\xoff in {
+      mid1/component/0,
+      mid2/component/-0.35,
+      mid2/pcb/0.35,
+      mid3/component/0,
+      mid4/component/-0.35,
+      mid4/pcb/0.35,
+      mid5/component/-0.35,
+      mid5/pcb/0.35
+    } {
+      \node[\type, below=0.4cm of \anchor, xshift=\xoff cm] {};
+    }
+
+    % Render Type Boxes using the helper
+    \typeboxitem{1}{Breadboard}{breadboard}{bread}{Iteration 1}
+    \typeboxitem{2}{Engineering\\Model}{engineering}{engineer}{Iteration 2}
+    \typeboxitem{3}{Breadboard\\Model}{breadboard}{bread}{Iteration 3}
+    \typeboxitem{4}{Engineering\\Qualification Model}{engqual}{qualify!50!engineer}{Iteration 4}
+    \typeboxitem{5}{Proto-Flight\\Model}{protoflight}{qualify}{Iteration 5}
+
+    % --- Dashed Lines and Dates ---
+    \foreach \i/\date in {0/2022-02, 1/2022-04, 2/2022-06, 3/2022-08, 4/2022-12, 5/2023-04} {
+      \draw[dashed, teal, thick] (end\i |- 0, 5.6) -- (end\i |- 0, -1.4)
+      node[below, font=\scriptsize, text=black] {\date};
+    }
+
+    \def\baseY{0.5}
+    \def\rowHeight{0.48}
+
+    \foreach \name/\startnode/\endnode/\idx in {
+      Payload/end0/end1/0,
+      Payload/end3/end5/0,
+      Power/end1/end5/1,
+      Comms/end0/end1/2,
+      Comms/end2/end5/2,
+      Interface/end3/end5/3
+    }{
+      % Calculate vertical anchors using the index
+      \pgfmathsetmacro{\yStart}{\baseY + (\idx * \rowHeight)}
+      \pgfmathsetmacro{\yEnd}{\yStart + 0.38} % Assuming 0.38cm box height
+
+      \draw[black!80, fill=bread!5, rounded corners=5pt]
+      ([xshift=0.1cm, yshift=\yStart cm]\startnode.west)
+      rectangle
+      ([xshift=-0.1cm, yshift=\yEnd cm]\endnode.east)
+      node[midway, scale=0.9] {\name};
+    }
+  \end{scope}
+\end{tikzpicture}%
+
+\begin{tikzpicture}
+  \begin{scope}[font=\scriptsize,yshift=0cm,node distance=0cm and 0cm]
+
+  \end{scope}
+\end{tikzpicture}
 
 \newpage
 
-\begin{table}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{table}
-\end{table}
-
-\begin{table}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{table TOP}
-	\setfloatalignment{t}
-\end{table}
-
-\begin{table}[h]
-	\includegraphics[width=\textwidth]{media/analyses/mission_outcomes_by_developer_2018}
-	\caption{table BOTTOM}
-	\setfloatalignment{b}
-\end{table}
-
-\FloatBarrier
-
-\chapter{AAA}
-
-\def\ac#1{#1}
-
-\NewDocumentCommand{\researchquestion}{mm}{%
-	\begin{fullwidth}%
-	\begin{tikzpicture}
-		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=center]
-		at (0,0)
-		{\textbf{#1}: #2};
-	\end{tikzpicture}
-	\end{fullwidth}%
-}
-
-\researchquestion{RQ1}{What are the current Systems Engineering approaches used by Sub-CubeSat spacecraft developers?}
-
-\researchquestion{RQ2}{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
-
-\researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
-
-\researchquestion{RQ4}{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
-
-\begin{enumerate}
-	\item[Limitation 1.] You suffer but why?
-\end{enumerate}
-
-\printbibliography
-
-% \NewAcroCommand\acfoot{m}{\UseAcroTemplate{footnote}{#1}}
-% \NewAcroCommand\acmar{m}{\UseAcroTemplate{marginonly}{#1}}
-% \NewAcroTemplate{marginonly}{%
-% 	\marginnote{\AcroFontStyle{\AcroFontSize{\AcroHeadingFontStyle{\AcroHeadingFontSize{#1}}}}}%
-% }
-% The \acmar{PCDU} is important.
-
-%\chapter{Yes}
-%What?
-%\printbibliography
-
-\def\acs#1{\textsf{#1}}
-\def\acf#1{#1}
-\def\acf#1{#1}
-\def\acl#1{#1}
-
-\begin{table*}[h]
-		\caption[Development time of sub-CubeSat missions]{Development time of sub-CubeSat missions (from start of development until Flight Model integration)}
-		\label{tab:i_otherdevtime}
-		\centering
-		\begin{tabular}{@{}llll@{\hskip 0.5em}ll@{}}
-			\toprule
-			Mission Name & Launch Year & Type & Development Dates & & Development Time \\ \midrule
-			FossaSat-1 & 2019 & 1P PocketQube & Jul 2018 -- Dec 2019&  \cite{fossasat-1GithubCommits} & 16 months \\
-			SMOG-P & 2019 & 1P PocketQube & Jul 2014 -- Sep 2019 & \cite{SMOG14thHungarian2021} & 62 months \\
-			% Integration in Glasgow, Sept. 9 2019 (http://152.66.80.46/smog1/satellites.pdf)
-			% SMOG-P (prototype) launch at 06 Dec 2019 (https://www.bme.hu/news/20210318/SMOG_1_the_4th_hungarian_satellite_of_BME_is_ready_for_launch?language=en)
-			% First mention of PocketQube (https://gnd.bme.hu/smog/Publications - http://www.albaorbital.com/meet-the-pocketqube-team-bme-1) July 2014
-			Qubik & 2021 & 1P PocketQube & Sep 2019 -- Oct 2020 & \cite{triantafyllopoulouQUBIKProjectReady2020} & 12 months \\
-			% To find when the project started, usually one can look at Github/Gitlab commits/issue activities. We measure
-			% the point where *development* started, not mission concept/ideation/preliminary design.
-			% Check https://gitlab.com/groups/librespacefoundation/qubik/-/issues/?sort=created_asc&state=all&first_page_size=20,
-			% first comments were made on Sept 2019
-			% PFM campaign completed on 12 Feb 2020 (https://libre.space/2020/04/22/the-qubik-project-the-progress-so-far/)
-			% Last software commit on 
-			% Integration to deployer completed on 25 Oct 2020 (https://www.youtube.com/watch?v=-42QPHEwcLE)
-			% Firefly launch at 3 Sept 2021 (https://en.wikipedia.org/wiki/Firefly_Alpha)
-			STECCO & 2021 & 6P PocketQube & Oct 2019 -- Dec 2021 & \cite{sapienzauniversitadiromaSapienzaSkyStecco2021} & 25 months \\
-			% Latest start of development: 2019-10-31 (https://www.mdpi.com/2226-4310/6/12/133)
-			% EXIF data of header image: https://www.uniroma1.it/en/notizia/sapienza-sky-stecco (integration) taken at 2020-12-19
-			% Launch on 2021-03-22
-			Delfi-PQ & 2022 & 3P PocketQube & Apr 2016 -- Jan 2019 & \cite{raduDelfiPQFirstPocketqube2018} & 32 months \\
-			% First mention in IAC article (https://pure.tudelft.nl/ws/portalfiles/portal/10329798/IAC_16_B4.7.5_A.pdf) and Gunter D. Krebs (https://space.skyrocket.de/doc_sdat/delfi-pq.htm) on Apr 15 2016
-			% Vibration test according to IAC article (https://pure.tudelft.nl/ws/portalfiles/portal/47563560/IAC_18_B4_6B_5_x43866.pdf) scheduled for January 2019
-			% Launched on 13 Jan 2022 (https://space.skyrocket.de/doc_sdat/delfi-pq.htm)
-			FEES & 2021 & 0.3U CubeSat & Jul 2017 -- Jan 2020 & \cite{surelCubeSatInorbitTechnology2019} & 29 months \\
-			% Earliest found mentions:
-			% 2017-07-23 https://www.eucass.eu/doi/EUCASS2017-489.pdf
-			% Thesis: https://www.politesi.polimi.it/handle/10589/145922 (2019-04-08)
-			% 2019-05-28 (https://icubesat.files.wordpress.com/2019/05/b.1.3.201905241518-morelli.pdf) expects launch at Q1 2020
-			% Launch: https://db.satnogs.org/satellite/FXHJ-9671-3244-3623-7704 (2021-03-22)
-			% A commit made on https://github.com/4m1g0/tinygs-decoders/commit/8d627fc0637cc91358b3bbf080119ee3587eac1c (2021-05-19)
-			% Archived website (https://web.archive.org/web/20220701082130/http://www.gpadvancedprojects.com/fees.html) expects launch at Q4 2020
-			Sprite & 2015 & ChipSat & Oct 2011 -- Dec 2013 & \cite{manchesterKickSatYourPersonal2016} & 27 months \\
-			% source: kickstarter updates page
-			% Project launch: 2011-10-20
-			% Integration with deployer: 2013-12 https://www.kickstarter.com/projects/zacinaction/kicksat-your-personal-spacecraft-in-space/posts/691950
-			SpinorSat & 2019 & ChipSat & Mar 2018 -- Feb 2019 & \cite{brashearsSpinorSatStep502018} & 10 months \\ \bottomrule
-			% source: github, https://github.com/space-technologies-at-california/PCBSat
-			\multicolumn{4}{c}{\todo{This table needs to be updated, improved and with new data}}
-		\end{tabular}
-\end{table*}
-
 \begin{fullwidth}
-\begin{tikzpicture}
-		\node [rectangle,fill=MaterialAmber100,draw=MaterialAmber800,minimum height=1.5cm,text width=\linewidth,align=left,inner sep=1.5em]
-		at (0,0)
-		{
-Research Question 1 (RQ1):
-\textbf{What are the current \ac{SYE} approaches used by \ac{SCS} developers?}\\[2ex]
+  %\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
 
-Research Question 2 (RQ2):
-\textbf{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}\\[2ex]
-
-Research Question 3 (RQ3):
-\textbf{Can a new, tailored \ac{SYE} methodology address \draft{a selection of} the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}\\[2ex]
-
-Research Question 4 (RQ4):
-\textbf{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}\\[2ex]
-		};
-\end{tikzpicture}%
+  \vspace*{-1cm}%
+  \centering%
+  \fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
 \end{fullwidth}
-
-
-\chapter[SCS Methodology Cheat Sheet]{\acs{SCS} Methodology Cheat Sheet}
-
-\begin{fullwidth}
-%\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal} 
-
-\vspace*{-1cm}%
-\centering%
-\fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
-\end{fullwidth}
-
 
 \end{document}
-

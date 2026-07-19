@@ -1533,11 +1533,14 @@ Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} cl
 It is also important to define the \textbf{attributes} of a project, that is the various parameters that describe its environment and goals. These attributes can determine what kind of \acs{SYE} frameworks, approaches and decisions can be followed.
 
 \citeauthor{honourUnderstandingValueSystems2004} \autocite{honourUnderstandingValueSystems2004} defines two main quantifiable attributes:
-\begin{itemize}
-	\item \textbf{Technical Size}, representing the overall size of the development effort.
-	Some measures can be the number of requirements, number of components, or number of functions.
-	\item \textbf{Technical Complexity}, representing the required degree of interaction between components, independent from size.
-\end{itemize}
+\begin{definition}[Technical Size]%
+	\textbf{Technical Size} (or \emph{Scale}), representing the overall size of the development effort.
+	Some measures can be the number of requirements, number of components, or number of functions.%
+\end{definition}
+
+\begin{definition}[Technical Complexity]%
+	\textbf{Technical Complexity}, representing the required degree of interaction between components, independent from size.\label{def:complexity}%
+\end{definition}
 
 On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013} have identified 127 different criteria for choosing a software process, which can be extrapolated for use in aerospace \acs{SYE}. These criteria are classified into the following categories:
 \begin{itemize}
@@ -3263,6 +3266,7 @@ This more ``strict'' approach to interface definition represents a deviation to 
 % In some cases, the criticality of such interfaces might be high enough to require proof that no system external to the satellite might be negatively impacted. Metrics such as the ECSS severity scale [86] can be used to classify this impact, ranging from negligible to catastrophic (such as loss of launcher or major injury) effects. For example, an International Space Station (ISS) launch may have specific limits on electrical system configuration, deployment switches and battery cell heritage. Interfaces with catastrophic failure modes should be verified formally and independently from the rest of the system, as risk cannot be tolerated in this case.}
 
 \paragraph{Miscellaneous}
+\label{sec:METHODOLOGY_design_miscellaneous}
 This paragraph will enumerate further low-level design guidelines based on lessons learned that do not fit into any of the above categories:
 \begin{itemize}
 	\item Traditional satellite manufacturers focus heavily on the \textbf{reduction of in-orbit technical risk} through administrative measures (e.g.\@ \acl{FMEA}), system-level solutions (e.g.\@ redundancy) or high-reliability components \autocite{kanavourasDesignFaultDetection2021}.
@@ -3380,6 +3384,7 @@ Examples can be conceived by components of tests or test platforms with \acs{COT
 \item Using a plain vacuum chamber instead of a \acf{TVAC} to emulate reduced pressure
 \item Using a household heater or freezer instead of a \acs{TVAC} to emulate extreme temperatures
 \item Using a \acs{COTS} laser setup to emulate radiation effects \autocite{zollnerGeneratingSELSEU2016}
+\item Using an incandescent or high-\acs{CRI} \acs{LED} light instead of a sun simulator
 \end{itemize}
 
 Based on the available literature, vibration tests seem the most difficult to replicate in a reduced fidelity. However, various approaches have been proposed to implement a low-cost shaker, especially in the fields of biology and chemistry \autocite{hollinghamOpenHW3OpensourceLowcost2024,diaz-roncerosDesignImplementationLowcost2023}.
@@ -3485,8 +3490,8 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 	\label{tab:m_software_requirements}
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
-		ID & Text & \\ \midrule
-		\multicolumn{3}{c}{Functional Requirements} \\ \midrule
+		ID & Text \\ \midrule
+		\multicolumn{2}{c}{Functional Requirements} \\ \midrule
 		100 & The OBSW shall generate TM of internal values, such as OBSW resources, power parameters, and sensor measurements. \\
 		110 & The OBSW shall provide at least an ``are-you-alive'' \acs{TC} with the corresponding response. \\
 		120 & The OBSW shall provide acknowledgement and/or execution status responses for any correct \acs{TC} received. \\
@@ -3496,7 +3501,7 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 		160 & The OBSW shall provide the capability to enable or disable the emission of TM to the ground segment. \\
 		170 & The OBSW shall provide the capability of scheduling TC for later execution. \\
 		\midrule
-		\multicolumn{3}{c}{Reliability Requirements} \\ \midrule
+		\multicolumn{2}{c}{Reliability Requirements} \\ \midrule
 		200 & The OBSW shall include adequate FDIR to detect, report, and recover from failures. \\
 		210 & No single TC executed at the wrong time or wrong configuration shall lead to loss of mission. \\
 		220 & The OBSW shall verify the integrity of each data stream received. \\
@@ -3661,7 +3666,7 @@ have been used for CubeSats, along with the compiled options of C, C++, Ada and 
 While the aforementioned research notes a weak correlation between programming language and software reliability in typical \acs{SW} engineering contexts, typical \acs{SCS} projects differ from conventional projects in terms of team size, developer experience, and fault tolerance. This difference can potentially increase the effect of programming language selection on fault prevention.
 
 \citeauthor{ashmoreProgrammingLanguageEvaluation2022} have hypothesised that specific programming language features can support the detection or prevent the introduction of errors, providing the example of the \emph{Rust} language which avoids memory allocation errors by design. \citeauthor{rayLargescaleStudyProgramming2017} \autocite{rayLargescaleStudyProgramming2017} analysed 728 GitHub projects, identifying commits that fixed bugs, and concluded that ``there is a small but significant relationship between language class and defects''.
-\citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programs of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.}
+\citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programs of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.
 
 Both CubeSat and \acs{SCS} software development teams are usually faced with a choice of programming language when starting development. Based on the above findings, it would be interesting to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be serve \textbf{case-studies to investigate the effect of language on software defect rate}.
 
@@ -4188,7 +4193,7 @@ Since this work proposes a more concrete methodology, it is possible to extend t
 \end{fullwidth}
 
 \begin{table*}[h]
-	\caption{Overview of Case Studies developed in the course of this research \todo{Check dev time of the projects}}
+	\caption{Overview of Case Studies developed in the course of this research}
 	\label{tab:c_case_studies}
 	\begin{tabular}{@{}lllll@{}}
 		\toprule
@@ -4198,6 +4203,7 @@ Since this work proposes a more concrete methodology, it is possible to extend t
 		Mass Classification & Femto-satellite & Femto-payload & Pico-satellite & Femto-satellite \\ \midrule
 		Institution & \multicolumn{3}{c}{University of Luxembourg} & Carnegie Mellon University \\
 		Development Start & 2022 & 2023 & 2024 & 2024 \\
+		Development Duration & 12 months & 14 months & 12 months & 5 months \\
 		Target & Qualification & Launch & Launch & Functional Tests \\ \bottomrule
 	\end{tabular}
 	\vspace{2ex}
@@ -4235,7 +4241,7 @@ The execution of these case studies followed an action research plan as shown in
 	\label{fig:c_action_research}
 \end{figure}
 
-The data from the case studies was collected in the form of personal notes and records on software tools, including spreadsheets, task tracking tools, and Git commits. This process was aided by critical conversations with the project responsibles and team members. These observations include information about team interactions, project \ac{SYE} status, as well as technical details relevant to each project, applicable to the system or subsystems. These observations can be classified as direct participant-observations through my role in the project, combined with the available documentation in the form of the aforementioned records \autocite{yinCaseStudyResearch2014}.
+The data from the case studies was collected in the form of personal notes and records on software tools, including spreadsheets, task tracking tools, and Git commits. This process was aided by critical conversations with the project responsibles and team members. These observations included information about team interactions, project \ac{SYE} status, as well as technical details relevant to each project, applicable to the system or subsystems. These observations can be classified as direct participant-observations through my role in the project, combined with the available documentation in the form of the aforementioned records \autocite{yinCaseStudyResearch2014}.
 
 In the following sections, each project is presented in the following order \cite[106]{mcniffYouYourAction2010}:
 \begin{enumerate}
@@ -4251,7 +4257,7 @@ They follow the techniques of \emph{Pattern Matching} and \emph{Explanation Buil
 	\begin{margindefinition}[Treatment]
 		A treatment is the application of an \acs{SCS} method of \Cref{chap:METHODOLOGY} in a case study.
 	\end{margindefinition}
-	For simplicity, I will not consider interactions between the counter-factual (non)-application of treatments, as that would involve exponentially increaing combinations to explore.
+	For simplicity, I will not consider interactions between the counter-factual (non)-application of treatments, as that would involve exponentially increasing combinations to explore.
 \end{enumerate}
 
 \marginnote[1cm]{%
@@ -4263,10 +4269,10 @@ They follow the techniques of \emph{Pattern Matching} and \emph{Explanation Buil
 	
 	In this case, ``risk'' should be perceived as %
 	\emph{the probability that a non-conformance is present in the project at qualification or launch.}
-	This definition encompasses the technical aspects of spacecraft functionality. In most cases, a ``non-conformance'' can be understood as a \emph{requirement non-compliance}. \draft{Whether optional requirements (\Cref{sec:METHODOLOGY_requirements}) are considered in this definition depends on each mission, and for this work, ``must have'' and ``should have'' requirements are considered.} In the case of design errors, these non-conformances can appear as ``\acl{DOA}'' or partially successful missions. This definition does not consider programmatic risk of time and budget overruns, as these are considered to be captured by the previous metrics already.
+	This definition encompasses the technical aspects of spacecraft functionality. In most cases, a ``non-conformance'' can be understood as a \emph{requirement non-compliance}. Whether optional requirements (\Cref{sec:METHODOLOGY_requirements}) are considered in this definition depends on each mission, and for this work, ``must have'' and ``should have'' requirements are considered. In the case of design errors, these non-conformances can appear as ``\acl{DOA}'' or partially successful missions. This definition does not consider programmatic risk of time and budget overruns, as these are considered to be captured by the previous metrics already.
 	%\emph{the probability that a rework (an additional iteration) is needed.} This includes technical in-orbit risk, since \emph{an in-orbit failure implies that ground rework is needed.} Finally, risk is considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from the mission. For example, in the general case, more iterations lead to reduced risk. However, given the information that \emph{the system has been validated}, performing an additional iteration will not decrease risk, since the mission data already demonstrates that sufficient technical performance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
 
-	\draft{All metrics are considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from each mission.} For example, in the general case, more development iterations should lead to reduced risk. However, given the information that \emph{a function has been validated}, performing an additional iteration will not decrease risk, since the validation data already demonstrates that sufficient requirements compliance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
+	All metrics are considered \textbf{\emph{a-posteriori}}, i.e.\@ considering all available data from each mission. For example, in the general case, more development iterations should lead to reduced risk. However, given the information that \emph{a function has been validated}, performing an additional iteration will not decrease risk, since the validation data already demonstrates that sufficient requirements compliance has already been reached. On the other hand, adding an \emph{analysis} would decrease risk even if a test had been performed, since a test might not cover the set of all possible environmental conditions.
 	
 	%\textbf{Features}: Based on the \acs{MOSCOW} model, desirable (should/can) features are not requirements, but may be included in the final product.
 }
@@ -4280,7 +4286,7 @@ Finally, a cross-case analysis is performed in \Cref{sec:CASESTUDIES_results} in
 \end{figure*}
 
 \newthought{A detailed} process diagram for the counter-factual analysis research flow is shown in \Cref{fig:c_activity_diagram}. 
-The process intents intends to perform internal and external validation of the \acs{SCS} methodology, following the definitions proposed by \citeauthor{yinCaseStudyResearch2014} \cite[33]{yinCaseStudyResearch2014}. As the purpose of internal validation is to establish whether the \acs{SCS} methodology actually affects the \acs{SYE} metrics of a project from a causal (rather than spurious) relationship, the questions that have to be answered are: \cite{yinCaseStudyResearch2014}
+The process intends to perform internal and external validation of the \acs{SCS} methodology, following the definitions proposed by \citeauthor{yinCaseStudyResearch2014} \cite[33]{yinCaseStudyResearch2014}. As the purpose of internal validation is to establish whether the \acs{SCS} methodology actually affects the \acs{SYE} metrics of a project from a causal (rather than spurious) relationship, the questions that have to be answered are: \cite{yinCaseStudyResearch2014}
 \begin{enumerate}[itemsep=-2ex]
 	\item Can we infer that the methodology significantly affects a project metric?
 	\item Have we considered rival explanations and possibilities?
@@ -4307,7 +4313,7 @@ The cross-case step of the \emph{explanation building} process is elaborated in 
 \toprule
  & Treatment & Description & Initial theory \\ \midrule
 1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
-2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\draft{\Cref{sec:METHODOLOGY_design_guidelines}}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space) \\
+2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\draft{\Cref{sec:METHODOLOGY_design_guidelines}}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space). \\
 3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
 4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. Note that no restriction is set on the iterations having a fixed length; instead, their length was flexible (pre-determined or not). & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
 5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{sec:METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
@@ -4322,127 +4328,6 @@ The cross-case step of the \emph{explanation building} process is elaborated in 
 
 
 
-\FloatBarrier
-\begin{invisible}
-\begin{landscape}%
-\vspace*{-2cm}%
-%
-%------------------------------------------
-% Legend Layout
-%------------------------------------------
-\begin{tikzpicture}
-	
-	\begin{scope}[node distance=0.2cm and 0.3cm]
-		\node[align=center, font=\large] (legendtitle) {Legend};
-		
-		% Left column
-		\node[software, below=0.6cm of legendtitle.south west, anchor=west] (soft) {};
-		\node[right=of soft] {Software-only Model};
-		
-		\node[breadboard, below=of soft] (bread) {};
-		\node[right=of bread] {Breadboard Model};
-		
-		\node[engineering, below=of bread] (eng) {};
-		\node[right=of eng] {Engineering Model};
-		
-		\node[qualification, below=of eng] (qual) {};
-		\node[right=of qual] {Qualification Model};
-		
-		\node[engqual, below=of qual] (eqm) {};
-		\node[right=of eqm] {Engineering Qualification Model};
-		
-		\node[protoflight, below=of eqm] (proto) {};
-		\node[right=of proto] {Protoflight Model};
-		
-		\node[flight, below=of proto] (flightm) {};
-		\node[right=of flightm] {Flight Model};
-		
-		% Right column title
-		\node[right=6.5cm of legendtitle] (iterlabel) {};
-		
-		% Right column
-		\node[func, below=of iterlabel] (funciter) {};
-		\node[right=of funciter] {Functional (Ambient) Test};
-		
-		\node[env, below=of funciter] (enviter) {};
-		\node[right=of enviter] {Environmental Test};
-		
-		\node[orbital, below=of enviter] (orb) {};
-		\node[right=of orb] {Orbital Flight};
-		
-		\node[pcb, below=of orb, yshift=-0.4cm] (pcbnode) {};
-		\node[right=of pcbnode] {PCB Manufacturing};
-		
-		\node[component, below=of pcbnode] (compnode) {};
-		\node[right=of compnode] {Component Procurement};
-		
-		\node[softiter, below=of compnode] (softnode) {};
-		\node[right=of softnode] {Software Iteration};
-		
-		\node[harditer, below=of softnode] (hardnode) {};
-		\node[right=of hardnode] {Hardware Iteration};
-		
-		\draw ([xshift=-2mm,yshift=-2mm]current bounding box.south west) rectangle ([xshift=2mm,yshift=2mm]current bounding box.north east);
-	\end{scope}		
-	\begin{scope}[font=\scriptsize,yshift=-10cm,node distance=0cm and 0cm]
-		
-		\tikzset{slice/.style={draw,black!80,fill=bread!5,minimum width=1.4cm,minimum height=0.38cm,font=\tiny}}
-		\tikzset{sliceoff/.style={minimum width=1.5cm,minimum height=0.38cm}}
-		
-		\node[softiter] (i1s1) at (0,0) {};
-		\node[softiter, right=of i1s1] (i1s2) {};
-		\node[softiter, right=of i1s2] (i1s3) {};
-		\node[component, below=of i1s2] (i1x1) {};
-		\node[harditer, above=of i1s2] (i1w1) {};
-		\node[func,right=of i1s3] (i1t1) {};
-		
-		\node[softiter, right=of i1t1] (i1s1) {};
-		\node[softiter, right=of i1s1] (i1s2) {};
-		\node[softiter, right=of i1s2] (i1s3) {};
-		\node[component, below=of i1s2] (i1x1) {};
-		\node[engineering, right=of i1x1] (i1x2) {};
-		\node[harditer, above=of i1s2] (i2w1) {};
-		\node[func,right=of i1s3] (i2t1) {};
-		
-		\node[softiter, right=of i2t1] (i1s1) {};
-		\node[softiter, right=of i1s1] (i1s2) {};
-		\node[softiter, right=of i1s2] (i1s3) {};
-		\node[component, below=of i1s1] (i1x1) {};
-		\node[pcb, right=of i1x1] (i1x2) {};
-		\node[qualification, right=of i1x2] (i1x3) {};
-		\node[harditer, above=of i1s2] (i3w1) {};
-		\node[func,right=of i1s3] (i3t1) {};
-		\node[env,right=of i3t1] (i3t2) {};
-		
-		\node[softiter, right=of i3t2] (i1s1) {};
-		\node[pcb, xshift=-0.35cm,below=of i1s1] (i1x1) {};
-		\node[flight, right=of i1x1] (i1x2) {};
-		\node[harditer, above=of i1s1] (i4w1) {};
-		\node[func,right=of i1s1] (i3t1) {};
-		\node[env,right=of i3t1] (i3t2) {};
-		\node[orbital,right=of i3t2] (i3t3) {};
-		
-		\node[sliceoff,above=0.1cm of i2w1] (sl1) {};
-		\node[slice,above= of sl1] (sl2) {Sensors};
-		\node[slice,above=of sl2] (sl3) {MCU};
-		
-		\node[slice,above=0.1cm of i3w1] (sl1) {Interface};
-		\node[slice,above= of sl1] (sl2) {Sensors};
-		\node[slice,above=of sl2] (sl3) {MCU};
-		
-		\node[slice,above=0.1cm of i4w1] (sl1) {Interface};
-		\node[slice,above= of sl1] (sl2) {Sensors};
-		\node[slice,above=of sl2] (sl3) {MCU};
-		
-	\end{scope}
-	
-	
-\end{tikzpicture}%
-%	
-	%\captionof{figure}{\draft{Very big diagram}}
-%\end{figure*}
-\end{landscape}
-\end{invisible}
 
 \FloatBarrier
 \newpage
@@ -4456,7 +4341,7 @@ The ChipSat-1 mission was motivated and constrained by a launch opportunity prov
 
 This \emph{hosted payload} mission was developed in 2022, and environmentally tested and integrated in 2023. However, due to administrative issues with the host's launch provider, ChipSat-1's host satellite, and by extension, ChipSat-1, were never launched.
 
-ChipSat-1 cost \SI{8930}{EUR} in material and testing costs, required a development time of roughly \draft{10} months, and involved seven members of the team who contributed in different degrees. It was developed iteratively, with multiple representative hardware models having been built in the University of Luxembourg's CubeSat Lab. I participated as a Systems, Hardware and Software engineer in the project.
+ChipSat-1 cost \SI{8930}{EUR} in material and testing costs, required a development time of roughly 12 months, and involved seven members of the team who contributed in different degrees. It was developed iteratively, with multiple representative hardware models having been built in the University of Luxembourg's CubeSat Lab. I participated as a Systems, Hardware and Software engineer in the project.
 
 \begin{marginfigure}
 	\includegraphics{pictures/chipsat1_1.jpg}\\%
@@ -4500,7 +4385,7 @@ The objective of a \ac{VLC} demonstrator aligns with the prevalence and research
 
 \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} have considered the use of \acp{SPAD} in combination with miniature \acp{LED} for an inter-satellite link, and performed a range and data rate simulation for different transmitter lenses. They found that a lens-less system, transmitting with \SI{1}{\milli\watt}, can achieve a \SI{2.87}{\kilo\meter} range at \SI{10}{\kilo\bit/\second}, which can be extended to \SI{141}{\kilo\meter} with a \( \sim \)\SI{2}{\degree} \acf{HPBW} lens.
 
-\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometer-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\degree} accuracy are commercially available \autocite{M3MicroBeamSteeringTechBulletin}.} is required, eliminating the need for a high-gain antenna or high-power transceiver.
+\acsp{LED} and photodiodes as miniaturised \acs{COTS} components present an attractive use-case for \ac{SCS}, as the cost of reduced functionality that comes with small size can usually be accepted for such systems. The kilometre-scale ranges of \acs{LED}-based systems are for example applicable to satellite swarms that require networking \autocite{timmonsRangeBasedRelativeNavigation2022}. Compared to their \ac{RF} counterparts, these \ac{VLC} systems can be preferable when low power, high bandwidth and high directivity\footnote{For example, \citeauthor{griffithsHighsensitivityIntersatelliteOptical2021} \autocite{griffithsHighsensitivityIntersatelliteOptical2021} calculate that a \SI{2.5}{\centi\meter} diameter ACL25416 lens provides an equivalent of \SI{52.0}{\decibel i} of gain. However, such a directional system will require appropriate steering of the light source. On a centimetre-scale spacecraft this can be achieved, for example, using miniaturised mirrors steered by piezo-electric motors. \qtyproduct{1 x 1 x 0.5}{\centi\meter}-sized steering modules with \SI{0.1}{\degree} accuracy are commercially available \autocite{M3MicroBeamSteeringTechBulletin}.} is required, eliminating the need for a high-gain antenna or high-power transceiver.
 
 ChipSat-1 was therefore decided to act as a technology demonstration experiment for a simple \ac{LED}-based \ac{VLC} system. Due to the limitation of a single flown spacecraft, we decided to place the transmitter (\ac{LED}) and receiver (photodiode) on a single \ac{PCB}, intending to focus on testing only the effects of ambient light, temperature and radiation on the payload and bus components.
 
@@ -4515,39 +4400,27 @@ This configuration essentially emulates a \textbf{``fractionated''} system, wher
 For ChipSat-1, the available space allowed us to implement two ``secondary'' parts, designed to generate data that would be downlinked through the \ac{VLC} link: One had a gyroscope to measure and report angular velocity, and the other an ambient light intensity sensor.
 
 \begin{figure}[h]
-	\includegraphics{drafts/chipsat_parts_render.png}
+	\includegraphics{graphics/chipsat_parts_render.png}
 	\caption[Render of ChipSat-1, showing its 3 parts]{Render of ChipSat-1, showing its 3 parts. Each part is electrically isolated to the others, sharing only a common ground and the free-space optical link.}
 	\label{fig:c_chipsat_parts_render}
 \end{figure}
 
 \marginnote{In technical documentation, I refer to the primary as ``\texttt{212}`` and the secondaries as ``\texttt{211A}``, ``\texttt{211B}``, showing a three-part ratio that starts with a common denominator and the horizontal \& vertical sizes.}
 
-The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \draft{what} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
-
-\begin{invisible}
-\begin{margintable}
-	\caption{ChipSat-1 \acl{BOM} \todo{Fill table}}
-	\begin{tabular}{@{}lr@{}}
-		\toprule
-		Light Sensor & TSL25853PM \\
-		Gyroscope & IAM-20680HP \\
-		\bottomrule
-	\end{tabular}
-\end{margintable}
-\end{invisible}
+The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \acs{PIN} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
 
 Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK}) to transmit bytes, each bit corresponding to one symbol, with Manchester code applied\footnote[][-2.5cm]{\emph{Manchester code} describes a pattern where one bit is encoded as low, then high, or high, then low. This guarantees that every symbol will have at least one bit transition. While this code reduces bit rate to half, it \begin{enumerate*}
 		\item guarantees that no \ac{DC} component remains in the output signal, allowing easy high pass filtering to reduce the influence of ambient light (mainly sunlight);
 		\item is self-clocking, allowing easy synchronisation and clock recovery on the receiver side.
 	\end{enumerate*} While other techniques such as scrambling or \ac{RLL} could be used to achieve the above, Manchester coding was applied to reduce system complexity. }, at a rate of \SI{50}{baud/\second}.
-\marginnote{An alternative plan for the \ac{VLC} system involved using Colour Shift Keying instead of \acs{OOK}, which roughly corresponds to \ac{RF} frequency modulation and could have better noise resistance. \acs{OOK} was however chosen to keep complexity low. \todo{Cite digital modulation book}} %vadOK
+\marginnote{An alternative plan for the \ac{VLC} system involved using Colour Shift Keying instead of \acs{OOK}, which roughly corresponds to \ac{RF} frequency modulation and could have better noise resistance. \acs{OOK} was however chosen to keep complexity low \autocite{monteiroDesignImplementationColorShift2014}.}
 
 To make the design highly configurable without physical modifications, all processing was done in software, using an \acs{ADC} for reception, with an oversampling factor of \( \times 5 \) to assist in clock recovery.
 
-The signal path of the received pulses is first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also takes place in software. Bit synchronisation to the transmitter's clock happens by detecting the edges of the transmitted Manchester code, while frame synchronisation is performed by waiting for a synchronisation word.
+The signal path of the received pulses was first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also took place in software. Bit synchronisation to the transmitter's clock happened by detecting the edges of the transmitted Manchester code, while frame synchronisation was performed by waiting for a synchronisation word.
 
-At a system level, the secondaries transmit data at periodic \todo{???} intervals, while the primary is constantly waiting for data reception.
-Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}. A statistical aggregation is then broadcasted by the primary over the main periodic \acs{RF} beacon.
+At a system level, the secondaries transmitted data at periodic \qty{1.5}{\second} intervals, while the primary was constantly waiting for data reception.
+Once data is received, its integrity was checked and stored on the on-board \ac{NVM}. A statistical aggregation was then broadcasted by the primary over the main periodic \acs{RF} beacon.
 
 \begin{figure*}
 	\centering
@@ -4570,8 +4443,6 @@ Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}
 	\label{fig:c_chipsat_signal_path}
 \end{figure*}
 
-\todo{Some other stuff maybe}
-
 \subsection{System Description}
 
 \begin{figure}[h]
@@ -4586,14 +4457,31 @@ Once data is received, it is \draft{checked} and stored on the on-board \ac{NVM}
 The constraint of the flat \qtyproduct{5 x 5}{\centi\meter} shape of ChipSat-1 was the main driver behind component selection and bus capabilities. Out of the environmental criteria mentioned in \Cref{tab:mission-characteristics}, the following were considered as additionally critical drivers:
 \begin{itemize}
 	\item \textbf{Developer availability and experience}: Due to the relatively small size of the development team and difficulty in involving external personnel, we tried to limit components and technologies to those that were familiar to the team's engineers.
-	\item \textbf{Complexity}:\todo{\footnote{Discuss the definition of complexity and how it is interpreted here, or move complexity to the definitions}} In order to reduce risk, the number of different parts and interfaces between them had to be minimal. For the context of this project, reducing complexity was equivalent to reducing \ac{BOM} size.
+	\item \textbf{Complexity}\footnote{See \Cref{def:complexity} for the definition of complexity.}: In order to reduce risk, the number of different parts and interfaces between them had to be minimal. For the context of this project, reducing complexity was equivalent to reducing \ac{BOM} size.
 \end{itemize}
 
-In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated.\footnote{See \Cref{sec:METHODOLOGY_modularity}} We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
+\begin{margintable}
+	\caption{ChipSat-1 \acl{BOM}}
+	\begin{tabular}{@{}lr@{}}
+		\toprule
+		Energy Harvester & BQ25570 \\
+		Microcontroller & STM32WL55CCU7 \\
+		\acs{FRAM} & FM24V05 \\
+		Light Sensor & TSL25853PM \\
+		Gyroscope & IAM-20680HP \\
+		Photodiodes & VEMD1060X01 \\
+		\acs{VLC} \acsp{LED} & 155124RG73200 \\
+		Solar cells & KXOB25 \\
+		\bottomrule
+	\end{tabular}
+\end{margintable}
+
+
+In terms of system design, the small size of the spacecraft made it impractical to create a ``modular'' structure, where different subsystems are separated.\footnote{See \Cref{sec:METHODOLOGY_modularity}.} We also decided from the onset to avoid the use of \acs{ADCS}, thermal management and any other structural components, as these subsystems would require unmanageable energy, real estate and mass.
 
 \marginnote{We selected the STM32WL line of ``wireless microcontrollers'' due to my previous experience with this family, although other alternatives will also be suitable.}
 The ``brain'' of the satellite is a \acf{MCU} \ac{IC} with an integrated transceiver and power amplifier, essentially consolidating two subsystems in a single package.
-\marginnote{We avoided the use of ``radiation-tolerant'' or ``radiation-hardened'' packages due to their usually high cost, size, and supply chain restrictions. Instead, we decided to consider \ac{SEE} damage as an acceptable risk. \todo{elaborate on trade-off}}
+\marginnote{We avoided the use of ``radiation-tolerant'' or ``radiation-hardened'' packages due to their usually high cost, size, and supply chain restrictions. Instead, we decided to consider \ac{SEE} damage as an acceptable risk. Also see \Cref{sec:METHODOLOGY_design_miscellaneous}.}
 
 The \ac{MCU} is responsible for handling spacecraft status, sensor inputs and data outputs. While the primary used a transceiver-equipped \ac{MCU}, the secondaries used a smaller footprint \ac{IC} without wireless capabilities. The primary also included an \acs{FRAM} memory for packet storage. Programming and debugging was done through an integrated ribbon connector, present on all parts.
 
@@ -4601,12 +4489,10 @@ The resulting block diagram can be seen in \Cref{fig:c_chipsat_block}.
 
 \paragraph{Power Generation}
 
-\begin{invisible}
 \begin{marginfigure}
-	\todo{todo}
-	\caption{ChipSat-1's solar panels \todo{blablabla dimensions coverage}}
+	\includegraphics{pictures/chipsat1_4.jpg}
+	\caption{ChipSat-1's solar panels}
 \end{marginfigure}
-\end{invisible}
 
 While an unconventional system, such as a ChipSat, can attract the application of unconventional technologies for power generation, such as primary batteries or thermoelectric sources \autocite{SMAD}, we followed an approach similar to past ChipSats, by relying on fixed miniaturised solar cells.
 
@@ -4651,15 +4537,15 @@ This theoretical analysis shows the expected power input, which should however b
 Due to the high number of different commercially available solar cell sizes, I developed a Python optimisation tool based on rectangle-packing to identify the combination of solar cells that could theoretically produce the highest power.
 
 \begin{marginfigure}
-	\caption{Raw result from the cell packing optimisation tool \todo{todo}}
+	\caption{Example result of the solar cell packing optimisation tool}
 	\label{fig:c_panel_packing}
-	\includegraphics{drafts/panel_packing.png}
+	\includegraphics{graphics/panel_packing.png}
 \end{marginfigure}
 
 
 To perform \ac{MPPT} and convert the panel voltage to an appropriate one for the remaining electronics and energy storage, we used a combined low-footprint power management \ac{IC}, which essentially acts as the \acf{EPS} of each ChipSat part. The commercial availability of such ``power harvesting'' electronics was very beneficial to the available real estate of the ChipSat.\marginnote{With the power management \acs{IC} itself taking up \qtyproduct{4.5 x 5.5}{\milli\meter}, most of the space for power management was used by the 17 passive components required to configure it.}
 
-Each part of the ChipSat is equipped with its set of components for power generation and management, the primary having 4 solar cells in a 2S2P configuration, the secondaries having 2 in a 2S1P configuration.
+Each part of the ChipSat was equipped with its set of components for power generation and management, the primary having 4 solar cells in a 2S2P configuration, and the secondaries having 2 in a 2S1P configuration.
 
 
 \paragraph{Energy Storage}
@@ -4670,23 +4556,27 @@ As most commercially available batteries do not support charging or discharging 
 
 \marginnote{At \qty{4}{\volt}, the capacitor can support a \qty{300}{\milli\watt} load for
 	\( \qty{1}{\milli\farad} \cdot (\qty{4}{\volt})^2 / \qty{300}{\milli\watt} = \qty{53}{\milli\second} \).}
-Nevertheless, each ChipSat-1 part includes a capacitor to provide short-term energy storage and eliminate energy fluctuations, especially in the case of high-power loads. We avoided the use of electrolytic capacitors due to safety concerns for their use in space \todo{ref}, using \qty{1}{\milli\farad} tantalum capacitors instead.
+Nevertheless, each ChipSat-1 part included a capacitor to provide short-term energy storage and eliminate energy fluctuations, especially in the case of high-power loads. We avoided the use of liquid electrolyte capacitors due to safety concerns for their use in space \autocite{zednicekPassivesNewSpace2021}, using \qty{1}{\milli\farad} tantalum capacitors instead.
 
 \begin{table}[h]
-	\caption{ChipSat-1 power consumption and storage budget \todo{Update budget --- Add power storage calculations}}
-	\begin{tabularx}{\linewidth}{@{}Xcccc@{}}
+	\caption{ChipSat-1 power consumption and storage budget}
+	\begin{tabularx}{\linewidth}{@{}XS[table-format=3.2]cS[table-format=3.2]S[table-format=1.2]@{}}
 		\toprule
-		\textbf{212 (Large ChipSat)}   & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\ \midrule
-		Microcontroller                & 3.30      & 100.00\%  & 3.30      & 3.30      \\
-		Transceiver                    & 364.65    & 100.00\%  & 364.65    & 0.00      \\
-		I2C network                    & 0.00      & 100.00\%  & 0.00      & 0.00      \\
-		Memory                         & 1.32      & 100.00\%  & 1.32      & 1.32      \\
-		Photodiode                     & 0.00      & 100.00\%  & 0.00      & 0.00      \\ \midrule
-		\textbf{211   (Small ChipSat)} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\ \midrule
-		Microcontroller                & 0.73      & 100.00\%  & 0.73      & 0.73      \\
-		LED                            & 100.00    & 50.00\%   & 50.00     & 0.00      \\
-		I2C network                    & 0.00      & 100.00\%  & 0.00      & 0.00      \\
-		Sensors                        & 9.9       & 50.00\%   & 4.95      & 0.02      \\ \bottomrule
+		Component & \multicolumn{1}{c}{Power (mW)} & Duty & \multicolumn{2}{c}{Average Power (mW)} \\ \cline{4-5}
+		& & Cycle & \multicolumn{1}{c}{Nominal} & \multicolumn{1}{c}{Sleep} \\ \midrule
+		\multicolumn{5}{@{}l}{\textbf{212 (Large ChipSat)}} \\ \midrule
+		Microcontroller                & 3.30      & 100\%  & 3.30      & 3.30      \\
+		Transceiver                    & 364.65    & 100\%  & 364.65    & 0.00      \\
+		I2C network                    & 0.00      & 100\%  & 0.00      & 0.00      \\
+		Memory                         & 1.32      & 100\%  & 1.32      & 1.32      \\
+		Photodiode                     & 0.00      & 100\%  & 0.00      & 0.00      \\[1ex]
+		\textbf{Total}				   &           &        & 369.27    & 4.62      \\ \midrule
+		\multicolumn{5}{@{}l}{\textbf{211   (Small ChipSat)}} \\ \midrule
+		Microcontroller                & 0.73      & 100\%  & 0.73      & 0.73      \\
+		LED                            & 100.00    & 50\%   & 50.00     & 0.00      \\
+		I2C network                    & 0.00      & 100\%  & 0.00      & 0.00      \\
+		Sensors                        & 9.9       & 50\%   & 4.95      & 0.02      \\[1ex]
+		\textbf{Total}				   &           &        & 55.68     & 0.75      \\ \bottomrule
 	\end{tabularx}
 \end{table}
 
@@ -4704,32 +4594,181 @@ The selection of \ac{RF} transmission characteristics was guided primarily by th
 
 The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \acs{FSK} modulation with a \qty{200}{bit/\second} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
 
-\begin{invisible}
 \begin{table}
-	\caption{ChipSat-1 link budget, performed using Jan King's link tool \todo{todo}}
+	\newcommand{\specialcell}[1]{\color{MaterialPink800}\bfseries#1}
+    \begin{tabular}{l S[table-format=4.1,detect-weight=true,detect-inline-weight=math] l}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} & \textbf{Unit} \\
+        \midrule
+        \textbf{Spacecraft Transmitter Power Output} & \specialcell{22.0} & \specialcell{\unit{dBm}} \\
+        Spacecraft Transmission Line Losses & 7.9 & {\unit{dB}} \\
+        Spacecraft Antenna Gain & 2.2 & {\unit{dBi}} \\
+        \textbf{Spacecraft \acs{EIRP}} & \specialcell{16.2} & \specialcell{\unit{dBm}} \\
+        \midrule
+        Spacecraft Antenna Pointing Loss & 1.9 & {\unit{dB}} \\
+        Polarisation Loss & 4.1 & {\unit{dB}} \\
+        Path Loss & 150.2 & {\unit{dB}} \\
+        Atmospheric Loss & 2.5 & {\unit{dB}} \\
+        \textbf{Isotropic Signal Level at Ground Station} & \specialcell{-142.5} & \specialcell{\unit{dBm}} \\
+        \midrule
+        Ground Station Antenna Gain & 21.0 & {\unit{dBi}} \\
+        Ground Station Transmission Line Losses & 2.0 & {\unit{dB}} \\
+        \textbf{Ground Station Signal Level} & \specialcell{-123.5} & \specialcell{\unit{dBm}} \\
+        Ground Station Signal-to-Noise Power Density & 41.1 & {\unit{\deci\bel\hertz}} \\
+        System Desired Data Rate & 200.0 & {\unit{bps}} \\
+        \textbf{Telemetry \(E_b/N_0\)} & \specialcell{18.1} & \specialcell{\unit{dB}} \\
+        FSK Required \(E_b/N_0\) & 8.0 & {\unit{dB}} \\
+        \textbf{System Link Margin} & \specialcell{8.1} & \specialcell{\unit{dB}} \\
+        \bottomrule
+    \end{tabular}
+	\caption[ChipSat-1 link budget]{ChipSat-1 link budget, performed using Jan King's link tool \autocite{JanKingLink}}
 	\label{c:chipsat_link_budget}
-	\todo{Link budget table}
 \end{table}
-\end{invisible}
 
 \subsection{Development Flow}
 
-
-
-\begin{figure}
+\begin{figure*}
 	\centering
-	\includegraphics{drafts/chipsat_timeline.png}
-	\caption{ChipSat-1 development timeline \todo{todo}}
-	\label{fig:c_chipsat_timeline}
-\end{figure}
+	\begin{tikzpicture}
+	\begin{scope}[node distance=0.2cm and 0.3cm]
+		\node[align=center, font=\large] (legendtitle) {Legend};
 
-In the early planning stages of the ChipSat-1 project, it was decided to follow an iterative lifecycle process, with the first steps consisting of creating an early working prototype (or \acs{MVP}). For this reason, an initial Gantt chart was drafted and updated every month. While only 3 complete iterations were planned in the beginning, the project required 5 iterations in the end.
+		% Left column
+		\node[pcb, below=-0.2cm of legendtitle.south west, yshift=-0.4cm] (pcbnode) {};
+		\node[right=of pcbnode] {PCB Manufacturing};
+
+		\node[component, below=of pcbnode] (compnode) {};
+		\node[right=of compnode] {Component Procurement};
+
+		\node[softiter, below=of compnode] (softnode) {};
+		\node[right=of softnode] {Software Iteration};
+
+		\node[harditer, below=of softnode] (hardnode) {};
+		\node[right=of hardnode] {Hardware Iteration};
+
+		% Right column title
+		\node[right=6.5cm of legendtitle] (iterlabel) {};
+
+		% Right column
+		\node[func, below=of iterlabel] (funciter) {};
+		\node[right=of funciter] {Functional (Ambient) Test};
+
+		\node[env, below=of funciter] (enviter) {};
+		\node[right=of enviter] {Environmental Test};
+
+		\node[orbital, below=of enviter] (orb) {};
+		\node[right=of orb] {Orbital Flight};
+
+		\node[slice, below=0.6cm of orb, rounded corners=5pt] (slice) {};
+		\node[right=of slice] {Module};
+
+		\draw ([xshift=-2mm,yshift=-2mm]current bounding box.south west) rectangle ([xshift=2mm,yshift=2mm]current bounding box.north east);
+	\end{scope}
+	\begin{scope}[font=\scriptsize,yshift=-10.5cm,node distance=0cm and 0cm]
+
+		% --- Iteration 1 ---
+		\node[softiter] (i1s1) at (0,0) {};
+		\node[softiter, right=of i1s1] (i1s2) {};
+		\node[softiter, right=of i1s2] (i1s3) {};
+		\node[func,right=of i1s3] (i1t1) {};
+
+		% --- Iteration 2 ---
+		\node[softiter, right=of i1t1] (i2s1) {};
+		\node[softiter, right=of i2s1] (i2s2) {};
+		\node[softiter, right=of i2s2] (i2s3) {};
+		\node[func,right=of i2s3] (i2t1) {};
+
+		% --- Iteration 3 ---
+		\node[softiter, right=1cm of i2t1] (i5s1) {};
+		\node[func,right=of i5s1] (i5t1) {};
+
+		% --- Iteration 4 ---
+		\node[softiter, right=1cm of i5t1] (i3s1) {};
+		\node[softiter, right=of i3s1] (i3s2) {};
+		\node[softiter, right=of i3s2] (i3s3) {};
+		\node[func,right=of i3s3] (i3t1) {};
+		\node[env,right=of i3t1] (i3t2) {};
+
+		% --- Iteration 5 ---
+		\node[softiter, right=of i3t2] (i4s1) {};
+		\node[func,right=of i4s1] (i4t1) {};
+		\node[env,right=of i4t1] (i4t2) {};
+		\node[orbital,right=of i4t2] (i4t3) {};
+
+		\coordinate (end0) at (i1s1.west); % Origin
+		\coordinate (end1) at (i1t1.east);
+		\coordinate (end2) at (i2t1.east);
+		\coordinate (end3) at (i3s1.west);
+		\coordinate (end4) at (i3t2.east);
+		\coordinate (end5) at (i4t3.east);
+
+		\coordinate (start) at (0, 3.5);
+		\foreach \i in {1,...,5} {
+		\pgfmathtruncatemacro{\prev}{ \i - 1 }
+		\coordinate (mid\i) at ($(end\prev)!0.5!(end\i)$);
+		}
+
+		% --- Procurement/Manufacture Icons ---
+		\foreach \anchor/\type/\xoff in {
+		mid1/component/0,
+		mid2/component/-0.35,
+		mid2/pcb/0.35,
+		mid3/component/0,
+		mid4/component/-0.35,
+		mid4/pcb/0.35,
+		mid5/component/-0.35,
+		mid5/pcb/0.35
+		} {
+		\node[\type, below=0.4cm of \anchor, xshift=\xoff cm] {};
+		}
+
+		% Render Type Boxes using the helper
+		\typeboxitem{1}{Breadboard}{breadboard}{bread}{Iteration 1}
+		\typeboxitem{2}{Engineering\\Model}{engineering}{engineer}{Iteration 2}
+		\typeboxitem{3}{Breadboard\\Model}{breadboard}{bread}{Iteration 3}
+		\typeboxitem{4}{Engineering\\Qualification Model}{engqual}{qualify!50!engineer}{Iteration 4}
+		\typeboxitem{5}{Proto-Flight\\Model}{protoflight}{qualify}{Iteration 5}
+
+		% --- Dashed Lines and Dates ---
+		\foreach \i/\date in {0/2022-02, 1/2022-04, 2/2022-06, 3/2022-08, 4/2022-12, 5/2023-04} {
+		\draw[dashed, teal, thick] (end\i |- 0, 5.6) -- (end\i |- 0, -1.4)
+		node[below, font=\scriptsize, text=black] {\date};
+		}
+
+		\def\baseY{0.5}
+		\def\rowHeight{0.48}
+
+		\foreach \name/\startnode/\endnode/\idx in {
+		Payload/end0/end1/0,
+		Payload/end3/end5/0,
+		Power/end1/end5/1,
+		Comms/end0/end1/2,
+		Comms/end2/end5/2,
+		Interface/end3/end5/3
+		}{
+		% Calculate vertical anchors using the index
+		\pgfmathsetmacro{\yStart}{\baseY + (\idx * \rowHeight)}
+		\pgfmathsetmacro{\yEnd}{\yStart + 0.38} % Assuming 0.38cm box height
+
+		\draw[black!80, fill=bread!5, rounded corners=5pt]
+		([xshift=0.1cm, yshift=\yStart cm]\startnode.west)
+		rectangle
+		([xshift=-0.1cm, yshift=\yEnd cm]\endnode.east)
+		node[midway, scale=0.9] {\name};
+		}
+	\end{scope}
+	\end{tikzpicture}%
+	\caption{ChipSat-1 development timeline}
+	\label{fig:c_chipsat_timeline}
+\end{figure*}
+
+In the early planning stages of the ChipSat-1 project, it was decided to follow an iterative lifecycle process, with the first steps consisting of creating an early working prototype (or \acs{MVP}). For this reason, an initial Gantt chart was drafted and updated every month. While 4 iterations were planned in the beginning, the project required 5 iterations in the end.
 
 For project management, the team followed a low-overhead, primarily ``ad-hoc'' approach. We used Microsoft's 365 suite for communication and document sharing, spreadsheets for task tracking, and GitLab for software and hardware versioning.
 
 During the \emph{1\textsuperscript{st} iteration}, we performed initial prototyping and experimentation to confirm the planned design and component selection. More specifically, I experimented on the wireless transmission as well as payload conceptualisation. This involved purchasing electronics and development boards, and setting up a \emph{breadboard model} of the required functionality. I also started iterating on the operational software, developed in C/C++. Finally, we set up purchase orders for critical \acsp{IC} that were identified, in order to maintain enough stock against the chip shortage that was still in effect during 2022 \autocite{mohammadGlobalSemiconductorChip2022}.
 
-This initial iteration provided positive results on the concept feasibility and component suitability, and yielded no significant needs for design changes. It lasted \draft{2} months.
+This initial iteration provided positive results on the concept feasibility and component suitability, and yielded no significant needs for design changes. It lasted 2 months.
 
 During the \emph{2\textsuperscript{nd} iteration}, enough information was gathered to proceed to full \ac{PCB} production. It was understood by the team that this iteration step was not intended to create a Flight Model, but an Engineering Model, similar in Form, Fit and Function to the \ac{FM}, but lacking the inhibit features required for flight.
 
@@ -4744,14 +4783,12 @@ I designed the schematic and layout using the KiCad software. An early technical
 The rest of the team also iterated on a deployable antenna design based on a burn wire release mechanism (\Cref{fig:c_burn_antenna}). However, this design was abandoned in favour of a conventional fixed dipole, as the deployable mechanism would have presented a risk of damage to our host spacecraft.
 	
 Initial testing revealed the following non-conformances:
-\begin{enumerate}[itemsep=-1ex]
+\begin{enumerate}[itemsep=-2ex]
 	\item The \ac{PCB} layout footprints of the solar cells had smaller dimensions than the actual cells, causing a short-circuit between adjacent cells.
 	\item An incorrect overvoltage configuration resistor was selected for the power supply of the three parts, causing intermittent voltage output.
 	\item The debugging connector was not compatible with standard flexible flat cables, making debugging tedious due to a lack of locking.
 \end{enumerate}
 These issues were corrected through rework for the initial model.
-
-\todo{figures from payload testing}
 
 During the \emph{3\textsuperscript{rd} iteration}, we manufactured a \textbf{structural} model of the ChipSat to verify its interface to the host spacecraft, as well as the dynamic envelope of the antenna design. This required a \textbf{vibration test} at an external facility. We also performed an \textbf{\acf{OTA} \acs{RF} test} to verify the correct operation of the integrated antenna.
 
@@ -4759,14 +4796,14 @@ For the \emph{4\textsuperscript{th} iteration}, we designed another \ac{PCB} int
 \begin{enumerate}[itemsep=-2ex]
 	\item Replaced primary supercapacitor for two tantalum capacitors
 	\item Implemented electric inhibit circuit
-	\item Added antenna matching circuit \todo{Anything more?}
+	\item Added antenna matching circuit
 \end{enumerate}
 
-The 4\textsuperscript{th} iteration also had to include qualification testing, which had to be performed in external facilities and took one week, including travel. Based on the host's requirements, vibration testing had to include a resonance search and random vibration testing, while thermal testing had to include 4 thermal cycles under vacuum. \todo{Anything more? -adaptor manufacturing/test fixtures}
+The 4\textsuperscript{th} iteration also had to include qualification testing, which had to be performed in external facilities and took one week, including travel. Based on the host's requirements, vibration testing had to include a resonance search and random vibration testing, while thermal testing had to include 4 thermal cycles under vacuum. The requirement to manufacture a test adaptor added an additional external procurement delay.
 
 While the environmental tests were successful without any issues, functional testing revealed a reversal in the polarity of the inhibition signal\footnote{Meaning that the ChipSat was ON when the activation signal was missing, and OFF when it was present.}. As an acceptable rework was not possible due to the layout of the \ac{PCB}, we instead decided to complete a \emph{5\textsuperscript{th} iteration} of the ChipSat following a minor \ac{PCB} redesign. As such, the ChipSat produced during the 4\textsuperscript{th} iteration was downgraded to an \emph{\acf{EQM}}, while the last iteration would produce an equivalent to a \emph{\acf{PFM}}.
 
-Environmental tests were repeated in an external facility for the 5\textsuperscript{th} iteration, this time functioning as acceptance tests, which were also required by our host provider. Following the successful results, our host integrated ChipSat-1 into their spacecraft. The additional iteration incurred a 1 month delay.
+Environmental tests were repeated in an external facility for the 5\textsuperscript{th} iteration, this time functioning as acceptance tests, which were also required by our host provider. Following the successful results, our host integrated ChipSat-1 into their spacecraft.
 
 During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in conversation with our host, we also designed and manufactured (externally) the aluminum mechanical structure that would serve as the interface between the host spacecraft's exterior and our ChipSat.
 % The second iteration was made due to a change in requirements for this interface (??)
@@ -4796,20 +4833,23 @@ From a technical point of view, we gathered the following points during developm
 \begin{enumerate}[itemsep=-1ex]
 	\item Early versions and renders of the \acs{PCB} were available early in the project. These were useful as they could represent realistic concept art, used in communication with external partners and collaborators of our group.
 	\item As the inhibit mechanism was managing a critical electrical interface, it should have been present in the early prototypes and iterations. At least a breadboard model should have been built for the inhibition circuit.
-	\item Due to the small number of engineers participating in the project and their parallel involvement in projects separate to ChipSat-1, it was difficult to perform repeated and accurate design reviews, which would have detected some of the non-conformances before manufacturing. Personnel allocation and work package management are therefore crucial parts of a project like this. Even though a Gantt chart was created and updated monthly, project planning updates should have been more regular and the allocation of tasks clearer, with updates to the expected and completed amount of work for each task.
+	\item The initial versions of the inhibit interface used wires directly soldered on the board as an physical interface. This is not recommended, as it makes assembly and handling of the \acs{PCB} significantly more difficult. Instead, a secure locking connector should be used, along with the appropriate strain relief.
+	\item Due to the small number of engineers participating in the project and their parallel involvement in projects separate to ChipSat-1, it was difficult to perform repeated and accurate design reviews, which would have detected some of the non-conformances before manufacturing. Personnel allocation and work package management are therefore crucial parts of a project like this. Even though a Gantt chart was created and updated monthly, project planning updates should have been more regular and the allocation of tasks clearer, with updates to the expected and completed amount of work for each task. For reviewing with limited domain experts available, various tactics can be employed, such as self-explanation \autocite{chiElicitingSelfexplanationsImproves1994}, checklists, or \acsp{LLM} \autocite{rasheedAIpoweredCodeReview2024}.
 	\item While external manufacturing is convenient and results in high workmanship quality, it suffers from high lead times and difficulty of rework. In many cases, especially when design errors are expected, \ac{PCB} rework will be required in any case.
 	In the case of ChipSat-1, a lead time of approx.~1 week was required for unpopulated \acs{PCB} procurement, and approx.~1 month for manufacturing. This was often augmented by unpredictable turnaround times for university procurement approval.
 	Therefore, teams should consider investing and gaining knowledge regarding in-house manufacturing, especially in electronics and testing equipment.
-	\item The use of solder on solar cells made assembly \& inspections difficult, and was related to one of the major non-conformances during early iterations. Instead, it is preferable to use conductive glue to mount cells, to the degree possible.
+	\item ChipSat-1 was subject to different changes in external interfaces and requirements during its development period. While internal iterations had the goal of correcting defects before reaching the ``flight-ready'' version of the spacecraft, they would also have been necessary to conform to the design changes. In general, these types of changes and uncertainties should be expected in unexplored payload and spacecraft form factors.
+	\item The use of solder on solar cells made assembly \& inspections difficult, and was related to one of the major non-conformances during early iterations. Instead, it is preferable to use conductive glue to mount cells, to the degree possible. The solar cells used proved particularly fragile and sensitive to storage and soldering conditions, making it additionally difficult to determine their state and degradation level at any point in time. Teams are encouraged to maintain spare stock and testing capability to ensure the performance of solar cells.
+	\item Test points and \acsp{LED} on \acsp{PCB} are highly beneficial, as they remove doubts about the state of the board during testing. However, labelling has to be clear: on the first iteration of the board, the function of each indicator and test point was not marked correctly, requiring the schematics (or similar documentation) to be viewed before any measurements could be interpreted.
+	To prevent confusion, test points and \acsp{LED} should state their function in the \acs{PCB}'s silk screen. On double-sided test-points, both sides of the board should contain the corresponding labels.
+	\item For ChipSat-1, the lead time for unpopulated \acs{PCB} manufacturing was close to one week, while the lead time for external \acs{PCB} assembly was close to one month. We identified defects in the design (particularly incorrect footprints or incorrect procured components) after the assembly. These defects can be more easily detected and resolved when the \acs{PCB} designers and manufacturers can communicate directly, so that any dubious design decisions (that are only visible when assembly starts) are investigated. In case another \acs{PCB} version needs to be manufactured, in-house manufacturing would also reduce the cost and time overhead.
+	\item Breadboard testing was performed via the use of development boards and individual elements. In the case of ChipSat-1, no significant data was gathered through this approach. From a financial point of view, the cost of purchasing development boards for used \acs{IC} is not always lower than the cost of manufacturing \acsp{PCB}. Unless a specific trade-off experimentation between physical parts needs to be conducted, and if the required expertise is available, I recommend that low-scale projects skip breadboard experimentation and produce \acs{PCB} designs on the early iterations, which can then be progressively improved.
+	\item During software development, it was clear that specific functions of the ChipSat-1\footnote{Mainly from \Cref{m_software_requirements}.} could be re-used from other open-source spacecraft. The low footprint of available CubeSat software, combined with the substantial performance of miniaturised \acsp{MCU}, make it possible to re-use open-source libraries for real-time operations, \acs{PUS} services, and generic business logic. Nevertheless, due to the simplicity of ChipSat-1's functional requirements, no such large-scale libraries were used. The software was written in C++, based on the FreeRTOS operating system and the STM32 \acs{HAL}.
+	\item The \emph{ok\_serialiser} library was used to encode and decode data from binary packets (\Cref{app:ok_serializer}). As (de)serialisation is a task that has to be performed by almost all spacecraft for ground-to-earth communication, internal communication, and storage, developers are encouraged to adopt a robust serialisation library. Doing so will prevent repetition and breaking changes when interface specifications are updated.
+	\item While \acs{FRAM} and \acs{MRAM} memories are generally low-density, they provide a very simple and robust interface to allow configuration storage. In contrast to traditional \acs{RAM}, they simplify \acf{FMEA} by eliminating power loss as a failure mode\footnote{However, note that corruption due to incomplete transmissions is still possible.} As such, they are highly recommended for small spacecraft setups.
+	\item Decoding the \acs{VLC} signal while rejecting ambient light required a careful selection of sampling parameters and digital filters. Executing this pipeline (for transmission and reception) entirely in software allowed us to freely configure the parameters and data rates for the system, essentially operating as a low-data rate \acf{SDR}, which was made possible because of the low intended data rate for the \acs{VLC} system. If a hardware-backed decoding system was used, physical modifications would be needed for this experimentation. Additionally, I used a software oscilloscope to trace the output of each processing step during signal reception, in order to fine-tune the decoder against ambient light. The combination of these capabilities proved to be highly efficient as an ``in-the-box'' solution, comparable to using a physical signal analyser and corresponding debugging process.
 \end{enumerate}
 
-\todo{More Lessons learned}
-
-% Extra parameters for incorrect:
-% !Iteration duration! (shorter longer)
-% !Manufacturing! (inhouse - out of house)
-
-% Iteration duration!
 
 \begin{table*}[h]
 	\caption{ChipSat-1 cost budget}
@@ -4912,9 +4952,9 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 	ChipSat-1 performed all soldering externally, meaning that the recommendation of the \acs{SCS} methodology was \emph{not} used. As such, the counter-factual statement for this point is ``\emph{How would the metrics change if \acs{PCB} soldering was done in-house?}''
 
-	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
+	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project\footnote{This estimation is based on results from AI4Space (\Cref{c_ai4space_times}) and ChiPySat.}. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
 		\item External manufacturing usually adds a month of lead time, during which no changes can be made, compared to \(\sim \)\qty{1}{week} for an unpopulated \acs{PCB}. This makes iterations longer and prevents the rapid testing required by Agile methodologies.
-		\item Experience during the project showed that communicating with an external manufacturer adds an additional layer of error-prone interfacing.
+		\item Experience during the project showed that communicating with an external manufacturer adds an additional layer of error-prone interfacing. Shifting the manufacturing responsibility closer to the designers makes it easier to detect defects early.
 	\end{enumerate*}
 
 	In larger space projects, external manufacturing is also associated with higher workmanship quality. However, the low number of components, low overall stresses, and short mission durations of \acs{SCS} generally reduce workmanship requirements, and there are no documented failures because of poor electronics manufacturing (\Cref{sec:LITERATURE_cubesat_reliability}). As such, and considering the above risk factors, I will not consider a risk increase for in-house electronics manufacturing.	
@@ -6417,7 +6457,7 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \end{invisible}
 
 \chapter{A Reflection-Based C++ Serialisation Library}
-\label{app:ok_serializer}
+\label{app:ok_serializer}\label{app:ok_serialiser}
 
 In the pursuit to build reliable and simple systems, software developers endeavour to reduce the \acl{SLOC} and repetition required to implement a single feature (\Cref{sec:METHODOLOGY_software_reliability}).
 One common feature that needs to be implemented by almost all spacecraft is the \textbf{handling of telemetry and telecommands}. In terms of software development, this feature can be separated into:

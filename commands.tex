@@ -74,6 +74,14 @@
 \NewDocumentCommand{\cfyes}{}{\textcolor{nice}{Y}}
 \NewDocumentCommand{\cfno}{}{\textcolor{bad}{N}}
 
+\NewDocumentCommand{\typeboxitem}{mmmmm}{
+    \node[typebox, draw=#4, fill=#4!10] (box#1) at (mid#1 |- start) {};
+    \node[align=center, font=\scriptsize, yshift=0.45cm] at (box#1.center) {#2};
+    \node[#3, yshift=-0.35cm] at (box#1.center) {};
+    \node[font=\bfseries, #4!50!black, yshift=1.2cm] at (mid#1 |- start) {#5};
+    \node[harditer,yshift=1.9cm] at (mid#1 |- start) {};
+}
+
 %------------------------------------------
 % Styles for Models
 %------------------------------------------
@@ -159,4 +167,12 @@
 				;
 			}
 	}},
+}
+%------------------------------------------
+% Styles for Extra Visuals
+%------------------------------------------
+\tikzset{
+	slice/.style={draw,black!80,fill=bread!5,minimum width=1.4cm,minimum height=0.38cm,font=\tiny},
+	sliceoff/.style={minimum width=1.5cm,minimum height=0.38cm},
+	typebox/.style={rounded corners=2pt, minimum width=2.6cm, minimum height=1.9cm, align=center}
 }
