@@ -79,7 +79,7 @@
     \node[align=center, font=\scriptsize, yshift=0.45cm] at (box#1.center) {#2};
     \node[#3, yshift=-0.35cm] at (box#1.center) {};
     \node[font=\bfseries, #4!50!black, yshift=1.2cm] at (mid#1 |- start) {#5};
-    \node[harditer,yshift=1.9cm] at (mid#1 |- start) {};
+	\ifthenelse{\equal{#3}{software}}{}{\node[harditer,yshift=1.9cm] at (mid#1 |- start) {};}
 }
 
 %------------------------------------------

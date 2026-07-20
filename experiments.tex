@@ -154,83 +154,57 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
 
 %Example of a complex mess: \dualcites{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}.
 
+\newpage
+
 \def\acs#1{\textsf{#1}}
 
 \begin{tikzpicture}
-  \begin{scope}[node distance=0.2cm and 0.3cm]
-    \node[align=center, font=\large] (legendtitle) {Legend};
+  \begin{scope}[font=\scriptsize,yshift=0cm,node distance=0cm and 0cm]
 
-    % Left column
-	\node[pcb, below=-0.2cm of legendtitle.south west, yshift=-0.4cm] (pcbnode) {};
-    \node[right=of pcbnode] {PCB Manufacturing};
-
-    \node[component, below=of pcbnode] (compnode) {};
-    \node[right=of compnode] {Component Procurement};
-
-    \node[softiter, below=of compnode] (softnode) {};
-    \node[right=of softnode] {Software Iteration};
-
-    \node[harditer, below=of softnode] (hardnode) {};
-    \node[right=of hardnode] {Hardware Iteration};
-
-    % Right column title
-    \node[right=6.5cm of legendtitle] (iterlabel) {};
-
-    % Right column
-    \node[func, below=of iterlabel] (funciter) {};
-    \node[right=of funciter] {Functional (Ambient) Test};
-
-    \node[env, below=of funciter] (enviter) {};
-    \node[right=of enviter] {Environmental Test};
-
-    \node[orbital, below=of enviter] (orb) {};
-    \node[right=of orb] {Orbital Flight};
-
-	\node[slice, below=0.6cm of orb, rounded corners=5pt] (slice) {};
-	\node[right=of slice] {Module};
-
-    \draw ([xshift=-2mm,yshift=-2mm]current bounding box.south west) rectangle ([xshift=2mm,yshift=2mm]current bounding box.north east);
-  \end{scope}
-  \begin{scope}[font=\scriptsize,yshift=-10.5cm,node distance=0cm and 0cm]
-
-    % --- Iteration 1 ---
     \node[softiter] (i1s1) at (0,0) {};
-    \node[softiter, right=of i1s1] (i1s2) {};
-    \node[softiter, right=of i1s2] (i1s3) {};
+    \node[softiter,right=of i1s1] (i1s2) {};
+    \node[softiter,right=of i1s2] (i1s3) {};
     \node[func,right=of i1s3] (i1t1) {};
 
-    % --- Iteration 2 ---
-    \node[softiter, right=of i1t1] (i2s1) {};
-    \node[softiter, right=of i2s1] (i2s2) {};
-    \node[softiter, right=of i2s2] (i2s3) {};
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% ITERATION 2
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[softiter,right=of i1t1] (i2s1) {};
+    \node[softiter,right=of i2s1] (i2s2) {};
+    \node[softiter,right=of i2s2] (i2s3) {};
+
     \node[func,right=of i2s3] (i2t1) {};
 
-    % --- Iteration 3 ---
-    \node[softiter, right=1cm of i2t1] (i5s1) {};
-    \node[func,right=of i5s1] (i5t1) {};
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% ITERATION 3
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % --- Iteration 4 ---
-    \node[softiter, right=1cm of i5t1] (i3s1) {};
-    \node[softiter, right=of i3s1] (i3s2) {};
-    \node[softiter, right=of i3s2] (i3s3) {};
+    \node[softiter,right=of i2t1] (i3s1) {};
+    \node[softiter,right=of i3s1] (i3s2) {};
+    \node[softiter,right=of i3s2] (i3s3) {};
+
     \node[func,right=of i3s3] (i3t1) {};
     \node[env,right=of i3t1] (i3t2) {};
 
-    % --- Iteration 5 ---
-    \node[softiter, right=of i3t2] (i4s1) {};
-    \node[func,right=of i4s1] (i4t1) {};
-    \node[env,right=of i4t1] (i4t2) {};
-    \node[orbital,right=of i4t2] (i4t3) {};
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% ITERATION 4
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[softiter,right=of i3t2] (i4s1) {};
+
+    \node[func,right=of i4s1] (i4t2) {};
+    \node[env,right=of i4t2] (i4t3) {};
+    \node[orbital,right=of i4t3] (i4t4) {};
 
     \coordinate (end0) at (i1s1.west); % Origin
     \coordinate (end1) at (i1t1.east);
     \coordinate (end2) at (i2t1.east);
-    \coordinate (end3) at (i3s1.west);
-    \coordinate (end4) at (i3t2.east);
-    \coordinate (end5) at (i4t3.east);
+    \coordinate (end3) at (i3t2.east);
+    \coordinate (end4) at (i4t4.east);
 
     \coordinate (start) at (0, 3.5);
-    \foreach \i in {1,...,5} {
+    \foreach \i in {1,...,4} {
       \pgfmathtruncatemacro{\prev}{ \i - 1 }
       \coordinate (mid\i) at ($(end\prev)!0.5!(end\i)$);
     }
@@ -238,26 +212,22 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
     % --- Procurement/Manufacture Icons ---
     \foreach \anchor/\type/\xoff in {
       mid1/component/0,
-      mid2/component/-0.35,
-      mid2/pcb/0.35,
-      mid3/component/0,
-      mid4/component/-0.35,
-      mid4/pcb/0.35,
-      mid5/component/-0.35,
-      mid5/pcb/0.35
+      mid2/component/0,
+      mid3/component/-0.35,
+      mid3/pcb/0.35,
+      mid4/pcb/0
     } {
       \node[\type, below=0.4cm of \anchor, xshift=\xoff cm] {};
     }
 
     % Render Type Boxes using the helper
-    \typeboxitem{1}{Breadboard}{breadboard}{bread}{Iteration 1}
-    \typeboxitem{2}{Engineering\\Model}{engineering}{engineer}{Iteration 2}
-    \typeboxitem{3}{Breadboard\\Model}{breadboard}{bread}{Iteration 3}
-    \typeboxitem{4}{Engineering\\Qualification Model}{engqual}{qualify!50!engineer}{Iteration 4}
-    \typeboxitem{5}{Proto-Flight\\Model}{protoflight}{qualify}{Iteration 5}
+    \typeboxitem{1}{Software Only}{software}{bread}{Iteration 1}
+    \typeboxitem{2}{Breadboard\\Model}{breadboard}{bread}{Iteration 2}
+    \typeboxitem{3}{Qualification\\Model}{qualification}{qualify}{Iteration 3}
+    \typeboxitem{4}{Flight\\Model}{flight}{qualify}{Iteration 4}
 
     % --- Dashed Lines and Dates ---
-    \foreach \i/\date in {0/2022-02, 1/2022-04, 2/2022-06, 3/2022-08, 4/2022-12, 5/2023-04} {
+    \foreach \i/\date in {0/2022-02, 1/2022-04, 2/2022-06, 3/2022-08, 4/2022-12} {
       \draw[dashed, teal, thick] (end\i |- 0, 5.6) -- (end\i |- 0, -1.4)
       node[below, font=\scriptsize, text=black] {\date};
     }
@@ -266,14 +236,10 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
     \def\rowHeight{0.48}
 
     \foreach \name/\startnode/\endnode/\idx in {
-      Payload/end0/end1/0,
-      Payload/end3/end5/0,
-      Power/end1/end5/1,
-      Comms/end0/end1/2,
-      Comms/end2/end5/2,
-      Interface/end3/end5/3
+      Sensors/end1/end4/1,
+      \acs{MCU}/end1/end4/2,
+      Interface/end3/end4/3
     }{
-      % Calculate vertical anchors using the index
       \pgfmathsetmacro{\yStart}{\baseY + (\idx * \rowHeight)}
       \pgfmathsetmacro{\yEnd}{\yStart + 0.38} % Assuming 0.38cm box height
 
@@ -283,12 +249,6 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
       ([xshift=-0.1cm, yshift=\yEnd cm]\endnode.east)
       node[midway, scale=0.9] {\name};
     }
-  \end{scope}
-\end{tikzpicture}%
-
-\begin{tikzpicture}
-  \begin{scope}[font=\scriptsize,yshift=0cm,node distance=0cm and 0cm]
-
   \end{scope}
 \end{tikzpicture}
 
