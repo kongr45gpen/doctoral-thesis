@@ -43,7 +43,7 @@
 \makeatletter%
 \thispagestyle{empty}%
 \begin{tikzpicture}[remember picture,overlay]
-  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
+  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page.pdf}};
   \ifoptionfinal{}{%
 		\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
 			{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
@@ -57,78 +57,6 @@
 \makeatother%
 \newpage%
 
-% For post-publication version:
-\begin{comment}
-\makeatletter
-\renewcommand{\maketitle}{%
-	\newpage
-	\global\@topnum\z@% prevent floats from being placed at the top of the page
-	\begingroup
-	\setlength{\parindent}{0pt}%
-	\setlength{\parskip}{4pt}%
-	\let\@@title\@empty
-	\let\@@author\@empty
-	\let\@@date\@empty
-	\thispagestyle{empty}
-	\begin{fullwidth}%
-		\ifoptionfinal{}{%
-			\begin{tikzpicture}[remember picture,overlay]
-				\node [shift={(-2cm, -2cm)},MaterialRed800,scale=1.5,align=center,text width=7cm] at (current page.center)
-					{ \emph{\textbf{Note: This version contains DRAFT markings, TODO tasks and formatting errors. They will not be present in the final version.}} };
-			\end{tikzpicture}
-		}%
-		\vfill
-		\begin{center}
-			\includegraphics[height=2.5cm]{external/logo.pdf}\par
-			\vspace{1cm}
-			\LARGE\textsc{Dissertation}\par
-			\vspace{6ex}
-			\hrule
-			\vspace{4ex}
-			\Huge\textbf{Systems Engineering}\\[1ex]
-			\LARGE\textbf{for}\\
-			\Huge\textbf{Sub-CubeSat Spacecraft}\par
-			\vspace{2.7ex}
-			\hrule
-
-			\vspace{6ex}
-
-			\Large
-			\begin{tabular}{ll}
-				\emph{Author:} & Konstantinos \textsc{Kanavouras}
-				\\[1.5ex]
-				\emph{Supervisor:} & Prof.~Andreas M.~\textsc{Hein}
-			\end{tabular}
-			{\Large\textcolor{MaterialRed600}{DRAFT}}
-
-			\vspace{6ex}
-
-			\large \textit{A thesis submitted in fulfilment of the requirements\\ for the degree of}\\[0.3cm] % University requirement text
-			Docteur de l'Université du Luxembourg\\
-			en Informatique\\[0.3cm]
-			\textit{in the}\\[0.4cm]
-			Doctoral School in Science and Engineering
-			\\
-			Faculty of Science, Technology and Medicine
-			\\[1cm] % Research group name and department name
-
-			\vspace{6ex}
-
-			{\large February 14, 2026}\\[4cm] % Date
-
-		\end{center}%
-		\vfill%
-	\end{fullwidth}%
-	\endgroup%
-	\thispagestyle{plain}% suppress the running head
-	\tuftebreak% add some space before the text begins
-	\@afterindentfalse\@afterheading% suppress indentation of the next paragraph
-}
-\makeatother
-\maketitle
-\newpage
-\end{comment}
-
 % v.4 copyright page
 
 \phantomsection
@@ -141,13 +69,6 @@
 Copyright \copyright\ \the\year\ \thanklessauthor
 
 \par\smallcaps{\href{https://github.com/kongr45gpen/doctoral-thesis}{Https://Github.com/Kongr45gpen/Doctoral-Thesis}}
-
-%\par
-%I, Konstantinos Kanavouras, hereby declare that I have produced the work entitled: ``\makeatletter\@title\makeatother'',
-%submitted for the award of a doctorate, on my own (without external help), have used
-%only the sources and aids indicated and have marked passages included from other
-%works, whether verbatim or in content, as such. I swear upon oath that these
-%statements are true and that I have not concealed anything.
 
 \par Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License (the ``License''); you may not
 use this file except in compliance with the License. You may obtain a copy
@@ -434,8 +355,7 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore 
 
 \begin{figure*}[h]
 	\includegraphics[width=.9\textwidth]{analyses/scs_launch_trend.pdf}
-	\caption[SCS launches per year]{\acl{SCS} launches per year \cite{kuluNanosatsDatabase2023} 
-	\todo{add chipsats?}}
+	\caption[SCS launches per year]{\acl{SCS} launches per year, based on nanosats.eu \cite{kuluNanosatsDatabase2023}}
 	\label{fig:i_scs_launched}
 \end{figure*}
 
@@ -3292,13 +3212,6 @@ This paragraph will enumerate further low-level design guidelines based on lesso
 	\item As the reduced \acs{BDUF} may fail to accurately predict in-orbit conditions, \acs{SCS} should support a minimum amount of \textbf{reconfigurability} from the ground that can persist through software restarts. This is, for example, supported by implementations of the \acs{ECSS} \acl{PUS} standard \autocite{ECSS-E-ST-70-41C}. Accordingly, less attention should be dedicated to designing a fully-autonomous spacecraft, in favour of a manually operated approach, potentially based on scheduled \acs{TC}.
 	\item Operators should investigate the trackability of their spacecraft before the start of the design to ensure compliance with local regulations. Passive measures, such as retro-reflectors, are preferred to make \acs{SCS} systems more trackable, as active solutions may not be able to guarantee constant and correct operation. 
 \end{itemize}
-
-	
-
-\draft{
-	- Check the POQUITO lessons learned table and implement the lessons learned
-	- Lean and small ADCS is all you need -  Hardware considerations: Thermal, structural, power storage (battery etc.), sails, navigation/guidance/propulsion, storage
-	}
 
 
 \subsection{Verification \& Validation Method}
@@ -6647,7 +6560,7 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 
 \vspace*{-1cm}%
 \centering%
-\fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
+\fbox{\includegraphics[width=.85\linewidth]{CheatSheet.pdf}}
 \end{fullwidth}
 
 \begin{invisible}
@@ -6658,12 +6571,29 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \end{invisible}
 
 
-\begin{invisible}
 
-\chapter{PCB schematics}
-\draft{[TODO]}
+\bgroup
+\begin{landscape}\newgeometry{left=0cm, right=0cm, top=0.2cm, bottom=4cm}%
+  \titlespacing*{\chapter}{-10pt}{0pt}{0pt}
+  \chapter[PCB schematics]{\acs{PCB} schematics}%
+  \begin{fullwidth}%
+    \begin{center}\hspace*{-2cm}%
+      \includegraphics[width=\textwidth]{graphics/PCB-212.pdf}
+    \end{center}%
+  \end{fullwidth}%
+  \captionof{figure}{Schematic of the 212 ChipSat-1}%
+  \newpage%
+  \vspace*{2.5cm}%
+  \begin{fullwidth}%
+    \begin{center}\hspace*{-2cm}%
+      \includegraphics[width=\textwidth]{graphics/PCB-211A.pdf}
+      \captionof{figure}{Schematic of the 211A ChipSat-1}%
+    \end{center}%
+  \end{fullwidth}%
+\end{landscape}
+\restoregeometry
+\egroup
 
-\end{invisible}
 
 \chapter{A Reflection-Based C++ Serialisation Library}
 \label{app:ok_serializer}\label{app:ok_serialiser}

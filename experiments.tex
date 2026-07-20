@@ -33,6 +33,8 @@
 % \DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}}
 % \DeclareAcronym{OPS}{short = OPS, long = {Operations}}
 
+\usepackage{layout}
+
 \hypersetup{colorlinks}
 
 \ExplSyntaxOn
@@ -73,6 +75,7 @@
   \node[inner sep=0pt] at (current page.center) {\includegraphics[page=2,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
 \end{tikzpicture}%
 \makeatother%
+
 
 \tableofcontents
 
@@ -235,6 +238,11 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
 \end{tikzpicture}
 
 \newpage
+
+\layout
+
+%\geometrylscape
+
 
 \begin{fullwidth}
   %\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
