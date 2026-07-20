@@ -5804,11 +5804,14 @@ The question posed by the ChiPySat project was therefore: \textbf{\emph{Is it po
 
 \newthought{The electrical design} of ChiPySat was based on the PyCubed-Mini\footnote{\textellipsis which is also the namesake of the ChiPySat project.} PocketQube platform \autocite{manchesterPyCubedMini,andradePROMETHEUS1SatelliteFramework2025}, which itself is based on the PyCubed CubeSat platform \autocite{hollidayPyCubedOpenSourceRadiationTested2019}. The main differentiator between PyCubed(-Mini) and other open-source satellite buses is the use of \textbf{Python} as an embedded programming language, through the use of CircuitPython or OpenMV\footnote{Both CircuitPython and OpenMV are based on MicroPython \cite{george2021micropython}}.
 
-\todo{Stuff about the platform, processor(S) + comms}
+Processing responsibilities for ChiPySat were taken over by two microcontrollers running MicroPython: one responsible for \acs{OBDH}, based on PyCubed-Mini software, and one responsible for image processing and camera interfacing, based on OpenMV. Both \acsp{MCU} were programmable over \acs{USB}, and were connected to an \acs{SD} card interface for non-volatile storage. 
 
-The intention of the ChiPySat design was also to build upon Manchester's Sprite design \autocite{manchesterCentimeterScaleSpacecraftDesign2015}, by sacrificing its small size to host batteries and magnetorquer-based attitude control. The design concept selected to support these features was a \textbf{\acs{PCB} ``sandwich'' with the batteries in the middle}.
+
+The intention of the ChiPySat design was also to build upon Manchester's Sprite design \autocite{manchesterCentimeterScaleSpacecraftDesign2015}, by sacrificing its small size to host batteries and magnetorquer-based attitude control. The design concept selected to support these features was a \textbf{\acs{PCB} ``sandwich'' with the batteries in the middle}. The two boards were connected electrically using a plain board-to-board connector, and mechanically using four corner screws. Solar cells were placed on the outer sides of both \acsp{PCB}, in order to support power generation during tumbling.
 
 For energy storage, we designed the system around \acs{COTS} pouch-cell batteries. To combat low temperatures due to a large radiative area, we embedded heaters as \acs{PCB}. A similar trace-based design was envisioned for 3-axis magnetorquers, intended to manage slow detumbling.
+
+In terms of communications, an off-the-shelf \acs{LORA} module was used, based on PyCubed-Mini's design, and with an interface compatible with the TinyGS ground station network \autocite{kheraPyCubedMiniLowCostOpenSource}. The use of a \acs{COTS} \acs{RF} module simplified the development effort, as high-speed \acs{PCB} layouts often introduce uncertainty in the design.
 
 
 \begin{figure}[h]
@@ -5826,9 +5829,7 @@ For energy storage, we designed the system around \acs{COTS} pouch-cell batterie
 	\item An external non-volatile memory was added, after experimentation showed that internal system memory could be insufficient for image processing.
 \end{itemize}
 
-\todo{Is there anything I forget? (Note the redesign request) TODO: FOCUS on performance as a goal - we should do very fast computation using a very small system (is there a paper about it)}
-
-The first iteration lasted approximately 4 months, including an initial familarisation with the PyCubed-Mini platform, hardware design, software development\footnote{Done on development boards when hardware was not available.}, integration and testing. After completing functional testing and coding for the first iteration, I started working on the second, however \draft{due to an end of internship the schematic/layout was completed but not procured.}
+The first iteration lasted approximately 4 months, including an initial familarisation with the PyCubed-Mini platform, hardware design, software development\footnote{Done on development boards when hardware was not available.}, integration and testing. After completing functional testing and coding for the first iteration, I started working on the second, however, due to a limited available time, the relevant \acsp{PCB} were not manufactured and tested.
 
 \begin{figure}
 	\centering
@@ -5837,11 +5838,13 @@ The first iteration lasted approximately 4 months, including an initial familari
 	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_psf.jpg}}%
 	\\%
 	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_input.jpg}}%
-	\hspace{3.3cm}%
+	\hspace{3cm}%
 	\subfloat[]{\includegraphics[height=3cm]{pictures/chipysat_result.png}}%
 	\caption[ChiPySat pipeline example]{ChiPySat pipeline example. (a) Experimental setup. (b) Diffuser Point Spread Function. (c) Sensor output. (d) Reconstructed image (rotated 90°).}
 	\label{fig:c_chipysat_results}
 \end{figure}
+
+The assembly (soldering) of the boards was performed through an in-house reflow process. Soldering required some initial familiarisation with the equipment, as well as the calibration of the reflow oven against the solder paste that was used. Due to the simplicity of the boards, pick-and-place was done by hand. The combination of common with low-temperature melting point solder paste was used in order to assemble both sides of the \acsp{PCB}. These in-house soldered boards successfully passed initial functional testing. 
 
 \newthought{The results} of an off-board processing experiment are shown in \Cref{fig:c_chipysat_results}, and demonstrate the successful application of the DiffuserCam process in terms of hardware and software. In this experiment, the image capture was performed entirely by the ChiPySat lens-less camera and processor, with the data transferred to a desktop computer via \acs{USB}. However, the processing (deconvolution) of the image took place in the computer, and not the satellite.
 
@@ -5933,24 +5936,24 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
 	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
-		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \todo{[cite]}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
+		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \autocite{kaliberaRigorousBenchmarkingReasonable2013,woodsideFutureSoftwarePerformance2007}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
 		\item The reuse of PyCubed-Mini and OpenMV in their entirety could guarantee the reduction of preliminary and boilerplate work, but not performance. While PyCubed-Mini was understood to be suitable for spacecraft control, with a very smooth learning curve, OpenMV was not suitable for the project in its default configuration.
 	\end{itemize}
 
 	\item \textbf{Short iterations}:
 	ChiPySat's first iteration, lasting 4 months, cannot be considered short, due to the design effort required beforehand. While the actual duration of the iteration was long, it represented a small amount of person-hours, owing to the small team involved. Nevertheless, it would be possible for ChiPySat to perform even shorter, agile-like iterations, by moving to manufacturing more ``aggressively''.
 
-	I consider that using shorter (e.g.\@2-month long) iterations would reduce the overall development time by the initial design time, and would increase it by the time required for 1 additional \acs{PCB} revision. The development flow showed that some of the earlier designs considered would not have increased the number of non-conformances or incomplete requirements, showing that \draft{risk is not increased} by shortening iterations.
+	I consider that using shorter (e.g.\@2-month long) iterations would reduce the overall development time by the initial design time, and would increase it by the time required for 1 additional \acs{PCB} revision. The development flow showed that some of the earlier designs considered would not have increased the number of non-conformances or incomplete requirements, showing that risk is not increased by shortening iterations.
 
 	\item \textbf{Robust software framework}:
 	As ChiPySat's development experienced issues due to the performance of the frameworks selected, I consider that the use of a more well-understood platform in terms of embedded systems (such as C++ or Rust) would reduce non-conformances, and therefore risk. I also consider a 3-week reduction in development time, related to the optimisation efforts for the Python-based framework.
 
 	\item \textbf{Use of \acl{RPA}}:
-	As with previous case studies, the use of automation for bus and payload verification would decrease risk thanks to the guarantee of repeatability. However, because of the more \draft{``physical''} nature of the payload, I consider that setting up an automation platform would have taken up more development time. Based on previous experience with AI4Space, I consider this equivalent one week of full-time work.
+	As with previous case studies, the use of automation for bus and payload verification would decrease risk thanks to the guarantee of repeatability. However, because of the heavily hardware-focused nature of the payload, I consider that setting up an automation platform would have taken up more development time. Based on previous experience with AI4Space, I consider this equivalent one week of full-time work.
 
 
 	\item Note on \textbf{Iterating over partitions}:
-	Due to the simplicity and monolithic architecture of ChiPySat, I do not consider that partitioning the system is practical in this project.\footnote{For example, even if one plans to operate on the payload only (lens-less camera), it is still required to implement a microcontroller-based data interface. The microcontroller requirement flows down to \draft{the rest of the bus.}}
+	Due to the simplicity and monolithic architecture of ChiPySat, I do not consider that partitioning the system is practical in this project.\footnote{For example, even if one plans to operate on the payload only (lens-less camera), it is still required to implement a microcontroller-based data interface, because of the nature of the camera's interface. Additionally, as the project was based on single \acs{PCB} board, partitioning would have required added effort.}
 \end{enumerate}
 
 \begin{figure}
@@ -6563,12 +6566,10 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \fbox{\includegraphics[width=.85\linewidth]{CheatSheet.pdf}}
 \end{fullwidth}
 
-\begin{invisible}
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
 
 \draft{[TODO]}
-\end{invisible}
 
 
 
