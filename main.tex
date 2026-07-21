@@ -398,7 +398,7 @@ Requirements Engineering, where specific technical specifications are set for th
 \end{itemize}
 
 \begin{marginfigure}
-	\includegraphics{media/drafts/nasa_sye_benefit.png}
+	\includegraphics{external/nasa_sye_benefit.pdf}
 	\caption[It is harder to reverse design decisions, the more effort has been dedicated to a project]{It is harder to reverse design decisions, the more effort has been dedicated to a project. Taken from \cite{sheaNASASystemsEngineering2020}}
 \end{marginfigure}
 The value and benefits of Systems Engineering are asserted by the ``\acs{SYE} hypothesis'': that additional effort spent in Systems Engineering, especially early in the project, will increase the overall \emph{value} of it, especially in terms of cost, schedule and objectives \autocite{honourUnderstandingValueSystems2004}. A 1992 survey of 32 \acs{NASA} programs, for example, shows a correlation between time spent in the design phases of a project, and reduced final cost overruns \cite{honourUnderstandingValueSystems2004,stutzkeEstimatingSoftwareintensiveSystems2005}. 
@@ -446,7 +446,7 @@ This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this s
 Similarly, \autocite{honourTechnicalReportValue2004} concluded, after a survey of 44 projects, that an optimum level of \acs{SYE} effort is between \qtyrange{15}{20}{\percent}, above which there seem to be no \acs{SYE}-related cost/schedule improvements.
 
 \begin{marginfigure}
-	\includegraphics{media/drafts/boehm_roi.png}
+	\includegraphics{external/boehm_roi.png}
 	\caption[Comparison between time spent in architecting versus time spent for reworks in software projects]{Comparison between time spent in architecting versus time spent for reworks in software projects \cite{boehmROISystemsEngineering2008}}
 	\label{fig:i_software_roi}
 \end{marginfigure}
@@ -1146,7 +1146,7 @@ In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmees
 
 \begin{marginfigure}
 	\centering
-	\includegraphics[width=.8\marginparwidth]{drafts/delfi_pq.jpg}
+	\includegraphics[width=.8\marginparwidth]{external/delfi_pq.jpg}
 	\caption[Delfi-PQ PocketQube]{Delfi-PQ PocketQube. Taken from \cite{uludagDelfiPQInOrbitPerformance2025}}
 	\label{fig:l_delfi_pq}
 \end{marginfigure}
@@ -2275,7 +2275,7 @@ The most common in-house activity in \acs{SCS} will typically be \textbf{assembl
 Alternatively, when the \acl{FM} requires adherence to certain workmanship standards, a hybrid approach can be used: early iterations can involve use in-house manufacturing, while flight-ready models can involve external suppliers.
 
 \begin{figure*}[h]
-	\includegraphics{media/drafts/SatScrum.drawio.pdf}
+	\includegraphics{graphics/SatScrum.pdf}
 	\caption{Example of a Sat-Scrum based project lifecycle}
 	\label{fig:m_scrum_example}
 \end{figure*}
@@ -2361,6 +2361,8 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \subsection{Project Lifecycle Approach: The Partition-Based Sat-Scrum Model}
 \label{sec:METHODOLOGY_slicebased}
 \label{sec:METHODOLOGY_partitions}
+
+\todo{Add the missing figure, add some explanatory images as examples perhaps}
 
 \citeauthor{iberleAgileGetsPhysical2022} noticed that industrial Agile environments incorporating software and hardware have to deal with confusion and conflicts when the work of different engineering teams has to be integrated \autocite{iberleAgileGetsPhysical2022}. In traditional Scrum, a single work package that can be completed by one person within a Sprint may require additional interfacing functionality to translate to a product feature or function. \citeauthor{iberleAgileGetsPhysical2022} provide an example of three teams (hardware, firmware, cloud software) collaborating on the same product, who however implement different iteration durations and have to deal with an iteration lag when errors need to be fixed in another part of the product. This is exacerbated by the fact that software teams can affort to perform short iterations, while hardware teams have to spend multiples of that time to produce and verify a physical product \autocite{cooperAgileDevelopmentManufacturing2023}. 
 
