@@ -652,7 +652,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 \end{fullwidth}
 
 This chapter will introduce the background information necessary to develop the \ac{SCS} methodology.
-Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \draft{\Cpageref{sec:acronyms}}.}. \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
+Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \Cpageref{sec:acronyms}. \todo{link not working?}}. \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
 
 \section{Terminology}
 \label{sec:LITERATURE_terminology}
@@ -1284,7 +1284,6 @@ Through these discussions, I noted the following information:
 			System integration test & Required & Required & Required \\
 			Neighboring systems & \multicolumn{3}{c}{Deployer/host, and launch vehicle} \\
 			Safety \& Security & \multicolumn{3}{c}{Strict requirements from externals (e.g.~launch provider, regulators)} \\
-			\multicolumn{4}{c}{\todo{This needs to be updated}} \\
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}
@@ -2252,7 +2251,29 @@ Possible work-arounds for this situation are as follows:
 \end{itemize}
 
 
+\paragraph{Manufacturing}
+\label{sec:METHODOLOGY_manufacturing}
 
+As \acl{SCS} rely on hardware, a considerable effort has to be dedicated to assembly, manufacturing and integration of physical components. Compared to a waterfall lifecycle process model, Sat-Scrum requires this hardware to be available at the end of every iteration, increasing the load for these activities. In the context of \acs{SCS}, these activities can include, for example:
+\begin{itemize}[itemsep=-2ex]
+	\item Soldering and coating of \acsp{PCB}
+	\item Additive (e.g.\@3D printing) or subtractive (e.g.\@ machining) of structural elements
+	\item Assembly/crimping of cable harnesses
+	\item Securing of fasteners
+	\item Application of adhesive
+\end{itemize}
+These activities represent both the \emph{manufacturing} of new, custom-made components, or the \emph{rework} of already procured such components, because of design, manufacturing, or handling errors.
+
+Traditionally, many of these activities have been performed by external manufacturers and suppliers. However, in \acs{SCS}, these activities are usually limited in number and complexity, and can be reliably performed in-house. This raises the \textbf{make-or-buy} question, on whether these activities should be outsourced, or performed in-house. The answer to this question involves an optimisation problem against non-recurring costs, quality, and experience \autocite{medina-serranoStrategicSourcingDeveloping2020}, noting however that both ``outsourcing'' and ``vertical integration'' have traditionally been associated with risks and hidden costs \autocite{hilmerStrategicOutsourcing1994,barthelemyHiddenCostsIT2001}.
+
+In the context of Agile, developer co-location and rapid response to changes is encouraged, which often clashes with typical outsourcing expectations \autocite{durmicAdoptingAgileScrum2024}. A \citeyear{lemmaSystematicLiteratureReview2025} meta-analysis on the implementation challenges of Scrum identified multi-team environments as one of the main mentioned themes, citing ``inter-team coordination challenges [...] as the most pertinent large-scale agile challenges demanding immediate research attention'' \autocite{lemmaSystematicLiteratureReview2025,moeTrendsLargeScaleAgile2016}.
+
+Within the context of \acs{SCS}, the typically limited resources available generally prevent the collaboration with manufacturers who can support direct communication and instant delivery. Instead, based on the performed case studies, the procurement of assembled boards and manufactured components has generally involved a 1-month long lead time, which cannot be easily supported by short Sat-Scrum iterations. This duration is also influenced by internal organisational limits, such as long procurement processes.
+
+Therefore, the recommendation for Sat-Scrum is to perform \text{manufacturing in-house}, to the degree that is possible, by acquiring the necessary equipment and expertise to complete these hardware-based activities.
+The most common in-house activity in \acs{SCS} will typically be \textbf{assembly of unpopulated \aclp{PCB}} through component soldering. Teams are therefore encouraged to invest in equipment such as reflow ovens to be able to test and validate \acsp{PCB} shortly after design.\footnote{In university or large industry contexts, inspection, manufacturing and testing facilities (e.g. ``fab labs'') are sometimes available in close proximity of the designers, and can be used.} These assets can further be used when rework or corrections are required, saving on the administrative overhead of returns.
+
+Alternatively, when the \acl{FM} requires adherence to certain workmanship standards, a hybrid approach can be used: early iterations can involve use in-house manufacturing, while flight-ready models can involve external suppliers.
 
 \begin{figure*}[h]
 	\includegraphics{media/drafts/SatScrum.drawio.pdf}
@@ -2275,7 +2296,7 @@ Gantt charts are a common tool used in project scheduling, showing the durations
 	\]
 	where \(E_{x\%}\) is an estimate of a specific confidence (i.e.~that the task will be completed within that duration at least \(x\%\) of the time), and \(E_c\) a subjective confidence factor.
 
-	He proposes a different ``customer schedule'' and an internal ``goal schedule'', based on the pessimistic \(E_{80\%}\) and optimistic \(E_{20\%}\) estimates respectively. \todo{Move this to work planning section?}
+	He proposes a different ``customer schedule'' and an internal ``goal schedule'', based on the pessimistic \(E_{80\%}\) and optimistic \(E_{20\%}\) estimates respectively.
 }
 
 Another idea, based on \citeauthor{ruedePatternLanguageComplexmode2023}'s approach \autocite{ruedePatternLanguageComplexmode2023}, is to use a visual pattern-based vocabulary to represent goals, processes and outputs of each iteration.
@@ -4226,7 +4247,7 @@ The cross-case step of the \emph{explanation building} process is elaborated in 
 \toprule
  & Treatment & Description & Initial theory \\ \midrule
 1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
-2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\draft{\Cref{sec:METHODOLOGY_design_guidelines}}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space). \\
+2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\Cref{sec:METHODOLOGY_manufacturing}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space). \\
 3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
 4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. Note that no restriction is set on the iterations having a fixed length; instead, their length was flexible (pre-determined or not). & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
 5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{sec:METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
@@ -4903,12 +4924,6 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 	\setfloatalignment{b} %vadOK
 \end{figure}
 
-%\paragraph{Conclusion}
-
-%\todo{blablabla conclusion}
-
-
-
 \FloatBarrier
 \newpage
 \section{AI4Space}
@@ -5105,6 +5120,8 @@ No formal environmental testing was performed for AI4Space, as there were no tes
 
 The digital interface for \acs{TMTC} was based on Python's \textbf{\texttt{construct}} library \autocite{bulskiConstruct2020}, essentially acting as a \textbf{model-based interface specification}. The Source of Truth for the specification was written in Python, combined with text-based comments. An automatic script then generated additional text-based documentation based on this specification.
 
+\todo{AI4Space Mission Operations section}
+
 \subsection{Lessons Learned}
 
 Based on the development progress and non-conformances detected, the following technical lessons learned were gathered regarding AI4Space:
@@ -5129,7 +5146,7 @@ After launch, we discovered a major non-conformance in the data interface betwee
 \item In contrast to ChipSat-1, the AI4Space \acs{PCB} needed no redesign, and no defects were identified after \ac{QM} production. This can be perhaps attributed to the general simplicity of the \acs{PCB}, as all computations were made on the Raspberry Pi, a ready-to-use board. Developers are therefore encouraged to use such boards or reuse reference designs to increase confidence in their design.
 
 \item  The Raspbian operating system, installed by default on the Raspberry Pi, requires a small amount of configuration before it can be safely used as flight software, namely:
-\begin{itemize}[itemsep=-2pt]
+\begin{itemize}[itemsep=-2ex]
 	\item Make sure that a server version of Raspbian is used, without a \acs{GUI}
 	\item Disable Wi-Fi and Bluetooth
 	\item Use a service (e.g.\@ \texttt{systemd} or \texttt{supervisord}) to manage services
@@ -5981,7 +5998,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 
 This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
 
-The introductory section of \Cref{chap:CASESTUDIES} presents the data gathering process and analysis approach that will also be followed for this chapter.
+The introductory section of \Cref{chap:CASESTUDIES} presented the data gathering process and analysis approach that will also be followed for this chapter.
 
 \begin{figure*}
 	\includegraphics{graphics/ResultsCausal.pdf}
@@ -5995,13 +6012,13 @@ The introductory section of \Cref{chap:CASESTUDIES} presents the data gathering 
 \subsection{Success Evaluation}
 
 \marginnote{%
-	The action research-based approach did not allow us to implement a control/treatment group approach, and as such not all elements of the \acs{SCS} methodology were applied at once. However, based on the counter-factual evaluation performed above, there is no significant difference between the actual and the complete implementation of the \acs{SCS}. In most cases, 5 out of 6 treatments were applied. The exact differences are presented in \draft{each section}.
+	The action research-based approach did not allow me to implement a control/treatment group approach, and as such not all elements of the \acs{SCS} methodology were applied at once. However, based on the counter-factual evaluation performed above, there is no significant difference between the \emph{sum of all treatments} and the complete implementation of the methodology. In most cases, 5 out of 6 treatments were applied. Any exceptions are reported in \Cref{chap:CASESTUDIES}.
 }
 To evaluate the applicability of the \acs{SCS} methodology to internal missions, I consider whether the conditions introduced by the \acs{SCS} methodology, as applied to these case studies, led to successfully achieving the methodology requirements for each mission.
 
 \paragraph{RM1: The SCS Methodology shall enable developing a flight-capable SCS project in 1 year or less, starting from preliminary design to acceptance.}
 
-The development person-hours recorded for each project are \draft{presented} in the corresponding tables of \Cref{chap:CASESTUDIES}:
+The development person-hours recorded for each project are listed in the corresponding tables of \Cref{chap:CASESTUDIES}:
 \begin{fullwidth}
 \begin{equation}
 \text{Development Days} = \left[\begin{matrix}
@@ -6015,15 +6032,15 @@ The development person-hours recorded for each project are \draft{presented} in 
 \end{fullwidth}
 \marginnote[1cm]{Assuming an actual work time of \qty{3}{hours/day}, based on actual observations of daily activities.}
 
-Even in the worst case of 1 person assigned to each project, the development durations in \Cref{eq:totalpersondays} are below 1 year with adequate margin. This is supported by the causal and counter-factual analysis, \todo{(ref boxplot below)} which suggests that a non-application of the methodology would increase development time \draft{by an average of \(1.6\times\)}.
+Even in the worst case of 1 person assigned to each project, the development durations in \Cref{eq:totalpersondays} are below 1 year with adequate margin. This is supported by the causal and counter-factual analysis, which suggests that the application of the methodology decreases development time by an average of \(40\%\) (\Cref{fig:c_plot_box_time}).
 
-Furthermore, non-conformance evaluation showed that \draft{all projects managed to reach a state with no major non-conformances before delivery}, confirming that there are no blocking points towards launch.
+Furthermore, non-conformance evaluation showed that all completed projects managed to reach a state with no major non-conformances before delivery, confirming that there are no blocking points towards launch.
 
 Therefore, RM1 is considered satisfied for this case.
 
 \paragraph{RM4: The SCS Methodology shall enable equally less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.}
 
-While risk is difficult to quantify, counterfactual analyses showed a balanced risk delta between the treated and non-treated cases. In all of the above missions, assigning a numerical value to the categorical risk value showed either a reduction or no overall change in risk. The performed trade-off evaluations for each mission can inform developers on selecting the appropriate treatments. The overall comparison between risk distribution can be seen in \draft{the box plots below}.
+While risk is difficult to quantify, counterfactual analyses showed a balanced risk delta between the treated and non-treated cases. In all of the above missions, assigning a numerical value to the categorical risk value showed either a reduction or no overall change in risk. The performed trade-off evaluations for each mission can inform developers on selecting the appropriate treatments. The overall comparison between risk distribution can be seen in \Cref{fig:c_plot_box_risk}.
 
 \FloatBarrier
 \subsection{External Validity}
@@ -6045,8 +6062,9 @@ To evaluate the \textbf{external validity} of the proposed methodology \autocite
 
 In practice, I am seeking to identify whether the application of more \acs{SCS} treatments leads to a reduction in development time, cost, and risk which can be attributed to the methodology (\(X_t\)), and not to differences between projects (\(X_p \)). After identifying a causal link between a specific treatment and effect, combined with a confirmation by observation, the result can be potentially extrapolated to similar projects.
 
-\marginnote{\todo{Considerations for different methods, .e.g linear regression/ANOVA}}
-The above problem statement can be answered by the following statistical tests: \autocite{chiccoSimpleGuideUse2025}
+Before performing a statistical analysis, it must be understood that, due to the nature of the case studies, the sample size is low, and may not guarantee statistical validity\footnote{This also prevents the use of methods that have strict assumptions about their inputs, such as linear regression or \acs{ANOVA}.}. However, strictly causal relationships that, in most cases, guarantee a change in the dependent variables, can be observed studied by statistical tests suitable for smaller sample sizes. These results are considered valid only when such a causal relationship can be established from the case study investigation, as explained in \Cref{fig:c_activity_diagram}.
+
+Consequently, the above problem statement can be answered by the following statistical tests: \autocite{chiccoSimpleGuideUse2025}
 \begin{itemize}[itemsep=-2ex]
 	\item The \textbf{Student's \emph{t}-test}, which evaluates whether the difference between the response of two groups is statistically significant. The \(t\)-test assumes that the test statistic follows a normal distribution. It tests the null hypothesis that the two groups have equal means.
 	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parameteric} and makes no assumption about the distribution of the underlying data. It tests the null hypothesis that the distributions of the two groups are identical.
@@ -6221,28 +6239,28 @@ These results address the effectiveness of the application of \acs{SCS} on a sys
 \end{adjustbox}
 \end{table*}
 
-The small sample size of the results prevents generating robust statistical results for all measurements. However, the aggregate results combined from the projects shown above, combined with average treatment effects shown in \Cref{tab:stat_treatment_results}, can reinforce the understanding of the causal effects shown in \Cref{fig:c_causal_mapping}.
+As mentioned above, size of the results prevents generating robust statistical results for all measurements. However, the aggregate results combined from the projects shown above, combined with average treatment effects shown in \Cref{tab:stat_treatment_results}, can reinforce the understanding of the causal effects shown in \Cref{fig:c_causal_mapping}.
 
 Each treatment can be evaluated as follows:
 \begin{enumerate}
 	\item \textbf{Bypassing structural/thermal analysis}:
-	This design choice shows a statistically significant reduction in development time (with project times shrinking to 71\% of the expected value if these analyses had been performed), low change in cost, and a universal increase in risk. This result is expected, following the reported analysis times from past CubeSat missions (\Cref{tab:l_cubesat_time_drivers}), and the estimation of 23 person-days to complete these analysis (\Cref{sec:CASESTUDIES_chipsat_evaluation}). The small dimensions and generally simple physical interfaces of \acs{SCS} reduce the value of \acs{FEM} modelling, which is typically done for larger spacecraft, but can be replaced by simpler calculations or repeated tests for smaller systems. This observation is supported by the results of the case studies, which passed environmental qualification without any detected non-conformances.
+	This design choice shows a statistically significant reduction in development time (with project times shrinking to \qty{71}{\percent} of the expected value if these analyses had been performed), low change in cost, and a universal increase in risk. This result is expected, following the reported analysis times from past CubeSat missions (\Cref{tab:l_cubesat_time_drivers}), and the estimation of 23 person-days to complete these analysis (\Cref{sec:CASESTUDIES_chipsat_evaluation}). The small dimensions and generally simple physical interfaces of \acs{SCS} reduce the value of \acs{FEM} modelling, which is typically done for larger spacecraft, but can be replaced by simpler calculations or repeated tests for smaller systems. This observation is supported by the results of the case studies, which passed environmental qualification without any detected non-conformances.
 	\item \textbf{In-house manufacturing}:
-	The aggregation of the results shows a \qty{10.3}{\percent} increase in development time, a \qty{32.7}{\percent} decrease in cost, and a project-specific change in perceived risk, when a team decides to assembly electronic boards in-house.
+	The aggregation of the results shows a \qty{10}{\percent} increase in development time, a \qty{33}{\percent} decrease in cost, and a project-specific change in perceived risk, when a team decides to assembly electronic boards in-house.
 	These results match the expected increase in manufacturing time combined with the high costs associated with external manufacturing, while risk depends on the specific manufacturing requirements, and whether they can be reliably met in-house. However, this analysis has not modelled the lead times of externally-covered processes, which are seen as blocking points in project tasks, but are not accounted here in terms of development time.
 	\item \textbf{Multi-step development}:
-	This treatment represents the use of an iterative lifecycle process, as opposed to a sequential single-step lifecycle. All case-studies were performed using an iterative approach. The counter-factual evaluation was based on estimating the time required for an initial design (considered as 40 person-days, based on \Cref{tab:l_cubesat_time_drivers}), against the time (and cost budget) saved by not performing the development work related to multiple hardware iterations. Nevertheless, I considered that at least one second hardware iteration would have been necessary in some projects, either due to externally changed requirements, or due to an \draft{intrinsic lack of information before experimentation for novel designs}.
+	This treatment represents the use of an iterative lifecycle process, as opposed to a sequential single-step lifecycle. All case-studies were performed using an iterative approach. The counter-factual evaluation was based on estimating the time required for an initial design (considered as 40 person-days, based on \Cref{tab:l_cubesat_time_drivers}), against the time (and cost budget) saved by not performing the development work related to multiple hardware iterations. Nevertheless, I considered that at least one second hardware iteration would have been necessary in some projects, either due to externally changed requirements, or due to an inherent lack of information before experimentation for novel designs.
 
-	The results indicate that multi-step development reduces development time by \qty{25.0}{\percent} with high confidence. Low-confidence indicators show that it increases cost by \qty{17.5}{\percent}, with a project-specific change in risk.
+	The results indicate that multi-step development reduces development time by \qty{25}{\percent} with high confidence. Low-confidence indicators show that it increases cost by \qty{18}{\percent}, with a project-specific change in risk.
 	\item \textbf{Short iterations}:
 	Combined with multi-step development, short (1--2 month long) system-level iterations delineate the core of typical agile practices.
-	The impact of this treatment affected development times by \qtyrange{10}{20}{\percent}, but on a direction that was project-specific. On the other hand, short iterations increase cost by 33.3\% with high confidence, while generally increasing perceived risk.
+	The impact of this treatment affected development times by \qtyrange{10}{20}{\percent}, but on a direction that was project-specific. On the other hand, short iterations increase cost by \qty{33}{\percent} with high confidence, while generally increasing perceived risk.
 
-	The selection of iteration duration therefore seems both highly impactful and highly project-specific, with ``larger'' projects (in this case, POQUITO) being less suitable for short iterations compared to simpler projects, due to the correlation between technical size and manufacturing cost/integration time. \draft{This factor also depends on the expected lead times and developer availability for the project.}
+	The selection of iteration duration therefore seems both highly impactful and highly project-specific, with ``larger'' projects (in this case, POQUITO) being less suitable for short iterations compared to simpler projects, due to the correlation between technical size and manufacturing cost/integration time. %This factor also depends on the expected lead times and developer availability for the project.
 	\item \textbf{Iterating over partitions}:
-	The choice of iterating over partitions over the entire system does not seem to have a significant effect in development time or risk, and reduces cost by \qty{7.7}{\percent} on average, with low confidence.
+	The choice of iterating over partitions over the entire system does not seem to have a significant effect in development time or risk, and reduces cost by \qty{8}{\percent} on average, with low confidence.
 
-	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized systems (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on a well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
+	While a cost reduction due to partitioning is expected (since ``less of the system'' has to be repeatedly procured), lessons learned from the case studies showed that small-sized systems (in this case, AI4Space) do not significantly benefit from the effort associated with partitioning.\footnote{Partitioning is also less beneficial when there is high early confidence in a design. Compare, for example, the negative impact of partitioning on AI4Space, which depended on an already well-understood hardware architecture, to the positive impact of partitioning on ChipSat-1, where the payload and power system designs were less familiar to the team.}
 	\item \textbf{Robust software framework}:
 	The selection of a robust software framework has a varied effect on development time based on the project requirements and hardware, without any effects on cost, and a universal reduction in perceived risk.
 	\item \textbf{\acf{RPA}}:
@@ -6278,12 +6296,12 @@ To evaluate the methodology in its entirety, I will consider a ``naive'' applica
 Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, the following observations can be made:
 \begin{enumerate}[itemsep=-1pt]
 	\item The \textbf{development time} of a project shows a clear \textbf{correlation} with the level of the \acs{SCS} methodology applied. One of the clearest drivers of development time reduction is the selection of a multi-step methodology, which foregoes a typically long \acs{BDUF} design step, especially when combined with minor optimisations in the programmatic and technical aspects of development. While not all treatments have a definitively positive effect on development time, a general reduction trend can be observed. The Mann-Whitney \( U \) test shows a statistically significant difference, with an average reduction of \qty{40.7}{\percent}.
-	\item The development \textbf{cost}\footnote{This cost does not include labour, insurance, ground segment or asset costs. See \draft{\Cref{sec:LITERATURE_metrics} for the relevant explanation.}} of a project is \textbf{not correlated} to the full application or not of the \acs{SCS} methodology. Most iterative methods that are applied on physical systems tend to increase costs. However, this is highly affected by the project context, and especially different allocations on budget categories.
+	\item The development \textbf{cost}\footnote{This cost does not include labour, insurance, ground segment or asset costs. See \Cref{sec:LITERATURE_cubesat_environment} for the relevant explanation.} of a project is \textbf{not correlated} to the full application or not of the \acs{SCS} methodology. Most iterative methods that are applied on physical systems tend to increase costs. However, this is highly affected by the project context, and especially different allocations on budget categories.
 	\item The project \textbf{risk} shows \text{no statistically significant correlation} to the application or not of the \acs{SCS} methodology. While \Cref{fig:c_plot_box_risk} shows a general trend of risk reduction after applying the \acs{SCS} methodology, clearer results are shown in \Cref{fig:c_plot_specific_sensitivity_risk}, where it is shown that \acs{SCS} methods are generaly evenly divided between perceived risk increase, decrease, or project-specific behaviour.
 
 	The adoption or not of specific methods can be perceived as a trade-off between time and risk, as shown in \Cref{fig:c_tradeoff_chipsat1,fig:c_tradeoff_ai4space,fig:c_tradeoff_poquito,fig:c_tradeoff_chipysat}.
 	A ``naively assumed'' correlation would expect that higher development time reduces perceived risk. While some treatments do follow this trend, this is not universally true. Notable examples of this are treatments \#6 and \#7, which involve decisions related to software and automation.
-	While there is no indication that the \acs{SCS} methodology increases risk, a generally-applicable guideline to decrease risk cannot be provided, \draft{given the project dependence of this factor}.
+	While there is no indication that the \acs{SCS} methodology increases risk, a generally-applicable guideline to decrease risk cannot be provided, given the project dependence of this aspect.
 \end{enumerate}
 
 \FloatBarrier
@@ -6307,14 +6325,14 @@ Instead, developers tailor existing approaches from the CubeSat ecosystem, rangi
 
 \researchquestion{RQ2}{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
 
-The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}). While cost is often mentioned as a particular benefit for the selection of pocket-sized spacecraft, it is either not referred to as an optimisation target, or already successfully kept low through mainly in-house manufacturing. Instead, developers place significant weight on the improvement of reliability and the reduction of development time (mainly to fit typical academic cycles in educational environments, or to match specific production capabilities). Past mission failures and long average development times indicate a need to focus on reliability and development velocity.
+The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}). While cost is often mentioned as a particular benefit for the selection of pocket-sized spacecraft, it is either not referred to as an optimisation target, or already successfully kept low through mainly in-house manufacturing. Instead, developers place significant weight on the improvement of reliability and the reduction of development time (mainly to fit typical academic cycles in educational environments, or to match specific production capabilities). Past mission failures and long average development times indicate a need to focus on reliability and development velocity. \todo{Improve this answer}
 
 \researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address a selection of the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
 
 Due to the existence of previous literature and the difficulty of quantitively reasoning about reliability and cost, I have selected \emph{development time} as the optimisation target for a new \acs{SYE} methodology, with an addititional requirement to not increase technical risk. Previous work from the \acl{SYE}, CubeSat and PocketQube domains has indicated that development time and reliability can be heavily influenced by the systems engineering and systems design approaches used.
 
 \Cref{chap:METHODOLOGY} presents a tailored methodology for \acs{SCS}, based on the principles of Agile software engineering, which covers different aspects of the development of pocket-sized systems. The validity of this methodology, and whether it can address the identified shortcomings, is evaluated in \Cref{sec:CASESTUDIES_results}, through causal and counter-factual analyses, based on data from four case studies. The results show that the appropriate selection of a methodology can reduce total development time by an average of 40\%, even when considering different types of projects, without an upwards change in technical risk.
-\todo{The development time of the case studies was approximately one year.}
+The development time of the case studies was approximately one year.
 These results are supported by the understanding of the causal effects of each part of the methodology. The answer to this question is therefore positive.
 
 \pagebreak[4]
@@ -6337,9 +6355,9 @@ This research question involves the generalisation of the results of \texttt{RQ3
 
 	\item[Threat 2.] \textbf{Evaluation of metrics}: ``Development time'' was chosen as the target optimisation metric for the \acs{SCS} methodology. Even if time is understood as an easily quantifiable parameter, both its passage and its measurement can depend on factors which are uncontrollable or unrelated to the systems engineering discipline (such as available resources or launch delays).
 	This affects both the answers to \texttt{RQ2} and the evaluation of the methodology in practical case studies. However, no other salient and comparable parameter could be identified.
-	For this work, development time was measured from the start of the design effort until \draft{integration readiness}.
+	For this work, development time was measured from the start of the design effort until the spacecraft was ready for integration. \todo{Write about other metrics}
 
-	\item[Threat 3.] \textbf{Case study-based validation}: The validation of the \acs{SCS} methodology (\texttt{RQ3} and \texttt{RQ4}) was based on four case studies. In contrast to, e.g.\@, an experimental setup, the case study approach does not require control over all environmental parameters and can be practically performed against complete missions, which are the main unit of analysis of this study. Typical concerns connected to case studies relate to the misuse of data, small sample sizes, and incorrect generalisations \cite[266]{yinCaseStudyResearch2014}. I address these concerns by \draft{documenting the gathered qualitative} and quantitative data in \Cref{chap:CASESTUDIES}, by using multiple sources of evidence for claims, and by analytic generalisations of findings in \Cref{sec:CASESTUDIES_results}.
+	\item[Threat 3.] \textbf{Case study-based validation}: The validation of the \acs{SCS} methodology (\texttt{RQ3} and \texttt{RQ4}) was based on four case studies. In contrast to, e.g.\@, an experimental setup, the case study approach does not require control over all environmental parameters and can be practically performed against complete missions, which are the main unit of analysis of this study. Typical concerns connected to case studies relate to the misuse of data, small sample sizes, and incorrect generalisations \cite[266]{yinCaseStudyResearch2014}. I address these concerns by documenting the gathered qualitative and quantitative data in \Cref{chap:CASESTUDIES}, by using multiple sources of evidence for claims, and by analytic generalisations of findings in \Cref{sec:CASESTUDIES_results}.
 	
 	In \Cref{chap:CASESTUDIES}, I identified various external/confounding factors that can threaten the logical inferences required to validate the proposed methodology, namely:
 	\begin{enumerate}[itemsep=-2ex]
@@ -6371,33 +6389,39 @@ This research question involves the generalisation of the results of \texttt{RQ3
 		Based on the initial literature survey, academic projects can have small but discernible differences compared to their industrial counterparts.
 		More specifically, the former may have different goals, increased bureaucracy,  smaller or less experienced teams, high turnover rates, and low duty cycles of participating members. These effects are more pronounced with student projects (as opposed to e.g.\@ research projects).
 		
-		To mitigate this invariant, \draft{all executed projects were made within a research context, with limited student involvement}. Team members were assigned to projects for the duration of the entire mission (with the exception of students invited to take ownership of specific work packages) and based on their expertise and prior familiarity with the used technologies (especially in terms of software/hardware development and satellite integration). This combination of factors can be considered a suitable middle-ground between fully student-led and fully commercial projects.
+		To mitigate this invariant, all executed projects were made within a research context, with limited student involvement. Team members were assigned to projects for the duration of the entire mission (with the exception of students invited to take ownership of specific work packages) and based on their expertise and prior familiarity with the used technologies (especially in terms of software/hardware development and satellite integration). This combination of factors can be considered a suitable middle-ground between fully student-led and fully commercial projects.
 
 		Nevertheless, follow-up studies can be performed to confidently evaluate the impact of the different environmental context.
 		\item I participated as a systems engineer in all case studies. To mitigate the influencing effect of a constant participant with a single responsibility, I was assigned to different work packages for each project, or shared my responsibilities with other core team members. This involved, for example, switching between the technical tasks of system design, \acs{PCB} design, software development, and testing amongst all projects, while I shared the \emph{systems engineer} role with other participants.
 	\end{itemize}
 	
-	%\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers \draft{(see \Cref{app:contribution_matrix})}, the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, \draft{follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.}
+	%\item[Threat 4.] \textbf{Case study diversity}: Three of the case studies performed took place within the same institution. Even though the teams involved were mostly comprised of different developers (see \Cref{app:contribution_matrix}), the institutional context, resources available, facilities and environmental constraints were similar. Additionally, none of the case studies performed included an industrial manufacturer. While the evaluated set of environmental characteristics is not uncommon, follow-up studies would be required to confidently evaluate the impact of undetected yet critical environmental factors.
 	
 	%A particular similarity amongst all case studies was that they were performed within 
 
-	\item[Threat 4.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of \draft{action research}. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
+	\item[Threat 4.] \textbf{Action research}: The execution of the four case studies (where I participated as an engineer) took the form of action research. While this provided ``insider's knowledge'' into the projects, participatory action research presents a number of limitations on what data can be gathered, and how it is analysed. \citeauthor{kockThreeThreatsAction2004} identifies three main threats of action research: \cite{kockThreeThreatsAction2004}
 	\begin{enumerate}[itemsep=-1pt]
 		\item \textbf{Uncontrollability}: The researcher \emph{does not have full control over the environment being studied}.
-		This was particularly the \draft{case} in the evaluated case studies, as it was not possible to fully control the application and implementation of the \acs{SCS} methodology, allocate resources, or recruit the desired personnel for technical tasks.
+		This was particularly true in the evaluated case studies, as it was not possible to fully control the application and implementation of the \acs{SCS} methodology, allocate resources, or recruit the desired personnel for technical tasks.
 
 		A critical result of this threat, combined with the iterative nature of action research, is that no case study was performed with the complete methodology applied (or not applied). Instead, all case studies involved the application of \emph{most} aspects of the methodology on them, with the complete application being evaluated based on the counter-factual inference.
-		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. \draft{It is difficult, for example, to reason about the impact of multiple methodology treatments against the project's flow.}
-		\item \textbf{Subjectivity}: \draft{It is impossible for the researcher to be in a detached position from the subject being studied, \draft{making} it possible to \emph{introduce biases into their conclusions}.}
+		\item \textbf{Contingency}: The researcher \emph{gets access to a shallow body of knowledge, that rarely provides evidence for a particular interaction}. It is difficult, for example, to reason about the impact of each specific methodology treatment against the project's flow, as any causal links for a project's result are not evident, 
+		\item \textbf{Subjectivity}: It is impossible for the researcher to be in a detached position from the subject being studied, rendering it possible to \emph{introduce biases into their conclusions}.
 	\end{enumerate}
 
-	\draft{In general, these threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.}
+	To mitigate these threats, mitigations generally focus on increasing the amount of independent data and perspectives that are collected and interpreted in the final results \cite{kockThreeThreatsAction2004,yinCaseStudyResearch2014,creswellResearchDesignQualitative2023}. In this study, the following approaches were used \cite{kockThreeThreatsAction2004}:
+	\begin{enumerate}[itemsep=-1pt]
+		\item \emph{Unit of Analysis}: This method supports that research data collection and analysis should be performed on individual and generally independent \emph{units of analysis} identified in the beginning of the research study. The higher number of units of analysis that can support a trend, the higher the validity of these findings. In this study, the unit of analysis represents the combination of \emph{treatments} for the methodology, and target \emph{metrics} for the projects.
+		\item \emph{Multiple iterations}: This method involves repeating the action research cycle across different contexts, in order to reduce the effect of confounding variables on single iterations. In this study, apart from iterations within the projects, I participated in different case studies across different contexts to make sure that the expanded research scope can cover diverse practical cases of \acs{SCS} engineering, as described in \emph{Threat 3}.
+	\end{enumerate}
+
+	% In general, these threats are mitigated by the \emph{unit of analysis} (prescribing certain target metrics and subjects to study prior to the beginning of the research) and \emph{multiple iterations} (of te action research cycle) methods proposed by \citeauthor{kockThreeThreatsAction2004} \cite{kockThreeThreatsAction2004}.
 
 	\item [Threat 5.] %counterfactual
 	\textbf{Counter-factual evaluation}:
 	The comparison between the application and non-application of \acs{SCS} methodology treatments in \Cref{chap:CASESTUDIES} was performed through the evaluation of hypothetical scenarios.
 %	It is impossible to accurately model the potential interactions between different approaches on the same project.
-	As it is impossible to accurately predict the results of emulated interactions in a project, these results may not represent \draft{reality}.
+	As it is impossible to accurately predict the results of emulated interactions in a project, these results may not represent reality.
 	However, through the participation and evaluation of different \acs{SCS} treatments across four projects, it was possible to generate high-confidence predictions about the effects of each treatment.
 	The data used to inform these predictions was gathered from the missions themselves (e.g.\@ in the case that an alternative option was evaluated but abandoned during the mission), from results gathered from other missions, from past \acs{SCS}/CubeSat literature, or based on a causal evaluation. In the case of disagreements of these previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
 	
@@ -6427,7 +6451,7 @@ This research question involves the generalisation of the results of \texttt{RQ3
 \section{Summary}
 
 This thesis presented a systems engineering methodology for the development of \acf{SCS}, with a focus on the reduction of development time without a negative impact on technical risk.
-The methodology focuses on the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \draft{\emph{verification \& validation}}. Its foundation mainly lies on agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
+The methodology focuses on the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \emph{verification}. Its foundation mainly lies on agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
 
 \begin{table*}[h]
 \def\arraystretch{1.2}
@@ -6435,7 +6459,7 @@ The methodology focuses on the systems engineering fields of \emph{lifecycle pro
 	\toprule
 	& \textbf{Thesis Objective} & \textbf{Addressed by} \\
 	\midrule
-	1 & Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the \draft{environment} of typical \ac{SCS} missions. & Initial literature review of small space systems environments and open problems (\Cref{sec:INTRODUCTION_defining_systems_engineering,sec:INTRODUCTION_research_gaps}), detailed literature review of \acs{SCS} development environment and constraints (\Cref{sec:LITERATURE_subcubesat}), interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_interviews}). \\
+	1 & Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the environment and typical \ac{SCS} missions. & Initial literature review of small space systems environments and open problems (\Cref{sec:INTRODUCTION_defining_systems_engineering,sec:INTRODUCTION_research_gaps}), detailed literature review of \acs{SCS} development environment and constraints (\Cref{sec:LITERATURE_subcubesat}), interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_interviews}). \\
 	2 & Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches. & Definition of \acs{SYE} metrics based on available literature and \acs{SCS} needs (\Cref{sec:LITERATURE_metrics}). \\
 	3 & Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}. & Investigation of current systems engineering \acs{SOTA} (\Cref{sec:LITERATURE_systems_engineering}), elaboration of a \acs{SCS} methodology (\Cref{chap:METHODOLOGY}). \\
 	4 & Validate the new methodology on at least one space mission that will succeed in environmental qualification. & Four case studies performed in iterative fashion based on action-research principles and counterfactual evaluation (\Cref{chap:CASESTUDIES}). \\
@@ -6445,10 +6469,10 @@ The methodology focuses on the systems engineering fields of \emph{lifecycle pro
 \end{table*}
 
 \vspace{1.5cm}
-In \Cref{sec:INTRODUCTION_research_gaps,sec:LITERATURE_subcubesat}, I investigated the ecosystem and typical development environment of Sub-CubeSat missions, and identified the main characteristics and constraints of \acs{SCS}. Past \acs{SCS} projects have generally involved small teams of up to \draft{10 people}, and development times are driven by launch agreements, which \draft{typically involve 1-year long preparations.} The small technical size and complexity of these spacecraft match the requirements of lightweight agile methodologies. 
+In \Cref{sec:INTRODUCTION_research_gaps,sec:LITERATURE_subcubesat}, I investigated the ecosystem and typical development environment of Sub-CubeSat missions, and identified the main characteristics and constraints of \acs{SCS}. Past \acs{SCS} projects have generally involved small teams of up to approx.\@10 people, and development times are driven by launch agreements, which typically involve 1-year long commitments. The small technical size and complexity of these spacecraft match the requirements of lightweight agile methodologies. 
 
 In \Cref{sec:LITERATURE_metrics}, I identified development \textbf{time}, development \textbf{cost}, and \textbf{technical risk} as metrics related to the performance of Systems Engineering frameworks when applied to \acl{SCS}.
-Results from the literature and \draft{other missions} have shown that developers place significant weight on reducing development time and increasing spacecraft reliability. This is driven by the low success rates of past small satellite missions, combined with the desire to reduce resource utilisation and programmatic risk, by ensuring that projects do not experience cost overruns. Past literature has linked both of these factors to inadequate systems engineering practices followed by small satellite developers and to a \draft{disregard of previous lessons learned.}
+Results from the literature and past missions have shown that developers place significant weight on reducing development time and increasing spacecraft reliability. This is driven by the low success rates of past small satellite missions, combined with the desire to reduce resource utilisation and programmatic risk, by ensuring that projects do not experience cost overruns. Past literature has linked both of these factors to inadequate systems engineering practices followed by small satellite developers and to an unfamiliarity with past lessons learned.
 
 Based on the above, \textbf{development time and technical risk} are identified as optimisation goals for a tailored \acs{SCS} methodology. Informed by findings from topic-specific literature survey and practical mission implementation, this methodology is synthesised in \Cref{chap:METHODOLOGY}, as a combination of:
 \begin{itemize}[itemsep=-3pt]
@@ -6456,19 +6480,19 @@ Based on the above, \textbf{development time and technical risk} are identified 
 	\item Two \textbf{lifecycle process models} based on Scrum, and involving short, predefined system-level iterations;
 	\item Guidelines for tool-based technical planning and work-package management;
 	\item A tool-based \textbf{modelling \& knowledge management} method based on lightweight \acl{MBSE};
-	\item A \textbf{hardware} design method and guidelines, specifically for pocket-sized systems;
-	\item Guidelines for \draft{\textbf{interface management}} with the purpose of being compatible with external safety requirements;
-	\item A lightweight test-based \textbf{verification \& validation} method, informed from software engineering and \acl{RPA} approaches;
-	\item Guidelines for \textbf{maintenance \& operations} based on \draft{spacecraft agility}; and
+	\item A \textbf{hardware} design method and guidelines, specifically for pocket-sized systems, including interface management, with the purpose of being compatible with external safety requirements;
+	\item A lightweight test-based \textbf{verification \& validation} method, informed from software engineering and \acl{RPA} approaches; and
+	%\item Guidelines for \textbf{maintenance \& operations} based on spacecraft agility; and
 	\item A set of methods for \textbf{software development}, with a focus on technology choice for reliability increase.
 \end{itemize}
 
 In \Cref{chap:CASESTUDIES}, four case studies, developed within the timeline of this thesis, were used to generate data and retroactively validate the proposed ``\acs{SCS} methodology''.
 Two of the studies were designed as small satellite payloads, while the other two were complete \acs{SCS} missions. 
-Three case studies aimed to achieve successful qualification, while one aimed successful functional testing.
+Three case studies aimed to achieve successful qualification, while one aimed at successful functional testing.
+One mission was launched and operated successfully.
 Different elements of the \acs{SCS} methodology were applied in each case study.
 Based on data from the administrative and technical decisions taken during the mission, as well as available project management literature from other projects, a counter-factual analysis was performed to generate quantitative data on the estimated impact of the \acs{SCS} methodology on the metrics identified above.
-The analysis showed that the \acs{SCS} methodology can reduce development duration by an average of \textbf{\qty{40}{\percent}} compared to the \draft{inverse case}, combined with a limited effect in production cost and risk, and thus achieving the main objective of reducing development time without an adverse effect on risk.
+The analysis showed that the \acs{SCS} methodology can reduce development duration by an average of \textbf{\qty{40}{\percent}} compared to the contrary case, combined with a limited effect in production cost and risk, and thus achieving the main objective of reducing development time without an adverse effect on risk.
 Additionally, the significance and magnitude of specific parts of the methodology on the selected metrics was evaluated. 
 
 \section{Key Findings and Contributions}
@@ -6477,7 +6501,7 @@ This thesis has the goal of introducing and validating a systems engineering met
 
 Regarding the understanding of the relationship between systems engineering and \acl{SCS}, I report the following findings:
 \begin{itemize}[itemsep=-2pt]
-	\item The success rate of \acs{SCS} missions \draft{is similar to CubeSats}, reaching \draft{an approximate 60\% (TBC)}, which has been identified as a concern amongst \acs{SCS} developers. Current understanding ties this low success rate to inadequate system-level testing, non-following of established procedures, inadequate knowledge transfer, and design decisions that are not considering reliability as a factor.
+	\item The success rate of CubeSat and \acs{SCS} missions has been identified as a concern amongst developers. Current understanding ties this low success rate to inadequate system-level testing, non-following of established procedures, inadequate knowledge transfer, and design decisions that are not considering reliability as a factor.
 	\item Reduction of development time is identified as another main target in \acs{SCS} projects, mainly influenced by logistical requirements placed on project owners, and fixed product delivery deadlines. However, a large variation in development duration of past missions has been identified, ranging from \qtyrange{10}{62}{months}, which cannot be tied to project requirements \& environment alone.
 	\item 
 	In contrast to traditional space systems engineering and CubeSat systems engineering, smaller systems have a disproportionately smaller need for preliminary ``architecting and documenting'' work.
@@ -6494,7 +6518,7 @@ Based on the above findings, I have contributed the definition of a tailored sys
 
 The following findings are reported from the application and counter-factual evaluation of the methodology on four \acs{SCS} case studies:
 \begin{itemize}[itemsep=-2pt]
-	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person-hours} for ChipSats and \qty{800}{person hours} for a PocketQube.
+	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person-hours} for ChipSats and \qty{800}{person-hours} for a PocketQube.
 	\item It is possible to shorten \acl{SCS} development duration to approximately 1 year without adverse effects in technical risk or requirements compliance, given that at least the typical workload is performed.
 	\item Compared to a single-step sequential approach, a naive application of the complete \acs{SCS} methodology can reduce \textbf{development duration} by \qty{40}{\percent}. The statistical significance of this result is supported by the reduction of time-consuming processes, which did not prove to provide significant added value in the performed case studies.
 	\item The naive application of the methodology was not found to have a statistically significant effect on cost and risk.
@@ -6502,25 +6526,12 @@ The following findings are reported from the application and counter-factual eva
 	The optimal iteration duration is dependent on the specific project context, with larger projects seemingly being suited for longer iterations.
 	\item In terms of production cost, the most significant contributors were found to be \textbf{in-house manufacturing} (\qty{33}{\percent} reduction) and \textbf{short iteration duration} (\qty{33}{\percent} increase), which are not associated with a significant effect on development time.
 	\item The choice of \textbf{programming language} (and, consequently, software framework), as well as the use of automated software/hardware testing procedures were found to decrease technical risk, without a significant effect on development time or cost.
-	\item The option to \textbf{iterate over partitions} of the system, instead of the entire system, was not found to have predictable results on any of the target metrics. \todo{being instead context specific?}
+	\item The option to \textbf{iterate over partitions} of the system, instead of the entire system, was not found to have predictable results on any of the target metrics, being highly environment-specific.
 \end{itemize}
 
 One limitation in the validity of the above findings stems from the use of statistical generalisation for the numerical results, as only four case studies were used for the analysis. While an analytical generalisation was performed to demonstrate validity, it is not sufficient to generate a quantitative understanding of the effects of the \acs{SCS} methodology.
 
-%One limitation of this study stems from the use of cas study research 
-
-%One limitation of this study is the low sample size of 4 case studies, which 
-%prevents the use of statistical generalisation for numerical results.
-%limits the robustness of statistical methods applied to the results.
-%Although different mission types and team compositions across two institutions were considered, it is difficult to extrapolate the findings across other missions if some of the environmental parameters were left unchanged across case studies. For this thesis, these fixed parameters can include developer expertise, strategic project goals (e.g.\@ academic vs.\@ corporate), or the quality of available facilities. This was mitigated by the use of analytical generalisation in the cross-case analysis. 
-
-%Another limitation stems from the counter-factual nature of the experimental analysis. Since it is impractical to design objective systems engineering experiments in the influence of external factors, it was not possible to independently reason about the effects of the methodology. Additionally, as I participated in these projects both as a researcher and an engineer, the limitations of action research also \draft{relevant}, in terms of the application and evaluation of the methodology \cite{davidProblemsParticipationLimits2002}. To address biases during the counter-factual analysis, I relied on recorded data from project reports, or, \draft{in absentia}, estimates of development time and estimated risk from past CubeSat literature. In the case of disagreements of previous estimates, I chose the most adverse values, i.e.\@ the values that would lead to the least favourable evaluation of the \acs{SCS} methodology.
-
-%Finally, due to the extent of the proposed methodology, it was not practical to evaluate each of its statements in the counter-factual analysis, with the focus given only on what I perceived as the most \draft{impactful} methods.
-
-%\newthought{It is concluded} that the proposed methodology can be further tailored and applied to new projects 
-
-It is concluded that specific systems engineering decisions can have an effect on the development time, cost and technical risk on \acs{SCS} missions. No optimal ``one-size-fits-all'' solution could be identified, with different decisions being more suitable to different goals or projects, with a high dependence on project technical size. However, impactful decisions \draft{can generally be taken in an informed manner} based on the known environment and desired trade-off.
+It is concluded that specific systems engineering decisions can have an effect on the development time, cost and technical risk on \acs{SCS} missions. No optimal ``one-size-fits-all'' solution could be identified, with different decisions being more suitable to different goals or projects, with a high dependence on project technical size. However, impactful decisions can generally be taken in an informed manner based on the known environment and desired trade-off.
 
 \section{Future Work}
 
@@ -6528,13 +6539,13 @@ A major challenge in the definition and evaluation of \acs{SCS} methods is the l
 
 Based on the definition of the \acl{DRM}, this thesis performed only an \emph{initial evaluation} of the \emph{Descriptive Study II} stage, i.e.\@ the investigation of the impact and performance of the development methodology.
 To that end, one future direction for this research is the further application and empirical evaluation of the methodology on new \acs{SCS} projects. This effort can also be supported by schedule, cost and risk modelling approaches from \acl{SYE} research %, such as COSYSMO,
-to provide a formal framework for guiding \draft{binary decisions} during methodology tailoring.
+to provide a formal framework for guiding decisions during methodology tailoring.
 
 Even though the methodology has not been designed for CubeSats or larger systems, it may be possible to apply it in part or in its entirety on these systems, based on the environmental context. What are the factors that allow agile systems engineering for CubeSats, and which parts of the \acs{SCS} methodology can be transferred to them? As CubeSat manufacturing is predominantly moving to local facilities, it becomes easier to follow approaches (such as 1-month long iterations) that were previously seen as utopian, while still conforming to the mostly stricter safety requirements for CubeSats.
 
 Another notable point of refinement for this work is the set of hardware and software development guidelines, which are mainly sourced from lessons learned during the case studies, but will fundamentally benefit from further experience gained during development and flight, with an end goal of creating a best-practices knowledge base for \acs{SCS} developers, similar to existing attempts for CubeSats.
 
-As software has been identified as a major time allocation and risk driver for \acs{SCS} missions, it would be beneficial to perform more research on the improvement of the time---risk trade-off. Lightweight formal verification techniques for software have been explored, but it is still unknown whether their added benefits overweigh the additional effort needed to instrument the entire or parts of the software, especially for teams without \draft{prior experience with these tools}.
+As software has been identified as a major time allocation and risk driver for \acs{SCS} missions, it would be beneficial to perform more research on the improvement of the time---risk trade-off. Lightweight formal verification techniques for software have been explored, but it is still unknown whether their added benefits overweigh the additional effort needed to instrument the entire or parts of the software, especially for teams without prior experience with these processes.
 
 %\Cref{sec:DISCUSSION_limitations}
 
@@ -6563,13 +6574,13 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 
 \vspace*{-1cm}%
 \centering%
-\fbox{\includegraphics[width=.85\linewidth]{CheatSheet.pdf}}
+\fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
 \end{fullwidth}
 
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
 
-\draft{[TODO]}
+\todo{[TODO]}
 
 
 
