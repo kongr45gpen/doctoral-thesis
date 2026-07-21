@@ -350,12 +350,12 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore 
 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{analyses/launch_mass_histogram_no_starlink.pdf}
-	\caption[Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink)]{Histogram of satellite wet mass, for satellites flying as of 2023 (exluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
+	\caption[Histogram of satellite wet mass, for satellites flying as of 2023 (excluding Starlink)]{Histogram of satellite wet mass, for satellites flying as of 2023 (excluding Starlink) \autocite{unionofconcernedscientistsSatelliteDatabase2023}}
 \end{figure}
 
 \begin{figure*}[h]
 	\includegraphics[width=.9\textwidth]{analyses/scs_launch_trend.pdf}
-	\caption[SCS launches per year]{\acl{SCS} launches per year, based on nanosats.eu \cite{kuluNanosatsDatabase2023}}
+	\caption[SCS launches per year]{\acl{SCS} launches per year, based on \texttt{nanosats.eu} \cite{kuluNanosatsDatabase2023}}
 	\label{fig:i_scs_launched}
 \end{figure*}
 
@@ -461,7 +461,7 @@ The impact and benefit of Systems Engineering is widely understood in the fields
 
 The development approaches for current \acf{SCS}, mainly PocketQubes and ChipSats, largely follow the aforementioned approaches for CubeSats, with examples following hybrid \autocite{cappellettiHandsSpaceEducational2020}, Agile-based \autocite{sperettaCubeSatsPocketQubesOpportunities2016} and ad-hoc \autocite{manchesterCentimeterScaleSpacecraftDesign2015,daradimosQUBIK1pPocketQube2024} methodologies.
 
-Indeed, both nano-satellites and smaller classes can be classified as \emph{(very) small spacecraft}, and usually have similar high-level requirements. These requirements revolve both around the function of the devices (to reliably and autonomously operate one or few payloads in \acl{LEO}) and the programmatic constraints (such as launch deadline, limited budget, small team size)\footnote{Non-examples that may not fit some of these criteria include: human spaceflight or massive constellations.}. These similarities can also extend over non-spacecraft projects, such as hosted payloads, scientific balloon/sounding rocket missions or \acl{VLEO} projects\footnote{An example of a sub-orbital initiatiative is \acs{ESA}'s REXUS/BEXUS programme, where teams are given 8--16 months to develop a scientific payload \cite{REXUSBEXUSSchedule}.}.
+Indeed, both nano-satellites and smaller classes can be classified as \emph{(very) small spacecraft}, and usually have similar high-level requirements. These requirements revolve both around the function of the devices (to reliably and autonomously operate one or few payloads in \acl{LEO}) and the programmatic constraints (such as launch deadline, limited budget, small team size)\footnote{Non-examples that may not fit some of these criteria include: human spaceflight or massive constellations.}. These similarities can also extend over non-spacecraft projects, such as hosted payloads, scientific balloon/sounding rocket missions or \acl{VLEO} projects\footnote{An example of a sub-orbital initiative is \acs{ESA}'s REXUS/BEXUS programme, where teams are given 8--16 months to develop a scientific payload \cite{REXUSBEXUSSchedule}.}.
 
 Based on these similarities and the number of successes of launched \acs{SCS} missions so far, one can claim that these methodologies maintain their validity in terms of project quality and scope. Do they, however, maintain their validity in terms of the rest of \Cref{tab:i_success_factors}'s factors, such as schedule and budget? Or, expressed differently, are these methodologies still \emph{effective} and \emph{optimal} for \acs{SCS} projects?
 
@@ -486,12 +486,12 @@ The specific characteristics of \acs{SCS} that differentiate them from CubeSats 
 	Combined with these direct implications, low size and mass can also affect other environmental and technical aspects of \acs{SCS} development, as described below.
 	\item \textbf{Facility requirements}: Some of the most expensive, hard-to-maintain and critical equipment for integration and verification of CubeSat projects typically needs to support the sizes of 6U or larger spacecraft. This can include clean rooms, \ac{TVAC} chambers, or shakers for vibration testing. A smaller physical size of a device under manufacturing or test corresponds to reduced requirements for this equipment as well.
 	
-	\item \textbf{Low mass / area ratio}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more assymetric shape increases the average drag coefficient of the system, as well as the relative dissipation area for thermal radiation.
+	\item \textbf{Low mass / area ratio}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more asymmetric shape increases the average drag coefficient of the system, as well as the relative dissipation area for thermal radiation.
 	
 	This latter characteristic speeds up thermal equilibrium in the hot and cold cases. Combined with the potentially increased difficulty of thermal control due to size, this characteristic discourages the use of thermally-sensitive payloads. From a \acl{SYE} point of view, it makes the use of conventional batteries difficult, as they cannot be charged or discharged below a specific temperature. \citeauthor{manchesterCentimeterScaleSpacecraftDesign2015} performed a thermal analysis of of the Sprite ChipSats, finding that they can reach temperatures down to \qty{-110}{\degreeCelsius} in eclipse \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. These low temperatures also prevent the operation of most commercial electronics.
 
 	A higher drag coefficient will also lead to a faster decay of the spacecraft, reducing its mission life. \citeauthor{manchesterOrbitalDebrisAssessment2013} calculated that a \qty{325}{\kilo\meter} Sprite launch has an expected lifetime of \qty{6}{days}, significantly shorter than the few years calculated for CubeSats\footnote{Even though the re-entry time is also a factor of launch altitude, this parameter cannot be usually controlled by customers, and lies in the range between \qtyrange{500}{550}{\kilo\meter} for \acsp{SSO}.}.
-	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system\footnote{While a non-scaleable definition of the minimum required spacecraft functionality exists (e.g. \autocite{ECSS-E-ST-70-11C}), low spacecraft scale allows many of these requirements to be disregarded. For example, some ChipSat missions may not need telecommanding capabilities, which significantly reduces complexity.}, as well as fewer interfaces that need to be managed\footnote{See \Cref{sec:LITERATURE_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``lightweight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
+	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system\footnote{While a non-scalable definition of the minimum required spacecraft functionality exists (e.g. \autocite{ECSS-E-ST-70-11C}), low spacecraft scale allows many of these requirements to be disregarded. For example, some ChipSat missions may not need telecommanding capabilities, which significantly reduces complexity.}, as well as fewer interfaces that need to be managed\footnote{See \Cref{sec:LITERATURE_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``lightweight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
 	
 	At the same time, however, the required miniaturisation of components can increase complexity for specific applications, such as deployment mechanisms and thrusters, because of technical manufacturing and fabrication challenges related to the need for increased precision \autocite{ouDesignPerformanceMicropulsed2024}.
 	Creating extremely miniaturised hardware may require components that are not available off-the-shelf, as well as specialised machinery and expertise that may not be available in-house.
@@ -514,10 +514,10 @@ The above characteristics explain differences between CubeSats and \acs{SCS} whi
 
 	\item There is a natural tendency to shift both manufacturing and verification in-house, due to the reduction in the requirements for expertise and tooling.
 	Instead of a using cleanroom requirement, teams can also comfortably work on a flow bench. If thermal chambers, electrodynamic shakers, Helmholtz cages or other testing equipment is needed, its scale can be reduced. This makes it possible for developers to own and operate manufacturing and testing equipment very close to the
-	normal working location, limiting costs, time spent, adminsitrative burden, and facilitating very short manufacturing runs and test campaigns.
+	normal working location, limiting costs, time spent, administrative burden, and facilitating very short manufacturing runs and test campaigns.
 	
-	\item While \acs{SCS} projects still retain mission-criticality, since irreperable failures can propagate and lead to a loss of mission, the consequences of failure are usually less severe in terms of lost value.
-	Additionally, shorter mission durations indicate that accumulating effects (such as those related to radiation or aging) will be limited\footnote{Note, however, that most CubeSat mission failures happen at the beginning of a mission, as a result of ``infant mortality'' \autocite{langerReliabilityEstimationTool2017}}. As a result, developers need to take fewer derating and techincal risk mitigration measures, such as the use of radiation-tolerant components or redundancy. Administrative measures for technical risk reduction (such as \acs{FMEA}) can also be performed with reduced fidelity.
+	\item While \acs{SCS} projects still retain mission-criticality, since irreparable failures can propagate and lead to a loss of mission, the consequences of failure are usually less severe in terms of lost value.
+	Additionally, shorter mission durations indicate that accumulating effects (such as those related to radiation or aging) will be limited\footnote{Note, however, that most CubeSat mission failures happen at the beginning of a mission, as a result of ``infant mortality'' \autocite{langerReliabilityEstimationTool2017}}. As a result, developers need to take fewer derating and technical risk mitigation measures, such as the use of radiation-tolerant components or redundancy. Administrative measures for technical risk reduction (such as \acs{FMEA}) can also be performed with reduced fidelity.
 	
 	\item While CubeSat projects have a fixed set of launch requirements, originating from the launcher, the deployer and the CubeSat specification, non-standardised projects may require the implementation of proprietary interfaces, potentially specific to each company that can offer a flight slot for \acs{SCS} spacecraft. In extreme cases, these interface specifications may not have been devised at all. Then, \acs{SCS} developers will have to collaborate with their provider to agree on shared interfaces, or design their own\footnote{This was, for example, the approach taken by Manchester, who designed a 3U CubeSat capable of hosting and deploying multiple ChipSats \cite{manchesterCentimeterScaleSpacecraftDesign2015}.}. These uncertainties increase the possibility of external requirements changing during a mission.
 	
@@ -581,7 +581,7 @@ From the perspective of \acs{SCS} projects and \acs{SCS} developers, the scope o
 
 The main objective of this thesis is to develop a new Systems Engineering methodology, tailored for \acl{SCS}, that covers the technical management, system description and system realisation aspects of these projects. The goal of this methodology is to offer an improvement over current approaches, with a focus on pico-satellite, femto-satellite and atto-satellite developers in academia and industry. The \textbf{main hypothesis} is therefore:
 \begin{quote}
-	Novel systems engineering approaches can drastically decrease the development duration of miniaturized, sub-CubeSat-size spacecraft.
+	Novel systems engineering approaches can drastically decrease the development duration of miniaturised, sub-CubeSat-size spacecraft.
 \end{quote}
 
 
@@ -775,7 +775,7 @@ As CubeSats present similarities with \acl{SCS}\footnote{This is true for nano-s
 
 %A \citeyear{bouwmeesterSurveyWorldwidePico2010} survey of nanosatellite technology
 %...augmented by \citeyear{villelaThousandthCubeSatStatistical2019}
-%Actual information about cubesat enviornment: \autocite{berthoudHowSetCubeSat2016}
+%Actual information about cubesat environment: \autocite{berthoudHowSetCubeSat2016}
 
 
 
@@ -788,14 +788,14 @@ As CubeSats present similarities with \acl{SCS}\footnote{This is true for nano-s
 
 From a technical point of view, the shared requirements of CubeSats are defined by the CubeSat Design Specification \autocite{CDS14}. The main constraint for CubeSat design is the dimensional envelope defined by the specification, which dictates the mechanical interfaces of the spacecraft. With regards to the internals, CubeSats are typically separated mechanically, electrically and functionally into subsystems, with an example partition shown in \Cref{tab:l_subsystem_partition}.
 
-While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs{COTS} subsystems\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoprability is not guaranteed.}. The LibreCube specification \autocite{BoardSpecificationLibreCube} defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
+While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs{COTS} subsystems\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoperability is not guaranteed.}. The LibreCube specification \autocite{BoardSpecificationLibreCube} defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
 
 \begin{marginfigure}
 	\includegraphics{external/board_stacking.png}
 	\caption[CubeSat board stacking]{CubeSat board stacking. Taken from \cite{BoardSpecificationLibreCube}}
 \end{marginfigure}
 
-Nevertheless, this theoretically modular design often experiences compatibility or compliance issues, as subsystem interfaces and dimensions can be incompatible. Developers tend to face administrative difficulties and delays, because \acs{COTS} subsystem specifications are not publically available and are subject to change after new revisions. This is further exacerbated by an overall shift of the CubeSat industry focus towards entire CubeSat platforms, instead of individual subsystems.\footnote{Based on personal experience. Compare also, for example, past with current versions of \cite{CubesatNanosatProducts2020}.}
+Nevertheless, this theoretically modular design often experiences compatibility or compliance issues, as subsystem interfaces and dimensions can be incompatible. Developers tend to face administrative difficulties and delays, because \acs{COTS} subsystem specifications are not publicly available and are subject to change after new revisions. This is further exacerbated by an overall shift of the CubeSat industry focus towards entire CubeSat platforms, instead of individual subsystems.\footnote{Based on personal experience. Compare also, for example, past with current versions of \cite{CubesatNanosatProducts2020}.}
 
 \begin{table}[h]
 \begin{threeparttable}
@@ -871,7 +871,7 @@ Despite the high general failure rates, CubeSat mission success seems to be foll
 
 Some of the most common \emph{lessons learned} or recommendations for CubeSat developers to increase reliability include\footnote{Note that due to the academic nature of the published data, these tips are mostly skewed towards usefulness for academic missions, rather than industrial ones.}:
 \begin{itemize}[itemsep=-1ex]
-	\item Adequate time dedicated to \textbf{system-level testing}, with a beseline of 30--50\% of the overall project schedule to be dedicated to integration and verification
+	\item Adequate time dedicated to \textbf{system-level testing}, with a baseline of 30--50\% of the overall project schedule to be dedicated to integration and verification
 	\cite{swartwoutUniversityClassSpacecraft2023,venturiniImprovingMissionSuccess2017,langerReliabilityAssessmentReliability2018}\footnote{\citeauthor{venturiniImprovingMissionSuccess2017} further provides a list of system-level tests that are recommended to be performed for CubeSats: a command execution test, a day-in-the-life test, an end-to-end communications test, and a complete power system charge cycle \cite{venturiniImprovingMissionSuccess2017}.}.
 	\item Early evaluation of \textbf{project risk} and \textbf{potentially problematic components} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021}\footnote{This might involve, for example, performing a system-level \acs{FMEA} analysis in the very early design phases of a project.}.
 	\item Dedicating appropriate attention to \textbf{firmware and software development} \cite{venturiniImprovingMissionSuccess2017,sanchoLessonsLearnedFYS2021}.
@@ -1077,7 +1077,7 @@ These examples from the CubeSat sector seem to cover many lifecycle models defin
 			\item Phase B: Preliminary Definition
 			\item Phase C: Detailed Definition 
 			\item Phase D: Qualification and Production  
-			\item Phase E: Utilization 
+			\item Phase E: Utilisation
 			\item Phase F: Disposal
 		\end{itemize}
 	}
@@ -1102,11 +1102,11 @@ Based on the above, one should note that the line between different types of Cub
 
 
 The benefits and drawbacks of different lifecycle processes are also a topic of research.
-\citeauthor{honore-livermoreAcademicsPerceptionSystems2022} interviewed 18 academics participating in CubeSat research projects, and supports the more generic findings of \Cref{sec:INTRODUCTION_defining_systems_engineering}, claiming that a balance between \acs{SYE} benefit and overhead has to be identified, with smaller teams being less able to affort ``expensive'' processes \autocite{honore-livermoreAcademicsPerceptionSystems2022}. 
+\citeauthor{honore-livermoreAcademicsPerceptionSystems2022} interviewed 18 academics participating in CubeSat research projects, and supports the more generic findings of \Cref{sec:INTRODUCTION_defining_systems_engineering}, claiming that a balance between \acs{SYE} benefit and overhead has to be identified, with smaller teams being less able to afford ``expensive'' processes \autocite{honore-livermoreAcademicsPerceptionSystems2022}. 
 Different works explore the benefits of ``sequential-like'' \autocite{shiotaniEndtoEndDesignDevelopment2014,sanchoLessonsLearnedFYS2021,deckerSystemsengineeringAssessmentMultiple2016} and ``concurrent-like'' \autocite{labargeCubeSatAgileSystem2014,garzanitiEffectivenessScrumMethodology2019,segretPavingStonesInitial2014} approaches. Conversely, \citeauthor{honore-livermoreIntegratingAgileSystems2022} notes that Agile methods are suited to university projects \autocite{honore-livermoreIntegratingAgileSystems2022}, however no similar research covers industrial environments, to the author's knowledge.
 %segretPavingStonesInitial2014
 
-\newthought{Similarly,} existing literature covers some of the remaining aspects of \acl{SYE} for CubeSats\footnote{See \Cref{fig:i_sye_decomposition}.}, albeit again without consensus. \textbf{\acl{MBSE}} is a common theme, with a number of proposals for formal models \autocite{kaslowMissionEngineeringCubeSat2021,gateauOpensourceFrameworkConcurrent2021}, along with \textbf{risk management} \cite{honore-livermoreIntegratingAgileSystems2022}\footnote{Various levels of \acs{FMEA} are typically used for failure management}, \textbf{documentation} \autocite{nieto-peroyCubeSatMissionDesign2019} and \textbf{software-hardware co-validation} \autocite{honore-livermoreIntegratingAgileSystems2022,kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}\footnote{usually achieved through some form of \acf{HIL} platform.}. \citeauthor{honore-livermoreManagingProductDevelopment2021} place particular emphasis on the use and effectiveness of \textbf{software tools} in the course of CubeSat projects, noting that the latter are \emph{sociotechnical systems}, and that the tools used need to be both accessible, and supported by the project's management \autocite{honore-livermoreManagingProductDevelopment2021}.
+\newthought{Similarly,} existing literature covers some of the remaining aspects of \acl{SYE} for CubeSats\footnote{See \Cref{fig:i_sye_decomposition}.}, albeit again without consensus. \textbf{\acl{MBSE}} is a common theme, with a number of proposals for formal models \autocite{kaslowMissionEngineeringCubeSat2021,gateauOpensourceFrameworkConcurrent2021}, along with \textbf{risk management} \cite{honore-livermoreIntegratingAgileSystems2022}\footnote{Various levels of \acs{FMEA} are typically used for failure management}, \textbf{documentation} \autocite{nieto-peroyCubeSatMissionDesign2019} and \textbf{software-hardware co-validation} \autocite{honore-livermoreIntegratingAgileSystems2022,kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}\footnote{usually achieved through some form of \acf{HIL} platform.}. \citeauthor{honore-livermoreManagingProductDevelopment2021} place particular emphasis on the use and effectiveness of \textbf{software tools} in the course of CubeSat projects, noting that the latter are \emph{socio-technical systems}, and that the tools used need to be both accessible, and supported by the project's management \autocite{honore-livermoreManagingProductDevelopment2021}.
 
 \FloatBarrier
 \section{Sub-CubeSat Ecosystem}
@@ -1205,7 +1205,7 @@ Within the scope of this thesis, I have also conducted informal interviews and f
 Through these discussions, I noted the following information:
 \begin{itemize}[itemsep=-1ex]
 	\item All respondents have had at least one \acs{SCS} satellite launched and successfully operated in \acs{LEO}.
-	\item 3 respondents noted \emph{development time} as their main constaint, one respondent noted \emph{cost}, one responded noted \emph{reliability}, and one \emph{production capability}.
+	\item 3 respondents noted \emph{development time} as their main constraint, one respondent noted \emph{cost}, one responded noted \emph{reliability}, and one \emph{production capability}.
 	\item All respondents use some form of \textbf{iterative development} for their satellite, although the duration and scope of each iteration varies between a small amount of hardware models, and system-level rapid prototyping. No respondent follows a \emph{named} or strictly documented methodology\footnote{Such as Agile, Lean, Waterfall, \acs{ECSS} based etc.}. 3 respondents use an \emph{undocumented} form of methodology, where satellite revisions and processes are not formally kept track of. The 3 remaining respondents use some form of formal process or tool to document the system's development lifecycle and status, such as GitLab, Odoo (an \acs{ERP} tool), or Figma (a visual design tool) for revision representation.
 	\item 4 respondents have used elements from \acs{SYE} approaches similar to \textbf{CubeSat} approaches used in the literature or based on their previous experience. % this includes the high production capacity industry which is applicable to cubesats in general but I haven't found any literature specifically pointing to this
 	2 respondents are using highly iterative system-based approaches, which are generally considered impractical for CubeSat projects\footnote{Based on the understanding that it is impractical to perform more than 3 iterations on an entire CubeSat system}.
@@ -1284,7 +1284,7 @@ Through these discussions, I noted the following information:
 			Hardware development & Yes & Yes & Yes \\
 			User Interface & N/A & N/A & N/A \\
 			System integration test & Required & Required & Required \\
-			Neighboring systems & \multicolumn{3}{c}{Deployer/host, and launch vehicle} \\
+			neighbouring systems & \multicolumn{3}{c}{Deployer/host, and launch vehicle} \\
 			Safety \& Security & \multicolumn{3}{c}{Strict requirements from externals (e.g.~launch provider, regulators)} \\
 			\bottomrule
 		\end{tabular}
@@ -1299,7 +1299,7 @@ Through these discussions, I noted the following information:
 
 The earliest ideas about spacecraft miniaturisation to a mass below \SI{100}{\gram} started from attempts to miniaturise satellite avionics, as shown by \citeauthor{alkalaiIntegratedMicrospacecraftAvionics1996}'s \autocite{alkalaiIntegratedMicrospacecraftAvionics1996} 3D \ac{MCM} proposal.
 One of the first mentions of pocket-sized satellites was made by \citeauthor{jansonMassproducibleSiliconSpacecraft1999} in \citeyear{jansonMassproducibleSiliconSpacecraft1999} \autocite{jansonMassproducibleSiliconSpacecraft1999}, who proposed using Silicon as the structural material for a microchip-based \SI{10}{\centi\meter} earth observation satellite.
-%\citeauthor{jacksonReconfigurableMultifunctionalArchitecture2000} \autocite{jacksonReconfigurableMultifunctionalArchitecture2000} presented a deswign based on ``Multifunctional Structural Units'' 
+%\citeauthor{jacksonReconfigurableMultifunctionalArchitecture2000} \autocite{jacksonReconfigurableMultifunctionalArchitecture2000} presented a design based on ``Multifunctional Structural Units'' 
 % (no dimensions proposed, concept more akin to nano/pico-satellite?)
 A few years later, \citeauthor{dasilvacurielSpacecraftonachip2003} \autocite{dasilvacurielSpacecraftonachip2003} proposed a \qtyproduct{90 x 55}{\milli\meter} ``Spacecraft-on-a-Chip'' design called ``PalmSat'' \autocite{underwoodSCIENCEMISSIONSCENARIOS}.
 The proposed PalmSat design included solar cells generating \SI{2}{\watt} of power, a PIC microcontroller, a magnetorquer and reaction-wheel-based \acs{ADCS}, and space for a camera-based remote-sensing payload.
@@ -1340,7 +1340,7 @@ Manchester designed ``KickSat'', a crowd-funded mission to design and launch mul
 	\caption[``Sprites'' being deployed from the KickSat CubeSat, concept art.]{``Sprites'' being deployed from the KickSat CubeSat, concept art. Taken from \cite{manchesterKickSatYourPersonal2016}}
 \end{figure}
 
-The Sprites were atto-satelites based on a single-\acs{PCB} design, measuring \qtyproduct{3.5 x 3.5}{\centi\meter} and weighing \qtyproduct{5}{\gram}. They included solar cells, a transmitter, and a V-dipole antenna. KickSat had a capacity of 104 Sprites.
+The Sprites were atto-satellites based on a single-\acs{PCB} design, measuring \qtyproduct{3.5 x 3.5}{\centi\meter} and weighing \qtyproduct{5}{\gram}. They included solar cells, a transmitter, and a V-dipole antenna. KickSat had a capacity of 104 Sprites.
 A Sprite's development cost, as shown on the crowdfunding campaign, was close to \SI{300}{USD}\footnote{The crowdfunding campaign mentioned that launch costs were not covered by the raised funds.}, allowing supporters to purchase ``their own Sprite in space with [their] initials in its radio transmissions'' \autocite{manchesterKickSatYourPersonal2016}. 
 
 The Kickstarter crowdfunding campaign was successful, raising \SI{74586}{USD}.
@@ -1426,7 +1426,7 @@ The technology and applications of femto-scale and smaller satellites can also b
 \newthought{Recent launches}\label{sec:LITERATURE_debris} of femto-satellites and smaller objects in space have given rise to space debris and tracking concerns. Manchester's KickSat-2 mission was initially rejected by the \ac{FCC} on the grounds of increased risk due to lack of traceability \cite{FCCBigProblem2018,thenationalassociationforamateurradioKickSat2AliveBeing2019,nwekeKickSat2DismissalPrejudice2016}. KickSat-2 then sought a \acs{NASA} launch which shifted the responsible regulatory body.
 Another notable case was the one of \emph{Swarm Technologies}, a USA-based startup which attempted to launch four 1/4U spacecraft called \emph{SpaceBEEs}. Despite their attempts for improved tracking\footnote{Including a passive Ku-band radar reflector on each face and a planned GPS beacon}, their application was rejected again due to their small size \autocite{serafiniSWARMDismissalPrejudice2017}. Despite the rejection, Swarm did launch their spacecraft. This led to a halt in their next filing and a fine \autocite{harrisFCCAccusesStealthy2018}.
 
-Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion. \autocite{sperettaCubeSatsPocketQubesOpportunities2016} also analysed a combined PocketQube-CubeSat launch, and found that \acsp{TLE} were acquired for all launched spacecraft of different sizes, noting that PocketQubes and CubeSat experienced similar acquisition times, with the exception of a 1p PocketQube, for which data was aquired after 4 days instead of the average 1.
+Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion. \autocite{sperettaCubeSatsPocketQubesOpportunities2016} also analysed a combined PocketQube-CubeSat launch, and found that \acsp{TLE} were acquired for all launched spacecraft of different sizes, noting that PocketQubes and CubeSat experienced similar acquisition times, with the exception of a 1p PocketQube, for which data was acquired after 4 days instead of the average 1.
 
 \FloatBarrier
 \section{Topics from Systems Engineering}
@@ -1572,7 +1572,7 @@ I note that often synonymous terminology is used in methodology definitions and 
 Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.
 
 The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. Meta-analyses performed against case studies, surveys and experiments, have found that the correct application of Agile methodologies can reportedly reduce project management inertia and increase developer and customer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}.
-Criticism against Agile is often targetted towards incorrect implementations.
+Criticism against Agile is often targeted towards incorrect implementations.
 Scrum, one of the most popular Agile frameworks, has faced criticism both for its foundation, and due to its potential for misuse \autocite{tsalicoglouHowTransitionAgile2017,bjornDarkAgilePerceiving2019,grayCriticismScrum2015}.\marginnote{\citeauthor{kustersScreamGuide2020,jeffriesDarkScrum2016} \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} have notably produced tongue-in-cheek documentation demonstrating common incorrect applications of the Scrum approach.}
 
 The success of Agile in software engineering has encouraged its adoption in the engineering and development of physical products. The main obstacle that has to be overcome are what are referred to as ``\acp{COP}''  \autocite{schmidtAgileDevelopmentConstraints2017,petersonWhenWorldsCollide2021}.
@@ -2211,7 +2211,7 @@ After the activities of the Sprint have been defined, the next question is \emph
 
 The Scrum Guide \cite{schwaverDefinitiveGuideScrum2020} defines a \emph{Definition of Done} as a shared understanding of the \emph{quality measures that a product should meet at the end of a Sprint}. In practical terms, the Definition of Done may be a list of requirements or features different for each Sprint\footnote{Original Scrum links the Definition of Done to a single increment, nothing that a Sprint may contain one or more increments. However, for simplicity, I will consider here that a Sprint produces a single increment.}, or a common checklist of actions that need to have been completed.
 
-The Definition of Done is linked to the \emph{Sprint Goal}, which is a \textbf{single objective} that the team needs to achive during the Sprint. The singularity of the goal implies that it can be described in one single sentence. 
+The Definition of Done is linked to the \emph{Sprint Goal}, which is a \textbf{single objective} that the team needs to achieve during the Sprint. The singularity of the goal implies that it can be described in one single sentence. 
 
 The Definition of Done and Sprint Goal are agreed upon at the \emph{sprint planning} phase of each iteration, and usually refer to characteristics of the entire product. The more specific work packages that need to be completed during the Sprint are defined as items of \textbf{backlogs}, which are ordered lists of ``what is needed to improve the product''. The set of all work packages related to a product are listed in the Product Backlog, and then copied to the Sprint Backlog during the planning phase. It is then the responsibility of the developers to advance the development of the product by implementing specific Sprint Backlog items. In the case of \acs{SCS} engineering, the Definition of Done and Sprint Goal can be typically linked to the success of the performed functional and environmental verification campaigns, which in turn verify that specific requirements are complied to.
 
@@ -2709,7 +2709,7 @@ In this section, I will go into more detail on the decisions behind selecting an
 \label{sec:METHODOLOGY_defining_design_solution}
 
 The \acs{NASA} Systems Engineering Handbook \autocite{sheaNASASystemsEngineering2020}
-defines a ``design solution definition process [that translates] high-level requirements [...] and the outputs of the Logical Decompisition Process into a design solution''. In Design Research (\Cref{def:design_research}), a ``design solution'' can be defined as a ``description or set of instructions to make something''\footnote{Also see \Cref{def:design}.} \autocite{loveDefinitionDesign2015}.
+defines a ``design solution definition process [that translates] high-level requirements [...] and the outputs of the Logical Decomposition Process into a design solution''. In Design Research (\Cref{def:design_research}), a ``design solution'' can be defined as a ``description or set of instructions to make something''\footnote{Also see \Cref{def:design}.} \autocite{loveDefinitionDesign2015}.
 From a formal point of view, a Design Space can be defined as the set of all possible design solutions that satisfy a set of requirements; then, the process of Design Space Exploration selects a specific design solution that seems the most ``optimal'' based on project-specific criteria (such as cost, performance, or value). Different methods have been proposed since the mid-20\textsuperscript{th} century both to evaluate different design solutions, and to achieve the highest possible coverage of the design space during the exploration process  \autocite{griesMethodsEvaluatingCovering2004}.
 
 CubeSat projects have traditionally followed less formal approaches to design \autocite{sousaCubeSatDevelopmentFramework2021}. The \acs{NASA} \acs{SYE} handbook defines the following steps to defining a design solution \autocite[66]{sheaNASASystemsEngineering2020}:\footnote{Presented here simplified}
@@ -2718,7 +2718,7 @@ CubeSat projects have traditionally followed less formal approaches to design \a
 	\item Analyse each design solution
 	\item Select the best alternative
 	\item Verify the solution
-	\item If needed, repeat this process for lowel-level products
+	\item If needed, repeat this process for lower-level products
 \end{enumerate}
 
 Based on the above, the two main questions that need to be answered when defining a design solution are:
@@ -2756,7 +2756,7 @@ Within the context of the \acs{SCS} methodology, the design solution definition 
 \begin{margindefinition}[Timebox]
 	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
 \end{margindefinition}
-Depending on the project, the \acs{CDE} sessions can follow a formal, tool-based structure, or an informal approach, where information is stored in documents or directly insterted into domain-specific models, where available. An important aspect is to keep these sessions timeboxed, as the primary strategy of generating information in Agile methodologies is through experimentation, and not up-front design. The resolution of the \acs{CDE} result can be better than a high-level subsystem specification, but needs not answer low-level questions that can be handled by engineers as part of their daily work.
+Depending on the project, the \acs{CDE} sessions can follow a formal, tool-based structure, or an informal approach, where information is stored in documents or directly inserted into domain-specific models, where available. An important aspect is to keep these sessions timeboxed, as the primary strategy of generating information in Agile methodologies is through experimentation, and not up-front design. The resolution of the \acs{CDE} result can be better than a high-level subsystem specification, but needs not answer low-level questions that can be handled by engineers as part of their daily work.
 
 \paragraph[On Big Design Up-Front]{On \acf{BDUF}}
 Since common practices and the \acs{SCS} methodology separate design into more than one iteration, a question that often comes up is \emph{``how much time to spend on initial design''}.
@@ -2804,7 +2804,7 @@ This stochastic process for a single product iteration can be modelled as an abs
 \end{figure}
 
 % simplified mathematical model can be created to describe the design--verification--rework cycle, based on the possibility of defects unidentified during the design.
-For this model, I am making the folowing assumptions:
+For this model, I am making the following assumptions:
 \begin{itemize}[itemsep=-1ex]
 	\item A first transient state, \textbf{\emph{``Design''}}, represents the completion of the initial engineering effort to produce the iteration's result.
 	
@@ -3108,7 +3108,7 @@ For \acs{SCS}, modularity presents more challenges, as it introduces constraints
 \begin{itemize}
 	\item In a PC/104 board, the 104-pin connector covers \qtyproduct{6 x 0.8}{cm} of the \qtyproduct{9.6 x 9.0}{cm} board, taking up \qty{5.6}{\percent} of the available area, even though all 104 pins are rarely used \autocite{BoardSpecificationLibreCube}.
 	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt} \footnote{Assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
-	\item Most standard CubeSat packages separate the \emph{\acf{COMMS}} and \emph{\ac{OBDH}} functions into different boards, in order to accomodate the required flexibility of supporting different communication schemes and different subsystem vendors respectively. However, recent single-purpose missions have combined \ac{COMMS} and \ac{OBDH} into a single board, as \ac{OBDH} functionality is not usually resource-intensive.
+	\item Most standard CubeSat packages separate the \emph{\acf{COMMS}} and \emph{\ac{OBDH}} functions into different boards, in order to accommodate the required flexibility of supporting different communication schemes and different subsystem vendors respectively. However, recent single-purpose missions have combined \ac{COMMS} and \ac{OBDH} into a single board, as \ac{OBDH} functionality is not usually resource-intensive.
 \end{itemize}
 While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve implementing different levels of modularity across different system modules.
 
@@ -3218,7 +3218,7 @@ This paragraph will enumerate further low-level design guidelines based on lesso
 	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs{TID} effects are typically less severe than random \acs{SEE} effects.}
 	Due to the general lack of statistics to evaluate the criticality and reliability effects of different choices, it is not always possible to confidently assert whether an amount of risk aversion is ``enough'' or not\footnote{Although it is generally possible to assert whether risk decreases after the implementation of a reliability measure.}.
 
-	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accomodated by the system's requirements. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other risk-reduction measurements.
+	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accommodated by the system's requirements. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other risk-reduction measurements.
 
 	One proposed risk mitigation solution is the execution of a system-level \acs{FMEA} at the beginning of a project, and its revision at the beginning of every iteration. System-level \acsp{FMEA} start from evaluating the top-level subsystems and critical components of the product tree\footnote{It is important to follow a top-down approach when executing a \acs{FMEA} analysis, by starting with an overview of the design, instead of trying to enumerate possible failures based on experience. Subsystems and components usually have limited failure modes (e.g.\@ unacceptable performance, temporarily inoperable, permanently inoperable, ``babbling idiot''-type faults) which can be enumerated for each and are listed in pre-made databases}, but do not go into detail on each component.
 	Within the context of \acs{SCS}, they can be performed in an informal fashion\footnote{An informal \acs{FMEA} can be converted to an informal \acs{FMECA} by integrating failure probability rates of subsystems based on lessons learned from past missions, or available CubeSat reliability surveys.}.
@@ -3350,7 +3350,7 @@ There is significant benefit to automating the functional testing processes. The
 Self-contained and automated test runs can be performed both during and at the end of a Sat-Scrum iteration. A fully automated test-suite, executing both unit and integration tests \autocite{myersArtSoftwareTesting2012}, can be part of the \acs{CI}/\acs{CD} process that can be executed automatically after every software modification, or by manual trigger when there are hardware modifications. When designed correctly, such a test suite should be completed in a limited amount of time, allowing multiple executions per day. Ideally, automated testing should verify the \textbf{combination of hardware and software} which is best done through a \textbf{\acf{HIL} setup} \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}.
 
 
-However, one has to take care with the additional overhead added by implementing automated solutions, when a manual process can suffice. When a test case requires, for example, changing the hardware configuration or cable connections of the \acs{DUT}, the developers have to consider whether it is more beneficial to automate this process, keep working maually, or forego the test for some iterations.%\marginnote{These calculations can be easily made using unit-aware calculators. For example, if a process takes \(t_m\) time to execute manually, \( t_a \) to automate, then it makes sense to automate when a project lasts more than \( \frac{t_a}{t_m} \) iterations.}
+However, one has to take care with the additional overhead added by implementing automated solutions, when a manual process can suffice. When a test case requires, for example, changing the hardware configuration or cable connections of the \acs{DUT}, the developers have to consider whether it is more beneficial to automate this process, keep working manually, or forego the test for some iterations.%\marginnote{These calculations can be easily made using unit-aware calculators. For example, if a process takes \(t_m\) time to execute manually, \( t_a \) to automate, then it makes sense to automate when a project lasts more than \( \frac{t_a}{t_m} \) iterations.}
 This decision can often be made with back-of-the-envelope calculations on unit-aware calculators; however, care has to be taken, when estimating the manual effort required for a process, to consider reruns that may not be part of the original testing plan.
 %\footnote{This can often leave to seemingly counter-intuitive results. If, for example, a process takes 30 minutes to execute manually, is executed twice per iteration, and would take 6 hours to automate, it would make sense to automate when a project lasts more than \( \frac{\SI{6}{hours}}{2\cdot \SI{30}{minute}} =  6\) iterations.}.
 
@@ -3467,7 +3467,7 @@ In this architecture, program memory is split into two halves, one holding the w
 \subsection[Improving SCS Software Reliability]{Improving \acs{SCS} Software Reliability}
 \label{sec:METHODOLOGY_software_reliability}
 
-Owing to the prominence of the software engineering field, significant research has been performed on the factors affecting software reliability. A \citeyear{zhuComparisonAnalysisEnvironmental2015} survey of software practicioners identified 32 environmental factors affecting software reliability, which span specification, testing, programmer skill, standards, and technologies used \autocite{zhuComparisonAnalysisEnvironmental2015}. Specifically for flight software, a \citeyear{prokopSoftwareErrorIncident2024} analysis of 55 aerospace software errors categorised their causes into:%
+Owing to the prominence of the software engineering field, significant research has been performed on the factors affecting software reliability. A \citeyear{zhuComparisonAnalysisEnvironmental2015} survey of software practitioners identified 32 environmental factors affecting software reliability, which span specification, testing, programmer skill, standards, and technologies used \autocite{zhuComparisonAnalysisEnvironmental2015}. Specifically for flight software, a \citeyear{prokopSoftwareErrorIncident2024} analysis of 55 aerospace software errors categorised their causes into:%
 
 \begin{enumerate}[itemsep=-1ex]
 	\item An unexpected combination of states, which may be individually tested, but their combination is not,
@@ -3508,7 +3508,7 @@ Unfortunately, \acs{SCS} projects do not have control over some of the parameter
 \end{itemize}
 \end{multicols}
 
-A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This observation has been modeled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
+A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This observation has been modelled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
 
 \begin{marginfigure}
 \begin{tikzpicture}
@@ -3581,7 +3581,7 @@ Additional testing methods that increase confidence in the design include:
 	\item \textbf{Model Checking}, which tries to prove that a program is correct by logically exploring its theoretical state space \autocite{beyerSoftwareVerificationTesting2017}.
 \end{enumerate}
 
-While the benefits of testing are well understood, software quality assurance has historically met a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situtation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
+While the benefits of testing are well understood, software quality assurance has historically met a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
 
 \newthought{Therefore}, the recommendations for software testing within the context of \acs{SCS} entail finding an optimal point between effort spent testing and reliability improvements. Indicatively, they can involve:
 \begin{enumerate}
@@ -3593,7 +3593,7 @@ While the benefits of testing are well understood, software quality assurance ha
 	\item \textbf{Implementing static analysis tools}, which can assist the code review process by identifying non-compliances to accepted best practices. Many static analysis tools can be used as ``drop-in'' plugins to standard \acs{CI}/\acs{CD} pipelines.
 	\item \textbf{Attempting to reach maximum test coverage}, as coverage is one of the metrics typically correlated with defect rate.\marginnote{While coverage can be simply evaluated in plain \acs{SW} testing, embedded systems are not instrumented to share this information by default. To that end, \citeauthor{tsiodrasCoverMe2016} provides a hardware-agnostic coverage generation method based on the gdb debugger \autocite{tsiodrasCoverMe2016}.}
 	\item \textbf{Automating the testing process}: The functional requirements of \acs{SCS} usually involve simple functions, and most can be evaluated by plain protocols and processes, such as nominal \acs{TMTC}. This makes \acs{SCS} functional testing suitable for \acf{RPA} methods, where data transfer, analysis and event 
-	trigerring are performed by an automated process \autocite{hofmannRoboticProcessAutomation2020}. The availability of ready-to-use automation tools also reduces the developer effort needed to automate this process.
+	triggering are performed by an automated process \autocite{hofmannRoboticProcessAutomation2020}. The availability of ready-to-use automation tools also reduces the developer effort needed to automate this process.
 	\item \textbf{Focus on integration testing before unit testing}, as, based on project experience, most errors are usually observed on the boundaries of components and the interactions between them. This includes a special focus on \textbf{external interfaces} that are attached to a spacecraft.
 \end{enumerate}
 
@@ -3814,7 +3814,7 @@ The selected frameworks are characterised by a similar order-of-magnitude in ter
 \end{table}
 
 \FloatBarrier
-\subsection[Miscalleneous Software Topics]{Miscellaneous Software Topics}
+\subsection[Miscellaneous Software Topics]{Miscellaneous Software Topics}
 \label{sec:METHODOLOGY_misc_software}
 
 \paragraph{Communication Stack}
@@ -3827,7 +3827,7 @@ CubeSat developers have therefore traditionally relied on custom (in-house) or g
 The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, making these satellites resemble more \ac{IOT} devices than spacecraft.
 The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem \autocite{khalighiSurveyFreeSpace2014}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
 
-I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be furter derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
+I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be further derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
 
 \begin{table*}[h]
 \caption[][1ex]{Communication protocols typically used in CubeSats and pocket-sized spacecraft}
@@ -3952,7 +3952,7 @@ Finally, developers should consider solutions to reduce the data volume that nee
 Since the mid-2020s, \acs{AI}-assisted software development has become prevalent, through the use of \acfp{LLM} trained on publically available source code repositories.
 \acs{AI} tools\footnote{Running on the cloud or locally} can offer assistance ranging from code completion to generation of code structures and architectures. The training set of coding models usually contains embedded firmware for popular platforms, making them suitable for typical \acs{SCS} software development.
 
-Initially, the use of generative \acs{AI} seems attractive for \acs{SCS} software, as it can easily generate large amounts of base code with less effort from developers. However, the quality and safety of generated code for use in mission-critical systems is still under investigation in research. A \citeyear{liuEmpiricalStudyCode2024} empirical study on three software problems found that ``the current language understanding and generation capabilities of the LLMs are not sufficient to generate complete functional code from highly specialized domain requirements'' \autocite{liuEmpiricalStudyCode2024}. The researchers found that, by default, the generated code from the specification may be incomplete and non-compliant to safety standards\footnote{In this case, the MISRA C standard.}. However, they noted that augmented prompts following a defined procedure can improve code quality.\marginnote{In \cite{liuEmpiricalStudyCode2024}, \citeauthor{liuEmpiricalStudyCode2024} compared \acs{LLM} code generation with model-based code generation, concluding that the latter requires a large investment of developer time and requires a correct model a priori.}
+Initially, the use of generative \acs{AI} seems attractive for \acs{SCS} software, as it can easily generate large amounts of base code with less effort from developers. However, the quality and safety of generated code for use in mission-critical systems is still under investigation in research. A \citeyear{liuEmpiricalStudyCode2024} empirical study on three software problems found that ``the current language understanding and generation capabilities of the LLMs are not sufficient to generate complete functional code from highly specialised domain requirements'' \autocite{liuEmpiricalStudyCode2024}. The researchers found that, by default, the generated code from the specification may be incomplete and non-compliant to safety standards\footnote{In this case, the MISRA C standard.}. However, they noted that augmented prompts following a defined procedure can improve code quality.\marginnote{In \cite{liuEmpiricalStudyCode2024}, \citeauthor{liuEmpiricalStudyCode2024} compared \acs{LLM} code generation with model-based code generation, concluding that the latter requires a large investment of developer time and requires a correct model a priori.}
 
 In \citeyear{tihanyiHowSecureAIgenerated2025}, \citeauthor{tihanyiHowSecureAIgenerated2025} compared state-of-the-art \acsp{LLM} and found that 62\% of the generated C programs included at least one security vulnerability, such as a buffer overflow or dereference failure \autocite{tihanyiHowSecureAIgenerated2025}.
 
@@ -4053,7 +4053,7 @@ The methodology presented in \Cref{chap:METHODOLOGY} does not constitute a ``one
 Practitioners are encouraged to pick methods suited to their projects (for example, selecting between a system-level or partition-level iteration approach), or internally tailor each method to the degree necessary.
 
 In general, tailoring is not uncommon for Agile methodologies. \citeauthor{campanelliAgileMethodsTailoring2015} analysed 56 studies about Agile method tailoring \autocite{campanelliAgileMethodsTailoring2015}. 
-They found that the identification of main environmetal criteria, as defined by \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013}, is a common first step in the tailoring process.
+They found that the identification of main environmental criteria, as defined by \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013}, is a common first step in the tailoring process.
 \textbf{Method engineering} is the main tailoring approach used thereafter. \citeauthor{fitzgeraldEmpiricalStudySystem} have defined an approach to method engineering, which suggests that ``methods be represented as discrete predefined and pretested components'', making a method engineer/administrator responsible for selection of the appropriate ones \autocite{fitzgeraldEmpiricalStudySystem}. This is not unlike the approach already proposed in this work.
 
 \citeauthor{xuUsingProcessTailoring2008} have proposed a slightly different process-tailoring strategy, mainly focused for software engineering applications \autocite{xuUsingProcessTailoring2008}.
@@ -4345,7 +4345,7 @@ For ChipSat-1, the available space allowed us to implement two ``secondary'' par
 
 \marginnote{In technical documentation, I refer to the primary as ``\texttt{212}`` and the secondaries as ``\texttt{211A}``, ``\texttt{211B}``, showing a three-part ratio that starts with a common denominator and the horizontal \& vertical sizes.}
 
-The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \acs{PIN} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcasted) by the secondaries unidirectionally, consisting of status information and sensor measurements.
+The main components comprising the payload are red \acs{COTS} \ac{LED} emitters placed on the secondaries, and two \acs{PIN} photodiodes (one for each secondary) placed on the primary. Information is transmitted (broadcast) by the secondaries unidirectionally, consisting of status information and sensor measurements.
 
 Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK}) to transmit bytes, each bit corresponding to one symbol, with Manchester code applied\footnote[][-2.5cm]{\emph{Manchester code} describes a pattern where one bit is encoded as low, then high, or high, then low. This guarantees that every symbol will have at least one bit transition. While this code reduces bit rate to half, it \begin{enumerate*}
 		\item guarantees that no \ac{DC} component remains in the output signal, allowing easy high pass filtering to reduce the influence of ambient light (mainly sunlight);
@@ -4358,7 +4358,7 @@ To make the design highly configurable without physical modifications, all proce
 The signal path of the received pulses was first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also took place in software. Bit synchronisation to the transmitter's clock happened by detecting the edges of the transmitted Manchester code, while frame synchronisation was performed by waiting for a synchronisation word.
 
 At a system level, the secondaries transmitted data at periodic \qty{1.5}{\second} intervals, while the primary was constantly waiting for data reception.
-Once data is received, its integrity was checked and stored on the on-board \ac{NVM}. A statistical aggregation was then broadcasted by the primary over the main periodic \acs{RF} beacon.
+Once data is received, its integrity was checked and stored on the on-board \ac{NVM}. A statistical aggregation was then broadcast by the primary over the main periodic \acs{RF} beacon.
 
 \begin{figure*}
 	\centering
@@ -4743,7 +4743,7 @@ While the environmental tests were successful without any issues, functional tes
 
 Environmental tests were repeated in an external facility for the 5\textsuperscript{th} iteration, this time functioning as acceptance tests, which were also required by our host provider. Following the successful results, our host integrated ChipSat-1 into their spacecraft.
 
-During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in conversation with our host, we also designed and manufactured (externally) the aluminum mechanical structure that would serve as the interface between the host spacecraft's exterior and our ChipSat.
+During the 3\textsuperscript{rd} and 4\textsuperscript{th} iterations, and in conversation with our host, we also designed and manufactured (externally) the aluminium mechanical structure that would serve as the interface between the host spacecraft's exterior and our ChipSat.
 % The second iteration was made due to a change in requirements for this interface (??)
 
 \begin{figure}
@@ -5001,7 +5001,7 @@ The AI4Space payload contained no Attitude Control, Communications, or Electrica
 \end{figure}
 All other functions were covered by a \emph{Raspberry Pi Zero 2W}, serving as the system's \acf{OBC} and Payload Data Processor. The Raspberry Pi was chosen as a ready-to-use \acs{COTS} platform that essentially acts as a complete \acs{OBC}, and reduces the complexity of hardware design for a microcontroller. An additional benefit was the higher available set of programming languages or tools, seen as positive within the context of multiple software developers for the project. 
 
-The incorporation of a Raspberry Pi implies the implementation of a complete base Linux system. This is usually a disadvantage in pocket-sized spacecraft due to the absence of real-time software and the higher energy consumption. However, given AI4Space's form as a payload and the available power consumption allowance, these disadvantages were not coonsidered severe in favour of the additional convenience, tools, libraries and functions available in a Linux environment, especially considering the need for multiple software developers to be involved in the project. In fact, while most CubeSat projects rely on low-footprint \acp{MCU} for processing needs, Linux boards have found their place in some payload units \autocite{chronasUpsat_msc_thesis2017}.
+The incorporation of a Raspberry Pi implies the implementation of a complete base Linux system. This is usually a disadvantage in pocket-sized spacecraft due to the absence of real-time software and the higher energy consumption. However, given AI4Space's form as a payload and the available power consumption allowance, these disadvantages were not considered severe in favour of the additional convenience, tools, libraries and functions available in a Linux environment, especially considering the need for multiple software developers to be involved in the project. In fact, while most CubeSat projects rely on low-footprint \acp{MCU} for processing needs, Linux boards have found their place in some payload units \autocite{chronasUpsat_msc_thesis2017}.
 
 AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicroservices2015}, each responsible for one part of the payload's operation or mission. These microservices were written in Python and interfaced through the RabbitMQ message broker.
 
@@ -5364,7 +5364,7 @@ POQUITO was developed in order to demonstrate the operation of a ChipSat in orbi
 	POQUITO's \acs{ADCS} was based on a 9-axis \acf{IMU} and four sun sensors (placed on each side) used for attitude determination. The actuators used were three magnetorquers (one for each axis) in the form of current loops embedded in 4 \acs{PCB} layers each \autocite{anforowiczMagnetorquerCalc2026}. The \acs{ADCS} behaviour was modelled and simulated through a Model-In-The-Loop simulation in MATLAB, with a B-dot controller used for detumbling.
 \end{enumerate}
 
-Owing to the availability of open-source PocketQube buses and the small number of engineers on our team, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including baseplate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accomodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
+Owing to the availability of open-source PocketQube buses and the small number of engineers on our team, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including baseplate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accommodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
 
 \begin{figure}[h]
 	\includegraphics{media/graphics/Block_POQUITO}
@@ -5661,7 +5661,7 @@ A list of lessons learned that were gathered by the entirety of the team after t
 	\item The iterative design approach seemed to perform successfully, as we did not discover any major non-conformances in the developed hardware, and managed to successfully qualify and acceptance-test the system. This was perhaps supported both by the heavy reuse of previous designs (both external and in-house), and the larger experience of the team, based on the two previous missions, and demonstrating a lesser need for a ``\acl{BDUF}''-based approach. The first iteration (``\texttt{v0}''), consisting of a partition of QUBIK parts only, provided experience to the team and allowed them to familiarise themselves with the satellite integration process and connections.
 	\item Roughly 30\% of the project time was spent on project management activities, which were mainly devoted to regulatory aspects\footnote{Related to national launch requirements, communication authorisations, insurance, and re-entry analysis.}. These preparations also involved orbital analysis, in order to guarantee a safe re-entry after at most 3 years, and establish that the satellite can be tracked (\Cref{sec:LITERATURE_debris}).
 	
-	Regulatory requirements can vary by country, but will be significantly easier when support can be afforded by an experienced party. Especially for frequency licensing, the documentation available freely is scarce, and the licensing process is heavily bureaucratic, requiring the coordination between various national and international entities (mainly \acs{ITU}, \acs{IARU}, local radio-amateur societies, and logal regulation authorities). Complying with space debris or launch regulations may require a similar process.
+	Regulatory requirements can vary by country, but will be significantly easier when support can be afforded by an experienced party. Especially for frequency licensing, the documentation available freely is scarce, and the licensing process is heavily bureaucratic, requiring the coordination between various national and international entities (mainly \acs{ITU}, \acs{IARU}, local radio-amateur societies, and local regulation authorities). Complying with space debris or launch regulations may require a similar process.
 
 	CubeSat literature strongly encourages teams to not consider legal and regulatory aspects as an afterthought, and devote enough time early in the project to handle them \autocite{kinnairdSelectionLessonsLearned2022}. As \ac{LEO} becomes more crowded, the ``failure rate'' of this process starts increasing, as governments are becoming more unwilling to launch objects in space. As a result, future operators should consider regulatory compliance at system level, during early design: For example, acquiring a radio-amateur license will require a radio-amateur payload, while space debris regulation might limit the acceptable launch altitudes.
 \end{itemize}
@@ -5874,7 +5874,7 @@ The assembly (soldering) of the boards was performed through an in-house reflow 
 
 \newthought{The results} of an off-board processing experiment are shown in \Cref{fig:c_chipysat_results}, and demonstrate the successful application of the DiffuserCam process in terms of hardware and software. In this experiment, the image capture was performed entirely by the ChiPySat lens-less camera and processor, with the data transferred to a desktop computer via \acs{USB}. However, the processing (deconvolution) of the image took place in the computer, and not the satellite.
 
-For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the MicroPython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of 1.\@ a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; 2.\@ the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and 3.\@  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
+For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the MicroPython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of 1.\@ a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; 2.\@ the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and 3.\@  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. Despite multiple optimisation attempts, the platform as-is could only successfully accommodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
 
 Resolving the reduced performance issue was one of the key goals of the second ChiPySat iteration, for which we decided to implement the following measures:
 \begin{itemize}[itemsep=-2ex]
@@ -5956,7 +5956,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	\item \textbf{Bypassing structural/thermal analysis}:
 	Similar to the previous case studies (\Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation,sec:CASESTUDIES_poquito_lessons}), combined with the relatively simple \acs{PCB}-based configuration of the spacecraft.
 	\item \textbf{External manufacturing}:
-	Early in the mission, we considered the trade-off between in-house and external \acs{PCB} assembly, comparing different available options. We decied to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
+	Early in the mission, we considered the trade-off between in-house and external \acs{PCB} assembly, comparing different available options. We decided to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
 
 	\item \textbf{Iterative multi-step development}:
 	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in up-front design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
@@ -6076,7 +6076,7 @@ Before performing a statistical analysis, it must be understood that, due to the
 Consequently, the above problem statement can be answered by the following statistical tests: \autocite{chiccoSimpleGuideUse2025}
 \begin{itemize}[itemsep=-2ex]
 	\item The \textbf{Student's \emph{t}-test}, which evaluates whether the difference between the response of two groups is statistically significant. The \(t\)-test assumes that the test statistic follows a normal distribution. It tests the null hypothesis that the two groups have equal means.
-	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parameteric} and makes no assumption about the distribution of the underlying data. It tests the null hypothesis that the distributions of the two groups are identical.
+	\item The \textbf{Mann---Whitney \emph{U} test} which evaluates if two groups have the same distribution. In contrast to the \(t\) test, it is \emph{non-parametric} and makes no assumption about the distribution of the underlying data. It tests the null hypothesis that the distributions of the two groups are identical.
 	The test is considered consistent when there is a higher probability that observations from one group are larger than observations the other, and it can be used for low sample sizes \autocite{happOptimalSampleSize2019}.
 \end{itemize}
 %\marginnote{The Mann---Whitney test can be more or less robust compared to the \(t\)-test, depending on the distribution of the data \cite{zimmermanInvalidationParametricNonparametric1998}. As such, I present both analyses here for completeness.}
@@ -6273,7 +6273,7 @@ Each treatment can be evaluated as follows:
 	\item \textbf{Robust software framework}:
 	The selection of a robust software framework has a varied effect on development time based on the project requirements and hardware, without any effects on cost, and a universal reduction in perceived risk.
 	\item \textbf{\acf{RPA}}:
-	The use of \acl{RPA} can incure an increase in development time for some projects, with no changes in cost, and a universal reduction in perceived risk.
+	The use of \acl{RPA} can incur an increase in development time for some projects, with no changes in cost, and a universal reduction in perceived risk.
 \end{enumerate}
 
 A summary of these results, along with the identified causal links, is shown in \Cref{tab:d_new_statements}.
@@ -6306,7 +6306,7 @@ Based on the aggregate results of \Cref{tab:c_aggregate_data,tab:stat_results}, 
 \begin{enumerate}[itemsep=-1pt]
 	\item The \textbf{development time} of a project shows a clear \textbf{correlation} with the level of the \acs{SCS} methodology applied. One of the clearest drivers of development time reduction is the selection of a multi-step methodology, which foregoes a typically long \acs{BDUF} design step, especially when combined with minor optimisations in the programmatic and technical aspects of development. While not all treatments have a definitively positive effect on development time, a general reduction trend can be observed. The Mann-Whitney \( U \) test shows a statistically significant difference, with an average reduction of \qty{40.7}{\percent}.
 	\item The development \textbf{cost}\footnote{This cost does not include labour, insurance, ground segment or asset costs. See \Cref{sec:LITERATURE_cubesat_environment} for the relevant explanation.} of a project is \textbf{not correlated} to the full application or not of the \acs{SCS} methodology. Most iterative methods that are applied on physical systems tend to increase costs. However, this is highly affected by the project context, and especially different allocations on budget categories.
-	\item The project \textbf{risk} shows \text{no statistically significant correlation} to the application or not of the \acs{SCS} methodology. While \Cref{fig:c_plot_box_risk} shows a general trend of risk reduction after applying the \acs{SCS} methodology, clearer results are shown in \Cref{fig:c_plot_specific_sensitivity_risk}, where it is shown that \acs{SCS} methods are generaly evenly divided between perceived risk increase, decrease, or project-specific behaviour.
+	\item The project \textbf{risk} shows \text{no statistically significant correlation} to the application or not of the \acs{SCS} methodology. While \Cref{fig:c_plot_box_risk} shows a general trend of risk reduction after applying the \acs{SCS} methodology, clearer results are shown in \Cref{fig:c_plot_specific_sensitivity_risk}, where it is shown that \acs{SCS} methods are generally evenly divided between perceived risk increase, decrease, or project-specific behaviour.
 
 	The adoption or not of specific methods can be perceived as a trade-off between time and risk, as shown in \Cref{fig:c_tradeoff_chipsat1,fig:c_tradeoff_ai4space,fig:c_tradeoff_poquito,fig:c_tradeoff_chipysat}.
 	A ``naively assumed'' correlation would expect that higher development time reduces perceived risk. While some treatments do follow this trend, this is not universally true. Notable examples of this are treatments \#6 and \#7, which involve decisions related to software and automation.
@@ -6338,7 +6338,7 @@ The classification of potential \acs{SCS} systems engineering shortcomings was m
 
 \researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address a selection of the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
 
-Due to the existence of previous literature and the difficulty of quantitively reasoning about reliability and cost, I have selected \emph{development time} as the optimisation target for a new \acs{SYE} methodology, with an addititional requirement to not increase technical risk. Previous work from the \acl{SYE}, CubeSat and PocketQube domains has indicated that development time and reliability can be heavily influenced by the systems engineering and systems design approaches used.
+Due to the existence of previous literature and the difficulty of quantitatively reasoning about reliability and cost, I have selected \emph{development time} as the optimisation target for a new \acs{SYE} methodology, with an additional requirement to not increase technical risk. Previous work from the \acl{SYE}, CubeSat and PocketQube domains has indicated that development time and reliability can be heavily influenced by the systems engineering and systems design approaches used.
 
 \Cref{chap:METHODOLOGY} presents a tailored methodology for \acs{SCS}, based on the principles of Agile software engineering, which covers different aspects of the development of pocket-sized systems. The validity of this methodology, and whether it can address the identified shortcomings, is evaluated in \Cref{sec:CASESTUDIES_results}, through causal and counter-factual analyses, based on data from four case studies. The results show that the appropriate selection of a methodology can reduce total development time by an average of 40\%, even when considering different types of projects, without an upwards change in technical risk.
 The development time of the case studies was approximately one year.
@@ -6346,7 +6346,7 @@ These results are supported by the understanding of the causal effects of each p
 
 \pagebreak[4]
 \researchquestion{RQ4}{Is the \ac{SYE} methodology developed in \texttt{RQ3} effective in practical scenarios?}
-This research question involves the generalisation of the results of \texttt{RQ3}. Through the four case studies performed, I attempted to cover different mission types (payloads, \acs{PCB}Sats, a PocketQube) that encompass a large set of typical project requirements.  This is supported by the analysis performed in \Cref{sec:CASESTUDIES_results}, showing changes in the measured metrics that are heavily dependent on the methodology used, and not on each specific project. Nevetherless, the number of the case studies is not large enough to take into account all possible parameters and external factors, meaning that more data would be necessary to completely answer \texttt{RQ4}. Therefore, I will consider that the answer to this question is potentially positive.
+This research question involves the generalisation of the results of \texttt{RQ3}. Through the four case studies performed, I attempted to cover different mission types (payloads, \acs{PCB}Sats, a PocketQube) that encompass a large set of typical project requirements.  This is supported by the analysis performed in \Cref{sec:CASESTUDIES_results}, showing changes in the measured metrics that are heavily dependent on the methodology used, and not on each specific project. Nevertheless, the number of the case studies is not large enough to take into account all possible parameters and external factors, meaning that more data would be necessary to completely answer \texttt{RQ4}. Therefore, I will consider that the answer to this question is potentially positive.
 \end{fullwidth}
 
 \FloatBarrier
@@ -6385,7 +6385,7 @@ This research question involves the generalisation of the results of \texttt{RQ3
 	Additionally, I participated in a diverse set of case studies, to the extent possible, in order to cover a sufficiently wide range of external conditions.
 	More specifically:
 	\begin{enumerate}[itemsep=-2ex]
-		\item The case studies covered a large gamut of the \acs{SCS} systems targetted by this methodology, from a \acs{PCB}-based payload to a PocketQube, with different hardware/software designs for each one, as well as different launch configurations.
+		\item The case studies covered a large gamut of the \acs{SCS} systems targeted by this methodology, from a \acs{PCB}-based payload to a PocketQube, with different hardware/software designs for each one, as well as different launch configurations.
 		\item The case studies were distributed over two institutions.
 		\item All projects were performed by different teams, with (predominantly) different participants and different sizes.
 		\item While executing the case studies, we performed incremental updates to the universities' lab infrastructure, increasing the amount of local facilities available.
@@ -6654,7 +6654,7 @@ C++ in particular allows metaprogramming through \emph{templated} classes and fu
 One of the notable compiler implementations of previous reflection specification was that of Matus Chochlik\footnote{Available at \url{https://github.com/matus-chochlik/llvm-project}.}, which implements a \citeyear{sankelExtensionsReflection2020} reflection proposal \autocite{sankelExtensionsReflection2020}.
 
 \marginnote[1cm]{This library, named \textbf{\emph{ok\_serialiser}}, is available at \url{https://github.com/kongr45gpen/ok-serializer}.}
-Within the scope of my thesis, \textbf{I developed a (de-)serialisation library that takes advantage of the C++ reflection features of this experimental C++ compiler, with the intention of implementing the guidelines of \Cref{sec:METHODOLOGY_softwaredevelopment} for software development and \Cref{sec:METHODOLOGY_datamanagement} for documentation, targetting decreased development time and risk.}
+Within the scope of my thesis, \textbf{I developed a (de-)serialisation library that takes advantage of the C++ reflection features of this experimental C++ compiler, with the intention of implementing the guidelines of \Cref{sec:METHODOLOGY_softwaredevelopment} for software development and \Cref{sec:METHODOLOGY_datamanagement} for documentation, targeting decreased development time and risk.}
 
 The core (de-)serialisation functionality of this library was built using Python's \emph{construct} as a reference.
 The library uses internal data types that describe the binary representation (or ``view'') of the data.\footnote{This includes information not embedded in native C++ types, such as endianness or string representation.} Templated \texttt{serialize} and \texttt{deserialize} functions can be used to convert between C++ types and their binary representation.

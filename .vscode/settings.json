@@ -229,5 +229,33 @@
     "todo-tree.tree.showCountsInTree": true,
     "todo-tree.filtering.includeGlobs": [
         "**/main.tex"
+    ],
+    "cSpell.language": "en-GB",
+    "cSpell.words": [
+        "Acube",
+        "atto",
+        "Chipsats",
+        "cleanroom",
+        "Delfi",
+        "demostrate",
+        "deployers",
+        "derating",
+        "femto",
+        "Kanavouras",
+        "kickstarter",
+        "Konstantinos",
+        "magnetorquer",
+        "magnetorquers",
+        "POQUITO",
+        "Proxima",
+        "publically",
+        "Qube",
+        "Qubes",
+        "QUBIK",
+        "retainment",
+        "serialisers",
+        "Starlink",
+        "techincal",
+        "telecommanding"
     ]
 }
