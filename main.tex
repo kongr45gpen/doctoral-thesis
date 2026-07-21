@@ -146,7 +146,7 @@ under the License.
 	\vspace{-1cm}
 	\newthought{This thesis presents} a tailored systems engineering methodology for the development of \acl{SCS}, which covers the aspects of Technical Management, System Description, and System Realisation for these systems. The goal of this methodology is to reduce the development duration between development start and qualification, with an aim of consistently achieving \qtyrange[range-units = single]{1}{1.5}{year}-missions, without an adverse effect on technical risk.
 
-	The proposed methodology incorporates the practices of agile software engineering, aided by the considerably low manufacturing difficulty and cost of an \acs{SCS} system. The methodology is founded on an iterative lifecycle process model, which revolves around rapid prototyping, short iterations, and continuous system-level verification. Based on this model, more methods suited for \acs{SCS} are proposed, targeting requirements management, technical planning and engineering data management.
+	The proposed methodology incorporates the practices of Agile software engineering, aided by the considerably low manufacturing difficulty and cost of an \acs{SCS} system. The methodology is founded on an iterative lifecycle process model, which revolves around rapid prototyping, short iterations, and continuous system-level verification. Based on this model, more methods suited for \acs{SCS} are proposed, targeting requirements management, technical planning and engineering data management.
 
 	Additionally, the methodology covers technical aspects of the development process, by providing a set of guidelines for defining a design solution and for verification. It is found that the concepts of modularity and reuse have more limited benefits compared to larger spacecraft, while verification via reduced, automated testing instead of analysis can decrease development duration without reducing confidence in the system design. Furthermore, the use of different software development practices is evaluated, showing that an appropriate selection of programming language can generally increase software reliability, based on a case study comparison between different On-Board Computer frameworks.
 	
@@ -360,7 +360,7 @@ In \Cref{sec:INTRODUCTION_defining_systems_engineering}, I will further explore 
 \end{figure*}
 
 %Together with a large number of available commercial components, these systems can be developed much faster than previously. Together with increased use of onboard software, for example, software-defined radio, edge computing, etc. the capabilities of these systems, have increased at the same time. 
-%However, the development approach for these novel space systems has not kept pace. While companies have started using agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
+%However, the development approach for these novel space systems has not kept pace. While companies have started using Agile development approaches, which emerged in software engineering [Cappeart, 2018], not much is known about when and how to use such novel development methods. }
 
 
 
@@ -451,7 +451,7 @@ Similarly, \autocite{honourTechnicalReportValue2004} concluded, after a survey o
 	\label{fig:i_software_roi}
 \end{marginfigure}
 
-The above results show that an adequate balance needs to be found when adopting a \acl{SYE} methodology for an engineering project. \citeauthor{akbarStatisticalAnalysisEffects2018} classified \acs{SYE} methodologies into \emph{heavy-weight} ones, which are typically process and tool-oriented, comprehensive and predictive, and \emph{light-weight} ones, which are more empirical, collaborative, and decentralised \autocite{akbarStatisticalAnalysisEffects2018}. Their survey of 20 software-developing organisations matches the expectation that the ``scale'' of a methodology should be adapted to the size of a project to reach the best possible benefits.
+The above results show that an adequate balance needs to be found when adopting a \acl{SYE} methodology for an engineering project. \citeauthor{akbarStatisticalAnalysisEffects2018} classified \acs{SYE} methodologies into \emph{heavyweight} ones, which are typically process and tool-oriented, comprehensive and predictive, and \emph{lightweight} ones, which are more empirical, collaborative, and decentralised \autocite{akbarStatisticalAnalysisEffects2018}. Their survey of 20 software-developing organisations matches the expectation that the ``scale'' of a methodology should be adapted to the size of a project to reach the best possible benefits.
 
 \FloatBarrier
 \section{Research Gaps}
@@ -491,14 +491,14 @@ The specific characteristics of \acs{SCS} that differentiate them from CubeSats 
 	This latter characteristic speeds up thermal equilibrium in the hot and cold cases. Combined with the potentially increased difficulty of thermal control due to size, this characteristic discourages the use of thermally-sensitive payloads. From a \acl{SYE} point of view, it makes the use of conventional batteries difficult, as they cannot be charged or discharged below a specific temperature. \citeauthor{manchesterCentimeterScaleSpacecraftDesign2015} performed a thermal analysis of of the Sprite ChipSats, finding that they can reach temperatures down to \qty{-110}{\degreeCelsius} in eclipse \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. These low temperatures also prevent the operation of most commercial electronics.
 
 	A higher drag coefficient will also lead to a faster decay of the spacecraft, reducing its mission life. \citeauthor{manchesterOrbitalDebrisAssessment2013} calculated that a \qty{325}{\kilo\meter} Sprite launch has an expected lifetime of \qty{6}{days}, significantly shorter than the few years calculated for CubeSats\footnote{Even though the re-entry time is also a factor of launch altitude, this parameter cannot be usually controlled by customers, and lies in the range between \qtyrange{500}{550}{\kilo\meter} for \acsp{SSO}.}.
-	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system\footnote{While a non-scaleable definition of the minimum required spacecraft functionality exists (e.g. \autocite{ECSS-E-ST-70-11C}), low spacecraft scale allows many of these requirements to be disregarded. For example, some ChipSat missions may not need telecommanding capabilities, which significantly reduces complexity.}, as well as fewer interfaces that need to be managed\footnote{See \Cref{sec:LITERATURE_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``light-weight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
+	\item \textbf{Low technical size}: Intuitively, a smaller number of components and subsystems should lead to a smaller number of functions that can be performed by the system\footnote{While a non-scaleable definition of the minimum required spacecraft functionality exists (e.g. \autocite{ECSS-E-ST-70-11C}), low spacecraft scale allows many of these requirements to be disregarded. For example, some ChipSat missions may not need telecommanding capabilities, which significantly reduces complexity.}, as well as fewer interfaces that need to be managed\footnote{See \Cref{sec:LITERATURE_metrics} for the definition the technical size and complexity metrics.}. In turn, the reduced number of physical components, functions and interfaces reduces the amount of effort required in design, development and integration. This renders \acs{SCS} more ``lightweight'' spacecraft compared to their larger counterparts, and also reduces the amount of resources required for these projects, making them potentially ``small-scale''.
 	
 	At the same time, however, the required miniaturisation of components can increase complexity for specific applications, such as deployment mechanisms and thrusters, because of technical manufacturing and fabrication challenges related to the need for increased precision \autocite{ouDesignPerformanceMicropulsed2024}.
 	Creating extremely miniaturised hardware may require components that are not available off-the-shelf, as well as specialised machinery and expertise that may not be available in-house.
 	
 	\item \textbf{\acs{COTS} availability}: Due to both the small size and the lower popularity of \acs{SCS} compared to CubeSat and larger spacecraft, the number of suitable \acf{COTS} subsystems tailored for use in space is limited, especially when considering high-\acs{TRL} parts. Teams will therefore be more likely to design or develop subsystems in-house. This characteristic can also extend to support equipment, such as FlatSat supports, test jigs, or analysis software.
 	
-	Similarly, the novelty of PocketQubes, and more-so smaller femtosatellites and attosatellites, also restricts the amount of standardisation and established conventions in this field. In practical terms, fewer deployer and interface designs may be available as specifications or physical implementations. Especially for ChipSat-scale spacecraft, the different proposed applications have been associated with a multitude of different form factors, making future standardisation potentially harder than on their larger counterparts. However, the overall physical structure of many \acs{SCS} projects can be described in simple terms: either as a stack of \acsp{PCB} supported by a small frame (PocketQubes), or as one or two flat \acsp{PCB} with minimal support (ChipSats).
+	Similarly, the novelty of PocketQubes, and more-so smaller femto-satellites and atto-satellites, also restricts the amount of standardisation and established conventions in this field. In practical terms, fewer deployer and interface designs may be available as specifications or physical implementations. Especially for ChipSat-scale spacecraft, the different proposed applications have been associated with a multitude of different form factors, making future standardisation potentially harder than on their larger counterparts. However, the overall physical structure of many \acs{SCS} projects can be described in simple terms: either as a stack of \acsp{PCB} supported by a small frame (PocketQubes), or as one or two flat \acsp{PCB} with minimal support (ChipSats).
 \end{itemize}
 
 \begin{figure*}
@@ -628,7 +628,7 @@ The chapters of this thesis are organised as follows:
 
 \Cref{chap:RESEARCH_APPROACH} (\nameref{chap:RESEARCH_APPROACH}) introduces the \acs{DRM} Design Research Methodology, and how it is adapted as a research approach for the rest of this work.
 
-\Cref{chap:METHODOLOGY} (\nameref{chap:METHODOLOGY}) presents the justification, conceptualisation and elaboration of the proposed methodology that supports \acs{SCS} design and development, which is separated into three overarching areas: technical management, hardware, and software.
+\Cref{chap:METHODOLOGY} (\nameref{chap:METHODOLOGY}) presents the justification, conceptualisation and elaboration of the proposed methodology that supports \acs{SCS} design and development, which is separated into three over-arching areas: technical management, hardware, and software.
 
 \Cref{chap:CASESTUDIES} (\nameref{chap:CASESTUDIES}) presents the development of four space systems where I participated as a systems engineer. These products serve as case studies for the generation of data and experimental evaluation of the methodology presented in \Cref{chap:METHODOLOGY}.
 
@@ -1365,7 +1365,7 @@ The popularity and success of the KickSat project sparked follow-ups in both res
 \item \citeauthor{brashearsaBuildingFutureWafersat2016} \autocite{brashearsaBuildingFutureWafersat2016} envisioned a \SI{1}{\gram} ``WaferSat'', which would use components integrated on a single silicon wafer.
 An early \SI{10}{\gram} \qtyproduct{3.5 x 3.5 x 0.6}{\centi\metre} \acs{PCB}-based prototype was tested on a balloon flight \autocite{WaferScaleSpacecraft}. The authors also provide development details for their designs, citing a 1--2 month iteration cycle and an assembly time of less than 24 hours.
 %The spacecraft was tested in the stratosphere ([[@WaferScaleSpacecraft]]), and was also carried by a solo-piloted aircraft on a pole-to-pole expedition (https://www.deepspace.ucsb.edu/wafer-scale-spacecraft-pole-to-pole-flight-nov-2019-to-aug-2020).
- \item At Cornell University, \citeauthor{adamsTheoryApplicationsGramScale2020} designed the ``Monarch'' ChipSats as an evolution of the Sprite design \autocite{adamsRSelectedSpacecraft2019,adamsTheoryApplicationsGramScale2020}. A number of them have been deployed on earth for use in agriculture and stockraising \autocite{adamsTheoryApplicationsGramScale2020,nuttMonarchSatellitesOpen2019}. On December 2025, Cornell launched a CubeSat light-sail mission which had 4 ChipSats mounted on the edges of the sail, in order to demonstrate the capability of a free-flying sail \autocite{cornelluniversityAlphaCubesatHomePage2025}.
+ \item At Cornell University, \citeauthor{adamsTheoryApplicationsGramScale2020} designed the ``Monarch'' ChipSats as an evolution of the Sprite design \autocite{adamsRSelectedSpacecraft2019,adamsTheoryApplicationsGramScale2020}. A number of them have been deployed on earth for use in agriculture and stockraising \autocite{adamsTheoryApplicationsGramScale2020,nuttMonarchSatellitesOpen2019}. On December 2025, Cornell launched a CubeSat lightsail mission which had 4 ChipSats mounted on the edges of the sail, in order to demonstrate the capability of a free-flying sail \autocite{cornelluniversityAlphaCubesatHomePage2025}.
 \item The {ThumbSat} initiative was a commercial project allowing customers to launch a payload on a \qtyproduct{4.8 x 4.8 x 3}{\centi\meter} platform \autocite{singhDoItYourselfSatellitesApplications2019}.
 While ThumbSat was active between 2015--2017, it seems that regulatory obstacles due to the \acs{FCC} led to a halt of operations \autocite{vanlandinghamThumbSatOrbitalDebris2017,vanlandinghamExhibitSubmissionThumbSat2017}.
 \item \emph{AmbaSat} is another UK-based company offering a \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat launch for a cost of \SI{1200}{GDB}, based on a 3U Kicksat-like deployer \autocite{3AmbaSat1Satellite}.
@@ -1469,19 +1469,20 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 	\item \textbf{Objectives}: System design imperatives and decisions that affect the project, including the domain, complexity and required innovations.
 \end{itemize}
 
-\subsection{Life Cycle Models}
+\subsection{Lifecycle Models}
 \label{sec:LITERATURE_life_cycle_models}
-The selection of a life cycle model for the development phases is a key decision in systems engineering.
-The \ac{SEBOK} wiki defines a life cycle as ``a series of stages [\textellipsis] which confirm that the system is mature enough to leave one stage and enter another'' \autocite{sebok}.
-\marginnote{For this work, when using the term ``life cycle'', I refer to the life cycle of the \emph{project}, and not the \emph{system} or an instance of the system. The former includes all project stages, from initial ideation to operations, while the latter refers to the stages in the life of a physical system, such as commissioning, main mission operations, and disposal.} %This is also where terms like "infant mortality" come into place, see Bathtub curve.
-A life cycle model is individual and specific to each project, but usually follows a pre-specified life cycle \emph{process model}. 
+\label{sec:LITERATURE_lifecycle_models}
+The selection of a lifecycle model for the development phases is a key decision in systems engineering.
+The \ac{SEBOK} wiki defines a lifecycle as ``a series of stages [\textellipsis] which confirm that the system is mature enough to leave one stage and enter another'' \autocite{sebok}.
+\marginnote{For this work, when using the term ``lifecycle'', I refer to the lifecycle of the \emph{project}, and not the \emph{system} or an instance of the system. The former includes all project stages, from initial ideation to operations, while the latter refers to the stages in the life of a physical system, such as commissioning, main mission operations, and disposal.} %This is also where terms like "infant mortality" come into place, see Bathtub curve.
+A lifecycle model is individual and specific to each project, but usually follows a pre-specified lifecycle \emph{process model}. 
 \acs{SEBOK} categorises these models into three categories:
 \begin{enumerate}
 	\item Pre-specified and sequential processes (such as the waterfall model)
 	\item Evolutionary and concurrent processes (such as the V-model and spiral model)
-	\item Interpersonal and emergent processes (such as agile development and scrum)
+	\item Interpersonal and emergent processes (such as Agile development and scrum)
 \end{enumerate}
-\acs{SEBOK} also provides a ``generic life cycle model'', which serves as a starting point for lifecycle processes, and includes the main stages of
+\acs{SEBOK} also provides a ``generic lifecycle model'', which serves as a starting point for lifecycle processes, and includes the main stages of
 system definition, conceptualisation, realisation, production and utilisation. 
 
 \begin{figure}[h]
@@ -1528,7 +1529,7 @@ This is often the case for small, volunteer-based or ``\ac{DIY}'' projects \auto
 
 \subsection{Agile Systems Engineering}
 
-Pre-specified life cycle processes, as described in the above section, usually prescribe a predetermined stage or product at the end of each development phase \autocite{sebok_incremental}.
+Pre-specified lifecycle processes, as described in the above section, usually prescribe a predetermined stage or product at the end of each development phase \autocite{sebok_incremental}.
 However, this requires prior knowledge about the system, and often involves the expectation of no errors or external influences during design or development.
 
 In \citeyear{beckAgileManifesto2001}, the Agile Manifesto \autocite{beckAgileManifesto2001}, signed by 17 prominent software engineers, sought to challenge this model by essentially proposing ``evolutionary'' processes, where the end state of each phase of development is unknown.
@@ -1543,7 +1544,7 @@ Responding to change over following a plan%
 	\caption[The Agile Manifesto]{The Agile Manifesto \autocite{beckAgileManifesto2001}}
 \end{marginfigure}
 
-The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \cite{beckAgileManifesto2001}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
+The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \cite{beckAgileManifesto2001}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different Agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
 \begin{fullwidth}
 \begin{multicols}{2}
 \begin{itemize}[itemsep=-2ex]
@@ -1568,7 +1569,7 @@ I note that often synonymous terminology is used in methodology definitions and 
 
 Incremental development finds itself at the core of most Agile methodologies. For example, Scrum \autocite{schwaverDefinitiveGuideScrum2020} requires the preparation of a complete product increment every \qtyrange{1}{4}{weeks}. The incremental process is initiated with a \ac{MVP} which may not satisfy all customer requirements, and is repeated on every cycle based on a conversation between customers and developers.
 
-The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. Meta-analyses performed against case-studies, surveys and experiments, have found that the correct application of Agile methodologies can reportedly reduce project management inertia and increase developer and customer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}.
+The use of Agile methodologies in software engineering has become industry-standard since the introduction of the concept \autocite{15thAnnualState,StatusQuoScaled}. Meta-analyses performed against case studies, surveys and experiments, have found that the correct application of Agile methodologies can reportedly reduce project management inertia and increase developer and customer satisfaction \autocite{leeAgileIntegratedAnalysis2010,dybaEmpiricalStudiesAgile2008}.
 Criticism against Agile is often targetted towards incorrect implementations.
 Scrum, one of the most popular Agile frameworks, has faced criticism both for its foundation, and due to its potential for misuse \autocite{tsalicoglouHowTransitionAgile2017,bjornDarkAgilePerceiving2019,grayCriticismScrum2015}.\marginnote{\citeauthor{kustersScreamGuide2020,jeffriesDarkScrum2016} \autocite{kustersScreamGuide2020,jeffriesDarkScrum2016} have notably produced tongue-in-cheek documentation demonstrating common incorrect applications of the Scrum approach.}
 
@@ -1588,26 +1589,26 @@ Agile approaches have also been documented for use in critical systems and space
 
 There are various examples in literature investigating the adoption of Agile practices in entire, or at least parts of, space projects, such as for the Multi Mission Bus Demonstrator \autocite{huangAgileHardwareSoftware2012}. %
  %have not yet found a strong footing on safety-critical and highly mission-critical systems:
- \autocite{kasauliSafetyCriticalSystemsAgile2018} is a meta-analysis of only software development for such systems, while \autocite{carpenterAgileTooFragile2014} tries to investigate how Agile could be tailored for such systems. Fully agile approaches, where increments involve versions of the entire system for large-scale spacecraft, are not yet documented in the literature.
+ \autocite{kasauliSafetyCriticalSystemsAgile2018} is a meta-analysis of only software development for such systems, while \autocite{carpenterAgileTooFragile2014} tries to investigate how Agile could be tailored for such systems. Fully Agile approaches, where increments involve versions of the entire system for large-scale spacecraft, are not yet documented in the literature.
  
 \paragraph{Agile Frameworks}
 \label{par:LITERATURE_agile_frameworks}
 
 While a number of different Agile frameworks have been proposed, only a small number of them are in effective use in the industry as of 2026.
-Scrum and the \acf{SAFE} are the two most popular formal frameworks in use, with developers also creating ad-hoc methods based on agile principles \autocite{digital.aiStateAgileReport2025}.
+Scrum and the \acf{SAFE} are the two most popular formal frameworks in use, with developers also creating ad-hoc methods based on Agile principles \autocite{digital.aiStateAgileReport2025}.
 A \citeyear{atzbergerAgileDevelopmentPhysical2020} survey by \citeauthor{atzbergerAgileDevelopmentPhysical2020} \autocite{atzbergerAgileDevelopmentPhysical2020} of hardware developers found that \qty{90}{\percent} of the respondents used a form of Scrum as a lifecycle process model, while other methods, such as \emph{Kanban} and \emph{Design Thinking}, also enjoy some popularity.
 
-In this sub-section, I will analyse the most popular Agile frameworks and evaluate their applicability to hardware applications, and more specifically the \ac{SCS} methodology.
+In this section, I will analyse the most popular Agile frameworks and evaluate their applicability to hardware applications, and more specifically the \ac{SCS} methodology.
 
 \subparagraph{Scrum}
 \label{sec:LITERATURE_scrum}
-Scrum, one of the most popular agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire life cycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}.
+Scrum, one of the most popular Agile frameworks in use, was developed by Ken Schwaber and Jeff Sutherland and covers management practices during the entire lifecycle of a software project \autocite{boehmBalancingAgilityDiscipline2004}.
 \marginnote{Scrum's authors claim it was derived from complex systems theory, and influenced by best practices and research results from Japanese and USA-based companies in the end of the 20\textsuperscript{th} century. They describe it as a ``pattern language for hyperproductive software development'' \autocite{sutherlandNUTBOLTSORIGINS}. The name ``Scrum'' originated from rugby football terminology, where the term signifies players packing closely together to gain control of the ball \autocite{sutherlandNUTBOLTSORIGINS}.}
 Scrum is primarily defined by ``The Definitive Guide to Scrum'' by \citeauthor{schwaverDefinitiveGuideScrum2020} \autocite{schwaverDefinitiveGuideScrum2020}, which defines the theory and processes behind the framework.
 
 The framework is built around fixed-time iterations called \emph{Sprints}, which follow a repeated pattern of \emph{planning-\-standup-\-review-\-retrospective} with the aim of presenting a complete product at the end of each iteration. It also defines the different terminology and roles within small development team.
 
-With its main description being no more than 14 pages long, Scrum is considered a light-weight framework, and can therefore be easily applied or tailored for different organisations. Popular generic tailorings include \acf{LESS} and \emph{Scrum@Scale}, variants designed for organisations with multiple Scrum-based teams that may be building one or more products \autocite{larmanLargescaleScrumMore2017,ReadScrumScaleGuide}.
+With its main description being no more than 14 pages long, Scrum is considered a lightweight framework, and can therefore be easily applied or tailored for different organisations. Popular generic tailorings include \acf{LESS} and \emph{Scrum@Scale}, variants designed for organisations with multiple Scrum-based teams that may be building one or more products \autocite{larmanLargescaleScrumMore2017,ReadScrumScaleGuide}.
 
 \subparagraph{Extreme Programming (XP)}
 Extreme Programming is a software development methodology, similar to Scrum, which combines different methods and guidelines that particularly apply to software development.
@@ -1660,7 +1661,7 @@ Because of the introduction of Agile methods into hardware development, a number
 
 Research Design calls for a selection between a qualitative and quantitative approach \autocite{creswellResearchDesignQualitative2023}. A common issue in engineering research is the difficulty of applying and investigating a study's results in the real world, preventing the generation of statistical data based on experimentation. This lack of numeric data calls for an application of a mixed or qualitative research approach.
 
-Qualitative research typically follows approaches such as narrative, phenomenological, grounded theory, action or case-study research \autocite{creswellQualitativeInquiryResearch2025}. 
+Qualitative research typically follows approaches such as narrative, phenomenological, grounded theory, action or case study research \autocite{creswellQualitativeInquiryResearch2025}. 
 For this work, I will follow
 the DRM Design Research Methodology \autocite{blessingDRMDesignResearch2009} by \citeauthor{blessingDRMDesignResearch2009}.
 
@@ -1686,7 +1687,7 @@ The specific research plan for this work is shown in \Cref{fig:r_activity,fig:r_
 
 	The findings for \acs{SCS} missions are complemented with corresponding findings for \textbf{CubeSat} missions and mission environments, since:
 	\begin{enumerate}[itemsep=-2ex]
-		\item The architecture of CubeSats is similar enough to \acs{SCS} to allow re-using and applying methods, processes and data from the former to the latter;
+		\item The architecture of CubeSats is similar enough to \acs{SCS} to allow reusing and applying methods, processes and data from the former to the latter;
 		\item Many \acs{SCS} developers directly follow CubeSat-based approaches;
 		\item \acs{SCS} literature is significantly limited compared to the more established CubeSat field.
 	\end{enumerate}
@@ -2062,9 +2063,9 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 \end{table*}
 
 \subparagraph{The Sprint}
-Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product when it ends. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, what can be done during it, and how this work will be done.},  continues with daily time-boxed meetings, and finishes with a review and retrospective\footnote{The purpose of the Sprint Review is to assess technical completion and future goals, while the Retrospective is a programmatic assessment of processes and interactions \cite{schwaverDefinitiveGuideScrum2020}.}.
+Scrum works around the primary concept of a \emph{Sprint}, a  ``fixed event of one month or less'' that has the goal of producing a new iteration of a working product when it ends. In Scrum, each Sprint starts with a planning phase\footnote{The planning phase aims to answer questions such as why is the Sprint valuable, what can be done during it, and how this work will be done.},  continues with daily timeboxed meetings, and finishes with a review and retrospective\footnote{The purpose of the Sprint Review is to assess technical completion and future goals, while the Retrospective is a programmatic assessment of processes and interactions \cite{schwaverDefinitiveGuideScrum2020}.}.
 
-The original Scrum describes a pre-defined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
+The original Scrum describes a predefined sprint duration. However, in hardware-heavy projects, the duration of each iteration is heavily dependent on external and unplannable factors, such as procurement and manufacturing lead times, or component and equipment failures. \citeauthor{douglassAgileSystemsEngineering2015} \autocite{douglassAgileSystemsEngineering2015} advocates varying the iteration length by \( \pm 25\% \) to make sure that a coherent amount of work can be performed. The duration of each Sprint will also be generally larger in hardware-based projects, as it is physically limited by the tasks of procurement and manufacturing, which can take 1 week or more, each. These tasks are also often on the critical path of development, as they prevent the verification and validation of the produced system until they are completed.
 In industrial environments, iterations can last between 2 to 8 weeks, or even longer \autocite{cooperAgileDevelopmentManufacturing2023}. However, within the context of Scrum combined with \acs{SCS}, 8 weeks will represent a reasonable upper bound for iteration length.
 
 These \ac{COP}-related constraints add time uncertainty to each iteration, and make the direct application of Scrum difficult, as they have the potential of adding ``waiting time'', when developers cannot verify a product before a certain external process is completed \cite{cooperAgileDevelopmentManufacturing2023}. The context of \acs{SCS} development makes it possible to control these so-called ``deadtime periods'', by proactively reducing external lead time.\marginnote[-1cm]{Reduction of external lead time can be done by:\begin{itemize} %vadOK
@@ -2072,7 +2073,7 @@ These \ac{COP}-related constraints add time uncertainty to each iteration, and m
 		\item Collaborating with entities also following an Agile methodology
 		\item Preparing ready-to-use alternatives in case an external product is not ready on time
 \end{itemize}}
-Mitigating this difficulty by separating an iteration into pre-determined, sequential steps, runs the risk of propagating the drawbacks of waterfall-based methods. It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
+Mitigating this difficulty by separating an iteration into predetermined, sequential steps, runs the risk of propagating the drawbacks of waterfall-based methods. It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
 %However, past attempts to mitigate this difficulty by separating an iteration into pre-determined, sequential steps have received criticism, due to propagating the drawbacks of waterfall-based methods. The original Scrum itself avoids prescribing the distribution and allocation of work, as that is team-specific and dependent on the self-organisation between developers.It is therefore important to maintain some degree of flexibility and allow parallel work during each Scrum iteration.
 
 \begin{figure*}[h]
@@ -2225,7 +2226,7 @@ Given these positive indications, \acs{SCS} can potentially also benefit from a 
 \paragraph{High-level planning}
 
 \marginnote{Another feature of Sat-Scrum's definition is the fixed nature of iteration durations: If a defect is discovered 15 days after a 30-day iteration starts, the prescribed Scrum process requires waiting 15 more days until a new, non-defective product is iterated on.}
-\acs{SEBOK} describes Agile life cycle process models as \emph{evolutionary sequential} models, in the sense that, the operational capabilities and performance of a system at each stage of the project life cycle are not predetermined, but the sequence of activities within each iteration (in this case, sprint) is well defined
+\acs{SEBOK} describes Agile lifecycle process models as \emph{evolutionary sequential} models, in the sense that, the operational capabilities and performance of a system at each stage of the project lifecycle are not predetermined, but the sequence of activities within each iteration (in this case, sprint) is well defined
 \autocite{sebok_drivers}.
 Scrum and Sat-Scrum do not prescribe a certain number of iterations, and, therefore, do not create by default a prediction on the development time until a ``launch-ready'' version of a project is prepared. However, this can create a \textbf{conflict with projects that have a fixed deadline}, such as projects with \textbf{launch commitments}.
 
@@ -2265,7 +2266,7 @@ These activities represent both the \emph{manufacturing} of new, custom-made com
 
 Traditionally, many of these activities have been performed by external manufacturers and suppliers. However, in \acs{SCS}, these activities are usually limited in number and complexity, and can be reliably performed in-house. This raises the \textbf{make-or-buy} question, on whether these activities should be outsourced, or performed in-house. The answer to this question involves an optimisation problem against non-recurring costs, quality, and experience \autocite{medina-serranoStrategicSourcingDeveloping2020}, noting however that both ``outsourcing'' and ``vertical integration'' have traditionally been associated with risks and hidden costs \autocite{hilmerStrategicOutsourcing1994,barthelemyHiddenCostsIT2001}.
 
-In the context of Agile, developer co-location and rapid response to changes is encouraged, which often clashes with typical outsourcing expectations \autocite{durmicAdoptingAgileScrum2024}. A \citeyear{lemmaSystematicLiteratureReview2025} meta-analysis on the implementation challenges of Scrum identified multi-team environments as one of the main mentioned themes, citing ``inter-team coordination challenges [...] as the most pertinent large-scale agile challenges demanding immediate research attention'' \autocite{lemmaSystematicLiteratureReview2025,moeTrendsLargeScaleAgile2016}.
+In the context of Agile, developer co-location and rapid response to changes is encouraged, which often clashes with typical outsourcing expectations \autocite{durmicAdoptingAgileScrum2024}. A \citeyear{lemmaSystematicLiteratureReview2025} meta-analysis on the implementation challenges of Scrum identified multi-team environments as one of the main mentioned themes, citing ``inter-team coordination challenges [...] as the most pertinent large-scale Agile challenges demanding immediate research attention'' \autocite{lemmaSystematicLiteratureReview2025,moeTrendsLargeScaleAgile2016}.
 
 Within the context of \acs{SCS}, the typically limited resources available generally prevent the collaboration with manufacturers who can support direct communication and instant delivery. Instead, based on the performed case studies, the procurement of assembled boards and manufactured components has generally involved a 1-month long lead time, which cannot be easily supported by short Sat-Scrum iterations. This duration is also influenced by internal organisational limits, such as long procurement processes.
 
@@ -2323,7 +2324,7 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 		\node[right=of eqm] {Engineering Qualification Model};
 		
 		\node[protoflight, below=of eqm] (proto) {};
-		\node[right=of proto] {Protoflight Model};
+		\node[right=of proto] {Proto-flight Model};
 		
 		\node[flight, below=of proto] (flightm) {};
 		\node[right=of flightm] {Flight Model};
@@ -2416,7 +2417,7 @@ The FlatSat method is often supported by harnesses, boards or test jigs that fac
 
 In an extreme interpretation of \Cref{def:partition}, a subsystem's \textbf{software} can be considered as a partition, if there is adequate infrastructure to ``manufacture'', execute and test it without the linked hardware (e.g.\@ using an emulator\footnote{Similarly to FlatSat, care has to be taken when creating support for a configuration not present in the final flight model. The development of mocks and emulation support can potentially be a particularly large undertaking if no reusable libraries are integrated.}). Indeed, some projects may want to perform system-wide iterations on software only if necessary, for example for software-heavy projects. 
 
-\newthought{Compared to} system-level Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, \emph{partition-level Sat-Scrum} also addresses an inherent problem with agile methods when applied to complex physical systems: During the first iterations in a project, only a few weeks are allocated towards design efforts. However, in hardware engineering, it is possible that many activities with a minimum baseline of effort need to take place in every iteration, such as design elaboration, analysis/optimisation, \acs{PCB} design/routing, \acs{BOM} consolidation, prototype building, and more. For a system with multiple in-house boards that require these processes, it may be impractical or impossible to complete this design effort within a single iteration, thus requiring either lengthening the iteration, or the use of partition-based Sat-Scrum.
+\newthought{Compared to} system-level Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, \emph{partition-level Sat-Scrum} also addresses an inherent problem with Agile methods when applied to complex physical systems: During the first iterations in a project, only a few weeks are allocated towards design efforts. However, in hardware engineering, it is possible that many activities with a minimum baseline of effort need to take place in every iteration, such as design elaboration, analysis/optimisation, \acs{PCB} design/routing, \acs{BOM} consolidation, prototype building, and more. For a system with multiple in-house boards that require these processes, it may be impractical or impossible to complete this design effort within a single iteration, thus requiring either lengthening the iteration, or the use of partition-based Sat-Scrum.
 
 Partition-based iterations are also similar to the V-style or incremental approaches favoured by CubeSat projects, where distinct subsystems are manufactured first, often in parallel, before being integrated into the entire system.
 The main differentiating element of
@@ -2456,7 +2457,7 @@ When a team chooses to use an approach not covered by available (and easy-to-use
 
 The Scrum method attempts to answer the first question of \emph{Who} and \emph{How} to manage work packages, by employing the concept of \textbf{self-organising teams} \autocite{schwaverDefinitiveGuideScrum2020}. Tasks are elaborated in meetings which occur daily and before each iteration. Work packages are elaborated through a collaboration between the developers and the product owner. Scrum also defines task management aspects that permeate the previous processes, including the fact that developers need to hold each other accountable.
 
-A potential data model for task management would have to support the typical attributes of work packages defined typically in agile environments, such as:
+A potential data model for task management would have to support the typical attributes of work packages defined typically in Agile environments, such as:
 \begin{itemize}[itemsep=-3ex]
 	\item Story points (or estimated time)
 	\item Priority
@@ -2691,7 +2692,7 @@ While the use of a formal model might prove prohibitive for systems such as \acl
 
 
 \begin{figure*}[h]
-	\caption[Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter]{Mock-up of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
+	\caption[Mockup of an example interface for an Engineering Data Management tool, showing a script-based parameter]{Mockup of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
 	\label{fig:m_edm_mockup}
 	\includegraphics{graphics/spardata_moqup}
 \end{figure*}
@@ -2760,7 +2761,7 @@ Since common practices and the \acs{SCS} methodology separate design into more t
 The \acs{NASA} \acs{SYE} handbook notes how changing the design at a later point becomes harder or more costly, making the case for specifying an initial detailed design early in the project \cite{sheaNASASystemsEngineering2020}.
 On the other hand, \citeauthor{watermanHowMuchUpFront2015} \cite{watermanHowMuchUpFront2015} claim that a trade-off between time spent in \acs{BDUF} needs to be made:
 \begin{quote}
-If an agile software team spends too little time designing architecture up-front then the team faces increased risk and higher chance of failure; if the team spends too much time the delivery of value to the customer is delayed, and responding to change can become extremely difficult \autocite{watermanHowMuchUpFront2015}.
+If an Agile software team spends too little time designing architecture up-front then the team faces increased risk and higher chance of failure; if the team spends too much time the delivery of value to the customer is delayed, and responding to change can become extremely difficult \autocite{watermanHowMuchUpFront2015}.
 \end{quote}
 The authors note the following factors as reducing the need or effectiveness of a \acl{BDUF}:
 \begin{itemize}[itemsep=-3ex]
@@ -2997,7 +2998,7 @@ p(C) = \frac{2 - 2\frac{k_\infty}{2} }{1+e^{k_S C}} + k_\infty.
 	% Plots equation 4.4.
 	% input: k_0 (i.e. imbalance between BDUF or not.)
 	% k_0 = 0 means zero design up front
-	% k_0 = 1 means equal design up front and redesign cost (i.e. very agile iteration)
+	% k_0 = 1 means equal design up front and redesign cost (i.e. very Agile iteration)
 	% k_0 = 4 means heavy design up front (i.e. BDUF)
 	% We assume that C_d = C_m + C_v = 1 unit cost. It is anyway a scaling factor.
 	% Remember: Cd0 = k0 Cd = k0
@@ -3012,7 +3013,7 @@ p(C) = \frac{2 - 2\frac{k_\infty}{2} }{1+e^{k_S C}} + k_\infty.
 	% Plots equation 4.4.
 	% input: k_0 (i.e. imbalance between BDUF or not.)
 	% k_0 = 0 means zero design up front
-	% k_0 = 1 means equal design up front and redesign cost (i.e. very agile iteration)
+	% k_0 = 1 means equal design up front and redesign cost (i.e. very Agile iteration)
 	% k_0 = 4 means heavy design up front (i.e. BDUF)
 	% We assume that C_d = C_m + C_v = 1 unit cost. It is anyway a scaling factor.
 	% Remember: Cd0 = k0 Cd = k0
@@ -3027,7 +3028,7 @@ p(C) = \frac{2 - 2\frac{k_\infty}{2} }{1+e^{k_S C}} + k_\infty.
 	% Plots equation 4.4.
 	% input: k_0 (i.e. imbalance between BDUF or not.)
 	% k_0 = 0 means zero design up front
-	% k_0 = 1 means equal design up front and redesign cost (i.e. very agile iteration)
+	% k_0 = 1 means equal design up front and redesign cost (i.e. very Agile iteration)
 	% k_0 = 4 means heavy design up front (i.e. BDUF)
 	% We assume that C_d = C_m + C_v = 1 unit cost. It is anyway a scaling factor.
 	% Remember: Cd0 = k0 Cd = k0
@@ -3201,7 +3202,7 @@ In the case of high-severity interfaces (such as the ones informing the satellit
 	\item Where newer versions or errata of the interface specification can be found.
 \end{enumerate}
 
-This more ``strict'' approach to interface definition represents a deviation to the ``lighter'' agile approach described in the rest of this chapter, since the potential impact of an interface device (or interface requirement) failure could be considered catastrophic (e.g.\@ loss of launcher, major injury). 
+This more ``strict'' approach to interface definition represents a deviation to the ``lighter'' Agile approach described in the rest of this chapter, since the potential impact of an interface device (or interface requirement) failure could be considered catastrophic (e.g.\@ loss of launcher, major injury). 
 
 %Finally, interface specifications should be kept up-to-date
 
@@ -3278,7 +3279,7 @@ Traditionally, verification is done during the dedicated Phase D. Launch provide
 
 In the context of \ac{SCS}, verification and validation present an worthwhile target for optimisation.
 The low development cost of \ac{SCS} means that the cost and time overhead to create a \textbf{prototype} are low and can be part of the regular cycles of an Agile lifecycle process, which routinely include verification.
-While CubeSats traditionally experiment with subsystem prototypes or reduced system mock-ups, in the case of \ac{SCS}, the \textbf{entire system} can be verified as part of these short cycles.
+While CubeSats traditionally experiment with subsystem prototypes or reduced system mockups, in the case of \ac{SCS}, the \textbf{entire system} can be verified as part of these short cycles.
 
 The most critical physical aspects of a design\footnote{Such as the verification of the functionality of deployables and actuators, masses and envelopes, or thermal and electromagnetic behaviour.} have traditionally involved both detailed analysis and testing for verification. In particular, environmental testing of subsystems and systems requires costly dedicated facilities; developers are therefore typically incentivised to create and execute domain-specific models and analyses of their systems before committing to a testing campaign.
 
@@ -3307,7 +3308,7 @@ Even if a manufacturing facility cannot support a full environmental testing cam
 
 In addition to this general shift towards in-house environmental testing, \ac{SCS} are usually composed of simple and well-understood structures, such as singular circuit boards or simple subsystem stacks. Past performance of these structures, especially in terms of rigidity and thermal behaviour, is well understood from previous missions. This reduces the benefits of analysis.
 
-As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a tradeoff has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels, and especially when manufacturing runs produce spare units that have no other use.}
+As a result, \ac{SCS} teams might find that they can \textbf{forego analyses} as part of their development and verification stages, instead relying only on tests to either generate data about the performance of their system, or verify requirements compliance. While analysis can increase understanding of a system's performance and operational margins as well as reduce testing risk, a trade-off has to be made between the cost of analysis against the risk reduction offered.\marginnote{The low manufacturing cost of spacecraft versions may also encourage ``destructive'' testing, perhaps performed multiple times at qualification levels, and especially when manufacturing runs produce spare units that have no other use.}
 
 
 \paragraph{Reduced Testing}
@@ -3562,7 +3563,7 @@ In typical CubeSat systems engineering documentation, developers are recommended
 		\item To ensure that as many as possible states of the software are covered.
 	\end{enumerate}
 
-	Since traditional Agile software engineering does not involve the detailed specification of functional requirements, \textbf{the test suite itself serves as the specification}. This is part of the philosophy of, e.g., \acf{TDD}, where the tests are created \emph{before} the actual software is implemented \autocite{beckTestDrivenDevelopment2002}. This approach is not dissimilar to formal model checking, where a model of a system is analysed to ensure that it meets a certain pre-defined specification \autocite{berardSystemsSoftwareVerification2001}. However, model checking requires creating an additional model of the system, which needs to be further kept correct and requires symbolic manipulation to avoid the state explosion \cite{berardSystemsSoftwareVerification2001}. 
+	Since traditional Agile software engineering does not involve the detailed specification of functional requirements, \textbf{the test suite itself serves as the specification}. This is part of the philosophy of, e.g., \acf{TDD}, where the tests are created \emph{before} the actual software is implemented \autocite{beckTestDrivenDevelopment2002}. This approach is not dissimilar to formal model checking, where a model of a system is analysed to ensure that it meets a certain predefined specification \autocite{berardSystemsSoftwareVerification2001}. However, model checking requires creating an additional model of the system, which needs to be further kept correct and requires symbolic manipulation to avoid the state explosion \cite{berardSystemsSoftwareVerification2001}. 
 
 	As such, in practice, developers create a limited number of test-cases that aim to evaluate the most likely and representative states of the software, with the goal of increasing statement and branch coverage of the source code. Additional techniques used to cover potentially invalid states include edge-case testing and regression testing. For complex software, test-cases evaluate code modules at low (unit) or high (integration) levels \autocite{myersArtSoftwareTesting2012}.
 
@@ -3603,9 +3604,9 @@ While the aforementioned research notes a weak correlation between programming l
 \citeauthor{ashmoreProgrammingLanguageEvaluation2022} have hypothesised that specific programming language features can support the detection or prevent the introduction of errors, providing the example of the \emph{Rust} language which avoids memory allocation errors by design. \citeauthor{rayLargescaleStudyProgramming2017} \autocite{rayLargescaleStudyProgramming2017} analysed 728 GitHub projects, identifying commits that fixed bugs, and concluded that ``there is a small but significant relationship between language class and defects''.
 \citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programs of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.
 
-Both CubeSat and \acs{SCS} software development teams are usually faced with a choice of programming language when starting development. Based on the above findings, it would be interesting to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be serve \textbf{case-studies to investigate the effect of language on software defect rate}.
+Both CubeSat and \acs{SCS} software development teams are usually faced with a choice of programming language when starting development. Based on the above findings, it would be interesting to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be serve \textbf{case studies to investigate the effect of language on software defect rate}.
 
-The remainder of this section will present this \textbf{small-scale multiple-case study} of four \textbf{on-board software frameworks} to evaluate defects that are detected, and identify whether the use of a different programming language or framework would have prevented them.\marginnote{Due to the limited number of available \acs{OBSW} frameworks conforming to the requirements of \Cref{tab:m_software_requirements}, the current lack of diversity in programming languages in \acs{OBSW}, and the difficulty of identifying defects in third-party software, I did not perform an experimental analysis, relying only on the individual interpretation of case-study results.
+The remainder of this section will present this \textbf{small-scale multiple-case study} of four \textbf{on-board software frameworks} to evaluate defects that are detected, and identify whether the use of a different programming language or framework would have prevented them.\marginnote{Due to the limited number of available \acs{OBSW} frameworks conforming to the requirements of \Cref{tab:m_software_requirements}, the current lack of diversity in programming languages in \acs{OBSW}, and the difficulty of identifying defects in third-party software, I did not perform an experimental analysis, relying only on the individual interpretation of case study results.
 
 I also consider CubeSat (instead of just \acs{SCS}) software, because the functional requirements are not different between the two form factors, and no diverse programming languages are publically available for \acs{SCS} spacecraft.}
 
@@ -3693,18 +3694,18 @@ More specifically, the execution and testing plan is elaborated into the followi
 \end{figure*}
 
 \begin{figure}[p]
-	\includegraphics{drafts/fuzzing1}
+	\includegraphics{graphics/fuzzing1_inverted.png}
 	\caption{Screenshot of libAFL execution}
 \end{figure}
 
 \begin{figure}[p]
-	\includegraphics{drafts/fuzzing2}
+	\includegraphics{graphics/fuzzing2_inverted.jpg}
 	\caption{Screenshot of software-under-test result}
 \end{figure}
 
 The use of fuzz testing as a methodology cannot ensure that all possible software defects are identified. Fuzz testing relies on an automated process that can identify when a running program has reached an erroneous state: in this investigation, this is represented by a \textbf{crash} (e.g.\ segmentation fault) or an unhandled exception. This approach also does not fully cover the set of all inputs to the software and its state: priority was given to \acs{TC} fuzzing. Nevertheless, the fuzzer managed to identify some software defects that caused undefined behaviour or an unhandled exception when a specially-crafted \acs{TC} was sent to the spacecraft. \textbf{In most cases, these telecommands would cause a software restart or hang if executed in-orbit}.
 
-The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_fuzzing}.
+The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_functional}.
 Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
 
 \begin{table*}[h]
@@ -3786,7 +3787,7 @@ The selected frameworks are characterised by a similar order-of-magnitude in ter
 \begin{itemize}
 	\item The selection of programming language alone \textbf{cannot guarantee program correctness}. Relatively simple issues were identified in projects in 3 out of 4 evaluated languages.
 	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to program termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a program where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks. However, in Python, the fuzzer identified no crashes, as the nested exception handling in Python seemed to intercept incorrect \acs{TC}.
-	\item In C/C++, unsafe calls (such as null dereferencing or out-of-bounds array access) commonly lead to \textbf{undefined behaviour}, which can propagate as a crash (segmentation/bus fault), incorrect data, incorrect functionality, or an infinite loop. On the contrary, the default data access functions of Rust, Ada and Python perform run-time checks and guarantee either a handled panic on invalid calls, or the propagation of the error to a user-defined mechanism. 
+	\item In C/C++, unsafe calls (such as null dereferencing or out-of-bounds array access) commonly lead to \textbf{undefined behaviour}, which can propagate as a crash (segmentation/bus fault), incorrect data, incorrect functionality, or an infinite loop. On the contrary, the default data access functions of Rust, Ada and Python perform runtime checks and guarantee either a handled panic on invalid calls, or the propagation of the error to a user-defined mechanism. 
 	\item The Rust compiler enforces an \textbf{exhaustiveness check} on enumerations and function results by default. Although this can be bypassed, it serves as an additiona layer of safety against unhandled edge cases and logical paths.
 	\item The reliability benefit of a programming language selection has to be considered in relation to the \textbf{effort} associated with writing code in that language, and the various other environmental factors affected by this choice.
 	
@@ -3921,7 +3922,7 @@ To reduce reliance on mechanical parts, this concept can be further extended by 
 	\begin{subfigure}[t]{0.27\textwidth}
 		% Image source: https://www.unoosa.org/documents/pdf/hlf/HLF2017/presentations/Day2/Session_4/Presentation7.pdf
 		\centering
-		\includegraphics[height=3cm]{drafts/starchip.jpg}
+		\includegraphics[height=3cm]{external/starchip.jpg}
 		\caption{Die-level test points (\emph{StarChip}) \cite{wordenBreakthroughPrizes2017}}
 		\label{subfig:m_connectors_die}
 	\end{subfigure}\hfill
@@ -4002,7 +4003,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 
 
 \begin{table*}[h]
-	\caption{Indicative systems engineering tools to support agile sub-CubeSat development}
+	\caption{Indicative systems engineering tools to support Agile sub-CubeSat development}
 	\label{tab:methodology_indicative_tools}
 	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 	\begin{adjustbox}{center}
@@ -4049,9 +4050,9 @@ Finally, with the emergence of highly-automated ``vibe coding'' as of 2026, wher
 The methodology presented in \Cref{chap:METHODOLOGY} does not constitute a ``one-size-fits-all'' solution.
 Practitioners are encouraged to pick methods suited to their projects (for example, selecting between a system-level or partition-level iteration approach), or internally tailor each method to the degree necessary.
 
-In general, tailoring is not uncommon for agile methodologies. \citeauthor{campanelliAgileMethodsTailoring2015} analysed 56 studies about agile method tailoring \autocite{campanelliAgileMethodsTailoring2015}. 
+In general, tailoring is not uncommon for Agile methodologies. \citeauthor{campanelliAgileMethodsTailoring2015} analysed 56 studies about Agile method tailoring \autocite{campanelliAgileMethodsTailoring2015}. 
 They found that the identification of main environmetal criteria, as defined by \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013}, is a common first step in the tailoring process.
-\textbf{Method engineering} is the main tailoring approach used thereafter. \citeauthor{fitzgeraldEmpiricalStudySystem} have defined an approach to method engineering, which suggests that ``methods be represented as discrete pre-defined and pretested components'', making a method engineer/administrator responsible for selection of the appropriate ones \autocite{fitzgeraldEmpiricalStudySystem}. This is not unlike the approach already proposed in this work.
+\textbf{Method engineering} is the main tailoring approach used thereafter. \citeauthor{fitzgeraldEmpiricalStudySystem} have defined an approach to method engineering, which suggests that ``methods be represented as discrete predefined and pretested components'', making a method engineer/administrator responsible for selection of the appropriate ones \autocite{fitzgeraldEmpiricalStudySystem}. This is not unlike the approach already proposed in this work.
 
 \citeauthor{xuUsingProcessTailoring2008} have proposed a slightly different process-tailoring strategy, mainly focused for software engineering applications \autocite{xuUsingProcessTailoring2008}.
 Their strategy consists of the following steps:
@@ -4144,7 +4145,7 @@ Since this work proposes a more concrete methodology, it is possible to extend t
 	\vspace{2ex}
 \end{table*}
 
-As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I participated in four \acs{SCS} projects as a Systems Engineer\footnote{See \Cref{app:contribution_matrix} for information about team members and my contribution to each mission.}, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch.\marginnote{The maximum duration of each case study was strictly limited by the available launch windows, to a maximum of approx.\@ one year, demonstrating the short turn-around times between development start and launch (\Cref{sec:INTRODUCTION_research_gaps}).} The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and use the generated data to evaluate the validity of this methodology. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
+As explained in \Cref{chap:RESEARCH_APPROACH}, the \acf{SCS} \acl{SYE} methodology will be evaluated as part of an initial \emph{Descriptive Study II} research step. To perform this evaluation, I participated in four \acs{SCS} projects as a Systems Engineer\footnote{See \Cref{app:contribution_matrix} for information about team members and my contribution to each mission.}, ranging from a \acs{PCB}-shaped payload to an independent PocketQube satellite, with the goal of successful environmental qualification and, when possible, orbital launch.\marginnote{The maximum duration of each case study was strictly limited by the available launch windows, to a maximum of approx.\@ one year, demonstrating the short turnaround times between development start and launch (\Cref{sec:INTRODUCTION_research_gaps}).} The objective of these Case Studies has been to generate data about the typical \acs{SCS} development environment, iteratively elaborate the \acs{SCS} methodology, and use the generated data to evaluate the validity of this methodology. The case study approach follows a \emph{holistic multiple-case} design based on \citeauthor{yinCaseStudyResearch2014}'s classification \autocite{yinCaseStudyResearch2014}.
 
 The execution of these case studies followed an action research plan as shown in \Cref{fig:c_action_research}, where I observed the interactions between members, project progress and friction points, reflected on them in conversation with each project manager, and proposed changes to the used methodology \autocite{mcniffActionResearchPrinciples2003}. The four projects I was involved in were also developed by different teams, which supports the interpretation of \emph{triangulation} that suggests gathering data from at least three groups of people \autocite{mcniffYouYourAction2010}. The projects also represented a diverse range of system types, including a payload, two ChipSat-style spacecraft, and a PocketQube.
 
@@ -4250,7 +4251,7 @@ The cross-case step of the \emph{explanation building} process is elaborated in 
 1 & \textbf{Bypassing structural/thermal analysis} & \Cref{sec:METHODOLOGY_verification} proposes avoiding often-expensive analytical modelling of system behaviour, recommending reliance on more reduced tests instead. Typically, analysis reduces the technical risk of a system, however, its cost-benefit ratio is expected to increase for small \acs{SCS}. & Consistent reduction in development time, but significant increase in cost (due to test campaigns). Increase in risk (due to undetected errors). \\
 2 & \textbf{In-house manufacturing} & External manufacturing is one of the main blocking points in a project's development flow (\Cref{sec:METHODOLOGY_manufacturing}). This point involves the decision to perform manufacturing processes in house. Generally, this will be considered as equivalent to in-house \emph{soldering}, since this is the only critical manufacturing process that most projects required. & Total development time should decrease. Cost should decrease (assuming no external manufacturing costs). Risk should increase (assuming team not experienced in manufacturing for space). \\
 3 & \textbf{Multi-step development} & \Cref{sec:METHODOLOGY_satscrum} proposes the use of an \emph{iterative/incremental} approach based on iterations, instead of a sequential, single-step approach, where a ``\acf{BDUF}'' step is taken first, and a single manufacturing/testing round is done afterwards. & Total development time should decrease (assuming a long \acs{BDUF} step). Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on whether a team can predict non-conformances early or late). \\
-4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, agile-like iterations (1--2 months), that should make identifying errors faster. Note that no restriction is set on the iterations having a fixed length; instead, their length was flexible (pre-determined or not). & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
+4 & \textbf{Short iterations} & While iterative design is generally common in small space projects, the \acs{SCS} methodology specifically proposes the use of short, Agile-like iterations (1--2 months), that should make identifying errors faster. Note that no restriction is set on the iterations having a fixed length; instead, their length was flexible (predetermined or not). & Development time should decrease. Cost should increase (due to more manufacturing runs). Risk should be project-dependent (based on project size and whether iteration length \& team size are suitable). \\
 5 & \textbf{Iterating over partitions} & An option of the \acs{SCS} methodology is to perform iterations over \emph{partitions} of the system, instead of the entire system (\Cref{sec:METHODOLOGY_slicebased}). This allows teams to avoid having to constantly iterate on complex designs. Note that this does not involve iterating over single subsystems only. & Development time should stay the same (assuming constant number of iterations). Cost should decrease (less manufacturing). Risk should increase (less early data about complete system performance). \\
 6 & \textbf{Robust software framework} & \Cref{sec:METHODOLOGY_softwaredevelopment} proposes the use of a software language and/or framework that theoretically increases reliability without an increase in development time. & Development time and cost should stay the same, with reduced risk. \\
 7 & \textbf{Robotic Process Automation} & \Cref{sec:METHODOLOGY_automated_testing} proposes the use of automated testing processes and tools to streamline the system's verification. & Development time should be project-dependent (cost of automation vs.\@ less manual effort). Cost should increase (when infrastructure needed to automate testing). Risk should decrease (general assumption based on increased testing). \\ \bottomrule
@@ -4335,7 +4336,7 @@ This configuration essentially emulates a \textbf{``fractionated''} system, wher
 For ChipSat-1, the available space allowed us to implement two ``secondary'' parts, designed to generate data that would be downlinked through the \ac{VLC} link: One had a gyroscope to measure and report angular velocity, and the other an ambient light intensity sensor.
 
 \begin{figure}[h]
-	\includegraphics{graphics/chipsat_parts_render.jpg}
+	\includegraphics{renders/chipsat_parts_render.jpg}
 	\caption[Render of ChipSat-1, showing its 3 parts]{Render of ChipSat-1, showing its 3 parts. Each part is electrically isolated to the others, sharing only a common ground and the free-space optical link.}
 	\label{fig:c_chipsat_parts_render}
 \end{figure}
@@ -4780,7 +4781,7 @@ From a technical point of view, we gathered the following points during developm
 	To prevent confusion, test points and \acsp{LED} should state their function in the \acs{PCB}'s silk screen. On double-sided test-points, both sides of the board should contain the corresponding labels.
 	\item For ChipSat-1, the lead time for unpopulated \acs{PCB} manufacturing was close to one week, while the lead time for external \acs{PCB} assembly was close to one month. We identified defects in the design (particularly incorrect footprints or incorrect procured components) after the assembly. These defects can be more easily detected and resolved when the \acs{PCB} designers and manufacturers can communicate directly, so that any dubious design decisions (that are only visible when assembly starts) are investigated. In case another \acs{PCB} version needs to be manufactured, in-house manufacturing would also reduce the cost and time overhead.
 	\item Breadboard testing was performed via the use of development boards and individual elements. In the case of ChipSat-1, no significant data was gathered through this approach. From a financial point of view, the cost of purchasing development boards for used \acs{IC} is not always lower than the cost of manufacturing \acsp{PCB}. Unless a specific trade-off experimentation between physical parts needs to be conducted, and if the required expertise is available, I recommend that low-scale projects skip breadboard experimentation and produce \acs{PCB} designs on the early iterations, which can then be progressively improved.
-	\item During software development, it was clear that specific functions of the ChipSat-1\footnote{Mainly from \Cref{m_software_requirements}.} could be reused from other open-source spacecraft. The low footprint of available CubeSat software, combined with the substantial performance of miniaturised \acsp{MCU}, make it possible to reuse open-source libraries for real-time operations, \acs{PUS} services, and generic business logic. Nevertheless, due to the simplicity of ChipSat-1's functional requirements, no such large-scale libraries were used. The software was written in C++, based on the FreeRTOS operating system and the STM32 \acs{HAL}.
+	\item During software development, it was clear that specific functions of the ChipSat-1\footnote{Mainly from \Cref{tab:m_software_requirements}.} could be reused from other open-source spacecraft. The low footprint of available CubeSat software, combined with the substantial performance of miniaturised \acsp{MCU}, make it possible to reuse open-source libraries for real-time operations, \acs{PUS} services, and generic business logic. Nevertheless, due to the simplicity of ChipSat-1's functional requirements, no such large-scale libraries were used. The software was written in C++, based on the FreeRTOS operating system and the STM32 \acs{HAL}.
 	\item The \emph{ok\_serialiser} library was used to encode and decode data from binary packets (\Cref{app:ok_serializer}). As (de)serialisation is a task that has to be performed by almost all spacecraft for ground-to-earth communication, internal communication, and storage, developers are encouraged to adopt a robust serialisation library. Doing so will prevent repetition and breaking changes when interface specifications are updated.
 	\item While \acs{FRAM} and \acs{MRAM} memories are generally low-density, they provide a very simple and robust interface to allow configuration storage. In contrast to traditional \acs{RAM}, they simplify \acf{FMEA} by eliminating power loss as a failure mode\footnote{However, note that corruption due to incomplete transmissions is still possible.} As such, they are highly recommended for small spacecraft setups.
 	\item Decoding the \acs{VLC} signal while rejecting ambient light required a careful selection of sampling parameters and digital filters. Executing this pipeline (for transmission and reception) entirely in software allowed us to freely configure the parameters and data rates for the system, essentially operating as a low-data rate \acf{SDR}, which was made possible because of the low intended data rate for the \acs{VLC} system. If a hardware-backed decoding system was used, physical modifications would be needed for this experimentation. Additionally, I used a software oscilloscope to trace the output of each processing step during signal reception, in order to fine-tune the decoder against ambient light. The combination of these capabilities proved to be highly efficient as an ``in-the-box'' solution, comparable to using a physical signal analyser and corresponding debugging process.
@@ -4888,7 +4889,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 	ChipSat-1 performed all soldering externally, meaning that the recommendation of the \acs{SCS} methodology was \emph{not} used. As such, the counter-factual statement for this point is ``\emph{How would the metrics change if \acs{PCB} soldering was done in-house?}''
 
-	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project\footnote{This estimation is based on results from AI4Space (\Cref{c_ai4space_times}) and ChiPySat.}. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
+	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project\footnote{This estimation is based on results from AI4Space (\Cref{tab:_ai4space_times}) and ChiPySat.}. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
 		\item External manufacturing usually adds a month of lead time, during which no changes can be made, compared to \(\sim \)\qty{1}{week} for an unpopulated \acs{PCB}. This makes iterations longer and prevents the rapid testing required by Agile methodologies.
 		\item Experience during the project showed that communicating with an external manufacturer adds an additional layer of error-prone interfacing. Shifting the manufacturing responsibility closer to the designers makes it easier to detect defects early.
 	\end{enumerate*}
@@ -4900,7 +4901,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 	While it is difficult to estimate how many of the detected issues would have been resolved early with more time spent in the design, it was clear that, due to evolving external requirements beyond the team's control, \textbf{more than one production run would have been necessary, even in the case of a single-step plan}.
 	As such, most of the redesign work that was performed would have still been necessary, even in the case of a \acs{BDUF} approach. For this evaluation, I will consider that a single-step iteration plan adds one person month of design/review work, but that it generally reduces risk due to more detailed evaluations of the design. The cost would be reduced by the manufacturing cost of all incomplete iterations.
 	\item \textbf{Short, agile iterations}:
-	The \acs{SCS} methodology recommends short (and when possible time-boxed), system-wide iterations. This is in contrast to typical longer iterative/multi-step methods used in CubeSat projects, (\Cref{sec:LITERATURE_cubesat_environment}).
+	The \acs{SCS} methodology recommends short (and when possible timeboxed), system-wide iterations. This is in contrast to typical longer iterative/multi-step methods used in CubeSat projects, (\Cref{sec:LITERATURE_cubesat_environment}).
 
 	In the case of ChipSat-1, short iterations allowed us to address externally changing requirements on time, but increased non-conformances due to less time spent in design reviews. Out of the 5 performed iterations, only the 5\textsuperscript{th} iteration was unplanned. Assuming that each iteration would last \(1.5\times\) longer in the longer case, and that each iteration is connected with a \( \frac{75+75}{5} = 30 \) hour prototyping \& integration time, the effect of longer iterations would increase project effort by \qty{120}{hours}. The cost would be reduced by the manufacturing cost of the last iteration.
 	\item \textbf{Iterating over partitions} instead of the entire system:
@@ -4915,7 +4916,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 \begin{figure*}
 	\includegraphics{analyses/cf_chipsat1_nonconformance}
-	\caption{ChipSat-1 cumulative nonconformances}
+	\caption{ChipSat-1 cumulative non-conformances}
 \end{figure*}
 
 \begin{figure}
@@ -5361,7 +5362,7 @@ POQUITO was developed in order to demonstrate the operation of a ChipSat in orbi
 	POQUITO's \acs{ADCS} was based on a 9-axis \acf{IMU} and four sun sensors (placed on each side) used for attitude determination. The actuators used were three magnetorquers (one for each axis) in the form of current loops embedded in 4 \acs{PCB} layers each \autocite{anforowiczMagnetorquerCalc2026}. The \acs{ADCS} behaviour was modelled and simulated through a Model-In-The-Loop simulation in MATLAB, with a B-dot controller used for detumbling.
 \end{enumerate}
 
-Owing to the availability of open-source PocketQube buses and the small number of engineers on our team, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including base-plate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accomodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
+Owing to the availability of open-source PocketQube buses and the small number of engineers on our team, we decided to \textbf{reuse} an free and open-source design to base POQUITO on. The QUBIK platform \autocite{daradimosQUBIK1pPocketQube2024} was chosen, owing to its simplicity, flight heritage, and available documentation. More specifically, POQUITO used the \emph{structure} (including baseplate and antenna deployment mechanism), \emph{communications board}\footnote{More specifically, the \emph{PQ9ISH} communications module.} and \emph{battery management power system} (\acs{EPS}) as-is. The \emph{side solar panels} were modified to accomodate the \acs{ADCS} magnetorquers and light sensors. The \emph{\acs{ADCS} board}, \emph{Z-axis magnetorquer board} and \emph{top-side ChipSat payload} were designed in-house, based on board layouts and schematics from QUBIK. A block diagram of all components is shown in \Cref{fig:c_poquito_block}.
 
 \begin{figure}[h]
 	\includegraphics{media/graphics/Block_POQUITO}
@@ -5421,7 +5422,7 @@ In terms of additional components, the \acs{ADCS} contained a photodiode, functi
 	\setfloatalignment{b} %vadOK
 \end{figure}
 
-Power storage was done via a camera battery mounted on the \acs{EPS} board. The antenna used QUBIK's original burn-wire mechanism, placed on the baseplate, which also included two electrical cut-off switches (``kill switches'') to detect deployment. The baseplate also included an outwards-facing 16-pin umbilical connector, intended for debugging and charging after integration, and internally harnessed to all subsystems.\footnote{Even though QUBIK originally had one programmable subsystem, the base-plate and harness designs predicted the need for a second programmable subsystem, which we made use of.} To reduce internal cabling, the solar panels included pads compatible with spring loaded ``pogo pin'' connectors.
+Power storage was done via a camera battery mounted on the \acs{EPS} board. The antenna used QUBIK's original burn-wire mechanism, placed on the baseplate, which also included two electrical cut-off switches (``kill switches'') to detect deployment. The baseplate also included an outwards-facing 16-pin umbilical connector, intended for debugging and charging after integration, and internally harnessed to all subsystems.\footnote{Even though QUBIK originally had one programmable subsystem, the baseplate and harness designs predicted the need for a second programmable subsystem, which we made use of.} To reduce internal cabling, the solar panels included pads compatible with spring loaded ``pogo pin'' connectors.
 
 Structurally, the subsystem stack was kept in place through four screws and two machined plates (top and bottom), each of which had appropriately sized slots to accommodate the solar panels.
 
@@ -5649,7 +5650,7 @@ Compared to the previous mission, POQUITO's status as an independent satellite r
 
 A list of lessons learned that were gathered by the entirety of the team after the end of the project is shown below:
 \begin{itemize}
-	\item The significant number of \textbf{procurement runs} required increased delays. Lead times were affected both by the university's logistical process\footnote{which is standard across many public institutions}, and the base lead times for custom manufactured components (such as assembled \acsp{PCB} and structural elements). Even though we anticipated 4-month long iterations to counter approximately the standard 1--2-month long procurement ``latency'', this added significant ``lag'' to the agile iteration lifecycle.
+	\item The significant number of \textbf{procurement runs} required increased delays. Lead times were affected both by the university's logistical process\footnote{which is standard across many public institutions}, and the base lead times for custom manufactured components (such as assembled \acsp{PCB} and structural elements). Even though we anticipated 4-month long iterations to counter approximately the standard 1--2-month long procurement ``latency'', this added significant ``lag'' to the Agile iteration lifecycle.
 	
 	The slowest item in POQUITO's critical path was identified to be the procurement of assembled \acsp{PCB}, which lasted \qtyrange{30}{50}{days}. During the mission, the team started preparing the internal tooling for reflow soldering, and managed to solder some subsystems in-house\footnote{Namely the solar panels and \acs{MTQ} boards.}, observing a generally smoother process compared to external procurement.
 	\item The allocation of \textbf{testing time} to the project was insufficient, as shown in \Cref{tab:c_poquito_times}. Combined with the above point, this meant that some specific functions (e.g.\@ telecommands, antenna deployment) could not be stress tested. Projects are encouraged to allocate approximately 50\% of the development lifecycle to testing, allowing enough margin for additional unexpected development efforts.
@@ -5734,7 +5735,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_poquito_counterfact
 	I consider it highly likely that this approach would detect and prevent most or all non-conformances noted in \Cref{sec:CASESTUDIES_poquito_lessons}, thus leading to a successful development of the spacecraft. While both sequential and iterative development would lead to a successfully operating spacecraft, I consider that spending more time on \emph{early design} would lead to a potentially simpler design, e.g.\@ by simplifying POQUITO's harnessing, or by deciding to use a simpler communication protocol\footnote{e.g.\@ \acs{UART} instead of \acs{CAN}.}. Thus, I will consider that multi-step development increases risk. This is also influenced by POQUITO's more complex nature compared to previous missions, leading to a higher potential inertia against later design changes. Finally, I will also consider a significant increase in total manufacturing cost for a multi-step lifecycle process (based on the costs of individual \acsp{PCB} and elements).
 
 	\item \textbf{Short iterations}:
-	POQUITO's iterations are not considered short in terms of typical agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2.\footnote{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}
+	POQUITO's iterations are not considered short in terms of typical Agile expectations. This was influenced mainly by the long waiting times required. In POQUITO's case, increasing the number of iterations from 3 to e.g.\@ 5 (similar to ChipSat-1) would require a different environment, or the heavier reliance on internal prototyping and/or manufacturing (element \#2). This treatment therefore depends on treatment \#2.\footnote{This assertion does not threaten the validity of the analysis, as I will only consider the cases with 0 treatments, actual treatments, and all treatments applied.}
 	
 	Nevertheless, in the case of POQUITO, short iterations would increase the total cost (based on the cost of components and unassembled \acsp{PCB}) and development time by \( \frac{2}{3} \cdot 108 = \qty{72}{hours} \). However, shorter, timeboxed iterations would help in the earlier identification of issues, such as incompatible dimensions and bad fits. I will therefore consider a lower risk,  and an additional reduction of time required for machining by \qty{8}{hours}\footnote{Related to resolving the solar panel non-conformance identified}.
 
@@ -5785,7 +5786,7 @@ REQ-010 & Engineering & The spacecraft shall be < 10 × 10 × 2.2 cm in size & M
 REQ-020 & Engineering & The spacecraft shall be < 7 × 7 × 1 cm in size & Should have \\
 REQ-080 & Design & The spacecraft shall be based on the PyCubed-mini platform & Must have \\
 REQ-090 & Engineering & The spacecraft shall support bidirectional RF comms in the \acs{UHF}   band & Must have \\
-REQ-100 & Engineering & The spacecraft shall host an earth-pointing lensless camera & Must have \\
+REQ-100 & Engineering & The spacecraft shall host an earth-pointing lens-less camera & Must have \\
 REQ-110 & Engineering & The spacecraft shall   perform on-board image processing, at least a convolution mask & Must have \\
 REQ-120 & Engineering & The spacecraft shall host 3-axis magnetorquers and perform  detumbling & Should have \\
 REQ-130 & Engineering & The spacecraft shall perform nadir pointing with \acs{APE} < 20° & Could have \\
@@ -5871,7 +5872,7 @@ The assembly (soldering) of the boards was performed through an in-house reflow 
 
 \newthought{The results} of an off-board processing experiment are shown in \Cref{fig:c_chipysat_results}, and demonstrate the successful application of the DiffuserCam process in terms of hardware and software. In this experiment, the image capture was performed entirely by the ChiPySat lens-less camera and processor, with the data transferred to a desktop computer via \acs{USB}. However, the processing (deconvolution) of the image took place in the computer, and not the satellite.
 
-For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the Micropython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of 1.\@ a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; 2.\@ the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and 3.\@  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
+For the second iteration, I attempted to move the processing algorithm within the OpenMV application microcontroller.\footnote{The optimisation process for deconvolution revolves around the iterative application of 2D \acs{FFT} and simple matrix operations \cite{kuoDiffuserCamDiffuserBasedLensless2017}.} OpenMV is built around the MicroPython platform and uses Python as the main top-level programming interface. However, Python turned out to be ill-suited for resource-constrained applications. This resulted from the combination of 1.\@ a \textbf{large image size}\footnote{\(320\times 240 = \qty{76.8}{\kilo\byte} \), compare to \qty{1}{\mega\byte} available \acs{MCU} \acs{RAM}.}; 2.\@ the requirement from the optimiser to have multiple images in memory at the same time\footnote{Including, for example, the input image, working copy, \acs{PSF}, function operands, and temporaries}; and 3.\@  the dynamically allocated nature of Python, leading to inconsistent freeing and significant memory fragmentation. Despite multiple optimisation attempts, the platform as-is could only successfully accomodate a reduced image size of \(32\times 24\) pixels, 100 times smaller than the original.
 
 Resolving the reduced performance issue was one of the key goals of the second ChiPySat iteration, for which we decided to implement the following measures:
 \begin{itemize}[itemsep=-2ex]
@@ -5953,10 +5954,10 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	\item \textbf{Bypassing structural/thermal analysis}:
 	Similar to the previous case studies (\Cref{sec:CASESTUDIES_chipsat_evaluation,sec:CASESTUDIES_ai4space_evaluation,sec:CASESTUDIES_poquito_lessons}), combined with the relatively simple \acs{PCB}-based configuration of the spacecraft.
 	\item \textbf{External manufacturing}:
-	Early in the mission, we considered the tradeoff between in-house and external \acs{PCB} assembly, comparing different available options. We decied to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
+	Early in the mission, we considered the trade-off between in-house and external \acs{PCB} assembly, comparing different available options. We decied to proceed with in-house soldering because of the costs and delays associated with external manufacturing. The availability of calibrated reflow facilities and experienced personnel supported a short \qty{12}{hour} assembly time for each \acs{PCB}.
 
 	\item \textbf{Iterative multi-step development}:
-	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in upfront design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
+	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in up-front design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
 	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
 		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \autocite{kaliberaRigorousBenchmarkingReasonable2013,woodsideFutureSoftwarePerformance2007}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
@@ -5964,7 +5965,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	\end{itemize}
 
 	\item \textbf{Short iterations}:
-	ChiPySat's first iteration, lasting 4 months, cannot be considered short, due to the design effort required beforehand. While the actual duration of the iteration was long, it represented a small amount of person-hours, owing to the small team involved. Nevertheless, it would be possible for ChiPySat to perform even shorter, agile-like iterations, by moving to manufacturing more ``aggressively''.
+	ChiPySat's first iteration, lasting 4 months, cannot be considered short, due to the design effort required beforehand. While the actual duration of the iteration was long, it represented a small amount of person-hours, owing to the small team involved. Nevertheless, it would be possible for ChiPySat to perform even shorter, Agile-like iterations, by moving to manufacturing more ``aggressively''.
 
 	I consider that using shorter (e.g.\@2-month long) iterations would reduce the overall development time by the initial design time, and would increase it by the time required for 1 additional \acs{PCB} revision. The development flow showed that some of the earlier designs considered would not have increased the number of non-conformances or incomplete requirements, showing that risk is not increased by shortening iterations.
 
@@ -6002,7 +6003,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 \label{sec:CASESTUDIES_results}
 \label{sec:DISCUSSION_crosscase}
 
-This section presents a cross-case analysis between the four case-studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
+This section presents a cross-case analysis between the four case studies presented before. This analysis depends mainly on the explanations and quantitative counter-factual evaluation performed above. The evaluation goal is defined by the requirements of \Cref{tab:m_methodology_general_rqeuirements}.
 
 The introductory section of \Cref{chap:CASESTUDIES} presented the data gathering process and analysis approach that will also be followed for this chapter.
 
@@ -6046,7 +6047,7 @@ Therefore, RM1 is considered satisfied for this case.
 
 \paragraph{RM4: The SCS Methodology shall enable equally less risky development of SCS, compared to corresponding ad-hoc or CubeSat-based methodologies.}
 
-While risk is difficult to quantify, counterfactual analyses showed a balanced risk delta between the treated and non-treated cases. In all of the above missions, assigning a numerical value to the categorical risk value showed either a reduction or no overall change in risk. The performed trade-off evaluations for each mission can inform developers on selecting the appropriate treatments. The overall comparison between risk distribution can be seen in \Cref{fig:c_plot_box_risk}.
+While risk is difficult to quantify, counter-factual analyses showed a balanced risk delta between the treated and non-treated cases. In all of the above missions, assigning a numerical value to the categorical risk value showed either a reduction or no overall change in risk. The performed trade-off evaluations for each mission can inform developers on selecting the appropriate treatments. The overall comparison between risk distribution can be seen in \Cref{fig:c_plot_box_risk}.
 
 \FloatBarrier
 \subsection{External Validity}
@@ -6166,26 +6167,26 @@ Risk (understood here as \textbf{perceived risk}) is measured only as a categori
 Project & Analysis Type & \#\@ Treat & \multicolumn{1}{c}{Time (hours)} & \multicolumn{1}{c}{Cost (€)} & \multicolumn{1}{c}{Risk (cat.)} \\ \midrule
 \multirow{3}{*}{ChipSat-1} 
  & Actual                                    & 4 & 478 & 8930 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
- & Counterfactual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
+ & Counter-factual (SCS methodology used)     & 6 & 590 & 6930 & -2 \\
+ & Counter-factual (SCS methodology unused) & 0 & 948 & 6965 & -2 \\
  \midrule
 \multirow{3}{*}{AI4Space} 
  & Actual                                    & 5 & 468 & 4900 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
- & Counterfactual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
+ & Counter-factual (SCS methodology used)     & 6 & 492 & 3600 & 0 \\
+ & Counter-factual (SCS methodology unused) & 0 & 886 & 3600 & 1 \\
  \midrule
 \multirow{3}{*}{POQUITO}
  & Actual                                    & 3 & 759 & 26750 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
- & Counterfactual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
+ & Counter-factual (SCS methodology used)     & 6 & 903 & 25780 & -3 \\
+ & Counter-factual (SCS methodology unused) & 0 & 1213 & 21380 & -2 \\
  \midrule
 \multirow{3}{*}{ChiPySat} 
  & Actual                                    & 3 & 252 & 1000 & 0 \\
- & Counterfactual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
- & Counterfactual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
+ & Counter-factual (SCS methodology used)     & 6 & 210 & 1800 & -2 \\
+ & Counter-factual (SCS methodology unused)   & 0 & 468 & 3350 & -1 \\
  \bottomrule
 \end{tabularx}
-\caption{Case-study counter-factual analysis aggregate data}
+\caption{Case study counter-factual analysis aggregate data}
 \label{tab:c_aggregate_data}
 \setfloatalignment{b}
 \end{table*}
@@ -6255,11 +6256,11 @@ Each treatment can be evaluated as follows:
 	The aggregation of the results shows a \qty{10}{\percent} increase in development time, a \qty{33}{\percent} decrease in cost, and a project-specific change in perceived risk, when a team decides to assembly electronic boards in-house.
 	These results match the expected increase in manufacturing time combined with the high costs associated with external manufacturing, while risk depends on the specific manufacturing requirements, and whether they can be reliably met in-house. However, this analysis has not modelled the lead times of externally-covered processes, which are seen as blocking points in project tasks, but are not accounted here in terms of development time.
 	\item \textbf{Multi-step development}:
-	This treatment represents the use of an iterative lifecycle process, as opposed to a sequential single-step lifecycle. All case-studies were performed using an iterative approach. The counter-factual evaluation was based on estimating the time required for an initial design (considered as 40 person-days, based on \Cref{tab:l_cubesat_time_drivers}), against the time (and cost budget) saved by not performing the development work related to multiple hardware iterations. Nevertheless, I considered that at least one second hardware iteration would have been necessary in some projects, either due to externally changed requirements, or due to an inherent lack of information before experimentation for novel designs.
+	This treatment represents the use of an iterative lifecycle process, as opposed to a sequential single-step lifecycle. All case studies were performed using an iterative approach. The counter-factual evaluation was based on estimating the time required for an initial design (considered as 40 person-days, based on \Cref{tab:l_cubesat_time_drivers}), against the time (and cost budget) saved by not performing the development work related to multiple hardware iterations. Nevertheless, I considered that at least one second hardware iteration would have been necessary in some projects, either due to externally changed requirements, or due to an inherent lack of information before experimentation for novel designs.
 
 	The results indicate that multi-step development reduces development time by \qty{25}{\percent} with high confidence. Low-confidence indicators show that it increases cost by \qty{18}{\percent}, with a project-specific change in risk.
 	\item \textbf{Short iterations}:
-	Combined with multi-step development, short (1--2 month long) system-level iterations delineate the core of typical agile practices.
+	Combined with multi-step development, short (1--2 month long) system-level iterations delineate the core of typical Agile practices.
 	The impact of this treatment affected development times by \qtyrange{10}{20}{\percent}, but on a direction that was project-specific. On the other hand, short iterations increase cost by \qty{33}{\percent} with high confidence, while generally increasing perceived risk.
 
 	The selection of iteration duration therefore seems both highly impactful and highly project-specific, with ``larger'' projects (in this case, POQUITO) being less suitable for short iterations compared to simpler projects, due to the correlation between technical size and manufacturing cost/integration time. %This factor also depends on the expected lead times and developer availability for the project.
@@ -6457,7 +6458,7 @@ This research question involves the generalisation of the results of \texttt{RQ3
 \section{Summary}
 
 This thesis presented a systems engineering methodology for the development of \acf{SCS}, with a focus on the reduction of development time without a negative impact on technical risk.
-The methodology focuses on the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \emph{verification}. Its foundation mainly lies on agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
+The methodology focuses on the systems engineering fields of \emph{lifecycle processes}, \emph{requirements management}, \emph{modelling \& knowledge management}, \emph{design solution definition}, and \emph{verification}. Its foundation mainly lies on Agile methodologies found in software development, which have been tailored for use in \acl{SCS} due to these spacecraft's unique size, mass and cost characteristics.
 
 \begin{table*}[h]
 \def\arraystretch{1.2}
@@ -6468,14 +6469,14 @@ The methodology focuses on the systems engineering fields of \emph{lifecycle pro
 	1 & Investigate the current \ac{SYE} approaches used by \ac{SCS} developers and gather data about the environment and typical \ac{SCS} missions. & Initial literature review of small space systems environments and open problems (\Cref{sec:INTRODUCTION_defining_systems_engineering,sec:INTRODUCTION_research_gaps}), detailed literature review of \acs{SCS} development environment and constraints (\Cref{sec:LITERATURE_subcubesat}), interviews with \acs{SCS} developers (\Cref{sec:LITERATURE_interviews}). \\
 	2 & Identify quantifiable parameters that can describe shortcomings in current \ac{SYE} approaches. & Definition of \acs{SYE} metrics based on available literature and \acs{SCS} needs (\Cref{sec:LITERATURE_metrics}). \\
 	3 & Synthesise a set of methods for technical management and system realisation that describe a complete \ac{SYE} methodology for \ac{SCS}. & Investigation of current systems engineering \acs{SOTA} (\Cref{sec:LITERATURE_systems_engineering}), elaboration of a \acs{SCS} methodology (\Cref{chap:METHODOLOGY}). \\
-	4 & Validate the new methodology on at least one space mission that will succeed in environmental qualification. & Four case studies performed in iterative fashion based on action-research principles and counterfactual evaluation (\Cref{chap:CASESTUDIES}). \\
+	4 & Validate the new methodology on at least one space mission that will succeed in environmental qualification. & Four case studies performed in iterative fashion based on action-research principles and counter-factual evaluation (\Cref{chap:CASESTUDIES}). \\
 	\bottomrule
 \end{tabularx}
 \caption{Thesis objectives and how they were addressed}
 \end{table*}
 
 \vspace{1.5cm}
-In \Cref{sec:INTRODUCTION_research_gaps,sec:LITERATURE_subcubesat}, I investigated the ecosystem and typical development environment of Sub-CubeSat missions, and identified the main characteristics and constraints of \acs{SCS}. Past \acs{SCS} projects have generally involved small teams of up to approx.\@10 people, and development times are driven by launch agreements, which typically involve 1-year long commitments. The small technical size and complexity of these spacecraft match the requirements of lightweight agile methodologies. 
+In \Cref{sec:INTRODUCTION_research_gaps,sec:LITERATURE_subcubesat}, I investigated the ecosystem and typical development environment of Sub-CubeSat missions, and identified the main characteristics and constraints of \acs{SCS}. Past \acs{SCS} projects have generally involved small teams of up to approx.\@10 people, and development times are driven by launch agreements, which typically involve 1-year long commitments. The small technical size and complexity of these spacecraft match the requirements of lightweight Agile methodologies. 
 
 In \Cref{sec:LITERATURE_metrics}, I identified development \textbf{time}, development \textbf{cost}, and \textbf{technical risk} as metrics related to the performance of Systems Engineering frameworks when applied to \acl{SCS}.
 Results from the literature and past missions have shown that developers place significant weight on reducing development time and increasing spacecraft reliability. This is driven by the low success rates of past small satellite missions, combined with the desire to reduce resource utilisation and programmatic risk, by ensuring that projects do not experience cost overruns. Past literature has linked both of these factors to inadequate systems engineering practices followed by small satellite developers and to an unfamiliarity with past lessons learned.
@@ -6484,7 +6485,7 @@ Based on the above, \textbf{development time and technical risk} are identified 
 \begin{itemize}[itemsep=-3pt]
 	\item A \textbf{requirements management} method based on different degrees of necessity and reduced requirement formalism;
 	\item Two \textbf{lifecycle process models} based on Scrum, and involving short, predefined system-level iterations;
-	\item Guidelines for tool-based technical planning and work-package management;
+	\item Guidelines for tool-based technical planning and work package management;
 	\item A tool-based \textbf{modelling \& knowledge management} method based on lightweight \acl{MBSE};
 	\item A \textbf{hardware} design method and guidelines, specifically for pocket-sized systems, including interface management, with the purpose of being compatible with external safety requirements;
 	\item A lightweight test-based \textbf{verification \& validation} method, informed from software engineering and \acl{RPA} approaches; and
@@ -6511,7 +6512,7 @@ Regarding the understanding of the relationship between systems engineering and 
 	\item Reduction of development time is identified as another main target in \acs{SCS} projects, mainly influenced by logistical requirements placed on project owners, and fixed product delivery deadlines. However, a large variation in development duration of past missions has been identified, ranging from \qtyrange{10}{62}{months}, which cannot be tied to project requirements \& environment alone.
 	\item 
 	In contrast to traditional space systems engineering and CubeSat systems engineering, smaller systems have a disproportionately smaller need for preliminary ``architecting and documenting'' work.
-	\acl{SCS} systems present characteristics, such as small technical size and mass manufacturing, testing \& launch capabilities, that specifically match the environment of lightweight agile software and systems engineering frameworks.
+	\acl{SCS} systems present characteristics, such as small technical size and mass manufacturing, testing \& launch capabilities, that specifically match the environment of lightweight Agile software and systems engineering frameworks.
 \end{itemize}
 
 Based on the above findings, I have contributed the definition of a tailored systems engineering methodology, which is comprised of:
@@ -6547,7 +6548,7 @@ Based on the definition of the \acl{DRM}, this thesis performed only an \emph{in
 To that end, one future direction for this research is the further application and empirical evaluation of the methodology on new \acs{SCS} projects. This effort can also be supported by schedule, cost and risk modelling approaches from \acl{SYE} research %, such as COSYSMO,
 to provide a formal framework for guiding decisions during methodology tailoring.
 
-Even though the methodology has not been designed for CubeSats or larger systems, it may be possible to apply it in part or in its entirety on these systems, based on the environmental context. What are the factors that allow agile systems engineering for CubeSats, and which parts of the \acs{SCS} methodology can be transferred to them? As CubeSat manufacturing is predominantly moving to local facilities, it becomes easier to follow approaches (such as 1-month long iterations) that were previously seen as utopian, while still conforming to the mostly stricter safety requirements for CubeSats.
+Even though the methodology has not been designed for CubeSats or larger systems, it may be possible to apply it in part or in its entirety on these systems, based on the environmental context. What are the factors that allow Agile systems engineering for CubeSats, and which parts of the \acs{SCS} methodology can be transferred to them? As CubeSat manufacturing is predominantly moving to local facilities, it becomes easier to follow approaches (such as 1-month long iterations) that were previously seen as utopian, while still conforming to the mostly stricter safety requirements for CubeSats.
 
 Another notable point of refinement for this work is the set of hardware and software development guidelines, which are mainly sourced from lessons learned during the case studies, but will fundamentally benefit from further experience gained during development and flight, with an end goal of creating a best-practices knowledge base for \acs{SCS} developers, similar to existing attempts for CubeSats.
 
@@ -6628,7 +6629,7 @@ One common feature that needs to be implemented by almost all spacecraft is the 
 
 In a naive implementation, each of these features would be completed and implemented separately. This approach would increase program size (and therefore complexity) and introduce failure points, in case of mismatches between implementations. Potential changes in message structure would have to be implemented across different parts of the codebase, further increasing development time and risk. However, in an ideal situation, a description of the functionality that describes \acs{TMTC} handling will exist in a single place.
 
-This is generally easy to perform in dynamically-typed languages, such as Python or Julia, which allow changing the behaviour of a program based on its own structure. This is referred to as \emph{run-time reflection} \autocite{smithProceduralReflectionProgramming1982}, but can be implemented using various methods that rely on dynamic memory allocation. Python's \emph{construct} library, for example, allows defining a structure, parser, formatter, and documentation for arbitrary binary messages in a single declaration \autocite{bulskiConstruct2020}.
+This is generally easy to perform in dynamically-typed languages, such as Python or Julia, which allow changing the behaviour of a program based on its own structure. This is referred to as \emph{runtime reflection} \autocite{smithProceduralReflectionProgramming1982}, but can be implemented using various methods that rely on dynamic memory allocation. Python's \emph{construct} library, for example, allows defining a structure, parser, formatter, and documentation for arbitrary binary messages in a single declaration \autocite{bulskiConstruct2020}.
 
 % \begin{lstlisting}[language=Python, caption=Example telecommand definition from AI4Space using the \emph{construct} library]
 % large_packet_request = \
@@ -6643,7 +6644,7 @@ This is generally easy to perform in dynamically-typed languages, such as Python
 % )
 % \end{lstlisting}
 
-However, as seen in \Cref{sec:METHODOLOGY_softwaredevelopment}, developers may not always desire to use interpreted programming languages, instead relying on a restricted subset of compiled, statically allocated languages, while avoiding dynamic and run-time-based features. In this case, \emph{autocoding} has historically been one of the approaches used, by generating the required functions from a single, language-agnostic specification. This is, for example, the approach followed by CubedOS, whose team has developed a tool written in \emph{Scala} that generates \emph{Ada} encoding/decoding subprograms from an \emph{External Data Representation (XDR)} \autocite{brandonCubedOSVerifiedCubeSat2017}. However, this approach adds additional steps and complexity to the software's build cycle, increasing the learning curve and difficulty of maintenance, and adding additional abstractions.
+However, as seen in \Cref{sec:METHODOLOGY_softwaredevelopment}, developers may not always desire to use interpreted programming languages, instead relying on a restricted subset of compiled, statically allocated languages, while avoiding dynamic and runtime-based features. In this case, \emph{autocoding} has historically been one of the approaches used, by generating the required functions from a single, language-agnostic specification. This is, for example, the approach followed by CubedOS, whose team has developed a tool written in \emph{Scala} that generates \emph{Ada} encoding/decoding subprograms from an \emph{External Data Representation (XDR)} \autocite{brandonCubedOSVerifiedCubeSat2017}. However, this approach adds additional steps and complexity to the software's build cycle, increasing the learning curve and difficulty of maintenance, and adding additional abstractions.
 
 Some compiled programming languages, such as \emph{D} or \emph{Rust}, support \emph{metaprogramming} in various degrees, and are allowed to treat code as data. This can be done through the use of compile-time execution, compile-time reflection, or macros. A combination of these features can allow emulating the autocoding functionality mentioned before, or implementing self-describing encoder/decoder data structures. This is, for example, the approach followed by Rust's \emph{serde} library, which can generate binary (de)serialisers through procedural macros \autocite{tolnaySerdeRust2025}. \todo{code with serde}
 
@@ -6716,7 +6717,7 @@ The following table lists the participation and contributions of team members to
 %\end{fullwidth}
 
 \begin{table*}[h]
-	\caption{Contribution matrix for the various case-studies investigated within the scope of this work}
+	\caption{Contribution matrix for the various case studies investigated within the scope of this work}
 	
 	\colorlet{AIV}{MaterialDeepOrange700}
 	\colorlet{ADCS}{MaterialOrange800}
