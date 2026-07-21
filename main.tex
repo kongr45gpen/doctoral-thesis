@@ -987,7 +987,7 @@ Due to this high variance between project costs, and the lack of concrete data o
     };
     \end{axis}
 \end{tikzpicture}
-	\caption[CubeSat programme duration vs.\space size]{CubeSat programme duration vs.~size (\( N = 40 \)) \cite{berthoudHowSetCubeSat2016} \todo{check}}
+	\caption[CubeSat programme duration vs.\space size]{CubeSat programme duration vs.~size (\( N = 40 \)) \cite{berthoudHowSetCubeSat2016}}
 	\label{fig:l_cubesat_size_duration}
 \end{figure}
 
@@ -2178,7 +2178,6 @@ Mitigating this difficulty by separating an iteration into pre-determined, seque
 	\end{itemize}
 	
 	While there is no single definition for these activities as they are heavily project-specific, experience from case studies has shown that they are key to reducing the development and integration time and reducing risk.
-	\todo{We have good experience from AI4Space demonstrating this. Make sure that his is mentioned in that section}
 	\item \textbf{Verification, Validation \& Improvement} activities represent \textbf{inspection and testing} of the, now manufactured, product's hardware and software. Testing may include functional verification only, or also involve environmental verification which may be done in external facilities.
 	
 	In software-only Scrum and Agile engineering, verification \& validation is not considered as a separate phase, as it is made in tandem with development by means of \ac{CI}/\ac{CD}. In Sat-Scrum, this is represented by the ``improvement'' keyword, which requires this almost-instant feedback loop, to the degree possible.
@@ -5002,6 +5001,7 @@ The incorporation of a Raspberry Pi implies the implementation of a complete bas
 AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicroservices2015}, each responsible for one part of the payload's operation or mission. These microservices were written in Python and interfaced through the RabbitMQ message broker.
 
 \subsection{Development Flow}
+\label{sec:CASESTUDIES_ai4space_flow}
 
 \begin{figure}
 \begin{tikzpicture}	\begin{scope}[font=\scriptsize,yshift=-10.5cm,node distance=0cm and 0cm]
@@ -5098,7 +5098,7 @@ AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicr
 \label{fig:c_ai4space_timeline}
 \end{figure}
 
-AI4Space followed an iterative lifecycle, similar to ChipSat-1. A Gantt chart was also drafted and kept up-to-date, with 4 planned different iterations. The iteration plan included a fully functional breadboard model, and two identical production models, for qualification and flight. The project management plan also included some formal documentation artifacts, including semi-monthly progress updates, non-conformance tracking, requirements compliance tracking and \ac{CONOPS}. The project team consisted of 9 members in total.
+AI4Space followed an iterative lifecycle, similar to ChipSat-1. A Gantt chart was also drafted and kept up-to-date, with 4 planned different iterations. The iteration plan included a fully functional breadboard model, and two identical production models, for qualification and flight. The project management plan also included some semi-formal documentation artifacts, including semi-monthly progress updates, non-conformance tracking, requirements compliance tracking, \ac{CONOPS} and user manuals. The project team consisted of 9 members in total.
 
 \begin{marginfigure}
 	\includegraphics{graphics/ai4space_rabbits.png}
@@ -5127,6 +5127,7 @@ The digital interface for \acs{TMTC} was based on Python's \textbf{\texttt{const
 Based on the development progress and non-conformances detected, the following technical lessons learned were gathered regarding AI4Space:
 
 \begin{itemize}[itemsep=-1ex]
+
 \item The use of a Raspberry Pi provided an unexpected advantage by allowing \textbf{remote programming and monitoring} through Ethernet and Wi-Fi\footnote{However, as with any \acs{RF} system, care had to be taken to disable transmissions inside resonating structures (e.g.~\acs{TVAC} chambers) and before launch.}. This meant that multiple developers could work simultaneously on the same unit, with no physical connection or wiring requirements. This also significantly simplified the \ac{EGSE} required for testing. 
 
 \item The easy capability for reprogramming, thanks to the file management capability provided by the Linux terminal and interfaces, was made use of after AI4Space was launched and operated in orbit.
@@ -5177,6 +5178,9 @@ The use of automation proved highly beneficial for this project, as it allowed r
 The protocol itself did not rely on a ready-to-use implementation (e.g.\@ of the \acs{PUS} services), but rather on a simple, proprietary specification. In each message, the first byte was a ``service'' type, and the second a ``message'' type. Any remaining bytes were message-specific. This option was chosen based on the component reuse guidelines (\Cref{fig:m_reuse}), since we wanted to minimise the overhead added due to extra headers or unused parameters. As the required functionality of AI4Space was simple and mainly payload-specific, only little effort was spent on the implementation of this protocol, rendering it generally successful.
 
 \item For the remaining documentation, AI4Space relied on text-based documentation, based on a combination of Microsoft Office tools (mainly for project management documentation), and a Markdown-centred MkDocs platform (mainly for technical documentation). While this lightweight documentation generally followed the principles described in \Cref{sec:METHODOLOGY_datamanagement}, it was not beneficial to fragment it into two different formats/platforms. It was not immediately obvious where a piece of information should be, and references between the two could not easily be followed.
+
+\item A measurable portion of development time for AI4Space was spent on necessary \emph{Auxiliary Activities} as defined in \Cref{sec:METHODOLOGY_satscrum}. This involved procurement activities, liaising with the host spacecraft provider, implementing support tools, and writing documentation.
+For documentation, the team produced artifacts such as non-conformance reports (\Cref{sec:CASESTUDIES_ai4space_flow}). While these were not required, they helped in increasing the understanding of the project's current state and served as a log of engineering decisions and justifications. This was especially important as AI4Space participants were not always fully dedicated to the project, in terms of time allocation. Maintaining these artifacts based on spreadsheets in a semi-formal way allowed us to spend only a small percentage of time on documentation in each iteration.
 
 \item The use of Python as a programming language was a double edged sword, mainly because of low-level details regarding the operation of the language. On the one hand, Python provided significant flexibility in terms of reconfigurability and reprogramming. The purported simplicity of the language reduced the learning curve for software developers in the project, while an exception handling hierarchy guaranteed that errors were recoverable. On the other hand, Python's lack of native support for parallelism made it more difficult to schedule concurrent tasks. Although solutions such as \texttt{asyncio} attempt to mitigate this issue, asynchronous Python was not yet fully supported by all used external libraries at the time of development. At the same time, the combination of Python with the microservice-based RabbitMQ architecture introduced delays in message processing, reducing the maximum throughput of the system, and increasing latency. While these issues were acceptable for a payload-level system, more caution has to be taken when developing an independent spacecraft, where requirements for real-time operations are more commonplace.
 
