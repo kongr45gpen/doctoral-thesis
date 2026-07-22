@@ -2402,7 +2402,7 @@ A final layer of abstraction has to be added, since, based on my definition, \te
 
 As a next logical step therefore, one can define a \textbf{partition} as a set of modules that not only outline a \emph{functional} boundary of the system, but also a unit which can be physically manufactured and tested on its own.
 \begin{definition}[Partition]
-	A partition is a set of \hyperlink{def:module}{modules}, whose combination can be manufactured and verified, and represents a useful proportion of the system that can potentially be an iteration target.
+	A partition is a set of \hyperref[def:module]{modules}, whose combination can be manufactured and verified, and represents a useful proportion of the system that can potentially be an iteration target.
 	\label{def:partition}
 \end{definition}
 
@@ -3218,7 +3218,7 @@ This more ``strict'' approach to interface definition represents a deviation to 
 This paragraph will enumerate further low-level design guidelines based on lessons learned that do not fit into any of the above categories:
 \begin{itemize}
 	\item Traditional satellite manufacturers focus heavily on the \textbf{reduction of in-orbit technical risk} through administrative measures (e.g.\@ \acl{FMEA}), system-level solutions (e.g.\@ redundancy) or high-reliability components \autocite{kanavourasDesignFaultDetection2021}.
-	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs+{TID} effects are typically less severe than random \acs+{SEE} effects.}
+	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs{TID} effects are typically less severe than random \acs{SEE} effects.}
 	Due to the general lack of statistics to evaluate the criticality and reliability effects of different choices, it is not always possible to confidently assert whether an amount of risk aversion is ``enough'' or not\footnote{Although it is generally possible to assert whether risk decreases after the implementation of a reliability measure.}.
 
 	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accommodated by the system's requirements. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other risk-reduction measurements.
@@ -4893,7 +4893,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 
 	ChipSat-1 performed all soldering externally, meaning that the recommendation of the \acs{SCS} methodology was \emph{not} used. As such, the counter-factual statement for this point is ``\emph{How would the metrics change if \acs{PCB} soldering was done in-house?}''
 
-	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project\footnote{This estimation is based on results from AI4Space (\Cref{tab:_ai4space_times}) and ChiPySat.}. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
+	For this counter-factual analysis, I will consider that an unpopulated \acs{PCB} is still manufactured externally,\footnote{This is standard in most cases, as unpopulated \acs{PCB} manufacturing generally requires more specialised equipment, and external procurement can have very low lead times.} but soldering is done in-house with a reflow process, taking up 3 working days, multiplied by the 3 \acs{PCB} runs of the project\footnote{This estimation is based on results from AI4Space (\Cref{tab:c_ai4space_times}) and ChiPySat.}. I also consider two risk factors, summing up to no perceptible risk change: \begin{enumerate*}
 		\item External manufacturing usually adds a month of lead time, during which no changes can be made, compared to \(\sim \)\qty{1}{week} for an unpopulated \acs{PCB}. This makes iterations longer and prevents the rapid testing required by Agile methodologies.
 		\item Experience during the project showed that communicating with an external manufacturer adds an additional layer of error-prone interfacing. Shifting the manufacturing responsibility closer to the designers makes it easier to detect defects early.
 	\end{enumerate*}
