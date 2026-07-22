@@ -112,9 +112,10 @@ under the License.
 %\acuseall%
 \bgroup
 \setlength\parskip{1ex}
-\printacronyms[pages={display=all,seq/use=false},]
-\label{sec:acronyms}
-\addcontentsline{toc}{section}{Acronyms}
+\chapter*{Acronyms}%
+\label{sec:acronyms}%
+\addcontentsline{toc}{section}{Acronyms}%
+\printacronyms[pages={display=all,seq/use=false,fill={ \acrodotfill}},heading=none]
 \egroup
 
 \end{fullwidth}
@@ -654,7 +655,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 \end{fullwidth}
 
 This chapter will introduce the background information necessary to develop the \ac{SCS} methodology.
-Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \Cpageref{sec:acronyms}. \todo{link not working?}}. \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
+Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \Cpageref{sec:acronyms}.}. \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
 
 \section{Terminology}
 \label{sec:LITERATURE_terminology}
@@ -691,9 +692,10 @@ Various \acl{SCS} classes have been defined in the literature. Most prominently,
 Apart from the size-based definitions, spacecraft can also be classified based on their mass through the use of metric-like prefixes.
 Note that the widely accepted classification, perhaps misleadingly, does not follow the \acs{SI} definition of unit prefixes \cite{InternationalSystemUnits2019}. The convention used in this paper is shown in \Cref{tab:satellite_sizes}.
 
-\begin{margindefinition}{Sub-CubeSat Spacecraft}\end{margindefinition}
+\begin{definition}[Sub-CubeSat Spacecraft]
 Based on \Cref{tab:satellite_sizes}, the classification of \acf{SCS} roughly corresponds to the classes of pico-, femto-, and atto-satellites.
 To reduce verbosity, I also introduce the notions of \textbf{pocket-sized spacecraft} and \textbf{centimetre-scale spacecraft} to be the equivalent of \ac{SCS}.
+\end{definition}
 
 
 \subsection{Method and Methodology}
@@ -1012,7 +1014,7 @@ Available CubeSat project planning literature allows comparing between different
 \end{itemize}
 
 \begin{table*}[h]
-	\caption[Time spent for development activities of various CubeSat projects, based on published Gantt charts used for planning]{Time spent for development activities of various CubeSat projects, based on published Gantt charts used for planning. ``Days'' should be interpreted as working days. Empty cells imply that the information is missing or not categorised as such.}
+	\caption[Time spent for development activities of various CubeSat projects]{Time spent for development activities of various CubeSat projects, based on published Gantt charts used for planning. ``Days'' should be interpreted as working days. Empty cells imply that the information is missing or not categorised as such.}
 	\label{tab:l_cubesat_time_drivers}
 	\begin{threeparttable}
 	\begin{adjustbox}{width=1.1\textwidth,center}
@@ -2694,7 +2696,7 @@ While the use of a formal model might prove prohibitive for systems such as \acl
 
 
 \begin{figure*}[h]
-	\caption[Mockup of an example interface for an Engineering Data Management tool, showing a script-based parameter]{Mockup of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
+	\caption[Mockup of an example interface for an Engineering Data Management tool]{Mockup of an example interface for an Engineering Data Management tool, showing a script-based parameter. While the focus is on the parameter value and history, the hierarchy of the system and properties of a component are still visible.}
 	\label{fig:m_edm_mockup}
 	\includegraphics{graphics/spardata_moqup}
 \end{figure*}
@@ -3130,7 +3132,7 @@ Another decision that developers are faced with involves whether they reuse exis
 
 \begin{figure*}[h]
 	\includegraphics{graphics/Reuse.pdf}
-	\caption{Concept map comparing component reuse (as a built-system or pure design reuse) against in-house development}
+	\caption[Concept map comparing component reuse against in-house development]{Concept map comparing component reuse (as a built-system or pure design reuse) against in-house development}
 	\label{fig:m_reuse}
 \end{figure*}
 
@@ -3557,7 +3559,7 @@ A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}
 
 In typical CubeSat systems engineering documentation, developers are recommended to devote 50\% of a project's time to testing activities \autocite{venturiniImprovingMissionSuccess2017}. Within the context of \acs{SCS}, testing takes place as part of normal development and during each iteration (\Cref{sec:METHODOLOGY_satscrum}). In the context of software engineering, verification and testing is performed in both an automated\footnote{referred to as computer-based testing} and manual fashion. \citeauthor{myersArtSoftwareTesting2012} separate software verification into the following categories \autocite{myersArtSoftwareTesting2012}:
 \begin{enumerate}
-	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality (\Cref{sec:METHODOLOGY_reviews_general}). Code inspection can also involve automated static analysis through automated tools. \todo{check link points ok}
+	\item \textbf{Code Inspections, Walkthroughs \& Reviews}: This refers to a review of the static original source code. Code reviews are usually performed after every code change (``commit''), but can also take place independently (usually in the form of audits).  \citeauthor{myersArtSoftwareTesting2012} recommend different techniques for code reviews, which can involve different levels of scrutiny, conversation with the original authors and review checklists. While code reviews are not strictly part of software testing, a longer time spent on reviewing is correlated with an increase in code quality (\Cref{sec:METHODOLOGY_reviews_general}). Code inspection can also involve automated static analysis through automated tools.
 	
 	\item \textbf{Test-case execution}: The most common form of software testing involves the creation of programmatic test-cases that verify individual software modules or their integration. The goal of executing test-cases is usually two-fold:
 	\begin{enumerate}[itemsep=-2ex]
@@ -3697,7 +3699,7 @@ More specifically, the execution and testing plan is elaborated into the followi
 
 \begin{figure}[p]
 	\includegraphics{graphics/fuzzing1_inverted.png}
-	\caption{Screenshot of libAFL execution}
+	\caption{Screenshot of LibAFL execution}
 \end{figure}
 
 \begin{figure}[p]
@@ -4712,7 +4714,7 @@ During the \emph{2\textsuperscript{nd} iteration}, enough information was gather
 
 \begin{marginfigure}
 	\includegraphics{pictures/chipsat1_ADM}
-	\caption{Initial concept of a ChipSat-1 deployable antenna. Measuring tape is often used for small satellite antennas due to high availability and desirable material properties, mainly elasticity.}
+	\caption[Initial concept of a ChipSat-1 deployable antenna]{Initial concept of a ChipSat-1 deployable antenna. Measuring tape is often used for small satellite antennas due to high availability and desirable material properties, mainly elasticity.}
 	\label{fig:c_burn_antenna}
 \end{marginfigure}
 

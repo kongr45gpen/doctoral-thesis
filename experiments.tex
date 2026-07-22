@@ -27,13 +27,10 @@
 % %\usepackage[style=ieee,citestyle=numeric-comp,autocite=inline,autopunct=true,backend=biber,maxbibnames=99,maxcitenames=2,mincitenames=1,defernumbers=true]{biblatex}
 % %\addbibresource{bibliography.bib}
 
-% \usepackage{acro}
-% \DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
-% \DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
-% \DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}}
-% \DeclareAcronym{OPS}{short = OPS, long = {Operations}}
+\usepackage{acro}
 
-\usepackage{layout}
+
+\usepackage{lipsum}
 
 \hypersetup{colorlinks}
 
@@ -42,6 +39,7 @@
 
 \makeatother
 \ExplSyntaxOff%
+
 
 %\usepackage{pgfplots}
 %\usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
@@ -61,8 +59,18 @@
 \input{preamble.tex}
 
 \DeclareAcronym{PCDU}{short = PCDU, long = {Power Conditioning \& Distribution Unit}}
+\DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
+\DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
+\DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}}
+\DeclareAcronym{OPS}{short = OPS, long = {Operations}}
+
+
 
 \begin{document}
+
+\acs{OBDH}
+\acl{OBSW}
+\Aclp{OOK}
 
 % For pre-publication version:
 \makeatletter%
@@ -79,7 +87,16 @@
 
 \tableofcontents
 
-\printacronyms[pages={display=all,seq/use=false},]
+\listofkeytheorems[
+    title={List of Definitions},
+    onlynamed,
+    note-code={#1},
+    format-code=\numberline{#2}#3
+]
+
+\chapter*{Acronyms}%
+\addcontentsline{toc}{section}{Acronyms}%
+\printacronyms[pages={display=all,seq/use=false},heading=none]
 
 \chapter{Boing boing}
 \section{Kalimera}
@@ -159,87 +176,27 @@ Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pederse
 
 \newpage
 
-\def\acs#1{\textsf{#1}}
+\section{Definitions}
 
-\begin{tikzpicture}
-  \begin{scope}[font=\scriptsize,yshift=0cm,node distance=0cm and 0cm]
-    \node[softiter] (i1s1) at (0,0) {};
-    \node[func,right=of i1s1] (i1t1) {};
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% ITERATION 2
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}[Technical Size]%
+	\textbf{Technical Size} (or \emph{Scale}), representing the overall size of the development effort.
+	Some measures can be the number of requirements, number of components, or number of functions.%
+\end{definition}
 
-    \node[softiter,right=1.5cm of i1t1] (i2s1) {};
-    \node[func,right=of i2s1] (i2t1) {};
-    \node[env,right=of i2t1] (i2t2) {};
+\begin{definition}[Technical Complexity]%
+	\textbf{Technical Complexity}, representing the required degree of interaction between components, independent from size.\label{def:complexity}%
+\end{definition}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% ITERATION 3
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lipsum
 
-    \node[softiter,right=1cm of i2t2] (i3s1) {};
 
-    \node[func,right=of i3s1] (i3t1) {};
-    \node[env,right=of i3t1] (i3t2) {};
-    \node[orbital,right=of i3t2] (i3t3) {};
-
-    \coordinate (end0) at ([xshift=-1cm]i1s1.west); % Origin
-    \coordinate (end1) at ([xshift=-0.5cm]i2s1.west);
-    \coordinate (end2) at ([xshift=-0.5cm]i3s1.west);
-    \coordinate (end3) at ([xshift=0.5cm]i3t3.east);
-
-    \coordinate (start) at (0, 3.2);
-    \foreach \i in {1,...,3} {
-      \pgfmathtruncatemacro{\prev}{ \i - 1 }
-      \coordinate (mid\i) at ($(end\prev)!0.5!(end\i)$);
-    }
-
-    % --- Procurement/Manufacture Icons ---
-    \foreach \anchor/\type/\xoff in {
-      mid1/component/-0.35,
-      mid1/pcb/0.35,
-      mid2/component/-0.35,
-      mid2/pcb/0.35,
-      mid3/component/-0.35,
-      mid3/pcb/0.35
-    } {
-      \node[\type, below=0.4cm of \anchor, xshift=\xoff cm] {};
-    }
-
-    % Render Type Boxes using the helper
-    \typeboxitem{1}{Engineering\\Model}{engineering}{engineer}{Version 0}
-    \typeboxitem{2}{Qualification\\Model}{qualification}{qualify}{Version 1}
-    \typeboxitem{3}{Flight\\Model}{flight}{qualify}{Version 2}
-
-    % --- Dashed Lines and Dates ---
-    \foreach \i/\date in {0/2023-06, 1/2023-10, 2/2024-02, 3/2024-06} {
-      \draw[dashed, teal, thick] (end\i |- 0, 5.6) -- (end\i |- 0, -1.4)
-      node[below, font=\scriptsize, text=black] {\date};
-    }
-
-    \def\baseY{0.5}
-    \def\rowHeight{0.48}
-
-    \foreach \name/\startnode/\endnode/\idx in {
-      Structure/end1/end3/1,
-      Subsystems/end0/end3/2
-    }{
-      \pgfmathsetmacro{\yStart}{\baseY + (\idx * \rowHeight)}
-      \pgfmathsetmacro{\yEnd}{\yStart + 0.38} % Assuming 0.38cm box height
-
-      \draw[black!80, fill=bread!5, rounded corners=5pt]
-      ([xshift=0.1cm, yshift=\yStart cm]\startnode.west)
-      rectangle
-      ([xshift=-0.1cm, yshift=\yEnd cm]\endnode.east)
-      node[midway, scale=0.9] {\name};
-    }
-  \end{scope}
-\end{tikzpicture}
+\begin{margindefinition}[Timebox]
+	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
+\end{margindefinition}
 
 \newpage
 
-\layout
 
 %\geometrylscape
 
