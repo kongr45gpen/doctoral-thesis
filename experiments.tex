@@ -69,11 +69,37 @@
 
 \begin{document}
 
+\begin{table*}[h]
+	\begin{adjustbox}{max width=\textwidth,center}
+	\begin{tabular}{@{}llllll@{}}
+	\toprule
+	Test Type & Measurement & AcubeSAT (C++) & CubedOS (Ada) & AI4Space (Python) & Prust (Rust) \\ \midrule
+	Execution details & Minimum boot time &  2s & 1s & 3 minutes & 1s \\
+	%& Image size &  &  &  &  \\
+	%& RAM requirements &  &  &  &  \\
+	& Minimum packet latency & \qty{10}{\milli\second} & \qty{10}{\milli\second} & \qty{200}{\milli\second}  & \qty{10}{\milli\second}  \\ 
+	\midrule
+	Requirements & Requirements passed & 5/5 & 5/5  & 5/5  & 5/5 \\
+	\midrule
+	Fuzzing Tests & Distinct solutions (crashes) & 10 & 0  & 2  & 2 \\
+	%& Static tests successful &  &  &  & \\
+	\bottomrule
+	\end{tabular}
+\end{adjustbox}
+	\caption{Functional test results}
+	\label{tab:m_software_fuzz_functional}
+\end{table*}
+
 amba1sat satellite \cite{3AmbaSat1Satellite}.
 
 alba beginner guide \cite{albaorbitalBeginnersGuideOpen2025}.
 
 Many citations \cite{AlbaMissionServices,alvarezAgileMethodologiesApplied2021,atchisonMicroscaleAtmosphericReEntry2010,atchisonMillimeterScaleLorentzPropelledSpacecraft2007,blessingDRMDesignResearch2009}.
+
+\newpage
+hello
+\margincite{venturiniImprovingMissionSuccess2017}%
+briotehrs
 
 \printbibliography
 

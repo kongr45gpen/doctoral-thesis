@@ -262,6 +262,15 @@ urldate=iso,
 	\xdef\@NextCitationOffsetTemp{0pt}%
 }
 
+\DeclareCiteCommand{\margincite}
+  {\usebibmacro{cite:init}}%
+  {\usebibmacro{cite:marginnote}%
+   }%
+  {}%
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}%
+   }
+
 
 \DeclareCiteCommand{\dualcite}
   {\usebibmacro{cite:init}%

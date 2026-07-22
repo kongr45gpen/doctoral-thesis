@@ -195,6 +195,7 @@ under the License.
 \end{fullwidth}
 
 \section{Motivation}
+\label{sec:INTRODUCTION_motivation}
 
 \begin{marginfigure}[-1cm]
 	\includegraphics[width=\textwidth]{analyses/launch_mass_plot_no_starlink.pdf}
@@ -423,7 +424,8 @@ The specific constraints of a project which measure its success and resource uti
 		& Requirements completed \\  \midrule
 		\multirow{2}{*}{\textbf{Cost Budget}} & Project completed within budget \\
 		& Good Return On Investment \\ \midrule
-		\multirow{1}{*}{\textbf{Risk}} & Project risk is managed \\ \midrule
+		\multirow{2}{*}{\textbf{Risk}} & Project risk is managed \\
+		& Low escaped defect rate \\ \midrule
 		\multirow{2}{*}{\textbf{Resources}} & Human and material resources are available \\
 		& Maximum utilisation of available resources \\ \midrule
 		\multirow{3}{*}{\textbf{Quality}} & Quality requirements met \\
@@ -468,6 +470,7 @@ Based on these similarities and the number of successes of launched \acs{SCS} mi
 
 \citeauthor{heinAttoSatsChipSatsOther2019} posited, for example, that atto-satellites offer characteristics that make them possible to develop (from conceptualisation to flight hardware) within 6 months, enabling major accessibility combined with novel or distributed mission concepts. The authors note how rapid low-cost development can motivate capabilities such as rapid technology testing or missions requiring a quickly-produced spacecraft constellation \autocite{heinAttoSatsChipSatsOther2019}.\footnote{Examples include distributed earth observation, data collection, communication and impactor missions, as well as concepts that involve attachment or transportation via larger spacecraft.}
 
+\phantomsection\label{sec:INTRODUCTION_what_makes_different}%
 The specific characteristics of \acs{SCS} that differentiate them from CubeSats to justify the usage of a different methodology are as follows:
 \begin{itemize}
 	\item \textbf{Size and mass}: The mass of a single pocket-sized spacecraft can be \( 1 /2 \)\textsuperscript{nd} to \( 1/200 \)\textsuperscript{th} of a CubeSat, with the volume following a similar trend. The first implication of this constraint is a significantly \textbf{reduced launch cost}, which can affect \begin{enumerate*}
@@ -487,7 +490,7 @@ The specific characteristics of \acs{SCS} that differentiate them from CubeSats 
 	Combined with these direct implications, low size and mass can also affect other environmental and technical aspects of \acs{SCS} development, as described below.
 	\item \textbf{Facility requirements}: Some of the most expensive, hard-to-maintain and critical equipment for integration and verification of CubeSat projects typically needs to support the sizes of 6U or larger spacecraft. This can include clean rooms, \ac{TVAC} chambers, or shakers for vibration testing. A smaller physical size of a device under manufacturing or test corresponds to reduced requirements for this equipment as well.
 	
-	\item \textbf{Low mass / area ratio}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more asymmetric shape increases the average drag coefficient of the system, as well as the relative dissipation area for thermal radiation.
+	\item \textbf{Low mass/area ratio}: Specifically for flat spacecraft, such as ChipSats, one dimension can be much smaller than the other two. This more asymmetric shape increases the average drag coefficient of the system, as well as the relative dissipation area for thermal radiation.
 	
 	This latter characteristic speeds up thermal equilibrium in the hot and cold cases. Combined with the potentially increased difficulty of thermal control due to size, this characteristic discourages the use of thermally-sensitive payloads. From a \acl{SYE} point of view, it makes the use of conventional batteries difficult, as they cannot be charged or discharged below a specific temperature. \citeauthor{manchesterCentimeterScaleSpacecraftDesign2015} performed a thermal analysis of of the Sprite ChipSats, finding that they can reach temperatures down to \qty{-110}{\degreeCelsius} in eclipse \autocite{manchesterCentimeterScaleSpacecraftDesign2015}. These low temperatures also prevent the operation of most commercial electronics.
 
@@ -651,7 +654,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 
 \begin{fullwidth}
 \epigraph{\emph{%
-		``Agile'' doesn't mean "last-minute".}}{Alexander F.\@ B\"uhler}
+		``Agile'' doesn't mean ``last-minute''.}}{Alexander F.\@ B\"uhler}
 \end{fullwidth}
 
 This chapter will introduce the background information necessary to develop the \ac{SCS} methodology.
@@ -871,7 +874,7 @@ The authors also performed a similar analysis for the \acs{EPS} subsystem, albei
 Despite the high general failure rates, CubeSat mission success seems to be following an upwards trend \cite{villelaThousandthCubeSatStatistical2019,swartwoutCubeSatMissionSuccess2019}\footnote{\citeauthor{swartwoutUniversityClassSpacecraft2023}, however, in a \citeyear{swartwoutUniversityClassSpacecraft2023} article, still notes a downwards trend for university-class missions \cite{swartwoutUniversityClassSpacecraft2023}.}. This is probably influenced by the increased understanding of the reasons for failure, an increased availability of past mission documentation, lessons learned and recommendations for developers, as well as the various CubeSat-focused educational opportunities provided by universities and space agencies \autocite{swartwoutUniversityClassSpacecraft2023}.
 \citeauthor{villelaThousandthCubeSatStatistical2019} justify the increase of CubeSat reliability through the use of products with flight heritage, and the availability of CubeSat international standards\footnote{As an aside, I note that the application of standards can work as a double-edge sword; even though a standard can describe a universally-acceptable a priori correct solution, it can add considerable overhead to teams that need to implement it. See, for example, \Cref{sec:METHODOLOGY_software_features} for a discussion of software features that CubeSats need to implement based on \acs{ECSS} standards. Even narrowing down to the CubeSat ecosystem only, the differences in requirements between projects might be too large to define a one-size-fits-all solution. This implementation overhead is further exacerbated when the documents are not freely available, e.g.\@ with \acs{ISO} standards. Nevertheless, simple standards, or ready-to-use software/hardware implementation can still present enormous value to the CubeSat community.} \cite{villelaThousandthCubeSatStatistical2019}.
 
-Some of the most common \emph{lessons learned} or recommendations for CubeSat developers to increase reliability include\footnote{Note that due to the academic nature of the published data, these tips are mostly skewed towards usefulness for academic missions, rather than industrial ones.}:
+Some of the most common \emph{lessons learned} or recommendations for CubeSat developers to increase reliability include\footnote{Note that due to the academic nature of the published data, these tips are mostly skewed towards usefulness for academic missions, rather than industrial ones.}:\phantomsection\label{sec:LITERATURE_cubesat_systemic}
 \begin{itemize}[itemsep=-1ex]
 	\item Adequate time dedicated to \textbf{system-level testing}, with a baseline of 30--50\% of the overall project schedule to be dedicated to integration and verification
 	\cite{swartwoutUniversityClassSpacecraft2023,venturiniImprovingMissionSuccess2017,langerReliabilityAssessmentReliability2018}\footnote{\citeauthor{venturiniImprovingMissionSuccess2017} further provides a list of system-level tests that are recommended to be performed for CubeSats: a command execution test, a day-in-the-life test, an end-to-end communications test, and a complete power system charge cycle \cite{venturiniImprovingMissionSuccess2017}.}.
@@ -933,6 +936,7 @@ This classification has an impact on the environmental parameters of CubeSat mis
 
 
 
+\vspace{3ex}%
 In terms of cost, results can vary significantly, depending on the environment and objectives of the project.
 \citeauthor{berthoudHowSetCubeSat2016}'s data display a wide range of estimated project costs, from below \qty{5000}{EUR} to above \qty{500000}{EUR} \cite{berthoudHowSetCubeSat2016}. As an example, two extremes can be found in the EQUiSat project, which is a 1U CubeSat bus costing \SI{3800}{USD} \autocite{equisat}, and the Hermes proposal, which has estimated \SI{35300000}{USD} for a 9U deep-space CubeSat \autocite{pujolgasullaHermesCubesatOnsite2021}. The accounting for CubeSat projects highly depends on whether labour, facility and launch costs are considered. These services may often not be accounted in project budgets, or be provided for free as part of an external agreement \autocite{gambleMetricsSpacecraftDesign2012}.\footnote{For example, space agency projects may cover test campaigns and launch opportunities, or laboratory facilities may already available. Labour costs are sometimes not considered in academic projects in the case of voluntary participation.} In case labour costs are considered, the project cost will be also very closely tied to development time.
 
@@ -1228,8 +1232,6 @@ Through these discussions, I noted the following information:
 \end{itemize}
 
 \begin{table*}[p]
-	\caption[Characteristics of different classes of sub-CubeSat programs]{Characteristics of different classes of sub-CubeSat programs. Criteria taken from \autocite{kalusCriteriaSoftwareProcess2013}.}
-	\label{tab:mission-characteristics}
 %	\begin{threeparttable}
 	\begin{adjustbox}{center}
 		\footnotesize
@@ -1291,6 +1293,8 @@ Through these discussions, I noted the following information:
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}
+	\caption[Characteristics of different classes of sub-CubeSat programs]{Characteristics of different classes of sub-CubeSat programs. Criteria taken from \autocite{kalusCriteriaSoftwareProcess2013}.}
+	\label{tab:mission-characteristics}
 		%\begin{tablenotes}\footnotesize
 %			\item[*] Currently, most sub-CubeSat spacecraft are built completely in-house, since there is no significant off-the-shelf subsystem or component availability.
 %		\end{tablenotes}
@@ -1432,9 +1436,9 @@ Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} cl
 
 \FloatBarrier
 
-\section{Current Shortcomings}
+\section{Knowledge Gap}
 
-As shown in \Cref{sec:LITERATURE_cubesat,sec:LITERATURE_classes}
+As shown in \Cref{sec:LITERATURE_cubesat,sec:LITERATURE_subcubesat}, literature from \acs{SCS} and CubeSats has identified shortcomings in aspects related to the development, performance and success of missions. In this section, I will describe metrics that can be used to evaluate mission success, and consider the shortcomings of current \acs{SCS} development approaches based on these metrics, in order to provide an answer to \textbf{\acs{RQ}2}.
 
 
 
@@ -1476,6 +1480,45 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 	\item \textbf{External Environment}: The project effects of external factors, such as stakeholders, clients and users;
 	\item \textbf{Objectives}: System design imperatives and decisions that affect the project, including the domain, complexity and required innovations.
 \end{itemize}
+
+\subsection[Current SCS Shortcomings]{Current \acs{SCS} Shortcomings}
+While the available data from \acs{SCS} is limited, the available data from the literature and interviews can be summarised into the following points, regarding commonly experienced issues in \acl{SCS} engineering:
+\begin{itemize}[itemsep=-1ex]
+	\item Based on data from \autocite{kuluNanosatsDatabase2023}, at least \textbf{15 out of 93}\footnote{Due to a lack of reporting, the states of many \acs{SCS} in \citeauthor{kuluNanosatsDatabase2023} database is unknown. Here, a conservative estimate is used in order to establish a lower bound, where unknown spacecraft are assumed to be successful. This represents a \(\geq 16\%\) failure rate.} \acs{SCS} launched until \citeyear{kuluNanosatsDatabase2023} have not communicated, signifying a ``\acl{DOA}'' state.
+	\item \citeauthor{hermanExperimentalResultsModular2025} also emphasise a high failure rate for PocketQube missions, empirically citing as failure causes:
+	\begin{enumerate}[itemsep=-3ex]
+		\item Unsuccessful antenna deployment
+		\item Lack of protection against background radiation
+		\item A culture not prioritising reliability
+		\item Lack of redundancy
+	\end{enumerate}
+	\item As shown in \Cref{tab:i_otherdevtime}, a large variance can be observed between the total development time of different missions, even amongst projects with similar form factors, with values ranging between \qtyrange[range-units = single]{1}{5}{years} (\Cref{sec:INTRODUCTION_motivation}). This contrasts the expectations and needs for short development durations, which have been identified in the literature \autocite{heinAttoSatsChipSatsOther2019,pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and interviews \Cref{sec:LITERATURE_interviews}.
+	\item Interviews identified \emph{development time}, \emph{cost}, \emph{reliability} and \emph{production volume} as mission constraints. Additionally, \textbf{software} was identified as common source of errors during development, which were often only resolved until shortly before launch, or not at all (\Cref{sec:LITERATURE_interviews}).
+	\item The reduction of cost has been identified as an objective of \acs{SCS} systems, both with or without accounting for labour costs \autocite{sperettaCubeSatsPocketQubesOpportunities2016,heinAttoSatsChipSatsOther2019}. However, it is not mentioned as an open problem in the investigated literature, presumably due to an inherent low-cost nature of \acs{SCS}, combined with the use of low-cost infrastructure already optimised for CubeSat systems. Similarly, quality and scope (\Cref{tab:i_success_factors}) have not been identified as significant optimisation targets.
+\end{itemize}
+
+In addition to the above points, one can claim that the development environment of \acs{SCS} can resemble that of some CubeSat projects. Based on the tailoring criteria of \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalusCriteriaSoftwareProcess2013}, \acs{SCS} are similar to CubeSats in terms of the team, internal environment and external environment, but differ in terms of objectives.\footnote{These points claim similarity in the \emph{environment}, and not the \emph{product} itself, whose differences with CubeSats are listed in \Cpageref{sec:INTRODUCTION_what_makes_different}, and justify the differentiation in terms of methodology. Also see \Cref{tab:mission-characteristics}.} Based on this hypothesis, a careful consideration of additional sources from the CubeSat literature can be made:
+\begin{itemize}
+	\item CubeSat reliability has been identified as an open problem, with data-backed studies showing a \qtyrange{50}{60}{\percent} success rate (\Cref{sec:LITERATURE_cubesat_reliability}).
+	\item Due to the \acs+{DOA} nature of many CubeSat failures and the lack of voluntary reporting, the causes of many failures have not been identified, but are empirically attributed to design errors, usually in the areas of:%
+	\margincite{langerReliabilityCubeSatsStatistical2016,swartwoutCubeSatMissionSuccess2019,venturiniImprovingMissionSuccess2017}
+	\begin{enumerate}[itemsep=-3ex]
+		\item Electronics \cite{langerReliabilityCubeSatsStatistical2016}
+		\item Software bugs \cite{langerReliabilityCubeSatsStatistical2016,swartwoutCubeSatMissionSuccess2019,venturiniImprovingMissionSuccess2017}
+		\item Deployable mechanisms \cite{swartwoutCubeSatMissionSuccess2019,venturiniImprovingMissionSuccess2017}
+		\item Inadequate power budgets \cite{swartwoutCubeSatMissionSuccess2019,venturiniImprovingMissionSuccess2017}
+		\item Non-robust startup sequences \cite{swartwoutCubeSatMissionSuccess2019}
+		\item Communications \cite{swartwoutCubeSatMissionSuccess2019,venturiniImprovingMissionSuccess2017}
+		\item Radiation \cite{swartwoutCubeSatMissionSuccess2019}
+	\end{enumerate}
+	\item The underlying causes for these design errors have been theorised by \citeauthor{swartwoutCubeSatMissionSuccess2019} to be related to a ``\textbf{compressed development schedule [that] leads to uncaught mistakes}'' \autocite{swartwoutCubeSatMissionSuccess2019}. This observation is corroborated by Lessons Learned reports from CubeSat programmes that describe project-level reasons that prompt the introduction of defects at lower levels of the system (\Cref{sec:LITERATURE_cubesat_systemic}).
+	\item \citeauthor{honore-livermoreIntegratingAgileSystems2022} specifically addressed the question of ``\emph{What factors influence the development time of university CubeSat systems}'', attributing delays to \textbf{external suppliers} for parts and services, lack of documentation, and incorrect prioritisation of activities at the Project Management level \autocite{honore-livermoreIntegratingAgileSystems2022}. She also specifically proposed Agile and \acs{MBSE}-based processes to support CubeSat development. Based on the case studies of \Cref{chap:CASESTUDIES}, the \acs{SCS} environment is often similarly subjected to similar shortcomings. The duration of specific activities within various CubeSat projects is shown in \Cref{tab:l_cubesat_time_drivers}.
+\end{itemize}
+
+Based on the above observations, \textbf{development time} and \textbf{risk} have been identified as the target metrics which need improvement.
+
+
+% \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025},
 
 \section{Topics from Systems Engineering}
 \label{sec:LITERATURE_systems_engineering}
@@ -2226,7 +2269,7 @@ The Definition of Done and Sprint Goal are agreed upon at the \emph{sprint plann
 
 It is not always possible to complete Sprint Backlog items within a single iteration. In this case, these items can be postponed and pushed to a future Sprint.
 
-\newthought{The Scrum guide does not describe a \textbf{review}} process as part of the design and development activities. This expectation of self-organisation conflicts with the strict review hierarchy that is expected in traditional space systems.
+\newthought{The Scrum guide} does not describe a \textbf{review} process as part of the design and development activities. This expectation of self-organisation conflicts with the strict review hierarchy that is expected in traditional space systems.
 \label{sec:METHODOLOGY_reviews_general}
 
 The importance of reviews can be ascertained from the software development field, where various studies have been performed on the efficacy of \emph{code reviews}. Meta-analyses of expert opinion surveys show that code reviews increase perceived code quality, understanding and defect minimisation \autocite{badampudiModernCodeReviews2023,yangRoadmapModernCode2026}. While this is supported by data-backed studies \autocite{kononenkoInvestigatingCodeReview2015,bavotaFourEyesAre2015,krutauzCodeReviewMeasures2020,kemererImpactDesignCode2009}, these findings are not consistent, especially depending on reviewer workload and experience.
@@ -3225,7 +3268,7 @@ In the case of high-severity interfaces (such as the ones informing the satellit
 	\item The performance envelope of undesired inputs and outputs (e.g.\@ maximum ripple, dynamic envelope).
 	\item Timing or repetition limitations (e.g.\@ maximum number of mates, maximum data rate, maximum packet rate).
 	\item Cleanliness, \acs{EMC}, outgassing and documentation requirements.
-	\item What assumptions can be made about the reliability of either end (e.g.\@ guaranteed correct operation at all times / no guarantee of operation but guarantee that the line will be kept in Hi-Z).
+	\item What assumptions can be made about the reliability of either end (e.g.\@ guaranteed correct operation at all times/no guarantee of operation but guarantee that the line will be kept in Hi-Z).
 	\item For physical interfaces, a \acs{CAD} model of the interface or its exterior, along with a specification of the coordinate system used.
 	\item For electrical connectors, if there are any mechanical restrictions (e.g.\@ material, compliance, maximum force).
 	\item For conductive materials, what the grounding requirements are.
@@ -3738,8 +3781,6 @@ The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_function
 Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
 
 \begin{table*}[h]
-	\caption{Static Analysis results}
-	\label{tab:m_software_fuzz_static}
 	\begin{tabular}{@{}lllll@{}}
 		\toprule
 		& AcubeSAT (C++) & Antaris (C) & AI4Space (Python) & CubedOS (Ada) \\ \midrule
@@ -3748,12 +3789,12 @@ Since the number of faults and frameworks tested do not allow statistical analys
 		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
 		Average \acs{CCN} & \num{2.3} & \num{3.1} & \num{3.0} & \num{1.87} \\ \bottomrule
 	\end{tabular}
+	\caption{Static Analysis results}
+	\label{tab:m_software_fuzz_static}
 \end{table*}
 \acempty{CCN}
 
 \begin{table*}[h]
-	\caption{Functional test results}
-	\label{tab:m_software_fuzz_functional}
 	\begin{adjustbox}{max width=\textwidth,center}
 	\begin{tabular}{@{}llllll@{}}
 	\toprule
@@ -3771,6 +3812,8 @@ Since the number of faults and frameworks tested do not allow statistical analys
 	\end{tabular}
 	\vspace{0.5cm}
 \end{adjustbox}
+	\caption{Functional test results}
+	\label{tab:m_software_fuzz_functional}
 \end{table*}
 
 
@@ -4818,8 +4861,6 @@ From a technical point of view, we gathered the following points during developm
 
 
 \begin{table*}[h]
-	\caption{ChipSat-1 cost budget}
-	\label{tab:c_chipsat_costs}
 	\begin{tabularx}{\textwidth}{@{}lXlS@{}}
 		\toprule
 		No. & \textbf{Cost Driver}                     & Used In                                       & {Value (EUR)} \\ \midrule
@@ -4835,11 +4876,11 @@ From a technical point of view, we gathered the following points during developm
 		10  & \textbf{Testing Service Costs}           & Acceptance Vibration \& Thermal Test (\#5)    & 1300 \\ \midrule
 		& \textbf{Total Costs}                     &                                               & 8930 \\ \bottomrule
 	\end{tabularx}
+	\caption{ChipSat-1 cost budget}
+	\label{tab:c_chipsat_costs}
 \end{table*}
 
 \begin{table}[h]
-	\caption{ChipSat-1 measured development time, from start of development until Flight Model delivery}
-	\label{tab:c_chipsat_times}
 	\begin{tabular}{@{}llS@{}}
 		\toprule
 		No. & \textbf{Development Time Driver} & {Time Spent (hours)} \\ \midrule
@@ -4855,6 +4896,8 @@ From a technical point of view, we gathered the following points during developm
 		11  & \textbf{Test Campaign (FM)}      & 24                 \\ \midrule
 		& \textbf{Total Time}              & 478                \\ \bottomrule
 	\end{tabular}
+	\caption{ChipSat-1 measured development time, from start of development until Flight Model delivery}
+	\label{tab:c_chipsat_times}
 \end{table}
 
 
@@ -5924,7 +5967,7 @@ For the second iteration, I attempted to move the processing algorithm within th
 
 Resolving the reduced performance issue was one of the key goals of the second ChiPySat iteration, for which we decided to implement the following measures:
 \begin{itemize}[itemsep=-2ex]
-	\item Switch to a statically-typed and statically-allocated programming language, such as C++.
+	\item Switch to a statically-typed and statically-allocated programming paradigm, such as with C++.
 	\item Use OpenMV as a library and adopt its camera drivers, instead of using the entire OpenMV \acs{API}.
 	\item Implement an external \acl{RAM} to reduce memory shortage risk.
 	\item Switch to a single, dual-core \acs{MCU} instead of a dual-\acs{MCU} design to reduce the real estate required and simplify hardware interfaces.
