@@ -2670,7 +2670,7 @@ While the use of a formal model might prove prohibitive for systems such as \acl
 	%	In any case, extensibility should be provided, within a reasonable degree, to a large number of aspects on such a tool. For example, by including a multi-line ``Justification'' or ``Notes'' field for parameter or entity, users can describe complex concepts that would need to be modelled independently if not represented with prose. For example, users might need to specify uncertainties in data sources, descriptive parameters (such as colour), rationale for the selected value, acceptable limits and more.
 		\\
 		\textbf{EDM-070} & The tool shall notify users on changes.
-		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue or ``\emph{\acs+{SAAS} Sprawl}'' \cite{goodwinWhatSaaSSprawl2025}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
+		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue or ``\emph{\acs{SAAS} Sprawl}'' \cite{goodwinWhatSaaSSprawl2025}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
 		
 		As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermoreManagingProductDevelopment2021,retselisAdaptationAcubeSATNanosatellite2022}, used tools should have the capability of announcing draft or released changes in real-time on that platform, without requiring an additional context switch.
 		%This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
@@ -3109,12 +3109,12 @@ However, in practice, different subsystems may show incompatibilities with each 
 For \acs{SCS}, modularity presents more challenges, as it introduces constraints to a system's design. For example:
 \begin{itemize}
 	\item In a PC/104 board, the 104-pin connector covers \qtyproduct{6 x 0.8}{cm} of the \qtyproduct{9.6 x 9.0}{cm} board, taking up \qty{5.6}{\percent} of the available area, even though all 104 pins are rarely used \autocite{BoardSpecificationLibreCube}.
-	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt}\footnote{assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs+{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
+	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt}\footnote{assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
 	\item Most standard CubeSat packages separate the \emph{\acf{COMMS}} and \emph{\ac{OBDH}} functions into different boards, in order to accommodate the required flexibility of supporting different communication schemes and different subsystem vendors respectively. However, recent single-purpose missions have combined \ac{COMMS} and \ac{OBDH} into a single board, as \ac{OBDH} functionality is not usually resource-intensive.
 \end{itemize}
 While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve implementing different levels of modularity across different system modules.
 
-\begin{figure*}[h]
+\begin{figure*}[p]
 	\includegraphics{graphics/Monolithic.pdf}
 	\caption{Concept map comparing the advantages of monolithic and modular \acs{SCS} architectures}
 	\label{fig:m_monolithic}
@@ -3130,12 +3130,13 @@ In practical terms, if the developers decide to implement a modular architecture
 \paragraph{On Component Reuse}
 Another decision that developers are faced with involves whether they reuse existing \textbf{parts} and \textbf{subsystems}\footnote{Also known as \acf{COTS}. This might also involve customised build-to-order components that rely on a \acs{COTS} design.}, or design components and subsystems in-house.
 
-\begin{figure*}[h]
+\begin{figure*}[p]
 	\includegraphics{graphics/Reuse.pdf}
 	\caption[Concept map comparing component reuse against in-house development]{Concept map comparing component reuse (as a built-system or pure design reuse) against in-house development}
 	\label{fig:m_reuse}
 \end{figure*}
 
+\FloatBarrier\newpage
 \begin{landscape}
 	\captionof{table}[List of known open-source reusable components, subsystems and systems built for SCS]{List of known open-source reusable components, subsystems and systems built for \acl{SCS}, based on \cite{albaorbitalBeginnersGuideOpen2025}}%
 	%
@@ -3553,7 +3554,7 @@ A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}
 
 \end{axis}
 \end{tikzpicture}
-\caption{Cumulative faults identified after testing on \citeyear{tohmaEstimationParametersHypergeometric1991}}
+\caption{Cumulative faults identified after testing \citeyear{tohmaEstimationParametersHypergeometric1991}}
 \label{fig:m_software_testing_ds1}
 \end{marginfigure}
 
@@ -3963,7 +3964,7 @@ On the other hand, a \citeyear{kirchnerGeneratingAutomotiveCode2025} comparison 
 
 In any case, teams should consider adherence to coding standards and best practices when developing. This can be aided by freely available static analysis tools, such as \emph{Cppcheck}, \emph{clang-analyzer} or \emph{NASA IKOS}. Various coding standards\footnote{such as MISRA or the JSF AV C++ standards} are used in the safety-critical software industry, but are often criticised due to their false positive rates, difficulty of static verification, and added ``noise'' \autocite{boogerdAssessingValueCoding2008}. A \citeyear{boogerdAssessingValueCoding2008} empirical study assessed the number of rule violations and actual faults of an industrial project overtime, finding a negative correlation \autocite{boogerdAssessingValueCoding2008}. Instead, they identified a set of 12 rules\footnote{Due to licensing restrictions of the MISRA standard, I cannot reproduce these rules here.} that performed well in predicting faults, commenting however that it is ``possible that adherence to the MISRA standard as a whole would have made the software less reliable''. In practical terms, off-the-shelf static analysis tools provide recommendations of rule subsets that can be provide the required utility to developers.
 
-\FloatBarrier
+\FloatBarrier\newpage%
 
 \geometrylscape
 \begin{landscape}
@@ -4176,7 +4177,7 @@ The execution of these case studies followed an action research plan as shown in
 		\drawcycle{0}
 		\drawcycle{6}
 	\end{tikzpicture}
-	\caption{Example of action research action-reflection cycles \cite{mcniffActionResearchPrinciples2003}}
+	\caption[Example of action research action-reflection cycles]{Example of action research action-reflection cycles \cite{mcniffActionResearchPrinciples2003}}
 	\label{fig:c_action_research}
 \end{figure}
 

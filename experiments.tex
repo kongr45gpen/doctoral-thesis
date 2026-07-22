@@ -58,6 +58,7 @@
 
 \input{preamble.tex}
 
+
 \DeclareAcronym{PCDU}{short = PCDU, long = {Power Conditioning \& Distribution Unit}}
 \DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
 \DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
@@ -68,103 +69,8 @@
 
 \begin{document}
 
-\acuseall
-\acs{OBDH}
-\acl{OBSW}
-\Aclp{OOK}
-
-% For pre-publication version:
-\makeatletter%
-\thispagestyle{empty}%
-\begin{tikzpicture}[remember picture,overlay]
-  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=1,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
-\end{tikzpicture}%
-\newpage%
-\begin{tikzpicture}[remember picture,overlay]
-  \node[inner sep=0pt] at (current page.center) {\includegraphics[page=2,width=\Gin@nat@width,height=\Gin@nat@height]{external/Cover page and approved Affidafit.pdf}};
-\end{tikzpicture}%
-\makeatother%
 
 
-\tableofcontents
-
-\listofkeytheorems[
-    title={List of Definitions},
-    onlynamed,
-    note-code={#1},
-    format-code=\numberline{#2}#3
-]
-
-\chapter*{Acronyms}%
-\addcontentsline{toc}{section}{Acronyms}%
-\printacronyms[pages={display=all,seq/use=false},heading=none]
-
-\chapter{Boing boing}
-\section{Kalimera}
-\subsection{Kalin Imera}
-\label{sec:omoerfh_mera}
-%\subsubsection{Na exete mia kalh mera}
-\paragraph{Omorfh mera}
-shows a paragraph reference.
-
-\begin{figure*}
-  %\includegraphics{media/graphics/NASASYE}
-  \caption{Decomposition of Systems Engineering in connection with Project Management}
-  \label{fig:i_nasa_sye_decomposition}
-\end{figure*}
-
-Here is a reference to that figure: Figure~\ref{fig:i_nasa_sye_decomposition}.
-Here is another reference to that figure: \Cref{fig:i_nasa_sye_decomposition}.
-Here is a reference to a paragraph: \Cref{sec:omoerfh_mera}.
-
-I like eat apples every day.
-
-These satellites are also classified as pico-, femto- and atto-satellites.\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.} It do be like that sometimes
-These satellites are also classified as pico-, femto- and atto-satellites.\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.} I do be like that sometimes
-These satellites are also classified as pico-, femto- and atto-satellites\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.}. It do be like that sometimes\mac{OBSW}
-These satellites are also classified as pico-, femto- and atto-satellites\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.}. I do be like that sometimes
-
-\begin{minted}{cpp}
-using namespace okser;
-
-std::string result;
-auto output = out::stdstring{result};
-
-// 1-byte signed int and 4-byte float
-using MyBundle = bundle<sint<1>, floatp>;
-
-serialize<MyBundle>(output, 63, 3.14f);
-\end{minted}
-\newpage
-
-I like \acs+{OBSW}
-
-%\geometrylscape
-
-The implementation of a reflective function is provided below as an example:
-\begin{fullwidth}%
-\begin{mintedfw}[fontsize=\small]{cpp}
-template<class T, Output Out, auto config = configuration()>
-constexpr void serialize_struct(Out &&output, const T &object) {
-    auto mirrored_struct = mirror(T);
-    for_each(get_data_members(mirrored_struct), [&](auto member) {
-        const auto &value = get_value(member, object);
-        using type = std::remove_cvref_t<decltype(value)>;
-
-        using serializer = decltype(config)::template default_serializers<type>::ser;
-
-        auto result = serialize<serializer>(std::forward<Out>(output), value);
-    });
-}
-\end{mintedfw}
-\end{fullwidth}
-
-\begin{fullwidth}
-  %\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}
-
-  \vspace*{-1cm}%
-  \centering%
-  \fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
-\end{fullwidth}
+\printbibliography
 
 \end{document}
