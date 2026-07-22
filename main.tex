@@ -458,7 +458,7 @@ The above results show that an adequate balance needs to be found when adopting 
 \section{Research Gaps}
 \label{sec:INTRODUCTION_research_gaps}
 
-The impact and benefit of Systems Engineering is widely understood in the fields of space systems, and more specifically, \textbf{CubeSat engineering}. Apart from individual missions that explore tailor-made \acl{SYE} approaches \cite{cappaertBuildingDeployingOperating2018,chaiebOpenOrbiterCubeSatSystemofsystems2015,dallmannAgileSpaceParadigm2015,lillAgileMissionOperations2018,lubian-arenillasNanosatelliteDevelopmentMethodology2019,segretPavingStonesInitial2014}, research has been made on more generic \acs{SYE} methodologies that can be universally applied to nano-satellite projects \autocite{alanaziEngineeringMethodologyStudentDriven2019,andersonEnterpriseModelingCubeSats2014,deckerSystemsengineeringAssessmentMultiple2016}. These methodologies generally use a foundation based on traditional phase-based lifecycle processes \cite{sheaNASASystemsEngineering2020}, augmented with iterative or incremental elements. Many CubeSat methodologies also implement Agile practices, which represent a philosophy focused on emergent and interpersonal methods \autocite{beckAgileManifesto2001}. Conversely, another set of CubeSat projects does not use a well-defined methodology, instead implementing original ad-hoc approaches applicable to specific missions \autocite{cheongRobustFrameworkLowCost2020}.
+The impact and benefit of Systems Engineering is widely understood in the fields of space systems, and more specifically, \textbf{CubeSat engineering}. Apart from individual missions that explore tailor-made \acl{SYE} approaches \cite{cappaertBuildingDeployingOperating2018,chaiebOpenOrbiterCubeSatSystemofsystems2015,dallmannAgileSpaceParadigm2015,lillAgileMissionOperations2018,lubian-arenillasNanosatelliteDevelopmentMethodology2019,segretPavingStonesInitial2014}, research has been made on more generic \acs{SYE} methodologies that can be universally applied to nano-satellite projects \autocite{alanaziEngineeringMethodologyStudentDriven2019,deckerSystemsengineeringAssessmentMultiple2016}. These methodologies generally use a foundation based on traditional phase-based lifecycle processes \cite{sheaNASASystemsEngineering2020}, augmented with iterative or incremental elements. Many CubeSat methodologies also implement Agile practices, which represent a philosophy focused on emergent and interpersonal methods \autocite{beckAgileManifesto2001}. Conversely, another set of CubeSat projects does not use a well-defined methodology, instead implementing original ad-hoc approaches applicable to specific missions \autocite{cheongRobustFrameworkLowCost2020}.
 
 The development approaches for current \acf{SCS}, mainly PocketQubes and ChipSats, largely follow the aforementioned approaches for CubeSats, with examples following hybrid \autocite{cappellettiHandsSpaceEducational2020}, Agile-based \autocite{sperettaCubeSatsPocketQubesOpportunities2016} and ad-hoc \autocite{manchesterCentimeterScaleSpacecraftDesign2015,daradimosQUBIK1pPocketQube2024} methodologies.
 
@@ -1108,7 +1108,7 @@ The benefits and drawbacks of different lifecycle processes are also a topic of 
 Different works explore the benefits of ``sequential-like'' \autocite{shiotaniEndtoEndDesignDevelopment2014,sanchoLessonsLearnedFYS2021,deckerSystemsengineeringAssessmentMultiple2016} and ``concurrent-like'' \autocite{labargeCubeSatAgileSystem2014,garzanitiEffectivenessScrumMethodology2019,segretPavingStonesInitial2014} approaches. Conversely, \citeauthor{honore-livermoreIntegratingAgileSystems2022} notes that Agile methods are suited to university projects \autocite{honore-livermoreIntegratingAgileSystems2022}, however no similar research covers industrial environments, to the author's knowledge.
 %segretPavingStonesInitial2014
 
-\newthought{Similarly,} existing literature covers some of the remaining aspects of \acl{SYE} for CubeSats\footnote{See \Cref{fig:i_sye_decomposition}.}, albeit again without consensus. \textbf{\acl{MBSE}} is a common theme, with a number of proposals for formal models \autocite{kaslowMissionEngineeringCubeSat2021,gateauOpensourceFrameworkConcurrent2021}, along with \textbf{risk management} \cite{honore-livermoreIntegratingAgileSystems2022}\footnote{Various levels of \acs{FMEA} are typically used for failure management}, \textbf{documentation} \autocite{nieto-peroyCubeSatMissionDesign2019} and \textbf{software-hardware co-validation} \autocite{honore-livermoreIntegratingAgileSystems2022,kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}\footnote{usually achieved through some form of \acf{HIL} platform.}. \citeauthor{honore-livermoreManagingProductDevelopment2021} place particular emphasis on the use and effectiveness of \textbf{software tools} in the course of CubeSat projects, noting that the latter are \emph{socio-technical systems}, and that the tools used need to be both accessible, and supported by the project's management \autocite{honore-livermoreManagingProductDevelopment2021}.
+\newthought{Similarly,} existing literature covers some of the remaining aspects of \acl{SYE} for CubeSats\footnote{See \Cref{fig:i_sye_decomposition}.}, albeit again without consensus. \textbf{\acl{MBSE}} is a common theme, with a number of proposals for formal models \autocite{gateauOpensourceFrameworkConcurrent2021,strobbeOpensourceCubeSatMBSE2023}, along with \textbf{risk management} \cite{honore-livermoreIntegratingAgileSystems2022}\footnote{Various levels of \acs{FMEA} are typically used for failure management}, \textbf{documentation} \autocite{nieto-peroyCubeSatMissionDesign2019} and \textbf{software-hardware co-validation} \autocite{honore-livermoreIntegratingAgileSystems2022,kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}\footnote{usually achieved through some form of \acf{HIL} platform.}. \citeauthor{honore-livermoreManagingProductDevelopment2021} place particular emphasis on the use and effectiveness of \textbf{software tools} in the course of CubeSat projects, noting that the latter are \emph{socio-technical systems}, and that the tools used need to be both accessible, and supported by the project's management \autocite{honore-livermoreManagingProductDevelopment2021}.
 
 \FloatBarrier
 \section{Sub-CubeSat Ecosystem}
@@ -1431,8 +1431,12 @@ Another notable case was the one of \emph{Swarm Technologies}, a USA-based start
 Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} claim that, as of 2020, at least all PocketQubes that had been launched so far, have been shown to be identifiable, trackable, and posing no higher danger than other CubeSats with no propulsion. \autocite{sperettaCubeSatsPocketQubesOpportunities2016} also analysed a combined PocketQube-CubeSat launch, and found that \acsp{TLE} were acquired for all launched spacecraft of different sizes, noting that PocketQubes and CubeSat experienced similar acquisition times, with the exception of a 1p PocketQube, for which data was acquired after 4 days instead of the average 1.
 
 \FloatBarrier
-\section{Topics from Systems Engineering}
-\label{sec:LITERATURE_systems_engineering}
+
+\section{Current Shortcomings}
+
+As shown in \Cref{sec:LITERATURE_cubesat,sec:LITERATURE_classes}
+
+
 
 \subsection{Metrics}
 \label{sec:LITERATURE_metrics}
@@ -1472,6 +1476,9 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 	\item \textbf{External Environment}: The project effects of external factors, such as stakeholders, clients and users;
 	\item \textbf{Objectives}: System design imperatives and decisions that affect the project, including the domain, complexity and required innovations.
 \end{itemize}
+
+\section{Topics from Systems Engineering}
+\label{sec:LITERATURE_systems_engineering}
 
 \subsection{Lifecycle Models}
 \label{sec:LITERATURE_life_cycle_models}
@@ -2367,9 +2374,7 @@ These symbols can then be arranged vertically, when happening in parallel, or ho
 \label{sec:METHODOLOGY_slicebased}
 \label{sec:METHODOLOGY_partitions}
 
-\todo{Add the missing figure, add some explanatory images as examples perhaps}
-
-\citeauthor{iberleAgileGetsPhysical2022} noticed that industrial Agile environments incorporating software and hardware have to deal with confusion and conflicts when the work of different engineering teams has to be integrated \autocite{iberleAgileGetsPhysical2022}. In traditional Scrum, a single work package that can be completed by one person within a Sprint may require additional interfacing functionality to translate to a product feature or function. \citeauthor{iberleAgileGetsPhysical2022} provide an example of three teams (hardware, firmware, cloud software) collaborating on the same product, who however implement different iteration durations and have to deal with an iteration lag when errors need to be fixed in another part of the product. This is exacerbated by the fact that software teams can affort to perform short iterations, while hardware teams have to spend multiples of that time to produce and verify a physical product \autocite{cooperAgileDevelopmentManufacturing2023}. 
+\citeauthor{iberleAgileGetsPhysical2022} noticed that industrial Agile environments incorporating software and hardware have to deal with confusion and conflicts when the work of different engineering teams has to be integrated \autocite{iberleAgileGetsPhysical2022}. In traditional Scrum, a single work package that can be completed by one person within a Sprint may require additional interfacing functionality to translate to a product feature or function. \citeauthor{iberleAgileGetsPhysical2022} provides an example of three teams (hardware, firmware, cloud software) collaborating on the same product, who however implement different iteration durations and have to deal with an iteration lag when errors need to be fixed in another part of the product. This is exacerbated by the fact that software teams can affort to perform short iterations, while hardware teams have to spend multiples of that time to produce and verify a physical product \autocite{cooperAgileDevelopmentManufacturing2023}. 
 
 This criticism of Scrum for systems engineering essentially targets the ``Definition of Done'' and ``Sprint Goal'' aspects, which by default are either expressed in a simple form, or refer to a requirement against the product as a whole. Instead, \citeauthor{iberleAgileGetsPhysical2022} proposes the concept of a \textbf{slice} (\Cref{def:slice}), which describes a single batch of integration/testing that defines a single, typically user-visible, feature. Apart from the features only, a slice also defines a rough testing plan that will be followed after integration is completed. Then, \textbf{every iteration/Sprint is defined to cover only a single or more slices}. Developers from the hardware and software disciplines can therefore select the work packages that work towards this common goal.
 
@@ -2416,6 +2421,11 @@ An example of the difference between a \emph{module}, \emph{partition} and \emph
 	\item They do not want to spend additional time within a single iteration to work on the entire system.
 \end{enumerate}
 
+\begin{figure}
+	\includegraphics{graphics/SliceConcept.pdf}
+	\caption{Concept map describing the relationship between slices, modules and partitions}
+\end{figure}
+
 In CubeSat systems, an example of a well-known commonly defined partition is that of a ``\textbf{FlatSat}''\footnote{Sometimes referred to as an Engineering Test Unit} \autocite{desouzaFlightSoftwareDevelopment2022,nasacubesatlaunchinitiativeCubeSat101Basic2017}, where all subsystems of a satellite are laid out, connected and tested in the same level, before their integration-ready versions are combined in the CubeSat stack.
 The FlatSat method is often supported by harnesses, boards or test jigs that facilitate the interconnection of all subsystems, provide ready-to-use voltage rails, and expose test points for observability. These benefits can often be also attained in an \acs{SCS} environment \autocite{raduDelfiPQFirstPocketqube2018}, especially for larger form factors. However, developers need to consider whether the added effort to create a configuration not present in the flight design is worthwhile; especially for simple designs with few interfaces, the results of a FlatSat might be also obtainable from a stacked configuration, or an integrated system build.
 
@@ -2426,6 +2436,17 @@ In an extreme interpretation of \Cref{def:partition}, a subsystem's \textbf{soft
 Partition-based iterations are also similar to the V-style or incremental approaches favoured by CubeSat projects, where distinct subsystems are manufactured first, often in parallel, before being integrated into the entire system.
 The main differentiating element of
 a partition-based approach are the recommendation to always iterate on \textbf{a combination of more than one module at a time} in order to encourage interface definition through verification instead of specification. Partition Sat-Scrum also encourages the flexible definition and usage of partitions, which can be done between system-wide iterations when project needs dictate.
+
+\phantomsection%
+\label{sec:METHODOLOGY_partitionbased_novelty}
+Partition-based Sat-Scrum can also be compared to previous Agile literature.
+The most common strategies used involve creating a \emph{Minimum Viable Product} or a \emph{Walking Skeleton}, where a minimally functional version of a product is built and then iterated upon, performing incremental re-architecture \autocite{cockburnCrystalClearHumanpowered2004}. This concept was extended to \emph{small vertical slices}, where a focus is given to present complete functionality in every sprint, instead of generic product improvement \autocite{ratnerVerticalSlicingSmaller2011}. \citeauthor{iberleAgileGetsPhysical2022} also explore the concept of named slices to describe different functionality that cover only parts of a system's architecture. Recent studies of Agile systems engineering practice describe the use of a scaled Scrum method, usually augmented with prototype development or traditional Stage-Gates \autocite{atzbergerAgileDevelopmentPhysical2020,cooperAgileDevelopmentManufacturing2023}. In contrast to the \acl{SOTA}, partition-based Sat-Scrum introduces the following novel concepts:
+\begin{itemize}[itemsep=-2pt]
+	\item Partitions are not progressive, and different levels of fidelity can be used across iterations. Partition-based Sat-Scrum also supports reducing fidelity compared to a previous iteration, when development needs to focus on a particular area.
+	\item Traditional prototypes may involve creating a separate design\footnote{E.g.\@ a mockup, prototype, ground testing interface or digital twin.} for early iterations. Partition-based Sat-Scrum, on the other hand, views partitions as sets of modular ``bricks''\footnote{that is, modules}: In every iteration, the system should ideally be built with a form as close as possible to the intended result, and partitioning is done by removing unneeded parts as ``building blocks''.\footnote{In practical terms, the ideal partition-based lifecycle would involve establishing a system structure and then choosing which subsystems (\emph{modules}) need to be iterated on and assembled on every iteration. For example, an iteration of a PocketQube might involve fine-tuning the \acl{EPS}, in which case the \acs{ADCS} subsystem does not need to be produced. Compared to e.g.\@ a FlatSat, this approach reduces the overhead associated with maintaining a different test model and allows developers to reason about the form, fit and function of the entire system, without the necessity of physically implementing it entirely.}
+	
+	This approach aims to generate knowledge about the physical attributes of the system early in the design, while reducing the development effort to develop different structures, at the cost of feature representability at every iteration. It is inherently hardware-specific, as it targets the higher costs and effort associated with iterating on larger hardware systems \autocite{schmidtAgileDevelopmentConstraints2017}.
+\end{itemize}
 
 The main disadvantage of partition-based Sat-Scrum, compared to iterating strictly system-wide, is that it defers iterating on some parts of the system (and therefore also interfaces) to  later time points, therefore either reducing the total knowledge gained within a fixed duration, or increasing the total development time of a project.
 In extreme cases, developers may be enticed to delay working on parts of the system until the later stages of a project, thus risking that neither enough design nor iteration effort has been dedicated to them. For this reason, it is important to define and maintain a robust work management and planning approach.
@@ -2613,7 +2634,11 @@ The shortcomings of document-based specification approaches (\Cref{tab:documenta
 While there is no systematic evidence linking the benefits of \acs{MBSE} to specific project or team characteristics, \citeauthor{campoModelbasedSystemsEngineering2023} found that the drawbacks of \acs{MBSE} can be linked to a lack of training or familiarity with the used tools. Regarding development time, they note that ``due to the significant time needed for building  a model of the system, implementation of MBSE on short-term projects  may not yield much, if any, return on investment.'' \cite{campoModelbasedSystemsEngineering2023}
 This matches the expectation of a ``Systems Engineering sweet spot'', as explored in \Cref{sec:INTRODUCTION_defining_systems_engineering}.
 
-While the use of a formal model might prove prohibitive for systems such as \acl{SCS}, an informal model-based approach has the potential to provide some of the perceived benefits of \acs{MBSE}, while reducing the overhead required to maintain such a model. As an example, I provide an opinionated list of requirements (\Cref{tab:m_edm_requirements}) and a graphical mockup (\Cref{fig:m_edm_mockup}) for such a tool. Alternatively, \citeauthor{uludagTailoringModelBasedSystems} have also performed a discipline-specific tailoring of tool-backed \acs{MBSE} for pocket-sized spacecraft, based on a power-first sizing approach \autocite{uludagTailoringModelBasedSystems}.
+\phantomsection%
+\label{sec:METHODOLOGY_edm_novelty}
+While the use of a formal model might prove prohibitive for systems such as \acl{SCS}, an informal model-based approach has the potential to provide some of the perceived benefits of \acs{MBSE}, while reducing the overhead required to maintain such a model. This is particularly suitable for \acs{SCS}: While \acs{MBSE} has traditionally targeted complex systems \autocite{hendersonMBSEAdoptionExperiences2024,estefanSurveyModelBasedSystems2008}, literature is limited on \acs{MBSE} tailoring for lightweight (yet mission-critical) systems with a focus on overhead reduction, especially in the areas of CubeSat and \acl{SCS} \autocite{honore-livermoreIntegratingAgileSystems2022,minacapilliSmallSatellitesMission2022,uludagTailoringModelBasedSystems}.
+
+As an example, I provide an opinionated list of requirements (\Cref{tab:m_edm_requirements}) and a graphical mockup (\Cref{fig:m_edm_mockup}) for such a tool. Alternatively, \citeauthor{uludagTailoringModelBasedSystems} have also performed a discipline-specific tailoring of tool-backed \acs{MBSE} for pocket-sized spacecraft, based on a power-first sizing approach \autocite{uludagTailoringModelBasedSystems}.
 
 \begin{table*}[h]
 	\footnotesize
@@ -5208,6 +5233,8 @@ For documentation, the team produced artifacts such as non-conformance reports (
 
 \item A large number of \textbf{auxiliary software tools} were built for AI4Space to support development, which proved to be beneficial in terms of removing manual effort from the testing and operation phases. When no commercial alternative exists that can satisfy all functional requirements, teams are therefore encouraged to invest in developing their own software support, being careful to minimise the time overhead. Third-party libraries should especially be considered, as software development is then usually a matter of ``gluing'' different components to match the needed business logic.
 
+\item Software development took place across three git repositories\footnote{One for the satellite software (including operations and\acs{GS}), one for the web interface, and one for documentation.} Some changes had to be made across more than one repository, which at times created minor compatibility issues. On larger-scale projects, these issues might be more significant. \acs{SCS} teams are therefore encouraged to implement a \textbf{monorepo} approach in order to prevent version conflicts \autocite{WhyGoogleStores2016}.
+
 \item During operations, it was crucial to maintain a second unit, identical to the flight one, in order to test \acs{TC} or software patches before upload. The identical \acl{QM} proved useful for this task. A copy of the final binary flight image was stored and maintained as a common snapshot between space and ground.
 
 \item During operations, as mentioned above, it was necessary to upload a Python software patch against the flight software. Due to constraints related to the available upload data volume, the size of the patch was limited to a few hundred bytes. The size constraints were met by aggressively minimising the Python source code.
@@ -6544,6 +6571,15 @@ Based on the above findings, I have contributed the definition of a tailored sys
 	\item A tailoring guide to assist developers in selecting the optimal set of methods for their project.
 \end{itemize}
 
+During the synthesis of the new methodology, in addition to introducing modern Agile and Systems Engineering practices to \acs{SCS} development, this thesis also contributed to the \acl{SOTA} by proposing the following novel methods and concepts:
+\begin{itemize}[itemsep=-1pt]
+	\item Considering physical products (in this case, \acs{SCS}) as \textbf{software artifacts}, and attempting to suppress the overhead arising from their physical nature.
+	\item Partition-based Scrum, where \textbf{each iteration is performed on a model matching the fit and form of the intended product}. In contrast to common Agile systems engineering, partition-based Scrum does not require building and maintaining an \acl{MVP}, but places the focus on generating early knowledge about the performance of the intended, flight-ready system, and considers unbuilt modules as ``building blocks'' that can be added later (\Cref{sec:METHODOLOGY_partitionbased_novelty}).
+	\item Lightweight \acs{MBSE} that can combine the functions of modeling and documentation (\Cref{sec:METHODOLOGY_edm_novelty}). Lightweight \acs{MBSE} prioritises development time against accuracy, relying on a tool-based approach, and its success is measured by metrics typically associated with text-based documentation.
+	\item Methodologically, this thesis introduces a software case study-based approach, where open-source software libraries with similar functionality are compared on a similar environment at runtime, using a fuzz testing tool, in order to predict the emergence of faults (\Cref{sec:METHODOLOGY_software_reliability}).
+	\item A metric-based counter-factual cross-case analysis, where the results of applied treatments to one case are compared against measurements or estimations from the literature for the converse case (\Cref{chap:CASESTUDIES}).
+\end{itemize}
+
 The following findings are reported from the application and counter-factual evaluation of the methodology on four \acs{SCS} case studies:
 \begin{itemize}[itemsep=-2pt]
 	\item Across \acs{SCS} projects, a typical workload was identified, averaging \qty{500}{person-hours} for ChipSats and \qty{800}{person-hours} for a PocketQube.
@@ -6602,7 +6638,7 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 
 \vspace*{-1cm}%
 \centering%
-\fbox{\includegraphics[width=.8\linewidth]{CheatSheet.pdf}}
+\fbox{\includegraphics[width=.8\linewidth]{graphics/CheatSheet_cropped.pdf}}
 \end{fullwidth}
 
 \chapter{Software Errors Detected during Fuzz Testing}
