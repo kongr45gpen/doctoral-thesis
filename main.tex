@@ -207,7 +207,7 @@ Nano-satellites are mostly represented by the CubeSat form factor, a concept int
 
 CubeSats are designed in a modular format consisting of \qtyproduct{10 x 10 x 10}{\centi\meter} cubes (termed ``U(nits)''). Subsystems typically follow the ``PC/104'' mechanical standard for subsystems, along with a shared electrical specification \cite{BoardSpecificationLibreCube}.
 
-The advances of miniaturisation in electronics since the 1980s have gradually increased the capabilities and utility of nano-satellites \cite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more CubeSats.\footnote{21 constellations of 5 or more nano-satellites have been launched so far. Additionally, CubeSats represent over \qty{90}{\percent} of all nano-satellites launched  \autocite{kuluNanosatsDatabase2023}} Most CubeSats are orbiting in \acs{LEO}, with a few missions also planned and launched for deep space \autocite{walkerDeepspaceCubeSatsThinking2018}.
+The advances of miniaturisation in electronics since the 1980s have gradually increased the capabilities and utility of nano-satellites \cite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more CubeSats.\footnote{21 constellations of 5 or more nano-satellites have been launched so far. Additionally, CubeSats represent over \qty{90}{\percent} of all nano-satellites launched  \autocite{kuluNanosatsDatabase2023}} Most CubeSats are orbiting in \acs+{LEO}, with a few missions also planned and launched for deep space \autocite{walkerDeepspaceCubeSatsThinking2018}.
 
 The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram} \autocite{crispSmallSatelliteLaunch2014}) has significantly reduced the entry barrier to space
 \autocite{poghosyanCubeSatEvolutionAnalyzing2017,sweetingModernSmallSatellitesChanging2018}.
@@ -440,9 +440,9 @@ However, a considerable overhead and a number of inefficiencies are added when f
 %\citeauthor{whitneyWhyMechanicalDesign1996} \autocite{whitneyWhyMechanicalDesign1996} draws parallels between the design of a complex mechanical system, and very efficient and modular VLSI design process.
 
 \citeauthor{boehmROISystemsEngineering2008} \autocite{boehmROISystemsEngineering2008}
-analysed the 161 software projects from the \acs{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
+analysed the 161 software projects from the \acs+{COCOMO} II database to identify the ideal \textbf{trade-off between time spent architecting and total time spent} for a project.
 They identified a ``\textbf{sweet spot}'' between too little and too much time spent in software architecting and risk management\footnote{Which, for the purposes of this work, loosely corresponds to effort spent for Systems Engineering}.
-For example, on a \SI{10}{\kilo\acs{SLOC}} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
+For example, on a \SI{10}{\kilo\acs{SLOC}}\mac{SLOC} project, any additional time spent for Systems Engineering above 5\% of the total project time leads to an increase to overall project duration.
 This is in contrast to a larger \SI{1000}{\kilo\acs{SLOC}} project, where this sweet spot is found at 33\%, implying that larger projects need disproportionately higher effort for Systems Engineering (\Cref{fig:i_software_roi}).
 Similarly, \autocite{honourTechnicalReportValue2004} concluded, after a survey of 44 projects, that an optimum level of \acs{SYE} effort is between \qtyrange{15}{20}{\percent}, above which there seem to be no \acs{SYE}-related cost/schedule improvements.
 
@@ -497,7 +497,7 @@ The specific characteristics of \acs{SCS} that differentiate them from CubeSats 
 	At the same time, however, the required miniaturisation of components can increase complexity for specific applications, such as deployment mechanisms and thrusters, because of technical manufacturing and fabrication challenges related to the need for increased precision \autocite{ouDesignPerformanceMicropulsed2024}.
 	Creating extremely miniaturised hardware may require components that are not available off-the-shelf, as well as specialised machinery and expertise that may not be available in-house.
 	
-	\item \textbf{\acs{COTS} availability}: Due to both the small size and the lower popularity of \acs{SCS} compared to CubeSat and larger spacecraft, the number of suitable \acf{COTS} subsystems tailored for use in space is limited, especially when considering high-\acs{TRL} parts. Teams will therefore be more likely to design or develop subsystems in-house. This characteristic can also extend to support equipment, such as FlatSat supports, test jigs, or analysis software.
+	\item \textbf{\acs{COTS} availability}: Due to both the small size and the lower popularity of \acs{SCS} compared to CubeSat and larger spacecraft, the number of suitable \acf{COTS} subsystems tailored for use in space is limited, especially when considering high-\acs+{TRL} parts. Teams will therefore be more likely to design or develop subsystems in-house. This characteristic can also extend to support equipment, such as FlatSat supports, test jigs, or analysis software.
 	
 	Similarly, the novelty of PocketQubes, and more-so smaller femto-satellites and atto-satellites, also restricts the amount of standardisation and established conventions in this field. In practical terms, fewer deployer and interface designs may be available as specifications or physical implementations. Especially for ChipSat-scale spacecraft, the different proposed applications have been associated with a multitude of different form factors, making future standardisation potentially harder than on their larger counterparts. However, the overall physical structure of many \acs{SCS} projects can be described in simple terms: either as a stack of \acsp{PCB} supported by a small frame (PocketQubes), or as one or two flat \acsp{PCB} with minimal support (ChipSats).
 \end{itemize}
@@ -518,7 +518,7 @@ The above characteristics explain differences between CubeSats and \acs{SCS} whi
 	normal working location, limiting costs, time spent, administrative burden, and facilitating very short manufacturing runs and test campaigns.
 	
 	\item While \acs{SCS} projects still retain mission-criticality, since irreparable failures can propagate and lead to a loss of mission, the consequences of failure are usually less severe in terms of lost value.
-	Additionally, shorter mission durations indicate that accumulating effects (such as those related to radiation or aging) will be limited.\footnote{Note, however, that most CubeSat mission failures happen at the beginning of a mission, as a result of ``infant mortality'' \autocite{langerReliabilityEstimationTool2017}} As a result, developers need to take fewer derating and technical risk mitigation measures, such as the use of radiation-tolerant components or redundancy. Administrative measures for technical risk reduction (such as \acs{FMEA}) can also be performed with reduced fidelity.
+	Additionally, shorter mission durations indicate that accumulating effects (such as those related to radiation or aging) will be limited.\footnote{Note, however, that most CubeSat mission failures happen at the beginning of a mission, as a result of ``infant mortality'' \autocite{langerReliabilityEstimationTool2017}} As a result, developers need to take fewer derating and technical risk mitigation measures, such as the use of radiation-tolerant components or redundancy. Administrative measures for technical risk reduction (such as \acs+{FMEA}) can also be performed with reduced fidelity.
 	
 	\item While CubeSat projects have a fixed set of launch requirements, originating from the launcher, the deployer and the CubeSat specification, non-standardised projects may require the implementation of proprietary interfaces, potentially specific to each company that can offer a flight slot for \acs{SCS} spacecraft. In extreme cases, these interface specifications may not have been devised at all. Then, \acs{SCS} developers will have to collaborate with their provider to agree on shared interfaces, or design their own\footnote{This was, for example, the approach taken by Manchester, who designed a 3U CubeSat capable of hosting and deploying multiple ChipSats \cite{manchesterCentimeterScaleSpacecraftDesign2015}.}. These uncertainties increase the possibility of external requirements changing during a mission.
 	
@@ -790,7 +790,7 @@ As CubeSats present similarities with \acl{SCS}\footnote{This is true for nano-s
 
 From a technical point of view, the shared requirements of CubeSats are defined by the CubeSat Design Specification \autocite{CDS14}. The main constraint for CubeSat design is the dimensional envelope defined by the specification, which dictates the mechanical interfaces of the spacecraft. With regards to the internals, CubeSats are typically separated mechanically, electrically and functionally into subsystems, with an example partition shown in \Cref{tab:l_subsystem_partition}.
 
-While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs{COTS} subsystems.\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoperability is not guaranteed.} The LibreCube specification \autocite{BoardSpecificationLibreCube} defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
+While no universally accepted formal standard exists for CubeSat subsystems and internal components, most CubeSats are based on a PC/104-style stack of subsystem boards \autocite{choCubeSatElectricalInterface2020}. This approach has enabled a limited interoperability between commercially available subsystems. Developers therefore often mix-and-match in-house and \acs+{COTS} subsystems.\footnote{\acs{COTS} subsystems from different manufacturers can also be combined, but interoperability is not guaranteed.} The LibreCube specification \autocite{BoardSpecificationLibreCube} defines a reference architecture, standard board design and an electrical specification for such PC/104 subsystems. 
 
 \begin{marginfigure}
 	\includegraphics{external/board_stacking.png}
@@ -1371,7 +1371,7 @@ An early \SI{10}{\gram} \qtyproduct{3.5 x 3.5 x 0.6}{\centi\metre} \acs{PCB}-bas
 %The spacecraft was tested in the stratosphere ([[@WaferScaleSpacecraft]]), and was also carried by a solo-piloted aircraft on a pole-to-pole expedition (https://www.deepspace.ucsb.edu/wafer-scale-spacecraft-pole-to-pole-flight-nov-2019-to-aug-2020).
  \item At Cornell University, \citeauthor{adamsTheoryApplicationsGramScale2020} designed the ``Monarch'' ChipSats as an evolution of the Sprite design \autocite{adamsRSelectedSpacecraft2019,adamsTheoryApplicationsGramScale2020}. A number of them have been deployed on earth for use in agriculture and stockraising \autocite{adamsTheoryApplicationsGramScale2020,nuttMonarchSatellitesOpen2019}. On December 2025, Cornell launched a CubeSat lightsail mission which had 4 ChipSats mounted on the edges of the sail, in order to demonstrate the capability of a free-flying sail \autocite{cornelluniversityAlphaCubesatHomePage2025}.
 \item The {ThumbSat} initiative was a commercial project allowing customers to launch a payload on a \qtyproduct{4.8 x 4.8 x 3}{\centi\meter} platform \autocite{singhDoItYourselfSatellitesApplications2019}.
-While ThumbSat was active between 2015--2017, it seems that regulatory obstacles due to the \acs{FCC} led to a halt of operations \autocite{vanlandinghamThumbSatOrbitalDebris2017,vanlandinghamExhibitSubmissionThumbSat2017}.
+While ThumbSat was active between 2015--2017, it seems that regulatory obstacles due to the \acs+{FCC} led to a halt of operations \autocite{vanlandinghamThumbSatOrbitalDebris2017,vanlandinghamExhibitSubmissionThumbSat2017}.
 \item \emph{AmbaSat} is another UK-based company offering a \qtyproduct{3.5 x 3.5}{\centi\meter} ChipSat launch for a cost of \SI{1200}{GDB}, based on a 3U Kicksat-like deployer \autocite{3AmbaSat1Satellite}.
 %They also list the price of their individual spacecraft at \SI{140}{GDB}, without a launch opportunity.
 \item Project Pinpoint, managed by the Initiative for Interstellar Studies, designed a \qtyproduct{2.5 x 2.5}{\centi\metre} atto-satellite as a precursor to a laser-sail equipped ChipSat \autocite{broekerProjectPinpointPushing2021}.
@@ -2224,7 +2224,7 @@ It is not always possible to complete Sprint Backlog items within a single itera
 
 The importance of reviews can be ascertained from the software development field, where various studies have been performed on the efficacy of \emph{code reviews}. Meta-analyses of expert opinion surveys show that code reviews increase perceived code quality, understanding and defect minimisation \autocite{badampudiModernCodeReviews2023,yangRoadmapModernCode2026}. While this is supported by data-backed studies \autocite{kononenkoInvestigatingCodeReview2015,bavotaFourEyesAre2015,krutauzCodeReviewMeasures2020,kemererImpactDesignCode2009}, these findings are not consistent, especially depending on reviewer workload and experience.
 
-Given these positive indications, \acs{SCS} can potentially also benefit from a design review scheme, when experienced developers are involved, as an auxiliary activity. Alternatively, automated \acs{LLM}-based reviews have also been proposed and are supported by typical engineering artifact platforms, triggered when a change is pushed to a repository \autocite{rasheedAIpoweredCodeReview2024}. For non-text artifacts\footnote{For example, screenshots of engineering drawings or \acs{PCB} layouts}, multi-modal \acs{AI} models can be used, and since real-time responses are not required, the environmental impact of \acsp{LLM} can be reduced.
+Given these positive indications, \acs{SCS} can potentially also benefit from a design review scheme, when experienced developers are involved, as an auxiliary activity. Alternatively, automated \acs+{LLM}-based reviews have also been proposed and are supported by typical engineering artifact platforms, triggered when a change is pushed to a repository \autocite{rasheedAIpoweredCodeReview2024}. For non-text artifacts\footnote{For example, screenshots of engineering drawings or \acs{PCB} layouts}, multi-modal \acs{AI} models can be used, and since real-time responses are not required, the environmental impact of \acsp{LLM} can be reduced.
 
 
 \paragraph{High-level planning}
@@ -2421,7 +2421,7 @@ The FlatSat method is often supported by harnesses, boards or test jigs that fac
 
 In an extreme interpretation of \Cref{def:partition}, a subsystem's \textbf{software} can be considered as a partition, if there is adequate infrastructure to ``manufacture'', execute and test it without the linked hardware (e.g.\@ using an emulator\footnote{Similarly to a FlatSat, care has to be taken when creating support for a configuration not present in the final flight model. The development of mocks and emulation support can potentially be a particularly large undertaking if no reusable libraries are integrated.}). Indeed, some projects may want to perform system-wide iterations on software only if necessary, for example for software-heavy projects. 
 
-\newthought{Compared to} system-level Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, \emph{partition-level Sat-Scrum} also addresses an inherent problem with Agile methods when applied to complex physical systems: During the first iterations in a project, only a few weeks are allocated towards design efforts. However, in hardware engineering, it is possible that many activities with a minimum baseline of effort need to take place in every iteration, such as design elaboration, analysis/optimisation, \acs{PCB} design/routing, \acs{BOM} consolidation, prototype building, and more. For a system with multiple in-house boards that require these processes, it may be impractical or impossible to complete this design effort within a single iteration, thus requiring either lengthening the iteration, or the use of partition-based Sat-Scrum.
+\newthought{Compared to} system-level Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, \emph{partition-level Sat-Scrum} also addresses an inherent problem with Agile methods when applied to complex physical systems: During the first iterations in a project, only a few weeks are allocated towards design efforts. However, in hardware engineering, it is possible that many activities with a minimum baseline of effort need to take place in every iteration, such as design elaboration, analysis/optimisation, \acs{PCB} design/routing, \acs+{BOM} consolidation, prototype building, and more. For a system with multiple in-house boards that require these processes, it may be impractical or impossible to complete this design effort within a single iteration, thus requiring either lengthening the iteration, or the use of partition-based Sat-Scrum.
 
 Partition-based iterations are also similar to the V-style or incremental approaches favoured by CubeSat projects, where distinct subsystems are manufactured first, often in parallel, before being integrated into the entire system.
 The main differentiating element of
@@ -2598,7 +2598,7 @@ As I lack the statistical data to quantify \ac{EDM} approaches based on this equ
 
 
 Traditionally, the description and documentation of system specifications have taken place via text documents.
-The combination of human language with rich text capabilities (e.g.~images, tables, equations, references) has made it possible to represent most ordinary engineering data. In practical terms, text documents {follow a specific format such as \acs{OOXML} or \acs{MD}}. However, the use of prose can quickly become cumbersome as the complexity of a system increases, as it is difficult to represent modular and repeated structures, and the representation of data is not consistent.
+The combination of human language with rich text capabilities (e.g.~images, tables, equations, references) has made it possible to represent most ordinary engineering data. In practical terms, text documents {follow a specific format such as \acs+{OOXML} or \acs+{MD}}. However, the use of prose can quickly become cumbersome as the complexity of a system increases, as it is difficult to represent modular and repeated structures, and the representation of data is not consistent.
 \marginnote{In practical terms, document-based approaches lack \begin{enumerate*}
 		\item \emph{maintainability}, as a change in one parameter does not update all of its dependents;
 		\item \emph{accessibility}, as there is no well-defined structure that allows quick retrieval of information;
@@ -2670,7 +2670,7 @@ While the use of a formal model might prove prohibitive for systems such as \acl
 	%	In any case, extensibility should be provided, within a reasonable degree, to a large number of aspects on such a tool. For example, by including a multi-line ``Justification'' or ``Notes'' field for parameter or entity, users can describe complex concepts that would need to be modelled independently if not represented with prose. For example, users might need to specify uncertainties in data sources, descriptive parameters (such as colour), rationale for the selected value, acceptable limits and more.
 		\\
 		\textbf{EDM-070} & The tool shall notify users on changes.
-		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue or ``\emph{\acs{SAAS} Sprawl}'' \cite{goodwinWhatSaaSSprawl2025}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
+		&     Introducing a new tool to a development environment has the risk of exacerbating tool fatigue or ``\emph{\acs+{SAAS} Sprawl}'' \cite{goodwinWhatSaaSSprawl2025}. Especially when users are asked to switch between different platforms, it may be difficult to maintain awareness of changes at the right time.
 		
 		As engineering teams typically focus around a software communication platform (such as E-Mails, Slack or Github) to share information \cite{honore-livermoreManagingProductDevelopment2021,retselisAdaptationAcubeSATNanosatellite2022}, used tools should have the capability of announcing draft or released changes in real-time on that platform, without requiring an additional context switch.
 		%This feature can also encourage additional synergies, by allowing users to discuss or dispute changes in Engineering Data in context.
@@ -2747,7 +2747,7 @@ Examples of design solution evaluation criteria can include:\begin{itemize}
 	\item Any combination of the above
 	\end{itemize}
 }
-Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative (such as analyses, measurements, experiments, heuristic scoring, or data reuse) or qualitative (such as consultations, reviews, comparisons, or \acs{SWOT} analyses) in nature. While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software.
+Design decisions can often be binary in nature,\footnote{i.e.~an answer to a yes/no question} splitting the design space into two. Evaluation criteria for design solutions can be quantitative (such as analyses, measurements, experiments, heuristic scoring, or data reuse) or qualitative (such as consultations, reviews, comparisons, or \acs+{SWOT} analyses) in nature. While \acs{SCS} are relatively simple systems, there is still high interdependence between different subsystems and parts, requiring a holistic approach to design, even between hardware and software.
 
 \paragraph[Concurrent Design]{\acf{CDE}}
 Traditionally, the initial design phases of a space system are performed using a Concurrent Engineering or \emph{\acf{CDE}} method, where all subsystem experts are gathered in a single location to iterate over the design elements of the system. These iterations are aided by automated simplified analyses, usually performed with simple spreadsheet software and mission analysis tools \autocite{bandecchiConcurrentEngineeringApplied1999}.
@@ -3103,13 +3103,13 @@ Modularity can be described in terms of:
 	\item \textbf{Electrical Modularity}, where the interfaces are electrical, and used to transfer power and/or data.
 \end{itemize}
 
-In CubeSats, modularity can be achieved through the use of PC/104-sized boards, along with a roughly-defined electrical interconnect specification \autocite{BoardSpecificationLibreCube}. Commercial CubeSat subsystems can then be placed inside a shared subsystem ``stack'', and often rearranged as needed. A list of protocols, such as \acs{I2C} or \acs{CAN}, allow the communication between subsystems of different manufacturers.
+In CubeSats, modularity can be achieved through the use of PC/104-sized boards, along with a roughly-defined electrical interconnect specification \autocite{BoardSpecificationLibreCube}. Commercial CubeSat subsystems can then be placed inside a shared subsystem ``stack'', and often rearranged as needed. A list of protocols, such as \acs+{I2C} or \acs+{CAN}, allow the communication between subsystems of different manufacturers.
 However, in practice, different subsystems may show incompatibilities with each other. There is also no shared specification for low-level interfaces, meaning that additional work may be needed to allow different subsystems to communicate.
 
 For \acs{SCS}, modularity presents more challenges, as it introduces constraints to a system's design. For example:
 \begin{itemize}
 	\item In a PC/104 board, the 104-pin connector covers \qtyproduct{6 x 0.8}{cm} of the \qtyproduct{9.6 x 9.0}{cm} board, taking up \qty{5.6}{\percent} of the available area, even though all 104 pins are rarely used \autocite{BoardSpecificationLibreCube}.
-	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt}\footnote{assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
+	\item The \acs{CAN} bus used by some CubeSat subsystems requires two \qty{120}{\ohm} terminating resistors, which will consume a maximum of \qty{33.3}{\milli\watt}\footnote{assuming a constant \(\Delta V = \qty{2}{\volt} \)} during operation.\footnote{This is generally negligible for CubeSats, but a significant amount for ChipSats with an \acs+{OAP} of, for example, \( \sim \qty{100}{\milli\watt} \).}
 	\item Most standard CubeSat packages separate the \emph{\acf{COMMS}} and \emph{\ac{OBDH}} functions into different boards, in order to accommodate the required flexibility of supporting different communication schemes and different subsystem vendors respectively. However, recent single-purpose missions have combined \ac{COMMS} and \ac{OBDH} into a single board, as \ac{OBDH} functionality is not usually resource-intensive.
 \end{itemize}
 While the above anecdotal examples do not need to translate to \acs{SCS} as-is, they show that the concept of modularity has to add additional constraints to a system. As \acs{SCS} designs often try to optimise available real estate, mass, power consumption and general performance, \textbf{a modular design may not be optimal in every situation.} This is especially valid in the case of femto- and atto-satellites, whose simple \acs{PCB} shape does not favour additional effort spent to make subsystems modular. I also note that modularity is not a binary decision, but can involve implementing different levels of modularity across different system modules.
@@ -3217,22 +3217,22 @@ This more ``strict'' approach to interface definition represents a deviation to 
 This paragraph will enumerate further low-level design guidelines based on lessons learned that do not fit into any of the above categories:
 \begin{itemize}
 	\item Traditional satellite manufacturers focus heavily on the \textbf{reduction of in-orbit technical risk} through administrative measures (e.g.\@ \acl{FMEA}), system-level solutions (e.g.\@ redundancy) or high-reliability components \autocite{kanavourasDesignFaultDetection2021}.
-	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs{TID} effects are typically less severe than random \acs{SEE} effects.}
+	This includes the use of radiation-tolerant parts and radiation effect mitigation measures.\footnote{For \acs{LEO} \acs{SCS} in particular, due to the low mission durations, \acs+{TID} effects are typically less severe than random \acs+{SEE} effects.}
 	Due to the general lack of statistics to evaluate the criticality and reliability effects of different choices, it is not always possible to confidently assert whether an amount of risk aversion is ``enough'' or not\footnote{Although it is generally possible to assert whether risk decreases after the implementation of a reliability measure.}.
 
 	When choosing how many risk mitigation measures to implement, \acs{SCS} developers should consider the expected lifetime of their spacecraft, their degree of risk acceptance, and the practicality of launching more than one spacecraft. Software-based measures (such as watchdog timers, error-correcting codes, resilient operating systems) can cover a large part of the large part of the failure surface area, but cannot address some hardware faults. Expensive measures, such as the use of redundant subsystems, may require larger form factors that cannot be accommodated by the system's requirements. Finally, measures such as the use of radiation-tested or radiation-tolerant parts may provide diminishing returns, when compared to other risk-reduction measurements.
 
-	One proposed risk mitigation solution is the execution of a system-level \acs{FMEA} at the beginning of a project, and its revision at the beginning of every iteration. System-level \acsp{FMEA} start from evaluating the top-level subsystems and critical components of the product tree\footnote{It is important to follow a top-down approach when executing a \acs{FMEA} analysis, by starting with an overview of the design, instead of trying to enumerate possible failures based on experience. Subsystems and components usually have limited failure modes (e.g.\@ unacceptable performance, temporarily inoperable, permanently inoperable, ``babbling idiot''-type faults) which can be enumerated for each and are listed in pre-made databases}, but do not go into detail on each component.
+	One proposed risk mitigation solution is the execution of a system-level \acs+{FMEA} at the beginning of a project, and its revision at the beginning of every iteration. System-level \acsp{FMEA} start from evaluating the top-level subsystems and critical components of the product tree\footnote{It is important to follow a top-down approach when executing a \acs{FMEA} analysis, by starting with an overview of the design, instead of trying to enumerate possible failures based on experience. Subsystems and components usually have limited failure modes (e.g.\@ unacceptable performance, temporarily inoperable, permanently inoperable, ``babbling idiot''-type faults) which can be enumerated for each and are listed in pre-made databases}, but do not go into detail on each component.
 	Within the context of \acs{SCS}, they can be performed in an informal fashion\footnote{An informal \acs{FMEA} can be converted to an informal \acs{FMECA} by integrating failure probability rates of subsystems based on lessons learned from past missions, or available CubeSat reliability surveys.}.
 	Teams can use these analyses to make a more informed decision on whether to accept or 
-	mitigate risks, as well as to implement an \acs{FDIR} plan.
+	mitigate risks, as well as to implement an \acs+{FDIR} plan.
 	\item Prototyping is heavily encouraged in \acs{SCS} projects, through the creation of low-fidelity parts that can be used as Development or Engineering, but not Flight Models. These parts can aid in the creation of partitions, to avoid testing subsystems in isolation (\Cref{sec:METHODOLOGY_partitions}), and can include structural elements (spacers, struts, frames), expensive components (e.g.\@ batteries, reaction wheels) or entire subsystems.
 	It is common to use additive manufacturing (e.g.\@ 3D printing) for relatively rapid prototyping of parts in-house, with some custom solutions also available for more specialised parts (e.g.\@ \acs{PCB} printers).
 	\item Apart from software, which is analysed in \Cref{sec:METHODOLOGY_softwaredevelopment}, satellite failures are often manifested in \textbf{energy storage} and \textbf{deployable mechanisms}.
 	Batteries, in particular, are sensitive to temperatures below \qty{0}{\degreeCelsius}, where they may refuse to provide adequate current, or might get damaged if charged \autocite{uludagDelfiPQInOrbitPerformance2025}. Hardware state control, heaters or other passive thermal management solutions are recommended to mitigate these issues. On the other hand, deployable antenna mechanisms represent a common source of errors, especially during ground testing, due to the sensitivity of common solutions (e.g.\@ melt lines) to the external environment (especially during cold deployment temperatures) \autocite{sanchoLessonsLearnedFYS2021}. For this reason, \citeauthor{sanchoLessonsLearnedFYS2021} recommend early definition, implementation and testing of mechanisms, especially in a \acs{TVAC}.
 	\item \marginnote{Nevertheless, I note that the existence of a separated ``clean'' environment can motivate developers to adopt a more ``cautious'' approach when working with flight equipment, compared to the latter being co-located with normal developmennt activities in the same physical space.} Access to cleanroom facilities is a significant burden, especially for academic spacecraft developers. If the launch provider's cleanliness requirements are relaxed, developers can consider a laminar flow bench, a ``glove box'', or a restricted-access room \cite{sanchoLessonsLearnedFYS2021}. These solutions can potentially reduce the burden of interaction between team members who are located in different rooms.
 	\item On low-performance systems, there is no need to have a central orchestrator and/or router for subsystem functions and spacecraft state. In practical terms, there is no need to have a separate board or microcontroller for an \acs{SCS} \acf{OBC}, with this functionality being transferable to e.g.\@ \acs{COMMS} or \acs{ADCS}. This choice also reduces the number of interfaces, and therefore satellite complexity.
-	\item With the goal of miniaturisation, developers are encouraged to make use of the most real estate possible, through the use of dense designs, multi-purpose \acsp{IC}, multi-layer \acsp{PCB}, and packages without exposed pins. The disadvantages of this approach mainly constitute the difficulty of testing and inspection, as well as potential \acs{EMC} issues\footnote{Note, however, that the low performance and power of these systems tends to counteract the small distances between components, in terms of \acs{EMC}.}.
+	\item With the goal of miniaturisation, developers are encouraged to make use of the most real estate possible, through the use of dense designs, multi-purpose \acsp{IC}, multi-layer \acsp{PCB}, and packages without exposed pins. The disadvantages of this approach mainly constitute the difficulty of testing and inspection, as well as potential \acs+{EMC} issues\footnote{Note, however, that the low performance and power of these systems tends to counteract the small distances between components, in terms of \acs{EMC}.}.
 	\item Easy-to-assemble board-to-board \textbf{connectors} should be preferred in favour of cables, as routing cables on a limited space increases volume, time spent and risk during assembly \autocite{uludagDelfiPQInOrbitPerformance2025}. Alternative ideas can include spring-loaded ``pogo'' pins, magnetic connectors, or traditional stackable board-to-board connections\footnote{With the appropriate attention given to correct alignment with adequate margins.}.
 	\item New, experimental technologies that have not been demonstrated in-space or commercialised can prove useful for \acs{SCS}, as the risks associated with low \acsp{TRL} can be more easily accepted. Specifically, mobile device technologies can strike a valuable balance between size and manufacturability. Examples include lens-less cameras \autocite{liLenslessCameraUnraveling2024}, high-density batteries \autocite{guptaDesigningAdvancedLithiumBased2020}, low-power radios \autocite{gouvalasSmallestInterSatelliteTerminal2024,liangCognitiveRadioNetworking2011}, energy harvesting \autocite{amirtharajahMicropowerProgrammableDSP2000}, low-power \acsp{FPGA} or \acfp{NPU} for edge processing \autocite{moreiraEdgeComputingSpace2025}, or low-volume \acp{ASIC}.
 	\item Hardware--software co-design is highly desirable, as it allows early verification of the interactions between the two, without requiring detailed formal specification. In the ideal case, all software will be written and tested on representative hardware from the onset. However, this is impractical due to the numerous \acl{COP}. Developers can consider the use of \acf{HIL} systems, \acf{RPA} or emulators to ensure software--hardware compatibility.
@@ -3324,7 +3324,7 @@ Examples can be conceived by components of tests or test platforms with \acs{COT
 \item Using a plain vacuum chamber instead of a \acf{TVAC} to emulate reduced pressure
 \item Using a household heater or freezer instead of a \acs{TVAC} to emulate extreme temperatures
 \item Using a \acs{COTS} laser setup to emulate radiation effects \autocite{zollnerGeneratingSELSEU2016}
-\item Using an incandescent or high-\acs{CRI} \acs{LED} light instead of a sun simulator
+\item Using an incandescent or high-\acs+{CRI} \acs{LED} light instead of a sun simulator
 \end{itemize}
 
 Based on the available literature, vibration tests seem the most difficult to replicate in a reduced fidelity. However, various approaches have been proposed to implement a low-cost shaker, especially in the fields of biology and chemistry \autocite{hollinghamOpenHW3OpensourceLowcost2024,diaz-roncerosDesignImplementationLowcost2023}.
@@ -3349,10 +3349,10 @@ However, it will still vary between teams, as it depends on variables set by the
 
 There is significant benefit to automating the functional testing processes. The use of \acf{RPA} is finding increased popularity for testing integrated systems in space engineering \autocite{malyshkinaMissionControlSoftware2025}. 
 
-Self-contained and automated test runs can be performed both during and at the end of a Sat-Scrum iteration. A fully automated test-suite, executing both unit and integration tests \autocite{myersArtSoftwareTesting2012}, can be part of the \acs{CI}/\acs{CD} process that can be executed automatically after every software modification, or by manual trigger when there are hardware modifications. When designed correctly, such a test suite should be completed in a limited amount of time, allowing multiple executions per day. Ideally, automated testing should verify the \textbf{combination of hardware and software} which is best done through a \textbf{\acf{HIL} setup} \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}.
+Self-contained and automated test runs can be performed both during and at the end of a Sat-Scrum iteration. A fully automated test-suite, executing both unit and integration tests \autocite{myersArtSoftwareTesting2012}, can be part of the \acs+{CI}/\acs+{CD} process that can be executed automatically after every software modification, or by manual trigger when there are hardware modifications. When designed correctly, such a test suite should be completed in a limited amount of time, allowing multiple executions per day. Ideally, automated testing should verify the \textbf{combination of hardware and software} which is best done through a \textbf{\acf{HIL} setup} \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}.
 
 
-However, one has to take care with the additional overhead added by implementing automated solutions, when a manual process can suffice. When a test case requires, for example, changing the hardware configuration or cable connections of the \acs{DUT}, the developers have to consider whether it is more beneficial to automate this process, keep working manually, or forego the test for some iterations.%\marginnote{These calculations can be easily made using unit-aware calculators. For example, if a process takes \(t_m\) time to execute manually, \( t_a \) to automate, then it makes sense to automate when a project lasts more than \( \frac{t_a}{t_m} \) iterations.}
+However, one has to take care with the additional overhead added by implementing automated solutions, when a manual process can suffice. When a test case requires, for example, changing the hardware configuration or cable connections of the \acs+{DUT}, the developers have to consider whether it is more beneficial to automate this process, keep working manually, or forego the test for some iterations.%\marginnote{These calculations can be easily made using unit-aware calculators. For example, if a process takes \(t_m\) time to execute manually, \( t_a \) to automate, then it makes sense to automate when a project lasts more than \( \frac{t_a}{t_m} \) iterations.}
 This decision can often be made with back-of-the-envelope calculations on unit-aware calculators; however, care has to be taken, when estimating the manual effort required for a process, to consider reruns that may not be part of the original testing plan.
 %\footnote{This can often leave to seemingly counter-intuitive results. If, for example, a process takes 30 minutes to execute manually, is executed twice per iteration, and would take 6 hours to automate, it would make sense to automate when a project lasts more than \( \frac{\SI{6}{hours}}{2\cdot \SI{30}{minute}} =  6\) iterations.}.
 
@@ -3366,10 +3366,10 @@ In theory, the main boon for space systems operations is \textbf{the ability to 
 
 Additional guidelines for operations planning include \autocite{lillAgileMissionOperations2018}:
 \begin{itemize}[itemsep=-2ex]
-	\item An idea about a potential operating scheme, mainly based on parameters and events, is given by the ECSS-E-ST-70-41C standard \autocite{ECSS-E-ST-70-41C}. The standard defines a modular architecture that allows almost full configuration of a spacecraft's housekeeping and \acs{FDIR} behaviour. This is further supported by publically available software libraries implementing parts of the standard.
+	\item An idea about a potential operating scheme, mainly based on parameters and events, is given by the ECSS-E-ST-70-41C standard \autocite{ECSS-E-ST-70-41C}. The standard defines a modular architecture that allows almost full configuration of a spacecraft's housekeeping and \acs+{FDIR} behaviour. This is further supported by publically available software libraries implementing parts of the standard.
 	
 	\item Security vulnerabilities have been identified in small satellites in the past \autocite{willboldSpaceOdysseyExperimental2023}.
-	These vulnerabilities may involve unauthorised access to a satellite's data\footnote{For radio-amateur satellites, most data is required to be unencrypted. In practice, \acs{SCS} developers have few reasons to encrypt transmitted data.} or unauthorised control through unsigned \acs{TC}. Developers should consider the risk of unauthorised telecommanding, and consider implementing cryptographic signatures (e.g.\@ \acs{HMAC}). In many cases, these implementations will be available off-the-shelf for specific communication protocols (e.g.\@ \acs{CCSDS}).
+	These vulnerabilities may involve unauthorised access to a satellite's data\footnote{For radio-amateur satellites, most data is required to be unencrypted. In practice, \acs{SCS} developers have few reasons to encrypt transmitted data.} or unauthorised control through unsigned \acs{TC}. Developers should consider the risk of unauthorised telecommanding, and consider implementing cryptographic signatures (e.g.\@ \acs+{HMAC}). In many cases, these implementations will be available off-the-shelf for specific communication protocols (e.g.\@ \acs+{CCSDS}).
 
 	\item The success of a satellite's mission relies on its successful identification via radar and its unique transmissions. To that end, it is helpful for developers to participate in a ground station network (e.g.\@ SatNOGS/TinyGS). This action is usually mutually beneficial, with satellite teams offering their ground station to others when it is unused, while benefitting from a larger geographical coverage.
 	
@@ -3826,7 +3826,7 @@ Many of \Cref{tab:m_software_requirements}'s requirements embody the communicati
 CubeSat developers have therefore traditionally relied on custom (in-house) or generic solutions for communication, especially for the physical layer.
 
 The selection of a protocol stack limits the compatible hardware and data budget of a spacecraft. In the case of \acs{SCS}, system characteristics further limit the available transmission power and effective antenna apertures, making these satellites resemble more \ac{IOT} devices than spacecraft.
-The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem \autocite{khalighiSurveyFreeSpace2014}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs{SNR}.
+The performance of an \acs{SCS} communication system is physically limited by the Shannon--Hartley theorem \autocite{khalighiSurveyFreeSpace2014}, and supported by concepts such as Spread Spectrum and Error-Correcting Codes, which help in trading off data rate for robustness to low receiver \acs+{SNR}.
 
 I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be further derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
 
@@ -4531,7 +4531,7 @@ Because of the small size of the ChipSat and the lack of pointing, \ac{RF} commu
 
 The selection of \ac{RF} transmission characteristics was guided primarily by the selected transceiver \ac{IC}, limiting us at \( + \qty{22}{dBm}\) of output power and the \qtyrange{435}{438}{\mega\hertz} radio-amateur band. Different antenna configurations were considered in conversation with our host provider. We settled on a short-wave dipole powered by an impedance matching circuit, with preliminary antenna analysis performed on HFSS software.
 
-The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \acs{FSK} modulation with a \qty{200}{bit/\second} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
+The low transmission power and directivity restricted the available data rate of the system. As such, we decided on an \acs+{FSK} modulation with a \qty{200}{bit/\second} baud rate. Due to the lack of relevant requirements and need for higher power consumption, ChipSat-1 supported only transmission and not reception of \acfp{TC}.
 
 \begin{table}
 	\newcommand{\specialcell}[1]{\color{MaterialPink800}\bfseries#1}
@@ -4701,7 +4701,7 @@ The low transmission power and directivity restricted the available data rate of
 	\label{fig:c_chipsat_timeline}
 \end{figure*}
 
-In the early planning stages of the ChipSat-1 project, it was decided to follow an iterative lifecycle process, with the first steps consisting of creating an early working prototype (or \acs{MVP}). For this reason, an initial Gantt chart was drafted and updated every month. While 4 iterations were planned in the beginning, the project required 5 iterations in the end.
+In the early planning stages of the ChipSat-1 project, it was decided to follow an iterative lifecycle process, with the first steps consisting of creating an early working prototype (or \acs+{MVP}). For this reason, an initial Gantt chart was drafted and updated every month. While 4 iterations were planned in the beginning, the project required 5 iterations in the end.
 
 For project management, the team followed a low-overhead, primarily ``ad-hoc'' approach. We used Microsoft's 365 suite for communication and document sharing, spreadsheets for task tracking, and GitLab for software and hardware versioning.
 
@@ -4913,7 +4913,7 @@ The results of the counter-factual evaluation in \Cref{tab:c_chipsat_counterfact
 	\item \textbf{Robust software framework}:
 	ChipSat-1 used a standard programming language (\emph{C++}) instead of a safety-oriented one, as well as standard software libraries\footnote{With the exception of \texttt{ok-serialiser}, see \Cref{app:ok_serializer}.}.
 
-	The selected microcontroller did not natively support a recommended language, such as \emph{Rust}. Personal experience shows that creating an appropriate \acs{HAL} for a Rust-based platform would last close to one working week. Based on the analysis of \Cref{sec:METHODOLOGY_software_reliability}, I consider that the use of Rusk would reduce software risk.
+	The selected microcontroller did not natively support a recommended language, such as \emph{Rust}. Personal experience shows that creating an appropriate \acs+{HAL} for a Rust-based platform would last close to one working week. Based on the analysis of \Cref{sec:METHODOLOGY_software_reliability}, I consider that the use of Rusk would reduce software risk.
 \end{enumerate}
 
 
@@ -4960,7 +4960,7 @@ The AI4Space mission was developed in the University of Luxembourg in the form o
 	\end{tabularx}
 \end{table*}
 
-AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aimed at educational institutions \autocite{skykraftSkyride2022}. More specifically, Skykraft provided slots accepting \qtyproduct{10 x 10}{\centi\meter} \acsp{PCB} (or ``Skykards''). These Skykards were electrically connected to their host with a \acs{PCI}-like edge connector, responsible for receiving energy and transferring data bidirectionally, through a proprietary serial interface. The requirements and interface details were communicated to users by the host company and updated at regular times.
+AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aimed at educational institutions \autocite{skykraftSkyride2022}. More specifically, Skykraft provided slots accepting \qtyproduct{10 x 10}{\centi\meter} \acsp{PCB} (or ``Skykards''). These Skykards were electrically connected to their host with a \acs+{PCI}-like edge connector, responsible for receiving energy and transferring data bidirectionally, through a proprietary serial interface. The requirements and interface details were communicated to users by the host company and updated at regular times.
 
 The selection of a mission for the AI4Space platform was largely limited by the constraints of the payload launch opportunity provided. AI4Space was therefore largely a \emph{constraint-based} mission, restricted primarily by available size, weight, energy, and data budget \autocite{thoemelLeanDemonstrationOnBoard2024}.
 
@@ -5115,7 +5115,7 @@ The first iterations consisted of experimentation at breadboard-level only, base
 
 The qualification model was assembled in-house. No design errors were detected that would require modifications in the design. However, the team struggled to timely find alternatives for out-of-stock \acsp{IC}, influenced by the global chip shortage at the time \autocite{mohammadGlobalSemiconductorChip2022}. The flight model was assembled by an external manufacturer.
 
-Functional testing took the form of Full Functional Tests, verifying nominal and off-nominal situations, and Mission Tests, verifying a day-in-life schedule. Following the ``test-as-you-fly'' approach, these tests used the in-orbit interfaces, instead of the Linux-compatible development interfaces. Full Functional Tests were automated through the use of the Robot Framework (\acs{RPA}) \autocite{robotframeworkfoundationRobotFramework}. In order to verify the data interface with the host spacecraft, the host company delivered hardware and software for a mock host interface which could be connected to AI4Space.
+Functional testing took the form of Full Functional Tests, verifying nominal and off-nominal situations, and Mission Tests, verifying a day-in-life schedule. Following the ``test-as-you-fly'' approach, these tests used the in-orbit interfaces, instead of the Linux-compatible development interfaces. Full Functional Tests were automated through the use of the Robot Framework (\acs+{RPA}) \autocite{robotframeworkfoundationRobotFramework}. In order to verify the data interface with the host spacecraft, the host company delivered hardware and software for a mock host interface which could be connected to AI4Space.
 
 No formal environmental testing was performed for AI4Space, as there were no testing requirements imposed by the host, as part of which AI4Space was expected to be tested regardless. However, the team used an in-house vacuum chamber to emulate the expected thermal conditions for the payload. No thermal control was used, as instead we relied on the natural temperature differences and sunlight to test the behaviour of AI4Space's thermal cameras.
 
@@ -5851,7 +5851,7 @@ In terms of communications, an off-the-shelf \acs{LORA} module was used, based o
 \newthought{The development} of ChiPySat also followed an iterative approach, albeit with only two iterations performed due to time constraints. Since the project was based on electronic/hardware elements, the changes between iterations mainly involved schematic changes as follows:
 \begin{itemize}[itemsep=-2ex]
 	\item Magnetorquers were added to the design, as they were not present in the first iteration.
-	\item Instead of 2 microcontrollers (one for \acs{CDH} and an ``application'' processor for image processing), the second iterator used a single dual-core microcontroller.
+	\item Instead of 2 microcontrollers (one for \acs+{CDH} and an ``application'' processor for image processing), the second iterator used a single dual-core microcontroller.
 	\item The \acs{USB} power distribution system was simplified by using two \acs{USB} connectors (for power and data).
 	\item An external non-volatile memory was added, after experimentation showed that internal system memory could be insufficient for image processing.
 \end{itemize}
@@ -5963,7 +5963,7 @@ For the analysis, I considered a development time of \qty{252}{hours}, divided e
 	In ChiPySat, the initial design phase lasted \qty{1.5}{months} and involved design evaluation of different system designs and software development approaches. Nevertheless, the project plan still involved iterating over multiple hardware and software revisions, before reaching a ``flight-ready'' design. On the contrary, a single-step approach would involve more time spent in up-front design over a second iteration. This is linked to the 40-day design time metric found on CubeSats (\Cref{tab:l_cubesat_time_drivers}), here shortened to 20 days to account for the time already spent designing. In this case, however, I consider that the non-conformances identified in the 1\textsuperscript{th} iteration \textbf{would not have been detectable a-priori through design review} of this duration\footnote{And, therefore, a 2\textsuperscript{nd} iteration is needed anyway.}. The reasoning for this argument is provided as follows:
 	\begin{itemize}[itemsep=-2ex]
 		\item The team had no access to expert knowledge about the implementation constraints of the selected payload platform (OpenMV), especially when combined with algorithms not used in standard edge image processing.
-		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \autocite{kaliberaRigorousBenchmarkingReasonable2013,woodsideFutureSoftwarePerformance2007}. Common approaches such as \acs{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
+		\item It is generally difficult to predict software performance without developing the software first, especially in interpreted languages \autocite{kaliberaRigorousBenchmarkingReasonable2013,woodsideFutureSoftwarePerformance2007}. Common approaches such as \acs+{WCET} analysis are optimised for \aclp{RTOS}, and not dynamic performance calculations.
 		\item The reuse of PyCubed-Mini and OpenMV in their entirety could guarantee the reduction of preliminary and boilerplate work, but not performance. While PyCubed-Mini was understood to be suitable for spacecraft control, with a very smooth learning curve, OpenMV was not suitable for the project in its default configuration.
 	\end{itemize}
 
@@ -6649,7 +6649,18 @@ This is generally easy to perform in dynamically-typed languages, such as Python
 
 However, as seen in \Cref{sec:METHODOLOGY_softwaredevelopment}, developers may not always desire to use interpreted programming languages, instead relying on a restricted subset of compiled, statically allocated languages, while avoiding dynamic and runtime-based features. In this case, \emph{autocoding} has historically been one of the approaches used, by generating the required functions from a single, language-agnostic specification. This is, for example, the approach followed by CubedOS, whose team has developed a tool written in \emph{Scala} that generates \emph{Ada} encoding/decoding subprograms from an \emph{External Data Representation (XDR)} \autocite{brandonCubedOSVerifiedCubeSat2017}. However, this approach adds additional steps and complexity to the software's build cycle, increasing the learning curve and difficulty of maintenance, and adding additional abstractions.
 
-Some compiled programming languages, such as \emph{D} or \emph{Rust}, support \emph{metaprogramming} in various degrees, and are allowed to treat code as data. This can be done through the use of compile-time execution, compile-time reflection, or macros. A combination of these features can allow emulating the autocoding functionality mentioned before, or implementing self-describing encoder/decoder data structures. This is, for example, the approach followed by Rust's \emph{serde} library, which can generate binary (de)serialisers through procedural macros \autocite{tolnaySerdeRust2025}. \todo{code with serde}
+Some compiled programming languages, such as \emph{D} or \emph{Rust}, support \emph{metaprogramming} in various degrees, and are allowed to treat code as data. This can be done through the use of compile-time execution, compile-time reflection, or macros. A combination of these features can allow emulating the autocoding functionality mentioned before, or implementing self-describing encoder/decoder data structures. This is, for example, the approach followed by Rust's \emph{serde} library, which can generate binary (de)serialisers through procedural macros \autocite{tolnaySerdeRust2025}, such as below:
+\begin{minted}{rust}
+#[derive(Serialize)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+// ...
+
+let serialized = serde_json::to_string(&point)?;
+\end{minted}
 
 C++ in particular allows metaprogramming through \emph{templated} classes and functions. On its own, this mechanism does not allow a single compile-time definition of a data structure and relevant parsers. However, multiple extensions to the C++ standard have been proposed to introduce compile-time reflection. As of the writing of this thesis, the most recent example was revised in \citedate{childersReflectionC++262025}, with a proposed inclusion in C++26.
 One of the notable compiler implementations of previous reflection specification was that of Matus Chochlik\footnote{Available at \url{https://github.com/matus-chochlik/llvm-project}.}, which implements a \citeyear{sankelExtensionsReflection2020} reflection proposal \autocite{sankelExtensionsReflection2020}.
@@ -6662,7 +6673,7 @@ The library uses internal data types that describe the binary representation (or
 A ``bundle'' is used to define a sequence of \texttt{okser} types. \acs{IO} types are used to interface with strings or streams.
 
 The simplest example of serialisation, without a need for reflection, can be performed as follows:
-\begin{lstlisting}[language=C++,]
+\begin{minted}{cpp}
 using namespace okser;
 
 std::string result;
@@ -6672,28 +6683,29 @@ auto output = out::stdstring{result};
 using MyBundle = bundle<sint<1>, floatp>;
 
 serialize<MyBundle>(output, 63, 3.14f);
-\end{lstlisting}
+\end{minted}
 Through the use of template metaprogramming, available in stock C++, most of the above expressions can be evaluated at compile-time.
 
 Reflection becomes useful when working with user-provided data structures:
-\begin{lstlisting}[language=C++,]
+\begin{minted}{cpp}
 struct Message {
     int8_t a = 104;
     uint16_t b = 26913;
 };
-\end{lstlisting}
+\end{minted}
 In the general case,\footnote{The example provided here can actually be simply analysed, e.g.\@ using structured bindings, as it is an aggregate type.} C++ cannot enumerate public class members at compile-time. In this case, it would be necessary to call an additional function to specify the existence and order of members \texttt{a} and \texttt{b}. However, using reflection, it is possible for the compiler to extract this information:
-\begin{lstlisting}[language=C++,]
+\begin{minted}{cpp}
 // Serialisation
 auto data = serialize_struct_to_string(Message{});
 // data = "hi!"
 
 // Deserialisation
 auto result = deserialize_struct(data);
-\end{lstlisting}
+\end{minted}
 
 The implementation of a reflective function is provided below as an example:
-\begin{lstlisting}[language=C++,basicstyle=\small]
+\begin{fullwidth}%
+\begin{minted}[fontsize=\small]{cpp}
 template<class T, Output Out, auto config = configuration()>
 constexpr void serialize_struct(Out &&output, const T &object) {
     auto mirrored_struct = mirror(T);
@@ -6706,7 +6718,8 @@ constexpr void serialize_struct(Out &&output, const T &object) {
         auto result = serialize<serializer>(std::forward<Out>(output), value);
     });
 }
-\end{lstlisting}
+\end{minted}
+\end{fullwidth}
 
 The \texttt{ok-serializer} library demonstrates how modern programming language features can help developer efficiency and reliability without a drop in software performance and resource utilisation. By using message-representing structs, it is possible to maintain a single point of reference for \acs{TMTC} of simple systems. With the use of automatic documentation generators, such as \emph{Doxygen}, it is also possible to create in-place documentation of the selected \acs{TMTC} format. However, the customisability of the library is still limited, as it is not possible, for example, to annotate types with additional information, such as validity checkers, ranges, or more complex conditions.
 

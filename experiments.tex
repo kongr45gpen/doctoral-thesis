@@ -61,13 +61,14 @@
 \DeclareAcronym{PCDU}{short = PCDU, long = {Power Conditioning \& Distribution Unit}}
 \DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
 \DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
-\DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}}
-\DeclareAcronym{OPS}{short = OPS, long = {Operations}}
+\DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}, extra = {ooooookk???}}
+\DeclareAcronym{OPS}{short = OPS, long = {Operations}, alt={OPERS}, extra={What are operations?}}
 
 
 
 \begin{document}
 
+\acuseall
 \acs{OBDH}
 \acl{OBSW}
 \Aclp{OOK}
@@ -120,85 +121,43 @@ I like eat apples every day.
 
 These satellites are also classified as pico-, femto- and atto-satellites.\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.} It do be like that sometimes
 These satellites are also classified as pico-, femto- and atto-satellites.\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.} I do be like that sometimes
-These satellites are also classified as pico-, femto- and atto-satellites\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.}. It do be like that sometimes
+These satellites are also classified as pico-, femto- and atto-satellites\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.}. It do be like that sometimes\mac{OBSW}
 These satellites are also classified as pico-, femto- and atto-satellites\footnote{See \Cref{sec:LITERATURE_classes} for exact terminology.}. I do be like that sometimes
 
-Here is a reference to that wide figure: Figure~\ref{fig:i_nasa_sye_decomposition_wide}. \Cref{fig:i_nasa_sye_decomposition_wide}.
+\begin{minted}{cpp}
+using namespace okser;
 
-\ref{fig:i_nasa_sye_decomposition_wide}
+std::string result;
+auto output = out::stdstring{result};
 
-In fact, my favourite verbosity is to discombobulate daily. \nameref{sec:omoerfh_mera} page \pageref{sec:omoerfh_mera}.
+// 1-byte signed int and 4-byte float
+using MyBundle = bundle<sint<1>, floatp>;
 
-\begin{figure}
-  \caption{A figure without content}
-  \label{fig:empty_figure}
-\end{figure}
-
-Here is a reference to that ddumpty figeure: Figure~\ref{fig:empty_figure}! Mafs!?
-Here is another reference to that figure: \Cref{fig:empty_figure}.
-is my the best algorithm.
-
-%\colorlet{nice}{MaterialGreen800}
-%\colorlet{bad}{MaterialRed800}
-
-\chapter{Citation Playground}
-
-\section{Autocite}
-
-Example of a single citation: \autocite{kuoDiffuserCamDiffuserBasedLensless2017}
-
-Example of a citation range: \autocite{boehmBalancingAgilityDiscipline2004,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,abrahamssonAgileSoftwareDevelopment2017}.
-
-Example of distinct citations: \autocite{boehmROISystemsEngineering2008,pedersenTheValidationSquareValidating2000,langerReliabilityCubeSatsStatistical2016}.
-
-Example of a complex mess: \autocite{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}
-
-\section{Cite}
-
-Example of a single citation: \cite{kuoDiffuserCamDiffuserBasedLensless2017}
-
-Example of a citation range: \cite{boehmBalancingAgilityDiscipline2004,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,abrahamssonAgileSoftwareDevelopment2017}.
-
-Example of distinct citations: \cite{boehmROISystemsEngineering2008,pedersenTheValidationSquareValidating2000,langerReliabilityCubeSatsStatistical2016}.
-
-Example of a complex mess: \cite{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}.
-
-\section{Dualcite}
-
-Example of a single citation: \dualcite{kuoDiffuserCamDiffuserBasedLensless2017}
-
-Example of a citation range: \dualcites{boehmBalancingAgilityDiscipline2004,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,abrahamssonAgileSoftwareDevelopment2017}.
-
-Example of distinct citations: \dualcites{boehmROISystemsEngineering2008,pedersenTheValidationSquareValidating2000,langerReliabilityCubeSatsStatistical2016}.
-
-%Example of a complex mess: \dualcites{kuoDiffuserCamDiffuserBasedLensless2017,kanavourasAgileDevelopmentSubCubeSat2024,pedersenTheValidationSquareValidating2000,dimarioSystemicsNASAFasterBetterCheaper2005,langerReliabilityCubeSatsStatistical2016,achachloueiDocumentAutomationArchitectures2021}.
-
+serialize<MyBundle>(output, 63, 3.14f);
+\end{minted}
 \newpage
 
-\section{Definitions}
-
-
-\begin{definition}[Technical Size]%
-	\textbf{Technical Size} (or \emph{Scale}), representing the overall size of the development effort.
-	Some measures can be the number of requirements, number of components, or number of functions.%
-\end{definition}
-
-\begin{definition}[Technical Complexity]%
-	\textbf{Technical Complexity}, representing the required degree of interaction between components, independent from size.\label{def:complexity}%
-\end{definition}
-
-\lipsum
-
-
-\begin{margindefinition}[Timebox]
-	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
-\end{margindefinition}
-
-\newpage
-
+I like \acs+{OBSW}
 
 %\geometrylscape
 
+The implementation of a reflective function is provided below as an example:
+\begin{fullwidth}%
+\begin{mintedfw}[fontsize=\small]{cpp}
+template<class T, Output Out, auto config = configuration()>
+constexpr void serialize_struct(Out &&output, const T &object) {
+    auto mirrored_struct = mirror(T);
+    for_each(get_data_members(mirrored_struct), [&](auto member) {
+        const auto &value = get_value(member, object);
+        using type = std::remove_cvref_t<decltype(value)>;
+
+        using serializer = decltype(config)::template default_serializers<type>::ser;
+
+        auto result = serialize<serializer>(std::forward<Out>(output), value);
+    });
+}
+\end{mintedfw}
+\end{fullwidth}
 
 \begin{fullwidth}
   %\todo{Ideally here we want a list of steps on how to create SCS. Maybe with questions like ESA FYS proposal}

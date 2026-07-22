@@ -205,18 +205,17 @@ defernumbers=true,
 \usepackage{float}
 
 % Code
-%\usepackage{minted}
-%\usepackage{xpatch,letltxmacro}
-%\LetLtxMacro{\cminted}{\minted}
-%\let\endcminted\endminted
-%\xpretocmd{\cminted}{\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}}{}{}
+\usepackage{minted}
+\usepackage{xpatch,letltxmacro}
+\LetLtxMacro{\cminted}{\minted}
+\let\endcminted\endminted
+\xpretocmd{\cminted}{\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}}{}{}
 %\definecolor{mintedbg}{rgb}{0.95,0.95,0.93}
-%\setminted{
-%	bgcolor=mintedbg,
-%	tabsize=2
-%}
-%\setminted[text]{baselinestretch=0.8}
-\usepackage{listings}
+\setminted{
+	% bgcolor=mintedbg,
+	tabsize=2
+}
+\setminted[text]{baselinestretch=0.8}
 
 % Git magic
 \write18{git log --pretty='\@percentchar Creset\@percentchar s' --no-merges -1 > \jobname.git1.tmp}
@@ -367,6 +366,20 @@ defernumbers=true,
 %\NewAcroTemplate{fdirthesisempty}{}
 %\NewAcroCommand\acusepage{m}{}
 \let\acusepage\acuse
+
+% Acronym on margin command
+\usepackage{suffix}
+\NewAcroTemplate{margin-format}{%
+  \emph{\acrowrite{short}:} \acrowrite{long}%
+  \acroifT{extra}{, \acrowrite{extra}}%
+}
+\NewAcroCommand\marginacrotext{m}{\UseAcroTemplate{margin-format}{#1}}
+\NewDocumentCommand{\mac}{ O{0pt} m }{%
+  \marginnote[#1]{\vspace{1ex}\marginacrotext*{#2}\vspace{1ex}}%
+}
+\WithSuffix\NewDocumentCommand\acs+{ O{0pt} m }{%
+  \acs{#2}\mac[#1]{#2}%
+}
 
 % Let us have more floats
 \extrafloats{100}
