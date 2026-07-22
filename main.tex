@@ -5107,11 +5107,6 @@ AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicr
 
 AI4Space followed an iterative lifecycle, similar to ChipSat-1. A Gantt chart was also drafted and kept up-to-date, with 4 planned different iterations. The iteration plan included a fully functional breadboard model, and two identical production models, for qualification and flight. The project management plan also included some semi-formal documentation artifacts, including semi-monthly progress updates, non-conformance tracking, requirements compliance tracking, \ac{CONOPS} and user manuals. The project team consisted of 9 members in total.
 
-\begin{marginfigure}
-	\includegraphics{graphics/ai4space_rabbits.png}
-	\caption{The AI4Space operator web interface, used for testing}
-\end{marginfigure}
-
 The first iterations consisted of experimentation at breadboard-level only, based on a mockup of the final AI4Space board (\Cref{fig:c_ai4space_breadboard}). While some effort was needed to create a similar representative setup, AI4Space's software could be developed nominally, as similar Raspberry Pi boards were used across models. The breadboard model did not result in any decisions to change the design, but was useful purely as a software development platform. Development took place through a \acs{HIL}-only approach, by executing software directly on the target platform. The use of a Raspberry Pi combined with Linux and Python also allowed a remote approach to development: As the target supported Wi-Fi, we could execute scripts without a direct, physical connection to the board.
 
 The qualification model was assembled in-house. No design errors were detected that would require modifications in the design. However, the team struggled to timely find alternatives for out-of-stock \acsp{IC}, influenced by the global chip shortage at the time \autocite{mohammadGlobalSemiconductorChip2022}. The flight model was assembled by an external manufacturer.
@@ -5127,7 +5122,27 @@ No formal environmental testing was performed for AI4Space, as there were no tes
 
 The digital interface for \acs{TMTC} was based on Python's \textbf{\texttt{construct}} library \autocite{bulskiConstruct2020}, essentially acting as a \textbf{model-based interface specification}. The Source of Truth for the specification was written in Python, combined with text-based comments. An automatic script then generated additional text-based documentation based on this specification.
 
-\todo{AI4Space Mission Operations section}
+\subsection{Operations}
+
+\begin{figure}[h]
+	\includegraphics{graphics/ai4space_rabbits.png}
+	\caption{The AI4Space operator web interface, used for testing}
+	\label{fig:c_ai4space_rabbits}
+\end{figure}
+
+Because AI4Space was a hosted payload, its \acl{CONOPS} was not compatible with the \acl{TC} queueing model supported by typical operations software. The main constraints were a lack of real-time access to the payload, and the limited number of \acsp{TC} that could be sent in a batch. For this reason, I developed a custom operations software that could support development, testing and flight.
+
+This web-based software was developed based on Python, using the Sanic backend framework. A screenshot can be seen in \Cref{fig:c_ai4space_rabbits}. This interface was used for development, ad-hoc tests, and demonstrations, but was not suitable to emulate the reception of nominal \acs{TC}. For this reason, I used traditional spreadsheets, which encoded the required \acs{TC} schedule, commands, arguments, and their binary representation. Another Python script then took the role of the \acl{GS}, reading and releasing these commands based on this spreadsheet. An example can be seen in \Cref{fig:c_ai4space_spreadsheet}.
+
+Both interfaces were built as testing aids during the normal development iterations; This provided the benefit that the same \acs{GS} tooling was used between testing and operations. To reduce the overhead of developing new tools for this project only, I relied heavily on third-party libraries, especially for parsing and presentation.
+
+\begin{figure*}[h]
+	\includegraphics{graphics/ai4space_spreadsheet.png}
+	\caption{AI4Space operations spreadsheet}
+	\label{fig:c_ai4space_spreadsheet}
+\end{figure*}
+
+The spreadsheet-based operational interface was also used to generate AI4Space's actual flight \acs{TC}, as well as to validate this \acs{TC} against the ground \ac{QM} before release.
 
 \subsection{Lessons Learned}
 
@@ -5190,6 +5205,8 @@ The protocol itself did not rely on a ready-to-use implementation (e.g.\@ of the
 For documentation, the team produced artifacts such as non-conformance reports (\Cref{sec:CASESTUDIES_ai4space_flow}). While these were not required, they helped in increasing the understanding of the project's current state and served as a log of engineering decisions and justifications. This was especially important as AI4Space participants were not always fully dedicated to the project, in terms of time allocation. Maintaining these artifacts based on spreadsheets in a semi-formal way allowed us to spend only a small percentage of time on documentation in each iteration.
 
 \item The use of Python as a programming language was a double edged sword, mainly because of low-level details regarding the operation of the language. On the one hand, Python provided significant flexibility in terms of reconfigurability and reprogramming. The purported simplicity of the language reduced the learning curve for software developers in the project, while an exception handling hierarchy guaranteed that errors were recoverable. On the other hand, Python's lack of native support for parallelism made it more difficult to schedule concurrent tasks. Although solutions such as \texttt{asyncio} attempt to mitigate this issue, asynchronous Python was not yet fully supported by all used external libraries at the time of development. At the same time, the combination of Python with the microservice-based RabbitMQ architecture introduced delays in message processing, reducing the maximum throughput of the system, and increasing latency. While these issues were acceptable for a payload-level system, more caution has to be taken when developing an independent spacecraft, where requirements for real-time operations are more commonplace.
+
+\item A large number of \textbf{auxiliary software tools} were built for AI4Space to support development, which proved to be beneficial in terms of removing manual effort from the testing and operation phases. When no commercial alternative exists that can satisfy all functional requirements, teams are therefore encouraged to invest in developing their own software support, being careful to minimise the time overhead. Third-party libraries should especially be considered, as software development is then usually a matter of ``gluing'' different components to match the needed business logic.
 
 \item During operations, it was crucial to maintain a second unit, identical to the flight one, in order to test \acs{TC} or software patches before upload. The identical \acl{QM} proved useful for this task. A copy of the final binary flight image was stored and maintained as a common snapshot between space and ground.
 
