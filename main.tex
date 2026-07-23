@@ -413,7 +413,7 @@ Requirements Engineering, where specific technical specifications are set for th
 	\includegraphics{external/nasa_sye_benefit.pdf}
 	\caption[It is harder to reverse design decisions, the more effort has been dedicated to a project]{It is harder to reverse design decisions, the more effort has been dedicated to a project. Taken from \cite{sheaNASASystemsEngineering2020}}
 \end{marginfigure}
-The value and benefits of Systems Engineering are asserted by the ``\acs{SYE} hypothesis'': that additional effort spent in Systems Engineering, especially early in the project, will increase the overall \emph{value} of it, especially in terms of cost, schedule and objectives \autocite{honourUnderstandingValueSystems2004}. A 1992 survey of 32 \acs{NASA} programs, for example, shows a correlation between time spent in the design phases of a project, and reduced final cost overruns \cite{honourUnderstandingValueSystems2004,stutzkeEstimatingSoftwareintensiveSystems2005}. 
+The value and benefits of Systems Engineering are asserted by the ``\acs{SYE} hypothesis'': that additional effort spent in Systems Engineering, especially early in the project, will increase the overall \emph{value} of it, especially in terms of cost, schedule and objectives \autocite{honourUnderstandingValueSystems2004}. A 1992 survey of 32 \acs{NASA} programmes, for example, shows a correlation between time spent in the design phases of a project, and reduced final cost overruns \cite{honourUnderstandingValueSystems2004,stutzkeEstimatingSoftwareintensiveSystems2005}.
 Various other surveys have shown similar correlations, demonstrating the value of Systems Engineering 
 \autocite{sheaNASASystemsEngineering2020,francoisSystemicsCyberneticsHistorical1999,hendersonValueBenefitsModelbased2021}.
 
@@ -1303,7 +1303,7 @@ Through these discussions, I noted the following information:
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}
-	\caption[Characteristics of different classes of sub-CubeSat programs]{Characteristics of different classes of sub-CubeSat programs. Criteria taken from \autocite{kalusCriteriaSoftwareProcess2013}.}
+	\caption[Characteristics of different classes of sub-CubeSat programmes]{Characteristics of different classes of sub-CubeSat programmes. Criteria taken from \autocite{kalusCriteriaSoftwareProcess2013}.}
 	\label{tab:mission-characteristics}
 		%\begin{tablenotes}\footnotesize
 %			\item[*] Currently, most sub-CubeSat spacecraft are built completely in-house, since there is no significant off-the-shelf subsystem or component availability.
@@ -3605,7 +3605,7 @@ In general, the focus of software developers should be to achieve a balance betw
 \newthought{One} important capability that should be planned from the beginning is \textbf{software reprogramming}, which allows developers to patch the on-board software even after launch. While it is recommended by most standards and guides, it is by far the most complex feature to implement, as it depends on the hardware capabilities of each processor, usually involves handling large data volumes, and requires knowledge of the fundamentals of the firmware architectures used.
 
 A \emph{dual-bank architecture} can support in-orbit programming with relative ease and low risk, by trading off an amount of non-volatile memory.
-In this architecture, program memory is split into two halves, one holding the working copy of the software, and another where the new version is progressively uploaded. This architecture provides a permanent space to upload and verify a new software version, and a safe way of performing a switch-over when the upload is complete. It is also supported natively by some microcontroller families.
+In this architecture, programme memory is split into two halves, one holding the working copy of the software, and another where the new version is progressively uploaded. This architecture provides a permanent space to upload and verify a new software version, and a safe way of performing a switch-over when the upload is complete. It is also supported natively by some microcontroller families.
 
 \begin{figure*}[h]
 	\includegraphics{graphics/software/block.pdf}
@@ -3657,7 +3657,7 @@ Unfortunately, \acs{SCS} projects do not have control over some of the parameter
 \end{itemize}
 \end{multicols}
 
-A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control program found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This observation has been modelled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
+A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}-line monitoring \& control programme found an almost-linear correlation between the time spent testing and the number of faults identified, reaching a plateau after 60 days of testing (\Cref{fig:m_software_testing_ds1}) \autocite{tohmaEstimationParametersHypergeometric1991}. This observation has been modelled, depending on constants such as the initial fault number and the fault removal efficiency \autocite{liTestingcoverageSoftwareReliability2017}.
 
 \begin{marginfigure}
 \begin{tikzpicture}
@@ -3727,7 +3727,7 @@ Additional testing methods that increase confidence in the design include:
 \begin{enumerate}
 	\item \textbf{Fuzz Testing} (or fuzzing) involves the generation of a vast dataset of random test cases as inputs, which are then fed to the software to evaluate any missed edge-cases \autocite{godefroidAutomatedWhiteboxFuzz2008}.
 	\item \textbf{Stress Testing} evaluates the performance of the software when it is put under a heavier load\footnote{``Load'' in this case can refer to data volume, data rate, concurrent connections, number of operations etc.} than expected \autocite{myersArtSoftwareTesting2012}.
-	\item \textbf{Model Checking}, which tries to prove that a program is correct by logically exploring its theoretical state space \autocite{beyerSoftwareVerificationTesting2017}.
+	\item \textbf{Model Checking}, which tries to prove that a programme is correct by logically exploring its theoretical state space \autocite{beyerSoftwareVerificationTesting2017}.
 \end{enumerate}
 
 While the benefits of testing are well understood, software quality assurance has historically met a lack of adequate time and resource allocation, combined with a potential lack of motivation for testing engineers \autocite{hardmanTestingNotBoring2025}. This situation becomes exacerbated in embedded systems development, since the verification of embedded software systems requires some form of hardware access as well.
@@ -3753,7 +3753,7 @@ have been used for CubeSats, along with the compiled options of C, C++, Ada and 
 While the aforementioned research notes a weak correlation between programming language and software reliability in typical \acs{SW} engineering contexts, typical \acs{SCS} projects differ from conventional projects in terms of team size, developer experience, and fault tolerance. This difference can potentially increase the effect of programming language selection on fault prevention.
 
 \citeauthor{ashmoreProgrammingLanguageEvaluation2022} have hypothesised that specific programming language features can support the detection or prevent the introduction of errors, providing the example of the \emph{Rust} language which avoids memory allocation errors by design. \citeauthor{rayLargescaleStudyProgramming2017} \autocite{rayLargescaleStudyProgramming2017} analysed 728 GitHub projects, identifying commits that fixed bugs, and concluded that ``there is a small but significant relationship between language class and defects''.
-\citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programs of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.
+\citeauthor{nanzComparativeStudyProgramming2015} \autocite{nanzComparativeStudyProgramming2015} measured runtime failures in programmes of the \emph{Rosetta Code} repository, finding that ``compiled strongly-typed languages are significantly less prone to runtime failures than interpreted or weakly-typed languages, since more errors are caught at compile time''.
 
 Both CubeSat and \acs{SCS} software development teams are usually faced with a choice of programming language when starting development. Based on the above findings, it would be interesting to evaluate if a specific programming language or selection criteria can have a measurable effect on the final software reliability. As many members of the CubeSat community follow an open-source philosophy, there is a multitude of space software projects available online, that can be serve \textbf{case studies to investigate the effect of language on software defect rate}.
 
@@ -3853,7 +3853,7 @@ More specifically, the execution and testing plan is elaborated into the followi
 	\caption{Screenshot of software-under-test result}
 \end{figure}
 
-The use of fuzz testing as a methodology cannot ensure that all possible software defects are identified. Fuzz testing relies on an automated process that can identify when a running program has reached an erroneous state: in this investigation, this is represented by a \textbf{crash} (e.g.\ segmentation fault) or an unhandled exception. This approach also does not fully cover the set of all inputs to the software and its state: priority was given to \acs{TC} fuzzing. Nevertheless, the fuzzer managed to identify some software defects that caused undefined behaviour or an unhandled exception when a specially-crafted \acs{TC} was sent to the spacecraft. \textbf{In most cases, these telecommands would cause a software restart or hang if executed in-orbit}.
+The use of fuzz testing as a methodology cannot ensure that all possible software defects are identified. Fuzz testing relies on an automated process that can identify when a running programme has reached an erroneous state: in this investigation, this is represented by a \textbf{crash} (e.g.\ segmentation fault) or an unhandled exception. This approach also does not fully cover the set of all inputs to the software and its state: priority was given to \acs{TC} fuzzing. Nevertheless, the fuzzer managed to identify some software defects that caused undefined behaviour or an unhandled exception when a specially-crafted \acs{TC} was sent to the spacecraft. \textbf{In most cases, these telecommands would cause a software restart or hang if executed in-orbit}.
 
 The results of the fuzzing tests are shown in \Cref{tab:m_software_fuzz_functional}.
 Since the number of faults and frameworks tested do not allow statistical analysis, I have listed and elaborated all detected errors in \Cref{app:sw_errors_detected}.
@@ -3935,8 +3935,8 @@ Since the number of faults and frameworks tested do not allow statistical analys
 
 The selected frameworks are characterised by a similar order-of-magnitude in terms of scale and complexity, with the most significant difference found in AcubeSAT's token count being \(2.4\times\) the one of AI4Space. The number of defects found is generally low, and prevents generating statistical insights\footnote{It is important to note, however, that the testing performed cannot guarantee that all possible defects have been identified.}. 
 \begin{itemize}
-	\item The selection of programming language alone \textbf{cannot guarantee program correctness}. Relatively simple issues were identified in projects in 3 out of 4 evaluated languages.
-	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to program termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a program where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks. However, in Python, the fuzzer identified no crashes, as the nested exception handling in Python seemed to intercept incorrect \acs{TC}.
+	\item The selection of programming language alone \textbf{cannot guarantee programme correctness}. Relatively simple issues were identified in projects in 3 out of 4 evaluated languages.
+	Programming languages such as Rust, Ada and Python offer a default process for error handling, where unhandled exceptions lead to programme termination. For example, Ada's \texttt{Unchecked\_Conversion} and Rust's \texttt{unwrap} calls can lead to a panic if the state of their input is not well established and reasoned about. Creating a programme where such ``unsafe'' calls are avoided or properly handled requires a basic understanding of a language's error handling philosophy, and, where applicable, appropriate static checks. However, in Python, the fuzzer identified no crashes, as the nested exception handling in Python seemed to intercept incorrect \acs{TC}.
 	\item In C/C++, unsafe calls (such as null dereferencing or out-of-bounds array access) commonly lead to \textbf{undefined behaviour}, which can propagate as a crash (segmentation/bus fault), incorrect data, incorrect functionality, or an infinite loop. On the contrary, the default data access functions of Rust, Ada and Python perform runtime checks and guarantee either a handled panic on invalid calls, or the propagation of the error to a user-defined mechanism. 
 	\item The Rust compiler enforces an \textbf{exhaustiveness check} on enumerations and function results by default. Although this can be bypassed, it serves as an additiona layer of safety against unhandled edge cases and logical paths.
 	\item The reliability benefit of a programming language selection has to be considered in relation to the \textbf{effort} associated with writing code in that language, and the various other environmental factors affected by this choice.
@@ -4102,7 +4102,7 @@ Since the mid-2020s, \acs{AI}-assisted software development has become prevalent
 
 Initially, the use of generative \acs{AI} seems attractive for \acs{SCS} software, as it can easily generate large amounts of base code with less effort from developers. However, the quality and safety of generated code for use in mission-critical systems is still under investigation in research. A \citeyear{liuEmpiricalStudyCode2024} empirical study on three software problems found that ``the current language understanding and generation capabilities of the LLMs are not sufficient to generate complete functional code from highly specialised domain requirements'' \autocite{liuEmpiricalStudyCode2024}. The researchers found that, by default, the generated code from the specification may be incomplete and non-compliant to safety standards\footnote{In this case, the MISRA C standard.}. However, they noted that augmented prompts following a defined procedure can improve code quality.\marginnote{In \cite{liuEmpiricalStudyCode2024}, \citeauthor{liuEmpiricalStudyCode2024} compared \acs{LLM} code generation with model-based code generation, concluding that the latter requires a large investment of developer time and requires a correct model a priori.}
 
-In \citeyear{tihanyiHowSecureAIgenerated2025}, \citeauthor{tihanyiHowSecureAIgenerated2025} compared state-of-the-art \acsp{LLM} and found that 62\% of the generated C programs included at least one security vulnerability, such as a buffer overflow or dereference failure \autocite{tihanyiHowSecureAIgenerated2025}.
+In \citeyear{tihanyiHowSecureAIgenerated2025}, \citeauthor{tihanyiHowSecureAIgenerated2025} compared state-of-the-art \acsp{LLM} and found that 62\% of the generated C programmes included at least one security vulnerability, such as a buffer overflow or dereference failure \autocite{tihanyiHowSecureAIgenerated2025}.
 
 On the other hand, a \citeyear{kirchnerGeneratingAutomotiveCode2025} comparison of locally-deployable \acsp{LLM} used an iterative generation (or ``code refinement'') process, where static and dynamic analysis is performed on the generated code, and the (potentially negative) results are fed back to the \acs{LLM}, until the acceptable code is produced \autocite{kirchnerGeneratingAutomotiveCode2025}. The researchers found that this method can produce code that performs the intended functionality and is compliant with the applicable specifications.
 
@@ -6807,7 +6807,7 @@ Message MessageParser::parse(const uint8_t* data, uint32_t length) {
 \end{minted}
 The fault here lies in \textbf{line 6} combined with \textbf{lines 26 and 28}. The length of the message (\mintinline{cpp}|packetDataLength|) is parsed directly from user input (line 6). The length is checked in line 20, but in this codebase, \mintinline{cpp}|ASSERT_INTERNAL| only produces an error message, and does not halt execution. In lines 26 and 28, the length is then passed to \mintinline{cpp}|parseECSSxxHeader()| functions, which perform array access on \mintinline{cpp}|data| without any checks.
 
-This leads to a \textbf{buffer over-read}, causing undefined behaviour, which was translated to a segmentation fault, and therefore program crash. This error is identified as \textbf{\href{https://cwe.mitre.org/data/definitions/125.html}{CWE-125}: Out-of-bounds Read} in the \acs{CWE} database \cite{021_Martin_revised}. Unprotected array reads are common in languages such as C/C++, and can lead to undefined behaviour if secure ranges are not guaranteed.
+This leads to a \textbf{buffer over-read}, causing undefined behaviour, which was translated to a segmentation fault, and therefore programme crash. This error is identified as \textbf{\href{https://cwe.mitre.org/data/definitions/125.html}{CWE-125}: Out-of-bounds Read} in the \acs{CWE} database \cite{021_Martin_revised}. Unprotected array reads are common in languages such as C/C++, and can lead to undefined behaviour if secure ranges are not guaranteed.
 
 \section*{Ada}
 
@@ -6851,6 +6851,53 @@ The fault here can be found in lines 14--19. The types defined in these lines (\
 
 The first error described corresponds to \textbf{\href{https://cwe.mitre.org/data/definitions/704.html}{CWE-704}: Incorrect Type Conversion or Cast} in the \acs{CWE} database. In Ada, it will lead to an exception, but not undefined behaviour. In this framework, exceptions were unhandled and would crash the executable. However, I note that this function, written as an interface with a networking stack, may not have been intended for flight.
 
+\section*{Rust}
+
+The following example is taken from the Prust implementation of the \acs{PUS} \acs{ECSS} services, and more specifically the function responsible for parsing the \texttt{TC[8,1] perform a function} command, which converts a binary input to the internal representation \autocite{ozleyenOpenSourceImplementation2020}.
+
+\begin{minted}[linenos,fontsize=\small]{Rust}
+impl SpacePacket<TcPacket<Service8_1>> {
+    const MES_SUBTYPE: u8 = 1;
+
+    pub fn from_bytes(buffer: &[u8]) -> Result<Self, Error> {
+        if buffer.len() < 7 {
+            return Err(Error::InvalidPacket);
+        }
+        let primary_header = PrimaryHeader::from_bytes(&buffer[..PrimaryHeader::PH_LEN])?;
+        // If the primary header is not defined properly, give an error accordingly.
+        // It has to be have sec_header_flag set, version no to 0, and for TC type_flag should be set.
+        if !primary_header.sec_header_flag
+            || primary_header.ver_no != 0
+            || !primary_header.type_flag
+        {
+            return Err(Error::InvalidPacket);
+        };
+        let sec_header = TcPacketHeader::from_bytes(
+            &buffer[PrimaryHeader::PH_LEN..PrimaryHeader::PH_LEN + TcPacketHeader::TC_HEADER_LEN],
+        )?;
+        if sec_header.service_type != SERVICE_TYPE
+            || sec_header.message_subtype != SpacePacket::MES_SUBTYPE
+        {
+            return Err(Error::InvalidPacket);
+        }
+        // slice for the range of func_len
+        let range_start = TcPacketHeader::TC_HEADER_LEN + PrimaryHeader::PH_LEN;
+        let func_range = range_start..range_start + FUNC_ID_LEN;
+        let func_id_slice = &buffer[func_range];
+        if !func_id_slice.is_ascii() {
+            return Err(Error::InvalidPacket);
+        }
+        // ...
+    }
+}
+\end{minted}
+
+The error can be found on \textbf{line 28}. This line reads a slice from a user-provided \mintinline{Rust}|buffer|. The slice is defined in lines 26--27, above, and describes the location of the payload inside the buffer, after the headers. \mintinline{Rust}|FUNC_ID_LEN| is fixed at 16 bytes.
+
+The access in line 28 is unchecked. If the user provides a packet smaller than the required size (e.g.\@ an empty payload), this access will fail, and Rust will panic. Panics will not cause undefined behaviour, but will lead to a crash or restart of the programme.
+
+This is also a \textbf{buffer over-read}, identified as \textbf{\href{https://cwe.mitre.org/data/definitions/125.html}{CWE-125}: Out-of-bounds Read} in the \acs{CWE} database \cite{021_Martin_revised}. Unprotected array reads are common in languages such as C/C++, and can lead to undefined behaviour if secure ranges are not guaranteed. In general, Rust guarantees safety when the \mintinline{Rust}|unsafe| keyword is not used, however, many built-in functions, such as indexing or \mintinline{Rust}|.unwrap()|, will cause panics on error.
+
 \end{fullwidth}
 
 
@@ -6892,9 +6939,9 @@ One common feature that needs to be implemented by almost all spacecraft is the 
 \end{itemize}
 \marginnote{More sub-features can be potentially identified, such as providing a debugging interface to explain messages, implementing similar features for the ground segment, or sharing this functionality amongst different subsystems.}
 
-In a naive implementation, each of these features would be completed and implemented separately. This approach would increase program size (and therefore complexity) and introduce failure points, in case of mismatches between implementations. Potential changes in message structure would have to be implemented across different parts of the codebase, further increasing development time and risk. However, in an ideal situation, a description of the functionality that describes \acs{TMTC} handling will exist in a single place.
+In a naive implementation, each of these features would be completed and implemented separately. This approach would increase programme size (and therefore complexity) and introduce failure points, in case of mismatches between implementations. Potential changes in message structure would have to be implemented across different parts of the codebase, further increasing development time and risk. However, in an ideal situation, a description of the functionality that describes \acs{TMTC} handling will exist in a single place.
 
-This is generally easy to perform in dynamically-typed languages, such as Python or Julia, which allow changing the behaviour of a program based on its own structure. This is referred to as \emph{runtime reflection} \autocite{smithProceduralReflectionProgramming1982}, but can be implemented using various methods that rely on dynamic memory allocation. Python's \emph{construct} library, for example, allows defining a structure, parser, formatter, and documentation for arbitrary binary messages in a single declaration \autocite{bulskiConstruct2020}.
+This is generally easy to perform in dynamically-typed languages, such as Python or Julia, which allow changing the behaviour of a programme based on its own structure. This is referred to as \emph{runtime reflection} \autocite{smithProceduralReflectionProgramming1982}, but can be implemented using various methods that rely on dynamic memory allocation. Python's \emph{construct} library, for example, allows defining a structure, parser, formatter, and documentation for arbitrary binary messages in a single declaration \autocite{bulskiConstruct2020}.
 
 % \begin{lstlisting}[language=Python, caption=Example telecommand definition from AI4Space using the \emph{construct} library]
 % large_packet_request = \
@@ -6909,7 +6956,7 @@ This is generally easy to perform in dynamically-typed languages, such as Python
 % )
 % \end{lstlisting}
 
-However, as seen in \Cref{sec:METHODOLOGY_softwaredevelopment}, developers may not always desire to use interpreted programming languages, instead relying on a restricted subset of compiled, statically allocated languages, while avoiding dynamic and runtime-based features. In this case, \emph{autocoding} has historically been one of the approaches used, by generating the required functions from a single, language-agnostic specification. This is, for example, the approach followed by CubedOS, whose team has developed a tool written in \emph{Scala} that generates \emph{Ada} encoding/decoding subprograms from an \emph{External Data Representation (XDR)} \autocite{brandonCubedOSVerifiedCubeSat2017}. However, this approach adds additional steps and complexity to the software's build cycle, increasing the learning curve and difficulty of maintenance, and adding additional abstractions.
+However, as seen in \Cref{sec:METHODOLOGY_softwaredevelopment}, developers may not always desire to use interpreted programming languages, instead relying on a restricted subset of compiled, statically allocated languages, while avoiding dynamic and runtime-based features. In this case, \emph{autocoding} has historically been one of the approaches used, by generating the required functions from a single, language-agnostic specification. This is, for example, the approach followed by CubedOS, whose team has developed a tool written in \emph{Scala} that generates \emph{Ada} encoding/decoding subprogrammes from an \emph{External Data Representation (XDR)} \autocite{brandonCubedOSVerifiedCubeSat2017}. However, this approach adds additional steps and complexity to the software's build cycle, increasing the learning curve and difficulty of maintenance, and adding additional abstractions.
 
 Some compiled programming languages, such as \emph{D} or \emph{Rust}, support \emph{metaprogramming} in various degrees, and are allowed to treat code as data. This can be done through the use of compile-time execution, compile-time reflection, or macros. A combination of these features can allow emulating the autocoding functionality mentioned before, or implementing self-describing encoder/decoder data structures. This is, for example, the approach followed by Rust's \emph{serde} library, which can generate binary (de)serialisers through procedural macros \autocite{tolnaySerdeRust2025}, such as below:
 \begin{minted}{rust}
