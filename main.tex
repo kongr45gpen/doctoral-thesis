@@ -174,7 +174,7 @@ under the License.
 \justify
 
 \begin{fullwidth}
-I would like to thank everyone.
+This thesis is the 
 \end{fullwidth}
 
 %%
@@ -392,6 +392,7 @@ The \acs{NASA} Systems Engineering Handbook partitions Systems Engineering into 
 	\includegraphics{media/graphics/NASASYE}
 	\caption[Decomposition of Systems Engineering in connection with Project Management]{Decomposition of Systems Engineering in connection with Project Management \autocite{sheaNASASystemsEngineering2020}}
 	\label{fig:i_nasa_sye_decomposition}
+	\setfloatalignment{b} %vadOK
 \end{figure}
 
 The space engineering community has used several prominent frameworks for the realisation of complex projects, which may cover, for example, \emph{needs definitions}, \emph{lifecycle approaches}, \emph{engineering/data management} or \emph{system architecture definition} \autocite{sebok}. Some of the most popular examples are:
@@ -520,7 +521,7 @@ The specific characteristics of \acs{SCS} that differentiate them from CubeSats 
 	\caption[Mapping between novel SCS characteristics and capabilities for a SYE methodology]{Mapping between novel \acs{SCS} characteristics (compared to CubeSats) and capabilities for a \acs{SYE} methodology}
 	\label{fig:i_important_mapping}
 \end{figure*}
-The above characteristics explain differences between CubeSats and \acs{SCS} which inform some of the key decisions taken during \acl{SYE} activities. Taking this argument one step further,\footnote{Roughly following \citeauthor{heinHeritageTechnologiesSpace2016}'s characteristics --- capabilities method \autocite{heinHeritageTechnologiesSpace2016}} they can directly motivate different shifts in established CubeSat development methodologies and approaches as follows:
+The above characteristics explain differences between CubeSats and \acs{SCS} which inform some of the key decisions taken during \acl{SYE} activities. Taking this argument one step further,\footnote{Roughly following \citeauthor{heinHeritageTechnologiesSpace2016}'s characteristics --- capabilities method \autocite{heinHeritageTechnologiesSpace2016}.} they can directly motivate different shifts in established CubeSat development methodologies and approaches as follows:
 \begin{itemize}
 	\item Once a design has been elaborated, the development, manufacturing, assembly and integration of either a subsystem, or the complete spacecraft, can be performed in a much shorter time. In the extreme case of ChipSats, this production chain involves the procurement of a \acs{PCB} and component assembly, which can last 2 weeks or less. Likewise, the material cost for an entire satellite model can drop down to a few hundred euros (\Cref{chap:CASESTUDIES}). This observation encourages mass iteration cycles on a subsystem or even system level.
 	
@@ -1082,7 +1083,7 @@ In his work, \citeauthor{sousaCubeSatDevelopmentFramework2021} compared the life
 	\label{fig:l_cubesat_lifecycles_sousa}
 \end{figure*}
 
-These examples from the CubeSat sector seem to cover many lifecycle models defined in the \acl{SYE} literature\footnote{Also see \Cref{sec:LITERATURE_life_cycle_models}.}, and based on the general approach followed, can be categorised into:
+These examples from the CubeSat sector seem to cover many lifecycle models defined in the \acl{SYE} literature\footnote[][0.5cm]{Also see \Cref{sec:LITERATURE_life_cycle_models}.}, and based on the general approach followed, can be categorised into: %vadOK
 \begin{enumerate}[itemsep=-1ex]
 	\item \textbf{Single-step }\textbf{sequential} approaches \cite{nieto-peroyCubeSatMissionDesign2019,MAIVP,rodigerOSIRIS4CubeSatSystemEngineering2020}, where a typical progression of phases is followed (e.g.\@ from design to assembly to verification). Many missions follow a phased approach based on \acs{NASA} \autocite{sheaNASASystemsEngineering2020} or \acs{ESA} \autocite{ECSS-M-ST-10C} project phases, sometimes combining phases 0, A and B for simplicity.
 	\marginnote{%
@@ -1157,9 +1158,11 @@ As of 2026, 93 PocketQubes have been launched \autocite{kuluNanosatsDatabase2023
 \begin{figure}
 	\includegraphics{external/picobus.jpg}
 	\setfloatalignment{b} %vadOK
-	\caption[The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation]{The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation. Image taken from \autocite{librespacefoundationPICOBUS}.}
+	\caption[The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation][-1.5cm]{The open-source PICOBUS PocketQube deployer, developed by the Libre Space Foundation. Image taken from \autocite{librespacefoundationPICOBUS}.}
 \end{figure}
 
+%vadOK
+\NextCitationOffset{-1.5cm}%
 In \citeyear{bouwmeesterUtilityConstraintsPocketQubes2020}, \citeauthor{bouwmeesterUtilityConstraintsPocketQubes2020} analysed the general constraints and applications of PocketQubes \autocite{bouwmeesterUtilityConstraintsPocketQubes2020}. They identified space debris regulations and considerations, technology limitations, and financial constraints as the main limitations encountered by PocketQube developers. They also proposed applications in the fields of education, \acs{IOD}, earth/space weather observation, communications, and space exploration.
 
 \begin{marginfigure}
@@ -1331,6 +1334,8 @@ The proposed PalmSat design included solar cells generating \SI{2}{\watt} of pow
 
 \citeauthor{barnhartVerySmallSatelliteDesignDistributed2007} further evolved the ``Satellite-on-a-Chip'' design by proposing a \qtyproduct{18 x 20}{\milli\meter} single-die \ac{ASIC} which would contain all spacecraft subsystems, an external antenna, and no other structural elements (\Cref{fig:l_proposed_spacechip}) \autocite{barnhartVerySmallSatelliteDesignDistributed2007}. The authors also designed and manufactured a \qtyproduct{9 x 9.5}{\centi\meter} and \SI{70}{\gram} ``PCBSat'' hosted on a \acl{PCB}, intended to be producible solely with low-cost \acs{COTS} components.
 
+%vadOK
+\NextCitationOffset{-2cm}%
 A number of developments followed the introduction of the \emph{N-Prize}, a competition launched in 2008 by Cambridge biologist Paul H.~Dear. The N-Prize was a £9,999.99 prize fund that would be offered to teams that could sent a femto-satellite to space, or more specifically:
 \begin{quote}
 The prizes will be awarded to the first persons or groups to put into orbit around the Earth a satellite with a mass of between 9.99 and 19.99 grams, and to prove that it has completed at least 9 orbits. [...]
@@ -1339,7 +1344,7 @@ The cost of the launch, but not ground facilities, must fall within a budget of 
 \autocite{OfficialSiteNPrize2022}
 \end{quote}
 
-\begin{marginfigure}
+\begin{marginfigure}[-1cm]
 	\includegraphics{external/WikiSat-v1-preliminary-design.png}
 	\caption[WikiSat preliminary design]{WikiSat preliminary design. Image taken from \cite{tristanchoProbeConceptFemtosatellites2011}}
 \end{marginfigure}
@@ -1359,7 +1364,7 @@ Manchester designed ``KickSat'', a crowd-funded mission to design and launch mul
 The Sprites were atto-satellites based on a single-\acs{PCB} design, measuring \qtyproduct{3.5 x 3.5}{\centi\meter} and weighing \qtyproduct{5}{\gram}. They included solar cells, a transmitter, and a V-dipole antenna. KickSat had a capacity of 104 Sprites.
 A Sprite's development cost, as shown on the crowdfunding campaign, was close to \SI{300}{USD},\footnote{The crowdfunding campaign mentioned that launch costs were not covered by the raised funds.} allowing supporters to purchase ``their own Sprite in space with [their] initials in its radio transmissions'' \autocite{manchesterKickSatYourPersonal2016}. 
 
-The Kickstarter crowdfunding campaign was successful, raising \SI{74586}{USD}.
+The Kickstarter crowdfunding campaign was successful, raising \qty[allow-number-unit-breaks]{74586}{USD}.
 The first ChipSats were exposed on the ISS in May 2011 \autocite[Sec.~2.5]{manchesterCentimeterScaleSpacecraftDesign2015}. Although the location at which they were mounted prevented their signals from reaching Earth, testing after their return showed that the Sprites remained in working condition.
 The actual launch of the KickSat-1 spacecraft took place in April 2014, although, due to anomalies in the CubeSat, the Sprite deployment failed.
 The Sprite design was tested once again in space, as a secondary payload of the Venta-1 mission in 2017, with a successful demonstration \autocite{adamsTheoryApplicationsGramScale2020}.
@@ -1678,7 +1683,7 @@ Responding to change over following a plan%
 	\caption[The Agile Manifesto]{The Agile Manifesto \autocite{beckAgileManifesto2001}}
 \end{marginfigure}
 
-The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \cite{beckAgileManifesto2001}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different Agile methodologies have been proposed and used, such as: \autocite{boehmBalancingAgilityDiscipline2004}
+The Agile Manifesto, originating from the field of Software Engineering, proposed a set of \emph{4 values and 12 principles} for evolutionary systems engineering and product management. The principles, aimed at high adaptability to changing requirements and rapid application of lessons learned during development \autocite{sebok_drivers}, are shown in \cite{beckAgileManifesto2001}. The Agile Manifesto however does not propose a lifecycle process model or a design methodology on its own; different Agile methodologies have been proposed and used, such as: \NextCitationOffset{-0.5cm}\autocite{boehmBalancingAgilityDiscipline2004} %vadOK
 \begin{fullwidth}
 \begin{multicols}{2}
 \begin{itemize}[itemsep=-2ex]
@@ -2072,10 +2077,14 @@ An inspiration for such an approach can come from the \acs{DSDM} Agile framework
 While \emph{Must Have} requirements are a necessity for the flown project, they are not required to demonstrate a complete \emph{functional} model of the product. One can therefore present a further classification of ``must-have'' requirements, as ones that stem from the functionality of the project and have to be present for every \ac{MVP}, and the ones that stem from environmental constraints and need not be implemented for strictly functional models.
 
 %vadOK
-\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during the sprint planning phase of each iteration (\Cref{sec:METHODOLOGY_satscrum}).\sidenote[][-2cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. \acs{NASA}'s Systems Engineering handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. However, it would be safe to say that the addition of these processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, the \acs{SCS} methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.  }
+\acs{MOSCOW} requirements are editable during the development lifecycle of a system. This can take place, for example, during the sprint planning phase of each iteration (\Cref{sec:METHODOLOGY_satscrum}).\sidenote[][-2cm]{Changes to requirements are not forbidden in ``traditional'' space systems engineering. Different processes to manage requirements changes have been defined \autocite{jayatillekeSystematicReviewRequirements2018}.
+%\acs{NASA}'s \acs{SYE} handbook expects requirements to change, and defines a Requirements Management Process to approve and perform requirements changes \cite{sheaNASASystemsEngineering2020}. Similarly, \acs{ECSS} defines a Request for Deviation and Non-Conformance control system. 
+However, it would be safe to say that formal change management processes add an additional overhead when the requirements need to be inevitably updated, which is often disproportionate to the corresponding overhead for the initial requirement definition, and discourage requirements modifications. Instead, this methodology defines a unified approach for requirements elucidation and sets the expectation that requirements will change at any iteration of the project.}
+
 
 \paragraph{Requirement Scope}
 
+\NextCitationOffset{1.2cm}%vadOK
 \citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} observed a mismatch between the ``large batches'' that are often being iterated on by hardware models, compared to the smaller batches of work that take place before automated software verification, creating a disconnect between the delivery of hardware and software. To resolve this, they introduced the concept of a \textbf{``slice''}, which is defined as follows:
 \begin{definition}[Slice]
 	A \textbf{slice} is a set of hardware and software changes, as well as test suites, that describe a single set of testable behaviour \cite{radekaWhenAgileGets2022}.
@@ -2402,7 +2411,7 @@ In the context of Agile, developer co-location and rapid response to changes is 
 
 Within the context of \acs{SCS}, the typically limited resources available generally prevent the collaboration with manufacturers who can support direct communication and instant delivery. Instead, based on the performed case studies, the procurement of assembled boards and manufactured components has generally involved a 1-month long lead time, which cannot be easily supported by short Sat-Scrum iterations. This duration is also influenced by internal organisational limits, such as long procurement processes.
 
-Therefore, the recommendation for Sat-Scrum is to perform \text{manufacturing in-house}, to the degree that is possible, by acquiring the necessary equipment and expertise to complete these hardware-based activities.
+Therefore, the recommendation for Sat-Scrum is to perform \textbf{manufacturing in-house}, to the degree that is possible, by acquiring the necessary equipment and expertise to complete these hardware-based activities.
 The most common in-house activity in \acs{SCS} will typically be \textbf{assembly of unpopulated \aclp{PCB}} through component soldering. Teams are therefore encouraged to invest in equipment such as reflow ovens to be able to test and validate \acsp{PCB} shortly after design.\footnote{In university or large industry contexts, inspection, manufacturing and testing facilities (e.g. ``fab labs'') are sometimes available in close proximity of the designers, and can be used.} These assets can further be used when rework or corrections are required, saving on the administrative overhead of returns.
 
 Alternatively, when the \acl{FM} requires adherence to certain workmanship standards, a hybrid approach can be used: early iterations can involve use in-house manufacturing, while flight-ready models can involve external suppliers.
@@ -2561,13 +2570,13 @@ a partition-based approach are the recommendation to always iterate on \textbf{a
 \phantomsection%
 \label{sec:METHODOLOGY_partitionbased_novelty}
 Partition-based Sat-Scrum can also be compared to previous Agile literature.
-The most common strategies used involve creating a \emph{Minimum Viable Product} or a \emph{Walking Skeleton}, where a minimally functional version of a product is built and then iterated upon, performing incremental re-architecture \autocite{cockburnCrystalClearHumanpowered2004}. This concept was extended to \emph{small vertical slices}, where a focus is given to present complete functionality in every sprint, instead of generic product improvement \autocite{ratnerVerticalSlicingSmaller2011}. \citeauthor{iberleAgileGetsPhysical2022} also explore the concept of named slices to describe different functionality that cover only parts of a system's architecture. Recent studies of Agile systems engineering practice describe the use of a scaled Scrum method, usually augmented with prototype development or traditional Stage-Gates \autocite{atzbergerAgileDevelopmentPhysical2020,cooperAgileDevelopmentManufacturing2023}. In contrast to the \acl{SOTA}, partition-based Sat-Scrum introduces the following novel concepts:
+The most common strategies used involve creating a \emph{Minimum Viable Product} or a \emph{Walking Skeleton}, where a minimally functional version of a product is built and then iterated upon, performing incremental re-architecture \autocite{cockburnCrystalClearHumanpowered2004}. This concept was extended to \emph{small vertical slices}, where a focus is given to present complete functionality in every sprint, instead of generic product improvement \autocite{ratnerVerticalSlicingSmaller2011}. \citeauthor{iberleAgileGetsPhysical2022} also explore the concept of named slices to describe different functionality that cover only parts of a system's architecture. Recent studies of Agile systems engineering practice describe the use of a scaled Scrum method, usually augmented with prototype development or traditional Stage-Gates \NextCitationOffset{-0.8cm}\autocite{atzbergerAgileDevelopmentPhysical2020,cooperAgileDevelopmentManufacturing2023}. In contrast to the \acl{SOTA}, partition-based Sat-Scrum introduces the following novel concepts:
 \begin{itemize}[itemsep=-2pt]
 	\item Partitions are not progressive, and different levels of fidelity can be used across iterations. Partition-based Sat-Scrum also supports reducing fidelity compared to a previous iteration, when development needs to focus on a particular area.
-	\item Traditional prototypes may involve creating a separate design\footnote{E.g.\@ a mockup, prototype, ground testing interface or digital twin.} for early iterations. Partition-based Sat-Scrum, on the other hand, views partitions as sets of modular ``bricks''\footnote{that is, modules}: In every iteration, the system should ideally be built with a form as close as possible to the intended result, and partitioning is done by removing unneeded parts as ``building blocks''.\footnote{In practical terms, the ideal partition-based lifecycle would involve establishing a system structure and then choosing which subsystems (\emph{modules}) need to be iterated on and assembled on every iteration. For example, an iteration of a PocketQube might involve fine-tuning the \acl{EPS}, in which case the \acs{ADCS} subsystem does not need to be produced. Compared to e.g.\@ a FlatSat, this approach reduces the overhead associated with maintaining a different test model and allows developers to reason about the form, fit and function of the entire system, without the necessity of physically implementing it entirely.}
+	\item Traditional prototypes may involve creating a separate design\footnote[][-2.8cm]{E.g.\@ a mockup, prototype, ground testing interface or digital twin.} for early iterations. Partition-based Sat-Scrum, on the other hand, views partitions as sets of modular ``bricks''\footnote[][-2.8cm]{that is, modules}: In every iteration, the system should ideally be built with a form as close as possible to the intended result, and partitioning is done by removing unneeded parts as ``building blocks''.\footnote[][-3.8cm]{In practical terms, the ideal partition-based lifecycle would involve establishing a system structure and then choosing which subsystems (\emph{modules}) need to be iterated on and assembled on every iteration. For example, an iteration of a PocketQube might involve fine-tuning the \acl{EPS}, in which case the \acs{ADCS} subsystem does not need to be produced. Compared to e.g.\@ a FlatSat, this approach reduces the overhead associated with maintaining a different test model and allows developers to reason about the form, fit and function of the entire system, without the necessity of physically implementing it entirely.}
 	
 	This approach aims to generate knowledge about the physical attributes of the system early in the design, while reducing the development effort to develop different structures, at the cost of feature representability at every iteration. It is inherently hardware-specific, as it targets the higher costs and effort associated with iterating on larger hardware systems \autocite{schmidtAgileDevelopmentConstraints2017}.
-\end{itemize}
+\end{itemize} %vadERR
 
 The main disadvantage of partition-based Sat-Scrum, compared to iterating strictly system-wide, is that it defers iterating on some parts of the system (and therefore also interfaces) to  later time points, therefore either reducing the total knowledge gained within a fixed duration, or increasing the total development time of a project.
 In extreme cases, developers may be enticed to delay working on parts of the system until the later stages of a project, thus risking that neither enough design nor iteration effort has been dedicated to them. For this reason, it is important to define and maintain a robust work management and planning approach.
@@ -2681,9 +2690,10 @@ In the context of \ac{SCS}, ``Engineering Data'' can specifically mean:
 
 It is also important to make a distinction between \ac{EDM} and the term ``documentation'', as ``documentation'' can be considered to additionally include explanations and instructions for a system in different formats.
 
-As Engineering Data is most likely stored and handled in a digital format\footnote{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data, making their digital representation essentially a requirement. Also see \Cpageref{txt:colocation}.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools.
+As Engineering Data is most likely stored and handled in a digital format\footnote[][-1cm]{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data, making their digital representation essentially a requirement. Also see \Cpageref{txt:colocation}.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools. %vadERR
 
 In general, the success of an \ac{EDM} method does not only depend on the short and long-term correctness of the available data, but should also be focused on minimising the additional \ac{SYE} overhead.
+\NextCitationOffset{-0.6cm}
 A quantitative model for the evaluation of documentation effectiveness was proposed by \citeauthor{amblerStrategiesAgileSoftware2008} \autocite{amblerStrategiesAgileSoftware2008} as follows:
 \[
 	\text{Potential value} = \text{Produced value} \cdot C \cdot R \cdot U \cdot F \cdot T
@@ -2718,7 +2728,7 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 \end{table}
 
 
-\marginnote{where:
+\marginnote[-1cm]{where:
 \begin{itemize}[itemsep=-0.5ex]
 	\item Produced value is guesstimated by the producers of the artifact.
 	\item \(C\) is the percentage of the artifact that is currently “correct”.
@@ -2903,7 +2913,7 @@ Within the context of the \acs{SCS} methodology, the design solution definition 
 
 \begin{margindefinition}[Timebox]
 	Timeboxing refers to the practice of strictly limiting the duration of an activity (e.g.~a meeting, an iteration, or a process) to a predefined length of time. It is especially useful when diminishing returns are expected as the activity becomes longer.
-\end{margindefinition}
+\end{margindefinition} %vadOK
 Depending on the project, the \acs{CDE} sessions can follow a formal, tool-based structure, or an informal approach, where information is stored in documents or directly inserted into domain-specific models, where available. An important aspect is to keep these sessions timeboxed, as the primary strategy of generating information in Agile methodologies is through experimentation, and not up-front design. The resolution of the \acs{CDE} result can be better than a high-level subsystem specification, but needs not answer low-level questions that can be handled by engineers as part of their daily work.
 
 \paragraph[On Big Design Up-Front]{On \acf{BDUF}}
@@ -2971,7 +2981,8 @@ For this model, I am making the following assumptions:
 
 Given the above, the problem of measuring the expected cost of the Markov process is reduced to calculating \emph{the expected number of visits to the \textbf{\emph{``Rework''}}} state.
 
-\marginnote{The canonical representation of a transition matrix of an absorbing Markov chain is given by \cite{grinsteadChapter11Markov1998} as:
+%vadOK
+\marginnote[-3cm]{The canonical representation of a transition matrix of an absorbing Markov chain is given by \cite{grinsteadChapter11Markov1998} as:
 \[
 \mathbf P = \left[
 	\begin{matrix}
@@ -3420,7 +3431,7 @@ In traditional space systems engineering, \acs{ECSS} defines verification as the
 While verification ensures that the built system satisfies all agreed-on specifications and expectations, \textbf{validation} ensures that the correct system was built \autocite{ECSS-S-ST-00-01C}.
 
 \begin{margindefinition}[Performance]
-	\textbf{Performance} is the set of quantifiable characteristics of a system \emph{(adapted from \cite{ECSS-S-ST-00-01C})}.
+	The set of quantifiable characteristics of a system \emph{(adapted from \cite{ECSS-S-ST-00-01C})}.
 \end{margindefinition}
 
 \acs{ECSS} defines four verification methods that are typically used in space missions: \emph{review-of-design, analysis, inspection and testing}, which provide different levels of fidelity and reliability \autocite{ECSS-E-ST-10-02C}. It also distinguishes between \emph{acceptance} and \emph{qualification} levels for design parameters, the former of which are used to verify workmanship and functionality, and the latter used to demonstrate design margins, usually at a level that may be destructive for the \ac{DUT} \autocite{ECSS-E-ST-10-03C}.
@@ -3866,7 +3877,7 @@ Since the number of faults and frameworks tested do not allow statistical analys
 		Token Count & \num{51024} & \num{48182} & \num{21022} & \num{26362}     \\
 		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
 		Average \acs{CCN} & \num{2.3} & \num{3.1} & \num{3.0} & \num{1.87} \\ \bottomrule
-	\end{tabular}\vspace{4ex}%vadERR
+	\end{tabular}\vspace{4ex}%vadOK
 	\caption{Static Analysis results}
 	\label{tab:m_software_fuzz_static}
 \end{table*}
@@ -4115,9 +4126,10 @@ In any case, teams should consider adherence to coding standards and best practi
 \geometrylscape
 \begin{landscape}
 	\includegraphics{graphics/TheMethodologyTM.pdf}
-	\captionof{figure}[Overview of the proposed SCS Systems Engineering methodology]{Overview of the proposed \acl{SCS} Systems Engineering methodology. The central circles represent the partitioning of the Systems Engineering activity, while the outer rectangle represent the methods, guidelines and tools that constitute the SCS methodology.}
+	\captionof{figure}[Overview of the proposed SCS Systems Engineering methodology]{Overview of the proposed \acl{SCS} Systems Engineering methodology. The central circles represent the partitioning of the Systems Engineering activity, while the outer\\rectangles represent the methods, guidelines and tools that constitute the SCS methodology.}
 \end{landscape}
 \restoregeometry
+%vadOK
 
 \section{Methodology Tailoring}
 \label{sec:METHODOLOGY_tailoring}
@@ -4153,8 +4165,6 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 
 
 \begin{table*}[h]
-	\caption{Indicative systems engineering tools to support Agile sub-CubeSat development}
-	\label{tab:methodology_indicative_tools}
 	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 	\begin{adjustbox}{center}
 	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.5cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
@@ -4186,7 +4196,10 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 		\bottomrule
 	\end{tabularx}
 	\end{adjustbox}
+	\caption{Indicative systems engineering tools to support Agile sub-CubeSat development}
+	\label{tab:methodology_indicative_tools}
 \end{table*}
+%vadOK
 
 For software, developers have to choose between proprietary or open-source tools, which can be hosted on-premises or in the cloud.
 Recent discourse has identified vendor lock-in as a major risk in long-lasting projects \autocite{lundellPerceivedActualLockin2021}, with additional concerns over the control and security of user data. Anecdotal reports suggest that educational or non-profit discounts may not be perpetually honoured \autocite{kalamSlackExtortingUs2025,elodidthatMaxonStudentLicenses2024}. The European Commission has identified the reliance on external technology suppliers as a ``strategic liability'' and ``supply chain risk'', posing open-source hardware and software as an ideal solution \autocite{europeancommissionCommissionOpensCall2026,pageBrusselsPlotsOpen2026}.
@@ -4442,7 +4455,6 @@ The main constraint that restricted the selection of possible missions and class
 we hosted brainstorming sessions to decide on a mission concept, based on the criteria of complexity, cost, development time, novelty, risk, available competences, and strategy alignment.
 
 \begin{table*}[]
-	\caption{ChipSat-1 initial mission requirements}
 	\begin{tabularx}{\linewidth}{@{}llX@{}}
 		\toprule
 		& Source  & Requirement                                                                            \\ \midrule
@@ -4465,7 +4477,9 @@ we hosted brainstorming sessions to decide on a mission concept, based on the cr
 		
 		\bottomrule
 	\end{tabularx}
+	\caption{ChipSat-1 initial mission requirements}
 \end{table*}
+%vadOK
 
 The objective of a \ac{VLC} demonstrator aligns with the prevalence and research in optical communication for ground-space and inter-satellite links, usually with lasers acting as transmitters \autocite{kaushalOpticalCommunicationSpace2017,khalighiSurveyFreeSpace2014,griffithsHighsensitivityIntersatelliteOptical2021}. Optical communication can offer situational advantages over traditional \ac{RF} links, especially in terms of directivity, bandwidth and power consumption. This comes at a cost of complexity, as laser transmitters and photodiode receivers need to be accurately managed and steered to achieve a reliable link. The use of \acfp{LED} instead of laser emitters trades off this high level of complexity at the cost of directivity. A simple single-\acs{LED} system performing \acf{OOK} can require a less complex implementation than an \ac{RF} transmitter.
 
@@ -5093,7 +5107,6 @@ The AI4Space mission was developed in the University of Luxembourg in the form o
 
 \begin{table*}[h]
 	% Source: AI4SpaceLeanProjectPlanAndControl - Copy
-	\caption{AI4Space mission requirements}
 	\begin{tabularx}{\linewidth}{@{}llX@{}}
 		\toprule
 		& Source  & Requirement                                                                            \\ \midrule
@@ -5105,7 +5118,9 @@ The AI4Space mission was developed in the University of Luxembourg in the form o
 		6 & Mission & The AI4Space payload shall demonstrate an in-orbit \acs{ML}-based thermal anomaly detection algorithm. \\
 		\bottomrule
 	\end{tabularx}
+	\caption{AI4Space mission requirements}
 \end{table*}
+%vadOK
 
 AI4Space was hosted as part of Skykraft's payload hosting programme, mainly aimed at educational institutions \autocite{skykraftSkyride2022}. More specifically, Skykraft provided slots accepting \qtyproduct{10 x 10}{\centi\meter} \acsp{PCB} (or ``Skykards''). These Skykards were electrically connected to their host with a \acs+{PCI}-like edge connector, responsible for receiving energy and transferring data bidirectionally, through a proprietary serial interface. The requirements and interface details were communicated to users by the host company and updated at regular times.
 
@@ -5157,6 +5172,7 @@ AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicr
 \label{sec:CASESTUDIES_ai4space_flow}
 
 \begin{figure}
+\begin{adjustbox}{width=\textwidth}
 \begin{tikzpicture}	\begin{scope}[font=\scriptsize,yshift=-10.5cm,node distance=0cm and 0cm]
 \node[softiter] (i1s1) at (0,0) {};
     \node[softiter,right=of i1s1] (i1s2) {};
@@ -5247,6 +5263,7 @@ AI4Space's software was divided into \textbf{microservices} \autocite{thonesMicr
       node[midway, scale=0.9] {\name};
     }
 \end{scope}\end{tikzpicture}
+\end{adjustbox}
 \caption{AI4Space development timeline}
 \label{fig:c_ai4space_timeline}
 \end{figure}
@@ -5369,7 +5386,6 @@ In the case of AI4Space, the use of an interpreted programming language and sepa
 \end{itemize}
 
 \begin{table*}[h]
-	\caption{AI4Space cost budget (approximate)}
 	\label{tab:c_ai4space_costs}
 	\begin{tabularx}{\textwidth}{@{}llXS@{}}
 		\toprule
@@ -5380,7 +5396,9 @@ In the case of AI4Space, the use of an interpreted programming language and sepa
 		 \midrule
 		& \textbf{Total Costs}                     &                                               & 4900 \\ \bottomrule
 	\end{tabularx}
+	\caption{AI4Space cost budget (approximate)}
 \end{table*}
+%vadOK
 
 
 \begin{table*}[h]
@@ -5596,7 +5614,6 @@ Power storage was done via a camera battery mounted on the \acs{EPS} board. The 
 Structurally, the subsystem stack was kept in place through four screws and two machined plates (top and bottom), each of which had appropriately sized slots to accommodate the solar panels.
 
 \begin{table*}[htb]
-	\caption[POQUITO initial mission requirements]{POQUITO initial mission requirements}
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
 		Source  & Requirement                                                                            \\ \midrule
@@ -5619,7 +5636,9 @@ Structurally, the subsystem stack was kept in place through four screws and two 
 		SYS.110 & The spacecraft shall be compatible with the designated deployer.\\
 		\bottomrule
 	\end{tabularx}
+	\caption[POQUITO initial mission requirements]{POQUITO initial mission requirements}
 \end{table*}
+%vadOK
 
 \FloatBarrier
 \subsection{Development Flow}
@@ -5761,8 +5780,6 @@ During POQUITO's development, the team also worked on the ground segment, with t
 \label{sec:CASESTUDIES_poquito_lessons}
 
 \begin{table*}[h]
-	\caption[POQUITO cost budget]{POQUITO cost budget (not including labour, insurance and ground station costs)}
-	\label{tab:c_poquito_costs}
 	\begin{tabularx}{\textwidth}{@{}lXlS@{}}
 		\toprule
 		No. & \textbf{Cost Driver}                     & Used In                                       & {Value (EUR)} \\ \midrule
@@ -5791,11 +5808,11 @@ During POQUITO's development, the team also worked on the ground segment, with t
 		\midrule
 		& \textbf{Total Costs}                     &                                               & 26750 \\ \bottomrule
 	\end{tabularx}
+	\caption[POQUITO cost budget]{POQUITO cost budget (not including labour, insurance and ground station costs)}
+	\label{tab:c_poquito_costs}
 \end{table*}
 
 \begin{table*}[h]
-	\caption[POQUITO development time]{POQUITO development time from start of development until Flight Model delivery, estimated based on task duration and the project Gantt chart.}
-	\label{tab:c_poquito_times}
 	\begin{tabular}{@{}llS@{}}
 		\toprule
 		No. & \textbf{Development Time Driver} & {Time Spent (hours)} \\ \midrule
@@ -5813,7 +5830,10 @@ During POQUITO's development, the team also worked on the ground segment, with t
 		& \textbf{Total Time}                  & 759                \\ \bottomrule
 		% Note: Ground station work not considered as not part of SCS development!!! (out of scope for this work - we look at space segment only)
 	\end{tabular}
+	\caption[POQUITO development time]{POQUITO development time from start of development until Flight Model delivery, estimated based on task duration and the project Gantt chart.}
+	\label{tab:c_poquito_times}
 \end{table*}
+%vadOK
 
 Compared to the previous mission, POQUITO's status as an independent satellite required significantly higher effort, divided amongst a larger team. Despite the use and adaptation of a \acs{COTS} design, the team still experienced challenges related to technical and programmatic aspects. This was further exacerbated by the logistical environment of the university which reduced the availability of key personnel for engineering tasks and roles.
 
@@ -6247,11 +6267,12 @@ Consequently, the above problem statement can be answered by the following stati
 	The test is considered consistent when there is a higher probability that observations from one group are larger than observations the other, and it can be used for low sample sizes \autocite{happOptimalSampleSize2019}.
 \end{itemize}
 %\marginnote{The Mann---Whitney test can be more or less robust compared to the \(t\)-test, depending on the distribution of the data \cite{zimmermanInvalidationParametricNonparametric1998}. As such, I present both analyses here for completeness.}
-\marginnote{Since no assumptions can be made about the underlying distributions of the data, as seen later in this section, but statistically significant results show a clear skew towards a positive or negative difference (as seen below), it is considered that the Mann---Whitney \( U \) test is more robust in this analysis. As such, the \(t\)-test results are mainly provided for reference.}
 
 Both of the above tests assume a comparison between \textbf{two groups}; in this case, considered to be the \emph{group without treatment}, and the \emph{group with all treatments}, i.e.\@ with the complete application of the \acs{SCS} methodology.
 
 The numerical data for these tests is shown in \Cref{tab:c_aggregate_data}. Before applying the above statistical tests, the data is converted to a \textbf{relative form, in relation to the actual observed development time/cost, for each project}. This transformation is performed in order to reduce the impact of the \textbf{inherent scaling} associated with the different technical sizes of each project.
+\marginnote{Since no assumptions can be made about the underlying distributions of the data, as seen later in this section, but statistically significant results show a clear skew towards a positive or negative difference (as seen below), it is considered that the Mann---Whitney \( U \) test is more robust in this analysis. As such, the \(t\)-test results are mainly provided for reference.}
+
 
 Risk (understood here as \textbf{perceived risk}) is measured only as a categorical variable. Risk values \emph{Low, Base, High} are mapped to numerical values \(-1, 0, +1\) respectively when needed for the analysis. Due to the qualitative nature of risk perception, it is not possible to reliably perform arithmetic operations operations on these values. Nevertheless, the results of this quantification will be presented, in order to assess the \textbf{relative} impact of treatments on risk.
 
@@ -6378,10 +6399,11 @@ Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
 \bottomrule
 \end{tabular}
 
-\caption{Statistical Analysis of Development Parameters}
+\caption[][0.5cm]{Statistical Analysis of Development Parameters}
 \label{tab:stat_results}
 \setfloatalignment{t}
-\end{table*}
+\end{table*}%
+%vadERR
 
 
 
@@ -6409,10 +6431,9 @@ These results address the effectiveness of the application of \acs{SCS} on a sys
 \bottomrule
 \end{tabular}
 
+\end{adjustbox}
 \caption[Effect of individual treatments on time, cost and risk]{Effect of individual treatments on time, cost and risk. The Mann-Whitney \(U\) test \(p\)-values are also shown.}
 \label{tab:stat_treatment_results}
-
-\end{adjustbox}
 \end{table*}
 
 As mentioned above, size of the results prevents generating robust statistical results for all measurements. However, the aggregate results combined from the projects shown above, combined with average treatment effects shown in \Cref{tab:stat_treatment_results}, can reinforce the understanding of the causal effects shown in \Cref{fig:c_causal_mapping}.
@@ -6693,9 +6714,9 @@ Based on the above findings, I have contributed the definition of a tailored sys
 	\item A tailoring guide to assist developers in selecting the optimal set of methods for their project.
 \end{itemize}
 
-During the synthesis of the new methodology, in addition to introducing modern Agile and Systems Engineering practices to \acs{SCS} development, this thesis also contributed to the \acl{SOTA} by proposing the following novel methods and concepts:
+This work presented a novel application of Agile Systems Engineering practices to \acs{SCS} development based on specific practices identified in industry and academia. In addition, this thesis also contributed to the \acl{SOTA} by proposing the following novel methods and concepts:
 \begin{itemize}[itemsep=-1pt]
-	\item Considering physical products (in this case, \acs{SCS}) as \textbf{software artifacts}, and attempting to suppress the overhead arising from their physical nature.
+	\item Considering physical products (in this case, \acs{SCS}) as \textbf{software artifacts}, attempting to suppress the overhead arising from their physical nature, and introducing system-level iterations and in-orbit testing as part of the toolkit for low-resource projects.
 	\item Partition-based Scrum, where \textbf{each iteration is performed on a model matching the fit and form of the intended product}. In contrast to common Agile systems engineering, partition-based Scrum does not require building and maintaining an \acl{MVP}, but places the focus on generating early knowledge about the performance of the intended, flight-ready system, and considers unbuilt modules as ``building blocks'' that can be added later (\Cref{sec:METHODOLOGY_partitionbased_novelty}).
 	\item Lightweight \acs{MBSE} that can combine the functions of modelling and documentation (\Cref{sec:METHODOLOGY_edm_novelty}). Lightweight \acs{MBSE} prioritises development time against accuracy, relying on a tool-based approach, and its success is measured by metrics typically associated with text-based documentation.
 	\item Methodologically, this thesis introduces a software case study-based approach, where open-source software libraries with similar functionality are compared on a similar environment at runtime, using a fuzz testing tool, in order to predict the emergence of faults (\Cref{sec:METHODOLOGY_software_reliability}).
@@ -6738,17 +6759,6 @@ As software has been identified as a major time allocation and risk driver for \
 Finally, this thesis identified tooling as a substantial area of interest for small spacecraft development. Apart from the actual development of software tools, future research can focus on identifying the set of functions and suitable designs to cover the requirements for work package management and modelling, without the currently understood overhead associated with formal tools.
 
 
-% Novelty points:
-% - Lightweight MBSE
-% - Partition-based Scrum
-% - The whole approach actually
-% Novelty points (methodological):
-% - Counter-factual
-% - Software engineering
-
-
-
-
 \end{fullwidth}
 
 \appendix
@@ -6767,7 +6777,7 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \label{app:sw_errors_detected}
 
 \begin{fullwidth}
-This appendix will present some of the software defects detected as part of the mini case study of CubeSat \acs{OBC} frameworks. These defects were discovered using the LibAFL tester, as described in \Cref{METHODOLOGY_software_reliability}, and are listed here to provide insight behind the failure modes of different programming languages.
+This appendix will present some of the software defects detected as part of the mini case study of CubeSat \acs{OBC} frameworks. These defects were discovered using the LibAFL tester, as described in \Cref{sec:METHODOLOGY_software_reliability}, and are listed here to provide insight behind the failure modes of different programming languages.
 
 \section*{C++}
 The following example is taken from AcubeSAT's implementation of the \acs{ECSS} \acs{PUS} services \cite{tsouposOnBoardComputerAcubeSAT2025}, and specifically the function responsible for parsing the received \acs{ECSS}-compatible messages:
@@ -6853,7 +6863,7 @@ The first error described corresponds to \textbf{\href{https://cwe.mitre.org/dat
 
 \section*{Rust}
 
-The following example is taken from the Prust implementation of the \acs{PUS} \acs{ECSS} services, and more specifically the function responsible for parsing the \texttt{TC[8,1] perform a function} command, which converts a binary input to the internal representation \autocite{ozleyenOpenSourceImplementation2020}.
+The following example is taken from the Prust implementation of the \acs{PUS} \acs{ECSS} services, and more specifically the function responsible for parsing the \texttt{TC[8,1] perform a function} command, which converts a binary input to the internal representation \cite{ozleyenOpenSourceImplementation2020}.
 
 \begin{minted}[linenos,fontsize=\small]{Rust}
 impl SpacePacket<TcPacket<Service8_1>> {

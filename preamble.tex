@@ -89,6 +89,7 @@ sorting=none
 
 \usepackage{siunitx}
 \usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
 \usepackage{ifdraft}
 
 % Draft packages
@@ -356,7 +357,8 @@ sorting=none
 	preheadhook = {%
 		\begin{lrbox}{\definition@margin@box}%
 		\begin{minipage}[t]{\marginparwidth}%
-			\@tufte@marginnote@font\@tufte@marginnote@justification\@tufte@margin@par\vspace*{-1\baselineskip}%
+			\@tufte@marginnote@font\@tufte@marginnote@justification\@tufte@margin@par%
+			%\vspace*{-1\baselineskip}%
 	},
 	postfoothook = {%
 		\end{minipage}%
@@ -389,10 +391,14 @@ sorting=none
   \acroifT{extra}{, \acrowrite{extra}}%
 }
 \NewAcroCommand\marginacrotext{m}{\UseAcroTemplate{margin-format}{#1}}
-\NewDocumentCommand{\mac}{ O{0pt} m }{%
-  \marginnote[#1]{\vspace{1ex}\marginacrotext*{#2}\vspace{1ex}}%
+\NewDocumentCommand{\mac}{ O{1ex} m }{%
+  \marginnote[#1]{%
+	\setstretch{0.5}%
+	\marginacrotext*{#2}%
+	\vspace*{1ex}%
+  }%
 }
-\WithSuffix\NewDocumentCommand\acs+{ O{0pt} m }{%
+\WithSuffix\NewDocumentCommand\acs+{ O{1ex} m }{%
   \acs{#2}\mac[#1]{#2}%
 }
 

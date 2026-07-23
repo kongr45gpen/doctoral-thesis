@@ -44,10 +44,7 @@
 %\usepackage{pgfplots}
 %\usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
 
-% \def\acf#1{Big Design Up Front (#1)}
-\def\acs#1{\textsf{#1}}
-% \def\acsp#1{\textsf{#1s}}
-% \def\acl#1{\textsf{Big Design Up Front}}
+
 % \def\draft#1{\textcolor{red}{#1}}
 % \def\todo#1{\textcolor{blue}{#1}}
 % \def\qtyproduct#1#2{#1}
@@ -59,12 +56,16 @@
 \input{preamble.tex}
 %\input{commands.tex}
 
-%\DeclareAcronym{PCDU}{short = PCDU, long = {Power Conditioning \& Distribution Unit}}
-%\DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
-%\DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
-%\DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}, extra = {ooooookk???}}
-%\DeclareAcronym{OPS}{short = OPS, long = {Operations}, alt={OPERS}, extra={What are operations?}}
+\DeclareAcronym{FMEA}{short = PCDU, long = {Power Conditioning \& Distribution Unit for Analysis against the lucker measures thanks}}
+\DeclareAcronym{OBDH}{short = OBDH, long = {On-Board Data Handling}}
+\DeclareAcronym{OBSW}{short={OBSW},long = {On-Board Software}}
+\DeclareAcronym{OOK}{short = {OOK}, long = {On-Off Keying}, extra = {ooooookk???}}
+\DeclareAcronym{OPS}{short = OPS, long = {Operations}, alt={OPERS}, extra={What are operations?}}
 
+\def\acs#1{\textsf{#1}}
+\def\acf#1{Big Design Up Front (#1)}
+\def\acsp#1{\textsf{#1s}}
+\def\acl#1{\textsf{Big Design Up Front}}
 
 
 \begin{document}
@@ -98,42 +99,24 @@ Many citations \cite{AlbaMissionServices,alvarezAgileMethodologiesApplied2021,at
 
 \newpage
 
-\begin{minted}[linenos,fontsize=\small]{Ada}
-package body CubedOS.Transport_UDP.Messages is
+\newthought{Compared to} system-level Sat-Scrum as presented in \Cref{sec:METHODOLOGY_satscrum}, \emph{partition-level Sat-Scrum} also addresses an inherent problem with Agile methods when applied to complex physical systems: During the first iterations in a project, only a few weeks are allocated towards design efforts. However, in hardware engineering, it is possible that many activities with a minimum baseline of effort need to take place in every iteration, such as design elaboration, analysis/optimisation, \acs{PCB} design/routing, \acs+{BOM} consolidation, prototype building, and more. For a system with multiple in-house boards that require these processes, it may be impractical or impossible to complete this design effort within a single iteration, thus requiring either lengthening the iteration, or the use of partition-based Sat-Scrum.
 
-function Read_Stream_Message (
-								Data : in Ada.Streams.Stream_Element_Array;
-								Last : in Ada.Streams.Stream_Element_Offset)
-								return Message_Manager.Message_Record is
-	Sender_Domain : Message_Manager.Domain_ID_Type;
-	Sender_Module : Message_Manager.Module_ID_Type;
-	Receiver_Domain : Message_Manager.Domain_ID_Type;
-	Receiver_Module :Message_Manager. Module_ID_Type;
-	Request_ID : Message_Manager.Request_ID_Type;
-	Message_ID : Message_Manager.Message_ID_Type;
-	Message : Message_Manager.Message_Record;
-begin
+Partition-based iterations are also similar to the V-style or incremental approaches favoured by CubeSat projects, where distinct subsystems are manufactured first, often in parallel, before being integrated into the entire system.
+The main differentiating element of
+a partition-based approach are the recommendation to always iterate on \textbf{a combination of more than one module at a time} in order to encourage interface definition through verification instead of specification. Partition Sat-Scrum also encourages the flexible definition and usage of partitions, which can be done between system-wide iterations when project needs dictate.
 
-	Sender_Domain := Message_Manager.Domain_ID_Type(Data(0));
-	Sender_Module := Message_Manager.Module_ID_Type(Data(1));
-	Receiver_Domain := Message_Manager.Domain_ID_Type(Data(2));
-	Receiver_Module := Message_Manager.Module_ID_Type(Data(3));
-	Request_ID := Message_Manager.Request_ID_Type(Data(4));
-	Message_ID := Message_Manager.Message_ID_Type(Data(5));
+\phantomsection%
+\label{sec:METHODOLOGY_partitionbased_novelty}
+Partition-based Sat-Scrum can also be compared to previous Agile literature.
+The most common strategies used involve creating a \emph{Minimum Viable Product} or a \emph{Walking Skeleton}, where a minimally functional version of a product is built and then iterated upon, performing incremental re-architecture \autocite{cockburnCrystalClearHumanpowered2004}. This concept was extended to \emph{small vertical slices}, where a focus is given to present complete functionality in every sprint, instead of generic product improvement \autocite{ratnerVerticalSlicingSmaller2011}. \citeauthor{iberleAgileGetsPhysical2022} also explore the concept of named slices to describe different functionality that cover only parts of a system's architecture. Recent studies of Agile systems engineering practice describe the use of a scaled Scrum method, usually augmented with prototype development or traditional Stage-Gates \NextCitationOffset{-0.8cm}\autocite{atzbergerAgileDevelopmentPhysical2020,cooperAgileDevelopmentManufacturing2023}. In contrast to the \acl{SOTA}, partition-based Sat-Scrum introduces the following novel concepts:
+\begin{itemize}[itemsep=-2pt]
+	\item Partitions are not progressive, and different levels of fidelity can be used across iterations. Partition-based Sat-Scrum also supports reducing fidelity compared to a previous iteration, when development needs to focus on a particular area.
+	\item Traditional prototypes may involve creating a separate design\footnote[][-2.8cm]{E.g.\@ a mockup, prototype, ground testing interface or digital twin.} for early iterations. Partition-based Sat-Scrum, on the other hand, views partitions as sets of modular ``bricks''\footnote[][-2.8cm]{that is, modules}: In every iteration, the system should ideally be built with a form as close as possible to the intended result, and partitioning is done by removing unneeded parts as ``building blocks''.\footnote[][-3.8cm]{In practical terms, the ideal partition-based lifecycle would involve establishing a system structure and then choosing which subsystems (\emph{modules}) need to be iterated on and assembled on every iteration. For example, an iteration of a PocketQube might involve fine-tuning the \acl{EPS}, in which case the \acs{ADCS} subsystem does not need to be produced. Compared to e.g.\@ a FlatSat, this approach reduces the overhead associated with maintaining a different test model and allows developers to reason about the form, fit and function of the entire system, without the necessity of physically implementing it entirely.}
+	
+	This approach aims to generate knowledge about the physical attributes of the system early in the design, while reducing the development effort to develop different structures, at the cost of feature representability at every iteration. It is inherently hardware-specific, as it targets the higher costs and effort associated with iterating on larger hardware systems \autocite{schmidtAgileDevelopmentConstraints2017}.
+\end{itemize} %vadERR
 
-	Message := Message_Manager.Make_Empty_Message
-	(Sender_Address => (Sender_Domain, Sender_Module),
-		Receiver_Address => (Receiver_Domain, Receiver_Module),
-		Request_ID      => Request_ID,
-		Message_ID      => Message_ID);
-
-	for I in 6 .. Last loop
-		Message.Payload(Integer(I) - 6) := XDR.XDR_Octet(Data(I));
-	end loop;
-
-	return Message;
-end Read_Stream_Message;
-\end{minted}
+I love doing \acs+{FMEA}, it is a good sicne. The \acs+{FMEA} that I do\footnote{based on personal experience} is better than other \acs+{FMEA}.
 
 \printbibliography
 
