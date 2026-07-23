@@ -552,7 +552,7 @@ The above opportunities and possible decisions demostrate that a distinct, tailo
 
 \begin{figure}[p]
 	\includegraphics{graphics/DecompSYE.pdf}
-	\caption{Focus on ``Systems Engineering'' from \Cref{fig:i_thesis_decomposition}}
+	\caption[Focus on ``Systems Engineering'' from \Cref{fig:i_thesis_decomposition}]{Focus on ``Systems Engineering'' from \Cref{fig:i_thesis_decomposition} \cite{sheaNASASystemsEngineering2020}}
 	\label{fig:i_sye_decomposition}
 \end{figure}
 
@@ -658,7 +658,7 @@ A mapping between each section and the objectives of the thesis is shown in \Cre
 \end{fullwidth}
 
 This chapter will introduce the background information necessary to develop the \ac{SCS} methodology.
-Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis.\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \Cpageref{sec:acronyms}.} \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
+Parts of it serve as the DS-I phase of the \acs{DRM} research methodology\footnote{as seen in \Cref{chap:RESEARCH_APPROACH}}. \Cref{sec:LITERATURE_terminology} introduces the definitions of common terms used in the thesis.\footnote{A full list of definitions can be found in \Cpageref{sec:definitions}. A full list of acronyms can be found in \Cpageref{sec:acronyms}.} \Cref{sec:LITERATURE_cubesat} introduces the CubeSat ecosystem, and relevant information that can be applied or tailored for \acs{SCS}. \Cref{sec:LITERATURE_subcubesat} introduces the background, environment and current state-of-the-art for Sub-CubeSat Systems Engineering. Based on this information, \Cref{sec:LITERATURE_gap} then presents the identified shortcomings in \acs{SCS} development. Finally, \Cref{sec:LITERATURE_systems_engineering} presents more generic Systems Engineering topics that are not strictly connected with space systems, but can inform the proposed \acs{SYE} methodology.
 
 \section{Terminology}
 \label{sec:LITERATURE_terminology}
@@ -1437,6 +1437,7 @@ Nevertheless, \autocite{FCCBigProblem2018,albaorbitalTrackingPocketQubes2020} cl
 \FloatBarrier
 
 \section{Knowledge Gap}
+\label{sec:LITERATURE_gap}
 
 As shown in \Cref{sec:LITERATURE_cubesat,sec:LITERATURE_subcubesat}, literature from \acs{SCS} and CubeSats has identified shortcomings in aspects related to the development, performance and success of missions. In this section, I will describe metrics that can be used to evaluate mission success, and consider the shortcomings of current \acs{SCS} development approaches based on these metrics, in order to provide an answer to \textbf{\acs{RQ}2}.
 
@@ -1482,6 +1483,7 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 \end{itemize}
 
 \subsection[Current SCS Shortcomings]{Current \acs{SCS} Shortcomings}
+\label{sec:LITERATURE_shortcomings}
 While the available data from \acs{SCS} is limited, the available data from the literature and interviews can be summarised into the following points, regarding commonly experienced issues in \acl{SCS} engineering:
 \begin{itemize}[itemsep=-1ex]
 	\item Based on data from \autocite{kuluNanosatsDatabase2023}, at least \textbf{15 out of 93}\footnote{Due to a lack of reporting, the states of many \acs{SCS} in \citeauthor{kuluNanosatsDatabase2023} database is unknown. Here, a conservative estimate is used in order to establish a lower bound, where unknown spacecraft are assumed to be successful. This represents a \(\geq 16\%\) failure rate.} \acs{SCS} launched until \citeyear{kuluNanosatsDatabase2023} have not communicated, signifying a ``\acl{DOA}'' state.
@@ -1515,11 +1517,79 @@ In addition to the above points, one can claim that the development environment 
 	\item \citeauthor{honore-livermoreIntegratingAgileSystems2022} specifically addressed the question of ``\emph{What factors influence the development time of university CubeSat systems}'', attributing delays to \textbf{external suppliers} for parts and services, lack of documentation, and incorrect prioritisation of activities at the Project Management level \autocite{honore-livermoreIntegratingAgileSystems2022}. She also specifically proposed Agile and \acs{MBSE}-based processes to support CubeSat development. Based on the case studies of \Cref{chap:CASESTUDIES}, the \acs{SCS} environment is often similarly subjected to similar shortcomings. The duration of specific activities within various CubeSat projects is shown in \Cref{tab:l_cubesat_time_drivers}.
 \end{itemize}
 
-Based on the above observations, \textbf{development time} and \textbf{risk} have been identified as the target metrics which need improvement.
+Based on the above observations, I have selected \textbf{development time} and \textbf{risk} as the main shortcomings of \acs{SCS} development currently. While these metrics are broad and are the result of a combination of individual actions and results within projects, I consider that, for \acs{SCS}, the typical project duration and scale allow observing direct links between \acl{SYE} decisions, schedule and risk.
 
+While most evidence from the literature is anecdotal or based on limited data, multiple authors have linked systems engineering decisions taken with an impact on defect rate, defect identification, and schedule overruns, which are linked directly with the two factors identified above. Additionally, the identified specific shortcomings can be linked with specific aspects of \acl{SYE} (\Cref{fig:i_sye_decomposition}), as shown in \Cref{tab:l_correlation_survey}.
+
+\begin{table*}[h]
+\begin{adjustbox}{center,width=1\linewidth}
+\def\arraystretch{1.3}
+\begin{tabular}{p{5cm}*{9}{>{\centering\arraybackslash}p{2.2cm}}}
+\toprule
+&
+\multicolumn{3}{c}{\textbf{Technical Management}} &
+\multicolumn{3}{c}{\textbf{System Description}} &
+\multicolumn{3}{c}{\textbf{System Realisation}} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10}
+&
+Lifecycle &
+Requirements &
+Risk Management &
+Modelling &
+Knowledge
+Management &
+Interface
+Management &
+Verification \&
+Validation &
+Design
+Solution &
+Implementation  \\
+\midrule
+
+Inadequate time dedicated to testing
+& linked &    &    &  &  &  &  linked   &  &   \\
+
+Unclear definition of scope \& objectives
+&  & linked   &    &  &  &  &    &  &     \\
+
+Bad interface documentation
+&  &    &  &   linked & linked & linked   &    &  &    \\
+
+Late manufacturing/no prototyping
+& linked &      &  &  &  &  &    &  &      \\
+
+Slow: design, analysis, functional testing
+&  linked&      &  &  &  &  & linked   &  &     \\
+
+Software/hardware design errors
+&  &    &  &  &  &  &    &  & linked     \\
+
+Ad-hoc procedures for design, testing
+&  &    &  &  &    &  & linked   &  & linked     \\
+
+Poor workmanship
+&  &    &  &  &    &  &    &  & linked    \\
+
+Uncaptured best practices
+&  &    &  &  &    &  &    & linked  &      \\
+
+Unreliability-by-design
+&  &    & linked &  &    &  &    & linked & linked     \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption[Links between Systems Engineering and identified shortcomings in CubeSats and SCS]{Links between Systems Engineering and identified shortcomings in CubeSats and \acs{SCS} \cite{swartwoutUniversityClassSpacecraft2023,venturiniImprovingMissionSuccess2017,langerReliabilityAssessmentReliability2018,sanchoLessonsLearnedFYS2021,sanchoLessonsLearnedFYS2021,hermanExperimentalResultsModular2025,honore-livermoreIntegratingAgileSystems2022,doyleMissionTestingImproved2021}}
+\label{tab:l_correlation_survey}
+
+\end{table*}
 
 % \cite{swartwoutUniversityClassSpacecraft2023,sanchoLessonsLearnedFYS2021,kinnairdSelectionLessonsLearned2022,doyleMissionTestingImproved2021,hermanExperimentalResultsModular2025},
 
+\FloatBarrier
 \section{Topics from Systems Engineering}
 \label{sec:LITERATURE_systems_engineering}
 
@@ -1708,8 +1778,6 @@ Because of the introduction of Agile methods into hardware development, a number
 %\section{Research Problem Formulation}
 %\label{sec:LITERATURE_problem_formulation}
 
-\todo{FOUNDATIONAL: Add answer to RQ2}
-
 \chapter{Research Approach}
 \label{chap:RESEARCH_APPROACH}
 
@@ -1894,13 +1962,11 @@ Before identifying and realising the functions of the intended methodology, the 
 
 The coverage of the methodology starts from preliminary design, and not conceptualisation or concept evaluation, which is not considered within the scope of this thesis. The intended end of application of the methodology is the end of environmental testing for the spacecraft. I consider a successful acceptance campaign to signify the end of a spacecraft's development, as launch regulations usually prevent modifications after this point, and the spacecraft should be considered completed. Conversely, the high variability of integration and launch dates could add a significant overhead in the measured time.
 
-Out of the metrics identified in \Cref{sec:LITERATURE_metrics}, I have chosen two as the relevant success criteria: \textbf{development time} and \textbf{risk}, as the available literature and data on the development on CubeSats, PocketQubes, and smaller \acs{SCS} has demonstrated that they are \begin{enumerate*}
-	\item common key targets for optimisation in academic and industrial environments, and
-	\item causally linked to the selection and application of a \acl{SYE} methodology or process. \todo{[cite]}
-\end{enumerate*}
-I have not selected cost as a target criterion, as its accounting will vary by different orders of magnitude between different projects, and as it is also often positively correlated with development time.\footnote{Nevertheless, I will evaluate any potential cost savings or cost increases of different methods/approaches, but I will not consider cost as a success criterion or requirement}
+As analysed in \Cref{sec:LITERATURE_gap}, I have chosen \textbf{development time} and \textbf{risk} as success criteria for the \acs{SCS} methodology. Cost is not considered as a target criterion, as its accounting will also vary by different orders of magnitude between different projects, and as it is also often positively correlated with development time.\footnote{Nevertheless, I will evaluate any potential cost savings or cost increases of different methods/approaches, but I will not consider cost as a success criterion or requirement}
 
-Finally, the ``target audience'' of the methodology includes the groups of ``hobbyists'' and ``smallsat developers'', as classified by the \citeauthor{swartwoutYouSayPicosat2018} taxonomy \autocite{swartwoutYouSayPicosat2018}.\footnote{Also see \Cref{sec:LITERATURE_cubesat_environment} for an explanation of the Swartwout taxonomy.} This scope excludes ``traditional contractors'' and large constellation developers. This selection is inspired by the common characteristics of the two former groups (\Cref{tab:mission-characteristics}), which also indicate that they are more receptive of a new, Agile-centred approach. The lack of larger scale ``traditional contractors'' within the \acs{SCS} ecosystem as of this moment also prevents data gathering and experimentation for these types of organisations.
+The ``target audience'' of the methodology includes the groups of ``hobbyists'' and ``smallsat developers'', as classified by the \citeauthor{swartwoutYouSayPicosat2018} taxonomy \autocite{swartwoutYouSayPicosat2018}.\footnote{Also see \Cref{sec:LITERATURE_cubesat_environment} for an explanation of the Swartwout taxonomy.} This scope excludes ``traditional contractors'' and large constellation developers. This selection is inspired by the common characteristics of the two former groups (\Cref{tab:mission-characteristics}), which also indicate that they are more receptive of a new, Agile-centred approach. The lack of larger scale ``traditional contractors'' within the \acs{SCS} ecosystem as of this moment also prevents data gathering and experimentation for these types of organisations.
+
+The partitioning of the \acs{SCS} methodology is based on \Cref{fig:i_nasa_sye_decomposition}, and shown in \Cref{tab:m_toc}. Not all aspects of \acs{SCS} \acs{SYE} are evaluated; Instead, only those with a linked shortcoming, and where enough data was gathered, are elaborated here (\Cref{tab:l_correlation_survey}).}
 
 % Booktabs with each of the following subsections
 \begin{table*}
@@ -1921,6 +1987,7 @@ Finally, the ``target audience'' of the methodology includes the groups of ``hob
 		\bottomrule
 	\end{tabularx}
 	\caption{Table of Contents for this section}
+	\label{tab:m_toc}
 \end{table*}
 
 \FloatBarrier
@@ -1946,6 +2013,7 @@ In traditional space systems engineering, requirements are often elaborated in s
 \end{quote}
 In these cases, requirements elicitation takes place in the beginning of the project, with little room for changes and modifications at the later phases. Requirements have to use specific wording and a ``cadence'', so that they can be used during design, early verification and testing as guides on whether a product is successful or not \autocite{ECSS-E-ST-10-06C}. In order to enforce this objectivity, \acs{ECSS} standards for example forbid the use of words such as \emph{optimise}, \emph{minimise/maximise}, \emph{typical}, \emph{rapid} etc. The standards also specify key concepts that must be followed by all technical requirements, including \emph{traceability}, \emph{no ambiguity}, \emph{uniqueness}, \emph{identifiability}, \emph{singularity}, \emph{completeness}, \emph{verifiability} and \emph{tolerance} \cite{ECSS-E-ST-10-06C}. In this ideal case, requirements can be made machine-readable and compatible with formal modelling for automated verification \autocite{katisCaptureAnalyzeDiagnose2022}.
 
+\marginnote{In \acs{SCS}, it is common for the detailed requirement specification activity to only take place after development has started. During the early, conceptual phases of a project, only the initial, mission-level requirements, may be elaborated.}
 However, in the CubeSat world, some projects follow less strict approaches, where requirements do not cover the entire system, and are usually elaborated in a more subjective manner. An example of differences between two CubeSat projects is shown in \Cref{tab:m_example_requirement_different}. The decision to follow a less well-defined specification approach can be a result of the following factors:
 \begin{itemize}[itemsep=-1ex]
 	\item For complex and emergent systems, some parameters may not be known in the design phase, but may require prototyping or manufacturing. This can be true especially for novel technologies, or when a team lacks experience to predict technical values.
@@ -5933,7 +6001,7 @@ In terms of communications, an off-the-shelf \acs{LORA} module was used, based o
 	\includegraphics{pictures/chipysat_v1.jpg}
 	\includegraphics{pictures/chipysat_v2.jpg}
 	\caption{Renders of the first (top) and second (bottom) ChiPySat iterations}
-	\label{fig:c-chipysat_renders}
+	\label{fig:c_chipysat_renders}
 \end{figure}
 
 \newthought{The development} of ChiPySat also followed an iterative approach, albeit with only two iterations performed due to time constraints. Since the project was based on electronic/hardware elements, the changes between iterations mainly involved schematic changes as follows:
@@ -6423,7 +6491,7 @@ Instead, developers tailor existing approaches from the CubeSat ecosystem, rangi
 
 \researchquestion{RQ2}{What are the shortcomings of current \ac{SYE} approaches used by \ac{SCS} developers?}
 
-The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}). While cost is often mentioned as a particular benefit for the selection of pocket-sized spacecraft, it is either not referred to as an optimisation target, or already successfully kept low through mainly in-house manufacturing. Instead, developers place significant weight on the improvement of reliability and the reduction of development time (mainly to fit typical academic cycles in educational environments, or to match specific production capabilities). Past mission failures and long average development times indicate a need to focus on reliability and development velocity. \todo{Improve this answer}
+The classification of potential \acs{SCS} systems engineering shortcomings was made in reference to the \emph{six-pointed star model}, which separates the constraints of an engineering project into \emph{scheduling, scope, cost, risk, resources} and \emph{quality}. To answer this question, evidence from the literature and interviews was used (\Cref{sec:LITERATURE_subcubesat}). While cost is often mentioned as a particular benefit for the selection of pocket-sized spacecraft, it is either not referred to as an optimisation target, or already successfully kept low through mainly in-house manufacturing. Instead, developers place significant weight on the improvement of reliability and the reduction of development time (mainly to fit typical academic cycles in educational environments, or to match specific production capabilities). Development time has been given particular focus in this study, since risk mitigation has already received significant coverage in CubeSat literature. Authors have linked shortcomings in schedule and risk with specific sytemic oversights, with \emph{inadequate time dedicated to testing}, \emph{ad-hoc procedures} and \emph{uncaptured practices} as common mentions, which are in turn linked with specific action areas of the \acl{SYE} discipline (\Cref{sec:LITERATURE_shortcomings}).
 
 \researchquestion{RQ3}{Can a new, tailored \ac{SYE} methodology address a selection of the shortcomings identified in \texttt{RQ2} for \ac{SCS}?}
 
@@ -6452,8 +6520,9 @@ This research question involves the generalisation of the results of \texttt{RQ3
 	\item[Threat 1.] \textbf{Initial data}: The answers to \texttt{RQ1} and \texttt{RQ2}, as well as data for the definition and validation of the \acs{SCS} methodology, were composed based on a literature review and discussions with past \acs{SCS} developers. Due to the relative novelty of the domain, the amount of available data sources was limited, and biased towards academic projects, as opposed to commercial ones. While I attempted to gather data from diverse sources, the generation and publication of further \acl{SYE} results from future missions will be able to provide a stronger foundation for my initial claims.
 
 	\item[Threat 2.] \textbf{Evaluation of metrics}: ``Development time'' was chosen as the target optimisation metric for the \acs{SCS} methodology. Even if time is understood as an easily quantifiable parameter, both its passage and its measurement can depend on factors which are uncontrollable or unrelated to the systems engineering discipline (such as available resources or launch delays).
-	This affects both the answers to \texttt{RQ2} and the evaluation of the methodology in practical case studies. However, no other salient and comparable parameter could be identified.
-	For this work, development time was measured from the start of the design effort until the spacecraft was ready for integration. \todo{Write about other metrics}
+	This affects both the answers to \texttt{RQ2} and the evaluation of the methodology in practical case studies. However, no other salient and comparable parameter could be identified, as other metrics are either not applicable to the \acs{SCS} environment, or lack measured data in the literature. Similarly, while an initial evaluation of ``risk'' was made, I only used a qualitative scale, as numeric data for risk and linked metrics is not generally available.
+
+	Nevertheless, the small scale of Sub-CubeSat projects allows decoupling observations related to development time and risk with connected confounding factors. For this work, development time was measured from the start of the design effort until the spacecraft was ready for integration.
 
 	\item[Threat 3.] \textbf{Case study-based validation}: The validation of the \acs{SCS} methodology (\texttt{RQ3} and \texttt{RQ4}) was based on four case studies. In contrast to, e.g.\@, an experimental setup, the case study approach does not require control over all environmental parameters and can be practically performed against complete missions, which are the main unit of analysis of this study. Typical concerns connected to case studies relate to the misuse of data, small sample sizes, and incorrect generalisations \cite[266]{yinCaseStudyResearch2014}. I address these concerns by documenting the gathered qualitative and quantitative data in \Cref{chap:CASESTUDIES}, by using multiple sources of evidence for claims, and by analytic generalisations of findings in \Cref{sec:CASESTUDIES_results}.
 	
@@ -6618,7 +6687,7 @@ During the synthesis of the new methodology, in addition to introducing modern A
 \begin{itemize}[itemsep=-1pt]
 	\item Considering physical products (in this case, \acs{SCS}) as \textbf{software artifacts}, and attempting to suppress the overhead arising from their physical nature.
 	\item Partition-based Scrum, where \textbf{each iteration is performed on a model matching the fit and form of the intended product}. In contrast to common Agile systems engineering, partition-based Scrum does not require building and maintaining an \acl{MVP}, but places the focus on generating early knowledge about the performance of the intended, flight-ready system, and considers unbuilt modules as ``building blocks'' that can be added later (\Cref{sec:METHODOLOGY_partitionbased_novelty}).
-	\item Lightweight \acs{MBSE} that can combine the functions of modeling and documentation (\Cref{sec:METHODOLOGY_edm_novelty}). Lightweight \acs{MBSE} prioritises development time against accuracy, relying on a tool-based approach, and its success is measured by metrics typically associated with text-based documentation.
+	\item Lightweight \acs{MBSE} that can combine the functions of modelling and documentation (\Cref{sec:METHODOLOGY_edm_novelty}). Lightweight \acs{MBSE} prioritises development time against accuracy, relying on a tool-based approach, and its success is measured by metrics typically associated with text-based documentation.
 	\item Methodologically, this thesis introduces a software case study-based approach, where open-source software libraries with similar functionality are compared on a similar environment at runtime, using a fuzz testing tool, in order to predict the emergence of faults (\Cref{sec:METHODOLOGY_software_reliability}).
 	\item A metric-based counter-factual cross-case analysis, where the results of applied treatments to one case are compared against measurements or estimations from the literature for the converse case (\Cref{chap:CASESTUDIES}).
 \end{itemize}

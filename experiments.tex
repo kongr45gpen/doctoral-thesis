@@ -98,8 +98,69 @@ Many citations \cite{AlbaMissionServices,alvarezAgileMethodologiesApplied2021,at
 
 \newpage
 hello
-\margincite{venturiniImprovingMissionSuccess2017}%
-briotehrs
+
+\centering
+%\small
+\begin{adjustbox}{center,width=1.1\linewidth}
+  \def\arraystretch{1.3}
+\begin{tabular}{p{5cm}*{9}{>{\centering\arraybackslash}p{2.2cm}}}
+\toprule
+&
+\multicolumn{3}{c}{\textbf{Technical Management}} &
+\multicolumn{3}{c}{\textbf{System Description}} &
+\multicolumn{3}{c}{\textbf{System Realisation}} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10}
+&
+Lifecycle &
+Requirements &
+Risk Management &
+Modelling &
+Knowledge
+Management &
+Interface
+Management &
+Verification \&
+Validation &
+Design
+Solution &
+Implementation  \\
+\midrule
+
+Inadequate time dedicated to testing 
+& correlated &    &    &  &  &  &  correlated   &  &   \\
+
+Unclear definition of scope \& objectives
+&  & correlated   &    &  &  &  &    &  &     \\
+
+Bad interface documentation
+&  &    &  &   correlated & correlated & correlated   &    &  &    \\
+
+Late manufacturing/no prototyping
+& correlated &      &  &  &  &  &    &  &      \\
+
+Slow: design, analysis, functional testing
+&  correlated&      &  &  &  &  & correlated   &  &     \\
+
+Software/hardware design errors
+&  &    &  &  &  &  &    &  & correlated     \\
+
+Ad-hoc procedures for design, testing
+&  &    &  &  &    &  & correlated   &  & correlated     \\
+
+Poor workmanship
+&  &    &  &  &    &  &    &  & correlated    \\
+
+Uncaptured best practices
+&  &    &  &  &    &  &    & correlated  &      \\
+
+Unreliability-by-design
+&  &    & correlated &  &    &  &    & correlated & correlated     \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
 
 \printbibliography
 
