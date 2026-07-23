@@ -166,6 +166,16 @@ under the License.
 
 \end{fullwidth}
 
+\cleardoublepage
+\chapter*{Acknowledgements}
+\label{sec:acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+\justify
+
+\begin{fullwidth}
+I would like to thank everyone.
+\end{fullwidth}
 
 %%
 % Start the main matter (normal chapters)
@@ -208,7 +218,7 @@ Nano-satellites are mostly represented by the CubeSat form factor, a concept int
 
 CubeSats are designed in a modular format consisting of \qtyproduct{10 x 10 x 10}{\centi\meter} cubes (termed ``U(nits)''). Subsystems typically follow the ``PC/104'' mechanical standard for subsystems, along with a shared electrical specification \cite{BoardSpecificationLibreCube}.
 
-The advances of miniaturisation in electronics since the 1980s have gradually increased the capabilities and utility of nano-satellites \cite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more CubeSats.\footnote{21 constellations of 5 or more nano-satellites have been launched so far. Additionally, CubeSats represent over \qty{90}{\percent} of all nano-satellites launched  \autocite{kuluNanosatsDatabase2023}} Most CubeSats are orbiting in \acs+{LEO}, with a few missions also planned and launched for deep space \autocite{walkerDeepspaceCubeSatsThinking2018}.
+The advances of miniaturisation in electronics since the 1980s have gradually increased the capabilities and utility of nano-satellites \cite{sweetingModernSmallSatellitesChanging2018}. Services such as Earth Observation, Telecommunications and Technology Demonstration are very frequently covered by missions comprising one or more CubeSats.\footnote{21 constellations of 5 or more nano-satellites have been launched so far. Additionally, CubeSats represent over \qty{90}{\percent} of all nano-satellites launched  \autocite{kuluNanosatsDatabase2023}.} Most CubeSats are orbiting in \acs+{LEO}, with a few missions also planned and launched for deep space \autocite{walkerDeepspaceCubeSatsThinking2018}.
 
 The low cost of CubeSat launches (typically \(\sim\)\SI{100000}{USD/\kilogram} \autocite{crispSmallSatelliteLaunch2014}) has significantly reduced the entry barrier to space
 \autocite{poghosyanCubeSatEvolutionAnalyzing2017,sweetingModernSmallSatellitesChanging2018}.
@@ -1484,17 +1494,17 @@ On the other hand, \citeauthor{kalusCriteriaSoftwareProcess2013} \autocite{kalus
 
 \subsection[Current SCS Shortcomings]{Current \acs{SCS} Shortcomings}
 \label{sec:LITERATURE_shortcomings}
-While the available data from \acs{SCS} is limited, the available data from the literature and interviews can be summarised into the following points, regarding commonly experienced issues in \acl{SCS} engineering:
+While the available data from \acs{SCS} is limited, results from the literature and interviews can be summarised into the following points, regarding commonly experienced issues in \acl{SCS} engineering:
 \begin{itemize}[itemsep=-1ex]
-	\item Based on data from \autocite{kuluNanosatsDatabase2023}, at least \textbf{15 out of 93}\footnote{Due to a lack of reporting, the states of many \acs{SCS} in \citeauthor{kuluNanosatsDatabase2023} database is unknown. Here, a conservative estimate is used in order to establish a lower bound, where unknown spacecraft are assumed to be successful. This represents a \(\geq 16\%\) failure rate.} \acs{SCS} launched until \citeyear{kuluNanosatsDatabase2023} have not communicated, signifying a ``\acl{DOA}'' state.
-	\item \citeauthor{hermanExperimentalResultsModular2025} also emphasise a high failure rate for PocketQube missions, empirically citing as failure causes:
+	\item Based on data from \autocite{kuluNanosatsDatabase2023}, at least \textbf{15 out of 93} \acs{SCS} launched until \citeyear{kuluNanosatsDatabase2023} have not communicated\footnote{Due to a lack of reporting, the states of many \acs{SCS} in \citeauthor{kuluNanosatsDatabase2023} database is unknown. Here, a conservative estimate is used in order to establish a lower bound, where unknown spacecraft are assumed to be successful. This represents a \(\geq 16\%\) failure rate.}, signifying a ``\acl{DOA}'' state.
+	\item \citeauthor{hermanExperimentalResultsModular2025} also emphasise a high failure rate for PocketQube missions, empirically citing as failure causes: \autocite{hermanExperimentalResultsModular2025}
 	\begin{enumerate}[itemsep=-3ex]
 		\item Unsuccessful antenna deployment
 		\item Lack of protection against background radiation
 		\item A culture not prioritising reliability
 		\item Lack of redundancy
 	\end{enumerate}
-	\item As shown in \Cref{tab:i_otherdevtime}, a large variance can be observed between the total development time of different missions, even amongst projects with similar form factors, with values ranging between \qtyrange[range-units = single]{1}{5}{years} (\Cref{sec:INTRODUCTION_motivation}). This contrasts the expectations and needs for short development durations, which have been identified in the literature \autocite{heinAttoSatsChipSatsOther2019,pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and interviews \Cref{sec:LITERATURE_interviews}.
+	\item As shown in \Cref{tab:i_otherdevtime}, a large variance can be observed between the total development time of different missions, even amongst projects with similar form factors, with values ranging between \qtyrange[range-units = single]{1}{5}{years} (\Cref{sec:INTRODUCTION_motivation}). This contrasts the expectations and needs for short development durations, which have been identified in the literature \autocite{heinAttoSatsChipSatsOther2019,pradhanShorteningDeliveryTime2020,uludagDelfiPQInOrbitPerformance2025} and interviews (\Cref{sec:LITERATURE_interviews}).
 	\item Interviews identified \emph{development time}, \emph{cost}, \emph{reliability} and \emph{production volume} as mission constraints. Additionally, \textbf{software} was identified as common source of errors during development, which were often only resolved until shortly before launch, or not at all (\Cref{sec:LITERATURE_interviews}).
 	\item The reduction of cost has been identified as an objective of \acs{SCS} systems, both with or without accounting for labour costs \autocite{sperettaCubeSatsPocketQubesOpportunities2016,heinAttoSatsChipSatsOther2019}. However, it is not mentioned as an open problem in the investigated literature, presumably due to an inherent low-cost nature of \acs{SCS}, combined with the use of low-cost infrastructure already optimised for CubeSat systems. Similarly, quality and scope (\Cref{tab:i_success_factors}) have not been identified as significant optimisation targets.
 \end{itemize}
@@ -1765,7 +1775,7 @@ Test-Driven Development (TDD) is a software development method which prioritises
 Because of the introduction of Agile methods into hardware development, a number of hardware-specific recommendations or frameworks have also been proposed for different scales of physical systems. However, there is no single hardware-specific framework that enjoys considerably widespread adoption \autocite{atzbergerAgileDevelopmentPhysical2020}, with the field being supported instead by various proprietary approaches. Nevertheless, most developers tailor software-based Agile ideas for their use \autocite{cooperAgileDevelopmentManufacturing2023}.
 
 \subparagraph{Agile-Stage-Gate}
-\citeauthor{cooperAgileDevelopmentManufacturing2023} \autocite{cooperAgileDevelopmentManufacturing2023} observed an emergent hybrid model that is used by physical product developers, which replaces traditional project management methods with Scrum, but maintains traditional stages and gates \emph{``for strategic and directional reasons''}. In contrast to Scrum, iterations can last between two weeks and three months, stand up meetings are only held two--three times per week, and each iteration has the goal of presenting a ``demo'' to management or customer.
+\citeauthor{cooperAgileDevelopmentManufacturing2023} \cite{cooperAgileDevelopmentManufacturing2023} observed an emergent hybrid model that is used by physical product developers, which replaces traditional project management methods with Scrum, but maintains traditional stages and gates \emph{``for strategic and directional reasons''}. In contrast to Scrum, iterations can last between two weeks and three months, stand up meetings are only held two--three times per week, and each iteration has the goal of presenting a ``demo'' to management or customer.
 
 \subparagraph{Slice-Based Integration}
 \citeauthor{radekaWhenAgileGets2022} \autocite{radekaWhenAgileGets2022,iberleAgileGetsPhysical2022} also proposed a Scrum-based framework, based on the concept of a \textbf{slice}, which is an independently verifiable feature or set of features of a product\footnote{Also see \Cref{def:slice}.}. Then, instead of working on the entire product, teams have a clear set of functionality that needs to be achieved at the end of every timebox. This purportedly helps coordinating hardware and software development. Likewise for verification, different test sets are defined and distributed across iterations.
@@ -1966,7 +1976,7 @@ As analysed in \Cref{sec:LITERATURE_gap}, I have chosen \textbf{development time
 
 The ``target audience'' of the methodology includes the groups of ``hobbyists'' and ``smallsat developers'', as classified by the \citeauthor{swartwoutYouSayPicosat2018} taxonomy \autocite{swartwoutYouSayPicosat2018}.\footnote{Also see \Cref{sec:LITERATURE_cubesat_environment} for an explanation of the Swartwout taxonomy.} This scope excludes ``traditional contractors'' and large constellation developers. This selection is inspired by the common characteristics of the two former groups (\Cref{tab:mission-characteristics}), which also indicate that they are more receptive of a new, Agile-centred approach. The lack of larger scale ``traditional contractors'' within the \acs{SCS} ecosystem as of this moment also prevents data gathering and experimentation for these types of organisations.
 
-The partitioning of the \acs{SCS} methodology is based on \Cref{fig:i_nasa_sye_decomposition}, and shown in \Cref{tab:m_toc}. Not all aspects of \acs{SCS} \acs{SYE} are evaluated; Instead, only those with a linked shortcoming, and where enough data was gathered, are elaborated here (\Cref{tab:l_correlation_survey}).}
+The partitioning of the \acs{SCS} methodology is based on \Cref{fig:i_nasa_sye_decomposition}, and shown in \Cref{tab:m_toc}. Not all aspects of \acs{SCS} \acs{SYE} are evaluated; Instead, only those with a linked shortcoming, and where enough data was gathered, are elaborated here (\Cref{tab:l_correlation_survey}).
 
 % Booktabs with each of the following subsections
 \begin{table*}
@@ -2170,7 +2180,6 @@ While most participants in the team will be developers, responsible for technica
 The final role defined by the framework is that of the \emph{Scrum Master}, who is responsible for maintaining the Agile processes and coaches the team towards self-management. While it is seen as a critical role by the Scrum guide, it has been by far the most controversial role in practical settings, especially when its responsibilities are not handled correctly, and is usually limited by the team's needs and competencies \autocite{kustersScreamGuide2020,doshiDownfallScrumMaster2025}. As such, I will not include the role of Scrum Master in the tailoring of this methodology -- however, the tasks performed are still essential, especially for younger teams that are not experienced in adherence to specific methodologies.
 
 \begin{table*}[h]
-	\caption{Sat-Scrum team responsibilities}
 \begin{tabularx}{\linewidth}{@{}XX@{}}
 	\toprule
  \textbf{Product Owner}                                            & \textbf{Developers}                                                                          \\ \midrule
@@ -2182,6 +2191,7 @@ The final role defined by the framework is that of the \emph{Scrum Master}, who 
 	 Setting up interactions with stakeholders                         & Participating in interactions with stakeholders                            \\
 	\bottomrule
 \end{tabularx}
+\caption{Sat-Scrum team responsibilities}
 \end{table*}
 
 \subparagraph{The Sprint}
@@ -2599,7 +2609,7 @@ A potential data model for task management would have to support the typical att
 	\item Priority
 	\item Current status
 	\item Target iteration
-	\item Assigned team member(s)\footnote{Potentially more than 1 for strictly collaborative tasks}
+	\item Assigned team member(s)\footnote{Potentially more than 1 for strictly collaborative tasks.}
 \end{itemize}
 with attributes typically found in project management models, such as:
 \begin{itemize}[itemsep=-3ex]
@@ -3426,7 +3436,7 @@ The most critical physical aspects of a design\footnote{Such as the verification
 
 The fidelity of these models and analyses can vary. For example, a power consumption analysis might simply creating a spreadsheet with the nominal consumption values of all components and an appropriate margin, or a detailed time-domain simulation of component behaviour during different mission phases, and how they affect electrical converter efficiency. Different fidelities can be also sought in thermal and structural analyses, where the spatial/temporal resolution can be configured and different models can be used for the representation of nodes and interfaces.
 
-Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} relies on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}. Complete software emulation of external devices can be also used to verify functional requirements.} and full functional or mission  tests are executed manually or (semi)automatically.
+Similarly, testing processes can involve different types of equipment and fidelity. Functional testing can take place in an ambient environment, usually in a so-called ``FlatSat'' configuration, where all subsystems are laid out in a flat surface\marginnote[-2cm]{In the case that \aclp{EM} are not available for all subsystems, different methods can be used to perform a reduced, yet complete satellite functional test. \acl{HIL} relies on software components that test specific hardware, or alternatively hardware/software-based subsystem mocks can be used that emulate missing parts \autocite{kiesbyeHardwareInTheLoopSoftwareInTheLoopTesting2019}. Complete software emulation of external devices can be also used to verify functional requirements.} and full functional or mission  tests are executed manually or (semi)automatically.
 The required frequency of functional tests for complex mission means that it is often impossible to test the complete functionality of a system at once (especially in cases where payload runs need multiple days to complete). Different test coverage models are therefore typically defined in missions.
 \marginnote{Typical test coverage models can include: \autocite{ECSS-E-ST-10-03C}
 \begin{itemize}
@@ -3563,8 +3573,6 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 
 
 \begin{table*}[h]
-	\caption[SCS main software operability requirements]{\acs{SCS} main software operability requirements}
-	\label{tab:m_software_requirements}
 	\begin{tabularx}{\linewidth}{@{}lX@{}}
 		\toprule
 		ID & Text \\ \midrule
@@ -3588,6 +3596,8 @@ I provide an initial such tailoring in \Cref{tab:m_software_requirements}. This 
 		260 & Invalid datastreams received from the OBSW shall not preclude its functional requirements. \\
 		270 & Nominal operation of the OBSW (i.e.~without any radiation effects, but with any potential input) shall not lead to an exception or lock-up. \\ \bottomrule
 	\end{tabularx}
+	\caption[SCS main software operability requirements]{\acs{SCS} main software operability requirements}
+	\label{tab:m_software_requirements}
 \end{table*}
 
 In general, the focus of software developers should be to achieve a balance between delegating functionality and complexity to the spacecraft and the ground segment. On the one hand, performing calculations and finely controlling the spacecraft from the ground makes it easier for operators to handle unexpected issues and improve functionality. On the other, on-the-edge processing is necessary to reduce the downlinked data in the case of restricted data budgets.
@@ -3766,8 +3776,6 @@ The selected frameworks are:
 For this research, I selected 4 frameworks written in different languages (C++, Rust, Ada and Python) that implement a similar set of functionality representing the needs of typical \acs{OBC} software (\Cref{tab:m_software_requirements}). In order to extract information about the actual number and cause of defects in each framework, I will compile and execute the \acs{OBC} software, and then perform automated testing using \textbf{fuzzing}. For each identified major defect, I will evaluate the influence of programming language choice, and assess whether a different programming language would prevent the introduction of the fault, or if another quality assurance measure would have prevented it.
 
 \begin{table*}[h]
-	\caption{Frameworks under test}
-	\label{tab:m_software_fuzz_frameworks}
 	\renewcommand{\arraystretch}{1.1}
 	\begin{tabularx}{\textwidth}{@{}p{3cm}XXXX@{}}
 		\toprule
@@ -3799,6 +3807,8 @@ For this research, I selected 4 frameworks written in different languages (C++, 
 		%Repository & https://gitlab.com/acubesat/obc/obc-software & https://github.com/pycubed/software & https://github.com/cubesatlab/cubedos & https://github.com/visionspacetec/Prust-FreeRTOS \\ \bottomrule
 		\\ \bottomrule
 	\end{tabularx}
+	\caption{Frameworks under test}
+	\label{tab:m_software_fuzz_frameworks}
 	% See rayLargescaleStudyProgramming2017
 \end{table*}
 
@@ -3856,7 +3866,7 @@ Since the number of faults and frameworks tested do not allow statistical analys
 		Token Count & \num{51024} & \num{48182} & \num{21022} & \num{26362}     \\
 		%Average Modified Cyclomatic Complexity (MCCN) & 2.3 & 3.1 & 2.3 & 2.4  &  &  \\ \bottomrule
 		Average \acs{CCN} & \num{2.3} & \num{3.1} & \num{3.0} & \num{1.87} \\ \bottomrule
-	\end{tabular}
+	\end{tabular}\vspace{4ex}%vadERR
 	\caption{Static Analysis results}
 	\label{tab:m_software_fuzz_static}
 \end{table*}
@@ -6080,7 +6090,7 @@ Development time depends on project complexity and team size. Cost increases due
 \\
 5 & \textbf{Iterating over partitions} & \cfno & None available. &  &  & \\
 6 & \textbf{Robust software framework} & \cfno & \cfactualdata & System complexity. Team expertise. Team size. \acs{COTS} availability. & Software performance and reliability issues identified, caused by technical aspects of the chosen software architecture and technologies. Development time for software changes influenced heavily by expertise, prior work, hardware, and features. No cost change factors identified. & Development time depends on low-level factors. Cost remains similar. Risk is reduced.  \\
-7 & \textbf{Robotic Process Automation} & \cfno & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team expertise. Available facilities. & On the one hand, manual testing procedures were not repeatable, leading to increased development time. On the other hand, due to the ``photographic'' nature of the project,\acs{RPA} would require additional effort which cannot be easily estimated. Due to the availability of equipment and tooling, \acs{RPA} would add no identifiable costs. & \cfnorevisions \\ \bottomrule
+7 & \textbf{Robotic Process Automation} & \cfno & \cfestimateddata & Degree of ``physicality''. Testing complexity. Team expertise. Available facilities. & On the one hand, manual testing procedures were not repeatable, leading to increased development time. On the other hand, due to the ``photographic'' nature of the project, \acs{RPA} would require additional effort which cannot be easily estimated. Due to the availability of equipment and tooling, \acs{RPA} would add no identifiable costs. & \cfnorevisions \\ \bottomrule
 \end{tabularx}
 \end{adjustbox}
 \caption{Counter-factual evaluation for ChiPySat (analytical results)}
@@ -6756,7 +6766,93 @@ Finally, this thesis identified tooling as a substantial area of interest for sm
 \chapter{Software Errors Detected during Fuzz Testing}
 \label{app:sw_errors_detected}
 
-\todo{[TODO]}
+\begin{fullwidth}
+This appendix will present some of the software defects detected as part of the mini case study of CubeSat \acs{OBC} frameworks. These defects were discovered using the LibAFL tester, as described in \Cref{METHODOLOGY_software_reliability}, and are listed here to provide insight behind the failure modes of different programming languages.
+
+\section*{C++}
+The following example is taken from AcubeSAT's implementation of the \acs{ECSS} \acs{PUS} services \cite{tsouposOnBoardComputerAcubeSAT2025}, and specifically the function responsible for parsing the received \acs{ECSS}-compatible messages:
+\begin{minted}[linenos,fontsize=\small]{cpp}
+Message MessageParser::parse(const uint8_t* data, uint32_t length) {
+	ASSERT_INTERNAL(length >= CCSDSPrimaryHeaderSize, ErrorHandler::UnacceptablePacket);
+
+	uint16_t const packetHeaderIdentification = (data[0] << 8) | data[1];
+	uint16_t const packetSequenceControl = (data[2] << 8) | data[3];
+	uint16_t const packetDataLength = (data[4] << 8) | data[5];
+
+	// Individual fields of the CCSDS Space Packet primary header
+	uint8_t const versionNumber = data[0] >> 5;
+	Message::PacketType const packetType = ((data[0] & 0x10) == 0) ? Message::TM : Message::TC;
+	bool const secondaryHeaderFlag = (data[0] & 0x08U) != 0U;
+	ApplicationProcessId const APID = packetHeaderIdentification & static_cast<ApplicationProcessId>(0x07ff);
+	auto sequenceFlags = static_cast<uint8_t>(packetSequenceControl >> 14);
+	SequenceCount const packetSequenceCount = packetSequenceControl & (~0xc000U); // keep last 14 bits
+
+	// Returning an internal error, since the Message is not available yet
+	ASSERT_INTERNAL(versionNumber == 0U, ErrorHandler::UnacceptablePacket);
+	ASSERT_INTERNAL(secondaryHeaderFlag, ErrorHandler::UnacceptablePacket);
+	ASSERT_INTERNAL(sequenceFlags == 0x3U, ErrorHandler::UnacceptablePacket);
+	ASSERT_INTERNAL(packetDataLength == (length - CCSDSPrimaryHeaderSize), ErrorHandler::UnacceptablePacket);
+
+	Message message(0, 0, packetType, APID);
+	message.packetSequenceCount = packetSequenceCount;
+
+	if (packetType == Message::TC) {
+			parseECSSTCHeader(data + CCSDSPrimaryHeaderSize, packetDataLength, message);
+	} else {
+			parseECSSTMHeader(data + CCSDSPrimaryHeaderSize, packetDataLength, message);
+	}
+
+	return message;
+}
+\end{minted}
+The fault here lies in \textbf{line 6} combined with \textbf{lines 26 and 28}. The length of the message (\mintinline{cpp}|packetDataLength|) is parsed directly from user input (line 6). The length is checked in line 20, but in this codebase, \mintinline{cpp}|ASSERT_INTERNAL| only produces an error message, and does not halt execution. In lines 26 and 28, the length is then passed to \mintinline{cpp}|parseECSSxxHeader()| functions, which perform array access on \mintinline{cpp}|data| without any checks.
+
+This leads to a \textbf{buffer over-read}, causing undefined behaviour, which was translated to a segmentation fault, and therefore program crash. This error is identified as \textbf{\href{https://cwe.mitre.org/data/definitions/125.html}{CWE-125}: Out-of-bounds Read} in the \acs{CWE} database \cite{021_Martin_revised}. Unprotected array reads are common in languages such as C/C++, and can lead to undefined behaviour if secure ranges are not guaranteed.
+
+\section*{Ada}
+
+The following example is taken from the CubedOS network transport interface, responsible for injesting \acs{TC} from the network and convering it to an internal representation \cite{brandonCubedOSVerifiedCubeSat2017}:
+\begin{minted}[linenos,fontsize=\small]{Ada}
+function Read_Stream_Message (
+								Data : in Ada.Streams.Stream_Element_Array;
+								Last : in Ada.Streams.Stream_Element_Offset)
+								return Message_Manager.Message_Record is
+	Sender_Domain : Message_Manager.Domain_ID_Type;
+	Sender_Module : Message_Manager.Module_ID_Type;
+	Receiver_Domain : Message_Manager.Domain_ID_Type;
+	Receiver_Module :Message_Manager. Module_ID_Type;
+	Request_ID : Message_Manager.Request_ID_Type;
+	Message_ID : Message_Manager.Message_ID_Type;
+	Message : Message_Manager.Message_Record;
+begin
+
+	Sender_Domain := Message_Manager.Domain_ID_Type(Data(0));
+	Sender_Module := Message_Manager.Module_ID_Type(Data(1));
+	Receiver_Domain := Message_Manager.Domain_ID_Type(Data(2));
+	Receiver_Module := Message_Manager.Module_ID_Type(Data(3));
+	Request_ID := Message_Manager.Request_ID_Type(Data(4));
+	Message_ID := Message_Manager.Message_ID_Type(Data(5));
+
+	Message := Message_Manager.Make_Empty_Message
+	(Sender_Address => (Sender_Domain, Sender_Module),
+		Receiver_Address => (Receiver_Domain, Receiver_Module),
+		Request_ID      => Request_ID,
+		Message_ID      => Message_ID);
+
+	for I in 6 .. Last loop
+		Message.Payload(Integer(I) - 6) := XDR.XDR_Octet(Data(I));
+	end loop;
+
+	return Message;
+end Read_Stream_Message;
+\end{minted}
+
+The fault here can be found in lines 14--19. The types defined in these lines (\mintinline{Ada}|Domain_ID_Type|, \mintinline{Ada}|Module_ID_Type|\textellipsis) do not have the same range as the data coming from the stream. As such, the conversions in these lines may fail, if the user provides an out of range value (for example, the maximum value of \mintinline{Ada}|Module_ID_Type| in this example is \texttt{16}). Additionally, an out-of-bound read error may occur if \mintinline{Ada}|Data| is shorter than 6 bytes long.
+
+The first error described corresponds to \textbf{\href{https://cwe.mitre.org/data/definitions/704.html}{CWE-704}: Incorrect Type Conversion or Cast} in the \acs{CWE} database. In Ada, it will lead to an exception, but not undefined behaviour. In this framework, exceptions were unhandled and would crash the executable. However, I note that this function, written as an interface with a networking stack, may not have been intended for flight.
+
+\end{fullwidth}
+
 
 
 
