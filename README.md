@@ -3,7 +3,7 @@
 **"Systems Engineering for Sub-CubeSat Spacecraft"**
 
 Author: Konstantinos Kanavouras  
-Supervisor: Prof. Dr. Andreas Hein
+Supervisor: Prof. Dr. Andreas Hein  
 Institution: University of Luxembourg
 
 ## This repository
