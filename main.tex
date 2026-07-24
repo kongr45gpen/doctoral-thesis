@@ -176,7 +176,7 @@ under the License.
 \begin{fullwidth}
 This thesis would not have been possible without the work, contributions and support from my colleagues, friends, and family over this four-year period.
 
-I am grateful to Andreas for mentoring and supporting me through this journey, and giving me the opportunity to work on a very unique topic, which combines multi-disciplinary research, practice, and of course, sending hardware into space. I am also grateful to colleagues in SpaSys, Citlali, Olivia, Jan, 
+I am grateful to Andreas for mentoring and supporting me through this journey, and giving me the opportunity to work on a very unique topic, which combines multi-disciplinary research, practice, and of course, sending hardware into space. I am also grateful to my colleagues in SpaSys, Citlali, Olivia, Jan, 
 Spyros, Niki, Jonas, Johannes, Carmen, Angel, Alex, Vittorio, Loveneesh, Amin, Amelie, and Alesia, for being excellent friends throughout this journey, putting up with my crazy ideas, and contributing to space missions with strength and skill that would normally require dozens of engineers.
 
 I would like to thank Zac Manchester, Neil Khera, and the entire group from Carnegie Mellon University's Robotic Exploration Lab, for welcoming me to Pittsburgh and allowing me to make the most out of my 5-month stay, whether that involved camping trips or state-of-the-art imaging methods.
@@ -3470,7 +3470,7 @@ The required frequency of functional tests for complex mission means that it is 
 \begin{itemize}
 	\item (Very) Reduced Functional Test
 	\item Full Functional Test
-	\item ``Day-in-life`` Test
+	\item ``Day-in-life'' Test
 	\item Mission Test
 	\item End-To-End Test
 	\item Failure recovery Test 
@@ -3728,7 +3728,7 @@ A \citeyear{tohmaEstimationParametersHypergeometric1991} study of a \num{200000}
 
 \end{axis}
 \end{tikzpicture}
-\caption{Cumulative faults identified after testing \citeyear{tohmaEstimationParametersHypergeometric1991}}
+\caption{Cumulative faults identified after testing in \cite{tohmaEstimationParametersHypergeometric1991}}
 \label{fig:m_software_testing_ds1}
 \end{marginfigure}
 
@@ -4006,8 +4006,6 @@ The performance of an \acs{SCS} communication system is physically limited by th
 I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Proprietary protocols may be used instead when supported by a specific \acs{IC}, such as CC430 or nRF24. Reception of telemetry can be further derisked by participating in a ground station network, such as SatNOGS or TinyGS\footnote{for LoRa only}.
 
 \begin{table*}[h]
-\caption[][1ex]{Communication protocols typically used in CubeSats and pocket-sized spacecraft}
-\label{tab:m_comms_protocols}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\linewidth}{@{}lp{5cm}X@{}}
 	\toprule
@@ -4020,6 +4018,8 @@ I provide a list of communication protocols in \Cref{tab:m_comms_protocols}. Pro
 	% https://gitlab.com/librespacefoundation/osdlp
 	\bottomrule
 \end{tabularx}
+\caption{Communication protocols typically used in CubeSats and pocket-sized spacecraft}
+\label{tab:m_comms_protocols}
 \end{table*}
 
 %\subsection[SCS Debugging Interfaces]{\acs{SCS} Debugging Interfaces}
@@ -4184,7 +4184,7 @@ A list of example recommendations is provided in \Cref{tab:methodology_indicativ
 \begin{table*}[h]
 	\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 	\begin{adjustbox}{center}
-	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.5cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
+	\begin{tabularx}{1.1\textwidth}{@{}>{\raggedright}m{3.6cm}>{\raggedright\footnotesize}m{2.5cm}X@{}}
 		\toprule
 		\multicolumn{2}{l}{Task} & Example Tools \\ \midrule
 		Requirements Management \cite{pankevichOpenSourceRequirements2025} & & Jira, GitLab, Open-Needs, Doorstop, Duro, Notion, \emph{spreadsheets} \\
@@ -4533,8 +4533,9 @@ Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK})
 
 To make the design highly configurable without physical modifications, all processing was done in software, using an \acs{ADC} for reception, with an oversampling factor of \( \times 5 \) to assist in clock recovery.
 
+The signal path of the received pulses was first fed into a band-pass filter to eliminate noise and background light.
 \marginnote{An alternative plan for the \ac{VLC} system involved using Colour Shift Keying instead of \acs{OOK}, which roughly corresponds to \ac{RF} frequency modulation and could have better noise resistance. \acs{OOK} was however chosen to keep complexity low \autocite{monteiroDesignImplementationColorShift2014}.}%vadERR
-The signal path of the received pulses was first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also took place in software. Bit synchronisation to the transmitter's clock happened by detecting the edges of the transmitted Manchester code, while frame synchronisation was performed by waiting for a synchronisation word.
+The synchronisation itself also took place in software. Bit synchronisation to the transmitter's clock happened by detecting the edges of the transmitted Manchester code, while frame synchronisation was performed by waiting for a synchronisation word.
 
 At a system level, the secondaries transmitted data at periodic \qty{1.5}{\second} intervals, while the primary was constantly waiting for data reception.
 Once data is received, its integrity was checked and stored on the on-board \ac{NVM}. A statistical aggregation was then broadcast by the primary over the main periodic \acs{RF} beacon.
