@@ -1,4 +1,4 @@
-\documentclass[a4paper,nobib,justified]{tufte-book}
+\documentclass[a4paper,nobib,justified,final]{tufte-book}
 
 \hypersetup{colorlinks}
 
@@ -174,7 +174,24 @@ under the License.
 \justify
 
 \begin{fullwidth}
-This thesis is the 
+This thesis would not have been possible without the work, contributions and support from my colleagues, friends, and family over this four-year period.
+
+I am grateful to Andreas for mentoring and supporting me through this journey, and giving me the opportunity to work on a very unique topic, which combines multi-disciplinary research, practice, and of course, sending hardware into space. I am also grateful to colleagues in SpaSys, Citlali, Olivia, Jan, 
+Spyros, Niki, Jonas, Johannes, Carmen, Angel, Alex, Vittorio, Loveneesh, Amin, Amelie, and Alesia, for being excellent friends throughout this journey, putting up with my crazy ideas, and contributing to space missions with strength and skill that would normally require dozens of engineers.
+
+I would like to thank Zac Manchester, Neil Khera, and the entire group from Carnegie Mellon University's Robotic Exploration Lab, for welcoming me to Pittsburgh and allowing me to make the most out of my 5-month stay, whether that involved camping trips or state-of-the-art imaging methods.
+
+I also thank the Libre Space Foundation not just for their open-source designs, many of which were used in our own missions, but also for their helpfulness and support towards the space engineering community. I extend this gratitude to the entire open-source CubeSat, PocketQube and ChipSat community, for sharing data which was foundational to many parts of this work. 
+
+I would not have been able to start this thesis without the work and support from my old colleagues in AcubeSAT and SpaceDot in Greece, who continue to promote space engineering education from a small lab in a way I haven't seen anywhere else. Special thanks to Anastasis for being both an exceptional colleague and an exceptional friend, for all the detailed discussions on systems engineering and project management, and for always being there for a last-minute review, no matter how late.
+
+Next, a thank you to my dear friends around the world, Asteris, Elissavet, the two John K.s, Panagiotis, and Thanasis, for the endless conversations, for opening my mind to new ideas, for the endless hours of gaming sessions, and for letting me use your couches once in a while. A special thank you to Maria, whose joy and wit made me the person I am today, for supporting me through my entire academic journey, and for continuing to be a role model for me after 12 years of friendship.
+
+To my family, thank you for making this journey possible, and for being there for me any time I ask.
+
+Finally, to Eleftheria, thank you for being there for me every second during those 4 years, for being the person I can confide in, for making my life more colourful during the happy times, and for never giving up on me during the hard times.
+I could not be happier that we are entering this new chapter of our lives together.
+
 \end{fullwidth}
 
 %%
@@ -2573,10 +2590,10 @@ Partition-based Sat-Scrum can also be compared to previous Agile literature.
 The most common strategies used involve creating a \emph{Minimum Viable Product} or a \emph{Walking Skeleton}, where a minimally functional version of a product is built and then iterated upon, performing incremental re-architecture \autocite{cockburnCrystalClearHumanpowered2004}. This concept was extended to \emph{small vertical slices}, where a focus is given to present complete functionality in every sprint, instead of generic product improvement \autocite{ratnerVerticalSlicingSmaller2011}. \citeauthor{iberleAgileGetsPhysical2022} also explore the concept of named slices to describe different functionality that cover only parts of a system's architecture. Recent studies of Agile systems engineering practice describe the use of a scaled Scrum method, usually augmented with prototype development or traditional Stage-Gates \NextCitationOffset{-0.8cm}\autocite{atzbergerAgileDevelopmentPhysical2020,cooperAgileDevelopmentManufacturing2023}. In contrast to the \acl{SOTA}, partition-based Sat-Scrum introduces the following novel concepts:
 \begin{itemize}[itemsep=-2pt]
 	\item Partitions are not progressive, and different levels of fidelity can be used across iterations. Partition-based Sat-Scrum also supports reducing fidelity compared to a previous iteration, when development needs to focus on a particular area.
-	\item Traditional prototypes may involve creating a separate design\footnote[][-2.8cm]{E.g.\@ a mockup, prototype, ground testing interface or digital twin.} for early iterations. Partition-based Sat-Scrum, on the other hand, views partitions as sets of modular ``bricks''\footnote[][-2.8cm]{that is, modules}: In every iteration, the system should ideally be built with a form as close as possible to the intended result, and partitioning is done by removing unneeded parts as ``building blocks''.\footnote[][-3.8cm]{In practical terms, the ideal partition-based lifecycle would involve establishing a system structure and then choosing which subsystems (\emph{modules}) need to be iterated on and assembled on every iteration. For example, an iteration of a PocketQube might involve fine-tuning the \acl{EPS}, in which case the \acs{ADCS} subsystem does not need to be produced. Compared to e.g.\@ a FlatSat, this approach reduces the overhead associated with maintaining a different test model and allows developers to reason about the form, fit and function of the entire system, without the necessity of physically implementing it entirely.}
+	\item Traditional prototypes may involve creating a separate design\footnote[][-2.7cm]{E.g.\@ a mockup, prototype, ground testing interface or digital twin.} for early iterations. Partition-based Sat-Scrum, on the other hand, views partitions as sets of modular ``bricks''\footnote[][-2.8cm]{that is, modules}: In every iteration, the system should ideally be built with a form as close as possible to the intended result, and partitioning is done by removing unneeded parts as ``building blocks''.\footnote[][-3.8cm]{In practical terms, the ideal partition-based lifecycle would involve establishing a system structure and then choosing which subsystems (\emph{modules}) need to be iterated on and assembled on every iteration. For example, an iteration of a PocketQube might involve fine-tuning the \acl{EPS}, in which case the \acs{ADCS} subsystem does not need to be produced. Compared to e.g.\@ a FlatSat, this approach reduces the overhead associated with maintaining a different test model and allows developers to reason about the form, fit and function of the entire system, without the necessity of physically implementing it entirely.}
 	
 	This approach aims to generate knowledge about the physical attributes of the system early in the design, while reducing the development effort to develop different structures, at the cost of feature representability at every iteration. It is inherently hardware-specific, as it targets the higher costs and effort associated with iterating on larger hardware systems \autocite{schmidtAgileDevelopmentConstraints2017}.
-\end{itemize} %vadERR
+\end{itemize} %vadOK
 
 The main disadvantage of partition-based Sat-Scrum, compared to iterating strictly system-wide, is that it defers iterating on some parts of the system (and therefore also interfaces) to  later time points, therefore either reducing the total knowledge gained within a fixed duration, or increasing the total development time of a project.
 In extreme cases, developers may be enticed to delay working on parts of the system until the later stages of a project, thus risking that neither enough design nor iteration effort has been dedicated to them. For this reason, it is important to define and maintain a robust work management and planning approach.
@@ -2690,7 +2707,7 @@ In the context of \ac{SCS}, ``Engineering Data'' can specifically mean:
 
 It is also important to make a distinction between \ac{EDM} and the term ``documentation'', as ``documentation'' can be considered to additionally include explanations and instructions for a system in different formats.
 
-As Engineering Data is most likely stored and handled in a digital format\footnote[][-1cm]{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data, making their digital representation essentially a requirement. Also see \Cpageref{txt:colocation}.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools. %vadERR
+As Engineering Data is most likely stored and handled in a digital format\footnote[][-1cm]{While the use of paper or other physical methods is possible and has been proposed for parts of system design, such as task management, I consider here that the typical scope of an \acs{SCS} project includes remote participants and external stakeholders who need access to all engineering data, making their digital representation essentially a requirement. Also see \Cpageref{txt:colocation}.}, \ac{EDM} is essentially a discipline shaped and limited by the available tools. %vadOK
 
 In general, the success of an \ac{EDM} method does not only depend on the short and long-term correctness of the available data, but should also be focused on minimising the additional \ac{SYE} overhead.
 \NextCitationOffset{-0.6cm}
@@ -2728,7 +2745,7 @@ A quantitative model for the evaluation of documentation effectiveness was propo
 \end{table}
 
 
-\marginnote[-1cm]{where:
+\marginnote[-1cm]{where:\vspace{-0.4cm}
 \begin{itemize}[itemsep=-0.5ex]
 	\item Produced value is guesstimated by the producers of the artifact.
 	\item \(C\) is the percentage of the artifact that is currently “correct”.
@@ -4513,10 +4530,10 @@ Data is modulated by turning the \acsp{LED} on and off (\acs{OOK} --- \acl{OOK})
 		\item guarantees that no \ac{DC} component remains in the output signal, allowing easy high pass filtering to reduce the influence of ambient light (mainly sunlight);
 		\item is self-clocking, allowing easy synchronisation and clock recovery on the receiver side.
 	\end{enumerate*} While other techniques such as scrambling or \ac{RLL} could be used to achieve the above, Manchester coding was applied to reduce system complexity. }, at a rate of \SI{50}{baud/\second}.
-\marginnote{An alternative plan for the \ac{VLC} system involved using Colour Shift Keying instead of \acs{OOK}, which roughly corresponds to \ac{RF} frequency modulation and could have better noise resistance. \acs{OOK} was however chosen to keep complexity low \autocite{monteiroDesignImplementationColorShift2014}.}
 
 To make the design highly configurable without physical modifications, all processing was done in software, using an \acs{ADC} for reception, with an oversampling factor of \( \times 5 \) to assist in clock recovery.
 
+\marginnote{An alternative plan for the \ac{VLC} system involved using Colour Shift Keying instead of \acs{OOK}, which roughly corresponds to \ac{RF} frequency modulation and could have better noise resistance. \acs{OOK} was however chosen to keep complexity low \autocite{monteiroDesignImplementationColorShift2014}.}%vadERR
 The signal path of the received pulses was first fed into a band-pass filter to eliminate noise and background light. The synchronisation itself also took place in software. Bit synchronisation to the transmitter's clock happened by detecting the edges of the transmitted Manchester code, while frame synchronisation was performed by waiting for a synchronisation word.
 
 At a system level, the secondaries transmitted data at periodic \qty{1.5}{\second} intervals, while the primary was constantly waiting for data reception.
@@ -6403,7 +6420,7 @@ Risk (categorical)& Mann-Whitney \(U\) & 11.000 & 0.4857 & \text{---} \\
 \label{tab:stat_results}
 \setfloatalignment{t}
 \end{table*}%
-%vadERR
+%vadOK
 
 
 
